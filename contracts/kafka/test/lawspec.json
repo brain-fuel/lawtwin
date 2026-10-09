@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "sources": [
+    "laws"
+  ],
+  "dependencies": {
+    "lawtwin.kafka": "0.1.0"
+  },
+  "packages": [
+    ".."
+  ],
+  "targets": [
+    {
+      "language": "rust",
+      "root": "rust",
+      "nativeBindings": {
+        "generators": [
+          {
+            "type": "Text",
+            "factory": [
+              "kafka_generators",
+              "names"
+            ],
+            "stub": true
+          },
+          {
+            "type": "Int32",
+            "factory": [
+              "kafka_generators",
+              "counts"
+            ]
+          }
+        ],
+        "rustCrate": "lawspec_example"
+      }
+    },
+    {
+      "language": "python",
+      "root": "python",
+      "python": ".venv/bin/python",
+      "nativeBindings": {
+        "generators": [
+          {
+            "type": "Text",
+            "factory": [
+              "kafka_generators",
+              "names"
+            ],
+            "stub": true
+          },
+          {
+            "type": "Int32",
+            "factory": [
+              "kafka_generators",
+              "counts"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

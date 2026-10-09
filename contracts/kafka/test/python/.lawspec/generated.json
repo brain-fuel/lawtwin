@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "files": {
+    "tests/test_lawspec_matchers_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
+    "tests/test_lawtwin_kafka_model_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
+    "tests/test_contracttest_kafka_lawspec.py": "88bfc0fe678593de4c80eac150f2c42ed99699f7e934b8c277ba9569a88df0ac",
+    "src/lawspec_data.py": "7502352236b09c2dc62bf1a6f922a4162f487499ed795add6867c84aae84205f",
+    "src/lawspec_schema.py": "603e2a74755ea8b05b6d04a2bb8481b40982077bcde76ad1eb19641f6cc08d2d",
+    "src/lawspec_definition_bodies.py": "99d5cee7defc39564f93be4ea2364b16ae31b9a423b6e3b42f13864b69c2e14f",
+    "src/lawspec_definitions/lawspec/matchers.py": "2db4dbe1e3d355d3f9df6e17878e225fd2446278f6ae0de517c20b16cd91a173",
+    "src/lawspec_definitions/lawtwin/kafka/contract.py": "59d9dc86e20b2a4d6ea5b452e2cae2a230f5a3f8555f04ab441d1a781e3b8689",
+    "src/lawspec_definitions/lawtwin/kafka/model.py": "c2cb99d0ae8fa3f1b2ad07166a38961aab5992c0f535c5b751a4384db6ac3798",
+    "src/lawspec_definitions/contracttest/kafka.py": "012d39246334a896cf8590aa7cf0ca5b29f2cc2afb8de1d2053271f183896f46",
+    "tests/lawspec_data_strategies.py": "d7fb04fe05607b7bb2ae5e4c1e6938ef4c9da272c2fa55a6277c1431161ff3fe",
+    "src/lawspec_runtime.py": "22e1e9f0852fccea43ab781a26a6e2d094bba47ebc080bd540ae768f1f078c4a",
+    "src/lawspec_abilities/lawtwin/kafka/contract.py": "df00f72067395f34c9db4a2ee47fbbe6cd74fb02f9b8d00a526bdff8519f3771",
+    "src/lawspec_abilities/contracttest/kafka.py": "53d0adfa01f5610be2efca6efb573dc48519d36abaf574337fe536633cd43d77",
+    "src/lawspec_remote.py": "6e5ae470eb663132337f1547afc794185968a47ca5ef1c3a5cb8909e03010097",
+    "src/lawspec_native.py": "4aefda15165a3cda28883993ca83ffb9ae8cf2da3ef245f40c4ba98b63bb53b5",
+    "tests/lawspec_native_generators.py": "c97a03cfc62c4bf0250b732d6e1d4c1e68618ed819110f755409ec0a825d9881",
+    "tests/test_lawtwin_kafka_contract_lawspec.py": "ac412bb981651f8fee45308f879c2290069a399e24d7b5b28bbfcd434f617f85"
+  },
+  "adapters": {
+    "src/lawspec/matchers.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/lawtwin/kafka/contract.py": "5b5459f295469e5ac27d6dc66b31ec5d6cf3f1fa2c15b19acb0667de1c0f1f68",
+    "src/lawtwin/kafka/model.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/contracttest/kafka.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "tests/kafka_generators.py": "528c08d7bd16bde874413170cee7e5462fc54904eb910fd153fe52036abfa8e3"
+  }
+}

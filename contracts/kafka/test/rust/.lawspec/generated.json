@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "files": {
+    "tests/lawspec_collections_lawspec.rs": "936e5ddfc3ac27e44cf4b9dd1c4d04a059b525d1719bc4ca17b8a1b0cd38baf3",
+    "tests/lawspec_matchers_lawspec.rs": "44b457f0427527372d65efb0a21dad12668995605c84d17f507e8006e2c019ca",
+    "tests/lawtwin_kafka_contract_lawspec.rs": "333d167c4622e9e037403c1125e88a0e705554c90e2ee672283dd6e8924545a7",
+    "tests/lawtwin_kafka_model_lawspec.rs": "18f2897c8a8028bb65590a7188f370fda6678b030e26aded528b5dec925690ea",
+    "tests/contracttest_kafka_lawspec.rs": "a38b9b0080a13e0357769b349d0caf9d3298b6682b46158a3276907fdc2978fa",
+    "src/lawspec_data.rs": "c1d1be70b0116c8d4bd31767d81bcc31b7b4c2996f05c1a9c81c700f1a7b1781",
+    "src/lawspec_schema.rs": "8dc5668917d1304815846482cbb807a336aea7c97a71a32e25696d1403a623b1",
+    "src/lawspec_definitions.rs": "5c426b6ed5479a7dfb4e4ba898fd984d3c11f31db785c22f79d491673b3c38f6",
+    "src/lawspec_abilities.rs": "7ffb099ff83dd29ab8ed524917cb4acca4a8c012df92f234018fe9793afda895",
+    "src/lawspec_runtime.rs": "0d370457a2d1cf9585172aa4ecf8e0595aad0e04436e2b82e6afcf59602c92ba",
+    "src/lawspec_modules.rs": "89f6b95dba8d403b0c7be9ce16d431082a44164e78fe3f50f20be433ae907b91",
+    "tests/support/lawspec_strategies.rs": "49c80d974b695987c43b5905ad1cb3655878a79af4635cc3b24df742733b1fac",
+    "src/lawspec_remote.rs": "ca2d4d2164d62b9a42000738c9a0c6a6daec0d1ecaf6faf4544d797335de0d99"
+  },
+  "adapters": {
+    "src/lawspec/collections.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
+    "src/lawspec/matchers.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
+    "src/lawtwin/kafka/contract.rs": "5f4e809ee28e22abacb2945166e7c0a86032633b57b4435fe14c70c1a0bd9630",
+    "src/lawtwin/kafka/model.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
+    "src/contracttest/kafka.rs": "f3ef56aa34ead16261ff8421ea124ae1c0d97ee4988620e3451a0b8539d92032",
+    "tests/support/kafka_generators.rs": "368655c5b245dbaa90ed5eb62ca5aeac2a0ee90bbbb44dbe69e6a50171346827"
+  }
+}
