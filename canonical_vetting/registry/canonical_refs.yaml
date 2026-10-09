@@ -1,0 +1,69 @@
+registry/MIT:
+  digest: sha256:ed6c0abb656b1c69
+  verdict: pending
+registry/apache-kafka-image:
+  digest: sha256:fbc54fb9e869ee44
+  verdict: pending
+registry/canon:
+  digest: sha256:a152c76a874314e1
+  verdict: pending
+registry/containerfile:
+  digest: sha256:d3664230fbdcf88a
+  verdict: pending
+registry/diataxis:
+  digest: sha256:da6d545b5d1d42a6
+  verdict: pending
+registry/kafka-classic-group-protocol:
+  digest: sha256:98cda03d960d9d0c
+  verdict: pending
+registry/kafka-design:
+  digest: sha256:df8b9399f4536f0a
+  verdict: pending
+registry/kafka-murmur2:
+  digest: sha256:d7a162cc5cbe8f57
+  verdict: pending
+registry/kafka-protocol:
+  digest: sha256:66b8335f549e8d61
+  verdict: pending
+registry/kafka-protocol-crate:
+  digest: sha256:cfc093dc42825c17
+  verdict: pending
+registry/keep-a-changelog:
+  digest: sha256:c2fd784f65633045
+  verdict: pending
+registry/kip-447:
+  digest: sha256:8dc61d17da0e27f7
+  verdict: pending
+registry/kip-848:
+  digest: sha256:8738319c3ed4d5fd
+  verdict: pending
+registry/kip-98:
+  digest: sha256:29fb787eb80f18ab
+  verdict: pending
+registry/lawspec:
+  digest: sha256:0bc6fbeafbaf3c60
+  verdict: pending
+registry/lawspec-roadmap:
+  digest: sha256:66276f70d037ada3
+  verdict: pending
+registry/lawtwin-plan:
+  digest: sha256:53f63f6c1eab8f2c
+  verdict: pending
+registry/lawtwin-roadmap:
+  digest: sha256:3ab2cdffc1829122
+  verdict: pending
+registry/openapi-3-1:
+  digest: sha256:5c0b4023910100be
+  verdict: pending
+registry/opentofu:
+  digest: sha256:7a60058e1d7431d2
+  verdict: pending
+registry/podman:
+  digest: sha256:a598692da181d088
+  verdict: pending
+registry/podman-compose:
+  digest: sha256:bf1cc5949d8f9bee
+  verdict: pending
+registry/semver-2:
+  digest: sha256:7ef7fa24c6809d32
+  verdict: pending

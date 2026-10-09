@@ -1,0 +1,12 @@
+decision/python/contracts/kafka/test/python/tests/kafka_generators.py:
+  digest: sha256:1795aa34cc06de61
+  verdict: pending
+decision/python/contracts/kafka/test/python/tests/kafka_generators.py/function/_mostly:
+  digest: sha256:94925d9ba212ab92
+  verdict: pending
+decision/python/contracts/kafka/test/python/tests/kafka_generators.py/function/counts:
+  digest: sha256:a77087e881189e79
+  verdict: pending
+decision/python/contracts/kafka/test/python/tests/kafka_generators.py/function/names:
+  digest: sha256:5612bd7bdcbd3fe3
+  verdict: pending

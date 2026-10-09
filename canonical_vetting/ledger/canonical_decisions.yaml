@@ -1,0 +1,33 @@
+ledger/DEC-contract-test-shared-cluster:
+  digest: sha256:954e5994101bbf5c
+  verdict: pending
+ledger/DEC-dependency-contracts-in-lawspec:
+  digest: sha256:f392b29275197e48
+  verdict: pending
+ledger/DEC-fidelity:
+  digest: sha256:e7183af2df73e568
+  verdict: pending
+ledger/DEC-first-release-scope:
+  digest: sha256:4ef7155f2df9545a
+  verdict: pending
+ledger/DEC-kafka-broker-and-clients:
+  digest: sha256:2a8509989de0db52
+  verdict: pending
+ledger/DEC-kafka-model-scope:
+  digest: sha256:d4030f54bb981310
+  verdict: pending
+ledger/DEC-three-planes:
+  digest: sha256:1260cf798d59b1e1
+  verdict: pending
+ledger/DEC-twins-in-rust:
+  digest: sha256:853d171a370cec8b
+  verdict: pending
+ledger/DEC-twins-wire-level-containers:
+  digest: sha256:8a378cebc956e305
+  verdict: pending
+ledger/DEC-typed-control-plane:
+  digest: sha256:c36b7843b14bac1e
+  verdict: pending
+ledger/DEC-vetting-deferred-to-1.0:
+  digest: sha256:e0c2e9c6b34a4244
+  verdict: pending

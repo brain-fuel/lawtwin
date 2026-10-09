@@ -1,0 +1,33 @@
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py:
+  digest: sha256:1f39dd03b1d8ecfb
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/AdminHandler:
+  digest: sha256:4897feaf3e496548
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/BrokerHandler:
+  digest: sha256:d5711118a40844d7
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/ConsumerHandler:
+  digest: sha256:4c49b2f299729d22
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/GroupCoordinatorHandler:
+  digest: sha256:04bca5aab2012a26
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/PartitionerHandler:
+  digest: sha256:4e19f0193f412d61
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/ProducerHandler:
+  digest: sha256:f9a187c1dd0d019a
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/TransactionsHandler:
+  digest: sha256:a60b51ecff8b9dff
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/class/_Shared:
+  digest: sha256:0e409c3e94226a94
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/function/_current:
+  digest: sha256:bcfdf9c4d15268b7
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/contract.py/function/murmur2:
+  digest: sha256:b4c353cd26e00f53
+  verdict: pending

@@ -1,0 +1,6 @@
+decision/python/contracts/kafka/test/python/tests/test_murmur2.py:
+  digest: sha256:ade3d5222c91c2e8
+  verdict: pending
+decision/python/contracts/kafka/test/python/tests/test_murmur2.py/function/test_murmur2_matches_kafka:
+  digest: sha256:4e0f82522e56e0d8
+  verdict: pending
