@@ -1,0 +1,98 @@
+DEC-three-planes:
+  status: decided
+  question: A test needs a stand-in for a dependency it cannot provision, reset, isolate or force into a state. Where do the application's laws, the stand-ins, and the choice of which environment uses which live, so that none of them leaks into another?
+  answer: |
+    In three planes. LawSpec holds the business contract: the application's laws, where a dependency is an ability whose production handler is the real client library; it never mentions twins, endpoints or environments, and LawSpec knows nothing about LawTwin. LawTwin holds the stand-ins: dependency contracts as LawSpec packages, twin servers, the control plane, conformance, and record and replay; it holds no business laws and does not decide which environment uses what. Ironframe does the wiring: per environment and per dependency, whether it is real or a twin, the config service and its cloud sync, and environment attestation. The one LawSpec change is tool-neutral: `lawspec evidence` may read an environment attestation that any tool writes, and report which obligations ran against stand-ins. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, lawspec]
+
+DEC-twins-wire-level-containers:
+  status: decided
+  question: What is a twin, so that it drops into infrastructure that already exists?
+  answer: |
+    A server that speaks the dependency's own wire protocol, packaged as a container: a Containerfile per twin giving a small static image, run locally with podman and podman compose, and deployed per environment to AWS ECS Fargate, GCP Cloud Run and Azure Container Apps with OpenTofu modules. Applications reach a twin exactly as they reach the real dependency, with their usual client and their usual configuration. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, containerfile, podman, podman-compose, opentofu]
+
+DEC-dependency-contracts-in-lawspec:
+  status: decided
+  question: Where is a dependency's behaviour stated, apart from any business unit that uses it, and where do the knobs of simulation go?
+  answer: |
+    Each dependency's semantics are a LawSpec package of their own in this repository, under contracts/: Kafka's as lawtwin.kafka, and each OpenAPI service's states as a package the importer generates. A package holds abilities with laws and a stateful spec handler that is the reference model; it never names a business unit. The packages may later move to a shared contracts repository, which would start the property library planned after the first release. Simulation knobs (faults, forcing, the clock) belong to LawTwin, never to LawSpec. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, lawspec]
+
+DEC-twins-in-rust:
+  status: decided
+  question: What are twin servers written in?
+  answer: |
+    Rust. Each twin embeds the Rust code LawSpec generates for its contract's spec handler, so the model the laws check is the model that runs, and adds a wire layer that maps requests onto the contract's operations: the kafka-protocol crate for Kafka, hyper and axum for HTTP. Time runs on the contract's Clock and randomness on a seeded Random, so runs are deterministic and replayable. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, kafka-protocol-crate]
+
+DEC-fidelity:
+  status: decided
+  question: Why should anyone trust that a twin behaves like the real dependency?
+  answer: |
+    Four things, and nothing else. Conformance: `lawtwin conform` runs the dependency contract's laws against the real thing (the apache/kafka container, or a real API endpoint) and against the twin, and gives each twin release a conformance report and level; divergences are recorded as ledger decisions. Record and replay: a proxy records real traffic into traces, each trace is checked against the contract, then replayed through the twin, and any divergence is reported. Consumer contracts: a consumer's expectations are laws in its own LawSpec spec, written against the dependency contract package and run against both the twin and the provider. Evidence: what ran against a stand-in is reported as such. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, apache-kafka-image]
+
+DEC-typed-control-plane:
+  status: decided
+  question: How does a test force a twin into a state, or a fault, that the real dependency will not produce on demand?
+  answer: |
+    Through a typed control plane generated from each contract, reached over an admin HTTP port and the lawtwin CLI. `force` sets a state and is checked against the contract's invariants, so an impossible state is refused; `fault` draws from a declared fault set (for Kafka: broker unavailable, leader change, consumer lag, duplicate delivery, rebalance storm; for HTTP: latency, 5xx, 429 rate limits, timeouts); `advance` moves the twin's clock; `inspect` shows the state; `history` shows what the twin has done. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-first-release-scope:
+  status: decided
+  question: What does LawTwin 0.1 cover?
+  answer: |
+    Two dependencies. Kafka: the producer and consumer, with consumer groups, transactions and idempotence, faults and forcing, over the API versions librdkafka, the Java client, franz-go and kafkajs use. HTTP: services described by OpenAPI 3.x, imported into a stateful contract, with faults and forcing, record and replay, and conformance. Later tiers are on the roadmap. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, lawtwin-roadmap, kafka-protocol, openapi-3-1]
+
+DEC-vetting-deferred-to-1.0:
+  status: decided
+  question: LawTwin is canon-checked from its first commit, but nobody has yet judged its comments, pages, decisions and references. When are they vetted?
+  answer: |
+    At 1.0. canon ingest records every comment, page, decision and reference as pending; canonical_exemptions.yaml exempts each kind of material until 1.0.0, so releases before then carry the debt without signing it off, as LawSpec does with its own. The owner vets them before 1.0. Decided by the owner, 2026-10-09.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [canon, lawspec]
+
+DEC-kafka-broker-and-clients:
+  status: decided
+  question: Kafka's guarantees span its producer, consumer, group coordinator, transactions and admin APIs, but a LawSpec handler handles one ability and keeps its own state. How does one reference model serve them all?
+  answer: |
+    Two layers. The Broker ability is the cluster as the wire protocol sees it, one operation per request (Produce, Fetch, ListOffsets, InitProducerId, AddPartitionsToTxn, TxnOffsetCommit, EndTxn, JoinGroup, SyncGroup, Heartbeat, LeaveGroup, OffsetCommit, OffsetFetch, and the admin requests), and its stateful spec handler `reference` is the whole reference model. Admin, Producer, Partitioner, Consumer, GroupCoordinator and Transactions are the client abilities; their spec handlers are clients written over Broker, holding only client state (sequences, positions, the open transaction). The Kafka twin maps wire requests onto Broker, and conformance reaches a real cluster through Broker or through a real client's handlers.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol, kip-98, kip-848]
+
+DEC-kafka-model-scope:
+  status: decided
+  question: What does the 0.1 reference model of Kafka leave out?
+  answer: |
+    Replication, retention and time. It is one broker leading every partition with one replica, so the high watermark is the log end offset; logs are never truncated, so the log start offset is zero; groups have no session timeout, so a member leaves only by LeaveGroup. Groups follow KIP-848's coordinator-side assignment (round robin over subscribers, in member id order) rather than the classic leader-side assignors. TxnOffsetCommit does not check the group generation of KIP-447. The broker keeps five recent batches per producer and partition to recognise retries. A topic has at most 1024 partitions, and a batch at most 100000 records. Each is a candidate for a later release; leader change and lag are faults of the control plane, not states of the model.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-design, kip-848, kip-447, kafka-classic-group-protocol]
+
+DEC-contract-test-shared-cluster:
+  status: decided
+  question: A law of the contract uses several abilities, and LawSpec makes a native handler for each with no arguments. How do the native handlers of one case reach the same cluster, and a fresh one for the next case?
+  answer: |
+    Through one session per thread. Every native handler of the contract's test project serves its ability over a shared context holding the generated reference model and Kafka's murmur2 partitioner. A case makes all its handlers before it runs any operation, so a handler made after an operation has run starts a new session with a new cluster. The laws do not rely on the freshness: each creates the topic it needs and claims nothing when the topic exists, so they also hold on a long-lived real cluster. The project binds generators for Text and Int32 so that most draws are valid topic names and small counts, and the laws' refinements keep most cases.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec, kafka-murmur2]

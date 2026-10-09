@@ -1,0 +1,44 @@
+version: 0.1.0
+canon: 0.2.0
+registry: canonical_refs.yaml
+decisions: canonical_decisions.yaml
+exemptions: canonical_exemptions.yaml
+vetting: canonical_vetting
+ignore:
+  - .canon/
+  - .canon-cache/
+  - "*.md"
+  - "!docs/**/*.md"
+  - contracts/*/test/.lawspec/
+  - contracts/*/test/rust/target/
+  - contracts/*/test/rust/src/lawspec_*.rs
+  - contracts/*/test/rust/src/lawspec/
+  - contracts/*/test/rust/tests/
+  - contracts/*/test/python/.venv/
+  - contracts/*/test/python/src/lawspec_*.py
+  - contracts/*/test/python/src/lawspec_*/
+  - contracts/*/test/python/src/lawspec/
+  - contracts/*/test/python/src/*.egg-info/
+  - contracts/*/test/python/tests/test_*_lawspec.py
+  - contracts/*/test/python/tests/lawspec_*.py
+languages:
+  folio:
+    extensions: [.md]
+    lexer: .canon/grammars/folio/FolioLexer.g4
+    parser: .canon/grammars/folio/FolioParser.g4
+    start: document
+  make:
+    extensions: [Makefile]
+    lexer: .canon/grammars/make/canonically_commented/MakefileLexer.g4
+    parser: .canon/grammars/make/canonically_commented/MakefileParser.g4
+    start: makefile
+  rust:
+    extensions: [.rs]
+    lexer: .canon/grammars/rust/canonically_commented/RustLexer.g4
+    parser: .canon/grammars/rust/canonically_commented/RustParser.g4
+    start: crate
+  python:
+    extensions: [.py]
+    lexer: .canon/grammars/python/canonically_commented/Python3Lexer.g4
+    parser: .canon/grammars/python/canonically_commented/Python3Parser.g4
+    start: file_input

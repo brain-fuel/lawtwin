@@ -1,0 +1,31 @@
+# canon: the checkout whose grammars canon.yaml names, and its cache
+/.canon
+.canon-cache/
+
+# LawSpec's compiler cache, test results and reports
+.lawspec/cache/
+.lawspec/results/
+.lawspec/reports/
+.lawspec/failures/
+.lawspec/coverage/
+
+# Rust build output
+target/
+
+# Python environments and test caches
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.hypothesis/
+
+# Node, for npx lawspec
+node_modules/
+
+# Local environment overrides and editor/OS temporary files
+.env
+.env.local
+.DS_Store
+*.swp
+*~

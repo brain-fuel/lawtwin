@@ -1,0 +1,92 @@
+MIT:
+  kind: license
+  title: MIT License
+  locator: https://spdx.org/licenses/MIT.html
+keep-a-changelog:
+  kind: article
+  title: Keep a Changelog 1.0.0
+  locator: https://keepachangelog.com/en/1.0.0/
+semver-2:
+  kind: article
+  title: Semantic Versioning 2.0.0
+  locator: https://semver.org/spec/v2.0.0.html
+diataxis:
+  kind: article
+  title: Diátaxis, a systematic approach to technical documentation authoring
+  locator: https://diataxis.fr/
+canon:
+  kind: package
+  title: canon, the canonical format checker, version 0.2.0 at commit 2f22e6e
+  locator: https://github.com/brain-fuel/canon/tree/2f22e6e
+lawspec:
+  kind: package
+  title: LawSpec 0.21.0, the executable specification language, from npm
+  locator: https://www.npmjs.com/package/lawspec/v/0.21.0
+lawspec-roadmap:
+  kind: discussion
+  title: The LawSpec roadmap, the milestones each minor release delivers
+  locator: https://github.com/brain-fuel/lawspec/blob/main/docs/explanation/roadmap.md
+lawtwin-roadmap:
+  kind: discussion
+  title: The LawTwin roadmap, the dependencies each release covers
+  locator: docs/explanation/roadmap.md
+lawtwin-plan:
+  kind: discussion
+  title: The approved plan for LawTwin 0.1 and Ironframe 0.1, 2026-10-09, folded into the decisions of this ledger
+  locator: canonical_decisions.yaml
+kafka-protocol:
+  kind: article
+  title: Apache Kafka, the Kafka protocol guide, with every request and error code
+  locator: https://kafka.apache.org/protocol.html
+kafka-design:
+  kind: article
+  title: Apache Kafka documentation, design, including message delivery semantics and replication
+  locator: https://kafka.apache.org/documentation/#design
+kip-98:
+  kind: article
+  title: KIP-98, Exactly Once Delivery and Transactional Messaging
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-98+-+Exactly+Once+Delivery+and+Transactional+Messaging
+kip-447:
+  kind: article
+  title: KIP-447, Producer scalability for exactly once semantics
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-447%3A+Producer+scalability+for+exactly+once+semantics
+kip-848:
+  kind: article
+  title: KIP-848, The Next Generation of the Consumer Rebalance Protocol
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-848%3A+The+Next+Generation+of+the+Consumer+Rebalance+Protocol
+kafka-classic-group-protocol:
+  kind: article
+  title: Kafka Client-side Assignment Proposal, the classic JoinGroup and SyncGroup protocol
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Client-side+Assignment+Proposal
+kafka-murmur2:
+  kind: package
+  title: Apache Kafka clients, org.apache.kafka.common.utils.Utils.murmur2, the default partitioner's hash
+  locator: https://github.com/apache/kafka/blob/trunk/clients/src/main/java/org/apache/kafka/common/utils/Utils.java
+apache-kafka-image:
+  kind: package
+  title: The apache/kafka container image, the real broker conformance runs against
+  locator: https://hub.docker.com/r/apache/kafka
+kafka-protocol-crate:
+  kind: package
+  title: kafka-protocol, the Rust implementation of the Kafka wire protocol
+  locator: https://crates.io/crates/kafka-protocol
+openapi-3-1:
+  kind: article
+  title: OpenAPI Specification, version 3.1.0
+  locator: https://spec.openapis.org/oas/v3.1.0
+opentofu:
+  kind: package
+  title: OpenTofu, the open-source infrastructure as code tool
+  locator: https://opentofu.org/docs/
+podman:
+  kind: package
+  title: Podman, the daemonless container engine
+  locator: https://docs.podman.io/en/latest/
+containerfile:
+  kind: article
+  title: Containerfile(5), the format of the files Podman and Buildah build images from
+  locator: https://github.com/containers/common/blob/main/docs/Containerfile.5.md
+podman-compose:
+  kind: package
+  title: podman compose, running multi-container applications from compose files
+  locator: https://docs.podman.io/en/latest/markdown/podman-compose.1.html

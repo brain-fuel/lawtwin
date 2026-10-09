@@ -1,0 +1,20 @@
+/contracts/:
+  kinds: [comment]
+  reason: "The native handlers of the contract test projects were ingested pending in 0.1.0; the owner vets them before 1.0"
+  revisit: 1.0.0
+/Makefile:
+  kinds: [comment]
+  reason: "The Makefile's targets carry their one-line help but no canonical comment yet; written and vetted before 1.0"
+  revisit: 1.0.0
+/docs/:
+  kinds: [doc]
+  reason: "Every page was written with front matter in 0.1.0 and ingested pending; the owner vets each page before 1.0"
+  revisit: 1.0.0
+ledger/*:
+  kinds: [ledger]
+  reason: "The ledger was written in 0.1.0 from the approved plan; the owner signs off each decision before 1.0"
+  revisit: 1.0.0
+registry/*:
+  kinds: [registry]
+  reason: "The registry was written in 0.1.0; the owner signs off each reference before 1.0"
+  revisit: 1.0.0
