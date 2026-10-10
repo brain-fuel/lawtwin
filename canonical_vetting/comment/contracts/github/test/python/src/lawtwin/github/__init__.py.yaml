@@ -1,0 +1,12 @@
+decision/python/contracts/github/test/python/src/lawtwin/github/__init__.py:
+  digest: sha256:a17a935e3aca62db
+  verdict: pending
+decision/python/contracts/github/test/python/src/lawtwin/github/__init__.py/class/IssuesApiHandler:
+  digest: sha256:8b935891b363248b
+  verdict: pending
+decision/python/contracts/github/test/python/src/lawtwin/github/__init__.py/class/ReferenceService:
+  digest: sha256:3c173fc26c77264e
+  verdict: pending
+decision/python/contracts/github/test/python/src/lawtwin/github/__init__.py/class/_Reference:
+  digest: sha256:0c12d7a5d17f9083
+  verdict: pending

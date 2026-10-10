@@ -1,0 +1,18 @@
+decision/rust/crates/lawtwin/src/regex.rs:
+  digest: sha256:f6485ca40463256c
+  verdict: pending
+decision/rust/crates/lawtwin/src/regex.rs/function/check:
+  digest: sha256:f1fcb522a56ecb93
+  verdict: pending
+decision/rust/crates/lawtwin/src/regex.rs/function/format_regex:
+  digest: sha256:8540d2752441c53a
+  verdict: pending
+decision/rust/crates/lawtwin/src/regex.rs/function/portable:
+  digest: sha256:66dccefc65860289
+  verdict: pending
+decision/rust/crates/lawtwin/src/regex.rs/module/tests/function/anchors_are_dropped_and_unanchored_ends_padded:
+  digest: sha256:6ffce2635a500aab
+  verdict: pending
+decision/rust/crates/lawtwin/src/regex.rs/module/tests/function/what_is_not_portable_is_refused:
+  digest: sha256:e5bdaa4e44e6976d
+  verdict: pending

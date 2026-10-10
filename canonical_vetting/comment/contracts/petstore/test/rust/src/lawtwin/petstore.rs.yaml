@@ -1,0 +1,15 @@
+decision/rust/contracts/petstore/test/rust/src/lawtwin/petstore.rs:
+  digest: sha256:539e4fbcce20aad6
+  verdict: pending
+decision/rust/contracts/petstore/test/rust/src/lawtwin/petstore.rs/struct/PetApiHandler:
+  digest: sha256:d336dc2c7a957f35
+  verdict: pending
+decision/rust/contracts/petstore/test/rust/src/lawtwin/petstore.rs/struct/ReferenceService:
+  digest: sha256:3c173fc26c77264e
+  verdict: pending
+decision/rust/contracts/petstore/test/rust/src/lawtwin/petstore.rs/struct/StoreApiHandler:
+  digest: sha256:37b8a0bb96283124
+  verdict: pending
+decision/rust/contracts/petstore/test/rust/src/lawtwin/petstore.rs/struct/UserApiHandler:
+  digest: sha256:9edfbd512320251c
+  verdict: pending

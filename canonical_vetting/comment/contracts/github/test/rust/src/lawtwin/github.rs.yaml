@@ -1,0 +1,9 @@
+decision/rust/contracts/github/test/rust/src/lawtwin/github.rs:
+  digest: sha256:7b31f40621d7bdb3
+  verdict: pending
+decision/rust/contracts/github/test/rust/src/lawtwin/github.rs/struct/IssuesApiHandler:
+  digest: sha256:8b935891b363248b
+  verdict: pending
+decision/rust/contracts/github/test/rust/src/lawtwin/github.rs/struct/ReferenceService:
+  digest: sha256:3c173fc26c77264e
+  verdict: pending

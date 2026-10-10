@@ -1,0 +1,27 @@
+decision/rust/crates/lawtwin/src/natives.rs:
+  digest: sha256:9a4d6808787fb9b8
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/const/CARGO_TOML:
+  digest: sha256:de379113024c0cd6
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/const/LIB_RS:
+  digest: sha256:d20ef1770b2f9a55
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/const/PYPROJECT:
+  digest: sha256:0a722c0f8ffd58f7
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/lawspec_json:
+  digest: sha256:5b2084672f579c99
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/python:
+  digest: sha256:37ec70e009237fc0
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/rust:
+  digest: sha256:d36968196ec34ec2
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/rust_module:
+  digest: sha256:0201413958c43673
+  verdict: pending
+decision/rust/crates/lawtwin/src/natives.rs/function/suite:
+  digest: sha256:65c036ab6322ecdf
+  verdict: pending

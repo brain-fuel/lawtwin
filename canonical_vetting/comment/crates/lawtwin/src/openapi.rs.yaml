@@ -1,0 +1,42 @@
+decision/rust/crates/lawtwin/src/openapi.rs:
+  digest: sha256:906af61c41b30184
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/const/METHODS:
+  digest: sha256:629e827d9c32ea38
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/function/pick_content:
+  digest: sha256:d5c38e5525bf6c7f
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/impl/Document/function/deref:
+  digest: sha256:5c30d6b882c870b8
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/impl/Document/function/load:
+  digest: sha256:e6800cc1f817b277
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/impl/Document/function/parse:
+  digest: sha256:ab79a7a4813f651d
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/impl/Document/function/paths:
+  digest: sha256:a0fb422adcd66762
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/impl/Document/function/pointer:
+  digest: sha256:c7f935dfc300f4bb
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/module/tests/function/reads_yaml_and_json:
+  digest: sha256:635dbaa251e59422
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/struct/Document:
+  digest: sha256:d2c25d2d411eeab9
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/struct/Document/field/root:
+  digest: sha256:8f4b65ea6be4d23d
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/struct/Document/field/title:
+  digest: sha256:7a79fbc34619fb44
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/struct/Document/field/v31:
+  digest: sha256:53e28a3f307e1440
+  verdict: pending
+decision/rust/crates/lawtwin/src/openapi.rs/struct/Document/field/version:
+  digest: sha256:b71d9ba8e60a2e91
+  verdict: pending

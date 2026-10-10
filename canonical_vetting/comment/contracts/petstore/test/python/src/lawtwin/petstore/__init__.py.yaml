@@ -1,0 +1,18 @@
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py:
+  digest: sha256:857049e5f7366585
+  verdict: pending
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py/class/PetApiHandler:
+  digest: sha256:d336dc2c7a957f35
+  verdict: pending
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py/class/ReferenceService:
+  digest: sha256:3c173fc26c77264e
+  verdict: pending
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py/class/StoreApiHandler:
+  digest: sha256:37b8a0bb96283124
+  verdict: pending
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py/class/UserApiHandler:
+  digest: sha256:9edfbd512320251c
+  verdict: pending
+decision/python/contracts/petstore/test/python/src/lawtwin/petstore/__init__.py/class/_Reference:
+  digest: sha256:0c12d7a5d17f9083
+  verdict: pending

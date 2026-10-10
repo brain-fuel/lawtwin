@@ -1,0 +1,18 @@
+decision/rust/crates/lawtwin/tests/import_openapi.rs:
+  digest: sha256:8fe3f28dcfe53db9
+  verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/features_of_3_1:
+  digest: sha256:3dcc5380f7bf3c0a
+  verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/hand_written_units_are_kept:
+  digest: sha256:fd0a476f8994fb67
+  verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/paths_select_operations:
+  digest: sha256:bbcf8018c28ce97d
+  verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/petstore_3_0_json:
+  digest: sha256:b2b238eb8578832b
+  verdict: pending
+decision/rust/crates/lawtwin/tests/import_openapi.rs/function/petstore_3_0_yaml:
+  digest: sha256:ee245c22737b6617
+  verdict: pending

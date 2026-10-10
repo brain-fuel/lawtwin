@@ -1,0 +1,48 @@
+decision/rust/crates/lawtwin/src/names.rs:
+  digest: sha256:2e272dd8f493857b
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/const/RESERVED:
+  digest: sha256:8c96420b72fd9a8a
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/const/RESERVED_TYPES:
+  digest: sha256:c1a62f737fb0777d
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/lower_camel:
+  digest: sha256:2a987de3aca5cbfd
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/summary:
+  digest: sha256:c11a0f19ce525f11
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/text_literal:
+  digest: sha256:3b6c20a83c0e4e35
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/upper_camel:
+  digest: sha256:4e399733d064cda6
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/value_name:
+  digest: sha256:80323c48ca0626fe
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/function/words:
+  digest: sha256:b3fb0551844e588e
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/impl/Namespace/function/claim:
+  digest: sha256:fb866ddbee694683
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/impl/Namespace/function/contains:
+  digest: sha256:fe746412732bccf2
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/impl/Namespace/function/reserve:
+  digest: sha256:ee6c7ded487ef6d3
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/impl/Namespace/function/with_reserved_types:
+  digest: sha256:7cbb3df60bc20d09
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/module/tests/function/camel_cases:
+  digest: sha256:2b7ecb7744a6778f
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/module/tests/function/namespace_suffixes:
+  digest: sha256:61c27192271ae9fd
+  verdict: pending
+decision/rust/crates/lawtwin/src/names.rs/struct/Namespace:
+  digest: sha256:d49f24ba57afe45c
+  verdict: pending
