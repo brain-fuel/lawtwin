@@ -168,6 +168,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     }
     write_once(&src.join("laws.lawspec"), &package.laws)?;
     let map = wiremap::wire_map(
+        &doc,
         &o.package,
         &source,
         &doc.title,
@@ -175,6 +176,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
         &types,
         &api,
         &package.unmodelled,
+        &package.resource_laws,
     );
     write(
         &o.out.join("lawtwin-openapi.json"),

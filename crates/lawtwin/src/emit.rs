@@ -21,6 +21,8 @@ pub struct Package {
     pub unmodelled: Vec<String>,
     /// How many laws were generated.
     pub law_count: usize,
+    /// Each generated law of a resource: the record, the law's kind and its title.
+    pub resource_laws: Vec<(String, &'static str, String)>,
 }
 
 /// The state variable of every model definition; no parameter can take
@@ -878,7 +880,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
         }
         // Law inputs need refinements; laws are built before the model is
         // finished so their helpers land in it.
-        let (laws_by_ability, top_laws, law_count) = self.laws();
+        let (laws_by_ability, top_laws, law_count, resource_laws) = self.laws();
         // Refinements, validation and helpers.
         if !self.refinements.is_empty() {
             model.push_str("-- ---------------------------------------------------------------------------\n-- Constraints\n-- ---------------------------------------------------------------------------\n\n");
@@ -1033,6 +1035,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
             laws,
             unmodelled,
             law_count,
+            resource_laws,
         }
     }
 
@@ -1040,10 +1043,19 @@ impl<'a, 'd> Emitter<'a, 'd> {
     // Laws
     // ------------------------------------------------------------------
 
-    fn laws(&mut self) -> (BTreeMap<String, String>, String, usize) {
+    #[allow(clippy::type_complexity)]
+    fn laws(
+        &mut self,
+    ) -> (
+        BTreeMap<String, String>,
+        String,
+        usize,
+        Vec<(String, &'static str, String)>,
+    ) {
         let mut by_ability: BTreeMap<String, String> = BTreeMap::new();
         let mut top = String::new();
         let mut count = 0;
+        let mut titled = vec![];
         let mut law_names = Namespace::default();
         for ri in 0..self.api.resources.len() {
             let r = self.api.resources[ri].clone();
@@ -1051,6 +1063,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 let title = law_names.claim(&title, &format!(" at {}", r.item_path));
                 let text = text.replace("@TITLE@", &title);
                 count += 1;
+                titled.push((r.record.clone(), law_kind(&title), title.clone()));
                 let abilities: BTreeSet<&String> =
                     ops.iter().map(|&o| &self.api.ops[o].ability).collect();
                 if abilities.len() == 1 {
@@ -1062,7 +1075,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
                 }
             }
         }
-        (by_ability, top, count)
+        (by_ability, top, count, titled)
     }
 
     /// Call arguments of an operation: the values given by name, `Nothing`
@@ -1398,6 +1411,21 @@ impl<'a, 'd> Emitter<'a, 'd> {
             }
         }
         out
+    }
+}
+
+/// The kind of a resource law, from its title, as the wire map names it.
+fn law_kind(title: &str) -> &'static str {
+    if title.starts_with("a created ") {
+        "createdReadsBack"
+    } else if title.starts_with("a deleted ") {
+        "deletedIsNotFound"
+    } else if title.starts_with("the list holds ") {
+        "listHoldsCreated"
+    } else if title.starts_with("an update changes only ") {
+        "updateChangesOnlyGivenFields"
+    } else {
+        "replacedReadsBack"
     }
 }
 
