@@ -833,11 +833,17 @@ fn literal(e: &Expr) -> Option<i128> {
     }
 }
 
-fn bounds(var: &str, e: &Expr, b: &mut Bounds) {
+fn bounds(types: &Types, var: &str, e: &Expr, b: &mut Bounds) {
     match e {
         Expr::Bin(op, l, r) if op == "&&" => {
-            bounds(var, l, b);
-            bounds(var, r, b);
+            bounds(types, var, l, b);
+            bounds(types, var, r, b);
+        }
+        // A definition called on the value: its body, over its parameter.
+        Expr::App(f, args) if args.len() == 1 && matches!(&args[0], Expr::Name(n) if n == var) => {
+            if let Some(d) = types.defs.get(f.rsplit('.').next().unwrap_or(f)).filter(|d| d.params.len() == 1) {
+                bounds(types, &d.params[0], &d.body, b);
+            }
         }
         Expr::Matches(a, re) if matches!(&**a, Expr::Name(n) if n == var) => b.regex = Some(re.clone()),
         Expr::Bin(op, l, r) => {
@@ -1006,7 +1012,7 @@ impl Types {
             }
             Ty::Refined(var, base, pred) => {
                 let mut within = Bounds::default();
-                bounds(var, pred, &mut within);
+                bounds(self, var, pred, &mut within);
                 let mut last = String::new();
                 for _ in 0..2000 {
                     let v = self.gen_within(base, rng, &within, depth + 1)?;

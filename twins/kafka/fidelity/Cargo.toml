@@ -20,6 +20,8 @@ path = "src/main.rs"
 [dependencies]
 # The reference model, the history format and the law checks.
 lawtwin-kafka = { path = "../rust" }
+# The one seeded generator every core and peer draws from.
+lawtwin-wire = { path = "../../../crates/lawtwin-wire" }
 # Starting a core under test, as the core conformance kit does.
 lawtwin-kafka-conformance = { path = "../conformance" }
 kafka-protocol = { version = "0.18", default-features = false, features = ["broker", "client", "gzip", "zstd", "snappy", "lz4"] }

@@ -33,25 +33,13 @@ use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
-/// The seeded generator a peer draws from: SplitMix64, as every twin core.
-#[derive(Clone, Debug)]
-pub struct Rng(lawtwin_kafka::clock::Random);
+/// The seeded generator a peer draws from: SplitMix64, the one every core
+/// and peer draws from.
+pub use lawtwin_wire::rng::Rng;
 
-impl Rng {
-    /// The generator for a seed.
-    pub fn new(seed: u64) -> Self {
-        Self(lawtwin_kafka::clock::Random::new(seed))
-    }
-
-    /// A number below `n` (0 when `n` is 0).
-    pub fn below(&mut self, n: u64) -> u64 {
-        if n == 0 { 0 } else { self.0.next_u64() % n }
-    }
-
-    /// True with probability `p`.
-    pub fn chance(&mut self, p: f64) -> bool {
-        p > 0.0 && (self.0.next_u64() >> 11) as f64 / (1u64 << 53) as f64 <= p
-    }
+/// True with probability `p`, drawn from the generator.
+pub fn chance(rng: &mut Rng, p: f64) -> bool {
+    p > 0.0 && (rng.next_u64() >> 11) as f64 / (1u64 << 53) as f64 <= p
 }
 
 /// The header that numbers a peer's records, unless turned off.
@@ -246,12 +234,12 @@ pub fn produce(o: &ProduceOptions) -> Result<(Vec<Sent>, Value), String> {
         producer.init_transactions(Duration::from_secs(30)).map_err(|e| format!("init transactions: {e}"))?;
     }
     let mut rng = Rng::new(o.seed);
-    let chance = |faults: &[PeerFault], f: fn(&PeerFault) -> Option<f64>| faults.iter().find_map(f).unwrap_or(0.0);
-    let p_dup = chance(&o.faults, |f| if let PeerFault::Duplicate(p) = f { Some(*p) } else { None });
-    let p_poison = chance(&o.faults, |f| if let PeerFault::Poison(p) = f { Some(*p) } else { None });
-    let p_tomb = chance(&o.faults, |f| if let PeerFault::Tombstone(p) = f { Some(*p) } else { None });
-    let p_abort = chance(&o.faults, |f| if let PeerFault::Abort(p) = f { Some(*p) } else { None });
-    let p_late = chance(&o.faults, |f| if let PeerFault::Late(p) = f { Some(*p) } else { None });
+    let rate_of = |faults: &[PeerFault], f: fn(&PeerFault) -> Option<f64>| faults.iter().find_map(f).unwrap_or(0.0);
+    let p_dup = rate_of(&o.faults, |f| if let PeerFault::Duplicate(p) = f { Some(*p) } else { None });
+    let p_poison = rate_of(&o.faults, |f| if let PeerFault::Poison(p) = f { Some(*p) } else { None });
+    let p_tomb = rate_of(&o.faults, |f| if let PeerFault::Tombstone(p) = f { Some(*p) } else { None });
+    let p_abort = rate_of(&o.faults, |f| if let PeerFault::Abort(p) = f { Some(*p) } else { None });
+    let p_late = rate_of(&o.faults, |f| if let PeerFault::Late(p) = f { Some(*p) } else { None });
     let hang = o.faults.contains(&PeerFault::Hang);
     let started = Instant::now();
     let mut sent: Vec<Sent> = vec![];
@@ -262,7 +250,7 @@ pub fn produce(o: &ProduceOptions) -> Result<(Vec<Sent>, Value), String> {
     let mut seq = 0u64;
     let end_txn = |producer: &BaseProducer<Deliveries>, rng: &mut Rng, t: u64, outcomes: &mut BTreeMap<u64, &str>| -> Result<(), String> {
         producer.flush(Duration::from_secs(30)).map_err(|e| e.to_string())?;
-        if rng.chance(p_abort) {
+        if chance(rng, p_abort) {
             producer.abort_transaction(Duration::from_secs(30)).map_err(|e| format!("abort: {e}"))?;
             outcomes.insert(t, "aborted");
         } else {
@@ -294,10 +282,10 @@ pub fn produce(o: &ProduceOptions) -> Result<(Vec<Sent>, Value), String> {
         }
         let key = o.keys.map(|k| format!("key-{}", rng.below(k.max(1))));
         let mut faults = vec![];
-        let (value_bytes, value_json): (Option<Vec<u8>>, Value) = if rng.chance(p_tomb) {
+        let (value_bytes, value_json): (Option<Vec<u8>>, Value) = if chance(&mut rng, p_tomb) {
             faults.push("tombstone".to_string());
             (None, Value::Null)
-        } else if rng.chance(p_poison) {
+        } else if chance(&mut rng, p_poison) {
             faults.push("poison".to_string());
             let junk: Vec<u8> = (0..8).map(|_| 0x80 | rng.below(64) as u8).collect();
             let shown = json!({ "base64": base64_of(&junk) });
@@ -319,11 +307,11 @@ pub fn produce(o: &ProduceOptions) -> Result<(Vec<Sent>, Value), String> {
                 }
             }
         };
-        let late = rng.chance(p_late);
+        let late = chance(&mut rng, p_late);
         if late {
             faults.push("late".to_string());
         }
-        let copies = if rng.chance(p_dup) {
+        let copies = if chance(&mut rng, p_dup) {
             faults.push("duplicate".to_string());
             2
         } else {
@@ -713,6 +701,7 @@ pub fn consume(o: &ConsumeOptions) -> Result<(Vec<Read>, Value), String> {
     let started = Instant::now();
     let mut last_record = Instant::now();
     let mut reads: Vec<Read> = vec![];
+    let mut transient: Vec<String> = vec![];
     loop {
         if started.elapsed() >= o.duration {
             break;
@@ -735,7 +724,14 @@ pub fn consume(o: &ConsumeOptions) -> Result<(Vec<Read>, Value), String> {
                     assignment: *consumer.context().0.lock().unwrap(),
                 });
             }
-            Some(Err(e)) => return Err(format!("poll: {e}")),
+            // A broker connection that fails and is tried again: the
+            // client recovers, and the peer keeps polling.
+            Some(Err(e)) => {
+                transient.push(e.to_string());
+                if transient.len() > 1000 {
+                    return Err(format!("poll: {e}"));
+                }
+            }
             None => {}
         }
     }
@@ -797,6 +793,7 @@ pub fn consume(o: &ConsumeOptions) -> Result<(Vec<Read>, Value), String> {
         "invalid": invalid,
         "partitions": partitions.iter().map(|(p, (a, b, n))| json!({ "partition": p, "first": a, "last": b, "records": n })).collect::<Vec<_>>(),
         "violations": violations,
+        "clientErrors": transient.len(),
         "millis": started.elapsed().as_millis() as u64,
     });
     Ok((reads, report))
@@ -921,5 +918,38 @@ pub fn command(rest: &[String]) -> Result<(), String> {
             if broken == 0 { Ok(()) } else { Err(format!("{broken} law(s) broken by what was read")) }
         }
         _ => Err(format!("peer needs kafka produce or kafka consume\n{}", crate::cli::USAGE)),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn read(partition: i32, offset: i64, key: &str, assignment: u64) -> Read {
+        Read { partition, offset, key: Some(key.into()), value: None, assignment }
+    }
+
+    #[test]
+    fn offsets_out_of_order_and_keys_on_two_partitions_are_reported() {
+        let reads = vec![read(0, 0, "a", 1), read(0, 2, "a", 1), read(0, 1, "a", 1), read(1, 0, "a", 1)];
+        let (v, _, _) = check_reads(&reads, None, Format::Json);
+        assert!(v.iter().any(|x| x.law == "a poll reads each partition in offset order" && x.offset == Some(1)), "{v:?}");
+        assert!(v.iter().any(|x| x.law == "records with one key go to one partition" && x.partition == 1), "{v:?}");
+    }
+
+    #[test]
+    fn a_record_read_again_after_a_rebalance_is_a_redelivery() {
+        let reads = vec![read(0, 0, "a", 1), read(0, 1, "a", 1), read(0, 1, "a", 2)];
+        let (v, redelivered, _) = check_reads(&reads, None, Format::Json);
+        assert!(v.is_empty(), "{v:?}");
+        assert_eq!(redelivered, 1);
+    }
+
+    #[test]
+    fn faults_are_read_with_their_probability() {
+        assert_eq!(PeerFault::parse("abort:0.25").unwrap(), PeerFault::Abort(0.25));
+        assert_eq!(PeerFault::parse("hang").unwrap(), PeerFault::Hang);
+        assert!(PeerFault::parse("poison:2").is_err());
+        assert!(PeerFault::parse("melt").is_err());
     }
 }

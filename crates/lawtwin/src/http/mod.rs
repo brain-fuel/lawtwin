@@ -110,7 +110,7 @@ pub fn run(command: &str, rest: &[String]) -> Option<Outcome> {
     let out = match (command, sub) {
         ("up", Some("http")) => up(&rest[1..]).map_err(fail),
         ("peer", Some("http")) if rest.get(1).map(String::as_str) == Some("call") => peer(&rest[2..]),
-        ("peer", _) => Err(fail("peer takes: http call")),
+        ("peer", _) => Err(fail("peer takes: http call, kafka produce or kafka consume")),
         ("conform", Some("http")) => conform(&rest[1..]),
         ("record", Some("http")) => record::record(&rest[1..]).map_err(fail),
         ("replay", Some("http")) => record::replay(&rest[1..]),

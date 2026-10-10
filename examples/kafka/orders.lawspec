@@ -1,0 +1,27 @@
+unit shop.orders
+
+-- The orders a shop publishes on a topic, as a LawSpec type: what
+-- `lawtwin peer kafka produce --value-type Order` generates, and what
+-- `lawtwin peer kafka consume --value-type Order` checks each value against.
+
+type Order is
+  Order
+    id :: (v :: Text where v matches regex "ord-[0-9]{6}")
+    customer :: (v :: Text where prelude.length v >= 3 && prelude.length v <= 20)
+    amount :: (v :: Int64 where v > 0 && v <= 1000000)
+    currency :: Currency
+    lines :: (v :: List Line where prelude.length v >= 1 && prelude.length v <= 4)
+    note :: Maybe Text
+end
+
+type Line is
+  Line
+    sku :: Sku
+    quantity :: (q :: Int32 where q >= 1 && q <= 99)
+end
+
+type Currency is | EUR | USD | GBP end
+
+refinement Sku is (s :: Text where validSku s) end
+
+definition validSku (s :: Text) :: Bool is s matches regex "[A-Z]{3}-[0-9]{4}" end

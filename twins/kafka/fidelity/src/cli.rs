@@ -4,7 +4,7 @@
 pub const USAGE: &str = "usage:
   lawtwin record kafka --upstream <host:port> [--listen <[host:]port>] [--admin-port <n>]
           [--advertise <host:port>] [--out <prefix>] [--clock wall|frozen] [--quiet]
-  lawtwin replay <trace> --core <command | image:<image>> [--report <file>]
+  lawtwin replay kafka <trace> --core <command | image:<image> | rust> [--report <file>]
   lawtwin conform kafka --real <host:port> [--real-name <name>] [--client <name>]...
           [--scenario <name>]... [--out <directory>] [--twin <command | image:<image>> | --no-twin]
           [--release <version>] [--frames]

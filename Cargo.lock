@@ -637,6 +637,7 @@ dependencies = [
  "kafka-protocol",
  "lawtwin-kafka",
  "lawtwin-kafka-conformance",
+ "lawtwin-wire",
  "rdkafka",
  "regex",
  "regex-syntax",
