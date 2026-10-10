@@ -178,7 +178,10 @@ impl WireMap {
         for p in &op.parameters {
             let ty = WireMap::ty(&p.ty);
             let value = match p.location.as_str() {
-                "body" => self.read_body(op, &ty, p.required, req).map_err(invalid)?,
+                "body" => self.read_body(op, &ty, p.required, req).map_err(|(status, reason)| match status {
+                    Some(status) => Refusal::Invalid { op: op.operation.clone(), status, reason },
+                    None => invalid(reason),
+                })?,
                 location => {
                     let texts: Vec<String> = match location {
                         "path" => path_params.iter().filter(|(k, _)| *k == p.wire).map(|(_, v)| v.clone()).collect(),
@@ -225,7 +228,16 @@ impl WireMap {
         Ok(Call { op: op.operation.clone(), args, values })
     }
 
-    fn read_body(&self, op: &Operation, ty: &Ty, required: bool, req: &Incoming) -> Result<V, String> {
+    /// A body read as its type; a body that is not even JSON is refused 400
+    /// whatever the operation documents, as servers do.
+    fn read_body(&self, op: &Operation, ty: &Ty, required: bool, req: &Incoming) -> Result<V, (Option<u16>, String)> {
+        self.read_body_text(op, ty, required, req).map_err(|e| {
+            let malformed = e.starts_with("the request body is not");
+            (malformed.then_some(400), e)
+        })
+    }
+
+    fn read_body_text(&self, op: &Operation, ty: &Ty, required: bool, req: &Incoming) -> Result<V, String> {
         if req.body.iter().all(u8::is_ascii_whitespace) {
             return if ty.is_maybe() || !required {
                 Ok(if ty.is_maybe() { V::Maybe(None) } else { V::Unit })

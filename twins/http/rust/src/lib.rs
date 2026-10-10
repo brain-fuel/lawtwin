@@ -21,8 +21,27 @@ pub use twin::{Config, Twin};
 
 use std::sync::Arc;
 
-/// Runs the twin until the process ends: the API and the admin API.
-pub fn run(config: Config) -> anyhow::Result<()> {
+/// A twin serving in the background, on the runtime it owns.
+pub struct Running {
+    /// Where the API listens.
+    pub api: std::net::SocketAddr,
+    /// Where the admin API listens.
+    pub admin: std::net::SocketAddr,
+    pub twin: Arc<Twin>,
+    runtime: tokio::runtime::Runtime,
+}
+
+impl Running {
+    /// Serves until the process ends, or until it is interrupted.
+    pub fn wait(self) {
+        self.runtime.block_on(async {
+            let _ = tokio::signal::ctrl_c().await;
+        });
+    }
+}
+
+/// Starts the twin: binds both listeners and serves them in the background.
+pub fn start(config: Config) -> anyhow::Result<Running> {
     let contract = contracts::find(&config.contract).ok_or_else(|| {
         anyhow::anyhow!(
             "no compiled contract {}; this core serves {}",
@@ -30,27 +49,36 @@ pub fn run(config: Config) -> anyhow::Result<()> {
             contracts::registry().iter().map(|c| c.name).collect::<Vec<_>>().join(", ")
         )
     })?;
-    let twin = Arc::new(Twin::new(contract, config.clone()).map_err(anyhow::Error::msg)?);
     let runtime = tokio::runtime::Builder::new_multi_thread().enable_all().build()?;
-    runtime.block_on(async move {
+    let (api, admin) = runtime.block_on(async {
         let api = tokio::net::TcpListener::bind(&config.listen).await?;
         let admin = tokio::net::TcpListener::bind(&config.admin_listen).await?;
-        eprintln!(
-            "lawtwin-http: {} ({}) on http://{}, admin API on http://{}, seed {}",
-            contract.package,
-            contract.name,
-            api.local_addr()?,
-            admin.local_addr()?,
-            config.seed
-        );
-        let router = admin::router(twin.clone());
-        tokio::spawn(async move {
-            let _ = axum::serve(admin, router).await;
-        });
-        tokio::select! {
-            _ = server::serve(api, twin) => {}
-            _ = tokio::signal::ctrl_c() => {}
-        }
-        Ok(())
-    })
+        anyhow::Ok((api, admin))
+    })?;
+    let (api_addr, admin_addr) = (api.local_addr()?, admin.local_addr()?);
+    let mut config = config;
+    if config.advertised.is_none() {
+        config.advertised = Some(api_addr.to_string().replace("0.0.0.0", "localhost"));
+    }
+    let twin = Arc::new(Twin::new(contract, config).map_err(anyhow::Error::msg)?);
+    let router = admin::router(twin.clone());
+    runtime.spawn(async move {
+        let _ = axum::serve(admin, router).await;
+    });
+    runtime.spawn(server::serve(api, twin.clone()));
+    Ok(Running { api: api_addr, admin: admin_addr, twin, runtime })
+}
+
+/// Runs the twin until the process ends: the API and the admin API.
+pub fn run(config: Config) -> anyhow::Result<()> {
+    let seed = config.seed;
+    let running = start(config)?;
+    let core = running.twin.lock();
+    eprintln!(
+        "lawtwin-http: {} ({}) on http://{}, admin API on http://{}, seed {seed}",
+        core.contract.package, core.contract.name, running.api, running.admin
+    );
+    drop(core);
+    running.wait();
+    Ok(())
 }

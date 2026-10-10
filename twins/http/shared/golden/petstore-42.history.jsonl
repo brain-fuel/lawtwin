@@ -1,0 +1,91 @@
+{"seq":1,"at":1767225600000,"source":"wire","op":"addPet","body":{"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"},"answer":{"ok":{"id":1,"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"}}}
+{"seq":2,"at":1767225600000,"source":"wire","op":"getPetById","petId":1,"answer":{"ok":{"id":1,"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"}}}
+{"seq":3,"at":1767225600000,"source":"wire","op":"updatePet","body":{"id":1,"name":"juniper-2997","category":{"id":209107012},"photoUrls":["willow-725"],"tags":[{"id":980263745},{"id":811111738,"name":"lumen-3450"}],"status":"pending"},"answer":{"ok":{"id":1,"name":"juniper-2997","category":{"id":209107012},"photoUrls":["willow-725"],"tags":[{"id":980263745},{"id":811111738,"name":"lumen-3450"}],"status":"pending"}}}
+{"seq":4,"at":1767225600000,"source":"wire","op":"getPetById","petId":1,"answer":{"ok":{"id":1,"name":"juniper-2997","category":{"id":209107012},"photoUrls":["willow-725"],"tags":[{"id":980263745},{"id":811111738,"name":"lumen-3450"}],"status":"pending"}}}
+{"seq":5,"at":1767225600000,"source":"wire","op":"addPet","body":{"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"},"answer":{"ok":{"id":2,"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"}}}
+{"seq":6,"at":1767225600000,"source":"wire","op":"deletePet","petId":1,"apiKey":null,"answer":{"ok":null}}
+{"seq":7,"at":1767225600000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":8,"at":1767225600000,"source":"wire","op":"placeOrder","body":{"id":184033090,"petId":188618533,"quantity":270,"status":"placed","complete":false},"answer":{"ok":{"id":184033090,"petId":188618533,"quantity":270,"status":"placed","complete":false}}}
+{"seq":9,"at":1767225600000,"source":"wire","op":"getOrderById","orderId":184033090,"answer":{"ok":{"id":184033090,"petId":188618533,"quantity":270,"status":"placed","complete":false}}}
+{"seq":10,"at":1767225600000,"source":"wire","op":"placeOrder","body":{"id":184033090,"petId":188618533,"quantity":270,"status":"placed","complete":false},"answer":{"error":"UnprocessableEntity"}}
+{"seq":11,"at":1767225600000,"source":"wire","op":"deleteOrder","orderId":184033090,"answer":{"ok":null}}
+{"seq":12,"at":1767225600000,"source":"wire","op":"getOrderById","orderId":184033090,"answer":{"error":"NotFound"}}
+{"seq":13,"at":1767225600000,"source":"wire","op":"createUser","body":{"username":"delta-84","firstName":"onyx-4826","lastName":"umber-5170","email":"onyx-3324","password":"violet-3140","phone":"sable-1674","userStatus":451},"answer":{"ok":{"username":"delta-84","firstName":"onyx-4826","lastName":"umber-5170","email":"onyx-3324","password":"violet-3140","phone":"sable-1674","userStatus":451}}}
+{"seq":14,"at":1767225600000,"source":"wire","op":"getUserByName","username":"delta-84","answer":{"ok":{"username":"delta-84","firstName":"onyx-4826","lastName":"umber-5170","email":"onyx-3324","password":"violet-3140","phone":"sable-1674","userStatus":451}}}
+{"seq":15,"at":1767225600000,"source":"wire","op":"updateUser","username":"delta-84","body":{"username":"lumen-3352","firstName":"quartz-658","lastName":"cedar-7784","password":"garnet-2142","userStatus":998},"answer":{"ok":null}}
+{"seq":16,"at":1767225600000,"source":"wire","op":"getUserByName","username":"delta-84","answer":{"ok":{"username":"delta-84","firstName":"quartz-658","lastName":"cedar-7784","password":"garnet-2142","userStatus":998}}}
+{"seq":17,"at":1767225600000,"source":"wire","op":"createUser","body":{"username":"delta-84","firstName":"onyx-4826","lastName":"umber-5170","email":"onyx-3324","password":"violet-3140","phone":"sable-1674","userStatus":451},"answer":{"ok":{"username":"delta-84","firstName":"onyx-4826","lastName":"umber-5170","email":"onyx-3324","password":"violet-3140","phone":"sable-1674","userStatus":451}}}
+{"seq":18,"at":1767225600000,"source":"wire","op":"deleteUser","username":"delta-84","answer":{"ok":null}}
+{"seq":19,"at":1767225600000,"source":"wire","op":"getUserByName","username":"delta-84","answer":{"error":"NotFound"}}
+{"seq":20,"at":1767225600000,"source":"wire","op":"findPetsByStatus","status":"available","answer":{"error":"Unmodelled"}}
+{"seq":21,"at":1767225600000,"source":"wire","op":"findPetsByTags","tags":["onyx-2990"],"answer":{"error":"Unmodelled"}}
+{"seq":22,"at":1767225600000,"source":"wire","op":"updatePetWithForm","petId":996649230,"name":"birch-3797","status":"ember-8721","answer":{"error":"Unmodelled"}}
+{"seq":23,"at":1767225600000,"source":"wire","op":"uploadFile","petId":756616662,"additionalMetadata":null,"body":"YkdGM2RIZHBiZz09","answer":{"error":"Unmodelled"}}
+{"seq":24,"at":1767225600000,"source":"wire","op":"getInventory","answer":{"error":"Unmodelled"}}
+{"seq":25,"at":1767225600000,"source":"wire","op":"createUsersWithListInput","body":[],"answer":{"error":"Unmodelled"}}
+{"seq":26,"at":1767225600000,"source":"wire","op":"loginUser","username":"nectar-1548","password":null,"answer":{"error":"Unmodelled"}}
+{"seq":27,"at":1767225600000,"source":"wire","op":"logoutUser","answer":{"error":"Unmodelled"}}
+{"seq":28,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updatePet","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":29,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updatePet","status":400,"reason":"body.name: is required"}}
+{"seq":30,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updatePet","status":400,"reason":"body.id: expected an integer"}}
+{"seq":31,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"addPet","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":32,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"addPet","status":400,"reason":"body.name: is required"}}
+{"seq":33,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"addPet","status":400,"reason":"body.id: expected an integer"}}
+{"seq":34,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"getPetById","status":400,"reason":"the path parameter petId: \"not-a-number\" is not an integer"}}
+{"seq":35,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updatePetWithForm","status":400,"reason":"the path parameter petId: \"not-a-number\" is not an integer"}}
+{"seq":36,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"deletePet","status":400,"reason":"the path parameter petId: \"not-a-number\" is not an integer"}}
+{"seq":37,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"uploadFile","status":400,"reason":"the path parameter petId: \"not-a-number\" is not an integer"}}
+{"seq":38,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"placeOrder","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":39,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"placeOrder","status":400,"reason":"body.id: expected an integer"}}
+{"seq":40,"at":1767225600000,"source":"wire","op":"placeOrder","body":{"id":34740735,"shipDate":"not valid: no format or pattern matches this","status":"delivered","complete":false},"answer":{"error":"UnprocessableEntity"}}
+{"seq":41,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"getOrderById","status":400,"reason":"the path parameter orderId: \"not-a-number\" is not an integer"}}
+{"seq":42,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"deleteOrder","status":400,"reason":"the path parameter orderId: \"not-a-number\" is not an integer"}}
+{"seq":43,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"createUser","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":44,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"createUser","status":400,"reason":"body.id: expected an integer"}}
+{"seq":45,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"createUsersWithListInput","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":46,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updateUser","status":400,"reason":"the request body is not JSON: key must be a string at line 1 column 2"}}
+{"seq":47,"at":1767225600000,"source":"wire","control":"request refused","detail":{"op":"updateUser","status":400,"reason":"body.id: expected an integer"}}
+{"seq":48,"at":1767225600000,"source":"force","op":"addPet","body":{"id":88770385,"name":"cedar-7601","category":{"name":"quartz-1271"},"photoUrls":["iris-9027"],"tags":[{"id":730191497,"name":"harbor-476"},{"id":519017794}]},"answer":{"ok":{"id":88770385,"name":"cedar-7601","category":{"name":"quartz-1271"},"photoUrls":["iris-9027"],"tags":[{"id":730191497,"name":"harbor-476"},{"id":519017794}]}}}
+{"seq":49,"at":1767225600000,"source":"force","op":"addPet","body":{"id":987654,"name":"tundra-292","category":{"id":491089635,"name":"iris-8359"},"photoUrls":["harbor-1255","birch-7643"],"tags":[],"status":"available"},"answer":{"ok":{"id":987654,"name":"tundra-292","category":{"id":491089635,"name":"iris-8359"},"photoUrls":["harbor-1255","birch-7643"],"tags":[],"status":"available"}}}
+{"seq":50,"at":1767225600000,"source":"force","op":"getPetById","petId":987654,"answer":{"ok":{"id":987654,"name":"tundra-292","category":{"id":491089635,"name":"iris-8359"},"photoUrls":["harbor-1255","birch-7643"],"tags":[],"status":"available"}}}
+{"seq":51,"at":1767225600000,"source":"force","op":"placeOrder","body":{"id":987654,"petId":708198683,"shipDate":"2026-02-13T13:26:39Z","complete":false},"answer":{"ok":{"id":987654,"petId":708198683,"shipDate":"2026-02-13T13:26:39Z","complete":false}}}
+{"seq":52,"at":1767225600000,"source":"force","op":"getOrderById","orderId":987654,"answer":{"ok":{"id":987654,"petId":708198683,"shipDate":"2026-02-13T13:26:39Z","complete":false}}}
+{"seq":53,"at":1767225600000,"source":"force","op":"createUser","body":{"id":942214789,"username":"forced-maple-2194","firstName":"juniper-5155","lastName":"kestrel-1598","password":"fjord-7746","phone":"umber-7419","userStatus":835},"answer":{"ok":{"id":942214789,"username":"forced-maple-2194","firstName":"juniper-5155","lastName":"kestrel-1598","password":"fjord-7746","phone":"umber-7419","userStatus":835}}}
+{"seq":54,"at":1767225600000,"source":"force","op":"getUserByName","username":"forced-maple-2194","answer":{"ok":{"id":942214789,"username":"forced-maple-2194","firstName":"juniper-5155","lastName":"kestrel-1598","password":"fjord-7746","phone":"umber-7419","userStatus":835}}}
+{"seq":55,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":1,"name":"rate-limit","limit":1,"window":"10s"}}
+{"seq":56,"at":1767225600000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":57,"at":1767225600000,"source":"fault","control":"fault answered","detail":{"id":1,"name":"rate-limit","op":"getPetById","applied":false}}
+{"seq":58,"at":1767225604000,"source":"control","control":"clock advanced","detail":{"byMs":4000,"nowMs":1767225604000}}
+{"seq":59,"at":1767225604000,"source":"fault","control":"fault answered","detail":{"id":1,"name":"rate-limit","op":"getPetById","applied":false}}
+{"seq":60,"at":1767225610000,"source":"control","control":"clock advanced","detail":{"byMs":6000,"nowMs":1767225610000}}
+{"seq":61,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":62,"at":1767225610000,"source":"fault","control":"fault cleared","detail":{"id":1,"name":"rate-limit"}}
+{"seq":63,"at":1767225610000,"source":"fault","control":"fault raised","detail":{"id":2,"name":"server-error","status":503,"probability":100,"applied":false,"remaining":1}}
+{"seq":64,"at":1767225610000,"source":"fault","control":"fault ended","detail":{"id":2,"name":"server-error","why":"used up"}}
+{"seq":65,"at":1767225610000,"source":"fault","control":"fault answered","detail":{"id":2,"name":"server-error","op":"getPetById","applied":false}}
+{"seq":66,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":67,"at":1767225610000,"source":"fault","control":"fault raised","detail":{"id":3,"name":"server-error","status":500,"operation":"getPetById","probability":50,"applied":false}}
+{"seq":68,"at":1767225610000,"source":"fault","control":"fault answered","detail":{"id":3,"name":"server-error","op":"getPetById","applied":false}}
+{"seq":69,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":70,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":71,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":72,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":73,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":74,"at":1767225610000,"source":"fault","control":"fault cleared","detail":{"id":3,"name":"server-error"}}
+{"seq":75,"at":1767225610000,"source":"fault","control":"fault raised","detail":{"id":4,"name":"latency","delay":"5ms","jitter":"5ms","untilMs":1767225611000}}
+{"seq":76,"at":1767225610000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":77,"at":1767225611000,"source":"control","control":"clock advanced","detail":{"byMs":1000,"nowMs":1767225611000}}
+{"seq":78,"at":1767225611000,"source":"fault","control":"fault ended","detail":{"id":4,"name":"latency","why":"its time is up"}}
+{"seq":79,"at":1767225611000,"source":"fault","control":"fault raised","detail":{"id":5,"name":"slow-body","chunk":7,"delay":"1ms"}}
+{"seq":80,"at":1767225611000,"source":"wire","op":"getPetById","petId":1,"answer":{"error":"NotFound"}}
+{"seq":81,"at":1767225611000,"source":"fault","control":"fault cleared","detail":{"id":5,"name":"slow-body"}}
+{"seq":82,"at":1767225611000,"source":"fault","control":"fault raised","detail":{"id":6,"name":"timeout","hold":"50ms","probability":100,"applied":false,"remaining":1}}
+{"seq":83,"at":1767225611000,"source":"fault","control":"fault ended","detail":{"id":6,"name":"timeout","why":"used up"}}
+{"seq":84,"at":1767225611000,"source":"fault","control":"fault answered","detail":{"id":6,"name":"timeout","op":"getPetById","applied":false}}
+{"seq":85,"at":1767225611000,"source":"fault","control":"fault raised","detail":{"id":7,"name":"connection-reset","probability":100,"applied":false,"remaining":1}}
+{"seq":86,"at":1767225611000,"source":"fault","control":"fault ended","detail":{"id":7,"name":"connection-reset","why":"used up"}}
+{"seq":87,"at":1767225611000,"source":"fault","control":"fault answered","detail":{"id":7,"name":"connection-reset","op":"getPetById","applied":false}}
+{"seq":88,"at":1767225611000,"source":"fault","control":"fault raised","detail":{"id":8,"name":"server-error","status":500,"operation":"addPet","probability":100,"applied":true,"remaining":1}}
+{"seq":89,"at":1767225611000,"source":"fault","control":"fault ended","detail":{"id":8,"name":"server-error","why":"used up"}}
+{"seq":90,"at":1767225611000,"source":"wire","op":"addPet","body":{"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"},"answer":{"ok":{"id":88770386,"name":"sable-5764","category":{"id":777624926},"photoUrls":["zephyr-9646"],"tags":[{"id":868486131,"name":"pebble-3008"}],"status":"pending"}}}
+{"seq":91,"at":1767225611000,"source":"fault","control":"fault answered","detail":{"id":8,"name":"server-error","op":"addPet","applied":true}}

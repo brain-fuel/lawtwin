@@ -142,7 +142,7 @@ pub fn check(decl: &FaultDecl, map: &WireMap, given: &Map<String, Value>) -> Res
         };
         let v = typed(&p.ty, &v, map).map_err(|e| format!("{}: {} {e}", decl.name, p.name))?;
         match p.name.as_str() {
-            "for" => for_ms = v.as_i64(),
+            "for" => for_ms = v.as_i64().or_else(|| v.as_str().and_then(|s| parse_duration(s).ok())),
             "count" => count = v.as_i64(),
             _ => {
                 out.insert(p.name.clone(), v);

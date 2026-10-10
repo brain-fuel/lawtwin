@@ -159,6 +159,10 @@ impl<'m> Session<'m> {
             }
             let Some(reading) = self.send(op, out, Some(&bad.what)) else { continue };
             let s = reading.status;
+            if s == 501 {
+                // The operation is not served at all; there is nothing to refuse.
+                continue;
+            }
             if (200..300).contains(&s) {
                 self.findings.push(json!({ "op": op.operation, "finding": format!("{} accepted a request that breaks the document ({}), answering {s}", op.operation, bad.what) }));
             } else if s >= 500 {

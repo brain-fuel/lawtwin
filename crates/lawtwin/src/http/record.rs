@@ -204,8 +204,19 @@ pub fn replay(rest: &[String]) -> Outcome {
         };
         sent += 1;
         let recorded_body = body_bytes(&x["response"]["body"]);
+        // A call is compared in the contract's terms: its status and the
+        // model's answer it carries. A failure's body is the service's own
+        // unless the document gives it, so it is not compared.
+        let op = x["op"].as_str().and_then(|o| map.op(o));
+        let agrees = |r: &http::Reply| match op {
+            Some(op) => r.status as u64 == status && map.read_response(op, r.status, &r.headers, &r.body).answer == x["answer"],
+            // A request the document refuses is compared by its status: the
+            // reason a service gives is its own.
+            None if x.get("refused").is_some() => r.status as u64 == status,
+            None => r.status as u64 == status && same_body(&r.body, &recorded_body),
+        };
         match http::send(&ep, &out, Duration::from_secs(30)) {
-            Ok(r) if r.status as u64 == status && same_body(&r.body, &recorded_body) => {}
+            Ok(r) if agrees(&r) => {}
             Ok(r) => divergences.push(json!({
                 "seq": x["seq"], "op": x["op"], "request": format!("{} {}", out.method, out.target),
                 "recorded": { "status": status, "body": x["response"]["body"] },
