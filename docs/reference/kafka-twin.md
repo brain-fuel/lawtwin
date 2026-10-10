@@ -174,6 +174,15 @@ fenced by a second instance; each declared fault observed by the client;
 and a consumer resuming at a forced committed offset after an impossible
 state is refused.
 
+## Throughput
+
+The Rust core answers librdkafka at about two million records a second
+produced, in batches, and half a million a second read back by a group:
+a million 100-byte records to eight partitions in 0.44 s, read in 1.8 s, on
+an Apple M-series laptop (`cargo test --release -p lawtwin-kafka-conformance
+--test throughput -- --ignored --nocapture`). Each batch is one operation of
+the model; a fetch costs what it returns, not the size of the log.
+
 ## Differences from Kafka
 
 The twin is the contract's model, which is one broker with one replica
