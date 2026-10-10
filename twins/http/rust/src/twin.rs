@@ -279,10 +279,10 @@ impl Core {
                 continue;
             }
             let p = self.faults[i].int("probability").unwrap_or(100);
-            if p < 100 {
-                if !self.rng.chance(p.max(0) as u64) {
-                    continue;
-                }
+            // A draw is made only for a fault that may let a request by, so
+            // faults that always apply leave the sequence alone.
+            if p < 100 && !self.rng.chance(p.max(0) as u64) {
+                continue;
             }
             let f = &mut self.faults[i];
             let refuse = match f.name.as_str() {
@@ -498,7 +498,7 @@ impl Core {
 fn drop_last_field(v: &mut Value) {
     match v {
         Value::Object(m) => {
-            let last = m.keys().last().cloned();
+            let last = m.keys().next_back().cloned();
             if let Some(k) = last {
                 m.shift_remove(&k);
             }
