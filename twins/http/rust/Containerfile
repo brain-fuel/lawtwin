@@ -1,0 +1,19 @@
+# The HTTP twin's Rust core as a small static image, with the lawtwin
+# command beside it. Build from the repository root:
+#   podman build -f twins/http/rust/Containerfile -t lawtwin/http:0.1.0 .
+# or `make image-http`. One image serves every imported contract compiled
+# into the core; choose one with TWIN_CONFIG ({"contract": "petstore"}),
+# LAWTWIN_CONTRACT or --contract. The API listens on 8080, the admin API on
+# 9644. Inside the container, `/lawtwin --admin http://127.0.0.1:9644
+# inspect` drives the control plane.
+FROM docker.io/library/rust:1-alpine AS build
+RUN apk add --no-cache musl-dev
+WORKDIR /src
+COPY . .
+RUN cargo build --release --locked -p lawtwin-http -p lawtwin
+
+FROM scratch
+COPY --from=build /src/target/release/lawtwin-http /lawtwin-http
+COPY --from=build /src/target/release/lawtwin /lawtwin
+EXPOSE 8080 9644
+ENTRYPOINT ["/lawtwin-http", "--host", "0.0.0.0"]

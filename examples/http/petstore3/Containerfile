@@ -1,0 +1,20 @@
+# The Swagger Petstore 3 reference server, built from its source for the
+# machine's own architecture: the published image swaggerapi/petstore3 is
+# amd64 only, and its Java 8 hangs under emulation on arm64. This is the real
+# Petstore that `lawtwin conform http` and the record and replay tests can
+# run against (docs/how-to/record-and-replay-http.md).
+#   podman build -t lawtwin/petstore3-native examples/http/petstore3
+#   podman run --rm -p 8888:8080 lawtwin/petstore3-native
+FROM docker.io/library/maven:3.9-eclipse-temurin-11 AS build
+RUN apt-get update -q && apt-get install -yq git >/dev/null
+RUN git clone --depth 1 https://github.com/swagger-api/swagger-petstore /src
+WORKDIR /src
+RUN mvn -q -B package -DskipTests
+
+FROM docker.io/library/eclipse-temurin:11-jre
+COPY --from=build /src/target/lib/jetty-runner.jar /swagger-petstore/jetty-runner.jar
+COPY --from=build /src/target/*.war /swagger-petstore/server.war
+COPY --from=build /src/src/main/resources/openapi.yaml /swagger-petstore/openapi.yaml
+WORKDIR /swagger-petstore
+EXPOSE 8080
+CMD ["java", "-jar", "-DswaggerUrl=openapi.yaml", "/swagger-petstore/jetty-runner.jar", "/swagger-petstore/server.war"]

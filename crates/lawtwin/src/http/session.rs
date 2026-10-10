@@ -167,7 +167,7 @@ impl<'m> Session<'m> {
                 self.findings.push(json!({ "op": op.operation, "finding": format!("{} accepted a request that breaks the document ({}), answering {s}", op.operation, bad.what) }));
             } else if s >= 500 {
                 self.findings.push(json!({ "op": op.operation, "finding": format!("{} failed with {s} on a request that breaks the document ({}), rather than refusing it", op.operation, bad.what) }));
-            } else if s != 404 && !op.documents(s) && s != op.invalid_status() {
+            } else if s != 404 && !op.documents(s) && s != op.invalid_status() && !(s == 400 && bad.raw_body.is_some()) {
                 self.problems.push(json!({ "op": op.operation, "problem": format!("{} refused a request that breaks the document ({}) with {s}, which it does not document", op.operation, bad.what) }));
             }
         }
