@@ -16,6 +16,12 @@ ledger/DEC-kafka-broker-and-clients:
 ledger/DEC-kafka-model-scope:
   digest: sha256:d4030f54bb981310
   verdict: pending
+ledger/DEC-openapi-constraints-as-validation:
+  digest: sha256:917c83d2b83ef898
+  verdict: pending
+ledger/DEC-openapi-resources:
+  digest: sha256:7ea478a4d5cac373
+  verdict: pending
 ledger/DEC-three-planes:
   digest: sha256:1260cf798d59b1e1
   verdict: pending

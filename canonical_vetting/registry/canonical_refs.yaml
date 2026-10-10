@@ -13,6 +13,9 @@ registry/containerfile:
 registry/diataxis:
   digest: sha256:da6d545b5d1d42a6
   verdict: pending
+registry/github-rest-api-description:
+  digest: sha256:ee3401194adacaa8
+  verdict: pending
 registry/kafka-classic-group-protocol:
   digest: sha256:98cda03d960d9d0c
   verdict: pending
@@ -52,6 +55,9 @@ registry/lawtwin-plan:
 registry/lawtwin-roadmap:
   digest: sha256:3ab2cdffc1829122
   verdict: pending
+registry/openapi-3-0:
+  digest: sha256:a02e881491ea5f47
+  verdict: pending
 registry/openapi-3-1:
   digest: sha256:5c0b4023910100be
   verdict: pending
@@ -66,4 +72,7 @@ registry/podman-compose:
   verdict: pending
 registry/semver-2:
   digest: sha256:7ef7fa24c6809d32
+  verdict: pending
+registry/swagger-petstore:
+  digest: sha256:bc72a14fac42684a
   verdict: pending
