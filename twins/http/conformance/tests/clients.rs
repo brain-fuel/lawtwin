@@ -129,3 +129,20 @@ fn curl_against_both_contracts() {
     assert_eq!(curl(&["-X", "POST", &format!("{repo}/labels"), "-H", "Content-Type: application/json", "-d", "{not json"]).0, 400);
     gh.assert_lawful();
 }
+
+/// The client openapi-generator makes from the Petstore's own document;
+/// `make openapi-client-http` generates and installs it.
+#[test]
+fn a_client_generated_from_the_petstore_document() {
+    let root = std::path::Path::new(env!("CARGO_MANIFEST_DIR"));
+    let python = root.join("../../../target/openapi-client/venv/bin/python");
+    if !python.exists() {
+        assert!(std::env::var("LAWTWIN_REQUIRE_CLIENTS").is_err(), "the generated client is missing: run make openapi-client-http");
+        eprintln!("the generated client is missing (make openapi-client-http); skipped");
+        return;
+    }
+    let twin = TestTwin::start("petstore", 10);
+    let out = Command::new(python).arg(root.join("clients/openapi-python/scenario.py")).arg(twin.url()).output().unwrap();
+    assert!(out.status.success(), "{}{}", String::from_utf8_lossy(&out.stdout), String::from_utf8_lossy(&out.stderr));
+    twin.assert_lawful();
+}

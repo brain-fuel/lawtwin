@@ -22,6 +22,7 @@ IMAGE     ?= lawtwin/kafka:0.1.0
 # The Kafka core the conformance kit checks: a command, or image:<image>.
 CORE      ?= target/release/lawtwin-kafka
 HTTP_IMAGE ?= lawtwin/http:0.1.0
+OPENAPI_GENERATOR ?= docker.io/openapitools/openapi-generator-cli:v7.9.0
 # The HTTP core core-conformance-http checks: CORE when it names one,
 # otherwise the Rust core.
 HTTP_CORE := $(if $(filter target/release/lawtwin-kafka,$(CORE)),target/release/lawtwin-http,$(CORE))
@@ -38,7 +39,7 @@ OPENAPI_IMPORTS := \
   openapi/github-labels-milestones.json,lawtwin.github,contracts/github
 
 .DEFAULT_GOAL := help
-.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http golden-http image-http compose-up-http compose-down-http canon ci
+.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http openapi-client-http golden-http image-http compose-up-http compose-down-http canon ci
 
 help: ## List the tasks
 	@awk -F':.*## ' '/^[a-z-]+:.*## / {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -109,6 +110,12 @@ core-conformance-http: ## Check an HTTP core with the conformance kit (CORE=<com
 	@if [ "$(HTTP_CORE)" = "target/release/lawtwin-http" ]; then cargo build --release -p lawtwin-http; fi
 	LAWTWIN_CORE="$(if $(filter target/release/lawtwin-http,$(HTTP_CORE)),$(CURDIR)/$(HTTP_CORE),$(HTTP_CORE))" \
 	  cargo test -p lawtwin-http-conformance -- --test-threads=4
+
+openapi-client-http: ## Generate a Python client from the Petstore document with openapi-generator, for the HTTP kit
+	mkdir -p target/openapi-client
+	$(PODMAN) run --rm -v $(CURDIR)/openapi:/spec:ro -v $(CURDIR)/target/openapi-client:/out $(OPENAPI_GENERATOR) \
+	  generate -i /spec/petstore3.json -g python -o /out/python --package-name petstore_client
+	python3 -m venv target/openapi-client/venv && target/openapi-client/venv/bin/pip install -q target/openapi-client/python
 
 golden-http: ## Record the HTTP golden sessions from the Rust core into twins/http/shared/golden
 	LAWTWIN_WRITE_GOLDEN=1 cargo test -p lawtwin-http-conformance --test golden
