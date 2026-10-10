@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "files": {
+    "tests/test_lawspec_matchers_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
+    "tests/test_lawtwin_github_lawspec.py": "517f235ade26229b1c04c9ea7b8bd3b4b2731f3dcee833c61b676b7de71d6c21",
+    "tests/test_lawtwin_github_handwritten_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
+    "tests/test_lawtwin_github_laws_lawspec.py": "37f6887ede68b34b0d0cb6b2e7f20b951694714269134e0212ec89838e327216",
+    "tests/test_lawtwin_github_model_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
+    "tests/test_contracttest_github_lawspec.py": "c09c5760321d7f786e40a9d3be62bee625c94e780c25218a94d85eb76ddce47b",
+    "src/lawspec_data.py": "3cd6017f818b68a11007a3eee75abd5f477392a3f8a54c4bb1683d43e106bcee",
+    "src/lawspec_schema.py": "603e2a74755ea8b05b6d04a2bb8481b40982077bcde76ad1eb19641f6cc08d2d",
+    "src/lawspec_definition_bodies.py": "1dc888d19c1e3e4a06adac0843d98ca9dc49fc4a1b48eb19a97998a9d82d18ca",
+    "src/lawspec_definitions/lawspec/matchers.py": "2db4dbe1e3d355d3f9df6e17878e225fd2446278f6ae0de517c20b16cd91a173",
+    "src/lawspec_definitions/lawtwin/github/__init__.py": "d6d9827ef5e5f8501475911a44745ffd5b3f055a5b1cacdf45404c4568eb17a3",
+    "src/lawspec_definitions/lawtwin/github/handwritten.py": "564cb8542fa15a0fc8e25d1e2ff47a7fb6fa230faef8ff308397504c4ea16630",
+    "src/lawspec_definitions/lawtwin/github/laws.py": "0a2911f9ecb75386e0bb107ec486a7dbd92d6317272a7ca1a3cca7f22f239ac5",
+    "src/lawspec_definitions/lawtwin/github/model.py": "acc275fa7d8319135b31cbffd2eb70b87ac950b850e81efb4118e4f2726a0e84",
+    "src/lawspec_definitions/contracttest/github.py": "f2c50d49b9036058f2ad79da6e977fe47ffc56d70d02e1b34aad93a0d6fc18ed",
+    "tests/lawspec_data_strategies.py": "d7fb04fe05607b7bb2ae5e4c1e6938ef4c9da272c2fa55a6277c1431161ff3fe",
+    "src/lawspec_runtime.py": "7bf6419ad4c1519229af259dd41a391a7e6feab89a5c76a8f5071d44357129f6",
+    "src/lawspec_abilities/lawtwin/github/__init__.py": "1103bb98f41ef52cf4c6f63548d6e924fc5f126889b70efcac9148226b65afae",
+    "src/lawspec_abilities/lawtwin/github/laws.py": "a0e3de197544a9e9a8e83c0cfc5ed21ae9999d54f9fd768d46e8b6643d261211",
+    "src/lawspec_abilities/contracttest/github.py": "a7fd1330a5865ae4bb3ad879307ebe80618a489017b80cabc4dbbd5290366097",
+    "src/lawspec_remote.py": "5352cd90840d59065fd18407966907edbc7842d6db89e8db018ed1581060f5d0"
+  },
+  "adapters": {
+    "src/lawspec/matchers.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/lawtwin/github/__init__.py": "bdb9f84242e75eda24df85936cf9b8777ded2e28fb09d63970077efca6fdf7aa",
+    "src/lawtwin/github/handwritten.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/lawtwin/github/laws.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/lawtwin/github/model.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
+    "src/contracttest/github.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a"
+  }
+}

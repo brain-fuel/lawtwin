@@ -1,0 +1,20 @@
+unit lawtwin.petstore.laws
+
+-- HAND-WRITTEN LAWS. Written once by `lawtwin import openapi`, and yours
+-- from then on: the importer never writes this file again. State here what
+-- the document cannot say: how filters, pagination or state changes behave.
+-- The generated laws are in the abilities of lawtwin.petstore.
+--
+-- For example:
+--
+--   law `a found pet has the status asked for` is
+--     definition is
+--       `for all` (status :: model.PetStatus) . ...
+--     end
+--   end
+
+import lawtwin.petstore as api
+import lawtwin.petstore.model as model (ApiError, State)
+
+-- A placeholder, so the unit is not empty; delete it once a law is here.
+definition noHandWrittenLawsYet (u :: Unit) :: Unit is unitValue end

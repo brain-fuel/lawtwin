@@ -1,0 +1,900 @@
+{
+  "package": "lawtwin.petstore",
+  "source": {
+    "file": "petstore3.json",
+    "title": "Swagger Petstore - OpenAPI 3.0",
+    "version": "1.0.27"
+  },
+  "failures": [
+    {
+      "status": "400",
+      "constructor": "BadRequest"
+    },
+    {
+      "status": "404",
+      "constructor": "NotFound"
+    },
+    {
+      "status": "422",
+      "constructor": "UnprocessableEntity"
+    },
+    {
+      "status": "501",
+      "constructor": "Unmodelled"
+    }
+  ],
+  "operations": [
+    {
+      "operation": "updatePet",
+      "operationId": "updatePet",
+      "ability": "PetApi",
+      "method": "PUT",
+      "path": "/pet",
+      "parameters": [
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": true,
+          "type": "Pet"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        },
+        {
+          "status": "422",
+          "constructor": "UnprocessableEntity"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "addPet",
+      "operationId": "addPet",
+      "ability": "PetApi",
+      "method": "POST",
+      "path": "/pet",
+      "parameters": [
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": true,
+          "type": "Pet"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "422",
+          "constructor": "UnprocessableEntity"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "findPetsByStatus",
+      "operationId": "findPetsByStatus",
+      "ability": "PetApi",
+      "method": "GET",
+      "path": "/pet/findByStatus",
+      "parameters": [
+        {
+          "name": "status",
+          "wire": "status",
+          "in": "query",
+          "required": true,
+          "type": "PetStatus"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "List Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        }
+      ],
+      "modelled": false
+    },
+    {
+      "operation": "findPetsByTags",
+      "operationId": "findPetsByTags",
+      "ability": "PetApi",
+      "method": "GET",
+      "path": "/pet/findByTags",
+      "parameters": [
+        {
+          "name": "tags",
+          "wire": "tags",
+          "in": "query",
+          "required": true,
+          "type": "List Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "List Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        }
+      ],
+      "modelled": false
+    },
+    {
+      "operation": "getPetById",
+      "operationId": "getPetById",
+      "ability": "PetApi",
+      "method": "GET",
+      "path": "/pet/{petId}",
+      "parameters": [
+        {
+          "name": "petId",
+          "wire": "petId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "updatePetWithForm",
+      "operationId": "updatePetWithForm",
+      "ability": "PetApi",
+      "method": "POST",
+      "path": "/pet/{petId}",
+      "parameters": [
+        {
+          "name": "petId",
+          "wire": "petId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Text"
+        },
+        {
+          "name": "status",
+          "wire": "status",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Pet"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        }
+      ],
+      "modelled": false
+    },
+    {
+      "operation": "deletePet",
+      "operationId": "deletePet",
+      "ability": "PetApi",
+      "method": "DELETE",
+      "path": "/pet/{petId}",
+      "parameters": [
+        {
+          "name": "petId",
+          "wire": "petId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        },
+        {
+          "name": "apiKey",
+          "wire": "api_key",
+          "in": "header",
+          "required": false,
+          "type": "Maybe Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "uploadFile",
+      "operationId": "uploadFile",
+      "ability": "PetApi",
+      "method": "POST",
+      "path": "/pet/{petId}/uploadImage",
+      "parameters": [
+        {
+          "name": "petId",
+          "wire": "petId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        },
+        {
+          "name": "additionalMetadata",
+          "wire": "additionalMetadata",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Text"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe Bytes"
+        }
+      ],
+      "requestContent": "application/octet-stream",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "ApiResponse"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": false
+    },
+    {
+      "operation": "getInventory",
+      "operationId": "getInventory",
+      "ability": "StoreApi",
+      "method": "GET",
+      "path": "/store/inventory",
+      "parameters": [],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "KeyVal Text Int32"
+      },
+      "failures": [],
+      "modelled": false
+    },
+    {
+      "operation": "placeOrder",
+      "operationId": "placeOrder",
+      "ability": "StoreApi",
+      "method": "POST",
+      "path": "/store/order",
+      "parameters": [
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe Order"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Order"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "422",
+          "constructor": "UnprocessableEntity"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "getOrderById",
+      "operationId": "getOrderById",
+      "ability": "StoreApi",
+      "method": "GET",
+      "path": "/store/order/{orderId}",
+      "parameters": [
+        {
+          "name": "orderId",
+          "wire": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Order"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "deleteOrder",
+      "operationId": "deleteOrder",
+      "ability": "StoreApi",
+      "method": "DELETE",
+      "path": "/store/order/{orderId}",
+      "parameters": [
+        {
+          "name": "orderId",
+          "wire": "orderId",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "createUser",
+      "operationId": "createUser",
+      "ability": "UserApi",
+      "method": "POST",
+      "path": "/user",
+      "parameters": [
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe User"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "User"
+      },
+      "failures": [],
+      "modelled": true
+    },
+    {
+      "operation": "createUsersWithListInput",
+      "operationId": "createUsersWithListInput",
+      "ability": "UserApi",
+      "method": "POST",
+      "path": "/user/createWithList",
+      "parameters": [
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe (List User)"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "User"
+      },
+      "failures": [],
+      "modelled": false
+    },
+    {
+      "operation": "loginUser",
+      "operationId": "loginUser",
+      "ability": "UserApi",
+      "method": "GET",
+      "path": "/user/login",
+      "parameters": [
+        {
+          "name": "username",
+          "wire": "username",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Text"
+        },
+        {
+          "name": "password",
+          "wire": "password",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Text"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        }
+      ],
+      "modelled": false
+    },
+    {
+      "operation": "logoutUser",
+      "operationId": "logoutUser",
+      "ability": "UserApi",
+      "method": "GET",
+      "path": "/user/logout",
+      "parameters": [],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [],
+      "modelled": false
+    },
+    {
+      "operation": "getUserByName",
+      "operationId": "getUserByName",
+      "ability": "UserApi",
+      "method": "GET",
+      "path": "/user/{username}",
+      "parameters": [
+        {
+          "name": "username",
+          "wire": "username",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "User"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "updateUser",
+      "operationId": "updateUser",
+      "ability": "UserApi",
+      "method": "PUT",
+      "path": "/user/{username}",
+      "parameters": [
+        {
+          "name": "username",
+          "wire": "username",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe User"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "deleteUser",
+      "operationId": "deleteUser",
+      "ability": "UserApi",
+      "method": "DELETE",
+      "path": "/user/{username}",
+      "parameters": [
+        {
+          "name": "username",
+          "wire": "username",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [
+        {
+          "status": "400",
+          "constructor": "BadRequest"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    }
+  ],
+  "types": [
+    {
+      "type": "Pet",
+      "schema": "Pet",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Text"
+        },
+        {
+          "name": "category",
+          "wire": "category",
+          "type": "Maybe Category"
+        },
+        {
+          "name": "photoUrls",
+          "wire": "photoUrls",
+          "type": "List Text"
+        },
+        {
+          "name": "tags",
+          "wire": "tags",
+          "type": "Maybe (List Tag)"
+        },
+        {
+          "name": "status",
+          "wire": "status",
+          "type": "Maybe PetStatus"
+        }
+      ]
+    },
+    {
+      "type": "Category",
+      "schema": "Category",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "Tag",
+      "schema": "Tag",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "PetStatus",
+      "schema": "PetStatus",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "Available",
+          "wire": "available"
+        },
+        {
+          "constructor": "Pending",
+          "wire": "pending"
+        },
+        {
+          "constructor": "Sold",
+          "wire": "sold"
+        }
+      ]
+    },
+    {
+      "type": "ApiResponse",
+      "schema": "ApiResponse",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "code",
+          "wire": "code",
+          "type": "Maybe Int32"
+        },
+        {
+          "name": "type_",
+          "wire": "type",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "message",
+          "wire": "message",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "Order",
+      "schema": "Order",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "petId",
+          "wire": "petId",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "quantity",
+          "wire": "quantity",
+          "type": "Maybe Int32"
+        },
+        {
+          "name": "shipDate",
+          "wire": "shipDate",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "status",
+          "wire": "status",
+          "type": "Maybe OrderStatus"
+        },
+        {
+          "name": "complete",
+          "wire": "complete",
+          "type": "Maybe Bool"
+        }
+      ]
+    },
+    {
+      "type": "OrderStatus",
+      "schema": "OrderStatus",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "Placed",
+          "wire": "placed"
+        },
+        {
+          "constructor": "Approved",
+          "wire": "approved"
+        },
+        {
+          "constructor": "Delivered",
+          "wire": "delivered"
+        }
+      ]
+    },
+    {
+      "type": "User",
+      "schema": "User",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "username",
+          "wire": "username",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "firstName",
+          "wire": "firstName",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "lastName",
+          "wire": "lastName",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "email",
+          "wire": "email",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "password",
+          "wire": "password",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "phone",
+          "wire": "phone",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "userStatus",
+          "wire": "userStatus",
+          "type": "Maybe Int32"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "record": "Pet",
+      "collection": "/pet",
+      "item": "/pet/{petId}",
+      "key": "petId",
+      "keyField": "id",
+      "stateField": "pets",
+      "keys": "client or assigned",
+      "read": "getPetById",
+      "create": "addPet",
+      "delete": "deletePet",
+      "list": null,
+      "replace": "updatePet",
+      "update": null
+    },
+    {
+      "record": "Order",
+      "collection": "/store/order",
+      "item": "/store/order/{orderId}",
+      "key": "orderId",
+      "keyField": "id",
+      "stateField": "orders",
+      "keys": "client or assigned",
+      "read": "getOrderById",
+      "create": "placeOrder",
+      "delete": "deleteOrder",
+      "list": null,
+      "replace": null,
+      "update": null
+    },
+    {
+      "record": "User",
+      "collection": "/user",
+      "item": "/user/{username}",
+      "key": "username",
+      "keyField": "username",
+      "stateField": "users",
+      "keys": "client",
+      "read": "getUserByName",
+      "create": "createUser",
+      "delete": "deleteUser",
+      "list": null,
+      "replace": "updateUser",
+      "update": null
+    }
+  ]
+}

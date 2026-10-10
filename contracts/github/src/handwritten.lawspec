@@ -1,0 +1,14 @@
+unit lawtwin.github.handwritten
+
+-- Written once by `lawtwin import openapi`, and yours from then on: the
+-- importer never writes this file again. Each definition answers one
+-- operation the importer could not model. Replace its body with what the
+-- service does, over the model's State; until then it fails with
+-- Unmodelled. An operation added to the document later needs a definition
+-- here, and the importer names it. The model's types are written
+-- qualified, as model.Pet, so a new import does not break this unit.
+
+import lawtwin.github.model as model (ApiError, State)
+
+-- Every operation is modelled; this unit has nothing to answer yet.
+definition nothingHandWritten (u :: Unit) :: Unit is unitValue end

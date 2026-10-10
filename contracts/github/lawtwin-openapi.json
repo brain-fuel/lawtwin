@@ -1,0 +1,1074 @@
+{
+  "package": "lawtwin.github",
+  "source": {
+    "file": "github-labels-milestones.json",
+    "title": "GitHub v3 REST API",
+    "version": "1.1.4"
+  },
+  "failures": [
+    {
+      "status": "400",
+      "constructor": "BadRequest"
+    },
+    {
+      "status": "404",
+      "constructor": "NotFound"
+    },
+    {
+      "status": "422",
+      "constructor": "UnprocessableEntity"
+    },
+    {
+      "status": "501",
+      "constructor": "Unmodelled"
+    }
+  ],
+  "operations": [
+    {
+      "operation": "issuesListLabelsForRepo",
+      "operationId": "issues/list-labels-for-repo",
+      "ability": "IssuesApi",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/labels",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "perPage",
+          "wire": "per_page",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "page",
+          "wire": "page",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "List Label"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesCreateLabel",
+      "operationId": "issues/create-label",
+      "ability": "IssuesApi",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/labels",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": true,
+          "type": "IssuesCreateLabelBody"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "201",
+        "content": "application/json",
+        "type": "Label"
+      },
+      "failures": [
+        {
+          "status": "422",
+          "constructor": "UnprocessableEntity"
+        },
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesGetLabel",
+      "operationId": "issues/get-label",
+      "ability": "IssuesApi",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/labels/{name}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Label"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesDeleteLabel",
+      "operationId": "issues/delete-label",
+      "ability": "IssuesApi",
+      "method": "DELETE",
+      "path": "/repos/{owner}/{repo}/labels/{name}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "204",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [],
+      "modelled": true
+    },
+    {
+      "operation": "issuesUpdateLabel",
+      "operationId": "issues/update-label",
+      "ability": "IssuesApi",
+      "method": "PATCH",
+      "path": "/repos/{owner}/{repo}/labels/{name}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe IssuesUpdateLabelBody"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Label"
+      },
+      "failures": [],
+      "modelled": true
+    },
+    {
+      "operation": "issuesListMilestones",
+      "operationId": "issues/list-milestones",
+      "ability": "IssuesApi",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/milestones",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "state_",
+          "wire": "state",
+          "in": "query",
+          "required": false,
+          "type": "Maybe IssuesListMilestonesState"
+        },
+        {
+          "name": "sort",
+          "wire": "sort",
+          "in": "query",
+          "required": false,
+          "type": "Maybe IssuesListMilestonesSort"
+        },
+        {
+          "name": "direction",
+          "wire": "direction",
+          "in": "query",
+          "required": false,
+          "type": "Maybe IssuesListMilestonesDirection"
+        },
+        {
+          "name": "perPage",
+          "wire": "per_page",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Int64"
+        },
+        {
+          "name": "page",
+          "wire": "page",
+          "in": "query",
+          "required": false,
+          "type": "Maybe Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "List Milestone"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesCreateMilestone",
+      "operationId": "issues/create-milestone",
+      "ability": "IssuesApi",
+      "method": "POST",
+      "path": "/repos/{owner}/{repo}/milestones",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": true,
+          "type": "IssuesCreateMilestoneBody"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "201",
+        "content": "application/json",
+        "type": "Milestone"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        },
+        {
+          "status": "422",
+          "constructor": "UnprocessableEntity"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesGetMilestone",
+      "operationId": "issues/get-milestone",
+      "ability": "IssuesApi",
+      "method": "GET",
+      "path": "/repos/{owner}/{repo}/milestones/{milestone_number}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "milestoneNumber",
+          "wire": "milestone_number",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Milestone"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesDeleteMilestone",
+      "operationId": "issues/delete-milestone",
+      "ability": "IssuesApi",
+      "method": "DELETE",
+      "path": "/repos/{owner}/{repo}/milestones/{milestone_number}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "milestoneNumber",
+          "wire": "milestone_number",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        }
+      ],
+      "requestContent": null,
+      "response": {
+        "status": "204",
+        "content": null,
+        "type": "Unit"
+      },
+      "failures": [
+        {
+          "status": "404",
+          "constructor": "NotFound"
+        }
+      ],
+      "modelled": true
+    },
+    {
+      "operation": "issuesUpdateMilestone",
+      "operationId": "issues/update-milestone",
+      "ability": "IssuesApi",
+      "method": "PATCH",
+      "path": "/repos/{owner}/{repo}/milestones/{milestone_number}",
+      "parameters": [
+        {
+          "name": "owner",
+          "wire": "owner",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "wire": "repo",
+          "in": "path",
+          "required": true,
+          "type": "Text"
+        },
+        {
+          "name": "milestoneNumber",
+          "wire": "milestone_number",
+          "in": "path",
+          "required": true,
+          "type": "Int64"
+        },
+        {
+          "name": "body",
+          "wire": "body",
+          "in": "body",
+          "required": false,
+          "type": "Maybe IssuesUpdateMilestoneBody"
+        }
+      ],
+      "requestContent": "application/json",
+      "response": {
+        "status": "200",
+        "content": "application/json",
+        "type": "Milestone"
+      },
+      "failures": [],
+      "modelled": true
+    }
+  ],
+  "types": [
+    {
+      "type": "Label",
+      "schema": "label",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Int64"
+        },
+        {
+          "name": "nodeId",
+          "wire": "node_id",
+          "type": "Text"
+        },
+        {
+          "name": "url",
+          "wire": "url",
+          "type": "Text"
+        },
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Text"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "color",
+          "wire": "color",
+          "type": "Text"
+        },
+        {
+          "name": "default_",
+          "wire": "default",
+          "type": "Bool"
+        },
+        {
+          "name": "archivedAt",
+          "wire": "archived_at",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "archivedBy",
+          "wire": "archived_by",
+          "type": "Maybe SimpleUser"
+        }
+      ]
+    },
+    {
+      "type": "SimpleUser",
+      "schema": "simple-user",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "email",
+          "wire": "email",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "login",
+          "wire": "login",
+          "type": "Text"
+        },
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Int64"
+        },
+        {
+          "name": "nodeId",
+          "wire": "node_id",
+          "type": "Text"
+        },
+        {
+          "name": "avatarUrl",
+          "wire": "avatar_url",
+          "type": "Text"
+        },
+        {
+          "name": "gravatarId",
+          "wire": "gravatar_id",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "url",
+          "wire": "url",
+          "type": "Text"
+        },
+        {
+          "name": "htmlUrl",
+          "wire": "html_url",
+          "type": "Text"
+        },
+        {
+          "name": "followersUrl",
+          "wire": "followers_url",
+          "type": "Text"
+        },
+        {
+          "name": "followingUrl",
+          "wire": "following_url",
+          "type": "Text"
+        },
+        {
+          "name": "gistsUrl",
+          "wire": "gists_url",
+          "type": "Text"
+        },
+        {
+          "name": "starredUrl",
+          "wire": "starred_url",
+          "type": "Text"
+        },
+        {
+          "name": "subscriptionsUrl",
+          "wire": "subscriptions_url",
+          "type": "Text"
+        },
+        {
+          "name": "organizationsUrl",
+          "wire": "organizations_url",
+          "type": "Text"
+        },
+        {
+          "name": "reposUrl",
+          "wire": "repos_url",
+          "type": "Text"
+        },
+        {
+          "name": "eventsUrl",
+          "wire": "events_url",
+          "type": "Text"
+        },
+        {
+          "name": "receivedEventsUrl",
+          "wire": "received_events_url",
+          "type": "Text"
+        },
+        {
+          "name": "type_",
+          "wire": "type",
+          "type": "Text"
+        },
+        {
+          "name": "siteAdmin",
+          "wire": "site_admin",
+          "type": "Bool"
+        },
+        {
+          "name": "starredAt",
+          "wire": "starred_at",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "userViewType",
+          "wire": "user_view_type",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "IssuesCreateLabelBody",
+      "schema": "IssuesCreateLabelBody",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Text"
+        },
+        {
+          "name": "color",
+          "wire": "color",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "IssuesUpdateLabelBody",
+      "schema": "IssuesUpdateLabelBody",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "newName",
+          "wire": "new_name",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "color",
+          "wire": "color",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "archived",
+          "wire": "archived",
+          "type": "Maybe Bool"
+        }
+      ]
+    },
+    {
+      "type": "IssuesListMilestonesState",
+      "schema": "IssuesListMilestonesState",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "Open",
+          "wire": "open"
+        },
+        {
+          "constructor": "Closed",
+          "wire": "closed"
+        },
+        {
+          "constructor": "All",
+          "wire": "all"
+        }
+      ]
+    },
+    {
+      "type": "IssuesListMilestonesSort",
+      "schema": "IssuesListMilestonesSort",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "DueOn",
+          "wire": "due_on"
+        },
+        {
+          "constructor": "Completeness",
+          "wire": "completeness"
+        }
+      ]
+    },
+    {
+      "type": "IssuesListMilestonesDirection",
+      "schema": "IssuesListMilestonesDirection",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "Asc",
+          "wire": "asc"
+        },
+        {
+          "constructor": "Desc",
+          "wire": "desc"
+        }
+      ]
+    },
+    {
+      "type": "Milestone",
+      "schema": "milestone",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "url",
+          "wire": "url",
+          "type": "Text"
+        },
+        {
+          "name": "htmlUrl",
+          "wire": "html_url",
+          "type": "Text"
+        },
+        {
+          "name": "labelsUrl",
+          "wire": "labels_url",
+          "type": "Text"
+        },
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Int64"
+        },
+        {
+          "name": "nodeId",
+          "wire": "node_id",
+          "type": "Text"
+        },
+        {
+          "name": "number",
+          "wire": "number",
+          "type": "Int64"
+        },
+        {
+          "name": "state_",
+          "wire": "state",
+          "type": "MilestoneState"
+        },
+        {
+          "name": "title",
+          "wire": "title",
+          "type": "Text"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "creator",
+          "wire": "creator",
+          "type": "Maybe NullableSimpleUser"
+        },
+        {
+          "name": "openIssues",
+          "wire": "open_issues",
+          "type": "Int64"
+        },
+        {
+          "name": "closedIssues",
+          "wire": "closed_issues",
+          "type": "Int64"
+        },
+        {
+          "name": "createdAt",
+          "wire": "created_at",
+          "type": "Text"
+        },
+        {
+          "name": "updatedAt",
+          "wire": "updated_at",
+          "type": "Text"
+        },
+        {
+          "name": "closedAt",
+          "wire": "closed_at",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "dueOn",
+          "wire": "due_on",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "MilestoneState",
+      "schema": "MilestoneState",
+      "kind": "enum",
+      "values": [
+        {
+          "constructor": "MilestoneStateOpen",
+          "wire": "open"
+        },
+        {
+          "constructor": "MilestoneStateClosed",
+          "wire": "closed"
+        }
+      ]
+    },
+    {
+      "type": "NullableSimpleUser",
+      "schema": "nullable-simple-user",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "name",
+          "wire": "name",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "email",
+          "wire": "email",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "login",
+          "wire": "login",
+          "type": "Text"
+        },
+        {
+          "name": "id",
+          "wire": "id",
+          "type": "Int64"
+        },
+        {
+          "name": "nodeId",
+          "wire": "node_id",
+          "type": "Text"
+        },
+        {
+          "name": "avatarUrl",
+          "wire": "avatar_url",
+          "type": "Text"
+        },
+        {
+          "name": "gravatarId",
+          "wire": "gravatar_id",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "url",
+          "wire": "url",
+          "type": "Text"
+        },
+        {
+          "name": "htmlUrl",
+          "wire": "html_url",
+          "type": "Text"
+        },
+        {
+          "name": "followersUrl",
+          "wire": "followers_url",
+          "type": "Text"
+        },
+        {
+          "name": "followingUrl",
+          "wire": "following_url",
+          "type": "Text"
+        },
+        {
+          "name": "gistsUrl",
+          "wire": "gists_url",
+          "type": "Text"
+        },
+        {
+          "name": "starredUrl",
+          "wire": "starred_url",
+          "type": "Text"
+        },
+        {
+          "name": "subscriptionsUrl",
+          "wire": "subscriptions_url",
+          "type": "Text"
+        },
+        {
+          "name": "organizationsUrl",
+          "wire": "organizations_url",
+          "type": "Text"
+        },
+        {
+          "name": "reposUrl",
+          "wire": "repos_url",
+          "type": "Text"
+        },
+        {
+          "name": "eventsUrl",
+          "wire": "events_url",
+          "type": "Text"
+        },
+        {
+          "name": "receivedEventsUrl",
+          "wire": "received_events_url",
+          "type": "Text"
+        },
+        {
+          "name": "type_",
+          "wire": "type",
+          "type": "Text"
+        },
+        {
+          "name": "siteAdmin",
+          "wire": "site_admin",
+          "type": "Bool"
+        },
+        {
+          "name": "starredAt",
+          "wire": "starred_at",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "userViewType",
+          "wire": "user_view_type",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "IssuesCreateMilestoneBody",
+      "schema": "IssuesCreateMilestoneBody",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "title",
+          "wire": "title",
+          "type": "Text"
+        },
+        {
+          "name": "state_",
+          "wire": "state",
+          "type": "Maybe MilestoneState"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "dueOn",
+          "wire": "due_on",
+          "type": "Maybe Text"
+        }
+      ]
+    },
+    {
+      "type": "IssuesUpdateMilestoneBody",
+      "schema": "IssuesUpdateMilestoneBody",
+      "kind": "record",
+      "fields": [
+        {
+          "name": "title",
+          "wire": "title",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "state_",
+          "wire": "state",
+          "type": "Maybe MilestoneState"
+        },
+        {
+          "name": "description_",
+          "wire": "description",
+          "type": "Maybe Text"
+        },
+        {
+          "name": "dueOn",
+          "wire": "due_on",
+          "type": "Maybe Text"
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "record": "Label",
+      "collection": "/repos/{owner}/{repo}/labels",
+      "item": "/repos/{owner}/{repo}/labels/{name}",
+      "key": "name",
+      "keyField": "name",
+      "stateField": "labels",
+      "keys": "client",
+      "read": "issuesGetLabel",
+      "create": "issuesCreateLabel",
+      "delete": "issuesDeleteLabel",
+      "list": "issuesListLabelsForRepo",
+      "replace": null,
+      "update": "issuesUpdateLabel"
+    },
+    {
+      "record": "Milestone",
+      "collection": "/repos/{owner}/{repo}/milestones",
+      "item": "/repos/{owner}/{repo}/milestones/{milestone_number}",
+      "key": "milestoneNumber",
+      "keyField": "number",
+      "stateField": "milestones",
+      "keys": "assigned",
+      "read": "issuesGetMilestone",
+      "create": "issuesCreateMilestone",
+      "delete": "issuesDeleteMilestone",
+      "list": "issuesListMilestones",
+      "replace": null,
+      "update": "issuesUpdateMilestone"
+    }
+  ]
+}
