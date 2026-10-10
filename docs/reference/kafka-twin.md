@@ -181,7 +181,9 @@ produced, in batches, and half a million a second read back by a group:
 a million 100-byte records to eight partitions in 0.44 s, read in 1.8 s, on
 an Apple M-series laptop (`cargo test --release -p lawtwin-kafka-conformance
 --test throughput -- --ignored --nocapture`). Each batch is one operation of
-the model; a fetch costs what it returns, not the size of the log.
+the model. A fetch walks a partition's log back from its end to the fetch
+offset, so a consumer near the end reads cheaply and one far behind pays
+for the records after its position.
 
 ## Differences from Kafka
 
