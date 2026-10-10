@@ -18,3 +18,7 @@ registry/*:
   kinds: [registry]
   reason: "The registry was written in 0.1.0; the owner signs off each reference before 1.0"
   revisit: 1.0.0
+/crates/:
+  kinds: [comment]
+  reason: "The lawtwin command was written in 0.1.0 and its canonical comments ingested pending; the owner vets them before 1.0"
+  revisit: 1.0.0

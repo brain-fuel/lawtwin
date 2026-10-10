@@ -7,13 +7,19 @@ use crate::names::{self, Namespace, text_literal};
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt::Write as _;
 
+/// The package's units, as LawSpec source.
 pub struct Package {
+    /// The model unit: types, constraints, State and each recognised operation's definition.
     pub model: String,
+    /// The facade unit: the Service resource, the abilities with their laws, and the reference handler.
     pub facade: String,
+    /// The hand-written unit's first version, with a stub for each unmodelled operation.
     pub handwritten: String,
+    /// The hand-written laws unit's first version.
     pub laws: String,
     /// Operations answered by the hand-written unit.
     pub unmodelled: Vec<String>,
+    /// How many laws were generated.
     pub law_count: usize,
 }
 
@@ -21,10 +27,15 @@ pub struct Package {
 /// this name, as only reserved words get a trailing underscore.
 const STATE: &str = "current_";
 
+/// Writes a package from the types and the operations.
 pub struct Emitter<'a, 'd> {
+    /// The package's root unit name, such as `lawtwin.petstore`.
     pub unit: String,
+    /// The converted schemas.
     pub types: &'a Types<'d>,
+    /// The operations and resources.
     pub api: &'a Api,
+    /// The document, as the generated files name it.
     pub source: String,
     helpers: String,
     emitted: BTreeSet<String>,
@@ -73,6 +84,7 @@ fn conj(parts: Vec<String>) -> Option<String> {
 }
 
 impl<'a, 'd> Emitter<'a, 'd> {
+    /// An emitter for the package `unit`.
     pub fn new(unit: &str, types: &'a Types<'d>, api: &'a Api, source: &str) -> Self {
         let mut refinement_names = Namespace::default();
         for d in &types.defs {
@@ -708,6 +720,7 @@ impl<'a, 'd> Emitter<'a, 'd> {
     // Everything
     // ------------------------------------------------------------------
 
+    /// Write every unit of the package.
     pub fn package(mut self) -> Package {
         let unit = self.unit.clone();
         let mut model = String::new();

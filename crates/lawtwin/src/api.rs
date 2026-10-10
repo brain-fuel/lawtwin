@@ -7,38 +7,57 @@ use crate::openapi::{self, Document};
 use serde_json::Value;
 use std::collections::BTreeMap;
 
+/// A parameter of an operation, or its request body.
 #[derive(Clone, Debug)]
 pub struct Param {
+    /// The parameter's name on the wire; `body` for the request body.
     pub wire: String,
     /// path, query, header, cookie or body.
     pub location: String,
+    /// The parameter's LawSpec name.
     pub name: String,
+    /// Its type; `Maybe` when it is optional.
     pub ty: Ty,
+    /// Whether the request must carry it.
     pub required: bool,
 }
 
+/// One operation: a path and a method.
 #[derive(Clone, Debug)]
 pub struct Op {
+    /// The operation's LawSpec name, from its operationId.
     pub name: String,
+    /// The operationId the document gives, if any.
     pub operation_id: Option<String>,
+    /// The HTTP method, in lower case.
     pub method: String,
+    /// The path template, such as `/pet/{petId}`.
     pub path: String,
+    /// The ability it belongs to, named after its first tag.
     pub ability: String,
+    /// Path parameters in path order, then query, header and cookie ones, then the body.
     pub params: Vec<Param>,
+    /// The media type its request body is read from.
     pub body_content: Option<String>,
+    /// The type of its success response; `Unit` when it has no body.
     pub response: Ty,
+    /// The success status the response is read from.
     pub response_status: String,
+    /// The media type of that response.
     pub response_content: Option<String>,
     /// Each documented failing status and the ApiError constructor it raises.
     pub errors: Vec<(String, String)>,
+    /// Its summary, for comments.
     pub summary: String,
 }
 
 impl Op {
+    /// The request body parameter, if it has one.
     pub fn body(&self) -> Option<&Param> {
         self.params.iter().find(|p| p.location == "body")
     }
 
+    /// The path parameters, in path order.
     pub fn path_params(&self) -> Vec<&Param> {
         self.params
             .iter()
@@ -46,6 +65,7 @@ impl Op {
             .collect()
     }
 
+    /// Whether the operation documents the failure.
     pub fn documents(&self, ctor: &str) -> bool {
         self.errors.iter().any(|(_, c)| c == ctor)
     }
@@ -80,45 +100,67 @@ pub enum KeySource {
     Assigned,
 }
 
+/// How a resource is created.
 #[derive(Clone, Debug)]
 pub struct Create {
+    /// The POST operation on the collection.
     pub op: usize,
+    /// Where the new resource's key comes from.
     pub key: KeySource,
 }
 
+/// A resource the importer recognised: a record kept by key under a collection path.
 #[derive(Clone, Debug)]
 pub struct Resource {
     /// The record the service keeps, such as Pet.
     pub record: String,
+    /// The collection's path, such as `/pet`.
     pub collection_path: String,
+    /// The item's path, such as `/pet/{petId}`.
     pub item_path: String,
     /// Path parameters of the collection, by LawSpec name, with their types.
     pub parents: Vec<(String, Ty)>,
+    /// The LawSpec name of the item path's last parameter.
     pub key_param: String,
+    /// The key's type.
     pub key_ty: Ty,
     /// The record's field holding the key, and whether it is a Maybe.
     pub key_field: Option<(String, bool)>,
     /// The key type of the state's KeyVal: the key's own type, or a record of
     /// the parents and the key.
     pub key_record: Option<String>,
+    /// The State field that keeps the resources.
     pub map_field: String,
+    /// The State field with the next key, when the service assigns keys.
     pub counter_field: Option<String>,
+    /// The GET on the item.
     pub read: usize,
+    /// The POST on the collection, when the importer can model it.
     pub create: Option<Create>,
+    /// The DELETE on the item.
     pub delete: Option<usize>,
+    /// The GET on the collection, when it answers a list of the record.
     pub list: Option<usize>,
     /// A PUT on the item, or a PUT or PATCH on the collection whose body
     /// carries the key.
     pub replace: Option<usize>,
+    /// Whether `replace` takes its key from the body rather than the path.
     pub replace_by_body_key: bool,
+    /// A PATCH on the item, with a record body.
     pub patch: Option<usize>,
 }
 
+/// The selected operations, their abilities and failures, and the resources among them.
 pub struct Api {
+    /// Every selected operation, in document order.
     pub ops: Vec<Op>,
+    /// One ability per tag, in the order first met.
     pub abilities: Vec<String>,
+    /// ApiError's constructors, with the status each stands for.
     pub errors: Vec<(String, String)>,
+    /// The resources the importer recognised.
     pub resources: Vec<Resource>,
+    /// What the importer could not express, for the author to read.
     pub notes: Vec<String>,
 }
 
@@ -182,6 +224,7 @@ pub fn param_matches_field(param: &str, field: &str, record: &str) -> bool {
 }
 
 impl Api {
+    /// Read the operations `include` keeps, convert their types, and recognise the resources.
     pub fn build(
         doc: &Document,
         types: &mut Types,
@@ -643,13 +686,20 @@ impl Api {
     }
 }
 
+/// The part an operation plays for its resource.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Role {
+    /// GET on the item.
     Read,
+    /// POST on the collection.
     Create,
+    /// DELETE on the item.
     Delete,
+    /// GET on the collection.
     List,
+    /// PUT on the item, or on the collection with the key in the body.
     Replace,
+    /// PATCH on the item.
     Patch,
 }
 
@@ -658,6 +708,7 @@ pub fn field<'a>(fields: &'a [Field], name: &str) -> Option<&'a Field> {
     fields.iter().find(|f| f.name == name)
 }
 
+/// The record a type names, if it names one.
 pub fn is_record(types: &Types, ty: &Ty) -> Option<String> {
     match ty {
         Ty::Named(n) if matches!(types.def(n), Some(Def::Record { .. })) => Some(n.clone()),

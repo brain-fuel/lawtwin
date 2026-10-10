@@ -300,6 +300,7 @@ pub struct Namespace {
 }
 
 impl Namespace {
+    /// A namespace in which LawSpec's own type names are taken.
     pub fn with_reserved_types() -> Self {
         Namespace {
             taken: RESERVED_TYPES.iter().map(|s| s.to_string()).collect(),
@@ -321,10 +322,12 @@ impl Namespace {
             .unwrap()
     }
 
+    /// Take a name without asking.
     pub fn reserve(&mut self, name: &str) {
         self.taken.insert(name.to_string());
     }
 
+    /// Whether the name is taken.
     pub fn contains(&self, name: &str) -> bool {
         self.taken.contains(name)
     }
@@ -369,6 +372,7 @@ pub fn summary(description: &str) -> String {
 mod tests {
     use super::*;
 
+    /// Names are split into words and joined in camel case.
     #[test]
     fn camel_cases() {
         assert_eq!(upper_camel("nullable-simple-user"), "NullableSimpleUser");
@@ -381,6 +385,7 @@ mod tests {
         assert_eq!(upper_camel("2fa"), "N2fa");
     }
 
+    /// A taken name gets the suffix, then a number.
     #[test]
     fn namespace_suffixes() {
         let mut ns = Namespace::with_reserved_types();

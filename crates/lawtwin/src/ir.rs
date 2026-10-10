@@ -14,60 +14,77 @@ use crate::regex;
 use serde_json::{Map, Value};
 use std::collections::BTreeMap;
 
+/// A scalar LawSpec type.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Scalar {
+    /// `Text`: strings that are not binary.
     Text,
+    /// `Int32`: integers of format int32.
     Int32,
+    /// `Int64`: every other integer.
     Int64,
+    /// `Float64`: numbers.
     Float64,
+    /// `Bool`: booleans.
     Bool,
+    /// `Bytes`: strings of format binary, and octet-stream bodies.
     Bytes,
+    /// `Unit`: no content, and `type: null`.
     Unit,
     /// A free-form JSON value, held as its JSON text.
     Json,
 }
 
+/// A constraint a schema puts on a value.
 #[derive(Clone, Debug, PartialEq)]
 pub enum Check {
-    Min {
-        bound: String,
-        exclusive: bool,
-    },
-    Max {
-        bound: String,
-        exclusive: bool,
-    },
+    /// `minimum` or `exclusiveMinimum`.
+    Min { bound: String, exclusive: bool },
+    /// `maximum` or `exclusiveMaximum`.
+    Max { bound: String, exclusive: bool },
+    /// `minLength`.
     MinLength(u64),
+    /// `maxLength`.
     MaxLength(u64),
     /// A portable regex, and where it came from (`pattern` or a format).
-    Regex {
-        regex: String,
-        origin: String,
-    },
+    Regex { regex: String, origin: String },
+    /// A JSON number is finite.
     Finite,
+    /// `minItems`.
     MinItems(u64),
+    /// `maxItems`.
     MaxItems(u64),
+    /// An integer `enum`: one of these values.
     OneOf(Vec<String>),
 }
 
+/// A LawSpec type, with the constraints of the schema it came from.
 #[derive(Clone, Debug)]
 pub enum Ty {
+    /// A scalar and its checks.
     Scalar(Scalar, Vec<Check>),
+    /// `List`, from an array, with its item-count checks.
     List(Box<Ty>, Vec<Check>),
+    /// `Maybe`, from a nullable or optional value.
     Maybe(Box<Ty>),
+    /// `KeyVal Text`, from `additionalProperties`.
     Map(Box<Ty>),
+    /// A record, enum or union of the package.
     Named(String),
 }
 
 impl Ty {
+    /// `Text` with no checks.
     pub fn text() -> Ty {
         Ty::Scalar(Scalar::Text, vec![])
     }
 
+    /// `Unit`.
     pub fn unit() -> Ty {
         Ty::Scalar(Scalar::Unit, vec![])
     }
 
+    /// The type made optional, once.
     pub fn maybe(self) -> Ty {
         match self {
             Ty::Maybe(_) => self,
@@ -87,6 +104,7 @@ impl Ty {
         }
     }
 
+    /// The type as LawSpec writes it.
     pub fn lawspec(&self) -> String {
         match self {
             Ty::Scalar(s, _) => s.lawspec().to_string(),
@@ -108,6 +126,7 @@ impl Ty {
         }
     }
 
+    /// The qualified type, parenthesised when it is an application.
     pub fn qualified_atom(&self, q: &str) -> String {
         match self {
             Ty::Scalar(..) | Ty::Named(_) => self.qualified(q),
@@ -123,6 +142,7 @@ impl Ty {
         }
     }
 
+    /// Whether it is `Unit`.
     pub fn is_unit(&self) -> bool {
         matches!(self, Ty::Scalar(Scalar::Unit, _))
     }
@@ -134,6 +154,7 @@ impl Ty {
 }
 
 impl Scalar {
+    /// The scalar's LawSpec name.
     pub fn lawspec(&self) -> &'static str {
         match self {
             Scalar::Text | Scalar::Json => "Text",
@@ -147,28 +168,37 @@ impl Scalar {
     }
 }
 
+/// A field of a record.
 #[derive(Clone, Debug)]
 pub struct Field {
+    /// The property's name on the wire.
     pub wire: String,
+    /// The field's LawSpec name.
     pub name: String,
+    /// Its type; `Maybe` when the property is optional or nullable.
     pub ty: Ty,
+    /// The first sentence of its description.
     pub doc: String,
 }
 
+/// A named type of the package.
 #[derive(Clone, Debug)]
 pub enum Def {
+    /// An object: one constructor with a field per property.
     Record {
         name: String,
         fields: Vec<Field>,
         doc: String,
         wire: String,
     },
+    /// A string enum: a constructor per value, with the value on the wire.
     Enum {
         name: String,
         ctors: Vec<(String, String)>,
         doc: String,
         wire: String,
     },
+    /// `oneOf` or `anyOf`: a constructor per alternative, holding it.
     Union {
         name: String,
         alts: Vec<(String, Ty)>,
@@ -178,6 +208,7 @@ pub enum Def {
 }
 
 impl Def {
+    /// The type's name.
     pub fn name(&self) -> &str {
         match self {
             Def::Record { name, .. } | Def::Enum { name, .. } | Def::Union { name, .. } => name,
@@ -185,13 +216,18 @@ impl Def {
     }
 }
 
+/// The schemas converted so far.
 pub struct Types<'d> {
+    /// The document they come from.
     pub doc: &'d Document,
+    /// Every named type, in the order made.
     pub defs: Vec<Def>,
     index: BTreeMap<String, usize>,
     refs: BTreeMap<String, Ty>,
     in_progress: Vec<String>,
+    /// Upper-case names taken: types, constructors, abilities and failures.
     pub upper: Namespace,
+    /// What could not be converted as written.
     pub notes: Vec<String>,
 }
 
@@ -203,6 +239,7 @@ enum Kind {
 }
 
 impl<'d> Types<'d> {
+    /// No types yet, for the document.
     pub fn new(doc: &'d Document) -> Self {
         Types {
             doc,
@@ -215,10 +252,12 @@ impl<'d> Types<'d> {
         }
     }
 
+    /// The named type of that name.
     pub fn def(&self, name: &str) -> Option<&Def> {
         self.index.get(name).map(|&i| &self.defs[i])
     }
 
+    /// The fields of a record, if the name is one.
     pub fn record_fields(&self, name: &str) -> Option<&[Field]> {
         match self.def(name) {
             Some(Def::Record { fields, .. }) => Some(fields),

@@ -137,6 +137,7 @@ fn check(chars: &[char]) -> Result<(), String> {
 mod tests {
     use super::*;
 
+    /// A pattern becomes a whole-text regex.
     #[test]
     fn anchors_are_dropped_and_unanchored_ends_padded() {
         assert_eq!(portable("^[a-z]+$").unwrap(), "[a-z]+");
@@ -146,6 +147,7 @@ mod tests {
         assert_eq!(portable(r"^\d{3}\$$").unwrap(), r"\d{3}\$");
     }
 
+    /// Lookaround, backreferences and the like are refused.
     #[test]
     fn what_is_not_portable_is_refused() {
         assert!(portable("^(?=a)b$").is_err());

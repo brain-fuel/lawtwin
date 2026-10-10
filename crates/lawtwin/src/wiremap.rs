@@ -5,6 +5,7 @@ use crate::api::{Api, KeySource};
 use crate::ir::{Def, Types};
 use serde_json::{Value, json};
 
+/// The wire map of the package.
 pub fn wire_map(
     package: &str,
     source: &str,

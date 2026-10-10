@@ -32,6 +32,7 @@ fn rust_module(unit: &str) -> String {
     unit.replace('.', "_")
 }
 
+/// The Rust native handlers of the package's abilities.
 pub fn rust(unit: &str, api: &Api) -> String {
     let m = rust_module(unit);
     let mut out = format!(
@@ -73,6 +74,7 @@ pub fn rust(unit: &str, api: &Api) -> String {
     out
 }
 
+/// The Python native handlers of the package's abilities.
 pub fn python(unit: &str, api: &Api) -> String {
     let mut out = format!(
         "# Written by `lawtwin import openapi`, and written again on every import.\n\"\"\"The native handlers of {unit}, for running its laws: each answers\nthrough the reference model, held by the case's Service. A connection to\nthe HTTP twin or to the real service takes its place in conformance runs.\n\"\"\"\nimport lawspec_abilities.{unit} as abilities\n\n\nclass ReferenceService:\n    \"\"\"What a Service holds: the reference model.\"\"\"\n\n    def __init__(self) -> None:\n        self.model = abilities.Reference({{}})\n\n\ndef connectService(value0):\n    return ReferenceService()\n\n\ndef disconnectService(value0) -> None:\n    return None\n\n\nclass _Reference:\n    \"\"\"A native handler that answers every operation through the model.\"\"\"\n\n    def __init__(self, resource) -> None:\n        self.resource = resource\n\n    def __getattr__(self, name):\n        return getattr(self.resource.model, name)\n"
@@ -86,12 +88,14 @@ pub fn python(unit: &str, api: &Api) -> String {
     out
 }
 
+/// The test project's lawspec.json: the package, on Rust and Python.
 pub fn lawspec_json(package: &str, version: &str) -> String {
     format!(
         "{{\n  \"version\": 1,\n  \"sources\": [\n    \"laws\"\n  ],\n  \"dependencies\": {{\n    \"{package}\": \"{version}\"\n  }},\n  \"packages\": [\n    \"..\"\n  ],\n  \"targets\": [\n    {{\n      \"language\": \"rust\",\n      \"root\": \"rust\"\n    }},\n    {{\n      \"language\": \"python\",\n      \"root\": \"python\",\n      \"python\": \".venv/bin/python\"\n    }}\n  ]\n}}\n"
     )
 }
 
+/// The test project's own unit, which imports the package.
 pub fn suite(unit: &str) -> String {
     let last = unit.rsplit('.').next().unwrap_or(unit);
     format!(
@@ -99,8 +103,11 @@ pub fn suite(unit: &str) -> String {
     )
 }
 
+/// The Rust test project's manifest.
 pub const CARGO_TOML: &str = "[package]\nname = \"lawspec-example\"\nversion = \"0.1.0\"\nedition = \"2024\"\nrust-version = \"1.85\"\npublish = false\n\n[dependencies]\nnum-bigint = \"=0.4.8\"\nnum-rational = \"=0.4.2\"\nnum-complex = \"=0.4.6\"\nnum-traits = \"=0.2.19\"\n\n[dev-dependencies]\nproptest = \"=1.11.0\"\n";
 
+/// The Rust test project's library root.
 pub const LIB_RS: &str = "// Application library. LawSpec maintains the included module declarations.\ninclude!(\"lawspec_modules.rs\");\n";
 
+/// The Python test project's manifest.
 pub const PYPROJECT: &str = "[build-system]\nrequires = [\"setuptools==80.9.0\"]\nbuild-backend = \"setuptools.build_meta\"\n\n[project]\nname = \"lawspec-example\"\nversion = \"0.1.0\"\nrequires-python = \">=3.13\"\ndependencies = []\n\n[project.optional-dependencies]\ntest = [\"pytest==8.4.2\", \"hypothesis==6.135.26\"]\n\n[tool.setuptools.packages.find]\nwhere = [\"src\"]\n\n[tool.pytest.ini_options]\npythonpath = [\"src\"]\ntestpaths = [\"tests\"]\n";

@@ -36,6 +36,7 @@ fn read(path: PathBuf) -> String {
     std::fs::read_to_string(&path).unwrap_or_else(|e| panic!("{}: {e}", path.display()))
 }
 
+/// The Swagger Petstore: types, abilities, resources, laws and natives.
 #[test]
 fn petstore_3_0_json() {
     let out = scratch("petstore");
@@ -88,6 +89,7 @@ fn petstore_3_0_json() {
     assert_eq!(map["resources"].as_array().unwrap().len(), 3);
 }
 
+/// The YAML Petstore: arrays as types, and a key the importer does not guess.
 #[test]
 fn petstore_3_0_yaml() {
     let out = scratch("petstore-yaml");
@@ -113,6 +115,7 @@ fn petstore_3_0_yaml() {
     assert!(api.contains("createPets by handwritten.createPets"));
 }
 
+/// OpenAPI 3.1's nullability, unions, maps, constraints and status ranges.
 #[test]
 fn features_of_3_1() {
     let out = scratch("tour");
@@ -147,6 +150,7 @@ fn features_of_3_1() {
     assert!(api.contains("law `the list holds a created note` is"));
 }
 
+/// A second import keeps the hand-written unit and names what it lacks.
 #[test]
 fn hand_written_units_are_kept() {
     let out = scratch("kept");
@@ -162,6 +166,7 @@ fn hand_written_units_are_kept() {
     );
 }
 
+/// `--path` keeps the operations under a path; parents make a key record.
 #[test]
 fn paths_select_operations() {
     let out = scratch("paths");

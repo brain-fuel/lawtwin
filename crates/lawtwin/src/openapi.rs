@@ -4,20 +4,26 @@
 use serde_json::{Map, Value};
 use std::path::Path;
 
+/// An OpenAPI document.
 pub struct Document {
+    /// The whole document.
     pub root: Value,
     /// 3.1 writes nullability in `type`; 3.0 in `nullable`.
     pub v31: bool,
+    /// `info.title`.
     pub title: String,
+    /// `info.version`.
     pub version: String,
 }
 
 impl Document {
+    /// Read a document from a file.
     pub fn load(path: &Path) -> Result<Document, String> {
         let text = std::fs::read_to_string(path).map_err(|e| format!("{}: {e}", path.display()))?;
         Document::parse(&text).map_err(|e| format!("{}: {e}", path.display()))
     }
 
+    /// Read a document from JSON or YAML text.
     pub fn parse(text: &str) -> Result<Document, String> {
         let root: Value = if text.trim_start().starts_with('{') {
             serde_json::from_str(text).map_err(|e| format!("not JSON: {e}"))?
@@ -73,6 +79,7 @@ impl Document {
         Err("a reference chain is longer than 32".into())
     }
 
+    /// Each path and its item, in document order.
     pub fn paths(&self) -> Vec<(&str, &Map<String, Value>)> {
         self.root
             .get("paths")
@@ -86,6 +93,7 @@ impl Document {
     }
 }
 
+/// The methods a path item may have, in the order operations are read.
 pub const METHODS: &[&str] = &[
     "get", "put", "post", "delete", "options", "head", "patch", "trace",
 ];
@@ -112,6 +120,7 @@ pub fn pick_content(content: &Map<String, Value>) -> Option<(&str, &Value)> {
 mod tests {
     use super::*;
 
+    /// Both notations are read, and Swagger 2.0 is refused.
     #[test]
     fn reads_yaml_and_json() {
         let y =
