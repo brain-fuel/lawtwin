@@ -1,0 +1,6 @@
+decision/rust/twins/kafka/conformance/tests/clients.rs:
+  digest: sha256:a63485c61cde6d31
+  verdict: pending
+decision/rust/twins/kafka/conformance/tests/clients.rs/function/scenarios:
+  digest: sha256:f3230a1001deeb99
+  verdict: pending

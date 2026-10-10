@@ -1,0 +1,300 @@
+decision/rust/twins/kafka/rust/src/history.rs:
+  digest: sha256:ed3fa3086dcc83f6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Answer:
+  digest: sha256:ab1cab6bf9833a6e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Answer/variant/Error:
+  digest: sha256:0b8890918396d484
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Answer/variant/Ok:
+  digest: sha256:38871d1d6cb34a43
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event:
+  digest: sha256:1ced394bb23e9e12
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Call:
+  digest: sha256:c4523812ef090ae9
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Call/field/answer:
+  digest: sha256:c7b4ec9ea629f13c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Call/field/op:
+  digest: sha256:ed60286cda2ed96c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Control:
+  digest: sha256:ada1f599b7599b15
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Control/field/control:
+  digest: sha256:202faec0b45a259a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Event/variant/Control/field/detail:
+  digest: sha256:16ea3804f081f973
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Isolation:
+  digest: sha256:1b360bdb5aac0112
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Isolation/variant/ReadCommitted:
+  digest: sha256:fc81a8bc94496705
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Isolation/variant/ReadUncommitted:
+  digest: sha256:b19f8d7aaeafb918
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/OffsetSpec:
+  digest: sha256:e4f1a462d3b9afcc
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/OffsetSpec/variant/Earliest:
+  digest: sha256:34455f0af9d76946
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/OffsetSpec/variant/Latest:
+  digest: sha256:4e51016b46630245
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op:
+  digest: sha256:1a1d6ca0a5a4e4b3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/AddPartitionsToTxnRequest:
+  digest: sha256:86bc02cf01948aae
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/CreatePartitionsRequest:
+  digest: sha256:abc9ab4d6ffcc211
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/CreateTopicsRequest:
+  digest: sha256:d50e8229a3fb9ca9
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/DescribeGroupRequest:
+  digest: sha256:1ada981c2ff50f17
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/EndTxnRequest:
+  digest: sha256:23bc94ac6745bf8a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/FetchRequest:
+  digest: sha256:5e22c56a6d7c48af
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/HeartbeatRequest:
+  digest: sha256:8018ad7fe005c13c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/InitProducerIdRequest:
+  digest: sha256:8b2291ecad851036
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/JoinGroupRequest:
+  digest: sha256:ac35726739696792
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/LeaveGroupRequest:
+  digest: sha256:61cc408ae17c4581
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/ListOffsetsRequest:
+  digest: sha256:70395d826aba3a74
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/MetadataRequest:
+  digest: sha256:e92de8c56999e4ad
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/OffsetCommitRequest:
+  digest: sha256:61e738d26b254391
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/OffsetFetchRequest:
+  digest: sha256:6861133ab2d23f83
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/ProduceRequest:
+  digest: sha256:81a842aea4892313
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/SyncGroupRequest:
+  digest: sha256:7134769f6568dd8c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Op/variant/TxnOffsetCommitRequest:
+  digest: sha256:f2408daf2e6d6e48
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome:
+  digest: sha256:bde5a5340b533db9
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Done:
+  digest: sha256:521aae8c8ea832a5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Fetch:
+  digest: sha256:d13eefa5f6f0abad
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Group:
+  digest: sha256:f9d76e9abab11365
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Group/field/generation:
+  digest: sha256:d4f6c16383e54945
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Group/field/members:
+  digest: sha256:912de74b70b7c9fe
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Maybe:
+  digest: sha256:f22de0627efc5f90
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Number:
+  digest: sha256:ec2ff0e001bbe2c1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Partitions:
+  digest: sha256:fb233700ff31668d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Producer:
+  digest: sha256:99dbb2c82d4cf865
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Producer/field/producer_epoch:
+  digest: sha256:6e73fbbb9da7c299
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Outcome/variant/Producer/field/producer_id:
+  digest: sha256:0b2ca5340dfbb6d4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source:
+  digest: sha256:5f5eed04b5465522
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Coordinator:
+  digest: sha256:937143ad2a315599
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Fault:
+  digest: sha256:0b895bfb5184eda6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Force:
+  digest: sha256:eaffd1dd559af9ed
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Replay:
+  digest: sha256:1b597a9518303d63
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Wire:
+  digest: sha256:fa86806b6e3dc933
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/function/apply:
+  digest: sha256:636cefba8eb48025
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/function/error_name:
+  digest: sha256:55d6ab87d14dccf1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/function/record_native:
+  digest: sha256:e862ea6611ee8e41
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/function/record_of:
+  digest: sha256:e2bce24b68dfdfe6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/function/replay:
+  digest: sha256:e847d5b1db640910
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/impl/Answer/function/of:
+  digest: sha256:8899a91597f79fdb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/impl/Op/function/name:
+  digest: sha256:cd17934938703131
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Divergence:
+  digest: sha256:b67cff804e423ad5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Divergence/field/op:
+  digest: sha256:ed60286cda2ed96c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Divergence/field/recorded:
+  digest: sha256:40730cdbbb14136d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Divergence/field/replayed:
+  digest: sha256:d66cf5cc12dc6554
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Divergence/field/seq:
+  digest: sha256:a959767996e4db7b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Entry:
+  digest: sha256:2c795a242ad2b62b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Entry/field/at:
+  digest: sha256:829d885150e2290f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Entry/field/event:
+  digest: sha256:7ed9a37732300025
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Entry/field/seq:
+  digest: sha256:0b4983664a37c153
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Entry/field/source:
+  digest: sha256:d162c748e96d745f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/FetchOutcome:
+  digest: sha256:0894bc60660df7c6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/FetchOutcome/field/high_watermark:
+  digest: sha256:4b08779772d66894
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/FetchOutcome/field/last_stable_offset:
+  digest: sha256:eaffeeca55dc2260
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/FetchOutcome/field/next_offset:
+  digest: sha256:3122108fc50694fb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/FetchOutcome/field/records:
+  digest: sha256:877c3cc7448a944d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Fetched:
+  digest: sha256:7d71c3b13cc6ae5f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Fetched/field/offset:
+  digest: sha256:42402dbc14fff720
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Fetched/field/record:
+  digest: sha256:4512c774c6f9693d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Header:
+  digest: sha256:a60808420177694b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Header/field/content:
+  digest: sha256:6fffc05889105ff6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Header/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/MemberView:
+  digest: sha256:a9c34c3ed79ff025
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/MemberView/field/assigned:
+  digest: sha256:c376c959f6cee4ca
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/MemberView/field/member:
+  digest: sha256:d3bb495bb0861d59
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Octets:
+  digest: sha256:1a63bf33c1700210
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/OffsetEntry:
+  digest: sha256:9c9620022b27b88a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/OffsetEntry/field/offset:
+  digest: sha256:82f21c8f89a73f8a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/OffsetEntry/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/OffsetEntry/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/ProducerTag:
+  digest: sha256:0135dfae6c5314ea
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/ProducerTag/field/base_sequence:
+  digest: sha256:ed2d30a47295e534
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/ProducerTag/field/producer_epoch:
+  digest: sha256:d237723160256c0c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/ProducerTag/field/producer_id:
+  digest: sha256:0b2ca5340dfbb6d4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Record:
+  digest: sha256:7aa392d07a7ae439
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Record/field/headers:
+  digest: sha256:7d8706f68213997c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Record/field/key:
+  digest: sha256:4fdc5859ad502a65
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Record/field/value:
+  digest: sha256:7c21f7ab2e7cdb43
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Tp:
+  digest: sha256:0b8cb2c5d7fe5e23
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Tp/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/struct/Tp/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending

@@ -1,0 +1,24 @@
+decision/rust/twins/kafka/rust/src/laws.rs:
+  digest: sha256:a5c7b93d9ae51029
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/function/check_history:
+  digest: sha256:a5e596c6b427afa2
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/function/check_state:
+  digest: sha256:f84c84ffe7ce572e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/function/valid_topic_name:
+  digest: sha256:7be0ff91eb6e4cc6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/struct/Violation:
+  digest: sha256:8630ba833431f059
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/struct/Violation/field/detail:
+  digest: sha256:497fdf4db529ad90
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/struct/Violation/field/law:
+  digest: sha256:1748ea9caee7aa80
+  verdict: pending
+decision/rust/twins/kafka/rust/src/laws.rs/struct/Violation/field/seq:
+  digest: sha256:6ed9cf336019cb35
+  verdict: pending

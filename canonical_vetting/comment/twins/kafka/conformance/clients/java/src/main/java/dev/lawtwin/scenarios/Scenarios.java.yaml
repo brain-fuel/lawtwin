@@ -1,0 +1,12 @@
+decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios:
+  digest: sha256:7408593dac54cab2
+  verdict: pending
+decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios/class/Reader:
+  digest: sha256:6d2ea1bad38bee39
+  verdict: pending
+decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios/method/control:
+  digest: sha256:0149453036ad6f13
+  verdict: pending
+decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios/method/main:
+  digest: sha256:415fba265937df7e
+  verdict: pending

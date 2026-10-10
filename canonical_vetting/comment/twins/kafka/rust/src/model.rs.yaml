@@ -1,0 +1,33 @@
+decision/rust/twins/kafka/rust/src/model.rs:
+  digest: sha256:5e542db1c6a379ed
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/enum/Failure:
+  digest: sha256:1fcfdc29d5ae1162
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/enum/Failure/variant/Kafka:
+  digest: sha256:81a1a98babfd0f01
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/enum/Failure/variant/Model:
+  digest: sha256:7f89c90d443b121b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/function/run:
+  digest: sha256:7ca7bb313b273e76
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/impl/ClusterModel/function/group_ids:
+  digest: sha256:fe6d75a9bc193e60
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/impl/ClusterModel/function/snapshot:
+  digest: sha256:83ccc91cd8c73d3e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/impl/ClusterModel/function/start:
+  digest: sha256:0e7422fa9fd3cf5d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/impl/ClusterModel/function/topics:
+  digest: sha256:6c85c924fbf08055
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/impl/ClusterModel#2/function/producer_of:
+  digest: sha256:d00dd4230e3adee7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/model.rs/struct/ClusterModel:
+  digest: sha256:6664d2a56c2ac55a
+  verdict: pending

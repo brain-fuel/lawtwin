@@ -1,0 +1,9 @@
+decision/golang/twins/kafka/conformance/clients/franz-go/main.go:
+  digest: sha256:a993bff9d8b8f3f7
+  verdict: pending
+decision/golang/twins/kafka/conformance/clients/franz-go/main.go/function/control:
+  digest: sha256:f39d6f6d83da0106
+  verdict: pending
+decision/golang/twins/kafka/conformance/clients/franz-go/main.go/type/reader:
+  digest: sha256:73ebc152b7e40a53
+  verdict: pending

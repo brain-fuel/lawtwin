@@ -1,0 +1,15 @@
+decision/rust/twins/kafka/rust/src/admin.rs:
+  digest: sha256:54c6ea90a782c638
+  verdict: pending
+decision/rust/twins/kafka/rust/src/admin.rs/function/active_names:
+  digest: sha256:5563118c06301173
+  verdict: pending
+decision/rust/twins/kafka/rust/src/admin.rs/function/inspect_state:
+  digest: sha256:058d842c2385c6dd
+  verdict: pending
+decision/rust/twins/kafka/rust/src/admin.rs/function/parse_history:
+  digest: sha256:985be19170191705
+  verdict: pending
+decision/rust/twins/kafka/rust/src/admin.rs/function/router:
+  digest: sha256:13dda807a4f78858
+  verdict: pending

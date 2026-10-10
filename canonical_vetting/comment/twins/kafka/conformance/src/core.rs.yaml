@@ -1,0 +1,42 @@
+decision/rust/twins/kafka/conformance/src/core.rs:
+  digest: sha256:7c477a9db3f3ed7b
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/function/core_name:
+  digest: sha256:817d3333faf278b5
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/admin_url:
+  digest: sha256:e2d0ad9ad07036ed
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/assert_lawful:
+  digest: sha256:a4c37362e0cc04f6
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/bootstrap:
+  digest: sha256:5eb3bda9487eee90
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/call:
+  digest: sha256:15c093d5d0d79db3
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/get:
+  digest: sha256:3b476fe001cc1341
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/history_text:
+  digest: sha256:9711005600384b6e
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/post:
+  digest: sha256:44c8b2df9d951d31
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/start:
+  digest: sha256:f13df041431cb0dc
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/start_advertising:
+  digest: sha256:51d57057ac2fd76f
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/struct/TestTwin:
+  digest: sha256:c49b271e6c60550e
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/struct/TestTwin/field/admin:
+  digest: sha256:6b758f86809667a7
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/struct/TestTwin/field/kafka:
+  digest: sha256:21427de719586103
+  verdict: pending

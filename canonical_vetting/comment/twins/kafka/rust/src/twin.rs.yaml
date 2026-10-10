@@ -1,0 +1,156 @@
+decision/rust/twins/kafka/rust/src/twin.rs:
+  digest: sha256:783524c82d10cb3a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/const/NODE_ID:
+  digest: sha256:792e00ec27124528
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/function/fault_name:
+  digest: sha256:fe71a2c25f5c6633
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/call:
+  digest: sha256:7e0fd4ff5318d174
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/clear:
+  digest: sha256:225a4a911b50f9c7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/control:
+  digest: sha256:96e2b78cdfe88fa1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/expire_faults:
+  digest: sha256:150bc0eb132c0843
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/lag:
+  digest: sha256:88b140e5aa53df20
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/latency_ms:
+  digest: sha256:e01f130f07748ea7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/leader_epoch:
+  digest: sha256:10856eb7794a6911
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/member_id:
+  digest: sha256:d9f98fc596deeb79
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/new:
+  digest: sha256:45d4faea0e276ec5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/peek:
+  digest: sha256:b5de69685edb0246
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/raise:
+  digest: sha256:104cf02dcf8ecacd
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/record:
+  digest: sha256:5ef5b669eb416a4b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/stamp:
+  digest: sha256:92c1458474506298
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/take_duplicate:
+  digest: sha256:917c8b10b17c52b2
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/take_not_leader:
+  digest: sha256:6a12d63f361052de
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/timestamp:
+  digest: sha256:75d926a123f00c42
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Core/function/unavailable:
+  digest: sha256:268da1bfda98a68a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Twin/function/advertised:
+  digest: sha256:233d16caf2cba5cb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Twin/function/lock:
+  digest: sha256:3ca38f5e1dda2585
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Twin/function/new:
+  digest: sha256:45d4faea0e276ec5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/impl/Twin/function/reset:
+  digest: sha256:a9af37b795958da9
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config:
+  digest: sha256:1dda59d1f1bc91ca
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/admin_listen:
+  digest: sha256:b2c17e46ca4a6554
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/advertised:
+  digest: sha256:1f6b296c8bb2e0b8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/auto_create_topics:
+  digest: sha256:388f5339b2ab0836
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/clock:
+  digest: sha256:427ff3df11c76a93
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/clock_start_ms:
+  digest: sha256:12aaf492d779dd5b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/default_partitions:
+  digest: sha256:346addff08a89e37
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/kafka_listen:
+  digest: sha256:934cabd27ae7bb56
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/max_fetch_wait_ms:
+  digest: sha256:fa31afe03fee5a9e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/rebalance_wait_ms:
+  digest: sha256:8d07130c165e5b38
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Config/field/seed:
+  digest: sha256:2841ffcc681a1cfa
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core:
+  digest: sha256:d7604c44c0f08786
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/clock:
+  digest: sha256:8317d41a1c7b0694
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/cluster_id:
+  digest: sha256:3bce3b853e80c0cb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/faults:
+  digest: sha256:df2689bb05f16387
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/groups:
+  digest: sha256:b58c91d2cae6337b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/history:
+  digest: sha256:3a3568d6dd6a6d0c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/leader_epochs:
+  digest: sha256:844ce5fa7c9650b8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/model:
+  digest: sha256:1f341801b7e8bc6d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/not_leader:
+  digest: sha256:88f7dc9e167be72c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/random:
+  digest: sha256:69f6ac3335ba77e7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/seed:
+  digest: sha256:d02626bf474ca440
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Core/field/timestamps:
+  digest: sha256:db00e252971c9389
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Twin:
+  digest: sha256:fac979ebdcafda17
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Twin/field/config:
+  digest: sha256:17036711f293b34b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Twin/field/data:
+  digest: sha256:63bd8607fae4bae2
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Twin/field/epoch:
+  digest: sha256:862ed685cca1d7d7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/twin.rs/struct/Twin/field/kafka_addr:
+  digest: sha256:88a4c837fbea5863
+  verdict: pending

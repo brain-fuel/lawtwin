@@ -1,0 +1,180 @@
+decision/rust/twins/kafka/rust/src/force.rs:
+  digest: sha256:1738ca4347c675a5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/enum/TxnEnd:
+  digest: sha256:8ec351e5c07c33d8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/enum/TxnEnd/variant/Abort:
+  digest: sha256:4bc5256d1c924d6f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/enum/TxnEnd/variant/Commit:
+  digest: sha256:a5c5d53828724353
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/enum/TxnEnd/variant/Open:
+  digest: sha256:1be0b8e83033f470
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/function/check:
+  digest: sha256:132ee5f77e5bbb14
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/function/force:
+  digest: sha256:649d9b751e779735
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/function/law_for:
+  digest: sha256:5cb95e81ad168bf7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/function/run:
+  digest: sha256:cf1451db4a37febb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/CommitSpec:
+  digest: sha256:555ccb1edee3ae98
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/CommitSpec/field/group:
+  digest: sha256:7a3fb6aca4d5e4d1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/CommitSpec/field/offset:
+  digest: sha256:82f21c8f89a73f8a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/CommitSpec/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/CommitSpec/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc:
+  digest: sha256:522403380f5f1cdf
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/committed:
+  digest: sha256:9c4a4cf48f036729
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/groups:
+  digest: sha256:0812546d1c09b85c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/producers:
+  digest: sha256:e97f2287782298f7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/records:
+  digest: sha256:6a0b0b17fe678bbb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/reset:
+  digest: sha256:7aba2102b316b739
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/topics:
+  digest: sha256:f85de2558d097f14
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ForceDoc/field/transactions:
+  digest: sha256:541aad562b403ece
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/Forced:
+  digest: sha256:625a816fba9e3843
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/Forced/field/operations:
+  digest: sha256:afb07b17e713890c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/GroupSpec:
+  digest: sha256:e88bb1a9f7f58dc8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/GroupSpec/field/assignment:
+  digest: sha256:0cf669d672237224
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/GroupSpec/field/group:
+  digest: sha256:453664a1f583812c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/GroupSpec/field/members:
+  digest: sha256:73e4c12d87e9b807
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/MemberSpec:
+  digest: sha256:cf588a420bb5e8df
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/MemberSpec/field/member:
+  digest: sha256:8c848ccfa17e6ba7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/MemberSpec/field/topics:
+  digest: sha256:f5ee2644aa9c6604
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ProducerSpec:
+  digest: sha256:4a8175e4ba32558a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ProducerSpec/field/epoch:
+  digest: sha256:f58070d11f8ee25c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/ProducerSpec/field/transactional_id:
+  digest: sha256:f8883482ba11fb42
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordSpec:
+  digest: sha256:ededef8791651174
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordSpec/field/headers:
+  digest: sha256:7d8706f68213997c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordSpec/field/key:
+  digest: sha256:07f0bc63d426efc8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordSpec/field/value:
+  digest: sha256:0c794925b28cd6a0
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec:
+  digest: sha256:20f7d10304e16193
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec/field/log_end_offset:
+  digest: sha256:2a9e0abde62357ee
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec/field/offset:
+  digest: sha256:49207eb6939c8aee
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec/field/records:
+  digest: sha256:8f693724e0bc595b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/RecordsSpec/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/Refusal:
+  digest: sha256:bbfe43b8101d8165
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/Refusal/field/law:
+  digest: sha256:341beb5e4f74b5f6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/Refusal/field/reason:
+  digest: sha256:2b93017b793694d5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TopicSpec:
+  digest: sha256:c489249973b7f13d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TopicSpec/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TopicSpec/field/partitions:
+  digest: sha256:4d7c597978cfc699
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnRecord:
+  digest: sha256:f8082a8268d8ee5e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnRecord/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnRecord/field/record:
+  digest: sha256:4512c774c6f9693d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnRecord/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec:
+  digest: sha256:efaed3782c37ac44
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec/field/end:
+  digest: sha256:02c13be66fe86a59
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec/field/group:
+  digest: sha256:96a29940f5df082c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec/field/offsets:
+  digest: sha256:e664fd6f8ec7be24
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec/field/records:
+  digest: sha256:e9ecc55de9e38b3e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/force.rs/struct/TxnSpec/field/transactional_id:
+  digest: sha256:90a440551d01d4c3
+  verdict: pending

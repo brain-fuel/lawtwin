@@ -1,0 +1,6 @@
+decision/rust/twins/kafka/rust/build.rs:
+  digest: sha256:900b92685ee4033e
+  verdict: pending
+decision/rust/twins/kafka/rust/build.rs/function/bind:
+  digest: sha256:b9e34fa8e0b9a9ae
+  verdict: pending

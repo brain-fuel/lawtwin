@@ -1,0 +1,24 @@
+decision/rust/twins/kafka/rust/src/lib.rs:
+  digest: sha256:480dd5d1789c4753
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/function/run:
+  digest: sha256:e71a32c1861083d0
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/function/runtime:
+  digest: sha256:97b00f014921bdf3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/function/start:
+  digest: sha256:84deb3b792da0bbd
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/struct/Running:
+  digest: sha256:1df0abe709c4d14b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/struct/Running/field/admin:
+  digest: sha256:1f8ccd1689a30fea
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/struct/Running/field/kafka:
+  digest: sha256:a1476ba3aceaefbb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/lib.rs/struct/Running/field/twin:
+  digest: sha256:33bb8ea94319d810
+  verdict: pending

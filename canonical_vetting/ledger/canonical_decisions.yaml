@@ -1,8 +1,23 @@
+ledger/DEC-classic-groups-over-coordinator:
+  digest: sha256:aab48d99c9e58de4
+  verdict: pending
 ledger/DEC-contract-test-shared-cluster:
   digest: sha256:954e5994101bbf5c
   verdict: pending
+ledger/DEC-control-plane-api:
+  digest: sha256:ff4c99478a4856d2
+  verdict: pending
+ledger/DEC-core-conformance-kit:
+  digest: sha256:e01e665808d904ad
+  verdict: pending
+ledger/DEC-core-per-target:
+  digest: sha256:6ba82f80bf43abcd
+  verdict: pending
 ledger/DEC-dependency-contracts-in-lawspec:
   digest: sha256:f392b29275197e48
+  verdict: pending
+ledger/DEC-embed-generated-model:
+  digest: sha256:f9598596b9ee95e8
   verdict: pending
 ledger/DEC-fidelity:
   digest: sha256:e7183af2df73e568
@@ -10,11 +25,20 @@ ledger/DEC-fidelity:
 ledger/DEC-first-release-scope:
   digest: sha256:4ef7155f2df9545a
   verdict: pending
+ledger/DEC-force-through-operations:
+  digest: sha256:c5c14d32cdc1c93d
+  verdict: pending
+ledger/DEC-history-as-ability-calls:
+  digest: sha256:62c37e0f8c60afa8
+  verdict: pending
 ledger/DEC-kafka-broker-and-clients:
   digest: sha256:2a8509989de0db52
   verdict: pending
 ledger/DEC-kafka-model-scope:
   digest: sha256:d4030f54bb981310
+  verdict: pending
+ledger/DEC-kafka-wire-versions:
+  digest: sha256:898332bc3df1f003
   verdict: pending
 ledger/DEC-openapi-constraints-as-validation:
   digest: sha256:917c83d2b83ef898
@@ -24,6 +48,12 @@ ledger/DEC-openapi-resources:
   verdict: pending
 ledger/DEC-three-planes:
   digest: sha256:1260cf798d59b1e1
+  verdict: pending
+ledger/DEC-twin-clock:
+  digest: sha256:865bba9e838fa0d7
+  verdict: pending
+ledger/DEC-twin-file:
+  digest: sha256:5d01d41992e51185
   verdict: pending
 ledger/DEC-twins-in-rust:
   digest: sha256:853d171a370cec8b

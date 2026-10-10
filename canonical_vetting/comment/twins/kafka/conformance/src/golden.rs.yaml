@@ -1,0 +1,21 @@
+decision/rust/twins/kafka/conformance/src/golden.rs:
+  digest: sha256:2cb4272d40e63cc6
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/const/ADVERTISED:
+  digest: sha256:822db1f8ae6dd946
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/const/SEED:
+  digest: sha256:f61761392c308c5b
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/function/api_name:
+  digest: sha256:f547fd3dd9f73d45
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/function/dir:
+  digest: sha256:421aa107aff36429
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/function/read:
+  digest: sha256:185cd9503777704a
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/golden.rs/function/write:
+  digest: sha256:6f0ca559ce5e16c4
+  verdict: pending

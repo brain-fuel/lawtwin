@@ -1,0 +1,126 @@
+decision/rust/twins/kafka/rust/src/faults.rs:
+  digest: sha256:3b97775bc749750f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/const/APIS:
+  digest: sha256:e4e056a0138ec5f0
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/const/TWIN_FILE:
+  digest: sha256:7fef192697424cf1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault:
+  digest: sha256:ea83e52f80a2b578
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/BrokerUnavailable:
+  digest: sha256:dff01667f0bdc6a4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/ConsumerLag:
+  digest: sha256:089162355a4401b5
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/ConsumerLag/field/delay_ms:
+  digest: sha256:429846d806e4f721
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/ConsumerLag/field/records:
+  digest: sha256:6c016bfc25777897
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/ConsumerLag/field/topic:
+  digest: sha256:8b60d351a87f9332
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/DuplicateDelivery:
+  digest: sha256:a293518d90196358
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/DuplicateDelivery/field/count:
+  digest: sha256:2092e7fd3d640e2c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/DuplicateDelivery/field/topic:
+  digest: sha256:8b60d351a87f9332
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/LeaderChange:
+  digest: sha256:32cc1284cb64eb39
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/LeaderChange/field/partition:
+  digest: sha256:970a358330413a11
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/LeaderChange/field/topic:
+  digest: sha256:8b60d351a87f9332
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RebalanceStorm:
+  digest: sha256:6fcbd679a1d63412
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RebalanceStorm/field/group:
+  digest: sha256:e300119638cb2f85
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RebalanceStorm/field/rounds:
+  digest: sha256:ba8b410d85de103e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RequestLatency:
+  digest: sha256:2e85549d9c2f3359
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RequestLatency/field/api:
+  digest: sha256:f82ca39fe3310bf7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/enum/Fault/variant/RequestLatency/field/delay_ms:
+  digest: sha256:3c9579283730ff49
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/function/declared:
+  digest: sha256:565fc713b7ad8e12
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/function/parse:
+  digest: sha256:16061e0baaeb07cf
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/Active:
+  digest: sha256:9bbe8547c93a5e35
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/Active/field/fault:
+  digest: sha256:bf975cc93622a567
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/Active/field/id:
+  digest: sha256:a9b429419cf0520e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/Active/field/until_ms:
+  digest: sha256:5f249a947dcca180
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl:
+  digest: sha256:fd326580b2cb9316
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl/field/changes:
+  digest: sha256:5cbb44c1784bb244
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl/field/laws:
+  digest: sha256:b753438d206a7730
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl/field/params:
+  digest: sha256:108197c3fb933e47
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/FaultDecl/field/summary:
+  digest: sha256:97563a85136fccf9
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl:
+  digest: sha256:73ef84033dd7f757
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl/field/default:
+  digest: sha256:fde2d177ae866a0d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl/field/required:
+  digest: sha256:343f3a60f6cbbf45
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl/field/summary:
+  digest: sha256:cdeef9b192b40f61
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/ParamDecl/field/ty:
+  digest: sha256:1abc85c6e5f69967
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/TwinFile:
+  digest: sha256:366aab460f74e63d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/TwinFile/field/faults:
+  digest: sha256:f29bd4c8cfbc62c3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/faults.rs/struct/TwinFile/field/force:
+  digest: sha256:8ec080c11576db11
+  verdict: pending

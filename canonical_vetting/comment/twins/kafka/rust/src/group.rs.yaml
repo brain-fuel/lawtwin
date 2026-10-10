@@ -1,0 +1,174 @@
+decision/rust/twins/kafka/rust/src/group.rs:
+  digest: sha256:038463cb4dc3bf45
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/complete_round:
+  digest: sha256:c8b32b8ca319eea6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/expire_sessions:
+  digest: sha256:de52d423e5688319
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/group_error:
+  digest: sha256:321acce85f4be817
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/heartbeat:
+  digest: sha256:5f2a535740da7bf4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/join:
+  digest: sha256:ac35726739696792
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/leave:
+  digest: sha256:39ce3a7c2bcd6e2f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/start_round:
+  digest: sha256:5a47a1a2c6fd0b81
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/subscribed_topics:
+  digest: sha256:6d626138243ac9f4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/function/sync:
+  digest: sha256:d4ba382e148afc04
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code:
+  digest: sha256:7241428f0d3a955d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/ILLEGAL_GENERATION:
+  digest: sha256:46bbb0f955cb0002
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/INCONSISTENT_GROUP_PROTOCOL:
+  digest: sha256:fad3909df6ec145c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/INVALID_GROUP_ID:
+  digest: sha256:4a8a7a23672f5722
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/MEMBER_ID_REQUIRED:
+  digest: sha256:9d7eb83e53b97320
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/NONE:
+  digest: sha256:844779e7b8438e41
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/REBALANCE_IN_PROGRESS:
+  digest: sha256:5b942beb9123ee2e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/UNKNOWN_MEMBER_ID:
+  digest: sha256:d36c768885e787bf
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/module/code/const/UNKNOWN_SERVER_ERROR:
+  digest: sha256:db78b9ea038d4c9c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire:
+  digest: sha256:fc6c0e3705d21b66
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/leader:
+  digest: sha256:1a5e48986e03ff71
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/members:
+  digest: sha256:73e4c12d87e9b807
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/pending_ids:
+  digest: sha256:4ccb570504050527
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/protocol_name:
+  digest: sha256:991f506992c515ca
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/protocol_type:
+  digest: sha256:8b048cdb554716df
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/GroupWire/field/round:
+  digest: sha256:0d32899cc4327a52
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply:
+  digest: sha256:cb2be1cab5e24df3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/error:
+  digest: sha256:88f804a72fcb0c1b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/generation:
+  digest: sha256:d4f6c16383e54945
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/leader:
+  digest: sha256:f392de7ed4353e57
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/member_id:
+  digest: sha256:15c47b6865020e7d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/members:
+  digest: sha256:0ccb227630b5fd0e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/protocol_name:
+  digest: sha256:bb8be6c0a14feec8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinReply/field/protocol_type:
+  digest: sha256:a8d2978b2918cbbb
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest:
+  digest: sha256:c875764212925d8a
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/client_host:
+  digest: sha256:a92b82155fad18f7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/client_id:
+  digest: sha256:b6d4e7cf4a0a62fa
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/group:
+  digest: sha256:7a3fb6aca4d5e4d1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/instance_id:
+  digest: sha256:cafad3f80958eff3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/member_id:
+  digest: sha256:14b4828c8592d4f0
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/protocol_type:
+  digest: sha256:88699b6be049064b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/protocols:
+  digest: sha256:46fb5bfbf56a1235
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/requires_member_id:
+  digest: sha256:0fe226663f359389
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/JoinRequest/field/session_timeout_ms:
+  digest: sha256:c251a466a0849b76
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire:
+  digest: sha256:2124baac275ebd8c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/client_host:
+  digest: sha256:a92b82155fad18f7
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/client_id:
+  digest: sha256:b6d4e7cf4a0a62fa
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/in_model:
+  digest: sha256:c0d1c9ebf02f10e1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/instance_id:
+  digest: sha256:178a8d74704dd8a1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/last_seen_ms:
+  digest: sha256:24fa8b3da9115072
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/protocols:
+  digest: sha256:867d95813eb1f4ec
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/session_timeout_ms:
+  digest: sha256:7f97630545c82cc1
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/MemberWire/field/topics:
+  digest: sha256:5fc2b43918aed9cf
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/Round:
+  digest: sha256:0d78b43314583a1f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/Round/field/forced:
+  digest: sha256:5cccc839fd2344d6
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/Round/field/id:
+  digest: sha256:8f5c59f69d6a5157
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/Round/field/joined:
+  digest: sha256:149d0d833ee8bbfc
+  verdict: pending
+decision/rust/twins/kafka/rust/src/group.rs/struct/Round/field/waiters:
+  digest: sha256:55f606ea3d960115
+  verdict: pending

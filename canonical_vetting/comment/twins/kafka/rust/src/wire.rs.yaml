@@ -1,0 +1,36 @@
+decision/rust/twins/kafka/rust/src/wire.rs:
+  digest: sha256:4fd12cf87fe9c413
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/const/SUPPORTED:
+  digest: sha256:415475d99fe6ba55
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/api_name:
+  digest: sha256:a630e7c9c995a174
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/decode_batches:
+  digest: sha256:6608fcc54c83ae25
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/empty_batch:
+  digest: sha256:b08dabf4ac893b24
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/encode_assignment:
+  digest: sha256:130dc171528b4e06
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/encode_fetched:
+  digest: sha256:402ea4bd111b1b3c
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/error_code:
+  digest: sha256:0632acd685416cc3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/serve:
+  digest: sha256:7dcd5dd8c0397648
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/split_frame:
+  digest: sha256:c8e62b3831c10bb3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/topic_id:
+  digest: sha256:31f65521061dd28d
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/type/Batches:
+  digest: sha256:222c8e4268c5a2cd
+  verdict: pending

@@ -13,6 +13,9 @@ registry/containerfile:
 registry/diataxis:
   digest: sha256:da6d545b5d1d42a6
   verdict: pending
+registry/franz-go:
+  digest: sha256:027b112778c3c094
+  verdict: pending
 registry/github-rest-api-description:
   digest: sha256:ee3401194adacaa8
   verdict: pending
@@ -22,6 +25,9 @@ registry/kafka-classic-group-protocol:
 registry/kafka-design:
   digest: sha256:df8b9399f4536f0a
   verdict: pending
+registry/kafka-java-client:
+  digest: sha256:85f422b44093ae9f
+  verdict: pending
 registry/kafka-murmur2:
   digest: sha256:d7a162cc5cbe8f57
   verdict: pending
@@ -30,6 +36,9 @@ registry/kafka-protocol:
   verdict: pending
 registry/kafka-protocol-crate:
   digest: sha256:cfc093dc42825c17
+  verdict: pending
+registry/kafkajs:
+  digest: sha256:626a0db72ca81961
   verdict: pending
 registry/keep-a-changelog:
   digest: sha256:c2fd784f65633045
@@ -55,6 +64,9 @@ registry/lawtwin-plan:
 registry/lawtwin-roadmap:
   digest: sha256:3ab2cdffc1829122
   verdict: pending
+registry/librdkafka:
+  digest: sha256:a06481810e7e3d50
+  verdict: pending
 registry/openapi-3-0:
   digest: sha256:a02e881491ea5f47
   verdict: pending
@@ -69,6 +81,9 @@ registry/podman:
   verdict: pending
 registry/podman-compose:
   digest: sha256:bf1cc5949d8f9bee
+  verdict: pending
+registry/rdkafka-crate:
+  digest: sha256:6fcddd0795d3e28e
   verdict: pending
 registry/semver-2:
   digest: sha256:7ef7fa24c6809d32

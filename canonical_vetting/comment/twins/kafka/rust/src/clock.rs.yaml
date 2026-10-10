@@ -1,0 +1,39 @@
+decision/rust/twins/kafka/rust/src/clock.rs:
+  digest: sha256:eaa98b3d0781b50e
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/enum/ClockMode:
+  digest: sha256:427ff3df11c76a93
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/enum/ClockMode/variant/Frozen:
+  digest: sha256:eeb3e2cdc9054c99
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/enum/ClockMode/variant/Wall:
+  digest: sha256:da93a26165e75c57
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/function/parse_duration:
+  digest: sha256:96b19d225043d828
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Clock/function/advance:
+  digest: sha256:dd7c428f91ade35b
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Clock/function/mode:
+  digest: sha256:9dd227f08eec2ca8
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Clock/function/new:
+  digest: sha256:cb036d5024e91881
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Clock/function/now_ms:
+  digest: sha256:92c3c3e013e413f4
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Random/function/new:
+  digest: sha256:58f6591a18a8c2d3
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/impl/Random/function/next_u64:
+  digest: sha256:4810ae9c71d486ed
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/struct/Clock:
+  digest: sha256:829d885150e2290f
+  verdict: pending
+decision/rust/twins/kafka/rust/src/clock.rs/struct/Random:
+  digest: sha256:ad8dd1e5012f79ba
+  verdict: pending
