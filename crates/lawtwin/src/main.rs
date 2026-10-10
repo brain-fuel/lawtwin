@@ -2,8 +2,12 @@
 //!
 //! `lawtwin import openapi <document> --package <name> --out <dir>` turns an
 //! OpenAPI 3.0 or 3.1 document into a LawSpec dependency-contract package.
+//! `lawtwin up kafka` runs the Kafka twin, and `inspect`, `force`, `fault`,
+//! `advance`, `history`, `replay`, `laws` and `seed` drive a running twin
+//! through its control plane.
 
 mod api;
+mod control;
 mod emit;
 mod ir;
 mod names;
@@ -19,6 +23,7 @@ const USAGE: &str = "usage:
   lawtwin import openapi <document> --package <name> --out <directory>
           [--version <x.y.z>] [--tag <tag>]... [--path <path>]...
   lawtwin --version
+{CONTROL}
 
 import openapi reads an OpenAPI 3.0 or 3.1 document, in JSON or YAML, and
 writes a LawSpec package for it: its schemas as types, one ability per tag
@@ -216,6 +221,11 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     Ok(())
 }
 
+/// The usage text, with the control-plane commands.
+fn usage() -> String {
+    USAGE.replace("{CONTROL}", control::USAGE)
+}
+
 fn main() -> ExitCode {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let result = match args.first().map(String::as_str) {
@@ -227,10 +237,17 @@ fn main() -> ExitCode {
             parse(&args[2..]).and_then(|o| import_openapi(&o))
         }
         Some("help") | Some("--help") | Some("-h") | None => {
-            println!("{USAGE}");
+            println!("{}", usage());
             Ok(())
         }
-        _ => Err(format!("unknown command\n{USAGE}")),
+        Some(command) => match control::run(command, &args[1..]) {
+            Some(Ok(())) => Ok(()),
+            Some(Err((e, code))) => {
+                eprintln!("lawtwin: {e}");
+                return ExitCode::from(code);
+            }
+            None => Err(format!("unknown command\n{}", usage())),
+        },
     };
     match result {
         Ok(()) => ExitCode::SUCCESS,

@@ -1,8 +1,10 @@
 [workspace]
 resolver = "3"
-members = ["crates/lawtwin"]
-# Each contract's test project is a crate of its own, made by LawSpec.
-exclude = ["contracts"]
+members = ["crates/lawtwin", "crates/lawtwin-kafka"]
+# Each contract's test project is a crate of its own, made by LawSpec. The
+# Kafka twin depends on the Rust one by path: it runs the very code the
+# contract's laws run on.
+exclude = ["contracts", "twins"]
 
 [workspace.package]
 version = "0.1.0"
@@ -10,3 +12,9 @@ edition = "2024"
 rust-version = "1.85"
 license = "MIT"
 repository = "https://github.com/brain-fuel/lawtwin"
+
+[profile.release]
+# The twin image is one static binary; keep it small.
+strip = true
+lto = "thin"
+codegen-units = 4

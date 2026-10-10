@@ -1,0 +1,30 @@
+[package]
+name = "lawtwin-kafka"
+description = "The Kafka twin: the lawtwin.kafka reference model behind the Kafka wire protocol"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+build = "build.rs"
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# The code LawSpec generates for the Kafka contract, the same crate the
+# contract's laws run in (contracts/kafka/test/rust).
+lawspec-example = { path = "../../contracts/kafka/test/rust" }
+kafka-protocol = { version = "0.18", default-features = false, features = ["broker", "client", "gzip", "zstd", "snappy", "lz4"] }
+bytes = "1"
+indexmap = "2"
+uuid = "1"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "sync", "time", "macros", "signal"] }
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "query", "tokio"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+anyhow = "1"
+base64 = "0.22"
+crc32c = "0.6"
+
+[dev-dependencies]

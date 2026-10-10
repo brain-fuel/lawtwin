@@ -846,7 +846,7 @@ fn run_1() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -1019,7 +1019,7 @@ fn run_1() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -1671,7 +1671,7 @@ fn run_2() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -1844,7 +1844,7 @@ fn run_2() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -2405,7 +2405,7 @@ fn run_3() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -2939,7 +2939,7 @@ fn run_4() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -3623,7 +3623,7 @@ fn run_5() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -4284,7 +4284,7 @@ fn run_6() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -5033,7 +5033,7 @@ fn run_7() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -5756,7 +5756,7 @@ fn run_8() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -5840,9 +5840,9 @@ fn run_8() -> ls::Result<()> {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 })
+// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 })
+// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -6449,13 +6449,13 @@ fn law_9(
                                 "__1__new) And match (attempt (addPartitionsToT",
                                 "xnRequest (_input1) (match (_match1__1__old) {",
                                 " lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                                "::ProducerIdAndEpoch _match3__0__lawspecField2",
-                                "63x0 _match3__0__lawspecField263x1 -> _match3_",
-                                "_0__lawspecField263x0 }) (match (_match1__1__o",
+                                "::ProducerIdAndEpoch _match3__0__lawspecField1",
+                                "91x0 _match3__0__lawspecField191x1 -> _match3_",
+                                "_0__lawspecField191x0 }) (match (_match1__1__o",
                                 "ld) { lawtwin.kafka.model::type::ProducerIdAnd",
                                 "Epoch::ProducerIdAndEpoch _match3__0__lawspecF",
-                                "ield264x0 _match3__0__lawspecField264x1 -> _ma",
-                                "tch3__0__lawspecField264x1 }) (List::Cons(_let",
+                                "ield192x0 _match3__0__lawspecField192x1 -> _ma",
+                                "tch3__0__lawspecField192x1 }) (List::Cons(_let",
                                 "0__tp, List::Nil())))) { Either::Left _match3_",
                                 "_0__lawspecFailure -> match (_match3__0__lawsp",
                                 "ecFailure) { lawtwin.kafka.model::type::KafkaE",
@@ -6933,7 +6933,7 @@ fn run_9() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -7019,9 +7019,9 @@ fn run_9() -> ls::Result<()> {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 })
+// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 })
+// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -7602,12 +7602,12 @@ fn law_10(
                             "TxnRequest (_input1) (match (_match1__1__old) ",
                             "{ lawtwin.kafka.model::type::ProducerIdAndEpoc",
                             "h::ProducerIdAndEpoch _match3__0__lawspecField",
-                            "263x0 _match3__0__lawspecField263x1 -> _match3",
-                            "__0__lawspecField263x0 }) (match (_match1__1__",
+                            "191x0 _match3__0__lawspecField191x1 -> _match3",
+                            "__0__lawspecField191x0 }) (match (_match1__1__",
                             "old) { lawtwin.kafka.model::type::ProducerIdAn",
                             "dEpoch::ProducerIdAndEpoch _match3__0__lawspec",
-                            "Field264x0 _match3__0__lawspecField264x1 -> _m",
-                            "atch3__0__lawspecField264x1 }) (List::Cons(_le",
+                            "Field192x0 _match3__0__lawspecField192x1 -> _m",
+                            "atch3__0__lawspecField192x1 }) (List::Cons(_le",
                             "t0__tp, List::Nil())))) { Either::Left _match3",
                             "__0__lawspecFailure -> match (_match3__0__laws",
                             "pecFailure) { lawtwin.kafka.model::type::Kafka",
@@ -8070,7 +8070,7 @@ fn run_10() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -8647,7 +8647,7 @@ fn run_11() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -9202,7 +9202,7 @@ fn run_12() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -9775,7 +9775,7 @@ fn run_13() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -10326,7 +10326,7 @@ fn run_14() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -14843,7 +14843,7 @@ fn run_21() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -15387,7 +15387,7 @@ fn run_22() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -22094,7 +22094,7 @@ fn run_37() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -22448,7 +22448,7 @@ fn run_37() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -22526,8 +22526,8 @@ fn run_37() -> ls::Result<()> {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-// _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
 fn law_38(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -22695,9 +22695,9 @@ fn law_38(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                                 "0__e -> false; Either::Right _match2__1__lates",
                                 "t -> (_match2__1__latest > match (_match0__1__",
                                 "md) { lawtwin.kafka::type::RecordMetadata::Rec",
-                                "ordMetadata _match3__0__lawspecField69x0 _matc",
-                                "h3__0__lawspecField69x1 -> _match3__0__lawspec",
-                                "Field69x1 }) } } = true",
+                                "ordMetadata _match3__0__lawspecField55x0 _matc",
+                                "h3__0__lawspecField55x1 -> _match3__0__lawspec",
+                                "Field55x1 }) } } = true",
                             ),
                             left,
                             right,
@@ -23354,7 +23354,7 @@ fn run_38() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -24328,7 +24328,7 @@ fn run_39() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -25509,7 +25509,7 @@ fn run_41() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -26127,7 +26127,7 @@ fn run_42() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -26785,7 +26785,7 @@ fn run_43() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -28694,7 +28694,7 @@ fn run_46() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -29049,7 +29049,7 @@ fn run_46() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -30190,7 +30190,7 @@ fn search_case_48(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } ==
+// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
 // _match0__1__gen)) } } = true
 fn law_49(
     ctx: &mut ls::Context,
@@ -30407,8 +30407,8 @@ fn law_49(
                                 "eGroup (_input2)) == _match1__1__tps) And (mat",
                                 "ch (describeGroup (_input2)) { lawtwin.kafka.m",
                                 "odel::type::GroupView::GroupView _match2__0__l",
-                                "awspecField71x0 _match2__0__lawspecField71x1 -",
-                                "> _match2__0__lawspecField71x0 } == _match0__1",
+                                "awspecField55x0 _match2__0__lawspecField55x1 -",
+                                "> _match2__0__lawspecField55x0 } == _match0__1",
                                 "__gen)) } } = true",
                             ),
                             left,
@@ -30784,7 +30784,7 @@ fn search_case_49(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } ==
+// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
 // _match0__1__gen)) } } = true
 fn law_50(
     ctx: &mut ls::Context,
@@ -30991,8 +30991,8 @@ fn law_50(
                             "beGroup (_input2)) == _match1__1__tps) And (ma",
                             "tch (describeGroup (_input2)) { lawtwin.kafka.",
                             "model::type::GroupView::GroupView _match2__0__",
-                            "lawspecField71x0 _match2__0__lawspecField71x1 ",
-                            "-> _match2__0__lawspecField71x0 } == _match0__",
+                            "lawspecField55x0 _match2__0__lawspecField55x1 ",
+                            "-> _match2__0__lawspecField55x0 } == _match0__",
                             "1__gen)) } } = true",
                         ),
                         left,
@@ -34750,7 +34750,7 @@ fn search_case_54(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } >
+// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
 // _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
 // Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -35108,8 +35108,8 @@ fn law_55(
                                 "e; Either::Right _match1__1__railwayValue1 -> ",
                                 "true } And (match (describeGroup (_input1)) { ",
                                 "lawtwin.kafka.model::type::GroupView::GroupVie",
-                                "w _match1__0__lawspecField119x0 _match1__0__la",
-                                "wspecField119x1 -> _match1__0__lawspecField119",
+                                "w _match1__0__lawspecField101x0 _match1__0__la",
+                                "wspecField101x1 -> _match1__0__lawspecField101",
                                 "x0 } > _match0__1__gen)) And match (attempt (h",
                                 "eartbeat (_input1) (_input2) (_match0__1__gen)",
                                 ")) { Either::Left _match1__0__lawspecFailure -",
@@ -35474,7 +35474,7 @@ fn search_case_55(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } >
+// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
 // _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
 // Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -35825,9 +35825,9 @@ fn law_56(
                             "se; Either::Right _match1__1__railwayValue1 ->",
                             " true } And (match (describeGroup (_input1)) {",
                             " lawtwin.kafka.model::type::GroupView::GroupVi",
-                            "ew _match1__0__lawspecField119x0 _match1__0__l",
-                            "awspecField119x1 -> _match1__0__lawspecField11",
-                            "9x0 } > _match0__1__gen)) And match (attempt (",
+                            "ew _match1__0__lawspecField101x0 _match1__0__l",
+                            "awspecField101x1 -> _match1__0__lawspecField10",
+                            "1x0 } > _match0__1__gen)) And match (attempt (",
                             "heartbeat (_input1) (_input2) (_match0__1__gen",
                             "))) { Either::Left _match1__0__lawspecFailure ",
                             "-> match (_match1__0__lawspecFailure) { lawtwi",
@@ -38233,7 +38233,7 @@ fn run_59() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -38312,8 +38312,8 @@ fn run_59() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-// _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
 fn law_60(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -38544,8 +38544,8 @@ fn law_60(
                                 "== Either::Right(unitValue)) And (committedFro",
                                 "m (_let0__tp) (match (_match1__1__md) { lawtwi",
                                 "n.kafka::type::RecordMetadata::RecordMetadata ",
-                                "_match2__0__lawspecField186x0 _match2__0__laws",
-                                "pecField186x1 -> _match2__0__lawspecField186x1",
+                                "_match2__0__lawspecField162x0 _match2__0__laws",
+                                "pecField162x1 -> _match2__0__lawspecField162x1",
                                 " }) == List::Nil())) }) = true",
                             ),
                             left,
@@ -39211,7 +39211,7 @@ fn run_60() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -39294,11 +39294,11 @@ fn run_60() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-// _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
 // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
 // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 })
+// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
 // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 fn law_61(
     ctx: &mut ls::Context,
@@ -39656,14 +39656,14 @@ fn law_61(
                                 "_railwayValue3 -> true } And (committedFrom (_",
                                 "let0__tp) (match (_match1__1__md) { lawtwin.ka",
                                 "fka::type::RecordMetadata::RecordMetadata _mat",
-                                "ch2__0__lawspecField267x0 _match2__0__lawspecF",
-                                "ield267x1 -> _match2__0__lawspecField267x1 }) ",
+                                "ch2__0__lawspecField219x0 _match2__0__lawspecF",
+                                "ield219x1 -> _match2__0__lawspecField219x1 }) ",
                                 "== List::Nil())) And (commitTransaction == Eit",
                                 "her::Right(unitValue))) And (committedFrom (_l",
                                 "et0__tp) (match (_match1__1__md) { lawtwin.kaf",
                                 "ka::type::RecordMetadata::RecordMetadata _matc",
-                                "h2__0__lawspecField288x0 _match2__0__lawspecFi",
-                                "eld288x1 -> _match2__0__lawspecField288x1 }) =",
+                                "h2__0__lawspecField232x0 _match2__0__lawspecFi",
+                                "eld232x1 -> _match2__0__lawspecField232x1 }) =",
                                 "= List::Cons(_input2, List::Cons(_input3, List",
                                 "::Nil())))) }) = true",
                             ),
@@ -40484,7 +40484,7 @@ fn run_61() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -40839,7 +40839,7 @@ fn run_61() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -42726,7 +42726,7 @@ fn run_64() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -43080,7 +43080,7 @@ fn run_64() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -43158,8 +43158,8 @@ fn run_64() -> ls::Result<()> {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-// _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
 fn law_65(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_cluster = std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
     let installing = vec![
@@ -43318,9 +43318,9 @@ fn law_65(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                             "2__0__e -> false; Either::Right _match2__1__la",
                             "test -> (_match2__1__latest > match (_match0__",
                             "1__md) { lawtwin.kafka::type::RecordMetadata::",
-                            "RecordMetadata _match3__0__lawspecField69x0 _m",
-                            "atch3__0__lawspecField69x1 -> _match3__0__laws",
-                            "pecField69x1 }) } } = true",
+                            "RecordMetadata _match3__0__lawspecField55x0 _m",
+                            "atch3__0__lawspecField55x1 -> _match3__0__laws",
+                            "pecField55x1 }) } } = true",
                         ),
                         left,
                         right,
@@ -43962,7 +43962,7 @@ fn run_65() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -44913,7 +44913,7 @@ fn run_66() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -46049,7 +46049,7 @@ fn run_68() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -46644,7 +46644,7 @@ fn run_69() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -47280,7 +47280,7 @@ fn run_70() -> ls::Result<()> {
                     ]),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
@@ -49121,7 +49121,7 @@ fn run_73() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -49476,7 +49476,7 @@ fn run_73() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -50401,7 +50401,7 @@ fn run_74() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -50480,8 +50480,8 @@ fn run_74() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-// _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
 fn law_75(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -50705,9 +50705,9 @@ fn law_75(
                             "on == Either::Right(unitValue)) And (committed",
                             "From (_let0__tp) (match (_match1__1__md) { law",
                             "twin.kafka::type::RecordMetadata::RecordMetada",
-                            "ta _match2__0__lawspecField186x0 _match2__0__l",
-                            "awspecField186x1 -> _match2__0__lawspecField18",
-                            "6x1 }) == List::Nil())) }) = true",
+                            "ta _match2__0__lawspecField162x0 _match2__0__l",
+                            "awspecField162x1 -> _match2__0__lawspecField16",
+                            "2x1 }) == List::Nil())) }) = true",
                         ),
                         left,
                         right,
@@ -51357,7 +51357,7 @@ fn run_75() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -51440,11 +51440,11 @@ fn run_75() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-// _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
 // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
 // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 })
+// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
 // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 fn law_76(
     ctx: &mut ls::Context,
@@ -51790,14 +51790,14 @@ fn law_76(
                             "_1__railwayValue3 -> true } And (committedFrom",
                             " (_let0__tp) (match (_match1__1__md) { lawtwin",
                             ".kafka::type::RecordMetadata::RecordMetadata _",
-                            "match2__0__lawspecField267x0 _match2__0__lawsp",
-                            "ecField267x1 -> _match2__0__lawspecField267x1 ",
+                            "match2__0__lawspecField219x0 _match2__0__lawsp",
+                            "ecField219x1 -> _match2__0__lawspecField219x1 ",
                             "}) == List::Nil())) And (commitTransaction == ",
                             "Either::Right(unitValue))) And (committedFrom ",
                             "(_let0__tp) (match (_match1__1__md) { lawtwin.",
                             "kafka::type::RecordMetadata::RecordMetadata _m",
-                            "atch2__0__lawspecField288x0 _match2__0__lawspe",
-                            "cField288x1 -> _match2__0__lawspecField288x1 }",
+                            "atch2__0__lawspecField232x0 _match2__0__lawspe",
+                            "cField232x1 -> _match2__0__lawspecField232x1 }",
                             ") == List::Cons(_input2, List::Cons(_input3, L",
                             "ist::Nil())))) }) = true",
                         ),
@@ -52603,7 +52603,7 @@ fn run_76() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,
@@ -52958,7 +52958,7 @@ fn run_76() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                     64,
                     64,

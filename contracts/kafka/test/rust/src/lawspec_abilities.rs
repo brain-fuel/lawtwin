@@ -83,583 +83,442 @@ pub mod lawtwin_kafka {
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
     }
 
-    /// The spec handler cluster for Broker, Admin, GroupCoordinator.
+    /// The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed.
     pub struct Cluster {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<crate::lawspec_definitions::typed::BrokerState>,
     }
 
     impl Cluster {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = Some(crate::lawspec_definitions::evaluate_61(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
+            let ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::clusterStart_42(
+                (),
+            )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_kafka::Broker for Cluster {
         fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_41(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreateTopic_30(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_39(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreatePartitions_29(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_56(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int32", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterMetadataRequest_40(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_60(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterProduceRequest_41(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <Option<crate::lawspec_definitions::typed::ProducerTag> as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<crate::lawspec_definitions::typed::Record> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_46(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::FetchResult",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::FetchResult as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchRequest_34(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_55(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterListOffsets_39(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(value1),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_49(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::ProducerIdAndEpoch as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterInitProducerIdRequest_36(
+                state.clone(),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_36(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterAddPartitionsToTxnRequest_27(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::TopicPartition> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_64(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-                ls::IntoValue::into_value(value4),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterTxnOffsetCommitRequest_44(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(value3),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value4),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_44(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterEndTxnRequest_32(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <bool as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_51(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterJoinGroup_37(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_63(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.kafka.model::type::TopicPartition",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterSyncGroup_43(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_48(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterHeartbeat_35(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_53(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterLeaveGroup_38(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn describeGroupRequest(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_43(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterDescribeGroup_31(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_57(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCommitOffsets_28(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn offsetFetchRequest(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_58(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchOffset_33(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_kafka::Admin for Cluster {
         fn createTopic(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_40(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreateTopic_30(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createPartitions(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_38(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreatePartitions_29(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_59(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int32", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterMetadataRequest_40(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_54(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterListOffsets_39(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(value1),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_kafka::GroupCoordinator for Cluster {
         fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_50(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterJoinGroup_37(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_62(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.kafka.model::type::TopicPartition",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterSyncGroup_43(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_47(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterHeartbeat_35(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_52(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterLeaveGroup_38(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_42(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterDescribeGroup_31(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_37(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCommitOffsets_28(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_45(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchOffset_33(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
-    /// The spec handler murmurPartitioner for Partitioner.
+    /// The spec handler murmurPartitioner for Partitioner, with its state typed.
     pub struct MurmurPartitioner {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<()>,
     }
 
     impl MurmurPartitioner {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
+            let ctx = ctx.clone();
+            let state = ();
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_kafka::Partitioner for MurmurPartitioner {
         fn choosePartition(&self, value0: std::option::Option<std::vec::Vec<u8>>, value1: i32) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_322(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let result = crate::lawspec_definitions::typed::murmurPartitionerChoosePartition_242(
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            ls::fast::Public::to_native(&result)
         }
     }
 
@@ -680,14 +539,14 @@ pub mod lawtwin_kafka {
 
     impl super::lawtwin_kafka::Producer for KafkaProducer {
         fn send(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_104(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -700,11 +559,11 @@ pub mod lawtwin_kafka {
         }
 
         fn flush(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_101(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_101(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -714,11 +573,11 @@ pub mod lawtwin_kafka {
         }
 
         fn enableIdempotence(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_100(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_100(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -731,11 +590,11 @@ pub mod lawtwin_kafka {
         }
 
         fn retryLastSend(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_103(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_103(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -748,11 +607,11 @@ pub mod lawtwin_kafka {
         }
 
         fn producerIdentity(&self) -> std::option::Option<crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_102(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_102(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -782,14 +641,14 @@ pub mod lawtwin_kafka {
 
     impl super::lawtwin_kafka::Consumer for KafkaConsumer {
         fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_90(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -799,16 +658,16 @@ pub mod lawtwin_kafka {
         }
 
         fn subscribe(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_99(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
                 ls::IntoValue::into_value(value2),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -827,14 +686,14 @@ pub mod lawtwin_kafka {
         }
 
         fn poll(&self, value0: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::ConsumerRecord>> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_94(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -853,11 +712,11 @@ pub mod lawtwin_kafka {
         }
 
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_92(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_92(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -870,15 +729,15 @@ pub mod lawtwin_kafka {
         }
 
         fn seek(&self, value0: crate::lawspec_data::TopicPartition, value1: i64) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_96(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -891,14 +750,14 @@ pub mod lawtwin_kafka {
         }
 
         fn position(&self, value0: crate::lawspec_data::TopicPartition) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_95(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -911,14 +770,14 @@ pub mod lawtwin_kafka {
         }
 
         fn committedOffset(&self, value0: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_93(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -928,14 +787,14 @@ pub mod lawtwin_kafka {
         }
 
         fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_97(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -945,11 +804,11 @@ pub mod lawtwin_kafka {
         }
 
         fn close(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_91(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_91(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -976,14 +835,14 @@ pub mod lawtwin_kafka {
 
     impl super::lawtwin_kafka::Transactions for KafkaTransactions {
         fn initTransactions(&self, value0: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_110(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -996,11 +855,11 @@ pub mod lawtwin_kafka {
         }
 
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_108(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_108(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -1013,14 +872,14 @@ pub mod lawtwin_kafka {
         }
 
         fn addPartitionsToTransaction(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_107(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -1033,14 +892,14 @@ pub mod lawtwin_kafka {
         }
 
         fn sendInTransaction(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_111(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -1053,15 +912,15 @@ pub mod lawtwin_kafka {
         }
 
         fn sendOffsetsToTransaction(&self, value0: std::string::String, value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_112(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -1074,11 +933,11 @@ pub mod lawtwin_kafka {
         }
 
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_109(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_109(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -1091,11 +950,11 @@ pub mod lawtwin_kafka {
         }
 
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_106(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_106(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3031,583 +2890,442 @@ pub mod lawtwin_kafka {
 pub mod contracttest_kafka {
     use super::ls;
 
-    /// The spec handler cluster for Broker, Admin, GroupCoordinator.
+    /// The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed.
     pub struct Cluster {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<crate::lawspec_definitions::typed::BrokerState>,
     }
 
     impl Cluster {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = Some(crate::lawspec_definitions::evaluate_567(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
+            let ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::clusterStart_42(
+                (),
+            )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_kafka::Broker for Cluster {
         fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_547(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreateTopic_30(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_545(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreatePartitions_29(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_562(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int32", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterMetadataRequest_40(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_566(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterProduceRequest_41(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <Option<crate::lawspec_definitions::typed::ProducerTag> as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<crate::lawspec_definitions::typed::Record> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_552(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::FetchResult",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::FetchResult as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchRequest_34(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_561(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterListOffsets_39(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(value1),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_555(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::ProducerIdAndEpoch as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterInitProducerIdRequest_36(
+                state.clone(),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_542(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterAddPartitionsToTxnRequest_27(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::TopicPartition> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_570(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-                ls::IntoValue::into_value(value4),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterTxnOffsetCommitRequest_44(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <ls::fast::Text as ls::fast::Public>::from_native(value3),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value4),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_550(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterEndTxnRequest_32(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i64 as ls::fast::Public>::from_native(value1),
+                <i16 as ls::fast::Public>::from_native(value2),
+                <bool as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_557(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterJoinGroup_37(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_569(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.kafka.model::type::TopicPartition",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterSyncGroup_43(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_554(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterHeartbeat_35(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_559(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterLeaveGroup_38(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn describeGroupRequest(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_549(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterDescribeGroup_31(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_563(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCommitOffsets_28(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn offsetFetchRequest(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_564(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchOffset_33(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_kafka::Admin for Cluster {
         fn createTopic(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_546(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreateTopic_30(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createPartitions(&self, value0: std::string::String, value1: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_544(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCreatePartitions_29(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_565(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int32", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterMetadataRequest_40(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_560(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int64",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterListOffsets_39(
+                state.clone(),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::OffsetSpec as ls::fast::Public>::from_native(value1),
+                <crate::lawspec_definitions::typed::IsolationLevel as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_kafka::GroupCoordinator for Cluster {
         fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_556(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterJoinGroup_37(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_568(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.kafka.model::type::TopicPartition",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterSyncGroup_43(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_553(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterHeartbeat_35(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_558(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterLeaveGroup_38(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_548(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterDescribeGroup_31(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_543(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterCommitOffsets_28(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <ls::fast::Text as ls::fast::Public>::from_native(value1),
+                <i32 as ls::fast::Public>::from_native(value2),
+                <ls::fast::List<crate::lawspec_definitions::typed::OffsetEntry> as ls::fast::Public>::from_native(value3),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_551(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::clusterFetchOffset_33(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <crate::lawspec_definitions::typed::TopicPartition as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
-    /// The spec handler murmurPartitioner for Partitioner.
+    /// The spec handler murmurPartitioner for Partitioner, with its state typed.
     pub struct MurmurPartitioner {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<()>,
     }
 
     impl MurmurPartitioner {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
+            let ctx = ctx.clone();
+            let state = ();
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_kafka::Partitioner for MurmurPartitioner {
         fn choosePartition(&self, value0: std::option::Option<std::vec::Vec<u8>>, value1: i32) -> i32 {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_865(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Int32",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let result = crate::lawspec_definitions::typed::murmurPartitionerChoosePartition_242(
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value0),
+                <i32 as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            ls::fast::Public::to_native(&result)
         }
     }
 
@@ -3628,14 +3346,14 @@ pub mod contracttest_kafka {
 
     impl super::lawtwin_kafka::Producer for KafkaProducer {
         fn send(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_585(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3648,11 +3366,11 @@ pub mod contracttest_kafka {
         }
 
         fn flush(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_582(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_582(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -3662,11 +3380,11 @@ pub mod contracttest_kafka {
         }
 
         fn enableIdempotence(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_581(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_581(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3679,11 +3397,11 @@ pub mod contracttest_kafka {
         }
 
         fn retryLastSend(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_584(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_584(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3696,11 +3414,11 @@ pub mod contracttest_kafka {
         }
 
         fn producerIdentity(&self) -> std::option::Option<crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_583(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_583(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -3730,14 +3448,14 @@ pub mod contracttest_kafka {
 
     impl super::lawtwin_kafka::Consumer for KafkaConsumer {
         fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_571(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -3747,16 +3465,16 @@ pub mod contracttest_kafka {
         }
 
         fn subscribe(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_580(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
                 ls::IntoValue::into_value(value2),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3775,14 +3493,14 @@ pub mod contracttest_kafka {
         }
 
         fn poll(&self, value0: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::ConsumerRecord>> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_575(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3801,11 +3519,11 @@ pub mod contracttest_kafka {
         }
 
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_573(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_573(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3818,15 +3536,15 @@ pub mod contracttest_kafka {
         }
 
         fn seek(&self, value0: crate::lawspec_data::TopicPartition, value1: i64) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_577(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3839,14 +3557,14 @@ pub mod contracttest_kafka {
         }
 
         fn position(&self, value0: crate::lawspec_data::TopicPartition) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_576(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3859,14 +3577,14 @@ pub mod contracttest_kafka {
         }
 
         fn committedOffset(&self, value0: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_574(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -3876,14 +3594,14 @@ pub mod contracttest_kafka {
         }
 
         fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_578(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -3893,11 +3611,11 @@ pub mod contracttest_kafka {
         }
 
         fn close(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_572(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_572(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Unit",
@@ -3924,14 +3642,14 @@ pub mod contracttest_kafka {
 
     impl super::lawtwin_kafka::Transactions for KafkaTransactions {
         fn initTransactions(&self, value0: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_591(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3944,11 +3662,11 @@ pub mod contracttest_kafka {
         }
 
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_589(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_589(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3961,14 +3679,14 @@ pub mod contracttest_kafka {
         }
 
         fn addPartitionsToTransaction(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_588(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -3981,14 +3699,14 @@ pub mod contracttest_kafka {
         }
 
         fn sendInTransaction(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_592(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -4001,15 +3719,15 @@ pub mod contracttest_kafka {
         }
 
         fn sendOffsetsToTransaction(&self, value0: std::string::String, value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
             let pair = crate::lawspec_definitions::evaluate_593(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
+                self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -4022,11 +3740,11 @@ pub mod contracttest_kafka {
         }
 
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_590(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_590(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",
@@ -4039,11 +3757,11 @@ pub mod contracttest_kafka {
         }
 
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
+            let mut guard = self.ctx.lock().unwrap_or_else(|p| p.into_inner());
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_587(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_587(ctx, vec![self.state.lock().unwrap_or_else(|p| p.into_inner()).clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
+            *self.state.lock().unwrap_or_else(|p| p.into_inner()) = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Either",

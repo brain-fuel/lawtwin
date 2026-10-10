@@ -1,0 +1,109 @@
+{
+  "lawtwin": 1,
+  "twin": "kafka",
+  "contract": {
+    "package": "lawtwin.kafka",
+    "version": "0.1.0",
+    "ability": "Broker",
+    "handler": "cluster"
+  },
+  "about": "The Kafka twin's control plane: the faults it can be told to show, and what each does to the contract's laws. The contract itself (src/) never mentions them. A law not named under a fault holds while the fault is active, for every request the twin answers.",
+  "faults": [
+    {
+      "name": "broker-unavailable",
+      "summary": "The broker cannot be reached: every connection is closed as soon as a request arrives, and new connections are closed at once.",
+      "params": [
+        { "name": "for", "type": "duration", "required": false, "summary": "How long, on the twin clock; without it, until the fault is cleared." }
+      ],
+      "changes": "No request reaches the model while the fault is active, so the model's state does not change. Clients see disconnections and retry; requests they retry after it ends are answered as usual.",
+      "laws": {
+        "a flushed record is in the log": "Holds, later: a flush cannot complete while the broker is unreachable, and completes once it is reachable again."
+      }
+    },
+    {
+      "name": "leader-change",
+      "summary": "A partition's leader changes: its leader epoch goes up, and the next produce, fetch or list-offsets request for it is answered NOT_LEADER_OR_FOLLOWER without reaching the model, so the client refreshes its metadata and retries.",
+      "params": [
+        { "name": "topic", "type": "topic", "required": false, "summary": "The topic; without it, every topic." },
+        { "name": "partition", "type": "int32", "required": false, "summary": "The partition; without it, every partition of the topic." }
+      ],
+      "changes": "The refused request never reaches the model. The single broker stays the leader under a new leader epoch, which Metadata reports.",
+      "laws": {
+        "an idempotent retry is written once": "Holds: the refused batch was never written, so the retry is its first write.",
+        "an idempotent producer's retried send is written once": "Holds, for the same reason."
+      }
+    },
+    {
+      "name": "consumer-lag",
+      "summary": "Consumers fall behind: each fetch returns at most a few records per partition, after a delay.",
+      "params": [
+        { "name": "records", "type": "int32", "required": false, "default": 1, "summary": "The most records one fetch returns from a partition; 0 returns none." },
+        { "name": "delay", "type": "duration", "required": false, "default": "0ms", "summary": "How long, in real time, each fetch response is held back." },
+        { "name": "topic", "type": "topic", "required": false, "summary": "The topic; without it, every topic." },
+        { "name": "for", "type": "duration", "required": false, "summary": "How long, on the twin clock; without it, until the fault is cleared." }
+      ],
+      "changes": "Each fetchRequest asks the model for at most `records` records. A fetch of fewer records is a fetch the contract allows; nothing is written.",
+      "laws": {
+        "a batch reads back whole and in order": "Holds across fetches: a batch is read whole and in order over as many fetches as it needs, not in one.",
+        "a committed transaction is read whole and in order": "Holds across fetches, as above.",
+        "committed records are read committed together and in order": "Holds across fetches: no record of the transaction is visible before the commit, and after it they are read in order over several fetches.",
+        "a poll reads each partition in offset order": "Holds: a poll returns fewer records, still in offset order."
+      }
+    },
+    {
+      "name": "duplicate-delivery",
+      "summary": "An acknowledgement is lost: the next produce requests are written, then answered REQUEST_TIMED_OUT, so the producer sends the same batch again.",
+      "params": [
+        { "name": "count", "type": "int32", "required": false, "default": 1, "summary": "How many produce requests lose their acknowledgement." },
+        { "name": "topic", "type": "topic", "required": false, "summary": "The topic; without it, every topic." }
+      ],
+      "changes": "Each affected batch is written by the model before the error is answered. An idempotent or transactional producer's resend carries the same producer id, epoch and sequence, and the model writes it once. A producer without idempotence writes it again.",
+      "laws": {
+        "an idempotent retry is written once": "Holds, and this fault exercises it: the resend gets the first write's offset and adds nothing to the log.",
+        "an idempotent producer's retried send is written once": "Holds, and this fault exercises it.",
+        "records sent to one partition are read in the order sent": "Changed for a producer without idempotence: its record is in the log twice, so a later send's offset is past both copies. Order is kept. With idempotence the law holds as stated."
+      }
+    },
+    {
+      "name": "rebalance-storm",
+      "summary": "A group rebalances again and again: every member is told to rejoin, and each round starts a new generation.",
+      "params": [
+        { "name": "rounds", "type": "int32", "required": false, "default": 3, "summary": "How many rebalances." },
+        { "name": "group", "type": "group", "required": false, "summary": "The group; without it, every group with members." }
+      ],
+      "changes": "Heartbeats answer REBALANCE_IN_PROGRESS until every member has rejoined. To start a new generation the coordinator takes the round's leader out and back in (leaveGroupRequest, then joinGroupRequest, with source fault), as the contract's coordinator does when a member leaves and rejoins.",
+      "laws": {
+        "every partition has exactly one owner in a generation": "Holds in every generation of the storm.",
+        "the coordinator assigns every partition exactly once": "Holds in every generation of the storm.",
+        "leaving starts a new generation": "Holds, and this fault exercises it.",
+        "a commit from an older generation is refused": "Holds: a member that commits with the generation it had before a round gets ILLEGAL_GENERATION.",
+        "a restarted consumer resumes at its committed offset": "Holds: records after the last committed offset may be delivered again, never lost."
+      }
+    },
+    {
+      "name": "request-latency",
+      "summary": "Responses are slow: each response is held back before it is sent.",
+      "params": [
+        { "name": "delay", "type": "duration", "required": true, "summary": "How long, in real time, each response is held back." },
+        { "name": "api", "type": "api", "required": false, "summary": "Only this request type, such as Produce or Fetch; without it, every request." },
+        { "name": "for", "type": "duration", "required": false, "summary": "How long, on the twin clock; without it, until the fault is cleared." }
+      ],
+      "changes": "Nothing about what is answered changes, only when.",
+      "laws": {}
+    }
+  ],
+  "force": {
+    "summary": "A forced state is reached through the contract's own operations, from the twin's current state, so it is a state the model can be in. A forced state that no sequence of operations reaches is refused with the law that forbids it, before anything is applied.",
+    "refusals": {
+      "an invalid topic name is refused": "A topic whose name is empty, longer than 249, `.` or `..`, or has a character other than ASCII letters, digits, `.`, `_` and `-`.",
+      "a new topic has the partitions asked for": "A topic with fewer than 1 or more than 1024 partitions.",
+      "a topic's partitions only grow": "A topic with fewer partitions than it has now.",
+      "a send to a partition the topic lacks is refused": "Records or committed offsets for a partition the topic does not have.",
+      "offsets in a partition are dense and increasing": "Records at an offset other than the partition's log end, or a log end offset lower than the current one: logs never shrink, and an offset is never skipped.",
+      "a new epoch fences the older producer": "A transactional producer with an epoch lower than its current one, or above 32767: epochs only go up.",
+      "every partition has exactly one owner in a generation": "A group assignment that gives a partition two owners, or none.",
+      "the coordinator assigns every partition exactly once": "A group assignment other than the one the coordinator computes for its members.",
+      "a transaction must begin before it ends": "A transaction that ends without a partition or offset in it."
+    }
+  }
+}
