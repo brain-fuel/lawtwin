@@ -290,6 +290,9 @@ pub enum Source {
     Coordinator,
     /// A replayed history.
     Replay,
+    /// State a real broker already held when a recording of it started,
+    /// written as the operations that reach it.
+    Observed,
 }
 
 /// One entry of the history.

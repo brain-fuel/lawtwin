@@ -32,4 +32,9 @@ anyhow = "1"
 base64 = "0.22"
 crc32c = "0.6"
 
+[features]
+# A deliberately broken core that ignores idempotent dedupe, built only by
+# the record-and-replay test to show that a replay catches it.
+mutant-ignore-dedupe = []
+
 [dev-dependencies]

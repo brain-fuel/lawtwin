@@ -75,6 +75,27 @@ pub fn error_code(f: &Failure) -> i16 {
     }
 }
 
+/// Kafka's error code for a refusal, as the request's API and version spell
+/// it. Kafka answers a fenced producer INVALID_PRODUCER_EPOCH on the
+/// versions of AddPartitionsToTxn, AddOffsetsToTxn and EndTxn from before
+/// PRODUCER_FENCED (KIP-588, version 2), and on every version of
+/// TxnOffsetCommit, whose fencing the group coordinator checks.
+/// ref:DEC-fenced-producer-spelling
+pub fn error_code_for(f: &Failure, key: ApiKey, version: i16) -> i16 {
+    let code = error_code(f);
+    if code == 90 && fenced_as_epoch(key, version) { 47 } else { code }
+}
+
+/// Whether Kafka spells PRODUCER_FENCED as INVALID_PRODUCER_EPOCH on this
+/// request and version.
+pub fn fenced_as_epoch(key: ApiKey, version: i16) -> bool {
+    match key {
+        ApiKey::AddPartitionsToTxn | ApiKey::AddOffsetsToTxn | ApiKey::EndTxn => version < 2,
+        ApiKey::TxnOffsetCommit => true,
+        _ => false,
+    }
+}
+
 const NOT_LEADER_OR_FOLLOWER: i16 = 6;
 const REQUEST_TIMED_OUT: i16 = 7;
 const CORRUPT_MESSAGE: i16 = 2;
@@ -243,7 +264,7 @@ async fn handle(
         ApiKey::DescribeConfigs => encode(&describe_configs(DescribeConfigsRequest::decode(&mut buf, version)?), version),
         ApiKey::InitProducerId => encode(&init_producer_id(twin, InitProducerIdRequest::decode(&mut buf, version)?), version),
         ApiKey::AddPartitionsToTxn => {
-            encode(&add_partitions_to_txn(twin, AddPartitionsToTxnRequest::decode(&mut buf, version)?), version)
+            encode(&add_partitions_to_txn(twin, AddPartitionsToTxnRequest::decode(&mut buf, version)?, version), version)
         }
         ApiKey::AddOffsetsToTxn => {
             let req = AddOffsetsToTxnRequest::decode(&mut buf, version)?;
@@ -257,7 +278,7 @@ async fn handle(
                     offsets: vec![],
                 },
             );
-            let code = result.err().map(|f| error_code(&f)).unwrap_or(0);
+            let code = result.err().map(|f| error_code_for(&f, ApiKey::AddOffsetsToTxn, version)).unwrap_or(0);
             encode(&AddOffsetsToTxnResponse::default().with_error_code(code), version)
         }
         ApiKey::EndTxn => {
@@ -272,11 +293,11 @@ async fn handle(
                 },
             );
             twin.data.notify_waiters();
-            let code = result.err().map(|f| error_code(&f)).unwrap_or(0);
+            let code = result.err().map(|f| error_code_for(&f, ApiKey::EndTxn, version)).unwrap_or(0);
             encode(&EndTxnResponse::default().with_error_code(code), version)
         }
         ApiKey::TxnOffsetCommit => {
-            encode(&txn_offset_commit(twin, TxnOffsetCommitRequest::decode(&mut buf, version)?), version)
+            encode(&txn_offset_commit(twin, TxnOffsetCommitRequest::decode(&mut buf, version)?, version), version)
         }
         _ => bail!("{key:?} is not supported"),
     }
@@ -529,6 +550,14 @@ fn produce(twin: &Arc<Twin>, req: ProduceRequest) -> Option<ProduceResponse> {
                     Ok(batches) => {
                         let mut base = None;
                         for (tag, records, stamps) in batches {
+                            // A deliberately broken core, for showing that a
+                            // replay catches one: it forgets the producer tag,
+                            // so a retry is written again.
+                            #[cfg(feature = "mutant-ignore-dedupe")]
+                            let tag: Option<ProducerTag> = {
+                                let _ = tag;
+                                None
+                            };
                             let tp = Tp { topic: name.clone(), partition: p.index };
                             match core.call(Source::Wire, Op::ProduceRequest { tp, tag, records }) {
                                 Ok(Outcome::Number(offset)) => {
@@ -1065,7 +1094,7 @@ fn init_producer_id(twin: &Arc<Twin>, req: InitProducerIdRequest) -> InitProduce
     }
 }
 
-fn add_partitions_to_txn(twin: &Arc<Twin>, req: AddPartitionsToTxnRequest) -> AddPartitionsToTxnResponse {
+fn add_partitions_to_txn(twin: &Arc<Twin>, req: AddPartitionsToTxnRequest, version: i16) -> AddPartitionsToTxnResponse {
     let tps: Vec<Tp> = req
         .v3_and_below_topics
         .iter()
@@ -1080,7 +1109,7 @@ fn add_partitions_to_txn(twin: &Arc<Twin>, req: AddPartitionsToTxnRequest) -> Ad
             partitions: tps,
         },
     );
-    let code = result.err().map(|f| error_code(&f)).unwrap_or(0);
+    let code = result.err().map(|f| error_code_for(&f, ApiKey::AddPartitionsToTxn, version)).unwrap_or(0);
     AddPartitionsToTxnResponse::default().with_results_by_topic_v3_and_below(
         req.v3_and_below_topics
             .iter()
@@ -1102,7 +1131,7 @@ fn add_partitions_to_txn(twin: &Arc<Twin>, req: AddPartitionsToTxnRequest) -> Ad
     )
 }
 
-fn txn_offset_commit(twin: &Arc<Twin>, req: TxnOffsetCommitRequest) -> TxnOffsetCommitResponse {
+fn txn_offset_commit(twin: &Arc<Twin>, req: TxnOffsetCommitRequest, version: i16) -> TxnOffsetCommitResponse {
     let offsets: Vec<OffsetEntry> = req
         .topics
         .iter()
@@ -1124,7 +1153,7 @@ fn txn_offset_commit(twin: &Arc<Twin>, req: TxnOffsetCommitRequest) -> TxnOffset
             offsets,
         },
     );
-    let code = result.err().map(|f| error_code(&f)).unwrap_or(0);
+    let code = result.err().map(|f| error_code_for(&f, ApiKey::TxnOffsetCommit, version)).unwrap_or(0);
     TxnOffsetCommitResponse::default().with_topics(
         req.topics
             .iter()

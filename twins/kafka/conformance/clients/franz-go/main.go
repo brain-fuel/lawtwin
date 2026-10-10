@@ -3,7 +3,7 @@
 // the Rust test that runs it then checks the contract's laws over the
 // twin's history.
 //
-//	go run . <scenario> <bootstrap> <admin url>
+//	[LAWTWIN_NS=<prefix>] go run . <scenario> <bootstrap> <admin url>
 package main
 
 import (
@@ -47,6 +47,10 @@ func control(method, path string, body interface{}) (int, map[string]interface{}
 	_ = json.NewDecoder(resp.Body).Decode(&out)
 	return resp.StatusCode, out
 }
+
+// n prefixes a topic, group or transactional id with LAWTWIN_NS, so that
+// scenarios share one real broker without meeting.
+func n(name string) string { return os.Getenv("LAWTWIN_NS") + name }
 
 func fail(format string, args ...interface{}) {
 	fmt.Fprintf(os.Stderr, format+"\n", args...)
@@ -199,13 +203,13 @@ func equal(a, b []string) bool {
 }
 
 func produceConsume() map[string]interface{} {
-	createTopic("orders", 3)
+	createTopic(n("orders"), 3)
 	p := client(kgo.RecordPartitioner(kgo.StickyKeyPartitioner(nil)))
 	for i := 0; i < 30; i++ {
-		must(produce(p, "orders", -1, fmt.Sprintf("key-%d", i%7), fmt.Sprintf("v%d", i)), "produce")
+		must(produce(p, n("orders"), -1, fmt.Sprintf("key-%d", i%7), fmt.Sprintf("v%d", i)), "produce")
 	}
 	p.Close()
-	r := newReader("readers", "orders")
+	r := newReader(n("readers"), n("orders"))
 	until("30 records", 30*time.Second, func() bool { return r.count() >= 30 })
 	must(r.cl.CommitUncommittedOffsets(context.Background()), "commit")
 	r.close()
@@ -218,10 +222,10 @@ func produceConsume() map[string]interface{} {
 }
 
 func groupRebalance() map[string]interface{} {
-	createTopic("work", 4)
-	a := newReader("workers", "work")
+	createTopic(n("work"), 4)
+	a := newReader(n("workers"), n("work"))
 	until("a owns 4", 30*time.Second, func() bool { return a.ownedCount() == 4 })
-	b := newReader("workers", "work")
+	b := newReader(n("workers"), n("work"))
 	until("a and b share", 30*time.Second, func() bool { return a.ownedCount() == 2 && b.ownedCount() == 2 })
 	a.mu.Lock()
 	b.mu.Lock()
@@ -237,18 +241,18 @@ func groupRebalance() map[string]interface{} {
 }
 
 func idempotent() map[string]interface{} {
-	createTopic("pay", 1)
+	createTopic(n("pay"), 1)
 	control("POST", "/v1/faults/duplicate-delivery", map[string]interface{}{"count": 2})
 	p := client()
 	for i := 0; i < 5; i++ {
-		must(produce(p, "pay", 0, "k", fmt.Sprintf("idem-%d", i)), "idempotent produce")
+		must(produce(p, n("pay"), 0, "k", fmt.Sprintf("idem-%d", i)), "idempotent produce")
 	}
 	p.Close()
 	control("POST", "/v1/faults/duplicate-delivery", map[string]interface{}{"count": 1})
 	plain := client(kgo.DisableIdempotentWrite())
-	must(produce(plain, "pay", 0, "k", "plain"), "plain produce")
+	must(produce(plain, n("pay"), 0, "k", "plain"), "plain produce")
 	plain.Close()
-	r := newReader("audit", "pay")
+	r := newReader(n("audit"), n("pay"))
 	until("7 records", 30*time.Second, func() bool { return r.count() >= 7 })
 	time.Sleep(300 * time.Millisecond)
 	r.close()
@@ -258,15 +262,15 @@ func idempotent() map[string]interface{} {
 }
 
 func transactions() map[string]interface{} {
-	createTopic("ledger", 1)
-	p := client(kgo.TransactionalID("ledger-writer"))
+	createTopic(n("ledger"), 1)
+	p := client(kgo.TransactionalID(n("ledger-writer")))
 	ctx := context.Background()
 	txn := func(values []string, commit bool) error {
 		if err := p.BeginTransaction(); err != nil {
 			return err
 		}
 		for _, v := range values {
-			if err := produce(p, "ledger", 0, "acct", v); err != nil {
+			if err := produce(p, n("ledger"), 0, "acct", v); err != nil {
 				return err
 			}
 		}
@@ -279,8 +283,8 @@ func transactions() map[string]interface{} {
 	must(txn([]string{"committed-0", "committed-1", "committed-2"}, true), "commit")
 	must(txn([]string{"aborted-0", "aborted-1"}, false), "abort")
 	must(txn([]string{"committed-3"}, true), "commit again")
-	rc := newReader("rc", "ledger", kgo.FetchIsolationLevel(kgo.ReadCommitted()))
-	ru := newReader("ru", "ledger", kgo.FetchIsolationLevel(kgo.ReadUncommitted()))
+	rc := newReader(n("rc"), n("ledger"), kgo.FetchIsolationLevel(kgo.ReadCommitted()))
+	ru := newReader(n("ru"), n("ledger"), kgo.FetchIsolationLevel(kgo.ReadUncommitted()))
 	until("records", 30*time.Second, func() bool { return rc.count() >= 4 && ru.count() >= 6 })
 	time.Sleep(300 * time.Millisecond)
 	rc.close()
@@ -289,9 +293,9 @@ func transactions() map[string]interface{} {
 	check(equal(rc.seen(), want), "read committed %v, want %v", rc.seen(), want)
 	check(len(ru.seen()) == 6, "read uncommitted %v", ru.seen())
 	// A second instance with the same transactional id fences the first.
-	fence := client(kgo.TransactionalID("ledger-writer"))
+	fence := client(kgo.TransactionalID(n("ledger-writer")))
 	must(fence.BeginTransaction(), "begin the fence")
-	must(produce(fence, "ledger", 0, "acct", "fence"), "the fence produces")
+	must(produce(fence, n("ledger"), 0, "acct", "fence"), "the fence produces")
 	must(fence.EndTransaction(ctx, kgo.TryCommit), "the fence commits")
 	fence.Close()
 	err := txn([]string{"zombie"}, true)
@@ -301,19 +305,19 @@ func transactions() map[string]interface{} {
 }
 
 func faults() map[string]interface{} {
-	createTopic("f", 1)
+	createTopic(n("f"), 1)
 	p := client()
-	must(produce(p, "f", 0, "k", "before"), "before")
+	must(produce(p, n("f"), 0, "k", "before"), "before")
 	control("POST", "/v1/faults/request-latency", map[string]interface{}{"delay": "400ms", "api": "Produce"})
 	t := time.Now()
-	must(produce(p, "f", 0, "k", "slow"), "slow")
+	must(produce(p, n("f"), 0, "k", "slow"), "slow")
 	check(time.Since(t) >= 400*time.Millisecond, "no latency: %v", time.Since(t))
 	control("DELETE", "/v1/faults/request-latency", nil)
-	control("POST", "/v1/faults/leader-change", map[string]interface{}{"topic": "f"})
-	must(produce(p, "f", 0, "k", "after-leader-change"), "after leader change")
+	control("POST", "/v1/faults/leader-change", map[string]interface{}{"topic": n("f")})
+	must(produce(p, n("f"), 0, "k", "after-leader-change"), "after leader change")
 	control("POST", "/v1/faults/broker-unavailable", map[string]interface{}{"for": "5s"})
 	done := make(chan error, 1)
-	go func() { done <- produce(p, "f", 0, "k", "while-down") }()
+	go func() { done <- produce(p, n("f"), 0, "k", "while-down") }()
 	time.Sleep(time.Second)
 	select {
 	case err := <-done:
@@ -324,7 +328,7 @@ func faults() map[string]interface{} {
 	must(<-done, "while down")
 	p.Close()
 	control("POST", "/v1/faults/consumer-lag", map[string]interface{}{"records": 1})
-	r := newReader("lagging", "f")
+	r := newReader(n("lagging"), n("f"))
 	until("4 records", 30*time.Second, func() bool { return r.count() >= 4 })
 	control("DELETE", "/v1/faults", nil)
 	r.mu.Lock()
@@ -344,21 +348,21 @@ func faults() map[string]interface{} {
 
 func force() map[string]interface{} {
 	status, refused := control("POST", "/v1/state", map[string]interface{}{
-		"topics":  []interface{}{map[string]interface{}{"name": "orders", "partitions": 1}},
-		"records": []interface{}{map[string]interface{}{"topic": "orders", "partition": 0, "offset": 3, "records": []interface{}{map[string]interface{}{"value": "x"}}}},
+		"topics":  []interface{}{map[string]interface{}{"name": n("orders"), "partitions": 1}},
+		"records": []interface{}{map[string]interface{}{"topic": n("orders"), "partition": 0, "offset": 3, "records": []interface{}{map[string]interface{}{"value": "x"}}}},
 	})
 	check(status == 422, "an impossible state was not refused: %d", status)
 	check(refused["law"] == "offsets in a partition are dense and increasing", "refused with %v", refused["law"])
 	status, _ = control("POST", "/v1/state", map[string]interface{}{
-		"topics": []interface{}{map[string]interface{}{"name": "orders", "partitions": 1}},
-		"records": []interface{}{map[string]interface{}{"topic": "orders", "partition": 0, "records": []interface{}{
+		"topics": []interface{}{map[string]interface{}{"name": n("orders"), "partitions": 1}},
+		"records": []interface{}{map[string]interface{}{"topic": n("orders"), "partition": 0, "records": []interface{}{
 			map[string]interface{}{"value": "r0"}, map[string]interface{}{"value": "r1"},
 			map[string]interface{}{"value": "r2"}, map[string]interface{}{"value": "r3"},
 		}}},
-		"committed": []interface{}{map[string]interface{}{"group": "resume", "topic": "orders", "partition": 0, "offset": 2}},
+		"committed": []interface{}{map[string]interface{}{"group": n("resume"), "topic": n("orders"), "partition": 0, "offset": 2}},
 	})
 	check(status == 200, "the state was not forced: %d", status)
-	r := newReader("resume", "orders")
+	r := newReader(n("resume"), n("orders"))
 	until("2 records", 30*time.Second, func() bool { return r.count() >= 2 })
 	time.Sleep(300 * time.Millisecond)
 	r.close()

@@ -6,6 +6,8 @@
 //! answer byte for byte. `make core-conformance CORE=<command or image:...>`
 //! runs it. ref:DEC-core-conformance-kit
 
+pub mod admin;
 pub mod core;
+pub mod rdkafka_scenarios;
 pub mod golden;
 pub mod session;

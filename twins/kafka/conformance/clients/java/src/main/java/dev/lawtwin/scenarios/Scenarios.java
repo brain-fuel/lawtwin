@@ -33,12 +33,17 @@ import org.apache.kafka.common.serialization.StringSerializer;
  * Rust test that runs it then checks the contract's laws over the twin's
  * history.
  *
- * <p>java -cp ... dev.lawtwin.scenarios.Scenarios &lt;scenario&gt; &lt;bootstrap&gt; &lt;admin url&gt;
+ * <p>[LAWTWIN_NS=&lt;prefix&gt;] java -cp ... dev.lawtwin.scenarios.Scenarios &lt;scenario&gt; &lt;bootstrap&gt; &lt;admin url&gt;
  */
 public final class Scenarios {
   private static String bootstrap;
   private static String admin;
   private static final HttpClient HTTP = HttpClient.newHttpClient();
+
+  /** A topic, group or transactional id, prefixed with LAWTWIN_NS so that scenarios share one real broker without meeting. */
+  static String n(String name) {
+    return System.getenv().getOrDefault("LAWTWIN_NS", "") + name;
+  }
 
   private Scenarios() {}
 
@@ -181,13 +186,13 @@ public final class Scenarios {
   }
 
   static Map<String, Object> produceConsume() throws Exception {
-    createTopic("orders", 3);
+    createTopic(n("orders"), 3);
     try (KafkaProducer<String, String> p = producer(Map.of())) {
       for (int i = 0; i < 30; i++) {
-        p.send(new ProducerRecord<>("orders", "key-" + (i % 7), "v" + i)).get();
+        p.send(new ProducerRecord<>(n("orders"), "key-" + (i % 7), "v" + i)).get();
       }
     }
-    Reader r = new Reader("readers", "orders", Map.of());
+    Reader r = new Reader(n("readers"), n("orders"), Map.of());
     r.pollUntil("30 records", 30000, () -> r.values.size() >= 30);
     r.consumer.commitSync();
     r.consumer.close();
@@ -203,10 +208,10 @@ public final class Scenarios {
   }
 
   static Map<String, Object> groupRebalance() throws Exception {
-    createTopic("work", 4);
-    Reader a = new Reader("workers", "work", Map.of());
+    createTopic(n("work"), 4);
+    Reader a = new Reader(n("workers"), n("work"), Map.of());
     a.pollUntil("a owns 4", 30000, () -> a.owned.size() == 4);
-    Reader b = new Reader("workers", "work", Map.of());
+    Reader b = new Reader(n("workers"), n("work"), Map.of());
     long end = System.currentTimeMillis() + 30000;
     while (!(a.owned.size() == 2 && b.owned.size() == 2)) {
       check(System.currentTimeMillis() < end, "no split: " + a.owned + " and " + b.owned);
@@ -225,18 +230,18 @@ public final class Scenarios {
   }
 
   static Map<String, Object> idempotent() throws Exception {
-    createTopic("pay", 1);
+    createTopic(n("pay"), 1);
     control("POST", "/v1/faults/duplicate-delivery", "{\"count\":2}");
     try (KafkaProducer<String, String> p = producer(Map.of("enable.idempotence", "true"))) {
       for (int i = 0; i < 5; i++) {
-        send(p, "pay", 0, "idem-" + i);
+        send(p, n("pay"), 0, "idem-" + i);
       }
     }
     control("POST", "/v1/faults/duplicate-delivery", "{\"count\":1}");
     try (KafkaProducer<String, String> p = producer(Map.of("enable.idempotence", "false", "acks", "all"))) {
-      send(p, "pay", 0, "plain");
+      send(p, n("pay"), 0, "plain");
     }
-    Reader r = new Reader("audit", "pay", Map.of());
+    Reader r = new Reader(n("audit"), n("pay"), Map.of());
     r.pollUntil("7 records", 30000, () -> r.values.size() >= 7);
     for (int i = 0; i < 3; i++) {
       r.poll();
@@ -250,24 +255,24 @@ public final class Scenarios {
   }
 
   static Map<String, Object> transactions() throws Exception {
-    createTopic("ledger", 1);
-    KafkaProducer<String, String> p = producer(Map.of("transactional.id", "ledger-writer"));
+    createTopic(n("ledger"), 1);
+    KafkaProducer<String, String> p = producer(Map.of("transactional.id", n("ledger-writer")));
     p.initTransactions();
     p.beginTransaction();
     for (int i = 0; i < 3; i++) {
-      send(p, "ledger", 0, "committed-" + i);
+      send(p, n("ledger"), 0, "committed-" + i);
     }
     p.commitTransaction();
     p.beginTransaction();
     for (int i = 0; i < 2; i++) {
-      send(p, "ledger", 0, "aborted-" + i);
+      send(p, n("ledger"), 0, "aborted-" + i);
     }
     p.abortTransaction();
     p.beginTransaction();
-    send(p, "ledger", 0, "committed-3");
+    send(p, n("ledger"), 0, "committed-3");
     p.commitTransaction();
-    Reader rc = new Reader("rc", "ledger", Map.of("isolation.level", "read_committed"));
-    Reader ru = new Reader("ru", "ledger", Map.of("isolation.level", "read_uncommitted"));
+    Reader rc = new Reader(n("rc"), n("ledger"), Map.of("isolation.level", "read_committed"));
+    Reader ru = new Reader(n("ru"), n("ledger"), Map.of("isolation.level", "read_uncommitted"));
     long end = System.currentTimeMillis() + 30000;
     while (rc.values.size() < 4 || ru.values.size() < 6) {
       check(System.currentTimeMillis() < end, "read " + rc.values + " and " + ru.values);
@@ -279,13 +284,13 @@ public final class Scenarios {
     check(rc.values.equals(List.of("committed-0", "committed-1", "committed-2", "committed-3")), "read committed " + rc.values);
     check(ru.values.size() == 6, "read uncommitted " + ru.values);
     // A second instance with the same transactional id fences the first.
-    try (KafkaProducer<String, String> fence = producer(Map.of("transactional.id", "ledger-writer"))) {
+    try (KafkaProducer<String, String> fence = producer(Map.of("transactional.id", n("ledger-writer")))) {
       fence.initTransactions();
     }
     String fenced = "no";
     try {
       p.beginTransaction();
-      Future<?> f = p.send(new ProducerRecord<>("ledger", 0, "k", "zombie"));
+      Future<?> f = p.send(new ProducerRecord<>(n("ledger"), 0, "k", "zombie"));
       p.commitTransaction();
       f.get();
     } catch (Exception e) {
@@ -301,25 +306,25 @@ public final class Scenarios {
   }
 
   static Map<String, Object> faults() throws Exception {
-    createTopic("f", 1);
+    createTopic(n("f"), 1);
     KafkaProducer<String, String> p = producer(Map.of());
-    send(p, "f", 0, "before");
+    send(p, n("f"), 0, "before");
     control("POST", "/v1/faults/request-latency", "{\"delay\":\"400ms\",\"api\":\"Produce\"}");
     long t = System.currentTimeMillis();
-    send(p, "f", 0, "slow");
+    send(p, n("f"), 0, "slow");
     check(System.currentTimeMillis() - t >= 400, "no latency");
     control("DELETE", "/v1/faults/request-latency", null);
-    control("POST", "/v1/faults/leader-change", "{\"topic\":\"f\"}");
-    send(p, "f", 0, "after-leader-change");
+    control("POST", "/v1/faults/leader-change", "{\"topic\":\"" + n("f") + "\"}");
+    send(p, n("f"), 0, "after-leader-change");
     control("POST", "/v1/faults/broker-unavailable", "{\"for\":\"5s\"}");
-    Future<?> down = p.send(new ProducerRecord<>("f", 0, "k", "while-down"));
+    Future<?> down = p.send(new ProducerRecord<>(n("f"), 0, "k", "while-down"));
     Thread.sleep(1000);
     check(!down.isDone(), "a produce completed while the broker was down");
     control("POST", "/v1/clock/advance", "{\"by\":\"5s\"}");
     down.get();
     p.close();
     control("POST", "/v1/faults/consumer-lag", "{\"records\":1}");
-    Reader r = new Reader("lagging", "f", Map.of());
+    Reader r = new Reader(n("lagging"), n("f"), Map.of());
     r.pollUntil("4 records", 30000, () -> r.values.size() >= 4);
     r.consumer.commitSync();
     control("DELETE", "/v1/faults", null);
@@ -345,11 +350,11 @@ public final class Scenarios {
     check(refused[0].equals("422"), "an impossible state was not refused: " + refused[0]);
     check(refused[1].contains("an invalid topic name is refused"), "refused with " + refused[1]);
     String[] forced = control("POST", "/v1/state",
-        "{\"topics\":[{\"name\":\"orders\",\"partitions\":1}],"
-            + "\"records\":[{\"topic\":\"orders\",\"partition\":0,\"records\":[{\"value\":\"r0\"},{\"value\":\"r1\"},{\"value\":\"r2\"},{\"value\":\"r3\"}]}],"
-            + "\"committed\":[{\"group\":\"resume\",\"topic\":\"orders\",\"partition\":0,\"offset\":2}]}");
+        "{\"topics\":[{\"name\":\"" + n("orders") + "\",\"partitions\":1}],"
+            + "\"records\":[{\"topic\":\"" + n("orders") + "\",\"partition\":0,\"records\":[{\"value\":\"r0\"},{\"value\":\"r1\"},{\"value\":\"r2\"},{\"value\":\"r3\"}]}],"
+            + "\"committed\":[{\"group\":\"" + n("resume") + "\",\"topic\":\"" + n("orders") + "\",\"partition\":0,\"offset\":2}]}");
     check(forced[0].equals("200"), "the state was not forced: " + forced[1]);
-    Reader r = new Reader("resume", "orders", Map.of());
+    Reader r = new Reader(n("resume"), n("orders"), Map.of());
     r.pollUntil("2 records", 30000, () -> r.values.size() >= 2);
     r.consumer.close();
     check(r.values.equals(List.of("r2", "r3")), "read " + r.values);

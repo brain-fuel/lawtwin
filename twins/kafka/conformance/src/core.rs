@@ -66,8 +66,18 @@ impl TestTwin {
         Self::launch(seed, Some(advertised))
     }
 
+    /// A given core (a command, or `image:<image>`; the Rust core in this
+    /// process when none), with a seed and a frozen clock.
+    pub fn start_core(core: Option<&str>, seed: u64) -> Self {
+        Self::launch_core(core.map(str::to_string), seed, None)
+    }
+
     fn launch(seed: u64, advertised: Option<&str>) -> Self {
         let core = std::env::var("LAWTWIN_CORE").ok().filter(|c| !c.trim().is_empty());
+        Self::launch_core(core, seed, advertised)
+    }
+
+    fn launch_core(core: Option<String>, seed: u64, advertised: Option<&str>) -> Self {
         match core {
             None => Self::in_process(seed, advertised),
             Some(c) => match c.strip_prefix("image:") {

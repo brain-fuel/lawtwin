@@ -1,0 +1,38 @@
+[package]
+name = "lawtwin-kafka-fidelity"
+description = "Fidelity of the Kafka twin: conformance against real Kafka, record and replay, and simulated peers"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+# `lawtwin conform kafka`, `lawtwin record kafka`, `lawtwin replay --core`
+# and `lawtwin peer kafka` run this program, found beside `lawtwin`.
+[[bin]]
+name = "lawtwin-kafka-fidelity"
+path = "src/main.rs"
+
+[dependencies]
+# The reference model, the history format and the law checks.
+lawtwin-kafka = { path = "../rust" }
+# Starting a core under test, as the core conformance kit does.
+lawtwin-kafka-conformance = { path = "../conformance" }
+kafka-protocol = { version = "0.18", default-features = false, features = ["broker", "client", "gzip", "zstd", "snappy", "lz4"] }
+bytes = "1"
+indexmap = "2"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "sync", "time", "macros", "signal"] }
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "query", "tokio"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+anyhow = "1"
+base64 = "0.22"
+regex = "1"
+regex-syntax = "0.8"
+crc32c = "0.6"
+# librdkafka, built from source: the simulated peers are real clients.
+rdkafka = { version = "0.39", features = ["cmake-build"] }
