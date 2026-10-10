@@ -30,6 +30,7 @@ class Invalid(Exception):
     """A request that breaks the document: its status and why."""
 
     def __init__(self, status, message):
+        """A refusal with this status and reason."""
         super().__init__(message)
         self.status = status
         self.message = message
@@ -39,24 +40,28 @@ class Store:
     """The pets, orders and users the service holds."""
 
     def __init__(self):
+        """An empty store; the next keys start at 1."""
         self.lock = threading.Lock()
         self.pets, self.orders, self.users = {}, {}, {}
         self.next_pet, self.next_order = 1, 1
 
 
 def integer(value, where):
+    """The value, if it is a whole number; refused 400 otherwise."""
     if isinstance(value, bool) or not isinstance(value, int):
         raise Invalid(400, f"{where} is not an integer")
     return value
 
 
 def text(value, where):
+    """The value, if it is a string; refused 400 otherwise."""
     if not isinstance(value, str):
         raise Invalid(400, f"{where} is not a string")
     return value
 
 
 def optional(record, name, check):
+    """Checks a property when it is present and not null."""
     if name in record and record[name] is not None:
         check(record[name], name)
 
@@ -92,6 +97,7 @@ def check_pet(pet):
 
 
 def check_order(order):
+    """An order as the document describes it; refused 422 otherwise."""
     if not isinstance(order, dict):
         raise Invalid(422, "an order is an object")
     for name in ("id", "petId", "quantity"):
@@ -109,6 +115,7 @@ def check_order(order):
 
 
 def check_user(user):
+    """A user as the document describes it."""
     if not isinstance(user, dict):
         raise Invalid(400, "a user is an object")
     for name in ("username", "firstName", "lastName", "email", "password", "phone"):
@@ -124,14 +131,18 @@ def clean(record):
 
 
 class Handler(BaseHTTPRequestHandler):
+    """Answers each request from the store, as the document says."""
+
     protocol_version = "HTTP/1.1"
     store = Store()
     bug = None
 
     def log_message(self, *args):
+        """Logs nothing: tests read the answers, not the log."""
         pass
 
     def send(self, status, body=None):
+        """Sends a status and a JSON body, or no body."""
         data = b"" if body is None else json.dumps(body).encode()
         self.send_response(status)
         if body is not None:
@@ -141,6 +152,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def body(self):
+        """The request's JSON body, or None when it has none."""
         length = int(self.headers.get("Content-Length") or 0)
         raw = self.rfile.read(length) if length else b""
         if not raw.strip():
@@ -153,6 +165,7 @@ class Handler(BaseHTTPRequestHandler):
             raise Invalid(400, "the body is not JSON")
 
     def route(self, method):
+        """The status and body for a request, by its method and path."""
         path = self.path.split("?", 1)[0].rstrip("/")
         parts = path.split("/")[1:]
         s = self.store
@@ -247,6 +260,7 @@ class Handler(BaseHTTPRequestHandler):
         return 501, {"message": f"{method} {path} is not served by this Petstore"}
 
     def answer(self, method):
+        """Answers a request, refusing what breaks the document."""
         try:
             status, body = self.route(method)
         except Invalid as e:
@@ -256,19 +270,24 @@ class Handler(BaseHTTPRequestHandler):
         self.send(status, body)
 
     def do_GET(self):
+        """Answers GET."""
         self.answer("GET")
 
     def do_POST(self):
+        """Answers POST."""
         self.answer("POST")
 
     def do_PUT(self):
+        """Answers PUT."""
         self.answer("PUT")
 
     def do_DELETE(self):
+        """Answers DELETE."""
         self.answer("DELETE")
 
 
 def main():
+    """Serves the Petstore until interrupted."""
     parser = argparse.ArgumentParser(description="A tiny Petstore.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8000)

@@ -13,6 +13,7 @@ from petstore_client.rest import ApiException
 
 
 def main(url):
+    """Adds, reads, changes and deletes through the generated client, and checks each answer."""
     config = petstore_client.Configuration(host=url)
     with petstore_client.ApiClient(config) as client:
         pets = petstore_client.PetApi(client)
