@@ -184,9 +184,13 @@ pub fn api_name(key: ApiKey) -> &'static str {
     }
 }
 
-fn encode<M: Encodable>(m: &M, version: i16) -> Result<Option<(BytesMut, i16)>> {
+fn encode<M: Encodable + std::fmt::Debug>(m: &M, version: i16) -> Result<Option<(BytesMut, i16)>> {
     let mut b = BytesMut::new();
-    m.encode(&mut b, version)?;
+    if let Err(e) = m.encode(&mut b, version) {
+        // A defect of the twin: say so, whatever the log level.
+        eprintln!("lawtwin-kafka: cannot encode a response at version {version}: {e}: {m:?}");
+        return Err(e);
+    }
     Ok(Some((b, version)))
 }
 
@@ -212,7 +216,7 @@ async fn handle(
             Some(r) => encode(&r, version),
             None => Ok(None),
         },
-        ApiKey::Fetch => encode(&fetch(twin, FetchRequest::decode(&mut buf, version)?).await, version),
+        ApiKey::Fetch => encode(&fetch(twin, FetchRequest::decode(&mut buf, version)?, version).await, version),
         ApiKey::ListOffsets => encode(&list_offsets(twin, ListOffsetsRequest::decode(&mut buf, version)?, version), version),
         ApiKey::FindCoordinator => {
             encode(&find_coordinator(twin, FindCoordinatorRequest::decode(&mut buf, version)?, version), version)
@@ -636,7 +640,7 @@ struct FetchPart {
     error: i16,
 }
 
-async fn fetch(twin: &Arc<Twin>, req: FetchRequest) -> FetchResponse {
+async fn fetch(twin: &Arc<Twin>, req: FetchRequest, version: i16) -> FetchResponse {
     let isolation = if req.isolation_level == 1 { Isolation::ReadCommitted } else { Isolation::ReadUncommitted };
     let wait = Duration::from_millis(req.max_wait_ms.max(0) as u64).min(Duration::from_millis(twin.config.max_fetch_wait_ms));
     let deadline = tokio::time::Instant::now() + wait;
@@ -711,7 +715,7 @@ async fn fetch(twin: &Arc<Twin>, req: FetchRequest) -> FetchResponse {
             .with_last_stable_offset(-1)
             .with_log_start_offset(0)
             .with_preferred_read_replica(BrokerId(-1));
-        if p.error == NOT_LEADER_OR_FOLLOWER {
+        if p.error == NOT_LEADER_OR_FOLLOWER && version >= 12 {
             data.current_leader = fetch_response::LeaderIdAndEpoch::default()
                 .with_leader_id(BrokerId(NODE_ID))
                 .with_leader_epoch(core.leader_epoch(&p.topic, p.partition));
@@ -757,7 +761,7 @@ fn list_offsets(twin: &Arc<Twin>, req: ListOffsetsRequest, version: i16) -> List
                         .with_partition_index(p.partition_index)
                         .with_timestamp(-1)
                         .with_offset(-1)
-                        .with_leader_epoch(core.leader_epoch(&topic, p.partition_index));
+                        .with_leader_epoch(if version >= 4 { core.leader_epoch(&topic, p.partition_index) } else { -1 });
                     if core.take_not_leader(&topic, p.partition_index) {
                         r.error_code = NOT_LEADER_OR_FOLLOWER;
                         return r;

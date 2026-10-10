@@ -1,0 +1,9 @@
+{
+  "name": "lawtwin-kafkajs-scenarios",
+  "private": true,
+  "description": "kafkajs against the LawTwin Kafka twin",
+  "type": "module",
+  "dependencies": {
+    "kafkajs": "2.2.4"
+  }
+}
