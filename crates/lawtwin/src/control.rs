@@ -1,6 +1,8 @@
-//! The control-plane commands of `lawtwin`: `up` starts a twin, and the
-//! others speak to a running twin's admin API (`--admin`, or
-//! `LAWTWIN_ADMIN`, by default `http://127.0.0.1:9644`).
+//! The control-plane commands of `lawtwin`: `up` starts one of a twin's
+//! cores, and the others speak to a running twin's admin API (`--admin`, or
+//! `LAWTWIN_ADMIN`, by default `http://127.0.0.1:9644`). Nothing here knows
+//! which language a core is written in: every core serves the same admin
+//! API (docs/reference/control-plane.openapi.yaml).
 
 use std::io::{Read, Write};
 use std::net::TcpStream;
@@ -9,7 +11,7 @@ use std::time::Duration;
 /// The usage of the control-plane commands.
 pub const USAGE: &str = "  lawtwin up kafka [--port <n>] [--admin-port <n>] [--host <addr>] [--advertise <host:port>]
           [--seed <n>] [--clock frozen|wall] [--partitions <n>] [--no-auto-create]
-          [--rebalance-wait <duration>] [--container [--image <image>]]
+          [--rebalance-wait <duration>] [--core <command> | --container | --image <image>]
   lawtwin inspect [--records]
   lawtwin force <state.json | ->
   lawtwin fault <name> [<param>=<value>]...
@@ -244,51 +246,79 @@ pub fn run(command: &str, rest: &[String]) -> Option<Outcome> {
     Some(result)
 }
 
+/// Where a twin's core is: `--core <command>`, `LAWTWIN_<TWIN>_CORE`, or the
+/// Rust core `lawtwin-<twin>` beside this command or on the path.
+fn core_command(twin: &str, given: Option<String>) -> String {
+    if let Some(c) = given.or_else(|| std::env::var(format!("LAWTWIN_{}_CORE", twin.to_uppercase())).ok()) {
+        return c;
+    }
+    let name = format!("lawtwin-{twin}");
+    std::env::current_exe()
+        .ok()
+        .and_then(|exe| exe.parent().map(|d| d.join(&name)))
+        .filter(|p| p.exists())
+        .map(|p| p.display().to_string())
+        .unwrap_or(name)
+}
+
+/// `lawtwin up <twin>`: runs one of the twin's cores, as a program or as an
+/// image with podman. The options are the core interface every core takes
+/// (docs/reference/kafka-core.md); `lawtwin` passes them through.
 fn up(args: &[String]) -> Result<(), String> {
     let twin = args.first().map(String::as_str).ok_or("up needs a twin: kafka")?;
     if twin != "kafka" {
         return Err(format!("{twin} is not a twin; this release has kafka"));
     }
-    let mut config = lawtwin_kafka::Config::default();
-    let (mut host, mut port, mut admin_port) = ("127.0.0.1".to_string(), 9092u16, 9644u16);
-    let (mut container, mut image) = (false, "lawtwin/kafka:0.1.0".to_string());
+    let (mut core, mut image, mut container) = (None, "lawtwin/kafka:0.1.0".to_string(), false);
+    let (mut port, mut admin_port, mut advertise) = ("9092".to_string(), "9644".to_string(), None);
+    let mut pass: Vec<String> = vec![];
     let mut i = 1;
     while i < args.len() {
         let value = |i: usize| args.get(i + 1).cloned().ok_or_else(|| format!("{} needs a value", args[i]));
         match args[i].as_str() {
-            "--port" => port = value(i)?.parse().map_err(|_| "--port is a port number")?,
-            "--admin-port" => admin_port = value(i)?.parse().map_err(|_| "--admin-port is a port number")?,
-            "--host" => host = value(i)?,
-            "--advertise" => config.advertised = Some(value(i)?),
-            "--seed" => config.seed = value(i)?.parse().map_err(|_| "--seed is a whole number")?,
-            "--clock" => config.clock = value(i)?.parse()?,
-            "--partitions" => config.default_partitions = value(i)?.parse().map_err(|_| "--partitions is a whole number")?,
-            "--rebalance-wait" => {
-                config.rebalance_wait_ms = lawtwin_kafka::clock::parse_duration(&value(i)?)? as u64;
-            }
-            "--image" => image = value(i)?,
-            "--no-auto-create" => {
-                config.auto_create_topics = false;
-                i += 1;
-                continue;
+            "--core" => core = Some(value(i)?),
+            "--image" => {
+                image = value(i)?;
+                container = true;
             }
             "--container" => {
                 container = true;
                 i += 1;
                 continue;
             }
+            "--no-auto-create" => {
+                pass.push(args[i].clone());
+                i += 1;
+                continue;
+            }
+            "--port" => port = value(i)?,
+            "--admin-port" => admin_port = value(i)?,
+            "--advertise" => advertise = Some(value(i)?),
+            "--host" | "--seed" | "--clock" | "--partitions" | "--rebalance-wait" => {
+                pass.push(args[i].clone());
+                pass.push(value(i)?);
+            }
             other => return Err(format!("up does not take {other}")),
         }
         i += 2;
     }
     if container {
-        let mut cmd = std::process::Command::new(std::env::var("PODMAN").unwrap_or_else(|_| "podman".into()));
-        cmd.args(["run", "--rm", "-d", "-p", &format!("{port}:9092"), "-p", &format!("{admin_port}:9644"), &image]);
-        cmd.args(["--seed", &config.seed.to_string(), "--advertise", &config.advertised.clone().unwrap_or(format!("{host}:{port}"))]);
+        let podman = std::env::var("PODMAN").unwrap_or_else(|_| "podman".into());
+        let advertise = advertise.unwrap_or_else(|| format!("localhost:{port}"));
+        let mut cmd = std::process::Command::new(podman);
+        cmd.args(["run", "--rm", "-p", &format!("{port}:9092"), "-p", &format!("{admin_port}:9644"), &image]);
+        cmd.args(["--advertise", &advertise]).args(pass.iter().filter(|a| *a != "--host"));
         let status = cmd.status().map_err(|e| format!("cannot run podman: {e}"))?;
-        return if status.success() { Ok(()) } else { Err("podman run failed".into()) };
+        return if status.success() { Ok(()) } else { Err("the twin's container stopped with an error".into()) };
     }
-    config.kafka_listen = format!("{host}:{port}");
-    config.admin_listen = format!("{host}:{admin_port}");
-    lawtwin_kafka::run(config).map_err(|e| e.to_string())
+    let command = core_command(twin, core);
+    let mut parts = command.split_whitespace();
+    let program = parts.next().ok_or("the core command is empty")?;
+    let mut cmd = std::process::Command::new(program);
+    cmd.args(parts).args(["--port", &port, "--admin-port", &admin_port]).args(&pass);
+    if let Some(a) = advertise {
+        cmd.args(["--advertise", &a]);
+    }
+    let status = cmd.status().map_err(|e| format!("cannot run the core {program}: {e}"))?;
+    if status.success() { Ok(()) } else { Err(format!("the core {program} stopped with an error")) }
 }

@@ -15,7 +15,7 @@ use std::path::PathBuf;
 
 fn main() {
     let manifest = PathBuf::from(std::env::var("CARGO_MANIFEST_DIR").unwrap());
-    let source = manifest.join("../../contracts/kafka/test/rust/src/lawspec_abilities.rs");
+    let source = manifest.join("../../../contracts/kafka/test/rust/src/lawspec_abilities.rs");
     println!("cargo:rerun-if-changed={}", source.display());
     println!("cargo:rerun-if-changed=build.rs");
     let text = std::fs::read_to_string(&source).unwrap_or_else(|e| panic!("read {}: {e}", source.display()));

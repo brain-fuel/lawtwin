@@ -1,0 +1,18 @@
+# The Kafka twin's Rust core as a small static image, with the lawtwin
+# command beside it. Build from the repository root:
+#   podman build -f twins/kafka/rust/Containerfile -t lawtwin/kafka:0.1.0 .
+# or `make image`. The Kafka port is 9092, the admin API 9644. Clients reach
+# the twin at the address it advertises: localhost:9092 unless --advertise,
+# LAWTWIN_ADVERTISE or TWIN_CONFIG says otherwise. Inside the container,
+# `/lawtwin --admin http://127.0.0.1:9644 inspect` drives the control plane.
+FROM docker.io/library/rust:1-alpine AS build
+RUN apk add --no-cache musl-dev make cmake g++ perl
+WORKDIR /src
+COPY . .
+RUN cargo build --release --locked -p lawtwin-kafka -p lawtwin
+
+FROM scratch
+COPY --from=build /src/target/release/lawtwin-kafka /lawtwin-kafka
+COPY --from=build /src/target/release/lawtwin /lawtwin
+EXPOSE 9092 9644
+ENTRYPOINT ["/lawtwin-kafka", "--host", "0.0.0.0"]

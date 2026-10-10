@@ -3,9 +3,7 @@
 //! transactions read committed, faults and forced states. Each test ends by
 //! checking the contract's laws over the twin's history and replaying it.
 
-mod common;
-
-use common::TestTwin;
+use lawtwin_kafka_conformance::core::TestTwin;
 use rdkafka::ClientConfig;
 use rdkafka::Message;
 use rdkafka::consumer::{BaseConsumer, Consumer, ConsumerContext, Rebalance};

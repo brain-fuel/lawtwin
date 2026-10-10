@@ -1,10 +1,10 @@
 [workspace]
 resolver = "3"
-members = ["crates/lawtwin", "crates/lawtwin-kafka"]
+members = ["crates/lawtwin", "twins/kafka/rust", "twins/kafka/conformance"]
 # Each contract's test project is a crate of its own, made by LawSpec. The
-# Kafka twin depends on the Rust one by path: it runs the very code the
-# contract's laws run on.
-exclude = ["contracts", "twins"]
+# Kafka twin's Rust core depends on the Rust one by path: it runs the very
+# code the contract's laws run on.
+exclude = ["contracts"]
 
 [workspace.package]
 version = "0.1.0"

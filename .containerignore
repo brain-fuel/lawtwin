@@ -1,0 +1,13 @@
+# Build output, caches and tools the image build does not need.
+target/
+**/target/
+**/node_modules/
+**/.venv/
+**/.gradle/
+**/build/
+.canon
+.canon-cache/
+.lawspec-cli/
+contracts/*/test/.lawspec/cache/
+contracts/*/test/.lawspec/results/
+.git/

@@ -227,7 +227,12 @@ fn usage() -> String {
 }
 
 fn main() -> ExitCode {
-    let args: Vec<String> = std::env::args().skip(1).collect();
+    let mut args: Vec<String> = std::env::args().skip(1).collect();
+    // `--admin <url>` may come before the command; the command reads it after.
+    if args.first().map(String::as_str) == Some("--admin") && args.len() >= 2 {
+        let pair: Vec<String> = args.drain(..2).collect();
+        args.extend(pair);
+    }
     let result = match args.first().map(String::as_str) {
         Some("--version") => {
             println!("lawtwin {}", env!("CARGO_PKG_VERSION"));

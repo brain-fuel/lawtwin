@@ -1,0 +1,25 @@
+[package]
+name = "lawtwin-kafka-conformance"
+description = "The core conformance kit of the Kafka twin: any core, driven only over the Kafka protocol and the admin API"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish = false
+
+[lib]
+path = "src/lib.rs"
+
+[dependencies]
+# The reference model, for replaying a core's history and checking the laws
+# over it, and the Rust core, which runs in-process when no core is named.
+lawtwin-kafka = { path = "../rust" }
+kafka-protocol = { version = "0.18", default-features = false, features = ["broker", "client", "gzip", "zstd", "snappy", "lz4"] }
+bytes = "1"
+serde_json = { version = "1", features = ["preserve_order"] }
+tokio = { version = "1", features = ["rt-multi-thread"] }
+
+[dev-dependencies]
+# librdkafka, built from source, drives the core as a real client does.
+rdkafka = { version = "0.39", features = ["cmake-build"] }

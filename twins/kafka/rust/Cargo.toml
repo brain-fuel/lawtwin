@@ -1,6 +1,6 @@
 [package]
 name = "lawtwin-kafka"
-description = "The Kafka twin: the lawtwin.kafka reference model behind the Kafka wire protocol"
+description = "The Kafka twin's Rust core: the lawtwin.kafka reference model behind the Kafka wire protocol"
 version.workspace = true
 edition.workspace = true
 rust-version.workspace = true
@@ -11,10 +11,15 @@ build = "build.rs"
 [lib]
 path = "src/lib.rs"
 
+# The core: the twin as a program, with the options every core takes.
+[[bin]]
+name = "lawtwin-kafka"
+path = "src/main.rs"
+
 [dependencies]
 # The code LawSpec generates for the Kafka contract, the same crate the
 # contract's laws run in (contracts/kafka/test/rust).
-lawspec-example = { path = "../../contracts/kafka/test/rust" }
+lawspec-example = { path = "../../../contracts/kafka/test/rust" }
 kafka-protocol = { version = "0.18", default-features = false, features = ["broker", "client", "gzip", "zstd", "snappy", "lz4"] }
 bytes = "1"
 indexmap = "2"
@@ -28,5 +33,3 @@ base64 = "0.22"
 crc32c = "0.6"
 
 [dev-dependencies]
-# librdkafka, built from source, drives the twin as a real client does.
-rdkafka = { version = "0.39", features = ["cmake-build"] }

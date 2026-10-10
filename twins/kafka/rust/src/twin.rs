@@ -346,9 +346,12 @@ impl Twin {
     pub fn advertised(&self) -> (String, i32) {
         let given = self.config.advertised.clone().or_else(|| self.kafka_addr.lock().unwrap().map(|a| a.to_string()));
         let text = given.unwrap_or_else(|| self.config.kafka_listen.clone());
-        match text.rsplit_once(':') {
+        let (host, port) = match text.rsplit_once(':') {
             Some((h, p)) => (h.trim_matches(['[', ']']).to_string(), p.parse().unwrap_or(9092)),
             None => (text, 9092),
-        }
+        };
+        // A listener on every address cannot be connected to as such.
+        let host = if host == "0.0.0.0" || host == "::" { "localhost".to_string() } else { host };
+        (host, port)
     }
 }

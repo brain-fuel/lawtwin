@@ -9,16 +9,14 @@
 //! A client whose toolchain (node, go, mvn and java) is missing is skipped,
 //! unless LAWTWIN_REQUIRE_CLIENTS is set, as `make twin-test` sets it.
 
-mod common;
-
-use common::TestTwin;
+use lawtwin_kafka_conformance::core::TestTwin;
 use std::path::{Path, PathBuf};
 use std::process::Command;
 
 const SCENARIOS: &[&str] = &["produce-consume", "group-rebalance", "idempotent", "transactions", "faults", "force"];
 
 fn dir(client: &str) -> PathBuf {
-    Path::new(env!("CARGO_MANIFEST_DIR")).join("tests/clients").join(client)
+    Path::new(env!("CARGO_MANIFEST_DIR")).join("clients").join(client)
 }
 
 fn have(tool: &str, arg: &str) -> bool {

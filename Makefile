@@ -1,11 +1,13 @@
 # LawTwin development tasks. `make` lists them. Every check runs locally;
 # there is no hosted CI.
 
-# The contracts need LawSpec main after the lawspec-gaps and lawspec-codegen
-# merges; its npm release is pending. Until it is published, stage the CLI
-# from a LawSpec checkout with `make lawspec-stage LAWSPEC_HOME=<checkout>`,
-# or set LAWSPEC to another way of running it.
-LAWSPEC_REQUIRED := LawSpec main after the lawspec-gaps and lawspec-codegen merges (npm release pending)
+# The contracts and the Kafka twin's Rust core need LawSpec branch
+# lawspec-lawtwin at e99a0bc, which has the lawspec-gaps fixes and typed
+# native code for checked definitions and spec handlers; its npm release is
+# pending. Stage the CLI from a checkout of it with
+# `make lawspec-stage LAWSPEC_HOME=<checkout>`, or set LAWSPEC to another way
+# of running it.
+LAWSPEC_REQUIRED := LawSpec branch lawspec-lawtwin at e99a0bc (npm release pending)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
 CONTRACTS := contracts/kafka contracts/petstore contracts/github
@@ -15,6 +17,10 @@ TARGETARG := $(if $(TARGET),--target $(TARGET),)
 PYTHON313 ?= python3.13
 GRADLE_HOME ?=
 CANON     ?= stack --no-terminal --stack-yaml $(CANON_HOME)/stack.yaml exec canon --
+PODMAN    ?= podman
+IMAGE     ?= lawtwin/kafka:0.1.0
+# The Kafka core the conformance kit checks: a command, or image:<image>.
+CORE      ?= target/release/lawtwin-kafka
 
 comma := ,
 
@@ -28,7 +34,7 @@ OPENAPI_IMPORTS := \
   openapi/github-labels-milestones.json,lawtwin.github,contracts/github
 
 .DEFAULT_GOAL := help
-.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test canon ci
+.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down canon ci
 
 help: ## List the tasks
 	@awk -F':.*## ' '/^[a-z-]+:.*## / {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -40,11 +46,11 @@ lawspec-stage: ## Stage the LawSpec CLI from LAWSPEC_HOME into .lawspec-cli
 	@test -n "$(LAWSPEC_HOME)" || { echo "set LAWSPEC_HOME to a checkout of $(LAWSPEC_REQUIRED), built with stack build"; exit 1; }
 	LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
 
-build: ## Build the lawtwin command
-	cargo build --release
+build: ## Build the lawtwin command and the Kafka twin's Rust core
+	cargo build --release -p lawtwin -p lawtwin-kafka
 
-test: ## Run the lawtwin command's own tests
-	cargo test
+test: ## Run the lawtwin command's and the Rust core's own tests
+	cargo test -p lawtwin -p lawtwin-kafka
 
 openapi-import: build ## Import each vendored OpenAPI document into its contract
 	@for i in $(OPENAPI_IMPORTS); do \
@@ -78,9 +84,26 @@ python-env: ## Make each contract test project's Python environment
 contract-test: python-env ## Run each contract's laws on every target (TARGET=rust, python, go, java or kotlin for one)
 	@for c in $(CONTRACTS); do $(LAWSPEC) test $(TARGETARG) --config $$c/test/lawspec.json || exit 1; done
 
+core-conformance: ## Check a Kafka core with the conformance kit (CORE=<command> or CORE=image:<image>)
+	@if [ "$(CORE)" = "target/release/lawtwin-kafka" ]; then cargo build --release -p lawtwin-kafka; fi
+	LAWTWIN_CORE="$(if $(filter target/release/lawtwin-kafka,$(CORE)),$(CURDIR)/$(CORE),$(CORE))" LAWTWIN_REQUIRE_CLIENTS=1 \
+	  cargo test -p lawtwin-kafka-conformance -- --test-threads=2
+
+golden: ## Record the golden session from the Rust core into twins/kafka/shared/golden
+	LAWTWIN_WRITE_GOLDEN=1 cargo test -p lawtwin-kafka-conformance --test golden
+
+image: ## Build the Kafka twin's image with podman, as $(IMAGE) and docker.io/$(IMAGE)
+	$(PODMAN) build -f twins/kafka/rust/Containerfile -t $(IMAGE) -t docker.io/$(IMAGE) .
+
+compose-up: ## Run the Kafka twin with podman compose (examples/kafka/compose.yaml)
+	$(PODMAN) compose -f examples/kafka/compose.yaml up -d
+
+compose-down: ## Stop the compose example
+	$(PODMAN) compose -f examples/kafka/compose.yaml down
+
 canon: ## Check the canonical format with canon 0.2.0 (needs CANON_HOME)
 	@test -n "$(CANON_HOME)" || { echo "set CANON_HOME to a canon 0.2.0 checkout built with stack build"; exit 1; }
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 
-ci: test openapi-import-check contract-check contract-generate-check contract-test canon ## Every check
+ci: test openapi-import-check contract-check contract-generate-check contract-test core-conformance canon ## Every check

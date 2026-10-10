@@ -10,7 +10,7 @@ use serde::{Deserialize, Serialize};
 use serde_json::{Map, Value};
 
 /// The twin file, as written next to the contract.
-pub const TWIN_FILE: &str = include_str!("../../../contracts/kafka/lawtwin.json");
+pub const TWIN_FILE: &str = include_str!("../../../../contracts/kafka/lawtwin.json");
 
 /// A parameter a fault declares.
 #[derive(Clone, Debug, Serialize, Deserialize)]
@@ -68,7 +68,7 @@ pub const APIS: &[&str] = &[
 
 /// A fault, as active in the twin.
 #[derive(Clone, Debug, PartialEq, Serialize, Deserialize)]
-#[serde(tag = "name", rename_all = "kebab-case")]
+#[serde(tag = "name", rename_all = "kebab-case", rename_all_fields = "camelCase")]
 pub enum Fault {
     /// The broker cannot be reached.
     BrokerUnavailable,
@@ -248,7 +248,7 @@ mod tests {
 
     #[test]
     fn every_law_the_twin_file_names_is_a_law_of_the_contract() {
-        let contract = include_str!("../../../contracts/kafka/src/contract.lawspec");
+        let contract = include_str!("../../../../contracts/kafka/src/contract.lawspec");
         let file = declared();
         let mut names: Vec<String> = file.faults.iter().flat_map(|f| f.laws.keys().cloned()).collect();
         names.extend(file.force["refusals"].as_object().unwrap().keys().cloned());

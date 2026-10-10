@@ -1,0 +1,590 @@
+openapi: 3.1.0
+info:
+  title: LawTwin control plane
+  version: 0.1.0
+  summary: The admin API every LawTwin twin serves on its admin port.
+  description: |
+    Every twin, whatever it stands in for and whatever language its core is
+    generated in, serves this API on its admin port (9644 by default). The
+    `lawtwin` command speaks it. Faults and forced states are typed by the
+    twin file (`lawtwin.json`) next to the twin's contract; see
+    docs/reference/control-plane.md.
+  license:
+    name: MIT
+    identifier: MIT
+servers:
+  - url: http://127.0.0.1:9644
+tags:
+  - name: twin
+  - name: state
+  - name: faults
+  - name: clock
+  - name: history
+paths:
+  /healthz:
+    get:
+      tags: [twin]
+      operationId: health
+      summary: Whether the twin answers.
+      responses:
+        "200":
+          description: The twin answers.
+          content:
+            text/plain:
+              schema: { type: string, const: ok }
+  /v1/twin:
+    get:
+      tags: [twin]
+      operationId: describeTwin
+      summary: The running twin.
+      responses:
+        "200":
+          description: Its contract, seed, clock, bootstrap address and configuration.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Twin" }
+  /v1/state:
+    get:
+      tags: [state]
+      operationId: inspect
+      summary: The model's state.
+      parameters:
+        - name: records
+          in: query
+          required: false
+          description: Include every log entry.
+          schema: { type: boolean, default: false }
+      responses:
+        "200":
+          description: The state, in the contract's terms.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/State" }
+    post:
+      tags: [state]
+      operationId: force
+      summary: Force a state, reached through the contract's operations.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ForcedState" }
+      responses:
+        "200":
+          description: The state was reached.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [forced, operations]
+                properties:
+                  forced: { type: boolean, const: true }
+                  operations: { type: integer, description: How many operations of the contract reached it. }
+        "400":
+          description: The body is not a forced state.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+        "422":
+          description: No sequence of the contract's operations reaches the state. Nothing was applied.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Refusal" }
+  /v1/faults:
+    get:
+      tags: [faults]
+      operationId: listFaults
+      summary: The declared faults, the active ones, and what forcing refuses.
+      responses:
+        "200":
+          description: The twin file's faults and the active ones.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [declared, active, force]
+                properties:
+                  declared:
+                    type: array
+                    items: { $ref: "#/components/schemas/FaultDeclaration" }
+                  active:
+                    type: array
+                    items: { $ref: "#/components/schemas/ActiveFault" }
+                  force:
+                    type: object
+                    description: The twin file's `force` section; `refusals` maps each law to what it refuses.
+    delete:
+      tags: [faults]
+      operationId: clearFaults
+      summary: Clear every active fault.
+      responses:
+        "200":
+          description: How many were cleared.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Cleared" }
+  /v1/faults/{name}:
+    parameters:
+      - name: name
+        in: path
+        required: true
+        description: A fault the twin file declares, such as consumer-lag.
+        schema: { type: string }
+    post:
+      tags: [faults]
+      operationId: raiseFault
+      summary: Raise a declared fault.
+      requestBody:
+        required: false
+        description: The fault's parameters, by name. `for` (a duration on the twin clock) makes it end by itself.
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                oneOf: [{ type: string }, { type: integer }]
+      responses:
+        "201":
+          description: The fault is active.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ActiveFault" }
+        "400":
+          description: The fault is not declared, or a parameter is unknown, missing or of the wrong type.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    delete:
+      tags: [faults]
+      operationId: clearFault
+      summary: Clear the active faults with this name.
+      responses:
+        "200":
+          description: How many were cleared.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Cleared" }
+        "404":
+          description: The fault is not declared.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+  /v1/clock:
+    get:
+      tags: [clock]
+      operationId: readClock
+      summary: The twin clock.
+      responses:
+        "200":
+          description: Its mode and the time.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Clock" }
+  /v1/clock/advance:
+    post:
+      tags: [clock]
+      operationId: advanceClock
+      summary: Move the twin clock forward; faults raised for a time end and sessions time out.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [by]
+              properties:
+                by:
+                  description: A duration such as 5s, or milliseconds.
+                  oneOf: [{ $ref: "#/components/schemas/Duration" }, { type: integer, minimum: 0 }]
+      responses:
+        "200":
+          description: The new time.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [nowMs]
+                properties:
+                  nowMs: { type: integer }
+        "400":
+          description: Not a duration.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+  /v1/history:
+    get:
+      tags: [history]
+      operationId: history
+      summary: What the twin has done, as the contract's operations.
+      parameters:
+        - name: since
+          in: query
+          required: false
+          description: Only entries after this position.
+          schema: { type: integer, minimum: 0 }
+        - name: limit
+          in: query
+          required: false
+          schema: { type: integer, minimum: 0 }
+        - name: format
+          in: query
+          required: false
+          description: jsonl for one entry per line; otherwise a JSON array.
+          schema: { type: string, enum: [jsonl] }
+      responses:
+        "200":
+          description: The entries, in order.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/HistoryEntry" }
+            application/x-ndjson:
+              schema: { type: string }
+  /v1/history/replay:
+    post:
+      tags: [history]
+      operationId: replay
+      summary: Replay a history through a fresh model, and check the laws over it.
+      requestBody:
+        required: false
+        description: A history as a JSON array or JSON lines; without one, the twin's own.
+        content:
+          application/json:
+            schema:
+              type: array
+              items: { $ref: "#/components/schemas/HistoryEntry" }
+          application/x-ndjson:
+            schema: { type: string }
+      responses:
+        "200":
+          description: The answers that differ, and the laws that do not hold.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [operations, divergences, violations]
+                properties:
+                  operations: { type: integer }
+                  divergences:
+                    type: array
+                    items: { $ref: "#/components/schemas/Divergence" }
+                  violations:
+                    type: object
+                    required: [state, history]
+                    properties:
+                      state: { type: array, items: { $ref: "#/components/schemas/Violation" } }
+                      history: { type: array, items: { $ref: "#/components/schemas/Violation" } }
+        "400":
+          description: Not a history.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+  /v1/laws:
+    get:
+      tags: [history]
+      operationId: checkLaws
+      summary: Check the contract's laws over the twin's state and history.
+      responses:
+        "200":
+          description: Whether they hold, and each that does not.
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [holds, state, history]
+                properties:
+                  holds: { type: boolean }
+                  state: { type: array, items: { $ref: "#/components/schemas/Violation" } }
+                  history: { type: array, items: { $ref: "#/components/schemas/Violation" } }
+  /v1/seed:
+    get:
+      tags: [twin]
+      operationId: readSeed
+      summary: The seed.
+      responses:
+        "200":
+          description: The seed.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Seed" }
+    post:
+      tags: [twin]
+      operationId: reseed
+      summary: Start again from an empty state with a new seed.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Seed" }
+      responses:
+        "200":
+          description: The twin started again.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Reset" }
+  /v1/reset:
+    delete:
+      tags: [twin]
+      operationId: reset
+      summary: Start again from an empty state with the same seed.
+      responses:
+        "200":
+          description: The twin started again.
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Reset" }
+components:
+  schemas:
+    Duration:
+      type: string
+      pattern: "^[0-9]+(ms|s|m|h)$"
+      examples: ["250ms", "5s", "2m"]
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }
+    Refusal:
+      type: object
+      required: [forced, law, reason]
+      properties:
+        forced: { type: boolean, const: false }
+        law: { type: string, description: The contract's law that forbids the state, by its name. }
+        reason: { type: string }
+    Cleared:
+      type: object
+      required: [cleared]
+      properties:
+        cleared: { type: integer }
+    Seed:
+      type: object
+      required: [seed]
+      properties:
+        seed: { type: integer, minimum: 0 }
+    Reset:
+      type: object
+      required: [seed, reset]
+      properties:
+        seed: { type: integer }
+        reset: { type: boolean, const: true }
+    Clock:
+      type: object
+      required: [mode, nowMs]
+      properties:
+        mode: { type: string, enum: [frozen, wall] }
+        nowMs: { type: integer, description: Milliseconds since the Unix epoch. }
+    Twin:
+      type: object
+      required: [twin, version, contract, seed, clock, bootstrap]
+      properties:
+        twin: { type: string, examples: [kafka] }
+        version: { type: string }
+        contract:
+          type: object
+          properties:
+            package: { type: string }
+            version: { type: string }
+            ability: { type: string }
+            handler: { type: string }
+        seed: { type: integer }
+        clock: { $ref: "#/components/schemas/Clock" }
+        bootstrap: { type: string, description: The address clients connect to. }
+        clusterId: { type: string }
+        historyLength: { type: integer }
+        config: { type: object }
+    FaultParameter:
+      type: object
+      required: [name, type, required, summary]
+      properties:
+        name: { type: string }
+        type: { type: string, enum: [duration, int32, topic, group, api] }
+        required: { type: boolean }
+        default: {}
+        summary: { type: string }
+    FaultDeclaration:
+      type: object
+      required: [name, summary, params, changes, laws]
+      properties:
+        name: { type: string }
+        summary: { type: string }
+        params: { type: array, items: { $ref: "#/components/schemas/FaultParameter" } }
+        changes: { type: string }
+        laws:
+          type: object
+          description: For each law the fault touches, its effect; every other law holds.
+          additionalProperties: { type: string }
+    ActiveFault:
+      type: object
+      required: [id, name]
+      description: An active fault with its parameters; the parameters depend on the fault.
+      properties:
+        id: { type: integer }
+        name: { type: string }
+        untilMs: { type: integer, description: When it ends on the twin clock, if it was raised for a time. }
+      additionalProperties: true
+    State:
+      type: object
+      description: The model's state in the contract's terms. For the Kafka twin, topics with each partition's high watermark, last stable offset, leader epoch and transactions; producers; groups with their generation, members and assignment; committed offsets; and the active faults.
+      required: [twin, seed, clock, historyLength]
+      properties:
+        twin: { type: string }
+        seed: { type: integer }
+        clock: { $ref: "#/components/schemas/Clock" }
+        faults: { type: array, items: { $ref: "#/components/schemas/ActiveFault" } }
+        historyLength: { type: integer }
+      additionalProperties: true
+    ForcedState:
+      type: object
+      description: A state to reach. For the Kafka twin, its parts are reached in this order.
+      additionalProperties: false
+      properties:
+        reset: { type: boolean, description: Start from an empty cluster first. }
+        topics:
+          type: array
+          items:
+            type: object
+            required: [name, partitions]
+            additionalProperties: false
+            properties:
+              name: { type: string }
+              partitions: { type: integer }
+        records:
+          type: array
+          items:
+            type: object
+            required: [topic]
+            additionalProperties: false
+            properties:
+              topic: { type: string }
+              partition: { type: integer, default: 0 }
+              offset: { type: integer, description: The offset the first record must get, the partition's log end. }
+              records: { type: array, items: { $ref: "#/components/schemas/Record" } }
+              logEndOffset: { type: integer, description: Instead of records, numbered records until the log ends here. }
+        producers:
+          type: array
+          items:
+            type: object
+            required: [transactionalId, epoch]
+            additionalProperties: false
+            properties:
+              transactionalId: { type: string }
+              epoch: { type: integer }
+        transactions:
+          type: array
+          items:
+            type: object
+            required: [transactionalId, end]
+            additionalProperties: false
+            properties:
+              transactionalId: { type: string }
+              records:
+                type: array
+                items:
+                  allOf:
+                    - $ref: "#/components/schemas/Record"
+                    - type: object
+                      required: [topic]
+                      properties:
+                        topic: { type: string }
+                        partition: { type: integer, default: 0 }
+              group: { type: string }
+              offsets: { type: array, items: { $ref: "#/components/schemas/Offset" } }
+              end: { type: string, enum: [open, commit, abort] }
+        groups:
+          type: array
+          items:
+            type: object
+            required: [group, members]
+            additionalProperties: false
+            properties:
+              group: { type: string }
+              members:
+                type: array
+                items:
+                  type: object
+                  required: [member, topics]
+                  properties:
+                    member: { type: string }
+                    topics: { type: array, items: { type: string } }
+              assignment:
+                type: object
+                description: The assignment the test expects, which the coordinator's must equal.
+                additionalProperties:
+                  type: array
+                  items:
+                    type: object
+                    required: [topic, partition]
+                    properties:
+                      topic: { type: string }
+                      partition: { type: integer }
+        committed:
+          type: array
+          items:
+            allOf:
+              - $ref: "#/components/schemas/Offset"
+              - type: object
+                required: [group]
+                properties:
+                  group: { type: string }
+    Bytes:
+      description: Printable UTF-8 text, or base64.
+      oneOf:
+        - type: string
+        - type: object
+          required: [base64]
+          properties:
+            base64: { type: string, contentEncoding: base64 }
+    Record:
+      type: object
+      properties:
+        key: { $ref: "#/components/schemas/Bytes" }
+        value: { $ref: "#/components/schemas/Bytes" }
+        headers:
+          type: object
+          additionalProperties:
+            oneOf: [{ $ref: "#/components/schemas/Bytes" }, { type: "null" }]
+    Offset:
+      type: object
+      required: [topic, offset]
+      properties:
+        topic: { type: string }
+        partition: { type: integer, default: 0 }
+        offset: { type: integer }
+    HistoryEntry:
+      type: object
+      required: [seq, at, source]
+      description: An operation of the contract's ability with its arguments by name and `answer`, or a control-plane event with `control` and `detail`.
+      properties:
+        seq: { type: integer, minimum: 1 }
+        at: { type: integer, description: The twin clock, in milliseconds since the Unix epoch. }
+        source: { type: string, enum: [wire, force, fault, coordinator, replay] }
+        op: { type: string, description: The ability operation, such as produceRequest. }
+        answer:
+          oneOf:
+            - type: object
+              required: [ok]
+              properties:
+                ok: {}
+            - type: object
+              required: [error]
+              properties:
+                error: { type: string, description: The contract's error, such as ProducerFenced. }
+        control: { type: string }
+        detail: {}
+      additionalProperties: true
+    Divergence:
+      type: object
+      required: [seq, op, recorded, replayed]
+      properties:
+        seq: { type: integer }
+        op: { type: string }
+        recorded: {}
+        replayed: {}
+    Violation:
+      type: object
+      required: [law, detail]
+      properties:
+        law: { type: string }
+        detail: { type: string }
+        seq: { type: integer }

@@ -1,28 +1,58 @@
-//! The same seed and the same requests give the same history, byte for
-//! byte. The requests are sent by a scripted client over the wire, one at a
-//! time, so nothing but the twin could make two runs differ.
+//! A scripted session: one connection, one request at a time, every kind
+//! of request the twin answers, each answer checked. Two runs with the same
+//! seed must write the same history; the frames of a run on the reference
+//! core are the golden session in `twins/kafka/shared/golden/`, which every
+//! core must answer byte for byte.
 
-mod common;
-
+use crate::core::TestTwin;
 use bytes::{Bytes, BytesMut};
-use common::TestTwin;
 use kafka_protocol::messages::*;
 use kafka_protocol::protocol::{Decodable, Encodable, HeaderVersion, Request, StrBytes};
 use kafka_protocol::records::{Compression, Record, RecordBatchDecoder, RecordBatchEncoder, RecordEncodeOptions, TimestampType};
 use std::io::{Read, Write};
 use std::net::TcpStream;
 
-struct Client {
+/// One request and its response, as sent and received on the wire: the
+/// header and body of each, without the length prefix.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub struct Frame {
+    /// The request's API key.
+    pub key: i16,
+    /// Its version.
+    pub version: i16,
+    /// The request's bytes.
+    pub request: Vec<u8>,
+    /// The response's bytes.
+    pub response: Vec<u8>,
+}
+
+/// A client that sends typed requests one at a time and keeps every frame.
+pub struct Client {
     stream: TcpStream,
     correlation: i32,
+    /// The frames so far.
+    pub frames: Vec<Frame>,
 }
 
 impl Client {
-    fn connect(twin: &TestTwin) -> Self {
-        Self { stream: TcpStream::connect(twin.kafka).unwrap(), correlation: 0 }
+    /// A connection to the core's Kafka port.
+    pub fn connect(twin: &TestTwin) -> Self {
+        Self { stream: TcpStream::connect(twin.kafka).unwrap(), correlation: 0, frames: vec![] }
     }
 
-    fn send<R: Request>(&mut self, req: R, version: i16) -> R::Response {
+    /// Sends bytes as one request and gives the response's bytes.
+    pub fn exchange(&mut self, request: &[u8]) -> Vec<u8> {
+        self.stream.write_all(&(request.len() as i32).to_be_bytes()).unwrap();
+        self.stream.write_all(request).unwrap();
+        let mut len = [0u8; 4];
+        self.stream.read_exact(&mut len).unwrap();
+        let mut body = vec![0u8; i32::from_be_bytes(len) as usize];
+        self.stream.read_exact(&mut body).unwrap();
+        body
+    }
+
+    /// Sends a typed request and gives the typed response.
+    pub fn send<R: Request>(&mut self, req: R, version: i16) -> R::Response {
         self.correlation += 1;
         let header = RequestHeader::default()
             .with_request_api_key(R::KEY)
@@ -32,24 +62,22 @@ impl Client {
         let mut buf = BytesMut::new();
         header.encode(&mut buf, R::header_version(version)).unwrap();
         req.encode(&mut buf, version).unwrap();
-        self.stream.write_all(&(buf.len() as i32).to_be_bytes()).unwrap();
-        self.stream.write_all(&buf).unwrap();
-        let mut len = [0u8; 4];
-        self.stream.read_exact(&mut len).unwrap();
-        let mut body = vec![0u8; i32::from_be_bytes(len) as usize];
-        self.stream.read_exact(&mut body).unwrap();
-        let mut body = Bytes::from(body);
+        let raw = self.exchange(&buf);
+        self.frames.push(Frame { key: R::KEY, version, request: buf.to_vec(), response: raw.clone() });
+        let mut body = Bytes::from(raw);
         let header = ResponseHeader::decode(&mut body, R::Response::header_version(version)).unwrap();
         assert_eq!(header.correlation_id, self.correlation);
         R::Response::decode(&mut body, version).unwrap()
     }
 }
 
-fn s(x: &str) -> StrBytes {
+/// A protocol string.
+pub fn s(x: &str) -> StrBytes {
     StrBytes::from_string(x.to_string())
 }
 
-fn batch(pid: i64, epoch: i16, seq: i32, values: &[&str], transactional: bool, compression: Compression) -> Bytes {
+/// A v2 record batch.
+pub fn batch(pid: i64, epoch: i16, seq: i32, values: &[&str], transactional: bool, compression: Compression) -> Bytes {
     let records: Vec<Record> = values
         .iter()
         .enumerate()
@@ -74,7 +102,8 @@ fn batch(pid: i64, epoch: i16, seq: i32, values: &[&str], transactional: bool, c
     buf.freeze()
 }
 
-fn produce(c: &mut Client, topic: &str, partition: i32, txid: Option<&str>, records: Bytes) -> (i16, i64) {
+/// A produce request to one partition: the error code and base offset.
+pub fn produce(c: &mut Client, topic: &str, partition: i32, txid: Option<&str>, records: Bytes) -> (i16, i64) {
     let req = ProduceRequest::default()
         .with_transactional_id(txid.map(|t| TransactionalId(s(t))))
         .with_acks(-1)
@@ -87,8 +116,10 @@ fn produce(c: &mut Client, topic: &str, partition: i32, txid: Option<&str>, reco
     (p.error_code, p.base_offset)
 }
 
-/// The script: every kind of request the twin answers, in a fixed order.
-fn script(twin: &TestTwin) -> Vec<String> {
+/// The script: every kind of request the twin answers, in a fixed order,
+/// checking each answer. It gives the member ids the core chose, and the
+/// frames, which are the golden session when the core is the reference.
+pub fn script(twin: &TestTwin) -> (Vec<String>, Vec<Frame>) {
     let mut c = Client::connect(twin);
     let mut seen = vec![];
     let versions = c.send(ApiVersionsRequest::default().with_client_software_name(s("scripted")).with_client_software_version(s("1")), 3);
@@ -231,39 +262,6 @@ fn script(twin: &TestTwin) -> Vec<String> {
         3,
     );
     assert_eq!(leave.members[0].error_code, 0);
-    seen
+    (seen, c.frames)
 }
 
-#[test]
-fn the_same_seed_and_requests_give_the_same_history_byte_for_byte() {
-    let runs: Vec<(String, Vec<String>)> = [42, 42, 43]
-        .into_iter()
-        .map(|seed| {
-            let twin = TestTwin::start(seed);
-            let members = script(&twin);
-            twin.assert_lawful();
-            (twin.history_text(), members)
-        })
-        .collect();
-    assert!(runs[0].0.len() > 1000);
-    assert_eq!(runs[0].0, runs[1].0, "two runs with seed 42 differ");
-    assert_eq!(runs[0].1, runs[1].1);
-    assert_ne!(runs[0].1, runs[2].1, "the member id comes from the seed");
-    assert_ne!(runs[0].0, runs[2].0);
-}
-
-#[test]
-fn a_history_replays_and_a_mutated_one_is_caught() {
-    let twin = TestTwin::start(7);
-    script(&twin);
-    let text = twin.history_text();
-    let entries = lawtwin_kafka::admin::parse_history(&text).unwrap();
-    let (_, divergences) = lawtwin_kafka::history::replay(&entries);
-    assert!(divergences.is_empty());
-    // Change one produce's answer: the replay and the law check both notice.
-    let mutated = text.replacen(r#""answer":{"ok":8}"#, r#""answer":{"ok":9}"#, 1);
-    assert_ne!(mutated, text);
-    let entries = lawtwin_kafka::admin::parse_history(&mutated).unwrap();
-    assert_eq!(lawtwin_kafka::history::replay(&entries).1.len(), 1);
-    assert!(!lawtwin_kafka::laws::check_history(&entries).is_empty());
-}

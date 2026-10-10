@@ -394,7 +394,6 @@ dependencies = [
 name = "lawtwin"
 version = "0.1.0"
 dependencies = [
- "lawtwin-kafka",
  "serde_json",
  "serde_yaml",
 ]
@@ -411,11 +410,22 @@ dependencies = [
  "indexmap",
  "kafka-protocol",
  "lawspec-example",
- "rdkafka",
  "serde",
  "serde_json",
  "tokio",
  "uuid",
+]
+
+[[package]]
+name = "lawtwin-kafka-conformance"
+version = "0.1.0"
+dependencies = [
+ "bytes",
+ "kafka-protocol",
+ "lawtwin-kafka",
+ "rdkafka",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]

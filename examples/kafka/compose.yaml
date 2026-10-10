@@ -1,0 +1,16 @@
+# The Kafka twin for local runs with podman compose:
+#   podman compose -f examples/kafka/compose.yaml up -d
+#   lawtwin inspect
+#   podman compose -f examples/kafka/compose.yaml down
+# Clients on this machine connect to localhost:9092; the control plane is
+# http://localhost:9644. For applications in the same compose project, set
+# "advertise" to "kafka:9092" instead, so the twin tells them its service name.
+name: lawtwin-kafka
+services:
+  kafka:
+    image: docker.io/lawtwin/kafka:0.1.0
+    ports:
+      - "9092:9092"
+      - "9644:9644"
+    environment:
+      TWIN_CONFIG: '{"seed": 42, "clock": "frozen", "advertise": "localhost:9092"}'
