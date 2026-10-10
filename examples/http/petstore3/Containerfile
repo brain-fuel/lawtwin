@@ -15,6 +15,7 @@ FROM docker.io/library/eclipse-temurin:11-jre
 COPY --from=build /src/target/lib/jetty-runner.jar /swagger-petstore/jetty-runner.jar
 COPY --from=build /src/target/*.war /swagger-petstore/server.war
 COPY --from=build /src/src/main/resources/openapi.yaml /swagger-petstore/openapi.yaml
+COPY --from=build /src/inflector.yaml /swagger-petstore/inflector.yaml
 WORKDIR /swagger-petstore
 EXPOSE 8080
 CMD ["java", "-jar", "-DswaggerUrl=openapi.yaml", "/swagger-petstore/jetty-runner.jar", "/swagger-petstore/server.war"]

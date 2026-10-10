@@ -232,12 +232,13 @@ fn conform(rest: &[String]) -> Outcome {
         }
         report["twin"] = twin_report;
     }
-    let real_holds = report["real"]["holds"] == json!(true);
-    let level = match (real_holds, twin.is_some(), divergences.is_empty()) {
-        (true, true, true) => "conformant: the laws hold on the real service and the twin answers every request as it does",
-        (true, true, false) => "lawful: the laws hold on the real service; the twin answers some requests differently",
-        (true, false, _) => "lawful: the laws hold on the real service",
+    let real_lawful = report["real"]["violations"].as_array().is_some_and(Vec::is_empty);
+    let real_clean = report["real"]["findings"].as_array().is_some_and(Vec::is_empty);
+    let level = match (real_lawful, real_clean, twin.is_some(), divergences.is_empty()) {
         (false, ..) => "divergent: the real service breaks a law of the contract",
+        (true, true, true, true) => "conformant: the laws hold on the real service and the twin answers every request as it does",
+        (true, _, true, _) => "lawful: the laws hold on the real service; it does what the document forbids, or the twin answers some requests differently",
+        (true, ..) => "lawful: the laws hold on the real service",
     };
     for d in divergences.iter().take(20) {
         println!(
@@ -254,7 +255,7 @@ fn conform(rest: &[String]) -> Outcome {
     report["divergences"] = Value::Array(divergences);
     report["level"] = json!(level.split(':').next().unwrap_or(level));
     write_report(report_path, &report).map_err(fail)?;
-    if real_holds { Ok(()) } else { Err(("the real service breaks the contract".into(), 1)) }
+    if real_lawful { Ok(()) } else { Err(("the real service breaks a law of the contract".into(), 1)) }
 }
 
 /// `lawtwin up http`: runs one of the HTTP twin's cores, as a program or an image.
