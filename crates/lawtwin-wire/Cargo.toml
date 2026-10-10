@@ -1,0 +1,14 @@
+[package]
+name = "lawtwin-wire"
+description = "Reading an imported OpenAPI contract's wire map: types, values, requests, responses and seeded traffic, for the HTTP twin's cores, its peers and conformance runs"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+regex = "1"
+base64 = "0.22"
