@@ -12,5 +12,6 @@ name = "lawtwin"
 path = "src/main.rs"
 
 [dependencies]
+lawtwin-wire = { path = "../lawtwin-wire" }
 serde_json = { version = "1", features = ["preserve_order"] }
 serde_yaml = "0.9"

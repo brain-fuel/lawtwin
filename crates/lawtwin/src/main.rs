@@ -9,6 +9,7 @@
 mod api;
 mod control;
 mod emit;
+mod http;
 mod ir;
 mod names;
 mod natives;
@@ -230,7 +231,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
 
 /// The usage text, with the control-plane commands.
 fn usage() -> String {
-    USAGE.replace("{CONTROL}", control::USAGE)
+    USAGE.replace("{CONTROL}", &format!("{}\n{}", control::USAGE, http::USAGE))
 }
 
 fn main() -> ExitCode {
@@ -252,7 +253,7 @@ fn main() -> ExitCode {
             println!("{}", usage());
             Ok(())
         }
-        Some(command) => match control::run(command, &args[1..]) {
+        Some(command) => match http::run(command, &args[1..]).or_else(|| control::run(command, &args[1..])) {
             Some(Ok(())) => Ok(()),
             Some(Err((e, code))) => {
                 eprintln!("lawtwin: {e}");

@@ -10,6 +10,8 @@
 //! - [`value`]: values of the contract's types, to and from JSON;
 //! - [`call`]: requests as calls of the contract's operations, and back;
 //! - [`schema`]: documented failure bodies, built and checked;
+//! - [`history`] and [`laws`]: the history format, and the contract's
+//!   laws checked over a history or a state;
 //! - [`traffic`]: seeded values and requests, valid and invalid;
 //! - [`http`]: a small HTTP/1.1 client that can also misbehave.
 //!
@@ -17,11 +19,13 @@
 //! (docs/reference/http-core.md); this crate is the Rust reading of it.
 
 pub mod call;
-pub mod traffic;
+pub mod history;
 pub mod http;
+pub mod laws;
 pub mod map;
 pub mod rng;
 pub mod schema;
+pub mod traffic;
 pub mod ty;
 pub mod value;
 

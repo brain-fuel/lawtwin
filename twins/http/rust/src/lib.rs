@@ -11,7 +11,7 @@ pub mod contracts;
 pub mod faults;
 pub mod force;
 pub mod history;
-pub mod laws;
+pub use lawtwin_wire::laws;
 pub mod model;
 pub mod server;
 pub mod twin;

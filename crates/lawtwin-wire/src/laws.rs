@@ -10,8 +10,8 @@
 
 use crate::V;
 use crate::history::arg;
-use lawtwin_wire::map::{Resource, Role, TypeDef};
-use lawtwin_wire::{Ty, WireMap};
+use crate::map::{Resource, Role, TypeDef};
+use crate::{Ty, WireMap};
 use serde_json::{Value, json};
 use std::collections::BTreeMap;
 
@@ -194,7 +194,7 @@ pub fn check_state(map: &WireMap, state: &V) -> Vec<Value> {
                 other => other.cloned(),
             };
             if held != own {
-                out.push(violation(title, format!("a {} is kept under {} but its {kf} is {:?}", r.record, lawtwin_wire::value::text_of(k), held), None));
+                out.push(violation(title, format!("a {} is kept under {} but its {kf} is {:?}", r.record, crate::value::text_of(k), held), None));
             }
         }
     }

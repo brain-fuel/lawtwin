@@ -403,6 +403,7 @@ dependencies = [
 name = "lawtwin"
 version = "0.1.0"
 dependencies = [
+ "lawtwin-wire",
  "serde_json",
  "serde_yaml",
 ]

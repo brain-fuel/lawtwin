@@ -216,6 +216,78 @@ pub fn send_and_hang_up(ep: &Endpoint, req: &Outgoing, after: Duration) -> Resul
     Ok(())
 }
 
+/// A request read off a connection, as a server or proxy receives it.
+#[derive(Clone, Debug)]
+pub struct Received {
+    pub method: String,
+    pub target: String,
+    pub headers: Vec<(String, String)>,
+    pub body: Vec<u8>,
+    /// Whether the client asked for the connection to close after it.
+    pub close: bool,
+}
+
+/// Reads one request; `None` when the client closed the connection first.
+pub fn read_request(r: &mut impl BufRead) -> Result<Option<Received>, Failure> {
+    let mut line = String::new();
+    loop {
+        line.clear();
+        if r.read_line(&mut line).map_err(io_failure)? == 0 {
+            return Ok(None);
+        }
+        if !line.trim().is_empty() {
+            break;
+        }
+    }
+    let mut parts = line.split_whitespace();
+    let method = parts.next().unwrap_or("").to_string();
+    let target = parts.next().ok_or_else(|| Failure::Malformed(format!("the request line {:?}", line.trim_end())))?.to_string();
+    let version = parts.next().unwrap_or("HTTP/1.1").to_string();
+    let mut headers = vec![];
+    loop {
+        line.clear();
+        if r.read_line(&mut line).map_err(io_failure)? == 0 {
+            return Err(Failure::Closed("the headers were cut off".into()));
+        }
+        let l = line.trim_end();
+        if l.is_empty() {
+            break;
+        }
+        if let Some((k, v)) = l.split_once(':') {
+            headers.push((k.trim().to_string(), v.trim().to_string()));
+        }
+    }
+    let close = match crate::call::header(&headers, "connection").map(str::to_ascii_lowercase) {
+        Some(c) if c.contains("close") => true,
+        Some(c) if c.contains("keep-alive") => false,
+        _ => version == "HTTP/1.0",
+    };
+    let has_body = crate::call::header(&headers, "content-length").is_some()
+        || crate::call::header(&headers, "transfer-encoding").is_some();
+    let body = if has_body { read_body(r, &headers, 200, "POST")? } else { vec![] };
+    Ok(Some(Received { method, target, headers, body, close }))
+}
+
+/// Writes a response with its `Content-Length`; hop-by-hop headers are dropped.
+pub fn write_response(w: &mut impl Write, status: u16, reason: &str, headers: &[(String, String)], body: &[u8], close: bool) -> std::io::Result<()> {
+    let mut head = format!("HTTP/1.1 {status} {reason}\r\n");
+    for (k, v) in headers {
+        let lower = k.to_ascii_lowercase();
+        if matches!(lower.as_str(), "content-length" | "transfer-encoding" | "connection" | "keep-alive") {
+            continue;
+        }
+        head.push_str(&format!("{k}: {v}\r\n"));
+    }
+    head.push_str(&format!("Content-Length: {}\r\n", body.len()));
+    if close {
+        head.push_str("Connection: close\r\n");
+    }
+    head.push_str("\r\n");
+    w.write_all(head.as_bytes())?;
+    w.write_all(body)?;
+    w.flush()
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
