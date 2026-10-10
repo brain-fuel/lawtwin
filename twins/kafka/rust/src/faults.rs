@@ -3,7 +3,7 @@
 //!
 //! A fault is raised by name with parameters; both are checked against the
 //! declaration, so a test can only ask for what the twin file says, and the
-//! file says what each fault does to each law.
+//! file says what each fault does to each law. ref:DEC-twin-file
 
 use crate::clock::parse_duration;
 use serde::{Deserialize, Serialize};

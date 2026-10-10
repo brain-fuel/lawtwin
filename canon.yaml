@@ -33,6 +33,8 @@ ignore:
   - contracts/*/test/kotlin/src/main/java/
   - contracts/*/test/kotlin/src/test/
   - .lawspec-cli/
+  - twins/*/conformance/clients/*/node_modules/
+  - twins/*/conformance/clients/*/target/
 languages:
   folio:
     extensions: [.md]

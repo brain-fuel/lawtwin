@@ -22,3 +22,7 @@ registry/*:
   kinds: [comment]
   reason: "The lawtwin command was written in 0.1.0 and its canonical comments ingested pending; the owner vets them before 1.0"
   revisit: 1.0.0
+/twins/:
+  kinds: [comment]
+  reason: "The Kafka twin's Rust core and its conformance kit were written in 0.1.0 and their canonical comments ingested pending; the owner vets them before 1.0"
+  revisit: 1.0.0

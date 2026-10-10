@@ -5,7 +5,7 @@
 //! `joinGroupRequest`, ...), so a history can be replayed through a fresh
 //! model, checked against the contract's laws, and compared byte for byte
 //! with another run's. Control-plane events (faults, clock advances, forced
-//! states) are entries of their own; replay skips them.
+//! states) are entries of their own; replay skips them. ref:DEC-history-as-ability-calls
 
 use crate::model::{ClusterModel, Failure, data};
 use base64::Engine as _;

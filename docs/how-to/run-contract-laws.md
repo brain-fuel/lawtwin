@@ -13,9 +13,9 @@ contract on Rust and Python.
 
 You need:
 
-- LawSpec main after the `lawspec-gaps` and `lawspec-codegen` merges
-  (ref:lawspec). Its npm release is pending; `make lawspec-version` prints
-  what the contracts need;
+- LawSpec branch `lawspec-lawtwin` at e99a0bc (ref:lawspec), staged with
+  `make lawspec-stage LAWSPEC_HOME=<checkout>`. Its npm release is pending;
+  `make lawspec-version` prints what the contracts need;
 - Node 22 or later;
 - Rust 1.85 or later;
 - Python 3.13 or later, as `python3.13`, or named with `PYTHON313`;

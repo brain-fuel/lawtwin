@@ -26,7 +26,8 @@ DEC-dependency-contracts-in-lawspec:
   refs: [lawtwin-plan, lawspec]
 
 DEC-twins-in-rust:
-  status: decided
+  status: superseded
+  by: DEC-core-per-target
   question: What are twin servers written in?
   answer: |
     Rust. Each twin embeds the Rust code LawSpec generates for its contract's spec handler, so the model the laws check is the model that runs, and adds a wire layer that maps requests onto the contract's operations: the kafka-protocol crate for Kafka, hyper and axum for HTTP. Time runs on the contract's Clock and randomness on a seeded Random, so runs are deterministic and replayable. Decided by the owner, 2026-10-09.
@@ -114,3 +115,93 @@ DEC-openapi-resources:
   opened: 0.1.0
   decided: 0.1.0
   refs: [openapi-3-0, openapi-3-1, swagger-petstore, github-rest-api-description]
+
+DEC-core-per-target:
+  status: decided
+  question: In what language is a twin's server written, and how many servers does a twin have?
+  answer: |
+    A twin has a core (its server) in every LawSpec target language, each embedding the model LawSpec generates for that language: Rust first, then Go and the JVM (Java and Kotlin), then Python, JavaScript and TypeScript, and Haskell, and later the BEAM (Erlang, Elixir, Gleam), C#, F# and the other targets. Each core has its own image or native deployment; a BEAM core may deploy as an OTP release or an Erlang cluster, not only a container. Everything that is not a core is language-neutral and in the repository once: the control plane's admin API and its OpenAPI document, the twin file's fault declarations, the history format, the lawtwin command (which speaks to any core over the admin API), the golden wire session, the core conformance kit and the documentation. The repository keeps a twin's cores side by side under twins/<twin>/<language>/, with what they share under twins/<twin>/shared/. Every core takes the same options and environment. This supersedes DEC-twins-in-rust, so that each build tool and runtime a team uses has a core of its own. Decided by the owner, 2026-10-10.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, lawspec]
+
+DEC-core-conformance-kit:
+  status: decided
+  question: How is a core in a new language shown to be the same twin as the others?
+  answer: |
+    By a black-box conformance kit every core must pass, run with `make core-conformance CORE=<command or image:...>`. It reaches the core only over the Kafka protocol and the admin API. It runs the same scenarios with librdkafka, kafkajs, franz-go and the Java client; after each, it replays the core's history through the reference model and checks the contract's laws over the history and the replayed state itself, not trusting the core's own check, which must agree; it checks faults, forced states and the clock as clients see them; it checks that the same seed and requests give the same history, byte for byte; and it sends the golden session's requests and requires the golden responses and history, byte for byte, so cores agree with each other and not only with themselves. The golden session is recorded from the Rust core, the reference, with `make golden`, and every core's codec tests read its frames. Decided by the owner, 2026-10-10.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [librdkafka, kafkajs, franz-go, kafka-java-client, rdkafka-crate]
+
+DEC-control-plane-api:
+  status: decided
+  question: How do tests and tools reach a twin's control plane, whatever the twin and whatever its core's language?
+  answer: |
+    Over a JSON API on HTTP, on an admin port of the twin's own (9644 by default), described by an OpenAPI 3.1 document in the repository (docs/reference/control-plane.openapi.yaml). Its resources are the twin (`/v1/twin`), the state (`GET` to inspect, `POST` to force), the faults, the clock, the history with its replay, the laws, and the seed. The lawtwin command speaks it, so the command never links a core. Every core of every twin serves the same API.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [openapi-3-1]
+
+DEC-twin-file:
+  status: decided
+  question: Where are a twin's faults declared, and how is each fault's effect on the contract stated?
+  answer: |
+    In the twin file, lawtwin.json, next to the contract's lawspec-package.json; never in the contract, which knows nothing of twins. It names the contract, the ability and the spec handler the twin runs, declares each fault with its typed parameters, what changes while it is active, and its effect on each law it touches (every law not named holds), and lists what forcing a state refuses, by law. A twin refuses a fault or parameter the file does not declare. Tests check that every law the file names is a law of the contract and that every declared fault is implemented. Kafka's faults are broker-unavailable, leader-change, consumer-lag, duplicate-delivery, rebalance-storm and request-latency; a fault changes what reaches the model, when an answer is sent, or what the client is told, never what the model answers.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-force-through-operations:
+  status: decided
+  question: How is a forced state checked against the contract, so that an impossible state is refused?
+  answer: |
+    A forced state is reached through the contract's own operations, from the twin's current state, on a copy of the model: a state reached that way is a state the model can be in. Before anything is applied, the forced state is checked, and one that no sequence of operations reaches is refused with the law that forbids it (a topic's partitions only grow; offsets in a partition are dense and increasing; a new epoch fences the older producer; every partition has exactly one owner in a generation; and others). If the model refuses an operation, or the result breaks an invariant the laws state, the copy is dropped and nothing changes. Otherwise the copy becomes the state and its operations are written to the history with source force, so a forced state replays like any other.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec]
+
+DEC-history-as-ability-calls:
+  status: decided
+  question: What does a twin's history record, and in what form?
+  answer: |
+    Every operation of the contract's ability the twin performed, in order, as the call it is (`produceRequest` with its topic and partition, producer tag and records) with the model's answer (`ok` and the result, or `error` and the contract's error), the twin clock and the source (wire, force, fault, coordinator), as JSON lines; and control-plane events (faults raised, cleared and ended, the clock advanced, resets) as entries of their own. Bytes are printable text or base64. A read a client repeats while it waits is written once, with the answer it got. So a history replays through a fresh model, is checked against the laws, and compares byte for byte between runs and between cores.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec]
+
+DEC-twin-clock:
+  status: decided
+  question: How does a twin keep time, so that runs are deterministic and a test controls timeouts?
+  answer: |
+    On a twin clock that is frozen by default and moves only when the control plane advances it; with `--clock wall` it also follows real time. Session timeouts and faults raised for a time run on it, so advancing it past a session timeout removes the member as a timeout would. Randomness is one SplitMix64 generator seeded with the twin's seed, the only source of member and cluster ids. Waits that only protect a client from a stuck connection, a fetch's long poll and a rebalance waiting for members, run in real time and change no answer. The Kafka contract states no time, so the clock is LawTwin's, not the model's.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-embed-generated-model:
+  status: decided
+  question: How does the Kafka twin's Rust core run the code LawSpec generates for the contract, so that the model the laws check is the model that runs?
+  answer: |
+    It depends on the contract's Rust test project, the crate the contract's laws run in, generated by LawSpec branch lawspec-lawtwin (e99a0bc) and checked by `make contract-generate-check`. A build script reads the generated spec handler `cluster` and writes, for each operation of Broker, a method that calls the same typed definition with the same argument conversions over a state the core owns, and gives a raised KafkaError back as a value rather than as the panic the generated handler raises. The core can then read the state for inspect and replace it for force. The generated handler keeps its state private and has no way to return a raised failure; both are in the LawSpec gap report.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec, kafka-protocol-crate]
+
+DEC-classic-groups-over-coordinator:
+  status: decided
+  question: The contract's group coordinator assigns partitions itself, as in KIP-848, but clients speak the classic group protocol. How does the twin serve them?
+  answer: |
+    By running the classic protocol's rounds over the contract's coordinator. A new or changed member starts a round; the others are told REBALANCE_IN_PROGRESS and rejoin, and commits at the current generation succeed meanwhile. When every member has rejoined, or after the rebalance wait, a member that did not rejoin leaves and each that did joins, through the contract's operations; every member learns the new generation, and the leader, the first in member id order, gets the members' metadata. A sync answers with the contract's assignment, whatever the leader proposed. Generations and assignments are always the model's, and clients need no change.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kip-848, kafka-classic-group-protocol]
+
+DEC-kafka-wire-versions:
+  status: decided
+  question: Which Kafka requests and versions does the twin answer?
+  answer: |
+    ApiVersions 0-4, Metadata 0-12, Produce 3-11, Fetch 4-12, ListOffsets 1-7, FindCoordinator 0-4, JoinGroup 0-9, SyncGroup 0-5, Heartbeat 0-4, LeaveGroup 0-5, DescribeGroups 0-5, ListGroups 0-4, OffsetCommit 2-8, OffsetFetch 1-7, InitProducerId 0-4, AddPartitionsToTxn 0-3, AddOffsetsToTxn 0-3, TxnOffsetCommit 0-3, EndTxn 0-3, CreateTopics 2-7, CreatePartitions 0-3 and DescribeConfigs 1-4: what librdkafka 2.12, the Java client 4.3, franz-go 1.22 and kafkajs 2.2 negotiate, below the versions that need topic ids in requests, fetch sessions, the KIP-848 consumer protocol or transactions version 2, which the model does not have. Record batches are format v2, in any compression.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol, kafka-protocol-crate]

@@ -9,8 +9,9 @@ Writing the Kafka contract in LawSpec 0.21.0 (ref:lawspec) showed what the
 language could not state, or could not generate well, for a dependency
 contract of this size. LawSpec branch `lawspec-gaps` closes all but one of
 the seventeen, and the contract is now written with them. It needs LawSpec
-main after the `lawspec-gaps` and `lawspec-codegen` merges; the npm release
-is pending. Each gap below has the example that found it, what
+branch `lawspec-lawtwin` at e99a0bc, which has those fixes, typed native
+code, and fixes for most of the gaps found since; the npm release is
+pending. Each gap below has the example that found it, what
 the contract does instead, and what would close it. This page is for the
 LawSpec roadmap (ref:lawspec-roadmap); LawTwin does not change LawSpec.
 
@@ -352,6 +353,8 @@ after them. None changes what a contract says.
 
 ### 18. On Rust, a failing spec handler clause poisons the handler
 
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298). A failing clause no longer poisons the handler; all 79 Rust runs of the Kafka contract pass.
+
 A spec handler's clause runs with its context locked. When the clause
 fails, the failure unwinds through the lock, and every later call on the
 handler panics with `PoisonError`. Any law that expects a failure and then
@@ -372,6 +375,8 @@ lock as the clause's failure has already been reported.
 
 ### 19. On Rust, a spec handler cannot call `prelude.octets`
 
+**Closed** by LawSpec branch `lawspec-lawtwin` (e99a0bc): the murmur2 partitioner's Rust runs pass.
+
 A definition that calls `prelude.octets` passes as a top-level law, but
 when a spec handler's clause calls it, Rust's evaluator stops with
 `unknown helper: octets`. The six Rust runs of `murmurPartitioner`, and of
@@ -380,6 +385,8 @@ the producer laws that use it, fail this way.
 **Would close it:** the sequence helpers in the Rust evaluator.
 
 ### 20. A package's units do not bring their collections helpers
+
+**Closed** by LawSpec branch `lawspec-lawtwin` (66a7e2f).
 
 A test project that imports `lawtwin.kafka` as a package fails `lawspec
 check` with `unknown core declaration:
@@ -393,6 +400,8 @@ definition that calls `prelude.saturating` for that reason.
 program, packaged ones included.
 
 ### 21. On Java, a field cannot be named `record`
+
+**Closed** by LawSpec branch `lawspec-lawtwin` (d40ea24): Java record components may be named `record`, `sealed`, `permits` or `var`.
 
 `FetchedRecord`'s field `record` fails Java generation with `invalid Java
 data identifier: record`; `record` is a contextual keyword in Java. The
@@ -411,6 +420,8 @@ laws](../how-to/run-contract-laws.md).
 ## Found while writing the OpenAPI importer
 
 ### 23. A regex field contract is not proved through a record update
+
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298).
 
 ```lawspec fragment
 type Pet is
@@ -434,6 +445,8 @@ for the fields a record update or a rebuild copies.
 
 ### 24. A definition that says `fails with` but never raises breaks `by`
 
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298).
+
 A clause `addPet by model.modelAddPet`, where `modelAddPet` says `fails
 with ApiError` and has no `raise`, fails with `core: referenceAddPet: it
 uses lawspec::ability::Fail(ApiError) (through modelAddPet), but its row is
@@ -444,6 +457,8 @@ whether or not its body raises.
 
 ### 25. A refinement in a data type cannot call a definition
 
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298).
+
 `name :: (v :: Text where validName v)` in a `type` fails with `unknown
 value: validName`, where a law's input may say the same. The importer
 writes predicates inline.
@@ -452,6 +467,8 @@ writes predicates inline.
 inputs.
 
 ### 26. On Rust, a handler named like its ability does not compile
+
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298): the handler's struct is `<Name>Spec`.
 
 A spec handler `counter` for an ability `Counter` becomes a Rust struct
 `Counter`, beside the trait `Counter`: `the name Counter is defined
@@ -463,6 +480,8 @@ the ability's trait.
 
 ### 27. Laws filter records whose fields a regex constrains
 
+**Closed** by LawSpec branch `lawspec-lawtwin` (1db7298): boundary witnesses for a regex field come from the regex.
+
 A record input with a regex-constrained field, `(body :: Pet where
 model.validPet body)`, is drawn from any record and filtered: Proptest
 gives up with `Too many local rejects`, and Hypothesis fails its
@@ -472,3 +491,54 @@ as a refined input and put it into the record.
 
 **Would close it:** generating a record's fields from the regexes a
 refinement of the record states.
+
+## Found while embedding the model in the Kafka twin
+
+The Kafka twin's Rust core runs the code LawSpec branch `lawspec-lawtwin`
+(e99a0bc) generates for the contract, through the embedding API: the spec
+handler `Cluster::start()` and its `Broker` trait (ref:DEC-embed-generated-model).
+At about a million operations a second the generated model is fast enough
+to be the broker. Four things made the twin go around the API rather than
+through it.
+
+### 28. A failing operation of an embedded handler panics
+
+`produceRequest` says `fails with KafkaError`, but the generated trait method
+returns `i64`: a refusal panics with the raised value (`ls::Failure`), which
+a law catches and an application must too. The twin calls the typed
+definitions itself and catches the panic around each call, giving the
+`KafkaError` back as a value.
+
+**Would close it:** for an operation that `fails with E`, an embedding
+method that returns `Result<T, E>` (an `error` return in Go, a checked
+exception on the JVM), beside the trait method laws use.
+
+### 29. An embedded handler's state cannot be read or replaced
+
+`Cluster` keeps its state in a private field, so an application can neither
+show it (the control plane's `inspect`) nor set it (`force`, a reset, a
+snapshot to roll back to). The twin keeps the typed state itself.
+
+**Would close it:** `state()` and `with_state(s)` (or `snapshot` and
+`restore`) on a handler with state, in the native types, and cheap access
+to the typed state for an application that keeps it.
+
+### 30. The typed definitions an embedding needs have generated names
+
+The handler's clauses call `typed::clusterProduceRequest_41`,
+`typed::clusterStart_42` and so on: names numbered by the generator, which
+change when the contract does. The twin's build script reads them from the
+generated `impl Broker for Cluster` rather than naming them.
+
+**Would close it:** with gap 28 and 29, nothing further; otherwise stable
+names for a spec handler's clause and start functions.
+
+### 31. A generated crate warns in every crate that depends on it
+
+The contract's Rust project compiles with hundreds of `unused import`
+warnings (`pub(crate) use self::evaluate_38 as evaluate_39`), which Cargo
+shows in every build of a crate that depends on it by path, as the twin
+does.
+
+**Would close it:** `#![allow(unused_imports)]` on the generated modules,
+as their other allowances are.

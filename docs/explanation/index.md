@@ -13,4 +13,5 @@ reading, not instructions.
 - [Roadmap](roadmap.md): what each release covers, and the dependencies that
   come after.
 - [LawSpec gap report](lawspec-gaps.md): what LawSpec 0.21 could not state,
-  or generate well, for the Kafka contract.
+  or generate well, for the Kafka contract, and what embedding the generated
+  model in the Kafka twin found.

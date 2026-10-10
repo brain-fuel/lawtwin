@@ -13,18 +13,34 @@ What a release covers is decided in the ledger (ref:DEC-first-release-scope).
 **Kafka.**
 
 - The dependency contract `lawtwin.kafka`: done in this repository.
-- The twin: a Rust server that embeds the contract's generated reference
-  model behind the Kafka wire protocol (ref:kafka-protocol-crate). It covers
-  the requests librdkafka, the Java client, franz-go and kafkajs use:
-  ApiVersions, Metadata, Produce, Fetch, ListOffsets, FindCoordinator,
-  JoinGroup, SyncGroup, Heartbeat, LeaveGroup, OffsetCommit, OffsetFetch,
-  InitProducerId, AddPartitionsToTxn, AddOffsetsToTxn, EndTxn and
-  TxnOffsetCommit.
-- The control plane: `force`, `fault` (broker unavailable, leader change,
-  consumer lag, duplicate delivery, rebalance storm), `advance`, `inspect`
-  and `history`.
+- The twin's Rust core: done. It embeds the contract's generated reference
+  model behind the Kafka wire protocol (ref:kafka-protocol-crate), with the
+  requests and versions librdkafka, the Java client, franz-go and kafkajs
+  negotiate: ApiVersions, Metadata, Produce, Fetch, ListOffsets,
+  FindCoordinator, JoinGroup, SyncGroup, Heartbeat, LeaveGroup,
+  DescribeGroups, ListGroups, OffsetCommit, OffsetFetch, InitProducerId,
+  AddPartitionsToTxn, AddOffsetsToTxn, EndTxn, TxnOffsetCommit,
+  CreateTopics, CreatePartitions and DescribeConfigs. Its image is 6 MB.
+- The control plane: done, shared by every twin and every core: `force`,
+  `fault` (broker unavailable, leader change, consumer lag, duplicate
+  delivery, rebalance storm, request latency), `advance`, `inspect`,
+  `history`, `replay`, `laws` and `seed`, over an admin API described by an
+  OpenAPI document.
+- The core conformance kit: done. All four clients pass every scenario on
+  the Rust core, as a program and as an image.
 - Conformance against the `apache/kafka` image (ref:apache-kafka-image),
   then record and replay through a Kafka proxy.
+
+**Cores in every target language.** Each twin gets a core in every LawSpec
+target language, each embedding the model LawSpec generates for it, each
+with its own image or native deployment, and each checked by the same
+conformance kit, golden session included (ref:DEC-core-per-target):
+
+1. Rust: done for Kafka.
+2. Go, and the JVM (Java and Kotlin).
+3. Python, JavaScript and TypeScript, and Haskell.
+4. The BEAM (Erlang, Elixir and Gleam), deployed as an OTP release or an
+   Erlang cluster as well as an image; C#, F# and the other targets.
 
 **HTTP and OpenAPI.**
 
@@ -36,9 +52,10 @@ What a release covers is decided in the ledger (ref:DEC-first-release-scope).
 - A stateful HTTP twin, faults (latency, 5xx, 429, timeouts), record and
   replay through an HTTP proxy, and conformance against a real endpoint.
 
-**Packaging.** A Containerfile per twin (ref:containerfile), `podman
-compose` for local runs (ref:podman-compose), and OpenTofu modules for AWS
-ECS Fargate, GCP Cloud Run and Azure Container Apps (ref:opentofu).
+**Packaging.** A Containerfile per core (ref:containerfile): done for the
+Kafka twin's Rust core, `lawtwin/kafka:0.1.0`. `podman compose` for local
+runs (ref:podman-compose): done, in `examples/kafka/`. OpenTofu modules for
+AWS ECS Fargate, GCP Cloud Run and Azure Container Apps (ref:opentofu).
 
 ## Later tiers
 

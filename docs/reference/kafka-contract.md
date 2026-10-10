@@ -14,8 +14,9 @@ title: The Kafka contract
 | `lawtwin.kafka.model` | the data of a cluster, and one checked definition for each request it answers |
 | `lawtwin.kafka` | the `Cluster` resource, the abilities, their laws, the reference handlers, and the client handlers |
 
-The package is written for LawSpec main after the `lawspec-gaps` merge
-(ref:lawspec): it uses handlers of several abilities, handler sets, `fails
+The package is written for LawSpec branch `lawspec-lawtwin` at e99a0bc,
+which has the `lawspec-gaps` fixes and typed native code (ref:lawspec): it
+uses handlers of several abilities, handler sets, `fails
 with` on operations, field access and record update, `Bytes` and `Text`
 operations, and wrapping and saturating arithmetic.
 
@@ -231,8 +232,8 @@ holds the reference model, so each case gets a fresh cluster
 from their refinements, which LawSpec now generates from rather than
 filters, so the project binds no generators.
 
-On Python, Go, Java and Kotlin all 79 runs pass. On Rust, 18 fail: the
-LawSpec `lawspec-gaps` build's Rust target poisons a spec handler's lock
-when a clause fails, and its Rust evaluator does not know `prelude.octets`;
-the [gap report](../explanation/lawspec-gaps.md#found-while-re-expressing-the-contract)
-has both.
+With LawSpec branch `lawspec-lawtwin` (e99a0bc), all 79 runs pass on Rust;
+on the `lawspec-gaps` build 18 failed there, for the two reasons the [gap
+report](../explanation/lawspec-gaps.md#found-while-re-expressing-the-contract)
+gives, both now closed. The Kafka twin's Rust core runs the same generated
+code ([the Kafka twin](kafka-twin.md)).

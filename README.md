@@ -30,16 +30,44 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 
 | Path | What it is |
 | --- | --- |
-| `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0 |
+| `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0, and its twin file `lawtwin.json`, which declares the twin's faults |
 | `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java and Kotlin targets |
-| `crates/lawtwin/` | The `lawtwin` command, with `lawtwin import openapi` |
+| `twins/kafka/rust/` | The Kafka twin's Rust core: the contract's generated model behind the Kafka wire protocol, with the control plane; its image is `lawtwin/kafka:0.1.0` |
+| `twins/kafka/conformance/` | The core conformance kit every Kafka core must pass, with librdkafka, kafkajs, franz-go and the Java client |
+| `twins/kafka/shared/` | The golden wire session every core answers byte for byte |
+| `crates/lawtwin/` | The `lawtwin` command: `lawtwin import openapi`, `lawtwin up`, and the control-plane commands |
+| `examples/kafka/` | Running the Kafka twin with podman compose |
 | `contracts/petstore/`, `contracts/github/` | Contracts imported from the Swagger Petstore and from GitHub's label and milestone endpoints, with their test projects |
 | `openapi/` | The OpenAPI documents they are imported from, with their licences in `openapi/NOTICE` |
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
-The twin servers, the control plane, conformance, and record and replay
-follow; [the roadmap](docs/explanation/roadmap.md)
-lists what each release covers.
+Conformance against the real Kafka, record and replay, and the HTTP twin
+follow; [the roadmap](docs/explanation/roadmap.md) lists what each release
+covers.
+
+## The Kafka twin
+
+The Kafka twin is a broker your application reaches with its usual client.
+Every request is answered by the Kafka contract's reference model, the code
+LawSpec generates from it, and a test drives it through the control plane:
+
+```sh
+make image                                         # lawtwin/kafka:0.1.0, about 6 MB
+podman run --rm -p 9092:9092 -p 9644:9644 lawtwin/kafka:0.1.0
+lawtwin force state.json                           # a state, or the law that forbids it
+lawtwin fault duplicate-delivery count=2           # a declared fault
+lawtwin advance 30s                                # the twin clock
+lawtwin history > run.jsonl && lawtwin laws        # what happened, checked against the laws
+```
+
+librdkafka, kafkajs, franz-go and the Java client each produce, consume,
+rebalance a group, use the idempotent producer and transactions read
+committed, and see every fault and forced state, with the contract's laws
+checked over each history. The twin will have a core in every LawSpec target
+language; each must pass the same conformance kit (`make core-conformance`).
+[The Kafka twin](docs/reference/kafka-twin.md),
+[the control plane](docs/reference/control-plane.md) and [Run the Kafka
+twin](docs/how-to/run-the-kafka-twin.md) say more.
 
 ## The Kafka contract
 
@@ -57,12 +85,13 @@ make contract-check      # compile the package and its laws
 make contract-test       # run them on every target (TARGET=rust, for example, for one)
 ```
 
-The contracts need LawSpec main after the `lawspec-gaps` and
-`lawspec-codegen` merges; its npm release is pending, so stage it from a
-LawSpec checkout first with `make lawspec-stage LAWSPEC_HOME=<checkout>`.
-You also need Node 22 or later, Rust 1.85 or later, and Python 3.13 or
-later; Go, a JDK with Maven, and Gradle run the Kafka contract's other
-targets. `make help` lists every task.
+The contracts need LawSpec branch `lawspec-lawtwin` at e99a0bc; its npm
+release is pending, so stage it from a checkout of that branch first with
+`make lawspec-stage LAWSPEC_HOME=<checkout>`. You also need Node 22 or
+later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
+with Maven, and Gradle run the Kafka contract's other targets and the
+conformance kit's clients, and podman builds the image. `make help` lists
+every task.
 
 ## The OpenAPI importer
 

@@ -20,7 +20,7 @@ canon:
   locator: https://github.com/brain-fuel/canon/tree/2f22e6e
 lawspec:
   kind: package
-  title: LawSpec, the executable specification language; 0.21.0 is on npm, and the contracts need main after the lawspec-gaps and lawspec-codegen merges
+  title: LawSpec, the executable specification language; 0.21.0 is on npm, and the contracts and the Kafka twin need branch lawspec-lawtwin at e99a0bc
   locator: https://github.com/brain-fuel/lawspec
 lawspec-roadmap:
   kind: discussion
@@ -102,3 +102,23 @@ podman-compose:
   kind: package
   title: podman compose, running multi-container applications from compose files
   locator: https://docs.podman.io/en/latest/markdown/podman-compose.1.html
+librdkafka:
+  kind: package
+  title: librdkafka, the Apache Kafka C/C++ client library, 2.12.1 as the rdkafka crate builds it
+  locator: https://github.com/confluentinc/librdkafka
+rdkafka-crate:
+  kind: package
+  title: rdkafka, the Rust binding of librdkafka, 0.39
+  locator: https://crates.io/crates/rdkafka
+kafkajs:
+  kind: package
+  title: kafkajs, a Kafka client for Node.js, 2.2.4
+  locator: https://www.npmjs.com/package/kafkajs
+franz-go:
+  kind: package
+  title: franz-go, a Kafka client for Go, 1.22.1
+  locator: https://github.com/twmb/franz-go
+kafka-java-client:
+  kind: package
+  title: kafka-clients, Apache Kafka's Java client, 4.3.1
+  locator: https://central.sonatype.com/artifact/org.apache.kafka/kafka-clients

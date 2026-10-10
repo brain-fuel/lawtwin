@@ -41,10 +41,12 @@ A dependency's behaviour is a LawSpec package of its own, kept here
 and gives a stateful spec handler that is the reference model. Nothing in it
 names a business unit.
 
-A twin is a container that speaks the dependency's wire protocol
-(ref:DEC-twins-wire-level-containers), written in Rust around the code
-LawSpec generates from the reference model (ref:DEC-twins-in-rust). The
-model the laws check is the model the twin runs.
+A twin is a server that speaks the dependency's wire protocol, packaged as
+a container (ref:DEC-twins-wire-level-containers). It has a core in each
+LawSpec target language, each built around the code LawSpec generates from
+the reference model for that language (ref:DEC-core-per-target). The model
+the laws check is the model the twin runs, and one conformance kit checks
+every core the same way.
 
 Tests reach what the real dependency will not do through a typed control
 plane (ref:DEC-typed-control-plane): force a state the contract allows, draw

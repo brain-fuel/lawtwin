@@ -12,5 +12,14 @@ These pages state what LawTwin's parts are and do.
 - [The OpenAPI importer](openapi-import.md): `lawtwin import openapi`, the
   package it writes, how it maps schemas and operations, the resources and
   laws it makes, and what it does not handle yet.
-
-The pages for the twin servers and the control plane are added with them.
+- [The control plane](control-plane.md): the twin file, the commands and
+  admin API every twin serves (force, fault, advance, inspect, history,
+  replay, laws, seed), the history format and determinism. Its OpenAPI
+  document is [`control-plane.openapi.yaml`](control-plane.openapi.yaml).
+- [The Kafka twin](kafka-twin.md): the requests and versions it answers,
+  the contract operation behind each, consumer groups, its faults and their
+  effect on each law, forced states, the clients it is checked with, and
+  where it differs from Kafka.
+- [Kafka twin cores](kafka-core.md): a core per LawSpec target language, the
+  interface every core takes, the rules that make cores agree byte for
+  byte, and the conformance kit.

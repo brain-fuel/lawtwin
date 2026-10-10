@@ -7,7 +7,7 @@
 //! operation as the contract states it; if the model refuses one, or the
 //! result breaks an invariant, the copy is dropped and the twin is as it
 //! was. Otherwise the copy becomes the twin's state, and each operation is
-//! written to the history with source `force`.
+//! written to the history with source `force`. ref:DEC-force-through-operations
 
 use crate::history::{self, Answer, Header, Octets, Op, OffsetEntry, Outcome, ProducerTag, Record, Source, Tp};
 use crate::laws::{check_state, valid_topic_name};

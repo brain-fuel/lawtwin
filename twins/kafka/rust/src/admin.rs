@@ -1,5 +1,6 @@
 //! The control plane's admin API: JSON over HTTP on its own port, as
 //! `docs/reference/control-plane.openapi.yaml` describes it.
+//! ref:DEC-control-plane-api
 
 use crate::clock::parse_duration;
 use crate::faults;

@@ -5,6 +5,7 @@
 //! `build.rs` from the generated handler) that runs the contract's checked
 //! definition and keeps the next state. A request the contract refuses gives
 //! `Failure::Kafka` with the `KafkaError` the definition raised.
+//! ref:DEC-embed-generated-model
 
 use lawspec_example::lawspec_definitions::typed;
 use lawspec_example::lawspec_runtime as ls;

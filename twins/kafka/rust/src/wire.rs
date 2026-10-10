@@ -5,7 +5,7 @@
 //! What the wire needs and the contract does not state (record timestamps,
 //! batch encoding and compression, member ids, protocol metadata, leader
 //! epochs) is kept here or in the twin; everything the contract does state
-//! is the model's answer.
+//! is the model's answer. ref:DEC-kafka-wire-versions
 
 use crate::group::{self, JoinRequest};
 use crate::history::{Fetched, Isolation, Octets, Op, OffsetEntry, OffsetSpec, Outcome, ProducerTag, Record, Source, Tp};

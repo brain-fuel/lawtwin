@@ -9,7 +9,7 @@
 //! (`leaveGroupRequest`), each member that did joins (`joinGroupRequest`),
 //! and a sync answers with the contract's assignment, whatever the leader
 //! proposed. So the generations and assignments clients see are the
-//! model's.
+//! model's. ref:DEC-classic-groups-over-coordinator
 
 use crate::faults::Fault;
 use crate::history::{Op, Outcome, Source};

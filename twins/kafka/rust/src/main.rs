@@ -10,7 +10,7 @@
 //!
 //! `TWIN_CONFIG` (a JSON object, as Ironframe passes it), then `LAWTWIN_SEED`,
 //! `LAWTWIN_CLOCK` and `LAWTWIN_ADVERTISE`, give the same settings; options
-//! on the command line win.
+//! on the command line win. ref:DEC-core-per-target
 
 use lawtwin_kafka::Config;
 use lawtwin_kafka::clock::parse_duration;

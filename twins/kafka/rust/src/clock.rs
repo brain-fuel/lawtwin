@@ -4,6 +4,7 @@
 //! The clock is frozen by default: it moves only when the control plane
 //! advances it, so a run with the same seed and the same requests writes the
 //! same history, byte for byte. In wall mode it also follows real time.
+//! ref:DEC-twin-clock
 
 use serde::{Deserialize, Serialize};
 use std::time::Instant;
