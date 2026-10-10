@@ -1,0 +1,9 @@
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/__init__.py:
+  digest: sha256:5e89e6a6f00c943e
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/__init__.py/class/ReferenceCluster:
+  digest: sha256:e139ed7a19c2d2dd
+  verdict: pending
+decision/python/contracts/kafka/test/python/src/lawtwin/kafka/__init__.py/class/_Delegating:
+  digest: sha256:bb7dad7221820121
+  verdict: pending

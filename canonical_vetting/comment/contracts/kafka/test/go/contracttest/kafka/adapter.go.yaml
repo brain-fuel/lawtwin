@@ -1,0 +1,45 @@
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go:
+  digest: sha256:acd06238afbbf0ad
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewAdminHandler:
+  digest: sha256:823378a138f96383
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewBrokerHandler:
+  digest: sha256:95fadbff1ceb4d6f
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewConsumerHandler:
+  digest: sha256:0cb1384b0057a644
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewGroupCoordinatorHandler:
+  digest: sha256:0bad478d68806a81
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewPartitionerHandler:
+  digest: sha256:16160a0d6c847895
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewProducerHandler:
+  digest: sha256:986dd7d51f5a9eec
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/function/NewTransactionsHandler:
+  digest: sha256:887df3a58c9d537b
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/AdminHandler:
+  digest: sha256:b861ef481a760c36
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/BrokerHandler:
+  digest: sha256:d267cfdef20dff57
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/ConsumerHandler:
+  digest: sha256:248025fe1e824f13
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/GroupCoordinatorHandler:
+  digest: sha256:6908426ab5e424f0
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/PartitionerHandler:
+  digest: sha256:da4f4b4743ab19ab
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/ProducerHandler:
+  digest: sha256:c3e4013c00c6cc98
+  verdict: pending
+decision/golang/contracts/kafka/test/go/contracttest/kafka/adapter.go/type/TransactionsHandler:
+  digest: sha256:fbf3fdbfb8930032
+  verdict: pending

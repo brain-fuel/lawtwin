@@ -1,0 +1,27 @@
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs:
+  digest: sha256:9df21cf924b69d07
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/AdminHandler:
+  digest: sha256:6a374d50dc416b92
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/BrokerHandler:
+  digest: sha256:2bd3493e73e8d021
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/ConsumerHandler:
+  digest: sha256:72b7b69406551f36
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/GroupCoordinatorHandler:
+  digest: sha256:79230a29da0b096b
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/PartitionerHandler:
+  digest: sha256:d109e3d113a3b92a
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/ProducerHandler:
+  digest: sha256:9d8cbc44b3db1336
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/ReferenceCluster:
+  digest: sha256:3ae78afc6ecf2f53
+  verdict: pending
+decision/rust/contracts/kafka/test/rust/src/lawtwin/kafka.rs/struct/TransactionsHandler:
+  digest: sha256:753b6852bc5035d9
+  verdict: pending

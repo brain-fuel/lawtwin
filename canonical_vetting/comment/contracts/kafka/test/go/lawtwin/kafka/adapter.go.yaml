@@ -1,0 +1,54 @@
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go:
+  digest: sha256:0e6a6167a18d3b19
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/ConnectCluster:
+  digest: sha256:638c1a1740b228b5
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/DisconnectCluster:
+  digest: sha256:09c347368653aa1b
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewAdminHandler:
+  digest: sha256:823378a138f96383
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewBrokerHandler:
+  digest: sha256:95fadbff1ceb4d6f
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewConsumerHandler:
+  digest: sha256:0cb1384b0057a644
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewGroupCoordinatorHandler:
+  digest: sha256:0bad478d68806a81
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewPartitionerHandler:
+  digest: sha256:16160a0d6c847895
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewProducerHandler:
+  digest: sha256:986dd7d51f5a9eec
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/function/NewTransactionsHandler:
+  digest: sha256:887df3a58c9d537b
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/AdminHandler:
+  digest: sha256:35ff26bfd36e5a2b
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/BrokerHandler:
+  digest: sha256:f772ae207ee2eabe
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/ConsumerHandler:
+  digest: sha256:164d73bfe3d90f89
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/GroupCoordinatorHandler:
+  digest: sha256:d45789bd422bce9e
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/PartitionerHandler:
+  digest: sha256:f28e1d79ca269d57
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/ProducerHandler:
+  digest: sha256:d3a294d679008cb8
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/ReferenceCluster:
+  digest: sha256:b9114e5282c2c36c
+  verdict: pending
+decision/golang/contracts/kafka/test/go/lawtwin/kafka/adapter.go/type/TransactionsHandler:
+  digest: sha256:9c7f2dc760f05fb0
+  verdict: pending

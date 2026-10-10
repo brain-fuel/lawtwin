@@ -1,0 +1,24 @@
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/AdminHandler:
+  digest: sha256:6a374d50dc416b92
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/BrokerHandler:
+  digest: sha256:2bd3493e73e8d021
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/ConsumerHandler:
+  digest: sha256:72b7b69406551f36
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/GroupCoordinatorHandler:
+  digest: sha256:79230a29da0b096b
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/PartitionerHandler:
+  digest: sha256:d109e3d113a3b92a
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/ProducerHandler:
+  digest: sha256:9d8cbc44b3db1336
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/ReferenceCluster:
+  digest: sha256:a4039caed8303441
+  verdict: pending
+decision/java/contracts/kafka/test/java/src/main/java/lawtwin/Kafka.java/package/lawtwin/class/Kafka/class/TransactionsHandler:
+  digest: sha256:753b6852bc5035d9
+  verdict: pending
