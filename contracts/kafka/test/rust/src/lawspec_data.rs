@@ -173,16 +173,13 @@ impl ls::IntoValue for PartitionChoice {
             Self::ToPartition { chosen } => {
                 let fields = vec![ls::IntoValue::into_value(chosen)];
                 ls::Value::Data(
-                    "lawtwin.kafka.contract::type::PartitionChoice::ToPartition".into(),
+                    "lawtwin.kafka::type::PartitionChoice::ToPartition".into(),
                     fields,
                 )
             }
             Self::ByKey => {
                 let fields = vec![];
-                ls::Value::Data(
-                    "lawtwin.kafka.contract::type::PartitionChoice::ByKey".into(),
-                    fields,
-                )
+                ls::Value::Data("lawtwin.kafka::type::PartitionChoice::ByKey".into(), fields)
             }
         }
     }
@@ -191,10 +188,10 @@ impl ls::IntoValue for PartitionChoice {
 impl ls::FromValue for PartitionChoice {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::PartitionChoice".into());
+            return Err("expected lawtwin.kafka::type::PartitionChoice".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::PartitionChoice::ToPartition" if fields.len() == 1 => {
+            "lawtwin.kafka::type::PartitionChoice::ToPartition" if fields.len() == 1 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: i32 =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -202,10 +199,10 @@ impl ls::FromValue for PartitionChoice {
                     chosen: _lawspec_field0,
                 })
             }
-            "lawtwin.kafka.contract::type::PartitionChoice::ByKey" if fields.len() == 0 => Ok(Self::ByKey),
+            "lawtwin.kafka::type::PartitionChoice::ByKey" if fields.len() == 0 => Ok(Self::ByKey),
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::PartitionChoice";
+                    "invalid constructor or fields for lawtwin.kafka::type::PartitionChoice";
                 Err(message.into())
             }
         }
@@ -232,7 +229,7 @@ impl ls::IntoValue for ProducerRecord {
             ls::IntoValue::into_value(payload),
         ];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::ProducerRecord::ProducerRecord".into(),
+            "lawtwin.kafka::type::ProducerRecord::ProducerRecord".into(),
             fields,
         )
     }
@@ -241,10 +238,10 @@ impl ls::IntoValue for ProducerRecord {
 impl ls::FromValue for ProducerRecord {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::ProducerRecord".into());
+            return Err("expected lawtwin.kafka::type::ProducerRecord".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::ProducerRecord::ProducerRecord" if fields.len() == 3 => {
+            "lawtwin.kafka::type::ProducerRecord::ProducerRecord" if fields.len() == 3 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: std::string::String =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -260,7 +257,7 @@ impl ls::FromValue for ProducerRecord {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::ProducerRecord";
+                    "invalid constructor or fields for lawtwin.kafka::type::ProducerRecord";
                 Err(message.into())
             }
         }
@@ -278,7 +275,7 @@ impl ls::IntoValue for RecordMetadata {
         let Self { sentTo, sentAt } = self;
         let fields = vec![ls::IntoValue::into_value(sentTo), ls::IntoValue::into_value(sentAt)];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::RecordMetadata::RecordMetadata".into(),
+            "lawtwin.kafka::type::RecordMetadata::RecordMetadata".into(),
             fields,
         )
     }
@@ -287,10 +284,10 @@ impl ls::IntoValue for RecordMetadata {
 impl ls::FromValue for RecordMetadata {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::RecordMetadata".into());
+            return Err("expected lawtwin.kafka::type::RecordMetadata".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::RecordMetadata::RecordMetadata" if fields.len() == 2 => {
+            "lawtwin.kafka::type::RecordMetadata::RecordMetadata" if fields.len() == 2 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: TopicPartition =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -303,7 +300,7 @@ impl ls::FromValue for RecordMetadata {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::RecordMetadata";
+                    "invalid constructor or fields for lawtwin.kafka::type::RecordMetadata";
                 Err(message.into())
             }
         }
@@ -330,7 +327,7 @@ impl ls::IntoValue for ConsumerRecord {
             ls::IntoValue::into_value(received),
         ];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::ConsumerRecord::ConsumerRecord".into(),
+            "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord".into(),
             fields,
         )
     }
@@ -339,10 +336,10 @@ impl ls::IntoValue for ConsumerRecord {
 impl ls::FromValue for ConsumerRecord {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::ConsumerRecord".into());
+            return Err("expected lawtwin.kafka::type::ConsumerRecord".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::ConsumerRecord::ConsumerRecord" if fields.len() == 3 => {
+            "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord" if fields.len() == 3 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: TopicPartition =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -358,7 +355,7 @@ impl ls::FromValue for ConsumerRecord {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::ConsumerRecord";
+                    "invalid constructor or fields for lawtwin.kafka::type::ConsumerRecord";
                 Err(message.into())
             }
         }
@@ -384,20 +381,17 @@ impl ls::IntoValue for LastSend {
             ls::IntoValue::into_value(lastTag),
             ls::IntoValue::into_value(lastRecords),
         ];
-        ls::Value::Data(
-            "lawtwin.kafka.contract::type::LastSend::LastSend".into(),
-            fields,
-        )
+        ls::Value::Data("lawtwin.kafka::type::LastSend::LastSend".into(), fields)
     }
 }
 
 impl ls::FromValue for LastSend {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::LastSend".into());
+            return Err("expected lawtwin.kafka::type::LastSend".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::LastSend::LastSend" if fields.len() == 3 => {
+            "lawtwin.kafka::type::LastSend::LastSend" if fields.len() == 3 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: TopicPartition =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -412,8 +406,7 @@ impl ls::FromValue for LastSend {
                 })
             }
             _ => {
-                let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::LastSend";
+                let message = "invalid constructor or fields for lawtwin.kafka::type::LastSend";
                 Err(message.into())
             }
         }
@@ -440,7 +433,7 @@ impl ls::IntoValue for ProducerState {
             ls::IntoValue::into_value(lastSend),
         ];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::ProducerState::ProducerState".into(),
+            "lawtwin.kafka::type::ProducerState::ProducerState".into(),
             fields,
         )
     }
@@ -449,10 +442,10 @@ impl ls::IntoValue for ProducerState {
 impl ls::FromValue for ProducerState {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::ProducerState".into());
+            return Err("expected lawtwin.kafka::type::ProducerState".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::ProducerState::ProducerState" if fields.len() == 3 => {
+            "lawtwin.kafka::type::ProducerState::ProducerState" if fields.len() == 3 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: std::option::Option<ProducerIdAndEpoch> =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -468,7 +461,7 @@ impl ls::FromValue for ProducerState {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::ProducerState";
+                    "invalid constructor or fields for lawtwin.kafka::type::ProducerState";
                 Err(message.into())
             }
         }
@@ -507,7 +500,7 @@ impl ls::IntoValue for ConsumerState {
             ls::IntoValue::into_value(isolation),
         ];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::ConsumerState::ConsumerState".into(),
+            "lawtwin.kafka::type::ConsumerState::ConsumerState".into(),
             fields,
         )
     }
@@ -516,10 +509,10 @@ impl ls::IntoValue for ConsumerState {
 impl ls::FromValue for ConsumerState {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::ConsumerState".into());
+            return Err("expected lawtwin.kafka::type::ConsumerState".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::ConsumerState::ConsumerState" if fields.len() == 7 => {
+            "lawtwin.kafka::type::ConsumerState::ConsumerState" if fields.len() == 7 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: std::option::Option<std::string::String> =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -547,7 +540,7 @@ impl ls::FromValue for ConsumerState {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::ConsumerState";
+                    "invalid constructor or fields for lawtwin.kafka::type::ConsumerState";
                 Err(message.into())
             }
         }
@@ -583,7 +576,7 @@ impl ls::IntoValue for TransactionState {
             ls::IntoValue::into_value(offsetsSent),
         ];
         ls::Value::Data(
-            "lawtwin.kafka.contract::type::TransactionState::TransactionState".into(),
+            "lawtwin.kafka::type::TransactionState::TransactionState".into(),
             fields,
         )
     }
@@ -592,10 +585,10 @@ impl ls::IntoValue for TransactionState {
 impl ls::FromValue for TransactionState {
     fn from_value(value: ls::Value) -> ls::Result<Self> {
         let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.contract::type::TransactionState".into());
+            return Err("expected lawtwin.kafka::type::TransactionState".into());
         };
         match tag.as_str() {
-            "lawtwin.kafka.contract::type::TransactionState::TransactionState" if fields.len() == 6 => {
+            "lawtwin.kafka::type::TransactionState::TransactionState" if fields.len() == 6 => {
                 let mut _lawspec_fields = fields.into_iter();
                 let _lawspec_field0: std::string::String =
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
@@ -620,12 +613,15 @@ impl ls::FromValue for TransactionState {
             }
             _ => {
                 let message =
-                    "invalid constructor or fields for lawtwin.kafka.contract::type::TransactionState";
+                    "invalid constructor or fields for lawtwin.kafka::type::TransactionState";
                 Err(message.into())
             }
         }
     }
 }
+
+/// A handle: only adapters create one, with ls::Handle::new.
+pub type Cluster = ls::Handle;
 
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct TopicPartition {
@@ -1134,13 +1130,13 @@ impl ls::FromValue for ProducerIdAndEpoch {
 #[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
 pub struct FetchedRecord {
     pub offset: i64,
-    pub record: Record,
+    pub entry: Record,
 }
 
 impl ls::IntoValue for FetchedRecord {
     fn into_value(self) -> ls::Value {
-        let Self { offset, record } = self;
-        let fields = vec![ls::IntoValue::into_value(offset), ls::IntoValue::into_value(record)];
+        let Self { offset, entry } = self;
+        let fields = vec![ls::IntoValue::into_value(offset), ls::IntoValue::into_value(entry)];
         ls::Value::Data(
             "lawtwin.kafka.model::type::FetchedRecord::FetchedRecord".into(),
             fields,
@@ -1162,7 +1158,7 @@ impl ls::FromValue for FetchedRecord {
                     ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
                 Ok(Self {
                     offset: _lawspec_field0,
-                    record: _lawspec_field1,
+                    entry: _lawspec_field1,
                 })
             }
             _ => {
@@ -1370,45 +1366,6 @@ impl ls::FromValue for GroupView {
             _ => {
                 let message =
                     "invalid constructor or fields for lawtwin.kafka.model::type::GroupView";
-                Err(message.into())
-            }
-        }
-    }
-}
-
-#[derive(Clone, Debug, PartialEq, Eq, PartialOrd, Ord)]
-pub struct Step<T0, T1> {
-    pub result: T0,
-    pub state: T1,
-}
-
-impl<T0: ls::IntoValue, T1: ls::IntoValue> ls::IntoValue for Step<T0, T1> {
-    fn into_value(self) -> ls::Value {
-        let Self { result, state } = self;
-        let fields = vec![ls::IntoValue::into_value(result), ls::IntoValue::into_value(state)];
-        ls::Value::Data("lawtwin.kafka.model::type::Step::Step".into(), fields)
-    }
-}
-
-impl<T0: ls::FromValue, T1: ls::FromValue> ls::FromValue for Step<T0, T1> {
-    fn from_value(value: ls::Value) -> ls::Result<Self> {
-        let ls::Value::Data(tag, fields) = value else {
-            return Err("expected lawtwin.kafka.model::type::Step".into());
-        };
-        match tag.as_str() {
-            "lawtwin.kafka.model::type::Step::Step" if fields.len() == 2 => {
-                let mut _lawspec_fields = fields.into_iter();
-                let _lawspec_field0: T0 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                let _lawspec_field1: T1 =
-                    ls::FromValue::from_value(_lawspec_fields.next().unwrap())?;
-                Ok(Self {
-                    result: _lawspec_field0,
-                    state: _lawspec_field1,
-                })
-            }
-            _ => {
-                let message = "invalid constructor or fields for lawtwin.kafka.model::type::Step";
                 Err(message.into())
             }
         }

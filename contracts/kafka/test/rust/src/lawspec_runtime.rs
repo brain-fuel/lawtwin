@@ -2800,6 +2800,9 @@ pub fn helper(name: &str, mut args: Vec<Value>) -> Result<Value> {
     if let Some(value) = matcher_helper(name, &args)? {
         return Ok(value);
     }
+    if let Some(value) = sequence_helper(name, &args)? {
+        return Ok(value);
+    }
     if name == "select" && args.len() == 3 {
         let other = args.pop().unwrap();
         let chosen = args.pop().unwrap();
@@ -2907,6 +2910,65 @@ pub fn difference(actual: &Value, expected: &Value) -> String {
 }
 
 /// The matcher, recording and resource helpers, or None for another helper.
+/// Sequences: Text (indexed by code point), Bytes and List. A slice is
+/// clamped to the sequence.
+fn sequence_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
+    use Value::*;
+    fn index(v: &Value, count: usize) -> usize {
+        match v {
+            Integer(k) if k.is_negative() => 0,
+            Integer(k) => k.to_usize().map(|n| n.min(count)).unwrap_or(count),
+            _ => count,
+        }
+    }
+    fn slice<T: Clone>(items: &[T], from: &Value, to: &Value) -> Vec<T> {
+        let i = index(from, items.len());
+        let j = index(to, items.len()).max(i);
+        items[i..j].to_vec()
+    }
+    Ok(Some(match (name, args) {
+        ("append", [Text(a), Text(b)]) => Text(format!("{a}{b}")),
+        ("append", [Bytes(a), Bytes(b)]) => Bytes([a.clone(), b.clone()].concat()),
+        ("append", [List(a), List(b)]) => List([a.clone(), b.clone()].concat()),
+        ("slice", [Text(t), from, to]) => Text(slice(&t.chars().collect::<Vec<_>>(), from, to).into_iter().collect()),
+        ("slice", [Bytes(b), from, to]) => Bytes(slice(b, from, to)),
+        ("slice", [List(xs), from, to]) => List(slice(xs, from, to)),
+        ("at", [List(xs), Integer(k)]) => Maybe(k.to_usize().and_then(|i| xs.get(i)).map(|v| Box::new(v.clone()))),
+        ("at", [Bytes(b), Integer(k)]) => Maybe(k.to_usize().and_then(|i| b.get(i)).map(|o| Box::new(Integer(BigInt::from(*o))))),
+        ("range", [Integer(lo), Integer(hi)]) => {
+            let mut values = vec![];
+            let mut k = lo.clone();
+            while &k < hi {
+                values.push(Integer(k.clone()));
+                k += 1;
+            }
+            List(values)
+        }
+        ("octets", [Bytes(b)]) => List(b.iter().map(|o| Integer(BigInt::from(*o))).collect()),
+        ("bytesOf", [List(xs)]) => Bytes(
+            xs.iter()
+                .map(|v| match v {
+                    Integer(k) => k.to_u8().ok_or_else(|| "an octet is from 0 to 255".to_string()),
+                    _ => Err("expected an octet".to_string()),
+                })
+                .collect::<Result<Vec<u8>>>()?,
+        ),
+        ("utf8", [Text(t)]) => Bytes(t.as_bytes().to_vec()),
+        ("textOf", [Integer(n)]) => Text(n.to_string()),
+        ("join", [Text(separator), List(parts)]) => Text(
+            parts
+                .iter()
+                .map(|v| match v {
+                    Text(t) => Ok(t.clone()),
+                    _ => Err("expected a text".to_string()),
+                })
+                .collect::<Result<Vec<String>>>()?
+                .join(separator),
+        ),
+        _ => return Ok(None),
+    }))
+}
+
 fn matcher_helper(name: &str, args: &[Value]) -> Result<Option<Value>> {
     let text = |i: usize| -> Result<&str> {
         match args.get(i) {

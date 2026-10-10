@@ -29,7 +29,7 @@ def matchersMatchesRegex(
             64,
             symbols,
         )
-        result = _definitions.evaluate_0(symbols, argument_0, argument_1)
+        result = _definitions.evaluate_33(symbols, argument_0, argument_1)
         return _lawspec_schema.to_native(
             _schema.Named("Bool"),
             result,

@@ -1,0 +1,987 @@
+// Structural validation for Go, independent of property-testing frameworks.
+//
+// Generated data types are described once, as Core schemas, and every value
+// crossing between a law and native code is validated against them, so an
+// adapter cannot hand a law a value outside its declared type.
+// ref:DEC-typed-core-boundary ref:DEC-native-bindings-typed-identity
+package collections
+
+import (
+	"fmt"
+	"math/big"
+	"reflect"
+	"strconv"
+	"strings"
+)
+
+// Conversion paths reject cycles while allowing shared acyclic subtrees.
+type lawSpecPathKey struct {
+	typeOf  reflect.Type
+	pointer uintptr
+	length  int
+}
+
+type lawSpecPath map[lawSpecPathKey]bool
+
+func (p lawSpecPath) enter(value any) func() {
+	rv := reflect.ValueOf(value)
+	if !rv.IsValid() || (rv.Kind() != reflect.Slice && rv.Kind() != reflect.Pointer) || rv.IsNil() {
+		return func() {}
+	}
+	length := 0
+	if rv.Kind() == reflect.Slice {
+		length = rv.Len()
+		if length == 0 {
+			return func() {}
+		}
+	}
+	key := lawSpecPathKey{rv.Type(), rv.Pointer(), length}
+	if p[key] {
+		panic("cyclic structural value")
+	}
+	p[key] = true
+	return func() { delete(p, key) }
+}
+
+type lawSpecTypeRef struct {
+	name      string
+	arguments []lawSpecTypeRef
+	parameter int
+}
+
+func lsNamed(name string, arguments ...lawSpecTypeRef) lawSpecTypeRef {
+	return lawSpecTypeRef{name: name, arguments: arguments}
+}
+
+func lsParameter(index int) lawSpecTypeRef {
+	return lawSpecTypeRef{parameter: index}
+}
+
+func (t lawSpecTypeRef) key() string {
+	if t.name == "" {
+		panic("uninstantiated schema parameter")
+	}
+	result := t.name
+	for _, argument := range t.arguments {
+		if len(t.arguments) == 1 {
+			result += " " + argument.key()
+		} else {
+			result += " (" + argument.key() + ")"
+		}
+	}
+	return result
+}
+
+type lawSpecFieldSchema struct {
+	name    string
+	typeRef lawSpecTypeRef
+}
+
+// indices holds an indexed family's index terms then its guards, in prefix
+// notation over field indices; validation checks the guards. A GADT
+// constructor's refinements fix parameters to patterns; its existentials are
+// the parameters numbered after the definition's own.
+type lawSpecConstructorSchema struct {
+	tag          string
+	fields       []lawSpecFieldSchema
+	indices      []string
+	refinements  []lawSpecRefinement
+	existentials int
+	// Existentials only a value determines (parameter numbers); their types
+	// travel as the trailing Text witness fields.
+	witnesses []int
+}
+
+type lawSpecRefinement struct {
+	parameter int
+	pattern   lawSpecTypeRef
+}
+
+type lawSpecDataSchema struct {
+	name         string
+	parameters   int
+	constructors []lawSpecConstructorSchema
+}
+
+// Predicates run in declaration order after recursive representation validation.
+type lawSpecFieldPredicate func(*lawSpecSchema, []lawSpecTypeRef, []LawSpecValue, int, map[string]*lawSpecSymbol) bool
+
+type lawSpecConstructorContract struct {
+	tag        string
+	predicates []lawSpecFieldPredicate
+}
+
+type lawSpecRefinementViolation struct{ message string }
+
+func (v lawSpecRefinementViolation) Error() string { return v.message }
+
+type lawSpecSchema struct {
+	definitions map[string]lawSpecDataSchema
+	arity       map[string]int
+	contracts   map[string][]lawSpecFieldPredicate
+}
+
+func lsNewSchema(definitions []lawSpecDataSchema, primitives []string) *lawSpecSchema {
+	schema := &lawSpecSchema{definitions: map[string]lawSpecDataSchema{}, arity: map[string]int{
+		"List": 1, "Maybe": 1, "Either": 2, "Nullable": 1, "Optional": 1,
+	}}
+	for _, name := range primitives {
+		if _, exists := schema.arity[name]; exists || name == "" {
+			panic("duplicate or invalid primitive: " + name)
+		}
+		schema.arity[name] = 0
+	}
+	for _, definition := range definitions {
+		if _, exists := schema.arity[definition.name]; exists || definition.name == "" {
+			panic("duplicate or invalid type: " + definition.name)
+		}
+		if definition.parameters < 0 {
+			panic("negative parameter count: " + definition.name)
+		}
+		// Own the schema metadata; callers cannot mutate it after registration.
+		constructors := make([]lawSpecConstructorSchema, len(definition.constructors))
+		for index, constructor := range definition.constructors {
+			fields := make([]lawSpecFieldSchema, len(constructor.fields))
+			for position, field := range constructor.fields {
+				fields[position] = lawSpecFieldSchema{field.name, lsCopyType(field.typeRef)}
+			}
+			constructors[index] = lawSpecConstructorSchema{constructor.tag, fields, append([]string{}, constructor.indices...),
+				append([]lawSpecRefinement{}, constructor.refinements...), constructor.existentials,
+				append([]int{}, constructor.witnesses...)}
+		}
+		definition.constructors = constructors
+		schema.definitions[definition.name] = definition
+		schema.arity[definition.name] = definition.parameters
+	}
+	tags := map[string]bool{}
+	for _, definition := range schema.definitions {
+		for _, constructor := range definition.constructors {
+			if constructor.tag == "" || tags[constructor.tag] {
+				panic("duplicate or invalid constructor: " + constructor.tag)
+			}
+			tags[constructor.tag] = true
+			names := map[string]bool{}
+			for _, field := range constructor.fields {
+				if field.name == "" || names[field.name] {
+					panic("duplicate or invalid field: " + field.name)
+				}
+				names[field.name] = true
+				schema.check(field.typeRef, definition.parameters+constructor.existentials)
+			}
+		}
+	}
+	return schema
+}
+
+// Keep contract metadata separate from the representation-only schema API.
+func lsNewSchemaWithContracts(definitions []lawSpecDataSchema, primitives []string,
+	contracts []lawSpecConstructorContract) *lawSpecSchema {
+	schema := lsNewSchema(definitions, primitives)
+	schema.contracts = map[string][]lawSpecFieldPredicate{}
+	tags := map[string]bool{}
+	for _, definition := range schema.definitions {
+		for _, constructor := range definition.constructors {
+			tags[constructor.tag] = true
+		}
+	}
+	for _, contract := range contracts {
+		if _, exists := schema.contracts[contract.tag]; exists || !tags[contract.tag] {
+			panic("duplicate or unknown constructor contract: " + contract.tag)
+		}
+		predicates := append([]lawSpecFieldPredicate{}, contract.predicates...)
+		for _, predicate := range predicates {
+			if predicate == nil {
+				panic("nil constructor predicate: " + contract.tag)
+			}
+		}
+		schema.contracts[contract.tag] = predicates
+	}
+	return schema
+}
+
+func (s *lawSpecSchema) hasContracts() bool {
+	for _, predicates := range s.contracts {
+		if len(predicates) != 0 {
+			return true
+		}
+	}
+	return false
+}
+
+func lsSchemaSymbols(contexts []map[string]*lawSpecSymbol) map[string]*lawSpecSymbol {
+	if len(contexts) > 1 {
+		panic("expected at most one Symbol context")
+	}
+	if len(contexts) == 1 && contexts[0] != nil {
+		return contexts[0]
+	}
+	return map[string]*lawSpecSymbol{}
+}
+
+// A false predicate is a rejected candidate; evaluator failures remain panics.
+func (s *lawSpecSchema) accepts(t lawSpecTypeRef, value LawSpecValue, bits int,
+	contexts ...map[string]*lawSpecSymbol) (accepted bool) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if _, rejected := problem.(lawSpecRefinementViolation); rejected {
+				accepted = false
+			} else {
+				panic(problem)
+			}
+		}
+	}()
+	s.validate(t, value, bits, contexts...)
+	return true
+}
+
+func lsCopyType(t lawSpecTypeRef) lawSpecTypeRef {
+	arguments := make([]lawSpecTypeRef, len(t.arguments))
+	for index, argument := range t.arguments {
+		arguments[index] = lsCopyType(argument)
+	}
+	t.arguments = arguments
+	return t
+}
+
+func (s *lawSpecSchema) check(t lawSpecTypeRef, parameters int) {
+	if t.name == "" {
+		if t.parameter < 0 || t.parameter >= parameters || len(t.arguments) != 0 {
+			panic("unbound schema parameter")
+		}
+		return
+	}
+	arity, exists := s.arity[t.name]
+	if !exists || arity != len(t.arguments) {
+		panic("unknown type or wrong arity: " + t.name)
+	}
+	for _, argument := range t.arguments {
+		s.check(argument, parameters)
+	}
+}
+
+func lsSubstitute(t lawSpecTypeRef, arguments []lawSpecTypeRef) lawSpecTypeRef {
+	if t.name == "" {
+		// A witnessed existential stays open until a value supplies it.
+		if t.parameter >= len(arguments) {
+			return t
+		}
+		return lsCopyType(arguments[t.parameter])
+	}
+	children := make([]lawSpecTypeRef, len(t.arguments))
+	for index, child := range t.arguments {
+		children[index] = lsSubstitute(child, arguments)
+	}
+	return lsNamed(t.name, children...)
+}
+
+func (s *lawSpecSchema) constructors(t lawSpecTypeRef) ([]lawSpecConstructorSchema, bool) {
+	s.check(t, 0)
+	definition, exists := s.definitions[t.name]
+	if !exists {
+		return nil, false
+	}
+	result := []lawSpecConstructorSchema{}
+	for _, constructor := range definition.constructors {
+		// A GADT constructor whose refinements do not match these arguments
+		// builds no value of this type.
+		arguments, compatible := lsRefine(constructor, t.arguments, definition.parameters)
+		if !compatible {
+			continue
+		}
+		fields := make([]lawSpecFieldSchema, len(constructor.fields))
+		for position, field := range constructor.fields {
+			fields[position] = lawSpecFieldSchema{field.name, lsSubstitute(field.typeRef, arguments)}
+		}
+		result = append(result, lawSpecConstructorSchema{constructor.tag, fields, constructor.indices, nil, 0, constructor.witnesses})
+	}
+	return result, true
+}
+
+// lsFieldType is a constructor field's type at an instantiated type, with the
+// existentials its refinements determine substituted.
+func lsFieldType(schema *lawSpecSchema, t lawSpecTypeRef, tag string, index int) lawSpecTypeRef {
+	constructors, _ := schema.constructors(t)
+	for _, constructor := range constructors {
+		if constructor.tag == tag {
+			return constructor.fields[index].typeRef
+		}
+	}
+	panic("constructor " + tag + " is not a value of " + t.key())
+}
+
+// lsFieldTypeWith is lsFieldType with witnessed existentials read from the
+// value's witness keys.
+func lsFieldTypeWith(schema *lawSpecSchema, t lawSpecTypeRef, tag string, index int, keys []string) lawSpecTypeRef {
+	constructors, _ := schema.constructors(t)
+	for _, constructor := range constructors {
+		if constructor.tag == tag {
+			result := lsWitnessed(constructor, keys)[index]
+			schema.check(result, 0)
+			return result
+		}
+	}
+	panic("constructor " + tag + " is not a value of " + t.key())
+}
+
+// lsWitnessTail reads the trailing witness keys of a value's fields.
+func lsWitnessTail(fields []LawSpecValue, count int) []string {
+	keys := make([]string, count)
+	for k := range keys {
+		keys[k] = lsWitnessString(fields[len(fields)-count+k])
+	}
+	return keys
+}
+
+func lsSameType(a, b lawSpecTypeRef) bool {
+	if a.name != b.name || len(a.arguments) != len(b.arguments) || (a.name == "" && a.parameter != b.parameter) {
+		return false
+	}
+	for index := range a.arguments {
+		if !lsSameType(a.arguments[index], b.arguments[index]) {
+			return false
+		}
+	}
+	return true
+}
+
+// lsRefine extends arguments with the existentials a constructor's
+// refinements bind, reporting whether the refinements match.
+func lsRefine(constructor lawSpecConstructorSchema, arguments []lawSpecTypeRef, parameters int) ([]lawSpecTypeRef, bool) {
+	bound := map[int]lawSpecTypeRef{}
+	var match func(pattern, actual lawSpecTypeRef) bool
+	match = func(pattern, actual lawSpecTypeRef) bool {
+		if pattern.name == "" {
+			if pattern.parameter < parameters {
+				return lsSameType(arguments[pattern.parameter], actual)
+			}
+			if previous, exists := bound[pattern.parameter]; exists {
+				return lsSameType(previous, actual)
+			}
+			bound[pattern.parameter] = actual
+			return true
+		}
+		if actual.name != pattern.name || len(actual.arguments) != len(pattern.arguments) {
+			return false
+		}
+		for index := range pattern.arguments {
+			if !match(pattern.arguments[index], actual.arguments[index]) {
+				return false
+			}
+		}
+		return true
+	}
+	for _, refinement := range constructor.refinements {
+		if !match(refinement.pattern, arguments[refinement.parameter]) {
+			return nil, false
+		}
+	}
+	extended := append([]lawSpecTypeRef{}, arguments...)
+	for k := 0; k < constructor.existentials; k++ {
+		if previous, exists := bound[parameters+k]; exists {
+			extended = append(extended, previous)
+		} else {
+			extended = append(extended, lsParameter(parameters+k))
+		}
+	}
+	return extended, true
+}
+
+// lsWitnessKey spells a type as its name, or a parenthesized application.
+func lsWitnessKey(t lawSpecTypeRef) string {
+	if len(t.arguments) == 0 {
+		return t.name
+	}
+	parts := []string{t.name}
+	for _, argument := range t.arguments {
+		parts = append(parts, lsWitnessKey(argument))
+	}
+	return "(" + strings.Join(parts, " ") + ")"
+}
+
+// lsParseWitness reads a witness key back into a type reference.
+func lsParseWitness(text string) lawSpecTypeRef {
+	tokens := strings.Fields(strings.NewReplacer("(", " ( ", ")", " ) ").Replace(text))
+	at := 0
+	var read func() lawSpecTypeRef
+	read = func() lawSpecTypeRef {
+		if at >= len(tokens) {
+			panic("malformed type witness")
+		}
+		if tokens[at] == "(" {
+			if at+1 >= len(tokens) {
+				panic("malformed type witness")
+			}
+			name := tokens[at+1]
+			at += 2
+			arguments := []lawSpecTypeRef{}
+			for at < len(tokens) && tokens[at] != ")" {
+				arguments = append(arguments, read())
+			}
+			if at >= len(tokens) {
+				panic("malformed type witness")
+			}
+			at++
+			return lsNamed(name, arguments...)
+		}
+		at++
+		return lsNamed(tokens[at-1])
+	}
+	result := read()
+	if at != len(tokens) {
+		panic("malformed type witness")
+	}
+	return result
+}
+
+// lsWitnessText is a witness key as a Text value; lsWitnessString reads it.
+func lsWitnessText(key string) LawSpecValue {
+	units := []int{}
+	for _, c := range key {
+		units = append(units, int(c))
+	}
+	return LawSpecValue{"Text", units}
+}
+
+func lsWitnessString(value LawSpecValue) string {
+	units, ok := value.Data.([]int)
+	if value.Type != "Text" || !ok {
+		panic("type witness must be text")
+	}
+	runes := make([]rune, len(units))
+	for i, c := range units {
+		runes[i] = rune(c)
+	}
+	return string(runes)
+}
+
+// lsWitnessed is a constructor's field types with witnessed existentials
+// read from the given witness keys.
+func lsWitnessed(constructor lawSpecConstructorSchema, keys []string) []lawSpecTypeRef {
+	types := make([]lawSpecTypeRef, len(constructor.fields))
+	known := []lawSpecTypeRef{}
+	for k, index := range constructor.witnesses {
+		for len(known) <= index {
+			known = append(known, lsParameter(len(known)))
+		}
+		known[index] = lsParseWitness(keys[k])
+	}
+	for position, field := range constructor.fields {
+		types[position] = lsSubstitute(field.typeRef, known)
+	}
+	return types
+}
+
+// lsWitnessKeys reads a value's trailing witness fields.
+func lsWitnessKeys(constructor lawSpecConstructorSchema, fields []LawSpecValue) []string {
+	keys := make([]string, len(constructor.witnesses))
+	if len(fields) < len(keys) {
+		panic("missing type witness")
+	}
+	for k := range keys {
+		keys[k] = lsWitnessString(fields[len(fields)-len(keys)+k])
+	}
+	return keys
+}
+
+// lsWitnessPool lists the types a generator may choose for an existential
+// that only a value fixes.
+var lsWitnessPool = []lawSpecTypeRef{lsNamed("Bool"), lsNamed("Int32")}
+
+// lsWitnessInstances is each choice of witnesses: the declared fields at it
+// and the witness keys.
+func lsWitnessInstances(constructor lawSpecConstructorSchema) ([][]lawSpecFieldSchema, [][]string) {
+	count := len(constructor.witnesses)
+	declared := constructor.fields[:len(constructor.fields)-count]
+	choices := [][]lawSpecTypeRef{{}}
+	for k := 0; k < count; k++ {
+		next := [][]lawSpecTypeRef{}
+		for _, choice := range choices {
+			for _, ty := range lsWitnessPool {
+				next = append(next, append(append([]lawSpecTypeRef{}, choice...), ty))
+			}
+		}
+		choices = next
+	}
+	fieldSets := [][]lawSpecFieldSchema{}
+	keySets := [][]string{}
+	for _, choice := range choices {
+		keys := make([]string, len(choice))
+		for k, ty := range choice {
+			keys[k] = lsWitnessKey(ty)
+		}
+		types := lsWitnessed(lawSpecConstructorSchema{constructor.tag, declared, nil, nil, 0, constructor.witnesses}, keys)
+		fields := make([]lawSpecFieldSchema, len(declared))
+		for position, field := range declared {
+			fields[position] = lawSpecFieldSchema{field.name, types[position]}
+		}
+		fieldSets = append(fieldSets, fields)
+		keySets = append(keySets, keys)
+	}
+	return fieldSets, keySets
+}
+
+func lsSchemaContext(context string, operation func() LawSpecValue) (result LawSpecValue) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			// A Fail ability's failure passes through to its attempt.
+			if failure, ok := problem.(*LawSpecFailure); ok {
+				panic(failure)
+			}
+			message := fmt.Sprintf("%s: %v", context, problem)
+			if _, rejected := problem.(lawSpecRefinementViolation); rejected {
+				panic(lawSpecRefinementViolation{message})
+			}
+			panic(message)
+		}
+	}()
+	return operation()
+}
+
+// Payload recipes preserve declaration parameter identity through nested types.
+// A nil plan ignores fixed fields, even when their concrete types match a slot.
+type lawSpecPayloadPlan struct {
+	name      string
+	parameter int
+	arguments []*lawSpecPayloadPlan
+}
+
+func lsPayloadRecipe(t lawSpecTypeRef, arguments []*lawSpecPayloadPlan) *lawSpecPayloadPlan {
+	if t.name == "" {
+		return arguments[t.parameter]
+	}
+	children := make([]*lawSpecPayloadPlan, len(t.arguments))
+	stored := false
+	for index, child := range t.arguments {
+		children[index] = lsPayloadRecipe(child, arguments)
+		stored = stored || children[index] != nil
+	}
+	if !stored {
+		return nil
+	}
+	return &lawSpecPayloadPlan{name: t.name, arguments: children}
+}
+
+// Validate the whole value and its contracts before invoking scoped callbacks.
+func (s *lawSpecSchema) allPayloads(t lawSpecTypeRef, value LawSpecValue,
+	predicates []func(LawSpecValue) LawSpecValue, bits int,
+	contexts ...map[string]*lawSpecSymbol) LawSpecValue {
+	s.check(t, 0)
+	if _, custom := s.definitions[t.name]; !custom {
+		switch t.name {
+		case "List", "Maybe", "Either", "Nullable", "Optional":
+		default:
+			panic("payload predicates require a data type")
+		}
+	}
+	if len(predicates) != len(t.arguments) {
+		panic("payload predicate arity mismatch")
+	}
+	predicates = append([]func(LawSpecValue) LawSpecValue{}, predicates...)
+	arguments := make([]*lawSpecPayloadPlan, len(predicates))
+	for index, predicate := range predicates {
+		if predicate == nil {
+			panic("nil payload predicate")
+		}
+		arguments[index] = &lawSpecPayloadPlan{parameter: index}
+	}
+	checked := s.validate(t, value, bits, contexts...)
+	return lsBool(s.walkPayload(&lawSpecPayloadPlan{name: t.name, arguments: arguments}, checked, predicates))
+}
+
+func (s *lawSpecSchema) contextualPayload(plan *lawSpecPayloadPlan, value LawSpecValue,
+	predicates []func(LawSpecValue) LawSpecValue, context string) bool {
+	return lsTruth(lsSchemaContext(context, func() LawSpecValue {
+		return lsBool(s.walkPayload(plan, value, predicates))
+	}))
+}
+
+func (s *lawSpecSchema) walkPayload(plan *lawSpecPayloadPlan, value LawSpecValue,
+	predicates []func(LawSpecValue) LawSpecValue) bool {
+	if plan == nil {
+		return true
+	}
+	if plan.name == "" {
+		return lsTruth(predicates[plan.parameter](value))
+	}
+	arguments := plan.arguments
+	switch plan.name {
+	case "List":
+		for index, child := range value.Data.([]LawSpecValue) {
+			if !s.contextualPayload(arguments[0], child, predicates, fmt.Sprintf("List[%d]", index)) {
+				return false
+			}
+		}
+		return true
+	case "Nullable", "Optional":
+		presence := value.Data.(lawSpecPresence)
+		return presence.value == nil || s.contextualPayload(arguments[0], *presence.value, predicates, plan.name+".value")
+	}
+	data := value.Data.(lawSpecData)
+	switch plan.name {
+	case "Maybe":
+		return data.tag == "Maybe::Nothing" || s.contextualPayload(arguments[0], data.fields[0], predicates, "Maybe::Just.value")
+	case "Either":
+		index := 0
+		if data.tag == "Either::Right" {
+			index = 1
+		}
+		return s.contextualPayload(arguments[index], data.fields[0], predicates, data.tag+".value")
+	}
+	for _, constructor := range s.definitions[plan.name].constructors {
+		if constructor.tag != data.tag {
+			continue
+		}
+		for index, field := range constructor.fields {
+			if !s.contextualPayload(lsPayloadRecipe(field.typeRef, arguments), data.fields[index], predicates, data.tag+"."+field.name) {
+				return false
+			}
+		}
+		return true
+	}
+	panic("invalid checked payload constructor")
+}
+
+func (s *lawSpecSchema) validate(t lawSpecTypeRef, value LawSpecValue, bits int, contexts ...map[string]*lawSpecSymbol) LawSpecValue {
+	return s.validateValue(t, value, bits, lawSpecPath{}, lsSchemaSymbols(contexts))
+}
+
+func (s *lawSpecSchema) validateValue(t lawSpecTypeRef, value LawSpecValue, bits int, path lawSpecPath, symbols map[string]*lawSpecSymbol) LawSpecValue {
+	var payload any
+	switch data := value.Data.(type) {
+	case lawSpecData:
+		payload = data.fields
+	case []LawSpecValue:
+		payload = data
+	case lawSpecPresence:
+		payload = data.value
+	}
+	defer path.enter(payload)()
+	s.check(t, 0)
+	if bits != 32 && bits != 64 {
+		panic("machineBits must be 32 or 64")
+	}
+	if value.Type != t.key() {
+		panic("invalid representation for " + t.key())
+	}
+	constructors, custom := s.constructors(t)
+	// A handle is passed unopened.
+	if _, handle := value.Data.(lawSpecHandle); handle && custom && len(s.definitions[t.name].constructors) == 0 {
+		return value
+	}
+	if !custom {
+		switch t.name {
+		case "List":
+			values, ok := value.Data.([]LawSpecValue)
+			if !ok {
+				panic("List payload must be a slice of values")
+			}
+			result := make([]LawSpecValue, len(values))
+			for index, child := range values {
+				result[index] = lsSchemaContext(fmt.Sprintf("List[%d]", index), func() LawSpecValue {
+					return s.validateValue(t.arguments[0], child, bits, path, symbols)
+				})
+			}
+			return LawSpecValue{t.key(), result}
+		case "Nullable", "Optional":
+			presence, ok := value.Data.(lawSpecPresence)
+			if !ok {
+				panic("invalid presence representation")
+			}
+			if presence.value == nil {
+				return value
+			}
+			child := s.validateValue(t.arguments[0], *presence.value, bits, path, symbols)
+			return lsPresent(t.key(), &child)
+		case "Maybe":
+			constructors = []lawSpecConstructorSchema{
+				{"Maybe::Nothing", nil, nil, nil, 0, nil},
+				{"Maybe::Just", []lawSpecFieldSchema{{"value", t.arguments[0]}}, nil, nil, 0, nil},
+			}
+		case "Either":
+			constructors = []lawSpecConstructorSchema{
+				{"Either::Left", []lawSpecFieldSchema{{"value", t.arguments[0]}}, nil, nil, 0, nil},
+				{"Either::Right", []lawSpecFieldSchema{{"value", t.arguments[1]}}, nil, nil, 0, nil},
+			}
+		default:
+			return lsClone(lsValidate(t.name, value, bits))
+		}
+	}
+	data, ok := value.Data.(lawSpecData)
+	if !ok {
+		panic("expected constructor payload for " + t.key())
+	}
+	for _, constructor := range constructors {
+		if constructor.tag != data.tag {
+			continue
+		}
+		if len(constructor.fields) != len(data.fields) {
+			panic("wrong field count: " + data.tag)
+		}
+		fields := make([]LawSpecValue, len(data.fields))
+		types := lsWitnessed(constructor, lsWitnessKeys(constructor, data.fields))
+		for index, field := range constructor.fields {
+			fields[index] = lsSchemaContext(data.tag+"."+field.name, func() LawSpecValue {
+				if len(constructor.witnesses) > 0 {
+					s.check(types[index], 0)
+				}
+				return s.validateValue(types[index], data.fields[index], bits, path, symbols)
+			})
+		}
+		for index, predicate := range s.contracts[data.tag] {
+			lsSchemaContext(fmt.Sprintf("%s predicate %d", data.tag, index+1), func() LawSpecValue {
+				if !predicate(s, t.arguments, fields, bits, symbols) {
+					panic(lawSpecRefinementViolation{"constructor field contract rejected"})
+				}
+				return lsBool(true)
+			})
+		}
+		s.checkIndices(constructor, fields)
+		return LawSpecValue{t.key(), lawSpecData{data.tag, fields}}
+	}
+	panic("unknown constructor " + data.tag + " for " + t.key())
+}
+
+// checkIndices checks an indexed family's guards against its fields' indices.
+func (s *lawSpecSchema) checkIndices(constructor lawSpecConstructorSchema, fields []LawSpecValue) {
+	for _, text := range constructor.indices {
+		tokens := strings.Fields(text)
+		if tokens[0] != "==" && tokens[0] != ">=" {
+			continue
+		}
+		left, next := lsParseSchemaIndex(tokens, 1)
+		right, _ := lsParseSchemaIndex(tokens, next)
+		field := func(position, index int) *big.Int {
+			return s.indexOf(constructor.fields[position].typeRef, fields[position], index)
+		}
+		x, y := lsEvalSchemaIndex(left, field), lsEvalSchemaIndex(right, field)
+		if x == nil || y == nil || (tokens[0] == "==" && x.Cmp(y) != 0) || (tokens[0] == ">=" && x.Cmp(y) < 0) {
+			panic(lawSpecRefinementViolation{constructor.tag + ": index guard " + text + " failed"})
+		}
+	}
+}
+
+func (s *lawSpecSchema) indexOf(t lawSpecTypeRef, value LawSpecValue, index int) *big.Int {
+	constructors, _ := s.constructors(t)
+	data := value.Data.(lawSpecData)
+	for _, constructor := range constructors {
+		if constructor.tag != data.tag {
+			continue
+		}
+		terms := []string{}
+		for _, text := range constructor.indices {
+			if !strings.HasPrefix(text, "== ") && !strings.HasPrefix(text, ">= ") {
+				terms = append(terms, text)
+			}
+		}
+		if index >= len(terms) {
+			panic("no index for " + t.key())
+		}
+		term, _ := lsParseSchemaIndex(strings.Fields(terms[index]), 0)
+		return lsEvalSchemaIndex(term, func(position, child int) *big.Int {
+			return s.indexOf(constructor.fields[position].typeRef, data.fields[position], child)
+		})
+	}
+	panic("unknown constructor " + data.tag)
+}
+
+// lawSpecSchemaIndex is a prefix index term: c<n>, f<field>[.<index>] or an
+// operator applied to two terms.
+type lawSpecSchemaIndex struct {
+	op              string
+	value           *big.Int
+	position, index int
+	left, right     *lawSpecSchemaIndex
+}
+
+func lsParseSchemaIndex(tokens []string, at int) (*lawSpecSchemaIndex, int) {
+	if at >= len(tokens) {
+		panic("malformed index term")
+	}
+	token := tokens[at]
+	switch {
+	case token[0] == 'c':
+		value, ok := new(big.Int).SetString(token[1:], 10)
+		if !ok {
+			panic("malformed index term")
+		}
+		return &lawSpecSchemaIndex{op: "c", value: value}, at + 1
+	case token[0] == 'f':
+		parts := strings.SplitN(token[1:], ".", 2)
+		position, err := strconv.Atoi(parts[0])
+		index := 0
+		if err == nil && len(parts) == 2 {
+			index, err = strconv.Atoi(parts[1])
+		}
+		if err != nil {
+			panic("malformed index term")
+		}
+		return &lawSpecSchemaIndex{op: "f", position: position, index: index}, at + 1
+	}
+	left, next := lsParseSchemaIndex(tokens, at+1)
+	right, end := lsParseSchemaIndex(tokens, next)
+	return &lawSpecSchemaIndex{op: token, left: left, right: right}, end
+}
+
+// lsEvalSchemaIndex is natural index arithmetic; nil when an operation has no
+// natural value.
+func lsEvalSchemaIndex(term *lawSpecSchemaIndex, field func(int, int) *big.Int) *big.Int {
+	switch term.op {
+	case "c":
+		return term.value
+	case "f":
+		return field(term.position, term.index)
+	}
+	x, y := lsEvalSchemaIndex(term.left, field), lsEvalSchemaIndex(term.right, field)
+	if x == nil || y == nil {
+		return nil
+	}
+	result := new(big.Int)
+	switch term.op {
+	case "+":
+		return result.Add(x, y)
+	case "-":
+		if x.Cmp(y) < 0 {
+			return nil
+		}
+		return result.Sub(x, y)
+	case "*":
+		return result.Mul(x, y)
+	case "div", "mod":
+		if y.Sign() <= 0 {
+			return nil
+		}
+		if term.op == "div" {
+			return result.Div(x, y)
+		}
+		return result.Mod(x, y)
+	case "^":
+		if !y.IsInt64() || y.Int64() > 64 {
+			return nil
+		}
+		return result.Exp(x, y, nil)
+	}
+	panic("malformed index term")
+}
+
+func (s *lawSpecSchema) construct(t lawSpecTypeRef, tag string, fields []LawSpecValue, bits int, contexts ...map[string]*lawSpecSymbol) LawSpecValue {
+	symbols := lsSchemaSymbols(contexts)
+	if t.name == "List" {
+		s.check(t, 0)
+		switch tag {
+		case "List::Nil":
+			if len(fields) != 0 {
+				panic("Nil takes no fields")
+			}
+			return s.validate(t, LawSpecValue{t.key(), []LawSpecValue{}}, bits, symbols)
+		case "List::Cons":
+			if len(fields) != 2 {
+				panic("Cons takes two fields")
+			}
+			tail := fields[1].Data.([]LawSpecValue)
+			return LawSpecValue{t.key(), append([]LawSpecValue{fields[0]}, tail...)}
+		default:
+			panic("unknown List constructor: " + tag)
+		}
+	}
+	return s.shallow(t, LawSpecValue{t.key(), lawSpecData{tag, fields}}, bits, symbols)
+}
+
+// shallow checks a newly built node: its fields were checked when they were
+// built, decoded or drawn, and a deep check of each node would make
+// recursion quadratic.
+func (s *lawSpecSchema) shallow(t lawSpecTypeRef, value LawSpecValue, bits int, symbols map[string]*lawSpecSymbol) LawSpecValue {
+	s.check(t, 0)
+	constructors, custom := s.constructors(t)
+	if !custom {
+		return s.validate(t, value, bits, symbols)
+	}
+	data := value.Data.(lawSpecData)
+	for _, constructor := range constructors {
+		if constructor.tag != data.tag {
+			continue
+		}
+		if len(constructor.fields) != len(data.fields) {
+			panic("wrong field count: " + data.tag)
+		}
+		for index, predicate := range s.contracts[data.tag] {
+			lsSchemaContext(fmt.Sprintf("%s predicate %d", data.tag, index+1), func() LawSpecValue {
+				if !predicate(s, t.arguments, data.fields, bits, symbols) {
+					panic(lawSpecRefinementViolation{"constructor field contract rejected"})
+				}
+				return lsBool(true)
+			})
+		}
+		s.checkIndices(constructor, data.fields)
+		return value
+	}
+	panic("unknown constructor " + data.tag + " for " + t.key())
+}
+
+func (s *lawSpecSchema) equal(t lawSpecTypeRef, a, b LawSpecValue, bits int, contexts ...map[string]*lawSpecSymbol) bool {
+	symbols := lsSchemaSymbols(contexts)
+	a, b = s.validate(t, a, bits, symbols), s.validate(t, b, bits, symbols)
+	return lsSchemaEqual(a, b)
+}
+
+func lsSchemaEqual(a, b LawSpecValue) bool {
+	if x, ok := a.Data.(lawSpecData); ok {
+		y, ok := b.Data.(lawSpecData)
+		if !ok || x.tag != y.tag || len(x.fields) != len(y.fields) {
+			return false
+		}
+		for index, field := range x.fields {
+			if !lsSchemaEqual(field, y.fields[index]) {
+				return false
+			}
+		}
+		return true
+	}
+	if x, ok := a.Data.([]LawSpecValue); ok {
+		y, ok := b.Data.([]LawSpecValue)
+		if !ok || len(x) != len(y) {
+			return false
+		}
+		for index, field := range x {
+			if !lsSchemaEqual(field, y[index]) {
+				return false
+			}
+		}
+		return true
+	}
+	if x, ok := a.Data.(lawSpecPresence); ok {
+		y, ok := b.Data.(lawSpecPresence)
+		if !ok || (x.value == nil) != (y.value == nil) {
+			return false
+		}
+		return x.value == nil || lsSchemaEqual(*x.value, *y.value)
+	}
+	return lsEqual(a, b)
+}
+
+// Check the complete native binding, including fields in unselected variants.
+func (s *lawSpecSchema) checkNativeProfile(t lawSpecTypeRef, bits int) {
+	visited := map[string]bool{}
+	var check func(lawSpecTypeRef)
+	check = func(current lawSpecTypeRef) {
+		// A witnessed existential takes a witness pool type, which every
+		// profile supports.
+		if current.name == "" {
+			return
+		}
+		for _, argument := range current.arguments {
+			check(argument)
+		}
+		lsCheckNativeProfile(current.name, bits)
+		if visited[current.name] {
+			return
+		}
+		visited[current.name] = true
+		constructors, _ := s.constructors(current)
+		for _, constructor := range constructors {
+			for _, field := range constructor.fields {
+				check(field.typeRef)
+			}
+		}
+	}
+	check(t)
+}

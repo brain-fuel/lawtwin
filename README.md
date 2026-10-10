@@ -31,7 +31,7 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | Path | What it is |
 | --- | --- |
 | `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0 |
-| `contracts/kafka/test/` | The project that runs the contract's laws on the Rust and Python targets |
+| `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java and Kotlin targets |
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
 The Kafka twin server, the control plane, conformance, record and replay,
@@ -42,19 +42,24 @@ lists what each release covers.
 
 `lawtwin.kafka` states what a Kafka cluster guarantees, as laws over seven
 abilities: `Broker` (the wire protocol), `Admin`, `Producer`, `Partitioner`,
-`Consumer`, `GroupCoordinator` and `Transactions`. Its handler `reference` is
-the reference model the Kafka twin will run. [The Kafka
+`Consumer`, `GroupCoordinator` and `Transactions`. Its spec handler
+`cluster` is the reference model the Kafka twin will run, and its handler
+set `reference` runs every law over the spec handlers together. [The Kafka
 contract](docs/reference/kafka-contract.md) says what it states.
 
 Check and run its laws:
 
 ```sh
 make contract-check      # compile the package and its laws
-make contract-test       # run them on Rust and Python (TARGET=rust or TARGET=python for one)
+make contract-test       # run them on every target (TARGET=rust, for example, for one)
 ```
 
-You need Node 22 or later for `npx lawspec@0.21.0`, Rust 1.85 or later, and
-Python 3.13 or later. `make help` lists every task.
+The contracts need LawSpec main after the `lawspec-gaps` and
+`lawspec-codegen` merges; its npm release is pending, so stage it from a
+LawSpec checkout first with `make lawspec-stage LAWSPEC_HOME=<checkout>`.
+You also need Node 22 or later, Rust 1.85 or later, and Python 3.13 or
+later; Go, a JDK with Maven, and Gradle run the Kafka contract's other
+targets. `make help` lists every task.
 
 ## Development
 

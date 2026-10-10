@@ -68,36 +68,36 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::PartitionChoice",
+            name: "lawtwin.kafka::type::PartitionChoice",
             parameters: 0,
             constructors: vec![
                 ls::ConstructorSchema {
-                    tag: "lawtwin.kafka.contract::type::PartitionChoice::ToPartition",
+                    tag: "lawtwin.kafka::type::PartitionChoice::ToPartition",
                     fields: vec![ls::TypeRef::named("Int32", vec![])],
                 },
                 ls::ConstructorSchema {
-                    tag: "lawtwin.kafka.contract::type::PartitionChoice::ByKey",
+                    tag: "lawtwin.kafka::type::PartitionChoice::ByKey",
                     fields: vec![],
                 },
             ],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::ProducerRecord",
+            name: "lawtwin.kafka::type::ProducerRecord",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::ProducerRecord::ProducerRecord",
+                tag: "lawtwin.kafka::type::ProducerRecord::ProducerRecord",
                 fields: vec![
                     ls::TypeRef::named("Text", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::PartitionChoice", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::PartitionChoice", vec![]),
                     ls::TypeRef::named("lawtwin.kafka.model::type::Record", vec![]),
                 ],
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::RecordMetadata",
+            name: "lawtwin.kafka::type::RecordMetadata",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::RecordMetadata::RecordMetadata",
+                tag: "lawtwin.kafka::type::RecordMetadata::RecordMetadata",
                 fields: vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::TopicPartition", vec![]),
                     ls::TypeRef::named("Int64", vec![]),
@@ -105,10 +105,10 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::ConsumerRecord",
+            name: "lawtwin.kafka::type::ConsumerRecord",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::ConsumerRecord::ConsumerRecord",
+                tag: "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord",
                 fields: vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::TopicPartition", vec![]),
                     ls::TypeRef::named("Int64", vec![]),
@@ -117,10 +117,10 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::LastSend",
+            name: "lawtwin.kafka::type::LastSend",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::LastSend::LastSend",
+                tag: "lawtwin.kafka::type::LastSend::LastSend",
                 fields: vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::TopicPartition", vec![]),
                     ls::TypeRef::named(
@@ -141,10 +141,10 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::ProducerState",
+            name: "lawtwin.kafka::type::ProducerState",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::ProducerState::ProducerState",
+                tag: "lawtwin.kafka::type::ProducerState::ProducerState",
                 fields: vec![
                     ls::TypeRef::named(
                         "Maybe",
@@ -162,19 +162,16 @@ pub fn schema() -> ls::Result<ls::Schema> {
                     ),
                     ls::TypeRef::named(
                         "Maybe",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.contract::type::LastSend",
-                            vec![],
-                        )],
+                        vec![ls::TypeRef::named("lawtwin.kafka::type::LastSend", vec![])],
                     ),
                 ],
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::ConsumerState",
+            name: "lawtwin.kafka::type::ConsumerState",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::ConsumerState::ConsumerState",
+                tag: "lawtwin.kafka::type::ConsumerState::ConsumerState",
                 fields: vec![
                     ls::TypeRef::named("Maybe", vec![ls::TypeRef::named("Text", vec![])]),
                     ls::TypeRef::named("Text", vec![]),
@@ -199,10 +196,10 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.contract::type::TransactionState",
+            name: "lawtwin.kafka::type::TransactionState",
             parameters: 0,
             constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.contract::type::TransactionState::TransactionState",
+                tag: "lawtwin.kafka::type::TransactionState::TransactionState",
                 fields: vec![
                     ls::TypeRef::named("Text", vec![]),
                     ls::TypeRef::named(
@@ -230,6 +227,11 @@ pub fn schema() -> ls::Result<ls::Schema> {
                     ls::TypeRef::named("Bool", vec![]),
                 ],
             }],
+        },
+        ls::DataSchema {
+            name: "lawtwin.kafka::type::Cluster",
+            parameters: 0,
+            constructors: vec![],
         },
         ls::DataSchema {
             name: "lawtwin.kafka.model::type::TopicPartition",
@@ -472,14 +474,6 @@ pub fn schema() -> ls::Result<ls::Schema> {
             }],
         },
         ls::DataSchema {
-            name: "lawtwin.kafka.model::type::Step",
-            parameters: 2,
-            constructors: vec![ls::ConstructorSchema {
-                tag: "lawtwin.kafka.model::type::Step::Step",
-                fields: vec![ls::TypeRef::Parameter(0), ls::TypeRef::Parameter(1)],
-            }],
-        },
-        ls::DataSchema {
             name: "lawtwin.kafka.model::type::LogEntry",
             parameters: 0,
             constructors: vec![
@@ -716,5 +710,5 @@ pub fn schema() -> ls::Result<ls::Schema> {
                 ],
             }],
         },
-    ])
+    ]).map(|schema| schema.with_handles(&["lawtwin.kafka::type::Cluster"]))
 }

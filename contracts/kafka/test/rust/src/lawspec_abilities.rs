@@ -2,36 +2,36 @@
 #![allow(unused_variables, unused_imports, dead_code, non_snake_case, unused_mut)]
 use crate::lawspec_runtime as ls;
 
-pub mod lawtwin_kafka_contract {
+pub mod lawtwin_kafka {
     use super::ls;
 
     /// The Broker ability: a handler answers each of its operations.
     pub trait Broker: Send + Sync {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ();
+        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ();
         fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32>;
-        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> ls::Either<crate::lawspec_data::KafkaError, i64>;
-        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult>;
-        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64>;
-        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch>;
-        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32>;
-        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>>;
-        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64;
+        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult;
+        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64;
+        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch;
+        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ();
+        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ();
+        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> ();
+        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32;
+        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition>;
+        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ();
+        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ();
         fn describeGroupRequest(&self, value0: std::string::String) -> crate::lawspec_data::GroupView;
-        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ();
         fn offsetFetchRequest(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64>;
     }
 
     /// The Admin ability: a handler answers each of its operations.
     pub trait Admin: Send + Sync {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn createTopic(&self, value0: std::string::String, value1: i32) -> ();
+        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ();
         fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32>;
-        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64>;
+        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64;
     }
 
     /// The Partitioner ability: a handler answers each of its operations.
@@ -63,12 +63,12 @@ pub mod lawtwin_kafka_contract {
 
     /// The GroupCoordinator ability: a handler answers each of its operations.
     pub trait GroupCoordinator: Send + Sync {
-        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32>;
-        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>>;
-        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32;
+        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition>;
+        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ();
+        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ();
         fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView;
-        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
+        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ();
         fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64>;
     }
 
@@ -83,30 +83,26 @@ pub mod lawtwin_kafka_contract {
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()>;
     }
 
-    /// The spec handler reference for Broker.
-    pub struct Reference {
+    /// The spec handler cluster for Broker, Admin, GroupCoordinator.
+    pub struct Cluster {
         ctx: std::sync::Mutex<ls::Context>,
         state: std::sync::Mutex<Option<ls::Value>>,
     }
 
-    impl Reference {
+    impl Cluster {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_61(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Broker for Reference {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+    impl super::lawtwin_kafka::Broker for Cluster {
+        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_316(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_41(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -115,19 +111,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_315(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_39(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -136,19 +129,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_325(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_56(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -162,10 +152,10 @@ pub mod lawtwin_kafka_contract {
             <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_328(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_60(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -175,19 +165,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult> {
+        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_319(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_46(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -198,19 +185,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::FetchResult", vec![]),
-                ],
+                "lawtwin.kafka.model::type::FetchResult",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <crate::lawspec_data::FetchResult as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_324(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_55(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -220,19 +204,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
+        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_321(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_49(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -240,19 +221,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::ProducerIdAndEpoch", vec![]),
-                ],
+                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <crate::lawspec_data::ProducerIdAndEpoch as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_314(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_36(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -263,19 +241,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_330(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_64(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -287,19 +262,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_318(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_44(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -310,19 +282,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
+        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_322(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_51(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -332,19 +301,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
+                "Int32",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
+        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_329(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_63(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -354,25 +320,19 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_320(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_48(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -382,19 +342,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_323(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_53(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -403,19 +360,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn describeGroupRequest(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_317(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_43(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -429,10 +383,10 @@ pub mod lawtwin_kafka_contract {
             <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_326(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_57(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -443,19 +397,16 @@ pub mod lawtwin_kafka_contract {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn offsetFetchRequest(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_327(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_58(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -471,62 +422,52 @@ pub mod lawtwin_kafka_contract {
         }
     }
 
-    /// The spec handler kafkaAdmin for Admin.
-    pub struct KafkaAdmin {
-        ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
-    }
-
-    impl KafkaAdmin {
-        /// The handler for a law; it evaluates its clauses in a copy of the law's context.
-        pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
-            Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
-        }
-    }
-
-    impl super::lawtwin_kafka_contract::Admin for KafkaAdmin {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+    impl super::lawtwin_kafka::Admin for Cluster {
+        fn createTopic(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_31(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_40(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitions(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_30(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_38(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_33(ctx, vec![ls::IntoValue::into_value(value0)]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_59(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -535,33 +476,168 @@ pub mod lawtwin_kafka_contract {
             <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_32(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_54(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
                 ls::IntoValue::into_value(value2),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
     }
 
-    /// The spec handler firstPartition for Partitioner.
-    pub struct FirstPartition {
+    impl super::lawtwin_kafka::GroupCoordinator for Cluster {
+        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_50(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Int32",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_62(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_47(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_52(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_42(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "lawtwin.kafka.model::type::GroupView",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_37(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+                ls::IntoValue::into_value(value3),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_45(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Maybe",
+                vec![ls::TypeRef::named("Int64", vec![])],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+    }
+
+    /// The spec handler murmurPartitioner for Partitioner.
+    pub struct MurmurPartitioner {
         ctx: std::sync::Mutex<ls::Context>,
         state: std::sync::Mutex<Option<ls::Value>>,
     }
 
-    impl FirstPartition {
+    impl MurmurPartitioner {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
@@ -570,11 +646,11 @@ pub mod lawtwin_kafka_contract {
         }
     }
 
-    impl super::lawtwin_kafka_contract::Partitioner for FirstPartition {
+    impl super::lawtwin_kafka::Partitioner for MurmurPartitioner {
         fn choosePartition(&self, value0: std::option::Option<std::vec::Vec<u8>>, value1: i32) -> i32 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_18(ctx, vec![
+            let result = crate::lawspec_definitions::evaluate_322(ctx, vec![
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -597,20 +673,16 @@ pub mod lawtwin_kafka_contract {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_105(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Producer for KafkaProducer {
+    impl super::lawtwin_kafka::Producer for KafkaProducer {
         fn send(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_54(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_104(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -621,7 +693,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -630,7 +702,7 @@ pub mod lawtwin_kafka_contract {
         fn flush(&self) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_51(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_101(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -644,7 +716,7 @@ pub mod lawtwin_kafka_contract {
         fn enableIdempotence(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_50(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_100(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -661,7 +733,7 @@ pub mod lawtwin_kafka_contract {
         fn retryLastSend(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_53(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_103(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -669,7 +741,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -678,7 +750,7 @@ pub mod lawtwin_kafka_contract {
         fn producerIdentity(&self) -> std::option::Option<crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_52(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_102(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -703,20 +775,16 @@ pub mod lawtwin_kafka_contract {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_98(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Consumer for KafkaConsumer {
+    impl super::lawtwin_kafka::Consumer for KafkaConsumer {
         fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_34(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_90(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -733,7 +801,7 @@ pub mod lawtwin_kafka_contract {
         fn subscribe(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_42(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_99(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -761,7 +829,7 @@ pub mod lawtwin_kafka_contract {
         fn poll(&self, value0: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::ConsumerRecord>> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_38(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_94(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -775,7 +843,7 @@ pub mod lawtwin_kafka_contract {
                     ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
-                            "lawtwin.kafka.contract::type::ConsumerRecord",
+                            "lawtwin.kafka::type::ConsumerRecord",
                             vec![],
                         )],
                     ),
@@ -787,7 +855,7 @@ pub mod lawtwin_kafka_contract {
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_36(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_92(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -804,7 +872,7 @@ pub mod lawtwin_kafka_contract {
         fn seek(&self, value0: crate::lawspec_data::TopicPartition, value1: i64) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_40(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_96(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -825,7 +893,7 @@ pub mod lawtwin_kafka_contract {
         fn position(&self, value0: crate::lawspec_data::TopicPartition) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_39(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_95(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -845,7 +913,7 @@ pub mod lawtwin_kafka_contract {
         fn committedOffset(&self, value0: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_37(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_93(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -862,7 +930,7 @@ pub mod lawtwin_kafka_contract {
         fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_41(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_97(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -879,7 +947,7 @@ pub mod lawtwin_kafka_contract {
         fn close(&self) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_35(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_91(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -888,151 +956,6 @@ pub mod lawtwin_kafka_contract {
                 vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-    }
-
-    /// The spec handler kafkaGroups for GroupCoordinator.
-    pub struct KafkaGroups {
-        ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
-    }
-
-    impl KafkaGroups {
-        /// The handler for a law; it evaluates its clauses in a copy of the law's context.
-        pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
-            Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
-        }
-    }
-
-    impl super::lawtwin_kafka_contract::GroupCoordinator for KafkaGroups {
-        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_47(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_49(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_46(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_48(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_44(ctx, vec![ls::IntoValue::into_value(value0)]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_43(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_45(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
     }
 
@@ -1046,20 +969,16 @@ pub mod lawtwin_kafka_contract {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_113(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Transactions for KafkaTransactions {
+    impl super::lawtwin_kafka::Transactions for KafkaTransactions {
         fn initTransactions(&self, value0: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_59(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_110(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -1079,7 +998,7 @@ pub mod lawtwin_kafka_contract {
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_57(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_108(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -1096,7 +1015,7 @@ pub mod lawtwin_kafka_contract {
         fn addPartitionsToTransaction(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_56(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_107(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -1116,7 +1035,7 @@ pub mod lawtwin_kafka_contract {
         fn sendInTransaction(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_60(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_111(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -1127,7 +1046,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -1136,7 +1055,7 @@ pub mod lawtwin_kafka_contract {
         fn sendOffsetsToTransaction(&self, value0: std::string::String, value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_61(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_112(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -1157,7 +1076,7 @@ pub mod lawtwin_kafka_contract {
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_58(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_109(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -1174,7 +1093,7 @@ pub mod lawtwin_kafka_contract {
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_55(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_106(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -1202,7 +1121,7 @@ pub mod lawtwin_kafka_contract {
     }
 
     impl Broker for BrokerRecording {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> () {
             self.calls.record("createTopicsRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1210,7 +1129,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.createTopicsRequest(value0, value1)
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> () {
             self.calls.record("createPartitionsRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1223,7 +1142,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.metadataRequest(value0)
         }
 
-        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64 {
             self.calls.record("produceRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1232,7 +1151,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.produceRequest(value0, value1, value2)
         }
 
-        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult> {
+        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult {
             self.calls.record("fetchRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1242,7 +1161,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.fetchRequest(value0, value1, value2, value3)
         }
 
-        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             self.calls.record("listOffsetsRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1251,12 +1170,12 @@ pub mod lawtwin_kafka_contract {
             self.inner.listOffsetsRequest(value0, value1, value2)
         }
 
-        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
+        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch {
             self.calls.record("initProducerIdRequest", vec![ls::IntoValue::into_value(value0.clone())]);
             self.inner.initProducerIdRequest(value0)
         }
 
-        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
             self.calls.record("addPartitionsToTxnRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1266,7 +1185,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.addPartitionsToTxnRequest(value0, value1, value2, value3)
         }
 
-        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             self.calls.record("txnOffsetCommitRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1277,7 +1196,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.txnOffsetCommitRequest(value0, value1, value2, value3, value4)
         }
 
-        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> () {
             self.calls.record("endTxnRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1287,7 +1206,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.endTxnRequest(value0, value1, value2, value3)
         }
 
-        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
+        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
             self.calls.record("joinGroupRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1296,7 +1215,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.joinGroupRequest(value0, value1, value2)
         }
 
-        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
+        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
             self.calls.record("syncGroupRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1305,7 +1224,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.syncGroupRequest(value0, value1, value2)
         }
 
-        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
             self.calls.record("heartbeatRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1314,7 +1233,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.heartbeatRequest(value0, value1, value2)
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> () {
             self.calls.record("leaveGroupRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1327,7 +1246,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.describeGroupRequest(value0)
         }
 
-        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             self.calls.record("offsetCommitRequest", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1359,7 +1278,7 @@ pub mod lawtwin_kafka_contract {
     }
 
     impl Admin for AdminRecording {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createTopic(&self, value0: std::string::String, value1: i32) -> () {
             self.calls.record("createTopic", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1367,7 +1286,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.createTopic(value0, value1)
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitions(&self, value0: std::string::String, value1: i32) -> () {
             self.calls.record("createPartitions", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1380,7 +1299,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.partitionsFor(value0)
         }
 
-        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             self.calls.record("listOffsets", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1530,7 +1449,7 @@ pub mod lawtwin_kafka_contract {
     }
 
     impl GroupCoordinator for GroupCoordinatorRecording {
-        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
+        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
             self.calls.record("joinGroup", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1539,7 +1458,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.joinGroup(value0, value1, value2)
         }
 
-        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
+        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
             self.calls.record("syncGroup", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1548,7 +1467,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.syncGroup(value0, value1, value2)
         }
 
-        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
             self.calls.record("heartbeat", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1557,7 +1476,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.heartbeat(value0, value1, value2)
         }
 
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> () {
             self.calls.record("leaveGroup", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1570,7 +1489,7 @@ pub mod lawtwin_kafka_contract {
             self.inner.describeGroup(value0)
         }
 
-        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             self.calls.record("commitOffsets", vec![
                 ls::IntoValue::into_value(value0.clone()),
                 ls::IntoValue::into_value(value1.clone()),
@@ -1644,7 +1563,7 @@ pub mod lawtwin_kafka_contract {
     /// createTopicsRequest, answered by the handler installed for Broker.
     pub fn perform_createTopicsRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1661,25 +1580,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.createTopicsRequest(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.createTopicsRequest(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// createPartitionsRequest, answered by the handler installed for Broker.
     pub fn perform_createPartitionsRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1696,25 +1604,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.createPartitionsRequest(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.createPartitionsRequest(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// metadataRequest, answered by the handler installed for Broker.
     pub fn perform_metadataRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1735,7 +1632,7 @@ pub mod lawtwin_kafka_contract {
     /// produceRequest, answered by the handler installed for Broker.
     pub fn perform_produceRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1772,16 +1669,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.produceRequest(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.produceRequest(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )
@@ -1790,7 +1681,7 @@ pub mod lawtwin_kafka_contract {
     /// fetchRequest, answered by the handler installed for Broker.
     pub fn perform_fetchRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1823,16 +1714,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.fetchRequest(native_0, native_1, native_2, native_3);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.fetchRequest(native_0, native_1, native_2, native_3), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::FetchResult", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("lawtwin.kafka.model::type::FetchResult", vec![]),
             64,
             ctx,
         )
@@ -1841,7 +1726,7 @@ pub mod lawtwin_kafka_contract {
     /// listOffsetsRequest, answered by the handler installed for Broker.
     pub fn perform_listOffsetsRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1866,16 +1751,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.listOffsetsRequest(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.listOffsetsRequest(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )
@@ -1884,7 +1763,7 @@ pub mod lawtwin_kafka_contract {
     /// initProducerIdRequest, answered by the handler installed for Broker.
     pub fn perform_initProducerIdRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::option::Option<std::string::String> as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1893,16 +1772,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.initProducerIdRequest(native_0);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.initProducerIdRequest(native_0), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::ProducerIdAndEpoch", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("lawtwin.kafka.model::type::ProducerIdAndEpoch", vec![]),
             64,
             ctx,
         )
@@ -1911,7 +1784,7 @@ pub mod lawtwin_kafka_contract {
     /// addPartitionsToTxnRequest, answered by the handler installed for Broker.
     pub fn perform_addPartitionsToTxnRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -1950,25 +1823,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.addPartitionsToTxnRequest(native_0, native_1, native_2, native_3);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.addPartitionsToTxnRequest(native_0, native_1, native_2, native_3), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// txnOffsetCommitRequest, answered by the handler installed for Broker.
     pub fn perform_txnOffsetCommitRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2015,25 +1877,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.txnOffsetCommitRequest(native_0, native_1, native_2, native_3, native_4);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.txnOffsetCommitRequest(native_0, native_1, native_2, native_3, native_4), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// endTxnRequest, answered by the handler installed for Broker.
     pub fn perform_endTxnRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2066,25 +1917,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.endTxnRequest(native_0, native_1, native_2, native_3);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.endTxnRequest(native_0, native_1, native_2, native_3), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// joinGroupRequest, answered by the handler installed for Broker.
     pub fn perform_joinGroupRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2109,16 +1949,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.joinGroupRequest(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.joinGroupRequest(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )
@@ -2127,7 +1961,7 @@ pub mod lawtwin_kafka_contract {
     /// syncGroupRequest, answered by the handler installed for Broker.
     pub fn perform_syncGroupRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2152,21 +1986,15 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.syncGroupRequest(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.syncGroupRequest(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
             ),
             64,
             ctx,
@@ -2176,7 +2004,7 @@ pub mod lawtwin_kafka_contract {
     /// heartbeatRequest, answered by the handler installed for Broker.
     pub fn perform_heartbeatRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2201,25 +2029,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.heartbeatRequest(native_0, native_1, native_2);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.heartbeatRequest(native_0, native_1, native_2), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// leaveGroupRequest, answered by the handler installed for Broker.
     pub fn perform_leaveGroupRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2236,25 +2053,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.leaveGroupRequest(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.leaveGroupRequest(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// describeGroupRequest, answered by the handler installed for Broker.
     pub fn perform_describeGroupRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2275,7 +2081,7 @@ pub mod lawtwin_kafka_contract {
     /// offsetCommitRequest, answered by the handler installed for Broker.
     pub fn perform_offsetCommitRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2314,25 +2120,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.offsetCommitRequest(native_0, native_1, native_2, native_3);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.offsetCommitRequest(native_0, native_1, native_2, native_3), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// offsetFetchRequest, answered by the handler installed for Broker.
     pub fn perform_offsetFetchRequest(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka.contract::ability::Broker")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Broker>>("lawtwin.kafka::ability::Broker")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2361,7 +2156,7 @@ pub mod lawtwin_kafka_contract {
     /// createTopic, answered by the handler installed for Admin.
     pub fn perform_createTopic(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka.contract::ability::Admin")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka::ability::Admin")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2378,25 +2173,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.createTopic(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.createTopic(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// createPartitions, answered by the handler installed for Admin.
     pub fn perform_createPartitions(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka.contract::ability::Admin")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka::ability::Admin")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2413,25 +2197,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.createPartitions(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.createPartitions(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// partitionsFor, answered by the handler installed for Admin.
     pub fn perform_partitionsFor(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka.contract::ability::Admin")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka::ability::Admin")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2452,7 +2225,7 @@ pub mod lawtwin_kafka_contract {
     /// listOffsets, answered by the handler installed for Admin.
     pub fn perform_listOffsets(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka.contract::ability::Admin")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Admin>>("lawtwin.kafka::ability::Admin")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2477,16 +2250,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.listOffsets(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.listOffsets(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("Int64", vec![]),
             64,
             ctx,
         )
@@ -2495,7 +2262,7 @@ pub mod lawtwin_kafka_contract {
     /// choosePartition, answered by the handler installed for Partitioner.
     pub fn perform_choosePartition(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Partitioner>>("lawtwin.kafka.contract::ability::Partitioner")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Partitioner>>("lawtwin.kafka::ability::Partitioner")?;
         let native_0 = <std::option::Option<std::vec::Vec<u8>> as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2524,11 +2291,11 @@ pub mod lawtwin_kafka_contract {
     /// send, answered by the handler installed for Producer.
     pub fn perform_send(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka.contract::ability::Producer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka::ability::Producer")?;
         let native_0 = <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
-                &ls::TypeRef::named("lawtwin.kafka.contract::type::ProducerRecord", vec![]),
+                &ls::TypeRef::named("lawtwin.kafka::type::ProducerRecord", vec![]),
                 64,
                 ctx,
             )?,
@@ -2540,7 +2307,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ),
             64,
@@ -2551,7 +2318,7 @@ pub mod lawtwin_kafka_contract {
     /// flush, answered by the handler installed for Producer.
     pub fn perform_flush(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka.contract::ability::Producer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka::ability::Producer")?;
         let native_result = handler.flush();
         Ok(ls::Value::Unit)
     }
@@ -2559,7 +2326,7 @@ pub mod lawtwin_kafka_contract {
     /// enableIdempotence, answered by the handler installed for Producer.
     pub fn perform_enableIdempotence(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka.contract::ability::Producer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka::ability::Producer")?;
         let native_result = handler.enableIdempotence();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -2578,7 +2345,7 @@ pub mod lawtwin_kafka_contract {
     /// retryLastSend, answered by the handler installed for Producer.
     pub fn perform_retryLastSend(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka.contract::ability::Producer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka::ability::Producer")?;
         let native_result = handler.retryLastSend();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -2586,7 +2353,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ),
             64,
@@ -2597,7 +2364,7 @@ pub mod lawtwin_kafka_contract {
     /// producerIdentity, answered by the handler installed for Producer.
     pub fn perform_producerIdentity(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka.contract::ability::Producer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Producer>>("lawtwin.kafka::ability::Producer")?;
         let native_result = handler.producerIdentity();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -2616,7 +2383,7 @@ pub mod lawtwin_kafka_contract {
     /// assign, answered by the handler installed for Consumer.
     pub fn perform_assign(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2638,7 +2405,7 @@ pub mod lawtwin_kafka_contract {
     /// subscribe, answered by the handler installed for Consumer.
     pub fn perform_subscribe(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2687,7 +2454,7 @@ pub mod lawtwin_kafka_contract {
     /// poll, answered by the handler installed for Consumer.
     pub fn perform_poll(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <i32 as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2706,7 +2473,7 @@ pub mod lawtwin_kafka_contract {
                     ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
-                            "lawtwin.kafka.contract::type::ConsumerRecord",
+                            "lawtwin.kafka::type::ConsumerRecord",
                             vec![],
                         )],
                     ),
@@ -2720,7 +2487,7 @@ pub mod lawtwin_kafka_contract {
     /// commitSync, answered by the handler installed for Consumer.
     pub fn perform_commitSync(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_result = handler.commitSync();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -2739,7 +2506,7 @@ pub mod lawtwin_kafka_contract {
     /// seek, answered by the handler installed for Consumer.
     pub fn perform_seek(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2774,7 +2541,7 @@ pub mod lawtwin_kafka_contract {
     /// position, answered by the handler installed for Consumer.
     pub fn perform_position(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2801,7 +2568,7 @@ pub mod lawtwin_kafka_contract {
     /// committedOffset, answered by the handler installed for Consumer.
     pub fn perform_committedOffset(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <crate::lawspec_data::TopicPartition as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2822,7 +2589,7 @@ pub mod lawtwin_kafka_contract {
     /// setIsolationLevel, answered by the handler installed for Consumer.
     pub fn perform_setIsolationLevel(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_0 = <crate::lawspec_data::IsolationLevel as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2838,7 +2605,7 @@ pub mod lawtwin_kafka_contract {
     /// close, answered by the handler installed for Consumer.
     pub fn perform_close(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka.contract::ability::Consumer")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Consumer>>("lawtwin.kafka::ability::Consumer")?;
         let native_result = handler.close();
         Ok(ls::Value::Unit)
     }
@@ -2846,7 +2613,7 @@ pub mod lawtwin_kafka_contract {
     /// joinGroup, answered by the handler installed for GroupCoordinator.
     pub fn perform_joinGroup(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2871,16 +2638,10 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.joinGroup(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.joinGroup(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ),
+            &ls::TypeRef::named("Int32", vec![]),
             64,
             ctx,
         )
@@ -2889,7 +2650,7 @@ pub mod lawtwin_kafka_contract {
     /// syncGroup, answered by the handler installed for GroupCoordinator.
     pub fn perform_syncGroup(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2914,21 +2675,15 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.syncGroup(native_0, native_1, native_2);
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.syncGroup(native_0, native_1, native_2), vec![]);
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
             &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
             ),
             64,
             ctx,
@@ -2938,7 +2693,7 @@ pub mod lawtwin_kafka_contract {
     /// heartbeat, answered by the handler installed for GroupCoordinator.
     pub fn perform_heartbeat(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2963,25 +2718,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.heartbeat(native_0, native_1, native_2);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.heartbeat(native_0, native_1, native_2), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// leaveGroup, answered by the handler installed for GroupCoordinator.
     pub fn perform_leaveGroup(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -2998,25 +2742,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.leaveGroup(native_0, native_1);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.leaveGroup(native_0, native_1), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// describeGroup, answered by the handler installed for GroupCoordinator.
     pub fn perform_describeGroup(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3037,7 +2770,7 @@ pub mod lawtwin_kafka_contract {
     /// commitOffsets, answered by the handler installed for GroupCoordinator.
     pub fn perform_commitOffsets(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3076,25 +2809,14 @@ pub mod lawtwin_kafka_contract {
                 ctx,
             )?,
         )?;
-        let native_result = handler.commitOffsets(native_0, native_1, native_2, native_3);
-        schema.validate_with_context(
-            ls::IntoValue::into_value(native_result),
-            &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ),
-            64,
-            ctx,
-        )
+        let native_result = ls::native_failures::<crate::lawspec_data::KafkaError, _>("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", |native| ls::IntoValue::into_value(native), || handler.commitOffsets(native_0, native_1, native_2, native_3), vec![]);
+        Ok(ls::Value::Unit)
     }
 
     /// fetchOffset, answered by the handler installed for GroupCoordinator.
     pub fn perform_fetchOffset(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka.contract::ability::GroupCoordinator")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn GroupCoordinator>>("lawtwin.kafka::ability::GroupCoordinator")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3123,7 +2845,7 @@ pub mod lawtwin_kafka_contract {
     /// initTransactions, answered by the handler installed for Transactions.
     pub fn perform_initTransactions(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3150,7 +2872,7 @@ pub mod lawtwin_kafka_contract {
     /// beginTransaction, answered by the handler installed for Transactions.
     pub fn perform_beginTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_result = handler.beginTransaction();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -3169,7 +2891,7 @@ pub mod lawtwin_kafka_contract {
     /// addPartitionsToTransaction, answered by the handler installed for Transactions.
     pub fn perform_addPartitionsToTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_0 = <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3202,11 +2924,11 @@ pub mod lawtwin_kafka_contract {
     /// sendInTransaction, answered by the handler installed for Transactions.
     pub fn perform_sendInTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_0 = <crate::lawspec_data::ProducerRecord as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
-                &ls::TypeRef::named("lawtwin.kafka.contract::type::ProducerRecord", vec![]),
+                &ls::TypeRef::named("lawtwin.kafka::type::ProducerRecord", vec![]),
                 64,
                 ctx,
             )?,
@@ -3218,7 +2940,7 @@ pub mod lawtwin_kafka_contract {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ),
             64,
@@ -3229,7 +2951,7 @@ pub mod lawtwin_kafka_contract {
     /// sendOffsetsToTransaction, answered by the handler installed for Transactions.
     pub fn perform_sendOffsetsToTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_0 = <std::string::String as ls::FromValue>::from_value(
             schema.native_value_with_context(
                 arguments[0].clone(),
@@ -3270,7 +2992,7 @@ pub mod lawtwin_kafka_contract {
     /// commitTransaction, answered by the handler installed for Transactions.
     pub fn perform_commitTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_result = handler.commitTransaction();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -3289,7 +3011,7 @@ pub mod lawtwin_kafka_contract {
     /// abortTransaction, answered by the handler installed for Transactions.
     pub fn perform_abortTransaction(ctx: &mut ls::Context, arguments: Vec<ls::Value>) -> ls::Result<ls::Value> {
         let schema = crate::lawspec_schema::schema()?;
-        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka.contract::ability::Transactions")?;
+        let handler = ctx.handler::<std::sync::Arc<dyn Transactions>>("lawtwin.kafka::ability::Transactions")?;
         let native_result = handler.abortTransaction();
         schema.validate_with_context(
             ls::IntoValue::into_value(native_result),
@@ -3309,30 +3031,26 @@ pub mod lawtwin_kafka_contract {
 pub mod contracttest_kafka {
     use super::ls;
 
-    /// The spec handler reference for Broker.
-    pub struct Reference {
+    /// The spec handler cluster for Broker, Admin, GroupCoordinator.
+    pub struct Cluster {
         ctx: std::sync::Mutex<ls::Context>,
         state: std::sync::Mutex<Option<ls::Value>>,
     }
 
-    impl Reference {
+    impl Cluster {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_567(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Broker for Reference {
-        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+    impl super::lawtwin_kafka::Broker for Cluster {
+        fn createTopicsRequest(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_867(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_547(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3341,19 +3059,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitionsRequest(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_866(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_545(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3362,19 +3077,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn metadataRequest(&self, value0: std::string::String) -> std::option::Option<i32> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_876(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_562(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3388,10 +3100,10 @@ pub mod contracttest_kafka {
             <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn produceRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: std::option::Option<crate::lawspec_data::ProducerTag>, value2: std::vec::Vec<crate::lawspec_data::Record>) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_879(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_566(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3401,19 +3113,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult> {
+        fn fetchRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: i64, value2: i32, value3: crate::lawspec_data::IsolationLevel) -> crate::lawspec_data::FetchResult {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_870(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_552(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3424,19 +3133,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::FetchResult", vec![]),
-                ],
+                "lawtwin.kafka.model::type::FetchResult",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::FetchResult> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <crate::lawspec_data::FetchResult as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsetsRequest(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_875(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_561(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3446,19 +3152,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
+        fn initProducerIdRequest(&self, value0: std::option::Option<std::string::String>) -> crate::lawspec_data::ProducerIdAndEpoch {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_872(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_555(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3466,19 +3169,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.model::type::ProducerIdAndEpoch", vec![]),
-                ],
+                "lawtwin.kafka.model::type::ProducerIdAndEpoch",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <crate::lawspec_data::ProducerIdAndEpoch as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn addPartitionsToTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_865(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_542(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3489,19 +3189,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn txnOffsetCommitRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: std::string::String, value4: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_881(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_570(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3513,19 +3210,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn endTxnRequest(&self, value0: std::string::String, value1: i64, value2: i16, value3: bool) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_869(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_550(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3536,19 +3230,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
+        fn joinGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_873(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_557(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3558,19 +3249,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
+                "Int32",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
+        fn syncGroupRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_880(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_569(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3580,25 +3268,19 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn heartbeatRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_871(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_554(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3608,19 +3290,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn leaveGroupRequest(&self, value0: std::string::String, value1: std::string::String) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_874(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_559(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3629,19 +3308,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn describeGroupRequest(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_868(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_549(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3655,10 +3331,10 @@ pub mod contracttest_kafka {
             <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn offsetCommitRequest(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_877(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_563(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3669,19 +3345,16 @@ pub mod contracttest_kafka {
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn offsetFetchRequest(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_878(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_564(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3697,62 +3370,52 @@ pub mod contracttest_kafka {
         }
     }
 
-    /// The spec handler kafkaAdmin for Admin.
-    pub struct KafkaAdmin {
-        ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
-    }
-
-    impl KafkaAdmin {
-        /// The handler for a law; it evaluates its clauses in a copy of the law's context.
-        pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
-            Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
-        }
-    }
-
-    impl super::lawtwin_kafka_contract::Admin for KafkaAdmin {
-        fn createTopic(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+    impl super::lawtwin_kafka::Admin for Cluster {
+        fn createTopic(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_538(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_546(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn createPartitions(&self, value0: std::string::String, value1: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
+        fn createPartitions(&self, value0: std::string::String, value1: i32) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_537(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_544(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
+                "Unit",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
         fn partitionsFor(&self, value0: std::string::String) -> std::option::Option<i32> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_540(ctx, vec![ls::IntoValue::into_value(value0)]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_565(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
                 "Maybe",
@@ -3761,33 +3424,168 @@ pub mod contracttest_kafka {
             <std::option::Option<i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
 
-        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
+        fn listOffsets(&self, value0: crate::lawspec_data::TopicPartition, value1: crate::lawspec_data::OffsetSpec, value2: crate::lawspec_data::IsolationLevel) -> i64 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_539(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_560(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
                 ls::IntoValue::into_value(value2),
             ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
             let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int64", vec![]),
-                ],
+                "Int64",
+                vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            <i64 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
     }
 
-    /// The spec handler firstPartition for Partitioner.
-    pub struct FirstPartition {
+    impl super::lawtwin_kafka::GroupCoordinator for Cluster {
+        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> i32 {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_556(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Int32",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <i32 as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> std::vec::Vec<crate::lawspec_data::TopicPartition> {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_568(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "List",
+                vec![ls::TypeRef::named(
+                    "lawtwin.kafka.model::type::TopicPartition",
+                    vec![],
+                )],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <std::vec::Vec<crate::lawspec_data::TopicPartition> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_553(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_558(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_548(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "lawtwin.kafka.model::type::GroupView",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> () {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_543(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+                ls::IntoValue::into_value(value2),
+                ls::IntoValue::into_value(value3),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Unit",
+                vec![],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+
+        fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
+            let mut guard = self.ctx.lock().unwrap();
+            let ctx = &mut *guard;
+            let pair = crate::lawspec_definitions::evaluate_551(ctx, vec![
+                self.state.lock().unwrap().clone().unwrap(),
+                ls::IntoValue::into_value(value0),
+                ls::IntoValue::into_value(value1),
+            ]).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
+            *self.state.lock().unwrap() = Some(next);
+            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
+                "Maybe",
+                vec![ls::TypeRef::named("Int64", vec![])],
+            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+        }
+    }
+
+    /// The spec handler murmurPartitioner for Partitioner.
+    pub struct MurmurPartitioner {
         ctx: std::sync::Mutex<ls::Context>,
         state: std::sync::Mutex<Option<ls::Value>>,
     }
 
-    impl FirstPartition {
+    impl MurmurPartitioner {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
@@ -3796,11 +3594,11 @@ pub mod contracttest_kafka {
         }
     }
 
-    impl super::lawtwin_kafka_contract::Partitioner for FirstPartition {
+    impl super::lawtwin_kafka::Partitioner for MurmurPartitioner {
         fn choosePartition(&self, value0: std::option::Option<std::vec::Vec<u8>>, value1: i32) -> i32 {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_536(ctx, vec![
+            let result = crate::lawspec_definitions::evaluate_865(ctx, vec![
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3823,20 +3621,16 @@ pub mod contracttest_kafka {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_586(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Producer for KafkaProducer {
+    impl super::lawtwin_kafka::Producer for KafkaProducer {
         fn send(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_561(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_585(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3847,7 +3641,7 @@ pub mod contracttest_kafka {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -3856,7 +3650,7 @@ pub mod contracttest_kafka {
         fn flush(&self) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_558(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_582(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -3870,7 +3664,7 @@ pub mod contracttest_kafka {
         fn enableIdempotence(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_557(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_581(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -3887,7 +3681,7 @@ pub mod contracttest_kafka {
         fn retryLastSend(&self) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_560(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_584(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -3895,7 +3689,7 @@ pub mod contracttest_kafka {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -3904,7 +3698,7 @@ pub mod contracttest_kafka {
         fn producerIdentity(&self) -> std::option::Option<crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_559(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_583(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -3929,20 +3723,16 @@ pub mod contracttest_kafka {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_579(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Consumer for KafkaConsumer {
+    impl super::lawtwin_kafka::Consumer for KafkaConsumer {
         fn assign(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_541(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_571(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -3959,7 +3749,7 @@ pub mod contracttest_kafka {
         fn subscribe(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_549(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_580(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -3987,7 +3777,7 @@ pub mod contracttest_kafka {
         fn poll(&self, value0: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::ConsumerRecord>> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_545(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_575(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4001,7 +3791,7 @@ pub mod contracttest_kafka {
                     ls::TypeRef::named(
                         "List",
                         vec![ls::TypeRef::named(
-                            "lawtwin.kafka.contract::type::ConsumerRecord",
+                            "lawtwin.kafka::type::ConsumerRecord",
                             vec![],
                         )],
                     ),
@@ -4013,7 +3803,7 @@ pub mod contracttest_kafka {
         fn commitSync(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_543(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_573(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -4030,7 +3820,7 @@ pub mod contracttest_kafka {
         fn seek(&self, value0: crate::lawspec_data::TopicPartition, value1: i64) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_547(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_577(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -4051,7 +3841,7 @@ pub mod contracttest_kafka {
         fn position(&self, value0: crate::lawspec_data::TopicPartition) -> ls::Either<crate::lawspec_data::KafkaError, i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_546(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_576(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4071,7 +3861,7 @@ pub mod contracttest_kafka {
         fn committedOffset(&self, value0: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_544(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_574(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4088,7 +3878,7 @@ pub mod contracttest_kafka {
         fn setIsolationLevel(&self, value0: crate::lawspec_data::IsolationLevel) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_548(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_578(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4105,7 +3895,7 @@ pub mod contracttest_kafka {
         fn close(&self) -> () {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_542(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_572(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -4114,151 +3904,6 @@ pub mod contracttest_kafka {
                 vec![],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-    }
-
-    /// The spec handler kafkaGroups for GroupCoordinator.
-    pub struct KafkaGroups {
-        ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
-    }
-
-    impl KafkaGroups {
-        /// The handler for a law; it evaluates its clauses in a copy of the law's context.
-        pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = None;
-            Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
-        }
-    }
-
-    impl super::lawtwin_kafka_contract::GroupCoordinator for KafkaGroups {
-        fn joinGroup(&self, value0: std::string::String, value1: std::string::String, value2: std::vec::Vec<std::string::String>) -> ls::Either<crate::lawspec_data::KafkaError, i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_554(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn syncGroup(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_556(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named(
-                        "List",
-                        vec![ls::TypeRef::named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                            vec![],
-                        )],
-                    ),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, std::vec::Vec<crate::lawspec_data::TopicPartition>> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn heartbeat(&self, value0: std::string::String, value1: std::string::String, value2: i32) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_553(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn leaveGroup(&self, value0: std::string::String, value1: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_555(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn describeGroup(&self, value0: std::string::String) -> crate::lawspec_data::GroupView {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_551(ctx, vec![ls::IntoValue::into_value(value0)]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.kafka.model::type::GroupView",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::GroupView as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn commitOffsets(&self, value0: std::string::String, value1: std::string::String, value2: i32, value3: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_550(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-                ls::IntoValue::into_value(value3),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Either",
-                vec![
-                    ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("Unit", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <ls::Either<crate::lawspec_data::KafkaError, ()> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
-        }
-
-        fn fetchOffset(&self, value0: std::string::String, value1: crate::lawspec_data::TopicPartition) -> std::option::Option<i64> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let result = crate::lawspec_definitions::evaluate_552(ctx, vec![
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Maybe",
-                vec![ls::TypeRef::named("Int64", vec![])],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::option::Option<i64> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
         }
     }
 
@@ -4272,20 +3917,16 @@ pub mod contracttest_kafka {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
             let mut ctx = ctx.clone();
-            let state = Some((|| -> ls::Result<ls::Value> {
-                let ctx = &mut ctx;
-                let value = ls::construct("Maybe::Nothing", vec![])?;
-                Ok(value)
-            })().unwrap_or_else(|error| panic!("{error}")));
+            let state = Some(crate::lawspec_definitions::evaluate_594(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
         }
     }
 
-    impl super::lawtwin_kafka_contract::Transactions for KafkaTransactions {
+    impl super::lawtwin_kafka::Transactions for KafkaTransactions {
         fn initTransactions(&self, value0: std::string::String) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::ProducerIdAndEpoch> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_566(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_591(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4305,7 +3946,7 @@ pub mod contracttest_kafka {
         fn beginTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_564(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_589(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -4322,7 +3963,7 @@ pub mod contracttest_kafka {
         fn addPartitionsToTransaction(&self, value0: std::vec::Vec<crate::lawspec_data::TopicPartition>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_563(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_588(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4342,7 +3983,7 @@ pub mod contracttest_kafka {
         fn sendInTransaction(&self, value0: crate::lawspec_data::ProducerRecord) -> ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_567(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_592(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
             ]).unwrap_or_else(|error| panic!("{error}"));
@@ -4353,7 +3994,7 @@ pub mod contracttest_kafka {
                 "Either",
                 vec![
                     ls::TypeRef::named("lawtwin.kafka.model::type::KafkaError", vec![]),
-                    ls::TypeRef::named("lawtwin.kafka.contract::type::RecordMetadata", vec![]),
+                    ls::TypeRef::named("lawtwin.kafka::type::RecordMetadata", vec![]),
                 ],
             ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
             <ls::Either<crate::lawspec_data::KafkaError, crate::lawspec_data::RecordMetadata> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
@@ -4362,7 +4003,7 @@ pub mod contracttest_kafka {
         fn sendOffsetsToTransaction(&self, value0: std::string::String, value1: std::vec::Vec<crate::lawspec_data::OffsetEntry>) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_568(ctx, vec![
+            let pair = crate::lawspec_definitions::evaluate_593(ctx, vec![
                 self.state.lock().unwrap().clone().unwrap(),
                 ls::IntoValue::into_value(value0),
                 ls::IntoValue::into_value(value1),
@@ -4383,7 +4024,7 @@ pub mod contracttest_kafka {
         fn commitTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_565(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_590(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
@@ -4400,7 +4041,7 @@ pub mod contracttest_kafka {
         fn abortTransaction(&self) -> ls::Either<crate::lawspec_data::KafkaError, ()> {
             let mut guard = self.ctx.lock().unwrap();
             let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_562(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
+            let pair = crate::lawspec_definitions::evaluate_587(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
             *self.state.lock().unwrap() = Some(next);
             let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));

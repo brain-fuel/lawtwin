@@ -12,11 +12,19 @@ title: The Kafka contract
 | Unit | Holds |
 | --- | --- |
 | `lawtwin.kafka.model` | the data of a cluster, and one checked definition for each request it answers |
-| `lawtwin.kafka.contract` | the abilities, their laws, the reference handler, and the client handlers |
+| `lawtwin.kafka` | the `Cluster` resource, the abilities, their laws, the reference handlers, and the client handlers |
+
+The package is written for LawSpec main after the `lawspec-gaps` merge
+(ref:lawspec): it uses handlers of several abilities, handler sets, `fails
+with` on operations, field access and record update, `Bytes` and `Text`
+operations, and wrapping and saturating arithmetic.
 
 ## Abilities
 
-There are two layers (ref:DEC-kafka-broker-and-clients).
+There are two layers (ref:DEC-kafka-broker-and-clients). Every ability is
+declared `with Cluster`: its native handlers are made with the case's one
+`Cluster`, a resource the test project connects, so what a producer sends a
+consumer reads.
 
 **`Broker`** is the cluster as the wire protocol sees it. Each operation is
 one request.
@@ -41,7 +49,8 @@ one request.
 | `offsetCommitRequest group member generation offsets` | OffsetCommit | nothing, or an error |
 | `offsetFetchRequest group tp` | OffsetFetch | the committed offset, if any |
 
-A request that can fail gives `Either KafkaError a`. `KafkaError` names
+A request that can fail `fails with KafkaError`; a law checks it with
+`fails with`, or reads it as `Either` with `prelude.attempt`. `KafkaError` names
 Kafka's error codes: `UnknownTopicOrPartition`, `TopicAlreadyExists`,
 `InvalidTopic`, `InvalidPartitions`, `InvalidRecord`, `InvalidRequest`,
 `OffsetOutOfRange`, `OutOfOrderSequenceNumber`, `InvalidProducerEpoch`,
@@ -49,16 +58,17 @@ Kafka's error codes: `UnknownTopicOrPartition`, `TopicAlreadyExists`,
 `InvalidTxnState`, `InvalidGroupId`, `UnknownMemberId`, `IllegalGeneration`
 and `IllegalState`.
 
-**The client abilities** are what a client library offers. Each has a spec
-handler written over `Broker`.
+**The client abilities** are what a client library offers. `Admin` and
+`GroupCoordinator` are answered by the reference model itself; the others
+have spec handlers written over `Broker`.
 
 | Ability | Operations | Spec handler |
 | --- | --- | --- |
-| `Admin` | `createTopic`, `createPartitions`, `partitionsFor`, `listOffsets` | `kafkaAdmin` |
+| `Admin` | `createTopic`, `createPartitions`, `partitionsFor`, `listOffsets` | `cluster` |
 | `Producer` | `send`, `flush`, `enableIdempotence`, `retryLastSend`, `producerIdentity` | `kafkaProducer`, which keeps the producer id, epoch and a sequence per partition |
-| `Partitioner` | `choosePartition` | `firstPartition` |
+| `Partitioner` | `choosePartition` | `murmurPartitioner`, Kafka's murmur2 of the key |
 | `Consumer` | `assign`, `subscribe`, `poll`, `commitSync`, `seek`, `position`, `committedOffset`, `setIsolationLevel`, `close` | `kafkaConsumer`, which keeps the group, generation, assignment and positions |
-| `GroupCoordinator` | `joinGroup`, `syncGroup`, `heartbeat`, `leaveGroup`, `describeGroup`, `commitOffsets`, `fetchOffset` | `kafkaGroups` |
+| `GroupCoordinator` | `joinGroup`, `syncGroup`, `heartbeat`, `leaveGroup`, `describeGroup`, `commitOffsets`, `fetchOffset` | `cluster` |
 | `Transactions` | `initTransactions`, `beginTransaction`, `addPartitionsToTransaction`, `sendInTransaction`, `sendOffsetsToTransaction`, `commitTransaction`, `abortTransaction` | `kafkaTransactions`, which keeps the transactional id, epoch and open transaction |
 
 A `ProducerRecord` names a topic, a `PartitionChoice` (`ToPartition p`, or
@@ -67,8 +77,13 @@ optional value, and headers. Keys and values are `Bytes`.
 
 ## The reference model
 
-`reference` is the stateful spec handler of `Broker`. Its state,
-`BrokerState`, holds:
+`cluster` is one stateful spec handler for `Broker`, `Admin` and
+`GroupCoordinator`. Each operation is answered by the model's checked
+definition of it, written `produceRequest by model.produce`: the definition
+takes the state and gives `Pair result next`, and fails with the
+`KafkaError` the broker answers. The handler set `reference` is `cluster`
+with the client spec handlers and the murmur2 partitioner, so every law can
+run over spec handlers alone. Its state, `BrokerState`, holds:
 
 - **topics**, each with its partition count;
 - **a log per partition**: its entries, newest first; its log end offset;
@@ -93,6 +108,8 @@ The model is one broker with one replica (ref:DEC-kafka-model-scope):
 - A group's coordinator assigns partitions, as in KIP-848 (ref:kip-848): the
   partitions of each topic go to its subscribers in turn, in member id order.
 - A member leaves only by LeaveGroup; there is no session timeout yet.
+- Counters saturate at their type's limit: offsets are `Int64`, epochs
+  `Int16` and generations `Int32`, as on the wire.
 - A topic has 1 to 1024 partitions. A name is 1 to 249 ASCII letters,
   digits, dots, underscores and dashes, and not
   `.` or `..`.
@@ -150,9 +167,10 @@ cluster that already holds data.
 - **A chosen partition exists.** It is at least 0 and less than the count.
 - **A key always goes to the same partition.**
 
-The spec handler `firstPartition` always chooses 0. Kafka's own partitioner
-hashes the key with murmur2 (ref:kafka-murmur2); LawSpec cannot read the
-octets of `Bytes`, so that hash lives in the native handler.
+The spec handler `murmurPartitioner` is Kafka's own: murmur2 over the key's
+octets (ref:kafka-murmur2), made positive, modulo the partition count; an
+unkeyed record goes to partition 0. The law **murmur2 agrees with Kafka**
+checks the hash against the vectors of Kafka's own tests.
 
 ### Producer
 
@@ -204,8 +222,17 @@ octets of `Bytes`, so that hash lives in the native handler.
 
 ## Running the laws
 
-`contracts/kafka/test/` runs every law on Rust and Python; see [Run a
-contract's laws](../how-to/run-contract-laws.md). Each law runs once per
-lawful handler of its ability, 78 runs in all. The native handlers there
-serve every ability from one shared reference cluster per case, with Kafka's
-murmur2 partitioner (ref:DEC-contract-test-shared-cluster).
+`contracts/kafka/test/` runs every law on Rust, Python, Go, Java and
+Kotlin; see [Run a contract's laws](../how-to/run-contract-laws.md). There
+are 40 laws; each ability law runs once per lawful handler of its ability,
+79 runs in all. The native handlers there are made with a `Cluster` that
+holds the reference model, so each case gets a fresh cluster
+(ref:DEC-contract-test-shared-cluster). Laws draw topic names and counts
+from their refinements, which LawSpec now generates from rather than
+filters, so the project binds no generators.
+
+On Python, Go, Java and Kotlin all 79 runs pass. On Rust, 18 fail: the
+LawSpec `lawspec-gaps` build's Rust target poisons a spec handler's lock
+when a clause fails, and its Rust evaluator does not know `prelude.octets`;
+the [gap report](../explanation/lawspec-gaps.md#found-while-re-expressing-the-contract)
+has both.

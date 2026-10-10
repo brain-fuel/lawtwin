@@ -21,6 +21,18 @@ ignore:
   - contracts/*/test/python/src/*.egg-info/
   - contracts/*/test/python/tests/test_*_lawspec.py
   - contracts/*/test/python/tests/lawspec_*.py
+  - contracts/*/test/go/**/lawspec_*.go
+  - contracts/*/test/go/lawspec/
+  - contracts/*/test/java/target/
+  - contracts/*/test/java/src/main/java/lawspec/
+  - contracts/*/test/java/src/test/
+  - contracts/*/test/kotlin/build/
+  - contracts/*/test/kotlin/.gradle/
+  - contracts/*/test/kotlin/.kotlin/
+  - contracts/*/test/kotlin/src/main/kotlin/lawspec/
+  - contracts/*/test/kotlin/src/main/java/
+  - contracts/*/test/kotlin/src/test/
+  - .lawspec-cli/
 languages:
   folio:
     extensions: [.md]
@@ -42,3 +54,18 @@ languages:
     lexer: .canon/grammars/python/canonically_commented/Python3Lexer.g4
     parser: .canon/grammars/python/canonically_commented/Python3Parser.g4
     start: file_input
+  golang:
+    extensions: [.go]
+    lexer: .canon/grammars/golang/canonically_commented/GoLexer.g4
+    parser: .canon/grammars/golang/canonically_commented/GoParser.g4
+    start: sourceFile
+  java:
+    extensions: [.java]
+    lexer: .canon/grammars/java/canonically_commented/JavaLexer.g4
+    parser: .canon/grammars/java/canonically_commented/JavaParser.g4
+    start: compilationUnit
+  kotlin:
+    extensions: [.kt]
+    lexer: .canon/grammars/kotlin/canonically_commented/KotlinLexer.g4
+    parser: .canon/grammars/kotlin/canonically_commented/KotlinParser.g4
+    start: kotlinFile

@@ -10,63 +10,10 @@ use lawspec_example::lawspec_abilities;
 use lawspec_example::lawspec_schema;
 #[path = "support/lawspec_strategies.rs"]
 mod ls_gen;
-#[path = "support/kafka_generators.rs"]
-mod kafka_generators;
 use lawspec_runtime as ls;
 use proptest::strategy::Strategy;
 
 type ValueStrategy = proptest::strategy::BoxedStrategy<ls::Value>;
-
-fn _lawspec_native_generators() -> ls::Result<ls_gen::NativeGenerators> {
-    ls_gen::NativeGenerators::new(
-        vec![
-            ("Text", _lawspec_native_generator_0 as ls_gen::NativeFactory),
-            ("Int32", _lawspec_native_generator_1 as ls_gen::NativeFactory),
-        ],
-    )
-}
-
-fn _lawspec_native_generator_0(
-    _schema: &ls::Schema,
-    _ty: &ls::TypeRef,
-    _bits: u32,
-    _context: &ls::Context,
-    mut children: Vec<proptest::strategy::BoxedStrategy<ls::Value>>,
-) -> ls::Result<proptest::strategy::BoxedStrategy<ls::Value>> {
-    match _ty {
-        _ if _ty == &ls::TypeRef::named("Text", vec![]) => {
-            if children.len() != 0 { return Err("unexpected native generator arguments".into()); }
-            let ls::TypeRef::Named(_, arguments) = _ty else { return Err("uninstantiated native generator type".into()); };
-            let strategy: proptest::strategy::BoxedStrategy<std::string::String> = kafka_generators::names().boxed();
-            Ok(strategy.prop_map(|native| {
-                let value: std::string::String = native;
-                ls::IntoValue::into_value(value)
-            }).boxed())
-        },
-        _ => Err(format!("unplanned native generator instantiation: {_ty:?}")),
-    }
-}
-
-fn _lawspec_native_generator_1(
-    _schema: &ls::Schema,
-    _ty: &ls::TypeRef,
-    _bits: u32,
-    _context: &ls::Context,
-    mut children: Vec<proptest::strategy::BoxedStrategy<ls::Value>>,
-) -> ls::Result<proptest::strategy::BoxedStrategy<ls::Value>> {
-    match _ty {
-        _ if _ty == &ls::TypeRef::named("Int32", vec![]) => {
-            if children.len() != 0 { return Err("unexpected native generator arguments".into()); }
-            let ls::TypeRef::Named(_, arguments) = _ty else { return Err("uninstantiated native generator type".into()); };
-            let strategy: proptest::strategy::BoxedStrategy<i32> = kafka_generators::counts().boxed();
-            Ok(strategy.prop_map(|native| {
-                let value: i32 = native;
-                ls::IntoValue::into_value(value)
-            }).boxed())
-        },
-        _ => Err(format!("unplanned native generator instantiation: {_ty:?}")),
-    }
-}
 
 fn lawspec_rng_seed() -> proptest::test_runner::RngSeed {
     match std::env::var("LAWSPEC_SEED") {

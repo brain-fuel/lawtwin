@@ -475,7 +475,9 @@ def compare_values(a, b):
 
 
 def helper(n, args, types, bits=64):
-    x = args[0]
+    x = args[0] if args else None
+    if n in _SEQUENCE_HELPERS:
+        return _SEQUENCE_HELPERS[n](*args)
     if n == 'startsWith':
         return args[0].startswith(args[1])
     if n == 'endsWith':
@@ -531,6 +533,40 @@ def helper(n, args, types, bits=64):
                   Fraction(1, 10 ** (-scale)))
         return finite_decimal(Fraction(round(ratio(x) * factor), 1) / factor)
     return convert(x, n, bits)
+
+
+# Sequences: Text (str), Bytes (bytes) and List (list). Indices count code
+# points, octets or items, and a slice is clamped to the sequence.
+def _append(a, b):
+    if isinstance(a, Raw):
+        return Raw(a.kind, a.units + b.units)
+    return a + b
+
+
+def _slice(x, start, end):
+    count = len(x.units) if isinstance(x, Raw) else len(x)
+    i = max(0, min(count, start))
+    j = max(i, min(count, end))
+    return Raw(x.kind, x.units[i:j]) if isinstance(x, Raw) else x[i:j]
+
+
+def _at(x, i):
+    if 0 <= i < len(x):
+        return construct('Maybe::Just', [x[i]])
+    return construct('Maybe::Nothing', [])
+
+
+_SEQUENCE_HELPERS = {
+    'append': _append,
+    'slice': _slice,
+    'at': _at,
+    'range': lambda lo, hi: list(range(lo, hi)),
+    'octets': lambda b: list(b),
+    'bytesOf': lambda xs: bytes(xs),
+    'utf8': lambda t: t.encode('utf-8'),
+    'textOf': lambda n: str(n),
+    'join': lambda separator, parts: separator.join(parts),
+}
 
 
 # Portable regular expressions (see LawSpec.Regex): the subset of RE2 and
@@ -995,11 +1031,12 @@ def attempt(ability, body, right, left):
     return right(value)
 
 
-def native_handler(module, name):
+def native_handler(module, name, *made_with):
     """A production handler bound in lawspec.json: its class (or function of
-    no arguments), called."""
+    no arguments), called; with the case's resource, for an ability made
+    with one."""
     import importlib
-    return getattr(importlib.import_module(module), name)()
+    return getattr(importlib.import_module(module), name)(*made_with)
 
 
 _HANDLER_SCHEMA = None

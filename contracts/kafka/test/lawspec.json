@@ -14,49 +14,25 @@
       "language": "rust",
       "root": "rust",
       "nativeBindings": {
-        "generators": [
-          {
-            "type": "Text",
-            "factory": [
-              "kafka_generators",
-              "names"
-            ],
-            "stub": true
-          },
-          {
-            "type": "Int32",
-            "factory": [
-              "kafka_generators",
-              "counts"
-            ]
-          }
-        ],
         "rustCrate": "lawspec_example"
       }
     },
     {
       "language": "python",
       "root": "python",
-      "python": ".venv/bin/python",
-      "nativeBindings": {
-        "generators": [
-          {
-            "type": "Text",
-            "factory": [
-              "kafka_generators",
-              "names"
-            ],
-            "stub": true
-          },
-          {
-            "type": "Int32",
-            "factory": [
-              "kafka_generators",
-              "counts"
-            ]
-          }
-        ]
-      }
+      "python": ".venv/bin/python"
+    },
+    {
+      "language": "go",
+      "root": "go"
+    },
+    {
+      "language": "java",
+      "root": "java"
+    },
+    {
+      "language": "kotlin",
+      "root": "kotlin"
     }
   ]
 }

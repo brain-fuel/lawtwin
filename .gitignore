@@ -9,8 +9,11 @@
 .lawspec/failures/
 .lawspec/coverage/
 
-# Rust build output
+# Rust, Maven and Gradle build output
 target/
+build/
+.gradle/
+.kotlin/
 
 # Python environments and test caches
 .venv/
@@ -29,3 +32,6 @@ node_modules/
 .DS_Store
 *.swp
 *~
+
+# A LawSpec CLI staged from a source checkout by tools/stage-lawspec.sh
+/.lawspec-cli/

@@ -7,7 +7,10 @@ title: LawSpec gap report
 
 Writing the Kafka contract in LawSpec 0.21.0 (ref:lawspec) showed what the
 language could not state, or could not generate well, for a dependency
-contract of this size. Each gap below has the example that found it, what
+contract of this size. LawSpec branch `lawspec-gaps` closes all but one of
+the seventeen, and the contract is now written with them. It needs LawSpec
+main after the `lawspec-gaps` and `lawspec-codegen` merges; the npm release
+is pending. Each gap below has the example that found it, what
 the contract does instead, and what would close it. This page is for the
 LawSpec roadmap (ref:lawspec-roadmap); LawTwin does not change LawSpec.
 
@@ -17,6 +20,8 @@ abilities, handlers and laws, with 39 laws over seven abilities.
 ## How the contract is shaped
 
 ### 1. One handler cannot serve several abilities, so shared state needs a layer
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `handler cluster for Broker, Admin, GroupCoordinator with state ...` answers all three from one state, so `Admin` and `GroupCoordinator` no longer need twins of the `Broker` requests.
 
 Kafka's guarantees cross its APIs: a record a producer sends is the record a
 consumer polls, and offsets sent by a transaction are the offsets a group
@@ -42,6 +47,8 @@ unique in a unit.
 
 ### 2. A law never runs on spec handlers alone unless it names them
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `handlers reference is cluster, kafkaProducer, kafkaConsumer, kafkaTransactions, murmurPartitioner end` names the reference composition; every law of an ability it covers also runs under all of it.
+
 An ability law runs once per lawful handler of its own ability. For the
 other abilities it uses, it takes "the first lawful one", which is the
 native handler. So `Producer: records sent to one partition are read in the
@@ -56,6 +63,8 @@ reference composition, run as its own obligation for every ability law.
 
 ### 3. Native handlers of one case cannot share a resource
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `ability Broker with Cluster is ... end`: each case acquires one `Cluster` and makes every native handler with it. The test project's session per thread is gone.
+
 The test project's native handlers must reach one cluster per case, but
 each is made with no arguments (`ProducerHandler::default()`). Resources
 are given to laws, not to handlers. The test project keeps a session per
@@ -67,6 +76,8 @@ tests make every handler before the first operation; nothing promises that.
 `session` resource that every native handler of the case receives.
 
 ### 4. Ability operations cannot fail with a typed failure
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `produceRequest :: ... -> Int64 fails with KafkaError`; spec handler clauses `raise`, native handlers raise the runtime's `Fail`, and laws say `createTopic t n fails with TopicAlreadyExists`.
 
 ```lawspec fragment
 ability Broker is
@@ -86,6 +97,8 @@ chains requests must match each `Left` by hand.
 
 ### 5. A handler's start value cannot be an empty map
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). A start value may call definitions and the prelude: `start model.emptyBroker unitValue`.
+
 ```lawspec fragment
 handler reference for Broker with state logs :: KeyVal Text (List Bytes) start prelude.keyValOf [] is ...
 ```
@@ -102,6 +115,8 @@ and reads it as the empty state with a `current` definition.
 may call checked definitions.
 
 ### 6. State is updated only before the result, never in a branch
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `produceRequest by model.produce` makes a clause of a definition that gives `Pair result next`, and a tail `match` or `if` may update the state in its branches.
 
 ```lawspec fragment
 append t v is
@@ -131,6 +146,8 @@ command to a definition giving `Pair result next`.
 
 ### 7. No field access or record update
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `b.logs` reads a field and `b with logs = v` replaces one; the fourteen accessors are gone.
+
 `BrokerState` has seven fields. Reading or replacing one is a `match` that
 names all seven, so the model has fourteen accessor definitions:
 
@@ -147,6 +164,8 @@ end
 
 ### 8. No recursion on integers
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). A recursive call may move an integer toward a bound, and the prelude has `range`; the 1024-partition cap stays as a model limit (ref:DEC-kafka-model-scope), no longer a language one.
+
 ```lawspec fragment
 definition upTo (n :: Natural) :: List Natural is
   if n == 0 then [] else Cons n (upTo (n - 1))
@@ -162,6 +181,8 @@ caps a topic at 1024 partitions (ref:DEC-kafka-model-scope).
 decreases.
 
 ### 9. The prover forgets what it knows about a call's result
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). The totality checker keeps what guards say about calls, fields and lengths, knows lengths are not negative, and knows the bounds of `quot` and `rem`.
 
 Each of these is rejected with `integer conversion range could not be
 proved`:
@@ -192,6 +213,8 @@ non-negativity of `prelude.length`, and the bounds of `quot` and `rem`.
 
 ### 10. Every counter needs a guard against overflow
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `prelude.wrapping`, `prelude.saturating` and `prelude.bounded` put a result into the bounded type the context wants; `next64`, `next32` and `next16` are gone.
+
 Offsets are `Int64`, epochs `Int16` and generations `Int32`, as on the wire.
 Every increment needs a saturating helper, `next64`, `next32` and `next16`,
 because `n + 1` may leave the type. Kafka itself wraps or refuses at these
@@ -202,6 +225,8 @@ limits; the model saturates, which no law yet checks.
 ## Data
 
 ### 11. Bytes cannot be read
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `prelude.octets` reads a `Bytes` as a list of `UInt8`, and `murmur2` is now written in the contract and checked against Kafka's vectors. On Rust a spec handler cannot yet call it; see below.
 
 `Bytes` has no operations beyond equality, order and `prelude.length`. Kafka
 picks a keyed record's partition with murmur2 over the key's octets
@@ -215,6 +240,8 @@ with laws, as `lawspec.crypto` has for SHA-3.
 
 ### 12. Text cannot be built
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). `++` concatenates `Text`, and `textOf` and `join` format it.
+
 There is no text concatenation (`a + b` on `Text` is an error) and no
 conversion from numbers. Member ids are therefore supplied by the client, as
 KIP-848 has them, rather than made by the coordinator as the classic
@@ -224,6 +251,8 @@ protocol does (ref:kafka-classic-group-protocol).
 
 ### 13. A prelude helper is unknown inside an ability's laws
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). Prelude helpers work in an ability's laws and in handler clauses; `succeeded` is gone and laws use `prelude.isRight`.
+
 `prelude.isRight (get x)` in an ability's `laws` section fails with
 `unknown helper or wrong arity: prelude.isRight`; the same law at the top
 level of the unit passes. The contract defines its own `succeeded`.
@@ -231,6 +260,8 @@ level of the unit passes. The contract defines its own `succeeded`.
 **Would close it:** the prelude's helpers in ability laws as everywhere else.
 
 ### 14. A literal in a `let` does not take its type from its use
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). A numeric literal in a branch takes its type from the other branches.
 
 ```lawspec fragment
 let from = (match g with | Nothing -> 0 | Just group -> ... end) in
@@ -243,6 +274,8 @@ fails with `type mismatch: Integer and Int64`; the literal needs
 ## Generation
 
 ### 15. Refinements filter; they do not generate
+
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). A text refined by a regex, directly or through a checked definition such as `model.validTopicName`, is generated from texts the regex matches instead of filtered from any text. The test project binds no generators, and every law passes Python's health checks.
 
 Laws draw topic names as `(t :: Text where model.validTopicName t)`, and
 the model's rule ends `name matches regex "[a-zA-Z0-9._-]+"`. Generated
@@ -266,6 +299,8 @@ or a generator named on the quantifier, in the contract.
 ## Generated code
 
 ### 16. The reference model is interpreted, and copies its state on every call
+
+**Open.** LawSpec branch `lawspec-codegen` generates typed Rust, Go, Java and Kotlin for checked definitions and spec handlers; it is not yet merged.
 
 In Rust, a spec handler's clause evaluates the model over the dynamic
 `ls::Value`, with constructors named by strings
@@ -291,6 +326,8 @@ data types, persistent or in-place collections for handler state, and
 
 ### 17. A unit cannot sit above its package's other units on Python
 
+**Closed** by LawSpec branch `lawspec-gaps` (34e34a8). A unit named like another unit's package is that package's `__init__.py`, so the contract's facade unit is `lawtwin.kafka`.
+
 A package with units `lawtwin.kafka` and `lawtwin.kafka.model` fails Python
 generation with `a Python unit module shadows another unit's package`:
 `lawtwin/kafka.py` and `lawtwin/kafka/`. The facade unit the packages guide
@@ -306,3 +343,66 @@ The model has no clock, so group members never time out and transactions
 never expire. LawSpec has the `Clock` ability and the virtual clock for
 this; the 0.1 model leaves it out (ref:DEC-kafka-model-scope), and the gap,
 if any, is not yet known.
+
+## Found while re-expressing the contract
+
+Running the re-expressed contract on the `lawspec-gaps` build (34e34a8) on
+five targets found five more. None changes what the contract says.
+
+### 18. On Rust, a failing spec handler clause poisons the handler
+
+A spec handler's clause runs with its context locked. When the clause
+fails, the failure unwinds through the lock, and every later call on the
+handler panics with `PoisonError`. Any law that expects a failure and then
+uses the handler again fails on Rust only:
+
+```lawspec fragment
+handler tally for Counter with state total :: Int64 start 0 is
+  add by bump
+end
+-- `a refused add changes nothing`: add (0 - 1) fails, then add 1 panics
+```
+
+Twelve of the contract's Rust runs fail this way; Python, Go, Java and
+Kotlin pass them.
+
+**Would close it:** release the lock before raising, or recover a poisoned
+lock as the clause's failure has already been reported.
+
+### 19. On Rust, a spec handler cannot call `prelude.octets`
+
+A definition that calls `prelude.octets` passes as a top-level law, but
+when a spec handler's clause calls it, Rust's evaluator stops with
+`unknown helper: octets`. The six Rust runs of `murmurPartitioner`, and of
+the producer laws that use it, fail this way.
+
+**Would close it:** the sequence helpers in the Rust evaluator.
+
+### 20. A package's units do not bring their collections helpers
+
+A test project that imports `lawtwin.kafka` as a package fails `lawspec
+check` with `unknown core declaration:
+contracttest.kafka::lawspecCollectionsSaturatingInt64`. LawSpec builds a
+program's collections unit from the sources it is given, not from the
+packages they import, so bounded arithmetic the model uses is declared only
+when a source of the project names it. The test project's suite holds a
+definition that calls `prelude.saturating` for that reason.
+
+**Would close it:** building the collections unit from every unit of the
+program, packaged ones included.
+
+### 21. On Java, a field cannot be named `record`
+
+`FetchedRecord`'s field `record` fails Java generation with `invalid Java
+data identifier: record`; `record` is a contextual keyword in Java. The
+field is now `entry`.
+
+**Would close it:** escaping or renaming Java's reserved and contextual
+words, as the other targets do.
+
+### 22. The branch's npm package is not rebuilt
+
+The `lawspec-gaps` checkout's `npm/core.wasm` is from before the branch, so
+`npx` cannot run it. `tools/stage-lawspec.sh` stages the checkout's CLI with
+its native compiler instead; see [Run a contract's
+laws](../how-to/run-contract-laws.md).

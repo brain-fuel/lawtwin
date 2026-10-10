@@ -299,7 +299,7 @@ class ProducerIdAndEpoch:
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
 class FetchedRecord:
     offset: _builtins.int
-    record: Record
+    entry: Record
 
 
 @_dataclasses.dataclass(frozen=True, slots=True, eq=False)
@@ -326,12 +326,6 @@ class MemberAssignment:
 class GroupView:
     generation: _builtins.int
     members: _builtins.list[MemberAssignment]
-
-
-@_dataclasses.dataclass(frozen=True, slots=True, eq=False)
-class Step[_T0, _T1]:
-    result: _T0
-    state: _T1
 
 
 class LogEntry:
@@ -549,27 +543,27 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::PartitionChoice",
+                "lawtwin.kafka::type::PartitionChoice",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::PartitionChoice::ToPartition",
+                        "lawtwin.kafka::type::PartitionChoice::ToPartition",
                         [_schema.Field("chosen", _schema.Named("Int32"))],
                         PartitionChoiceToPartition,
                     ),
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::PartitionChoice::ByKey",
+                        "lawtwin.kafka::type::PartitionChoice::ByKey",
                         [],
                         PartitionChoiceByKey,
                     ),
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::ProducerRecord",
+                "lawtwin.kafka::type::ProducerRecord",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::ProducerRecord::ProducerRecord",
+                        "lawtwin.kafka::type::ProducerRecord::ProducerRecord",
                         [
                             _schema.Field(
                                 "destination",
@@ -578,20 +572,7 @@ def make_schema():
                             _schema.Field(
                                 "choice",
                                 _schema.Named(
-                                    (
-                                        "lawt"
-                                        "win."
-                                        "kafk"
-                                        "a.co"
-                                        "ntra"
-                                        "ct::"
-                                        "type"
-                                        "::Pa"
-                                        "rtit"
-                                        "ionC"
-                                        "hoic"
-                                        "e"
-                                    ),
+                                    "lawtwin.kafka::type::PartitionChoice",
                                 ),
                             ),
                             _schema.Field(
@@ -606,11 +587,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::RecordMetadata",
+                "lawtwin.kafka::type::RecordMetadata",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::RecordMetadata::RecordMetadata",
+                        "lawtwin.kafka::type::RecordMetadata::RecordMetadata",
                         [
                             _schema.Field(
                                 "sentTo",
@@ -637,11 +618,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::ConsumerRecord",
+                "lawtwin.kafka::type::ConsumerRecord",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::ConsumerRecord::ConsumerRecord",
+                        "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord",
                         [
                             _schema.Field(
                                 "receivedFrom",
@@ -677,11 +658,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::LastSend",
+                "lawtwin.kafka::type::LastSend",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::LastSend::LastSend",
+                        "lawtwin.kafka::type::LastSend::LastSend",
                         [
                             _schema.Field(
                                 "lastPartition",
@@ -750,11 +731,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::ProducerState",
+                "lawtwin.kafka::type::ProducerState",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::ProducerState::ProducerState",
+                        "lawtwin.kafka::type::ProducerState::ProducerState",
                         [
                             _schema.Field(
                                 "identity",
@@ -810,18 +791,7 @@ def make_schema():
                                     "Maybe",
                                     [
                                         _schema.Named(
-                                            (
-                                                "lawt"
-                                                "win."
-                                                "kafk"
-                                                "a.co"
-                                                "ntra"
-                                                "ct::"
-                                                "type"
-                                                "::La"
-                                                "stSe"
-                                                "nd"
-                                            ),
+                                            "lawtwin.kafka::type::LastSend",
                                         ),
                                     ],
                                 ),
@@ -832,11 +802,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::ConsumerState",
+                "lawtwin.kafka::type::ConsumerState",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::ConsumerState::ConsumerState",
+                        "lawtwin.kafka::type::ConsumerState::ConsumerState",
                         [
                             _schema.Field(
                                 "group",
@@ -925,11 +895,11 @@ def make_schema():
                 ],
             ),
             _schema.Definition(
-                "lawtwin.kafka.contract::type::TransactionState",
+                "lawtwin.kafka::type::TransactionState",
                 0,
                 [
                     _schema.Constructor(
-                        "lawtwin.kafka.contract::type::TransactionState::TransactionState",
+                        "lawtwin.kafka::type::TransactionState::TransactionState",
                         [
                             _schema.Field(
                                 "transactionalId",
@@ -1018,6 +988,12 @@ def make_schema():
                         TransactionState,
                     ),
                 ],
+            ),
+            _schema.Definition(
+                "lawtwin.kafka::type::Cluster",
+                0,
+                [],
+                handle=True,
             ),
             _schema.Definition(
                 "lawtwin.kafka.model::type::TopicPartition",
@@ -1276,7 +1252,7 @@ def make_schema():
                         [
                             _schema.Field("offset", _schema.Named("Int64")),
                             _schema.Field(
-                                "record",
+                                "entry",
                                 _schema.Named(
                                     "lawtwin.kafka.model::type::Record",
                                 ),
@@ -1435,20 +1411,6 @@ def make_schema():
                             ),
                         ],
                         GroupView,
-                    ),
-                ],
-            ),
-            _schema.Definition(
-                "lawtwin.kafka.model::type::Step",
-                2,
-                [
-                    _schema.Constructor(
-                        "lawtwin.kafka.model::type::Step::Step",
-                        [
-                            _schema.Field("result", _schema.Parameter(0)),
-                            _schema.Field("state", _schema.Parameter(1)),
-                        ],
-                        Step,
                     ),
                 ],
             ),

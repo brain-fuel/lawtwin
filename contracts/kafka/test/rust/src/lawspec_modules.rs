@@ -17,7 +17,7 @@ pub mod lawspec_remote;
 pub mod lawspec_runtime;
 #[path = "lawspec_schema.rs"]
 pub mod lawspec_schema;
-#[path = "lawtwin/kafka/contract.rs"]
-pub mod lawtwin_kafka_contract;
+#[path = "lawtwin/kafka.rs"]
+pub mod lawtwin_kafka;
 #[path = "lawtwin/kafka/model.rs"]
 pub mod lawtwin_kafka_model;
