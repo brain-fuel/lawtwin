@@ -542,3 +542,17 @@ does.
 
 **Would close it:** `#![allow(unused_imports)]` on the generated modules,
 as their other allowances are.
+
+### 32. Generation is not the same from one run to the next
+
+On branch `lawspec-lawtwin` (e99a0bc), `lawspec generate` of one project
+gives different code from one run to the next: which definitions take the
+typed native path changes. Regenerating the Kafka test project's Go target,
+with nothing changed, rewrote 9 files (about 13,000 lines of
+`lawspec_typed.go` and `lawspec_definitions.go`); its Python target and the
+Petstore project's flip the same way. Both versions pass every law, but
+`make contract-generate-check` fails on a tree that is current, depending
+on the compiler's cache.
+
+**Would close it:** a typed-path choice that depends only on the program,
+not on what the cache holds.
