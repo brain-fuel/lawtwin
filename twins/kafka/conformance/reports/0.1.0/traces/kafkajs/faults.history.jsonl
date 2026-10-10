@@ -1,0 +1,76 @@
+{"seq":1,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-kafkajs-group-rebalance-work","partitions":4,"answer":{"ok":null}}
+{"seq":2,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-group-rebalance-work","answer":{"ok":4}}
+{"seq":3,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-kafkajs-idempotent-pay","partitions":1,"answer":{"ok":null}}
+{"seq":4,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-idempotent-pay","answer":{"ok":1}}
+{"seq":5,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-kafkajs-produce-consume-orders","partitions":3,"answer":{"ok":null}}
+{"seq":6,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-produce-consume-orders","answer":{"ok":3}}
+{"seq":7,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-kafkajs-transactions-ledger","partitions":1,"answer":{"ok":null}}
+{"seq":8,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-transactions-ledger","answer":{"ok":1}}
+{"seq":9,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-faults-f","partitions":1,"answer":{"ok":null}}
+{"seq":10,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-faults-f","answer":{"ok":1}}
+{"seq":11,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-force-orders","partitions":1,"answer":{"ok":null}}
+{"seq":12,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-force-orders","answer":{"ok":1}}
+{"seq":13,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-group-rebalance-work","partitions":4,"answer":{"ok":null}}
+{"seq":14,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-group-rebalance-work","answer":{"ok":4}}
+{"seq":15,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-idempotent-pay","partitions":1,"answer":{"ok":null}}
+{"seq":16,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-idempotent-pay","answer":{"ok":1}}
+{"seq":17,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-produce-consume-orders","partitions":3,"answer":{"ok":null}}
+{"seq":18,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-produce-consume-orders","answer":{"ok":3}}
+{"seq":19,"at":1791641251956,"source":"observed","op":"createTopicsRequest","name":"conform-6aca467e-librdkafka-transactions-ledger","partitions":2,"answer":{"ok":null}}
+{"seq":20,"at":1791641251956,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-librdkafka-transactions-ledger","answer":{"ok":2}}
+{"seq":21,"at":1791641251985,"source":"wire","op":"createTopicsRequest","name":"conform-6aca467e-kafkajs-faults-f","partitions":1,"answer":{"ok":null}}
+{"seq":22,"at":1791641252088,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":23,"at":1791641252093,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":24,"at":1791641252097,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"tag":null,"records":[{"key":"k","value":"before"}],"answer":{"ok":0}}
+{"seq":25,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":1,"name":"request-latency","delayMs":400,"api":"Produce"}}
+{"seq":26,"at":1791641252115,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"tag":null,"records":[{"key":"k","value":"slow"}],"answer":{"ok":1}}
+{"seq":27,"at":1767225600000,"source":"fault","control":"fault cleared","detail":{"name":"request-latency","cleared":1}}
+{"seq":28,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":2,"name":"leader-change","topic":"conform-6aca467e-kafkajs-faults-f","partition":null}}
+{"seq":29,"at":1767225600000,"source":"fault","control":"fault applied","detail":{"name":"leader-change","api":"Produce","partitions":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0}]}}
+{"seq":30,"at":1791641252531,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":31,"at":1791641252646,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"tag":null,"records":[{"key":"k","value":"after-leader-change"}],"answer":{"ok":2}}
+{"seq":32,"at":1767225600000,"source":"fault","control":"fault raised","detail":{"id":3,"name":"broker-unavailable","untilMs":1767225605000}}
+{"seq":33,"at":1767225605000,"source":"coordinator","control":"clock advanced","detail":{"byMs":5000,"nowMs":1767225605000}}
+{"seq":34,"at":1767225605000,"source":"fault","control":"fault ended","detail":{"id":3,"name":"broker-unavailable"}}
+{"seq":35,"at":1791641254008,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":36,"at":1791641254091,"source":"wire","op":"produceRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"tag":null,"records":[{"key":"k","value":"while-down"}],"answer":{"ok":3}}
+{"seq":37,"at":1767225605000,"source":"fault","control":"fault raised","detail":{"id":4,"name":"consumer-lag","records":1,"delayMs":0,"topic":null}}
+{"seq":38,"at":1791641254097,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":39,"at":1791641254101,"source":"wire","op":"joinGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","topics":["conform-6aca467e-kafkajs-faults-f"],"answer":{"ok":1}}
+{"seq":40,"at":1791641254102,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":41,"at":1791641254104,"source":"wire","op":"syncGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"answer":{"ok":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0}]}}
+{"seq":42,"at":1791641254106,"source":"wire","op":"offsetFetchRequest","group":"conform-6aca467e-kafkajs-faults-lagging","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"answer":{"ok":null}}
+{"seq":43,"at":1791641254107,"source":"wire","op":"listOffsetsRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"spec":"Earliest","isolation":"ReadCommitted","answer":{"ok":0}}
+{"seq":44,"at":1767225605000,"source":"fault","control":"fault applied","detail":{"name":"consumer-lag"}}
+{"seq":45,"at":1791641254111,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":0,"maxRecords":1,"isolation":"ReadCommitted","answer":{"ok":{"records":[{"offset":0,"key":"k","value":"before"}],"nextOffset":1,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":46,"at":1791641254113,"source":"wire","op":"offsetCommitRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"offsets":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0,"offset":1}],"answer":{"ok":null}}
+{"seq":47,"at":1767225605000,"source":"fault","control":"fault applied","detail":{"name":"consumer-lag"}}
+{"seq":48,"at":1791641254114,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":1,"maxRecords":1,"isolation":"ReadCommitted","answer":{"ok":{"records":[{"offset":1,"key":"k","value":"slow"}],"nextOffset":2,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":49,"at":1791641254115,"source":"wire","op":"offsetCommitRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"offsets":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0,"offset":2}],"answer":{"ok":null}}
+{"seq":50,"at":1767225605000,"source":"fault","control":"fault applied","detail":{"name":"consumer-lag"}}
+{"seq":51,"at":1791641254116,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":2,"maxRecords":1,"isolation":"ReadCommitted","answer":{"ok":{"records":[{"offset":2,"key":"k","value":"after-leader-change"}],"nextOffset":3,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":52,"at":1791641254117,"source":"wire","op":"offsetCommitRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"offsets":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0,"offset":3}],"answer":{"ok":null}}
+{"seq":53,"at":1791641254118,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":3,"maxRecords":1,"isolation":"ReadCommitted","answer":{"ok":{"records":[{"offset":3,"key":"k","value":"while-down"}],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":54,"at":1791641254119,"source":"wire","op":"offsetCommitRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"offsets":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0,"offset":4}],"answer":{"ok":null}}
+{"seq":55,"at":1767225605000,"source":"fault","control":"fault cleared","detail":{"name":null,"cleared":1}}
+{"seq":56,"at":1767225605000,"source":"fault","control":"fault raised","detail":{"id":5,"name":"rebalance-storm","rounds":2,"group":null}}
+{"seq":57,"at":1791641254222,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":58,"at":1791641254326,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":59,"at":1791641254429,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":60,"at":1791641254531,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":61,"at":1791641254633,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":62,"at":1767225605000,"source":"fault","control":"fault applied","detail":{"name":"rebalance-storm","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1}}
+{"seq":63,"at":1791641254635,"source":"wire","op":"heartbeatRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":1,"answer":{"ok":null}}
+{"seq":64,"at":1791641254637,"source":"wire","op":"joinGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","topics":["conform-6aca467e-kafkajs-faults-f"],"answer":{"ok":2}}
+{"seq":65,"at":1791641254638,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":66,"at":1791641254639,"source":"wire","op":"syncGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":2,"answer":{"ok":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0}]}}
+{"seq":67,"at":1791641254640,"source":"wire","op":"offsetFetchRequest","group":"conform-6aca467e-kafkajs-faults-lagging","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"answer":{"ok":4}}
+{"seq":68,"at":1791641254743,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":69,"at":1767225605000,"source":"fault","control":"fault applied","detail":{"name":"rebalance-storm","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":2}}
+{"seq":70,"at":1791641254744,"source":"wire","op":"heartbeatRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":2,"answer":{"ok":null}}
+{"seq":71,"at":1791641254745,"source":"wire","op":"joinGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","topics":["conform-6aca467e-kafkajs-faults-f"],"answer":{"ok":3}}
+{"seq":72,"at":1791641254746,"source":"wire","op":"metadataRequest","name":"conform-6aca467e-kafkajs-faults-f","answer":{"ok":1}}
+{"seq":73,"at":1791641254747,"source":"wire","op":"syncGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","generation":3,"answer":{"ok":[{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0}]}}
+{"seq":74,"at":1791641254748,"source":"wire","op":"offsetFetchRequest","group":"conform-6aca467e-kafkajs-faults-lagging","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"answer":{"ok":4}}
+{"seq":75,"at":1791641254854,"source":"wire","op":"fetchRequest","tp":{"topic":"conform-6aca467e-kafkajs-faults-f","partition":0},"offset":4,"maxRecords":5000,"isolation":"ReadCommitted","answer":{"ok":{"records":[],"nextOffset":4,"highWatermark":4,"lastStableOffset":4}}}
+{"seq":76,"at":1791641254856,"source":"wire","op":"leaveGroupRequest","group":"conform-6aca467e-kafkajs-faults-lagging","member":"kafkajs-scenarios-e63014a1-bb96-44d1-906a-04af8a87212c","answer":{"ok":null}}

@@ -711,7 +711,7 @@ impl Recorder {
                     Entry { seq, at: wall_ms(), source, event: Event::Call { op, answer } }
                 }
                 Item::Note { source, control, detail } => {
-                    *found.notes.entry(control.clone()).or_default() += 1;
+                    *found.notes.entry(note_kind(&control, &detail)).or_default() += 1;
                     Entry { seq, at: wall_ms(), source, event: Event::Control { control, detail } }
                 }
             };
@@ -964,6 +964,15 @@ impl Recorder {
             }
             tokio::time::sleep(Duration::from_millis(100)).await;
         }
+    }
+}
+
+/// A note's kind, as reports count them: what happened, and for a
+/// retriable error the request and the error.
+pub fn note_kind(control: &str, detail: &Value) -> String {
+    match (detail.get("api").and_then(Value::as_str), detail.get("error").and_then(Value::as_str)) {
+        (Some(api), Some(error)) => format!("{control}: {api} {error}"),
+        _ => control.to_string(),
     }
 }
 

@@ -81,12 +81,12 @@ pub fn classify(d: &Divergence) -> Kind {
     let (kind, decision, summary): (&str, Option<&'static str>, String) = match (op, error(recorded), error(model)) {
         ("syncGroupRequest", None, None) => (
             "assignment by the client's assignor",
-            Some("DEC-classic-groups-over-coordinator"),
+            Some("DEC-kafka-divergence-group-assignment"),
             "Kafka's classic protocol gives each member the partitions the leader's assignor chose; the contract's coordinator assigns round robin in member id order".into(),
         ),
         ("describeGroupRequest", None, None) => (
             "group view under the client's assignor",
-            Some("DEC-classic-groups-over-coordinator"),
+            Some("DEC-kafka-divergence-group-assignment"),
             "the members' partitions in DescribeGroups are the leader's assignor's, not the contract coordinator's".into(),
         ),
         (_, Some(r), None) => ("refused by Kafka, accepted by the contract", None, format!("{op}: Kafka answered {r}")),
@@ -95,6 +95,18 @@ pub fn classify(d: &Divergence) -> Kind {
         _ => ("a different answer", None, format!("{op}: Kafka answered {recorded}, the contract {model}")),
     };
     Kind { kind: kind.into(), decision, summary }
+}
+
+/// The ledger decision that accounts for a kind of note the recorder
+/// wrote, if one does.
+pub fn note_decision(kind: &str) -> Option<&'static str> {
+    if kind.starts_with("retriable error") {
+        Some("DEC-kafka-divergence-coordinator-timing")
+    } else if kind == "rebalance in progress" {
+        Some("DEC-kafka-divergence-rebalance-heartbeat")
+    } else {
+        None
+    }
 }
 
 /// What a scenario did against one side.
@@ -359,9 +371,15 @@ pub fn report(config: &ConformConfig, runs: &[Run], skipped: &BTreeMap<String, S
             }
         }
     }
+    let mut notes: BTreeMap<String, u64> = BTreeMap::new();
+    for r in runs {
+        for (k, n) in &r.real.notes {
+            *notes.entry(k.clone()).or_default() += n;
+        }
+    }
     let real_lawful = runs.iter().all(|r| r.real.violations.is_empty());
     let scenarios_hold = runs.iter().all(|r| r.real.passed || r.twin.as_ref().is_some_and(|t| !t.passed));
-    let accounted = kinds.values().all(|(k, _, _)| k.decision.is_some());
+    let accounted = kinds.values().all(|(k, _, _)| k.decision.is_some()) && notes.keys().all(|k| note_decision(k).is_some());
     let exact = kinds.is_empty();
     let number = if runs.is_empty() {
         0
@@ -396,6 +414,7 @@ pub fn report(config: &ConformConfig, runs: &[Run], skipped: &BTreeMap<String, S
             "divergences": kinds.values().map(|(_, n, _)| n).sum::<usize>(),
         },
         "clients": CLIENTS.iter().filter(|(c, _)| config.clients.iter().any(|x| x == c)).map(|(c, v)| json!({ "client": c, "version": v, "skipped": skipped.get(*c) })).collect::<Vec<_>>(),
+        "wireNotes": notes.iter().map(|(k, n)| json!({ "note": k, "count": n, "decision": note_decision(k) })).collect::<Vec<_>>(),
         "divergenceKinds": kinds.values().map(|(k, n, examples)| json!({ "kind": k.kind, "decision": k.decision, "summary": k.summary, "count": n, "examples": examples })).collect::<Vec<_>>(),
         "runs": runs,
     })
@@ -447,6 +466,21 @@ pub fn markdown(report: &Value, runs: &[Run]) -> String {
                 k["count"],
                 k["decision"].as_str().map(|d| format!("ref:{d}")).unwrap_or_else(|| "**no decision**".into()),
                 k["summary"].as_str().unwrap_or("").replace('|', "\\|")
+            ));
+        }
+    }
+    s.push_str("\n## What the wire showed beside the answers\n\n");
+    let notes = report["wireNotes"].as_array().cloned().unwrap_or_default();
+    if notes.is_empty() {
+        s.push_str("Nothing: every exchange decoded to operations of the contract.\n");
+    } else {
+        s.push_str("Exchanges that are not operations of the contract, written to the history as notes.\n\n| Note | Count | Accounted for by |\n| --- | --- | --- |\n");
+        for n in &notes {
+            s.push_str(&format!(
+                "| {} | {} | {} |\n",
+                n["note"].as_str().unwrap_or(""),
+                n["count"],
+                n["decision"].as_str().map(|d| format!("ref:{d}")).unwrap_or_else(|| "**no decision**".into())
             ));
         }
     }

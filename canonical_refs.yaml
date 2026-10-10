@@ -138,3 +138,15 @@ openapi-generator:
   kind: package
   title: OpenAPI Generator, version 7.9.0, which generates clients from OpenAPI documents
   locator: https://openapi-generator.tech/
+kip-588:
+  kind: article
+  title: KIP-588, Allow producers to recover gracefully from transaction timeouts, which adds PRODUCER_FENCED
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-588%3A+Allow+producers+to+recover+gracefully+from+transaction+timeouts
+kip-890:
+  kind: article
+  title: KIP-890, Transactions Server-Side Defense, with partition verification and transactions version 2
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-890%3A+Transactions+Server-Side+Defense
+kip-227:
+  kind: article
+  title: KIP-227, Introduce Incremental FetchRequests to Increase Partition Scalability, the fetch sessions
+  locator: https://cwiki.apache.org/confluence/display/KAFKA/KIP-227%3A+Introduce+Incremental+FetchRequests+to+Increase+Partition+Scalability

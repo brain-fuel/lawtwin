@@ -33,8 +33,8 @@ use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, Instant, SystemTime, UNIX_EPOCH};
 
-/// The seeded generator a peer draws from: SplitMix64, the one every core
-/// and peer draws from.
+// The seeded generator a peer draws from: SplitMix64, the one every core
+// and peer draws from.
 pub use lawtwin_wire::rng::Rng;
 
 /// True with probability `p`, drawn from the generator.

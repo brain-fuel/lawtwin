@@ -294,6 +294,9 @@ pub struct ReplayReport {
     pub requests: usize,
     /// Requests the core answered.
     pub answered: usize,
+    /// Requests not sent: Kafka answered them only with errors a client
+    /// retries, and the client sent them again.
+    pub skipped: usize,
     /// Requests that waited past their time for the requests before them.
     pub stalled: Vec<u64>,
     /// Frames whose answers differ.
@@ -347,9 +350,11 @@ pub fn replay_frames(frames: &[Frame], core: Option<&str>) -> Result<ReplayRepor
         twin.post("/v1/state", json!({ "topics": topics }));
     }
     let runtime = lawtwin_kafka::runtime()?;
-    let shared = runtime.block_on(send_all(frames, twin.kafka));
+    let skipped = retried_by_kafka(frames);
+    let shared = runtime.block_on(send_all(frames, twin.kafka, skipped.clone()));
     let shared = shared?;
-    let mut report = compare(frames, &shared);
+    let mut report = compare(frames, &shared, &skipped);
+    report.skipped = skipped.len();
     report.core = core.unwrap_or("the Rust core").to_string();
     // The core's own history, checked as the conformance kit checks it.
     let text = twin.history_text();
@@ -377,7 +382,26 @@ fn observed_topics(frames: &[Frame]) -> Vec<(String, i32)> {
     out
 }
 
-async fn send_all(frames: &[Frame], kafka: std::net::SocketAddr) -> Result<Shared> {
+/// Requests Kafka answered only with errors a client retries: they reached
+/// neither the log nor a coordinator, and the client sent them again, so a
+/// replay does not send them (ref:DEC-kafka-divergence-coordinator-timing).
+fn retried_by_kafka(frames: &[Frame]) -> std::collections::HashSet<u64> {
+    let mut order: Vec<&Frame> = frames.iter().collect();
+    order.sort_by_key(|f| (f.answered_us, f.n));
+    let mut d = Decoder::new();
+    let mut out = std::collections::HashSet::new();
+    for f in order {
+        let items = d.frame(f);
+        let calls = items.iter().any(|i| matches!(i, Item::Call { .. }));
+        let retried = items.iter().any(|i| matches!(i, Item::Note { control, .. } if control == "retriable error"));
+        if retried && !calls {
+            out.insert(f.n);
+        }
+    }
+    out
+}
+
+async fn send_all(frames: &[Frame], kafka: std::net::SocketAddr, skipped: std::collections::HashSet<u64>) -> Result<Shared> {
     // The recording's order of answers, and for each request how many of
     // them came back before it was sent.
     let mut answer_order: Vec<&Frame> = frames.iter().collect();
@@ -404,6 +428,7 @@ async fn send_all(frames: &[Frame], kafka: std::net::SocketAddr) -> Result<Share
     for (_, mut list) in by_conn {
         list.sort_by_key(|f| f.n);
         let (shared, notify, before, order, stalled) = (shared.clone(), notify.clone(), before.clone(), order.clone(), stalled.clone());
+        let skipped = skipped.clone();
         tasks.push(tokio::spawn(async move {
             let stream = TcpStream::connect(kafka).await?;
             let _ = stream.set_nodelay(true);
@@ -455,6 +480,16 @@ async fn send_all(frames: &[Frame], kafka: std::net::SocketAddr) -> Result<Share
                         stalled.lock().unwrap().push(f.n);
                         break;
                     }
+                }
+                if skipped.contains(&f.n) {
+                    let mut s = shared.lock().unwrap();
+                    s.answered.insert(f.n);
+                    while s.prefix < order.len() && s.answered.contains(&order[s.prefix]) {
+                        s.prefix += 1;
+                    }
+                    drop(s);
+                    notify.notify_waiters();
+                    continue;
                 }
                 let sent = shared.lock().unwrap().names.request(&f.request).unwrap_or_else(|_| f.request.clone());
                 let mut out = Vec::with_capacity(sent.len() + 4);
@@ -522,7 +557,7 @@ fn same_item(a: &Item, b: &Item) -> bool {
     }
 }
 
-fn compare(frames: &[Frame], s: &Shared) -> ReplayReport {
+fn compare(frames: &[Frame], s: &Shared, skipped: &std::collections::HashSet<u64>) -> ReplayReport {
     let mut recorded_order: Vec<&Frame> = frames.iter().collect();
     recorded_order.sort_by_key(|f| (f.answered_us, f.n));
     let mut d = Decoder::new();
@@ -553,8 +588,13 @@ fn compare(frames: &[Frame], s: &Shared) -> ReplayReport {
     let join = ApiKey::JoinGroup as i16;
     let mut rounds_recorded: BTreeMap<String, Vec<String>> = BTreeMap::new();
     let mut rounds_replayed: BTreeMap<String, Vec<String>> = BTreeMap::new();
+    let mut created_recorded: BTreeMap<String, i32> = BTreeMap::new();
+    let mut created_replayed: BTreeMap<String, i32> = BTreeMap::new();
     let mut divergences = vec![];
     for f in frames {
+        if skipped.contains(&f.n) {
+            continue;
+        }
         let rec = recorded.get(&f.n).cloned().unwrap_or_default();
         let rep = replayed.get(&f.n).cloned().unwrap_or_default();
         if f.key == join {
@@ -566,12 +606,47 @@ fn compare(frames: &[Frame], s: &Shared) -> ReplayReport {
             }
             continue;
         }
+        if f.key == ApiKey::Metadata as i16 {
+            // A topic Kafka is still creating is unknown to it for a moment,
+            // where a twin creates it at once: a Metadata answer is compared
+            // where both sides know the topic, and the topics each side
+            // created are compared at the end. ref:DEC-kafka-divergence-auto-create
+            for (items, into) in [(&rec, &mut created_recorded), (&rep, &mut created_replayed)] {
+                for i in items.iter() {
+                    if let Item::Call { op: Op::CreateTopicsRequest { name, partitions }, answer: Answer::Ok(_), .. } = i {
+                        into.insert(name.clone(), *partitions);
+                    }
+                }
+            }
+            let known = |items: &[Item]| -> BTreeMap<String, i64> {
+                items
+                    .iter()
+                    .filter_map(|i| match i {
+                        Item::Call { op: Op::MetadataRequest { name }, answer: Answer::Ok(Outcome::Maybe(Some(n))), .. } => Some((name.clone(), *n)),
+                        _ => None,
+                    })
+                    .collect()
+            };
+            let (a, b) = (known(&rec), known(&rep));
+            if a.iter().any(|(t, n)| b.get(t).is_some_and(|m| m != n)) {
+                divergences.push(FrameDivergence { n: f.n, api: f.api.clone(), recorded: values(&rec), replayed: values(&rep) });
+            }
+            continue;
+        }
         let a: Vec<&Item> = rec.iter().filter(|i| matches!(i, Item::Call { .. })).collect();
         let b: Vec<&Item> = rep.iter().filter(|i| matches!(i, Item::Call { .. })).collect();
         let same = a.len() == b.len() && a.iter().zip(&b).all(|(x, y)| same_item(x, y));
         if !same {
             divergences.push(FrameDivergence { n: f.n, api: f.api.clone(), recorded: values(&rec), replayed: values(&rep) });
         }
+    }
+    if created_recorded != created_replayed {
+        divergences.push(FrameDivergence {
+            n: 0,
+            api: "topics created".into(),
+            recorded: created_recorded.iter().map(|(t, n)| json!({ "topic": t, "partitions": n })).collect(),
+            replayed: created_replayed.iter().map(|(t, n)| json!({ "topic": t, "partitions": n })).collect(),
+        });
     }
     for (group, mut a) in rounds_recorded {
         let mut b = rounds_replayed.remove(&group).unwrap_or_default();
@@ -600,6 +675,7 @@ fn compare(frames: &[Frame], s: &Shared) -> ReplayReport {
         core: String::new(),
         requests: frames.len(),
         answered: s.replies.len(),
+        skipped: 0,
         stalled,
         divergences,
         violations: vec![],

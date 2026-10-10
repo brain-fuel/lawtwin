@@ -259,3 +259,138 @@ DEC-petstore3-divergences:
   opened: 0.1.0
   decided: 0.1.0
   refs: [swagger-petstore3-server, swagger-petstore]
+
+DEC-recorded-history:
+  status: decided
+  question: A proxy in front of a real Kafka broker sees requests and responses. How does what it sees become something the contract can judge?
+  answer: |
+    Each request and its response are kept as a frame, and decoded into the history every twin writes: the operations of the contract's Broker ability the request performed, with the real broker's answers (DEC-history-as-ability-calls). The decoder mirrors how the twin maps requests onto operations, so a recorded history and a twin's say the same thing in the same words: a produce request is one produceRequest per batch with its producer tag, a fetch one fetchRequest per partition with the records a consumer reads (markers, records below the fetch offset and, read committed, records of aborted transactions left out, as clients leave them out), a group's round is written when the leader's JoinGroup answer names its members (a member that did not rejoin leaves, with the source coordinator, and each member joins), and a topic first seen in a broker that already held it is written as its creation with the source observed. What the wire shows that no operation states, such as a retriable error or a request the contract does not model, is a note in the history, not an answer. The decoder reads only the wire, so it decodes a twin core's traffic the same way.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol, lawtwin-plan]
+
+DEC-recorder-negotiates-twin-versions:
+  status: decided
+  question: Kafka 4 offers clients newer protocols than the twin answers (KIP-848's consumer protocol, transactions version 2, fetch sessions, newer request versions). What does the recorder let clients use?
+  answer: |
+    What the twin answers. The recorder intersects the broker's ApiVersions answer with the twin's table (DEC-kafka-wire-versions) and drops its feature levels, so clients fall back to the classic group protocol and transactions version 1; it sends every fetch without a fetch session (KIP-227), so each names every partition it reads; and it tells clients its own address for the broker, in Metadata and FindCoordinator answers, so every connection passes through it. A trace recorded so replays through any core, and every frame decodes. The recorder speaks for one broker. This is a divergence of what is offered, not of what is answered: the newer protocols are out of the first release's scope.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kip-848, kip-890, kip-227, apache-kafka-image]
+
+DEC-recorder-control-plane:
+  status: decided
+  question: The core conformance kit's scenarios drive a twin's control plane (faults, forced states, the clock). How do they run against a real broker, which has none?
+  answer: |
+    The recorder serves LawTwin's control plane itself, over a shadow twin whose history is the recorded one and whose model is the reference model run over it. The declared faults are applied on the wire, between the client and the broker: broker-unavailable closes connections, leader-change answers NOT_LEADER_OR_FOLLOWER for the partitions it names, consumer-lag cuts fetch answers short and delays them, duplicate-delivery replaces an acknowledgement of a written batch with REQUEST_TIMED_OUT, rebalance-storm answers the leader's heartbeat REBALANCE_IN_PROGRESS so the group rebalances for real, and request-latency holds answers back. Faults raised for a time end on the recorder's clock, which advance moves. A forced state is checked on a copy of the shadow model as a twin checks it, refused with the law that forbids it, and otherwise reached by sending the broker the contract's operations, recorded with the source force; only topics, records and committed offsets of an empty group can be reached on a real broker, and anything else is refused. The history, the state and the laws are the recorder's.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-compare-up-to-renaming:
+  status: decided
+  question: A real broker chooses values the contract leaves to it, such as producer ids, member ids and generation numbers. When is its answer the model's?
+  answer: |
+    When it is equal up to a renaming of those values. When the broker hands one out (a producer id and epoch from InitProducerId, a generation from JoinGroup, a member id with MEMBER_ID_REQUIRED), the model's or the twin core's choice is noted beside it, and every later operation that carries the broker's value is run with the other side's; the epochs of a producer id keep their distance. The values handed out are not compared; everything else must be equal. Two refusals are the same when Kafka answers them with the same error code.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-replay-over-the-wire:
+  status: decided
+  question: How is a recorded trace replayed through a twin core, so that the core's wire layer is checked as well as its model?
+  answer: |
+    Over the Kafka protocol, with the recorded requests. Each recorded connection gets a connection of its own, and a request is sent once every response that came back before it in the recording has come back in the replay, so concurrent clients interleave as they did and a group's members join one round. Requests carry the core's identifiers (DEC-compare-up-to-renaming): member ids, generations, producer ids and epochs are rewritten, record batches with their checksums. Both sides' responses are decoded into the history (DEC-recorded-history) and compared frame by frame; a group's rounds are compared as a whole, since the two sides may choose another leader to answer with the members. Topics the broker already held are forced on the core first. The core's own history is then checked as the conformance kit checks it. A deliberately broken core, built with the feature mutant-ignore-dedupe, writes an idempotent retry again, and the replay catches it.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-fetch-sizing:
+  status: decided
+  question: Kafka sizes a fetch answer by bytes, the twin by records. Is a fetch that returns fewer or more records a divergence?
+  answer: |
+    No, when the records it returns agree. The decoder writes a fetch with the number of records the broker returned as its maximum, so the reference model returns the same records; a replay compares the records both sides returned up to the shorter answer, and the high watermark and last stable offset exactly. A fetch that returns records on one side and none on the other is a divergence.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol]
+
+DEC-retriable-errors-not-answers:
+  status: decided
+  question: Kafka answers some requests with errors a client retries (LEADER_NOT_AVAILABLE, NOT_LEADER_OR_FOLLOWER, COORDINATOR_LOAD_IN_PROGRESS, NOT_COORDINATOR, CONCURRENT_TRANSACTIONS, REQUEST_TIMED_OUT and the like). Are they answers of the contract?
+  answer: |
+    No. They say the request did not reach the log or the coordinator yet, or will be answered again, and nothing about the cluster's state; the client retries, and its retry is the operation. The decoder writes them as notes in the history, which replay and the laws skip, and the conformance report counts them by request and error.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol]
+
+DEC-conformance-levels:
+  status: decided
+  question: What does a conformance report say about a twin release, in one word?
+  answer: |
+    A level, the highest whose conditions every run meets. 0, unchecked: no run against the real dependency. 1, lawful: the real dependency's histories satisfy every law the kit checks, so the contract describes the real thing. 2, scenarios: also every client scenario that passes against the twin passes against the real dependency, unchanged. 3, answers: also every answer of the real dependency is the reference model's up to renaming, except divergences, and notes the wire showed, each accounted for by a ledger decision. 4, exact: level 3 with no divergence at all. `lawtwin conform kafka` writes the report as JSON and Markdown, with every run, its trace, each kind of divergence and the decision that accounts for it; a release's report is kept under twins/kafka/conformance/reports/<release>/.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan, apache-kafka-image]
+
+DEC-fenced-producer-spelling:
+  status: decided
+  question: Conformance found that Kafka answers a fenced transactional producer INVALID_PRODUCER_EPOCH where the twin answered PRODUCER_FENCED. Who is right, and what does the twin answer?
+  answer: |
+    Both mean the contract's ProducerFenced; Kafka spells it by the request's version. Against apache/kafka 4.3.1, a request stamped with an epoch older than the producer's is answered INVALID_PRODUCER_EPOCH (47) by AddPartitionsToTxn, AddOffsetsToTxn and EndTxn below version 2, which predate PRODUCER_FENCED (KIP-588), and by TxnOffsetCommit at every version, and PRODUCER_FENCED (90) from version 2 of the others; librdkafka sends AddPartitionsToTxn version 0 and kafkajs version 1. The twin now answers as Kafka does, and the decoder reads Kafka's spelling back as ProducerFenced. A produce with an older epoch is InvalidProducerEpoch in the contract and 47 on the wire at every version, as before.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kip-588, kip-98, apache-kafka-image]
+
+DEC-kafka-divergence-group-assignment:
+  status: decided
+  question: Conformance finds that a group's members are given other partitions by real Kafka than by the contract's coordinator. Does the twin follow Kafka?
+  answer: |
+    No; the twin follows the contract (DEC-classic-groups-over-coordinator, DEC-kafka-model-scope). In Kafka's classic protocol the leader's assignor chooses: librdkafka's and the Java client's range assignor give two members of four partitions 0 and 1, and 2 and 3; franz-go's cooperative-sticky assignor gives a joining member nothing in its first round and moves partitions in the next. The contract's coordinator assigns round robin in member id order, as KIP-848 lets the broker do. Both give every partition exactly one owner in a generation, which the laws check on both sides. An application that depends on a particular assignor's choice is outside the contract.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kip-848, kafka-classic-group-protocol, apache-kafka-image]
+
+DEC-kafka-divergence-rebalance-heartbeat:
+  status: decided
+  question: Kafka answers a heartbeat REBALANCE_IN_PROGRESS both while a round waits and after a member has left, when the contract's generation has already moved on. What does the history say?
+  answer: |
+    That the member must rejoin, as a note, not as an answer of the contract. In Kafka's classic protocol a leave starts a round and the generation moves only when the round completes; in the contract's coordinator a leave starts a new generation at once, so the model answers such a heartbeat IllegalGeneration, which the twin also sends as REBALANCE_IN_PROGRESS. The wire does not tell the two apart, so the decoder writes the heartbeat as a note and the laws judge the round when it completes.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-classic-group-protocol, kip-848]
+
+DEC-kafka-divergence-coordinator-timing:
+  status: decided
+  question: Conformance finds Kafka answering requests with retriable errors the twin never sends unless a fault is raised. Is that a divergence the twin should copy?
+  answer: |
+    No. Kafka answers COORDINATOR_LOAD_IN_PROGRESS and NOT_COORDINATOR while a coordinator loads its partition of __consumer_offsets or __transaction_state, CONCURRENT_TRANSACTIONS while the markers of the previous transaction are still being written, and LEADER_NOT_AVAILABLE while a new topic's leader is elected. The twin's model completes each operation at once, so it never does; clients retry, and the retry is the operation (DEC-retriable-errors-not-answers). A test that needs a client to see them raises the request-latency, leader-change or broker-unavailable faults. The conformance report counts each by request and error.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol, apache-kafka-image]
+
+DEC-kafka-divergence-auto-create:
+  status: decided
+  question: Kafka with auto.create.topics.enable creates a topic a Metadata request names, but answers UNKNOWN_TOPIC_OR_PARTITION until the controller has created it. The twin creates it and answers at once. Is that a divergence?
+  answer: |
+    Only of timing, and the twin keeps its own. The history Kafka gives, decoded, is the twin's: the topic is unknown, then created with the default partitions, then known; Kafka's takes one more Metadata request, which clients send. A replay compares a Metadata answer only where both sides know the topic, and compares the topics each side created over the whole trace.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [kafka-protocol, apache-kafka-image]
+
+DEC-simulated-peers:
+  status: decided
+  question: How does LawTwin play the other parties on a topic: a producer an application consumes from, and a consumer of what it produces?
+  answer: |
+    As real clients (librdkafka), so they work against a twin and against real Kafka alike. `lawtwin peer kafka produce` sends records valid under the Kafka contract, with values drawn from a seed and, given one, generated from a LawSpec type and its refinements, at a rate, with keys, headers, idempotence, transactions, and faults a producer shows: duplicates of a lost acknowledgement, values that are not of the type, tombstones, aborted transactions, late timestamps, and a transaction left open. `lawtwin peer kafka consume` joins a group, reads committed or uncommitted, and checks what it reads against the contract's consumer-side laws (a poll reads each partition in offset order, records with one key go to one partition, read-committed fetches never see open or aborted transactions, committed records are read committed together and in order) and the value type; to tell committed records from aborted ones it reads each partition again over the wire, both ways. Each reports what it did and what broke, as JSON.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [librdkafka, lawtwin-plan]
+
+DEC-peer-value-types:
+  status: decided
+  question: Where does a peer get the type of a topic's values, and how are values of it written into records?
+  answer: |
+    From LawSpec sources, read by the peer itself: `type` declarations, with refined fields, `refinement` declarations without parameters, and one-expression `definition`s a refinement calls. A refinement's comparisons bound the values generated, and a value is kept only when its whole predicate holds; the same reading checks a value read back. Values are written as JSON (a product as an object of its fields, a sum's constructor as its name or as an object of its name, Maybe as the value or null, bytes as base64) or in LawSpec's own wire encoding. A type the peer cannot read is refused with the reason; LawSpec does not yet export types for tools to read.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec]

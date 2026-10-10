@@ -568,7 +568,7 @@ impl Decoder {
             // The member must rejoin. The twin answers so to a heartbeat
             // while a round waits, and to one of a generation that a leave
             // has ended; which it was, the wire does not say.
-            // ref:DEC-classic-groups-over-coordinator
+            // ref:DEC-kafka-divergence-rebalance-heartbeat
             27 => vec![note("rebalance in progress", json!({ "group": group, "member": rq.member_id.to_string(), "generation": rq.generation_id }))],
             code if retriable(code) => vec![retriable_note("Heartbeat", code, serde_json::to_value(&op).unwrap_or_default())],
             code => vec![call(op, refused(code))],

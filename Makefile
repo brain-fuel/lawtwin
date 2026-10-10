@@ -26,6 +26,11 @@ OPENAPI_GENERATOR ?= docker.io/openapitools/openapi-generator-cli:v7.9.0
 # The HTTP core core-conformance-http checks: CORE when it names one,
 # otherwise the Rust core.
 HTTP_CORE := $(if $(filter target/release/lawtwin-kafka,$(CORE)),target/release/lawtwin-http,$(CORE))
+# The real broker conform-kafka and fidelity-test start (tools/real-kafka.sh),
+# and the twin release a conformance report is for.
+KAFKA_IMAGE ?= docker.io/apache/kafka:4.3.1
+KAFKA_PORT  ?= 39092
+RELEASE     ?= 0.1.0
 
 comma := ,
 
@@ -39,7 +44,7 @@ OPENAPI_IMPORTS := \
   openapi/github-labels-milestones.json,lawtwin.github,contracts/github
 
 .DEFAULT_GOAL := help
-.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http openapi-client-http golden-http image-http compose-up-http compose-down-http canon ci
+.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test core-conformance golden image compose-up compose-down core-conformance-http openapi-client-http golden-http image-http compose-up-http compose-down-http kafka-up kafka-down conform-kafka fidelity-test canon ci
 
 help: ## List the tasks
 	@awk -F':.*## ' '/^[a-z-]+:.*## / {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -52,10 +57,10 @@ lawspec-stage: ## Stage the LawSpec CLI from LAWSPEC_HOME into .lawspec-cli
 	LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
 
 build: ## Build the lawtwin command and the twins' Rust cores
-	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http
+	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity
 
 test: ## Run the lawtwin command's and the Rust cores' own tests
-	cargo test -p lawtwin -p lawtwin-wire -p lawtwin-kafka -p lawtwin-http
+	cargo test -p lawtwin -p lawtwin-wire -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity
 
 openapi-import: build ## Import each vendored OpenAPI document into its contract
 	@for i in $(OPENAPI_IMPORTS); do \
@@ -106,6 +111,23 @@ compose-up: ## Run the Kafka twin with podman compose (examples/kafka/compose.ya
 compose-down: ## Stop the compose example
 	$(PODMAN) compose -f examples/kafka/compose.yaml down
 
+kafka-up: ## Start a real Kafka broker ($(KAFKA_IMAGE)) in podman on port $(KAFKA_PORT)
+	KAFKA_IMAGE=$(KAFKA_IMAGE) KAFKA_PORT=$(KAFKA_PORT) PODMAN=$(PODMAN) tools/real-kafka.sh up
+
+kafka-down: ## Stop the real Kafka broker
+	PODMAN=$(PODMAN) tools/real-kafka.sh down
+
+conform-kafka: build ## Conformance of the Kafka twin against real Kafka; writes twins/kafka/conformance/reports/$(RELEASE)
+	@$(MAKE) --no-print-directory kafka-up
+	$(LAWTWIN) conform kafka --real 127.0.0.1:$(KAFKA_PORT) --real-name $(patsubst docker.io/%,%,$(KAFKA_IMAGE)) \
+	  --release $(RELEASE) --frames --out twins/kafka/conformance/reports/$(RELEASE); status=$$?; \
+	  $(MAKE) --no-print-directory kafka-down; exit $$status
+
+fidelity-test: ## Record and replay and the peers against a real Kafka broker in podman
+	@$(MAKE) --no-print-directory kafka-up
+	LAWTWIN_KAFKA=127.0.0.1:$(KAFKA_PORT) LAWTWIN_REQUIRE_KAFKA=1 cargo test -p lawtwin-kafka-fidelity; status=$$?; \
+	  $(MAKE) --no-print-directory kafka-down; exit $$status
+
 core-conformance-http: ## Check an HTTP core with the conformance kit (CORE=<command> or CORE=image:<image>)
 	@if [ "$(HTTP_CORE)" = "target/release/lawtwin-http" ]; then cargo build --release -p lawtwin-http; fi
 	LAWTWIN_CORE="$(if $(filter target/release/lawtwin-http,$(HTTP_CORE)),$(CURDIR)/$(HTTP_CORE),$(HTTP_CORE))" \
@@ -134,4 +156,4 @@ canon: ## Check the canonical format with canon 0.2.0 (needs CANON_HOME)
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 
-ci: test openapi-import-check contract-check contract-generate-check contract-test core-conformance core-conformance-http canon ## Every check
+ci: test openapi-import-check contract-check contract-generate-check contract-test core-conformance core-conformance-http fidelity-test canon ## Every check
