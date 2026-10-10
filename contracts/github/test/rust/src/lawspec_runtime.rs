@@ -729,6 +729,10 @@ macro_rules! primitive_int {
     ($($t:ty),*) => {$ (
         impl IntoValue for $t { fn into_value(self)->Value { Value::Integer(BigInt::from(self)) } }
         impl FromValue for $t { fn from_value(value:Value)->Result<Self> {
+            // An Integer converts directly; another exact number through its ratio.
+            if let Value::Integer(n) = &value {
+                return Self::try_from(n).map_err(|_|concat!("integer outside ",stringify!($t)," range").into());
+            }
             Self::try_from(value.integer()?).map_err(|_|concat!("integer outside ",stringify!($t)," range").into())
         } }
     )*};
@@ -10732,5 +10736,1217 @@ pub fn pair_fields(pair: Value) -> Result<(Value, Value)> {
             Ok((fields.next().unwrap(), fields.next().unwrap()))
         }
         _ => Err("a handler clause must give Pair result state".into()),
+    }
+}
+
+/// Typed values for generated checked definitions and stateful spec
+/// handlers: a definition whose types all have a typed form runs over these
+/// instead of the dynamic Value. Lists are persistent cons lists that share
+/// their tails, KeyVal and Set are persistent balanced trees in the portable
+/// order, and Integer stays in a machine word until it outgrows it, so a
+/// handler's state is shared, never copied, from one operation to the next.
+/// Each value converts to and from the dynamic Value (Dyn), at the
+/// boundaries with dynamic code.
+pub mod fast {
+    use super::{BigInt, Either, Result, Value};
+    use num_traits::{Signed, ToPrimitive, Zero};
+    use std::cmp::Ordering;
+    use std::sync::Arc;
+
+    /// Text is shared, never copied.
+    pub type Text = Arc<str>;
+    /// So are Bytes.
+    pub type Bytes = Arc<[u8]>;
+
+    pub fn text(s: &str) -> Text {
+        Arc::from(s)
+    }
+
+    pub fn bytes(b: &[u8]) -> Bytes {
+        Arc::from(b)
+    }
+
+    /// The portable total order (see compare_values): numbers by value, text
+    /// by code point, false before true, Nothing before Just, Left before
+    /// Right, lists item by item, data by constructor identity then fields.
+    pub trait POrd {
+        fn pcmp(&self, other: &Self) -> Ordering;
+    }
+
+    macro_rules! ordinary {
+        ($($t:ty),*) => {$(impl POrd for $t { fn pcmp(&self, other: &Self) -> Ordering { self.cmp(other) } })*};
+    }
+    ordinary!(i8, i16, i32, i64, u8, u16, u32, u64, bool, (), str, [u8]);
+
+    impl<T: POrd + ?Sized> POrd for Arc<T> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            (**self).pcmp(&**other)
+        }
+    }
+
+    impl<T: POrd> POrd for Option<T> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            match (self, other) {
+                (None, None) => Ordering::Equal,
+                (None, Some(_)) => Ordering::Less,
+                (Some(_), None) => Ordering::Greater,
+                (Some(a), Some(b)) => a.pcmp(b),
+            }
+        }
+    }
+
+    impl<A: POrd, B: POrd> POrd for Either<A, B> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            match (self, other) {
+                (Either::Left(a), Either::Left(b)) => a.pcmp(b),
+                (Either::Right(a), Either::Right(b)) => a.pcmp(b),
+                (Either::Left(_), Either::Right(_)) => Ordering::Less,
+                (Either::Right(_), Either::Left(_)) => Ordering::Greater,
+            }
+        }
+    }
+
+    /// An Integer: a machine word while it fits, a BigInt beyond.
+    #[derive(Clone, Debug)]
+    pub enum Int {
+        Small(i64),
+        Big(Arc<BigInt>),
+    }
+
+    impl Int {
+        pub fn from_big(b: BigInt) -> Int {
+            match b.to_i64() {
+                Some(v) => Int::Small(v),
+                None => Int::Big(Arc::new(b)),
+            }
+        }
+        pub fn from_i128(v: i128) -> Int {
+            match i64::try_from(v) {
+                Ok(v) => Int::Small(v),
+                Err(_) => Int::Big(Arc::new(BigInt::from(v))),
+            }
+        }
+        pub fn big(&self) -> BigInt {
+            match self {
+                Int::Small(v) => BigInt::from(*v),
+                Int::Big(b) => (**b).clone(),
+            }
+        }
+        pub fn add(&self, other: &Int) -> Int {
+            if let (Int::Small(a), Int::Small(b)) = (self, other) {
+                if let Some(c) = a.checked_add(*b) {
+                    return Int::Small(c);
+                }
+            }
+            Int::from_big(self.big() + other.big())
+        }
+        pub fn sub(&self, other: &Int) -> Int {
+            if let (Int::Small(a), Int::Small(b)) = (self, other) {
+                if let Some(c) = a.checked_sub(*b) {
+                    return Int::Small(c);
+                }
+            }
+            Int::from_big(self.big() - other.big())
+        }
+        pub fn mul(&self, other: &Int) -> Int {
+            if let (Int::Small(a), Int::Small(b)) = (self, other) {
+                if let Some(c) = a.checked_mul(*b) {
+                    return Int::Small(c);
+                }
+            }
+            Int::from_big(self.big() * other.big())
+        }
+        pub fn neg(&self) -> Int {
+            if let Int::Small(a) = self {
+                if let Some(c) = a.checked_neg() {
+                    return Int::Small(c);
+                }
+            }
+            Int::from_big(-self.big())
+        }
+        /// Truncating division, as BigInt's.
+        pub fn quot(&self, other: &Int) -> Result<Int> {
+            if other.is_zero() {
+                return Err("exact division by zero".into());
+            }
+            if let (Int::Small(a), Int::Small(b)) = (self, other) {
+                if let Some(c) = a.checked_div(*b) {
+                    return Ok(Int::Small(c));
+                }
+            }
+            Ok(Int::from_big(self.big() / other.big()))
+        }
+        /// The remainder, with the dividend's sign.
+        pub fn rem(&self, other: &Int) -> Result<Int> {
+            if other.is_zero() {
+                return Err("exact division by zero".into());
+            }
+            if let (Int::Small(a), Int::Small(b)) = (self, other) {
+                if let Some(c) = a.checked_rem(*b) {
+                    return Ok(Int::Small(c));
+                }
+            }
+            Ok(Int::from_big(self.big() % other.big()))
+        }
+        pub fn pow(&self, other: &Int) -> Result<Int> {
+            let exponent = other.big();
+            if exponent.is_negative() {
+                return Err("negative exponent".into());
+            }
+            let exponent = exponent.to_u32().ok_or_else(|| "exponent too large".to_string())?;
+            Ok(Int::from_big(num_traits::Pow::pow(self.big(), exponent)))
+        }
+        pub fn is_zero(&self) -> bool {
+            matches!(self, Int::Small(0))
+        }
+        /// The value as a bounded integer, or the conversion's failure.
+        pub fn narrow<T: TryFrom<i64> + TryFrom<i128>>(&self, target: &str) -> Result<T> {
+            let fits = match self {
+                Int::Small(v) => T::try_from(*v).ok(),
+                Int::Big(b) => b.to_i128().and_then(|v| T::try_from(v).ok()),
+            };
+            fits.ok_or_else(|| format!("integer outside {target} range"))
+        }
+    }
+
+    /// A bounded integer computed exactly in i128, narrowed to its type.
+    pub fn narrow<T: TryFrom<i128>>(value: i128, target: &str) -> Result<T> {
+        T::try_from(value).map_err(|_| format!("integer outside {target} range"))
+    }
+
+    macro_rules! int_from {
+        ($($t:ty),*) => {$(impl From<$t> for Int { fn from(v: $t) -> Int { Int::from_i128(v as i128) } })*};
+    }
+    int_from!(i8, i16, i32, i64, u8, u16, u32, u64, usize);
+
+    impl PartialEq for Int {
+        fn eq(&self, other: &Int) -> bool {
+            self.pcmp(other) == Ordering::Equal
+        }
+    }
+    impl Eq for Int {}
+    impl POrd for Int {
+        fn pcmp(&self, other: &Int) -> Ordering {
+            match (self, other) {
+                (Int::Small(a), Int::Small(b)) => a.cmp(b),
+                _ => self.big().cmp(&other.big()),
+            }
+        }
+    }
+
+    /// A persistent list: Cons shares its tail, so prepending is O(1) and a
+    /// list is never copied. It knows its length.
+    pub struct List<T>(Option<Arc<Cons<T>>>);
+
+    struct Cons<T> {
+        head: T,
+        tail: List<T>,
+        len: usize,
+    }
+
+    impl<T> Clone for List<T> {
+        fn clone(&self) -> Self {
+            List(self.0.clone())
+        }
+    }
+
+    impl<T> Default for List<T> {
+        fn default() -> Self {
+            List(None)
+        }
+    }
+
+    // Dropping a long list must not recurse once per cell.
+    impl<T> Drop for List<T> {
+        fn drop(&mut self) {
+            let mut next = self.0.take();
+            while let Some(cell) = next {
+                match Arc::try_unwrap(cell) {
+                    Ok(mut cons) => next = cons.tail.0.take(),
+                    Err(_) => break,
+                }
+            }
+        }
+    }
+
+    impl<T> List<T> {
+        pub fn nil() -> Self {
+            List(None)
+        }
+        pub fn cons(head: T, tail: List<T>) -> Self {
+            let len = tail.len() + 1;
+            List(Some(Arc::new(Cons { head, tail, len })))
+        }
+        pub fn len(&self) -> usize {
+            self.0.as_ref().map_or(0, |c| c.len)
+        }
+        pub fn is_empty(&self) -> bool {
+            self.0.is_none()
+        }
+        pub fn uncons(&self) -> Option<(&T, &List<T>)> {
+            self.0.as_ref().map(|c| (&c.head, &c.tail))
+        }
+        pub fn iter(&self) -> Iter<'_, T> {
+            Iter(self)
+        }
+        pub fn from_vec(items: Vec<T>) -> Self {
+            let mut list = List::nil();
+            for item in items.into_iter().rev() {
+                list = List::cons(item, list);
+            }
+            list
+        }
+    }
+
+    impl<T: Clone> List<T> {
+        /// The head and tail, by value.
+        pub fn split(&self) -> Option<(T, List<T>)> {
+            self.0.as_ref().map(|c| (c.head.clone(), c.tail.clone()))
+        }
+        pub fn to_vec(&self) -> Vec<T> {
+            self.iter().cloned().collect()
+        }
+    }
+
+    pub struct Iter<'a, T>(&'a List<T>);
+
+    impl<'a, T> Iterator for Iter<'a, T> {
+        type Item = &'a T;
+        fn next(&mut self) -> Option<&'a T> {
+            let cell = self.0.0.as_ref()?;
+            self.0 = &cell.tail;
+            Some(&cell.head)
+        }
+    }
+
+    impl<T: PartialEq> PartialEq for List<T> {
+        fn eq(&self, other: &Self) -> bool {
+            let (mut a, mut b) = (self, other);
+            loop {
+                match (&a.0, &b.0) {
+                    (None, None) => return true,
+                    (Some(x), Some(y)) => {
+                        if Arc::ptr_eq(x, y) {
+                            return true;
+                        }
+                        if x.len != y.len || x.head != y.head {
+                            return false;
+                        }
+                        a = &x.tail;
+                        b = &y.tail;
+                    }
+                    _ => return false,
+                }
+            }
+        }
+    }
+    impl<T: Eq> Eq for List<T> {}
+
+    impl<T: POrd> POrd for List<T> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            let mut ys = other.iter();
+            for x in self.iter() {
+                match ys.next() {
+                    None => return Ordering::Greater,
+                    Some(y) => match x.pcmp(y) {
+                        Ordering::Equal => {}
+                        order => return order,
+                    },
+                }
+            }
+            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+        }
+    }
+
+    impl<T: std::fmt::Debug> std::fmt::Debug for List<T> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.debug_list().entries(self.iter()).finish()
+        }
+    }
+
+    /// A persistent map in the portable order of its keys: an AVL tree whose
+    /// updates copy only the path to the key, sharing the rest.
+    pub struct Map<K, V>(Option<Arc<Node<K, V>>>);
+
+    struct Node<K, V> {
+        key: K,
+        value: V,
+        left: Map<K, V>,
+        right: Map<K, V>,
+        height: u8,
+        size: usize,
+    }
+
+    impl<K, V> Clone for Map<K, V> {
+        fn clone(&self) -> Self {
+            Map(self.0.clone())
+        }
+    }
+
+    impl<K, V> Default for Map<K, V> {
+        fn default() -> Self {
+            Map(None)
+        }
+    }
+
+    impl<K, V> Map<K, V> {
+        pub fn new() -> Self {
+            Map(None)
+        }
+        pub fn len(&self) -> usize {
+            self.0.as_ref().map_or(0, |n| n.size)
+        }
+        pub fn is_empty(&self) -> bool {
+            self.0.is_none()
+        }
+        fn height(&self) -> u8 {
+            self.0.as_ref().map_or(0, |n| n.height)
+        }
+        /// Entries in key order.
+        pub fn iter(&self) -> MapIter<'_, K, V> {
+            let mut iter = MapIter(Vec::new());
+            iter.descend(self);
+            iter
+        }
+        /// The entries, keys or values as a list, built from the right.
+        pub fn to_list<E>(&self, f: impl Fn(&K, &V) -> E) -> List<E> {
+            let mut out = List::nil();
+            let mut stack: Vec<&Node<K, V>> = Vec::new();
+            let mut current = self;
+            loop {
+                while let Some(node) = &current.0 {
+                    stack.push(node);
+                    current = &node.right;
+                }
+                match stack.pop() {
+                    None => return out,
+                    Some(node) => {
+                        out = List::cons(f(&node.key, &node.value), out);
+                        current = &node.left;
+                    }
+                }
+            }
+        }
+    }
+
+    pub struct MapIter<'a, K, V>(Vec<&'a Node<K, V>>);
+
+    impl<'a, K, V> MapIter<'a, K, V> {
+        fn descend(&mut self, mut map: &'a Map<K, V>) {
+            while let Some(node) = &map.0 {
+                self.0.push(node);
+                map = &node.left;
+            }
+        }
+    }
+
+    impl<'a, K, V> Iterator for MapIter<'a, K, V> {
+        type Item = (&'a K, &'a V);
+        fn next(&mut self) -> Option<Self::Item> {
+            let node = self.0.pop()?;
+            self.descend(&node.right);
+            Some((&node.key, &node.value))
+        }
+    }
+
+    impl<K: POrd + Clone, V: Clone> Map<K, V> {
+        pub fn get(&self, key: &K) -> Option<&V> {
+            let mut current = self;
+            while let Some(node) = &current.0 {
+                match key.pcmp(&node.key) {
+                    Ordering::Less => current = &node.left,
+                    Ordering::Greater => current = &node.right,
+                    Ordering::Equal => return Some(&node.value),
+                }
+            }
+            None
+        }
+        pub fn contains(&self, key: &K) -> bool {
+            self.get(key).is_some()
+        }
+        fn node(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
+            let height = left.height().max(right.height()) + 1;
+            let size = left.len() + right.len() + 1;
+            Map(Some(Arc::new(Node { key, value, left, right, height, size })))
+        }
+        fn balance(key: K, value: V, left: Map<K, V>, right: Map<K, V>) -> Map<K, V> {
+            let (hl, hr) = (left.height(), right.height());
+            if hl > hr + 1 {
+                let l = left.0.as_ref().unwrap();
+                if l.left.height() >= l.right.height() {
+                    Self::node(l.key.clone(), l.value.clone(), l.left.clone(),
+                        Self::node(key, value, l.right.clone(), right))
+                } else {
+                    let lr = l.right.0.as_ref().unwrap();
+                    Self::node(lr.key.clone(), lr.value.clone(),
+                        Self::node(l.key.clone(), l.value.clone(), l.left.clone(), lr.left.clone()),
+                        Self::node(key, value, lr.right.clone(), right))
+                }
+            } else if hr > hl + 1 {
+                let r = right.0.as_ref().unwrap();
+                if r.right.height() >= r.left.height() {
+                    Self::node(r.key.clone(), r.value.clone(),
+                        Self::node(key, value, left, r.left.clone()), r.right.clone())
+                } else {
+                    let rl = r.left.0.as_ref().unwrap();
+                    Self::node(rl.key.clone(), rl.value.clone(),
+                        Self::node(key, value, left, rl.left.clone()),
+                        Self::node(r.key.clone(), r.value.clone(), rl.right.clone(), r.right.clone()))
+                }
+            } else {
+                Self::node(key, value, left, right)
+            }
+        }
+        /// The map with key bound to value, replacing any binding.
+        pub fn insert(&self, key: K, value: V) -> Map<K, V> {
+            match &self.0 {
+                None => Self::node(key, value, Map::new(), Map::new()),
+                Some(n) => match key.pcmp(&n.key) {
+                    Ordering::Less => Self::balance(n.key.clone(), n.value.clone(), n.left.insert(key, value), n.right.clone()),
+                    Ordering::Greater => Self::balance(n.key.clone(), n.value.clone(), n.left.clone(), n.right.insert(key, value)),
+                    Ordering::Equal => Self::node(key, value, n.left.clone(), n.right.clone()),
+                },
+            }
+        }
+        fn remove_min(&self) -> (K, V, Map<K, V>) {
+            let n = self.0.as_ref().unwrap();
+            if n.left.is_empty() {
+                (n.key.clone(), n.value.clone(), n.right.clone())
+            } else {
+                let (k, v, left) = n.left.remove_min();
+                (k, v, Self::balance(n.key.clone(), n.value.clone(), left, n.right.clone()))
+            }
+        }
+        /// The map without key.
+        pub fn remove(&self, key: &K) -> Map<K, V> {
+            match &self.0 {
+                None => Map::new(),
+                Some(n) => match key.pcmp(&n.key) {
+                    Ordering::Less => {
+                        if n.left.is_empty() { return self.clone(); }
+                        Self::balance(n.key.clone(), n.value.clone(), n.left.remove(key), n.right.clone())
+                    }
+                    Ordering::Greater => {
+                        if n.right.is_empty() { return self.clone(); }
+                        Self::balance(n.key.clone(), n.value.clone(), n.left.clone(), n.right.remove(key))
+                    }
+                    Ordering::Equal => {
+                        if n.left.is_empty() {
+                            n.right.clone()
+                        } else if n.right.is_empty() {
+                            n.left.clone()
+                        } else {
+                            let (k, v, right) = n.right.remove_min();
+                            Self::balance(k, v, n.left.clone(), right)
+                        }
+                    }
+                },
+            }
+        }
+        /// From entries, later bindings replacing earlier ones, as keyValOf.
+        pub fn from_entries<'a>(entries: impl Iterator<Item = (K, V)>) -> Map<K, V> {
+            let mut map = Map::new();
+            for (k, v) in entries {
+                map = map.insert(k, v);
+            }
+            map
+        }
+    }
+
+    impl<K: PartialEq, V: PartialEq> PartialEq for Map<K, V> {
+        fn eq(&self, other: &Self) -> bool {
+            if let (Some(a), Some(b)) = (&self.0, &other.0) {
+                if Arc::ptr_eq(a, b) {
+                    return true;
+                }
+            }
+            self.len() == other.len() && self.iter().zip(other.iter()).all(|((k1, v1), (k2, v2))| k1 == k2 && v1 == v2)
+        }
+    }
+    impl<K: Eq, V: Eq> Eq for Map<K, V> {}
+
+    // As the list of its entries, each compared by key, then value.
+    impl<K: POrd, V: POrd> POrd for Map<K, V> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            let mut ys = other.iter();
+            for (k, v) in self.iter() {
+                match ys.next() {
+                    None => return Ordering::Greater,
+                    Some((k2, v2)) => match k.pcmp(k2).then_with(|| v.pcmp(v2)) {
+                        Ordering::Equal => {}
+                        order => return order,
+                    },
+                }
+            }
+            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+        }
+    }
+
+    impl<K: std::fmt::Debug, V: std::fmt::Debug> std::fmt::Debug for Map<K, V> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.debug_map().entries(self.iter()).finish()
+        }
+    }
+
+    /// A persistent set in the portable order.
+    pub struct Set<T>(pub Map<T, ()>);
+
+    impl<T> Clone for Set<T> {
+        fn clone(&self) -> Self {
+            Set(self.0.clone())
+        }
+    }
+
+    impl<T> Set<T> {
+        pub fn new() -> Self {
+            Set(Map::new())
+        }
+        pub fn len(&self) -> usize {
+            self.0.len()
+        }
+        pub fn is_empty(&self) -> bool {
+            self.0.is_empty()
+        }
+        pub fn iter(&self) -> impl Iterator<Item = &T> {
+            self.0.iter().map(|(k, _)| k)
+        }
+        pub fn to_list(&self) -> List<T>
+        where
+            T: Clone,
+        {
+            self.0.to_list(|k, _| k.clone())
+        }
+    }
+
+    impl<T: POrd + Clone> Set<T> {
+        pub fn contains(&self, item: &T) -> bool {
+            self.0.contains(item)
+        }
+        pub fn insert(&self, item: T) -> Set<T> {
+            if self.0.contains(&item) { self.clone() } else { Set(self.0.insert(item, ())) }
+        }
+        pub fn remove(&self, item: &T) -> Set<T> {
+            Set(self.0.remove(item))
+        }
+        pub fn from_iter(items: impl Iterator<Item = T>) -> Set<T> {
+            let mut set = Set::new();
+            for item in items {
+                set = set.insert(item);
+            }
+            set
+        }
+        pub fn union(&self, other: &Set<T>) -> Set<T> {
+            let (small, large) = if self.len() <= other.len() { (self, other) } else { (other, self) };
+            let mut set = large.clone();
+            for item in small.iter() {
+                set = set.insert(item.clone());
+            }
+            set
+        }
+        pub fn intersection(&self, other: &Set<T>) -> Set<T> {
+            Set::from_iter(self.iter().filter(|item| other.contains(item)).cloned())
+        }
+        pub fn difference(&self, other: &Set<T>) -> Set<T> {
+            Set::from_iter(self.iter().filter(|item| !other.contains(item)).cloned())
+        }
+    }
+
+    impl<T: PartialEq> PartialEq for Set<T> {
+        fn eq(&self, other: &Self) -> bool {
+            self.0 == other.0
+        }
+    }
+    impl<T: Eq> Eq for Set<T> {}
+    impl<T: POrd> POrd for Set<T> {
+        fn pcmp(&self, other: &Self) -> Ordering {
+            let mut ys = other.iter();
+            for x in self.iter() {
+                match ys.next() {
+                    None => return Ordering::Greater,
+                    Some(y) => match x.pcmp(y) {
+                        Ordering::Equal => {}
+                        order => return order,
+                    },
+                }
+            }
+            if ys.next().is_some() { Ordering::Less } else { Ordering::Equal }
+        }
+    }
+    impl<T: std::fmt::Debug> std::fmt::Debug for Set<T> {
+        fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+            f.debug_set().entries(self.iter()).finish()
+        }
+    }
+
+    /// Conversion to and from the dynamic Value, where typed and dynamic code
+    /// meet. from_dyn accepts what dynamic code builds and what native
+    /// values convert to (a collection as a plain list).
+    pub trait Dyn: Sized {
+        fn to_dyn(&self) -> Value;
+        fn from_dyn(value: Value) -> Result<Self>;
+    }
+
+    macro_rules! dyn_integer {
+        ($($t:ty),*) => {$(
+            impl Dyn for $t {
+                fn to_dyn(&self) -> Value { Value::Integer(BigInt::from(*self)) }
+                fn from_dyn(value: Value) -> Result<Self> {
+                    match value {
+                        Value::Integer(n) => <$t>::try_from(&n).map_err(|_| format!("integer outside {} range", stringify!($t))),
+                        _ => Err(format!("expected an integer for {}", stringify!($t))),
+                    }
+                }
+            }
+        )*};
+    }
+    dyn_integer!(i8, i16, i32, i64, u8, u16, u32, u64);
+
+    impl Dyn for Int {
+        fn to_dyn(&self) -> Value {
+            Value::Integer(self.big())
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::Integer(n) => Ok(Int::from_big(n)),
+                _ => Err("expected an Integer".into()),
+            }
+        }
+    }
+
+    impl Dyn for bool {
+        fn to_dyn(&self) -> Value {
+            Value::Bool(*self)
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            value.boolean()
+        }
+    }
+
+    impl Dyn for () {
+        fn to_dyn(&self) -> Value {
+            Value::Unit
+        }
+        fn from_dyn(_: Value) -> Result<Self> {
+            Ok(())
+        }
+    }
+
+    impl Dyn for Text {
+        fn to_dyn(&self) -> Value {
+            Value::Text(self.to_string())
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::Text(s) => Ok(Arc::from(s)),
+                _ => Err("expected Text".into()),
+            }
+        }
+    }
+
+    impl Dyn for Bytes {
+        fn to_dyn(&self) -> Value {
+            Value::Bytes(self.to_vec())
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::Bytes(b) => Ok(Arc::from(b)),
+                Value::List(items) => items
+                    .into_iter()
+                    .map(|item| match item {
+                        Value::Integer(n) => u8::try_from(&n).map_err(|_| "expected a byte".to_string()),
+                        _ => Err("expected a byte".to_string()),
+                    })
+                    .collect::<Result<Vec<u8>>>()
+                    .map(Arc::from),
+                _ => Err("expected Bytes".into()),
+            }
+        }
+    }
+
+    impl<T: Dyn> Dyn for Option<T> {
+        fn to_dyn(&self) -> Value {
+            Value::Maybe(self.as_ref().map(|v| Box::new(v.to_dyn())))
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::Maybe(None) => Ok(None),
+                Value::Maybe(Some(v)) => Ok(Some(T::from_dyn(*v)?)),
+                _ => Err("expected Maybe".into()),
+            }
+        }
+    }
+
+    impl<A: Dyn, B: Dyn> Dyn for Either<A, B> {
+        fn to_dyn(&self) -> Value {
+            match self {
+                Either::Left(a) => Value::Left(Box::new(a.to_dyn())),
+                Either::Right(b) => Value::Right(Box::new(b.to_dyn())),
+            }
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::Left(a) => Ok(Either::Left(A::from_dyn(*a)?)),
+                Value::Right(b) => Ok(Either::Right(B::from_dyn(*b)?)),
+                _ => Err("expected Either".into()),
+            }
+        }
+    }
+
+    impl<T: Dyn> Dyn for List<T> {
+        fn to_dyn(&self) -> Value {
+            Value::List(self.iter().map(Dyn::to_dyn).collect())
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            match value {
+                Value::List(items) => Ok(List::from_vec(items.into_iter().map(T::from_dyn).collect::<Result<Vec<T>>>()?)),
+                _ => Err("expected a List".into()),
+            }
+        }
+    }
+
+    pub const ENTRY: &str = "lawspec.collections::type::Entry::Entry";
+    pub const KEYVAL: &str = "lawspec.collections::type::KeyVal::KeyValEntries";
+    pub const SET: &str = "lawspec.collections::type::Set::SetItems";
+
+    impl<K: Dyn + POrd + Clone, V: Dyn + Clone> Dyn for Map<K, V> {
+        fn to_dyn(&self) -> Value {
+            let entries = self.iter().map(|(k, v)| Value::Data(ENTRY.into(), vec![k.to_dyn(), v.to_dyn()])).collect();
+            Value::Data(KEYVAL.into(), vec![Value::List(entries)])
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            let mut map = Map::new();
+            for entry in super::collection_items(value)? {
+                match entry {
+                    Value::Data(_, fields) if fields.len() == 2 => {
+                        let mut fields = fields.into_iter();
+                        map = map.insert(K::from_dyn(fields.next().unwrap())?, V::from_dyn(fields.next().unwrap())?);
+                    }
+                    _ => return Err("expected a KeyVal entry".into()),
+                }
+            }
+            Ok(map)
+        }
+    }
+
+    impl<T: Dyn + POrd + Clone> Dyn for Set<T> {
+        fn to_dyn(&self) -> Value {
+            Value::Data(SET.into(), vec![Value::List(self.iter().map(Dyn::to_dyn).collect())])
+        }
+        fn from_dyn(value: Value) -> Result<Self> {
+            let items = super::collection_items(value)?.into_iter().map(T::from_dyn).collect::<Result<Vec<T>>>()?;
+            Ok(Set::from_iter(items.into_iter()))
+        }
+    }
+
+    /// A data value's constructor fields, checked against its tag.
+    pub fn fields(value: Value, tag: &str, arity: usize) -> Result<std::vec::IntoIter<Value>> {
+        match value {
+            Value::Data(found, fields) if found == tag && fields.len() == arity => Ok(fields.into_iter()),
+            Value::Data(found, _) => Err(format!("expected {tag}, found {found}")),
+            _ => Err(format!("expected {tag}")),
+        }
+    }
+
+    /// A data value's tag, for a sum's from_dyn.
+    pub fn tag(value: &Value) -> Result<&str> {
+        match value {
+            Value::Data(tag, _) => Ok(tag),
+            _ => Err("expected a data value".into()),
+        }
+    }
+
+    pub fn text_length(s: &str) -> usize {
+        s.chars().count()
+    }
+
+    /// attempt e: the body's value, or the failure it raised with this
+    /// ability, as the dynamic attempt catches it.
+    pub fn attempt<A>(ability: &str, body: impl FnOnce() -> Result<A>) -> Result<std::result::Result<A, Value>> {
+        super::quiet_failures();
+        match std::panic::catch_unwind(std::panic::AssertUnwindSafe(body)) {
+            Ok(result) => result.map(Ok),
+            Err(payload) => match payload.downcast::<super::Failure>() {
+                Ok(failure) if failure.ability == ability => Ok(Err(failure.value)),
+                Ok(failure) => std::panic::resume_unwind(failure),
+                Err(other) => std::panic::resume_unwind(other),
+            },
+        }
+    }
+
+    // Sequences: Text (by code point), Bytes and List. A slice is clamped
+    // to the sequence; an index outside it is Nothing.
+
+    /// An index into a sequence of count items, clamped to it.
+    pub fn clamp_index(index: &Int, count: usize) -> usize {
+        match index {
+            Int::Small(k) if *k < 0 => 0,
+            Int::Small(k) => (*k as u64).min(count as u64) as usize,
+            Int::Big(b) if b.is_negative() => 0,
+            Int::Big(_) => count,
+        }
+    }
+
+    fn position(index: &Int, count: usize) -> Option<usize> {
+        match index {
+            Int::Small(k) if *k >= 0 && (*k as u64) < count as u64 => Some(*k as usize),
+            _ => None,
+        }
+    }
+
+    pub fn append_text(a: &str, b: &str) -> Text {
+        let mut s = String::with_capacity(a.len() + b.len());
+        s.push_str(a);
+        s.push_str(b);
+        Arc::from(s)
+    }
+
+    pub fn append_bytes(a: &[u8], b: &[u8]) -> Bytes {
+        let mut v = Vec::with_capacity(a.len() + b.len());
+        v.extend_from_slice(a);
+        v.extend_from_slice(b);
+        Arc::from(v)
+    }
+
+    /// a ++ b shares b.
+    pub fn append_list<T: Clone>(a: &List<T>, b: &List<T>) -> List<T> {
+        let mut out = b.clone();
+        for item in a.to_vec().into_iter().rev() {
+            out = List::cons(item, out);
+        }
+        out
+    }
+
+    pub fn slice_text(t: &str, from: &Int, to: &Int) -> Text {
+        if t.is_ascii() {
+            let i = clamp_index(from, t.len());
+            let j = clamp_index(to, t.len()).max(i);
+            return Arc::from(&t[i..j]);
+        }
+        let count = text_length(t);
+        let i = clamp_index(from, count);
+        let j = clamp_index(to, count).max(i);
+        Arc::from(t.chars().skip(i).take(j - i).collect::<String>())
+    }
+
+    pub fn slice_bytes(b: &[u8], from: &Int, to: &Int) -> Bytes {
+        let i = clamp_index(from, b.len());
+        let j = clamp_index(to, b.len()).max(i);
+        Arc::from(&b[i..j])
+    }
+
+    /// A slice to the end shares the list's tail.
+    pub fn slice_list<T: Clone>(xs: &List<T>, from: &Int, to: &Int) -> List<T> {
+        let count = xs.len();
+        let i = clamp_index(from, count);
+        let j = clamp_index(to, count).max(i);
+        let mut rest = xs;
+        for _ in 0..i {
+            rest = rest.uncons().map(|(_, t)| t).unwrap();
+        }
+        if j == count {
+            return rest.clone();
+        }
+        List::from_vec(rest.iter().take(j - i).cloned().collect())
+    }
+
+    pub fn at_list<T: Clone>(xs: &List<T>, index: &Int) -> Option<T> {
+        position(index, xs.len()).and_then(|i| xs.iter().nth(i).cloned())
+    }
+
+    pub fn at_bytes(b: &[u8], index: &Int) -> Option<u8> {
+        position(index, b.len()).map(|i| b[i])
+    }
+
+    pub fn range_int(lo: &Int, hi: &Int) -> List<Int> {
+        let mut out = List::nil();
+        let mut k = hi.sub(&Int::Small(1));
+        while k.pcmp(lo) != Ordering::Less {
+            out = List::cons(k.clone(), out);
+            k = k.sub(&Int::Small(1));
+        }
+        out
+    }
+
+    pub fn octets(b: &[u8]) -> List<u8> {
+        List::from_vec(b.to_vec())
+    }
+
+    pub fn bytes_of(xs: &List<u8>) -> Bytes {
+        Arc::from(xs.to_vec())
+    }
+
+    pub fn utf8(t: &str) -> Bytes {
+        Arc::from(t.as_bytes())
+    }
+
+    pub fn text_of(n: &Int) -> Text {
+        match n {
+            Int::Small(k) => Arc::from(k.to_string()),
+            Int::Big(b) => Arc::from(b.to_string()),
+        }
+    }
+
+    pub fn join(separator: &str, parts: &List<Text>) -> Text {
+        let items: Vec<&str> = parts.iter().map(|t| &**t).collect();
+        Arc::from(items.join(separator))
+    }
+
+    // A dynamic call of a typed definition: its arguments from Values, its
+    // result back to one.
+    macro_rules! dynamic_call {
+        ($name:ident, $($a:ident),*) => {
+            #[allow(non_snake_case)]
+            pub fn $name<$($a: Dyn,)* R: Dyn>(arguments: Vec<Value>, f: fn($($a),*) -> Result<R>) -> Result<Value> {
+                let mut arguments = arguments.into_iter();
+                $(let $a = $a::from_dyn(arguments.next().ok_or("definition argument count mismatch")?)?;)*
+                if arguments.next().is_some() {
+                    return Err("definition argument count mismatch".into());
+                }
+                Ok(f($($a),*)?.to_dyn())
+            }
+        };
+    }
+    pub fn call0<R: Dyn>(arguments: Vec<Value>, f: fn() -> Result<R>) -> Result<Value> {
+        let _ = arguments;
+        Ok(f()?.to_dyn())
+    }
+    dynamic_call!(call1, A);
+    dynamic_call!(call2, A, B);
+    dynamic_call!(call3, A, B, C);
+    dynamic_call!(call4, A, B, C, D);
+    dynamic_call!(call5, A, B, C, D, E);
+    dynamic_call!(call6, A, B, C, D, E, F);
+    dynamic_call!(call7, A, B, C, D, E, F, G);
+    dynamic_call!(call8, A, B, C, D, E, F, G, H);
+    dynamic_call!(call9, A, B, C, D, E, F, G, H, I);
+    dynamic_call!(call10, A, B, C, D, E, F, G, H, I, J);
+    dynamic_call!(call11, A, B, C, D, E, F, G, H, I, J, K);
+    dynamic_call!(call12, A, B, C, D, E, F, G, H, I, J, K, L);
+
+    /// A typed value's native (public) form, converted directly, without the
+    /// dynamic Value: what an embedding program passes and receives.
+    pub trait Public: Sized {
+        type Native;
+        fn to_native(&self) -> Self::Native;
+        fn from_native(native: Self::Native) -> Self;
+    }
+
+    macro_rules! public_copy {
+        ($($t:ty),*) => {$(impl Public for $t {
+            type Native = $t;
+            fn to_native(&self) -> $t { *self }
+            fn from_native(native: $t) -> $t { native }
+        })*};
+    }
+    public_copy!(i8, i16, i32, i64, u8, u16, u32, u64, bool, ());
+
+    impl Public for Int {
+        type Native = super::Integer;
+        fn to_native(&self) -> super::Integer {
+            super::Integer(self.big())
+        }
+        fn from_native(native: super::Integer) -> Int {
+            Int::from_big(native.0)
+        }
+    }
+
+    impl Public for Text {
+        type Native = String;
+        fn to_native(&self) -> String {
+            self.to_string()
+        }
+        fn from_native(native: String) -> Text {
+            Arc::from(native)
+        }
+    }
+
+    impl Public for Bytes {
+        type Native = Vec<u8>;
+        fn to_native(&self) -> Vec<u8> {
+            self.to_vec()
+        }
+        fn from_native(native: Vec<u8>) -> Bytes {
+            Arc::from(native)
+        }
+    }
+
+    impl<T: Public> Public for List<T> {
+        type Native = Vec<T::Native>;
+        fn to_native(&self) -> Vec<T::Native> {
+            self.iter().map(Public::to_native).collect()
+        }
+        fn from_native(native: Vec<T::Native>) -> List<T> {
+            List::from_vec(native.into_iter().map(T::from_native).collect())
+        }
+    }
+
+    impl<T: Public> Public for Option<T> {
+        type Native = Option<T::Native>;
+        fn to_native(&self) -> Option<T::Native> {
+            self.as_ref().map(Public::to_native)
+        }
+        fn from_native(native: Option<T::Native>) -> Option<T> {
+            native.map(T::from_native)
+        }
+    }
+
+    impl<A: Public, B: Public> Public for Either<A, B> {
+        type Native = Either<A::Native, B::Native>;
+        fn to_native(&self) -> Either<A::Native, B::Native> {
+            match self {
+                Either::Left(a) => Either::Left(a.to_native()),
+                Either::Right(b) => Either::Right(b.to_native()),
+            }
+        }
+        fn from_native(native: Either<A::Native, B::Native>) -> Either<A, B> {
+            match native {
+                Either::Left(a) => Either::Left(A::from_native(a)),
+                Either::Right(b) => Either::Right(B::from_native(b)),
+            }
+        }
+    }
+
+    impl<K: Public + POrd + Clone, V: Public + Clone> Public for Map<K, V>
+    where
+        K::Native: Ord,
+    {
+        type Native = std::collections::BTreeMap<K::Native, V::Native>;
+        fn to_native(&self) -> Self::Native {
+            self.iter().map(|(k, v)| (k.to_native(), v.to_native())).collect()
+        }
+        fn from_native(native: Self::Native) -> Self {
+            Map::from_entries(native.into_iter().map(|(k, v)| (K::from_native(k), V::from_native(v))))
+        }
+    }
+
+    impl<T: Public + POrd + Clone> Public for Set<T>
+    where
+        T::Native: Ord,
+    {
+        type Native = std::collections::BTreeSet<T::Native>;
+        fn to_native(&self) -> Self::Native {
+            self.iter().map(Public::to_native).collect()
+        }
+        fn from_native(native: Self::Native) -> Self {
+            Set::from_iter(native.into_iter().map(T::from_native))
+        }
+    }
+
+    // A native call of a typed definition whose types convert directly.
+    macro_rules! direct_call {
+        ($name:ident, $(($a:ident, $t:ident)),*) => {
+            #[allow(non_snake_case)]
+            pub fn $name<$($t: Public,)* R: Public>($($a: $t::Native,)* f: fn($($t),*) -> Result<R>) -> Result<R::Native> {
+                Ok(f($($t::from_native($a)),*)?.to_native())
+            }
+        };
+    }
+    pub fn direct0<R: Public>(f: fn() -> Result<R>) -> Result<R::Native> {
+        Ok(f()?.to_native())
+    }
+    direct_call!(direct1, (A, TA));
+    direct_call!(direct2, (A, TA), (B, TB));
+    direct_call!(direct3, (A, TA), (B, TB), (C, TC));
+    direct_call!(direct4, (A, TA), (B, TB), (C, TC), (D, TD));
+    direct_call!(direct5, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE));
+    direct_call!(direct6, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF));
+    direct_call!(direct7, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG));
+    direct_call!(direct8, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH));
+    direct_call!(direct9, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI));
+    direct_call!(direct10, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ));
+    direct_call!(direct11, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK));
+    direct_call!(direct12, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK), (L, TL));
+
+    // A native call of a typed definition: its arguments from native values,
+    // its result to one.
+    macro_rules! native_call {
+        ($name:ident, $(($a:ident, $t:ident)),*) => {
+            #[allow(non_snake_case)]
+            pub fn $name<$($a: super::IntoValue, $t: Dyn,)* T: Dyn, R: super::FromValue>($($a: $a,)* f: fn($($t),*) -> Result<T>) -> Result<R> {
+                R::from_value(f($($t::from_dyn($a.into_value())?),*)?.to_dyn())
+            }
+        };
+    }
+    pub fn native0<T: Dyn, R: super::FromValue>(f: fn() -> Result<T>) -> Result<R> {
+        R::from_value(f()?.to_dyn())
+    }
+    native_call!(native1, (A, TA));
+    native_call!(native2, (A, TA), (B, TB));
+    native_call!(native3, (A, TA), (B, TB), (C, TC));
+    native_call!(native4, (A, TA), (B, TB), (C, TC), (D, TD));
+    native_call!(native5, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE));
+    native_call!(native6, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF));
+    native_call!(native7, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG));
+    native_call!(native8, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH));
+    native_call!(native9, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI));
+    native_call!(native10, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ));
+    native_call!(native11, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK));
+    native_call!(native12, (A, TA), (B, TB), (C, TC), (D, TD), (E, TE), (F, TF), (G, TG), (H, TH), (I, TI), (J, TJ), (K, TK), (L, TL));
+
+    #[allow(dead_code)]
+    fn _unused(n: &BigInt) -> bool {
+        n.is_zero()
+    }
+
+    #[cfg(test)]
+    mod tests {
+        use super::*;
+
+        #[test]
+        fn maps_keep_their_keys_in_the_portable_order_and_share_unchanged_paths() {
+            let mut map: Map<i64, i64> = Map::new();
+            for k in (0..1000).rev() {
+                map = map.insert(k, k * 2);
+            }
+            let before = map.clone();
+            let after = map.insert(500, -1).remove(&3);
+            assert_eq!(before.len(), 1000);
+            assert_eq!(after.len(), 999);
+            assert_eq!(before.get(&500), Some(&1000));
+            assert_eq!(after.get(&500), Some(&-1));
+            assert_eq!(after.get(&3), None);
+            let keys: Vec<i64> = after.iter().map(|(k, _)| *k).collect();
+            let mut sorted = keys.clone();
+            sorted.sort();
+            assert_eq!(keys, sorted);
+            assert_eq!(after.to_list(|k, _| *k).to_vec(), keys);
+        }
+
+        #[test]
+        fn lists_share_tails_and_drop_without_recursing() {
+            let mut list = List::nil();
+            for i in 0..2_000_000u32 {
+                list = List::cons(i, list);
+            }
+            let tail = list.uncons().unwrap().1.clone();
+            assert_eq!(list.len(), 2_000_000);
+            assert_eq!(tail.len(), 1_999_999);
+            drop(list);
+            assert_eq!(tail.uncons().map(|(h, _)| *h), Some(1_999_998));
+        }
+
+        #[test]
+        fn integers_leave_a_machine_word_only_when_they_must() {
+            let big = Int::Small(i64::MAX).add(&Int::Small(1));
+            assert!(matches!(big, Int::Big(_)));
+            assert_eq!(big.sub(&Int::Small(1)), Int::Small(i64::MAX));
+            assert!(matches!(big.sub(&Int::Small(1)), Int::Small(_)));
+            assert_eq!(Int::Small(-7).quot(&Int::Small(2)).unwrap(), Int::Small(-3));
+            assert_eq!(Int::Small(-7).rem(&Int::Small(2)).unwrap(), Int::Small(-1));
+            assert!(Int::Small(1).quot(&Int::Small(0)).is_err());
+            assert_eq!(narrow::<i32>(i32::MAX as i128 + 1, "Int32"), Err("integer outside Int32 range".to_string()));
+        }
+
+        #[test]
+        fn sets_and_maps_round_trip_through_dynamic_values() {
+            let set = Set::from_iter([3i64, 1, 2, 3].into_iter());
+            let value = set.to_dyn();
+            let back = Set::<i64>::from_dyn(value).unwrap();
+            assert_eq!(back.iter().copied().collect::<Vec<_>>(), vec![1, 2, 3]);
+            let map = Map::<Text, i64>::from_entries([(text("b"), 2), (text("a"), 1)].into_iter());
+            let back = Map::<Text, i64>::from_dyn(map.to_dyn()).unwrap();
+            assert_eq!(back, map);
+            assert_eq!(text("\u{e9}").pcmp(&text("z")), Ordering::Greater);
+        }
     }
 }

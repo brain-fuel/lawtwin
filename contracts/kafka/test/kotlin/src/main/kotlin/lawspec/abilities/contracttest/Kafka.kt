@@ -15,511 +15,433 @@ object Kafka {
 
     private const val bits = 64
 
-    /** The spec handler cluster for Broker, Admin, GroupCoordinator. */
+    /** The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed. */
     class Cluster(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Broker, lawspec.abilities.lawtwin.Kafka.Admin, lawspec.abilities.lawtwin.Kafka.GroupCoordinator {
-        private var state: LawSpecRuntime.Value? = lawspec.runtime.LawSpecDefinitionBodies.evaluate567(
-            symbols,
-            LawSpecRuntime.absent("Unit"),
-        )
+        private var state: lawspec.runtime.LawSpecTyped.BrokerState = lawspec.runtime.LawSpecTyped.start2()
 
-        override fun createTopicsRequest(value0: kotlin.String, value1: kotlin.Int): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate547(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        /** The handler on its own, outside any law: the embedding entry point. */
+        constructor() : this(mutableMapOf())
+
+        @Synchronized override fun createTopicsRequest(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative2(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun createPartitionsRequest(value0: kotlin.String, value1: kotlin.Int): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate545(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun createPartitionsRequest(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative2(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun metadataRequest(
+        @Synchronized override fun metadataRequest(
             value0: kotlin.String,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate562(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative3(result)
         }
 
-        override fun produceRequest(
+        @Synchronized override fun produceRequest(
             value0: lawspec.data.TopicPartition,
             value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
             value2: kotlin.collections.List<lawspec.data.Record>,
         ): kotlin.Long {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate566(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-                schema.maybe(
-                    LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value1),
-                schema.list(
-                    LawSpecDataCodecs.recordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterProduceRequest_38(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+                lawspec.runtime.LawSpecTyped.fromNative6(value1),
+                lawspec.runtime.LawSpecTyped.fromNative7(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative4(result)
         }
 
-        override fun fetchRequest(
+        @Synchronized override fun fetchRequest(
             value0: lawspec.data.TopicPartition,
             value1: kotlin.Long,
             value2: kotlin.Int,
             value3: lawspec.data.IsolationLevel,
         ): lawspec.data.FetchResult {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate552(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-                LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols).encode(value3),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return LawSpecDataCodecs.fetchResultCodec(schema, bits, symbols).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchRequest_31(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+                lawspec.runtime.LawSpecTyped.fromNative4(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+                lawspec.runtime.LawSpecTyped.fromNative9(value3),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative8(result)
         }
 
-        override fun listOffsetsRequest(
+        @Synchronized override fun listOffsetsRequest(
             value0: lawspec.data.TopicPartition,
             value1: lawspec.data.OffsetSpec,
             value2: lawspec.data.IsolationLevel,
         ): kotlin.Long {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate561(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-                LawSpecDataCodecs.offsetSpecCodec(schema, bits, symbols).encode(value1),
-                LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+                lawspec.runtime.LawSpecTyped.fromNative10(value1),
+                lawspec.runtime.LawSpecTyped.fromNative9(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative4(result)
         }
 
-        override fun initProducerIdRequest(
+        @Synchronized override fun initProducerIdRequest(
             value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
         ): lawspec.data.ProducerIdAndEpoch {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate555(
-                symbols,
-                state!!,
-                schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                ).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_33(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative12(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative11(result)
         }
 
-        override fun addPartitionsToTxnRequest(
+        @Synchronized override fun addPartitionsToTxnRequest(
             value0: kotlin.String,
             value1: kotlin.Long,
             value2: kotlin.Short,
             value3: kotlin.collections.List<lawspec.data.TopicPartition>,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate542(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).encode(value1),
-                schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).encode(value2),
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value3),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_24(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative4(value1),
+                lawspec.runtime.LawSpecTyped.fromNative13(value2),
+                lawspec.runtime.LawSpecTyped.fromNative14(value3),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun txnOffsetCommitRequest(
+        @Synchronized override fun txnOffsetCommitRequest(
             value0: kotlin.String,
             value1: kotlin.Long,
             value2: kotlin.Short,
             value3: kotlin.String,
             value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate570(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).encode(value1),
-                schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).encode(value2),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value3),
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value4),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_41(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative4(value1),
+                lawspec.runtime.LawSpecTyped.fromNative13(value2),
+                lawspec.runtime.LawSpecTyped.fromNative1(value3),
+                lawspec.runtime.LawSpecTyped.fromNative15(value4),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun endTxnRequest(
+        @Synchronized override fun endTxnRequest(
             value0: kotlin.String,
             value1: kotlin.Long,
             value2: kotlin.Short,
             value3: kotlin.Boolean,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate550(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).encode(value1),
-                schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType).encode(value2),
-                schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType).encode(value3),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_29(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative4(value1),
+                lawspec.runtime.LawSpecTyped.fromNative13(value2),
+                lawspec.runtime.LawSpecTyped.fromNative16(value3),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun joinGroupRequest(
+        @Synchronized override fun joinGroupRequest(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate557(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                ).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative17(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative2(result)
         }
 
-        override fun syncGroupRequest(
+        @Synchronized override fun syncGroupRequest(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate569(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.list(
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative14(result)
         }
 
-        override fun heartbeatRequest(
+        @Synchronized override fun heartbeatRequest(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate554(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun leaveGroupRequest(value0: kotlin.String, value1: kotlin.String): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate559(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun leaveGroupRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+        ): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun describeGroupRequest(value0: kotlin.String): lawspec.data.GroupView {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate549(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return LawSpecDataCodecs.groupViewCodec(schema, bits, symbols).decode(result)
+        @Synchronized override fun describeGroupRequest(
+            value0: kotlin.String,
+        ): lawspec.data.GroupView {
+            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative18(result)
         }
 
-        override fun offsetCommitRequest(
+        @Synchronized override fun offsetCommitRequest(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
             value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate563(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value3),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+                lawspec.runtime.LawSpecTyped.fromNative15(value3),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun offsetFetchRequest(
+        @Synchronized override fun offsetFetchRequest(
             value0: kotlin.String,
             value1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate564(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative5(value1),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative19(result)
         }
 
-        override fun createTopic(value0: kotlin.String, value1: kotlin.Int): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate546(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun createTopic(value0: kotlin.String, value1: kotlin.Int): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative2(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun createPartitions(value0: kotlin.String, value1: kotlin.Int): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate544(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun createPartitions(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative2(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun partitionsFor(
+        @Synchronized override fun partitionsFor(
             value0: kotlin.String,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate565(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative3(result)
         }
 
-        override fun listOffsets(
+        @Synchronized override fun listOffsets(
             value0: lawspec.data.TopicPartition,
             value1: lawspec.data.OffsetSpec,
             value2: lawspec.data.IsolationLevel,
         ): kotlin.Long {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate560(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-                LawSpecDataCodecs.offsetSpecCodec(schema, bits, symbols).encode(value1),
-                LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+                lawspec.runtime.LawSpecTyped.fromNative10(value1),
+                lawspec.runtime.LawSpecTyped.fromNative9(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative4(result)
         }
 
-        override fun joinGroup(
+        @Synchronized override fun joinGroup(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate556(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                ).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative17(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative2(result)
         }
 
-        override fun syncGroup(
+        @Synchronized override fun syncGroup(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate568(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.list(
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative14(result)
         }
 
-        override fun heartbeat(
+        @Synchronized override fun heartbeat(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate553(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun leaveGroup(value0: kotlin.String, value1: kotlin.String): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate558(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun leaveGroup(value0: kotlin.String, value1: kotlin.String): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun describeGroup(value0: kotlin.String): lawspec.data.GroupView {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate548(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return LawSpecDataCodecs.groupViewCodec(schema, bits, symbols).decode(result)
+        @Synchronized override fun describeGroup(value0: kotlin.String): lawspec.data.GroupView {
+            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative18(result)
         }
 
-        override fun commitOffsets(
+        @Synchronized override fun commitOffsets(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.Int,
             value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate543(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value2),
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value3),
-            ))
-            state = pair[1]
-            val result = pair[0]
+            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative2(value2),
+                lawspec.runtime.LawSpecTyped.fromNative15(value3),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun fetchOffset(
+        @Synchronized override fun fetchOffset(
             value0: kotlin.String,
             value1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate551(
-                symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative5(value1),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative19(result)
         }
     }
 
-    /** The spec handler murmurPartitioner for Partitioner. */
+    /** The spec handler murmurPartitioner for Partitioner, with its state typed. */
     class MurmurPartitioner(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Partitioner {
-        private var state: LawSpecRuntime.Value? = null
+        /** The handler on its own, outside any law: the embedding entry point. */
+        constructor() : this(mutableMapOf())
 
-        override fun choosePartition(
+        @Synchronized override fun choosePartition(
             value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
             value1: kotlin.Int,
         ): kotlin.Int {
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate865(
-                symbols,
-                schema.maybe(
-                    schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                    bits,
-                    symbols,
-                ).encode(value0),
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value1),
+            val result = lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_239(
+                lawspec.runtime.LawSpecTyped.fromNative20(value0),
+                lawspec.runtime.LawSpecTyped.fromNative2(value1),
             )
-            return schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).decode(result)
+            return lawspec.runtime.LawSpecTyped.toNative2(result)
         }
     }
 

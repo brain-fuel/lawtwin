@@ -11,20 +11,6 @@ public final class Matchers {
 
   public static java.lang.Boolean matchersMatchesRegex(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.Regex value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.regexCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate33(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.matchers::matchersMatchesRegex: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_21(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative103(value1)));
   }
 }

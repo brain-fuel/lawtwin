@@ -36,357 +36,264 @@ pub mod lawtwin_petstore {
         fn deleteUser(&self, value0: std::string::String) -> ();
     }
 
-    /// The spec handler reference for PetApi, StoreApi, UserApi.
+    /// The spec handler reference for PetApi, StoreApi, UserApi, with its state typed.
     pub struct Reference {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<crate::lawspec_definitions::typed::State>,
     }
 
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = Some(crate::lawspec_definitions::evaluate_62(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
+            let ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+                (),
+            )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_63(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_47(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_53(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+                state.clone(),
+                <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_54(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+                state.clone(),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_57(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_64(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_51(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_66(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::ApiResponse",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::ApiResponse as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_55(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawspec.collections::type::KeyVal",
-                vec![
-                    ls::TypeRef::named("Text", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::collections::BTreeMap<std::string::String, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_61(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_56(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteOrder(&self, value0: i64) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_50(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_48(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_49(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+                state.clone(),
+                <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_59(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Text",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::string::String as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+                state.clone(),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn logoutUser(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_60(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_58(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_65(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteUser(&self, value0: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_52(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
@@ -1007,357 +914,264 @@ pub mod lawtwin_petstore {
 pub mod lawtwin_petstore_laws {
     use super::ls;
 
-    /// The spec handler reference for PetApi, StoreApi, UserApi.
+    /// The spec handler reference for PetApi, StoreApi, UserApi, with its state typed.
     pub struct Reference {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<crate::lawspec_definitions::typed::State>,
     }
 
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = Some(crate::lawspec_definitions::evaluate_137(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
+            let ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+                (),
+            )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_138(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_122(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_128(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+                state.clone(),
+                <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_129(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+                state.clone(),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_132(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_139(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_126(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_141(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::ApiResponse",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::ApiResponse as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_130(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawspec.collections::type::KeyVal",
-                vec![
-                    ls::TypeRef::named("Text", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::collections::BTreeMap<std::string::String, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_136(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_131(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteOrder(&self, value0: i64) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_125(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_123(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_124(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+                state.clone(),
+                <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_134(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Text",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::string::String as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+                state.clone(),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn logoutUser(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_135(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_133(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_140(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteUser(&self, value0: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_127(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 }
@@ -1365,357 +1179,264 @@ pub mod lawtwin_petstore_laws {
 pub mod contracttest_petstore {
     use super::ls;
 
-    /// The spec handler reference for PetApi, StoreApi, UserApi.
+    /// The spec handler reference for PetApi, StoreApi, UserApi, with its state typed.
     pub struct Reference {
         ctx: std::sync::Mutex<ls::Context>,
-        state: std::sync::Mutex<Option<ls::Value>>,
+        state: std::sync::Mutex<crate::lawspec_definitions::typed::State>,
     }
 
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let mut ctx = ctx.clone();
-            let state = Some(crate::lawspec_definitions::evaluate_241(&mut ctx, vec![ls::Value::Unit]).unwrap_or_else(|error| panic!("{error}")));
+            let ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+                (),
+            )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
+        }
+
+        /// The handler on its own, outside any law: the embedding entry point.
+        pub fn start() -> Self {
+            Self::new(&ls::Context::default())
         }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_242(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_226(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+                state.clone(),
+                <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_232(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+                state.clone(),
+                <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_233(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "List",
-                vec![ls::TypeRef::named(
-                    "lawtwin.petstore.model::type::Pet",
-                    vec![],
-                )],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::vec::Vec<crate::lawspec_data::Pet> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+                state.clone(),
+                <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_236(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_243(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Pet",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Pet as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_230(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_245(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-                ls::IntoValue::into_value(value2),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::ApiResponse",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::ApiResponse as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+                <Option<ls::fast::Bytes> as ls::fast::Public>::from_native(value2),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_234(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawspec.collections::type::KeyVal",
-                vec![
-                    ls::TypeRef::named("Text", vec![]),
-                    ls::TypeRef::named("Int32", vec![]),
-                ],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::collections::BTreeMap<std::string::String, i32> as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_240(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_235(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::Order",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::Order as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteOrder(&self, value0: i64) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_229(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+                state.clone(),
+                <i64 as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_227(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+                state.clone(),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_228(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+                state.clone(),
+                <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_238(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Text",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <std::string::String as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+                state.clone(),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
+                <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn logoutUser(&self) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_239(ctx, vec![self.state.lock().unwrap().clone().unwrap()]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+                state.clone(),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_237(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "lawtwin.petstore.model::type::User",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <crate::lawspec_data::User as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_244(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-                ls::IntoValue::into_value(value1),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+                <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
 
         fn deleteUser(&self, value0: std::string::String) -> () {
-            let mut guard = self.ctx.lock().unwrap();
-            let ctx = &mut *guard;
-            let pair = crate::lawspec_definitions::evaluate_231(ctx, vec![
-                self.state.lock().unwrap().clone().unwrap(),
-                ls::IntoValue::into_value(value0),
-            ]).unwrap_or_else(|error| panic!("{error}"));
-            let (result, next) = ls::pair_fields(pair).unwrap_or_else(|error| panic!("{error}"));
-            *self.state.lock().unwrap() = Some(next);
-            let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
-            let result = schema.native_value_with_context(result, &ls::TypeRef::named(
-                "Unit",
-                vec![],
-            ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
-            <() as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+            let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+                state.clone(),
+                <ls::fast::Text as ls::fast::Public>::from_native(value0),
+            ).unwrap_or_else(|error| panic!("{error}"));
+            let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
+            *state = next;
+            drop(state);
+            ls::fast::Public::to_native(&result)
         }
     }
 }

@@ -9,71 +9,22 @@ public final class Model {
   private static final lawspec.runtime.LawSpecSchema _schema =
       lawspec.runtime.LawSpecDataSchema.create();
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      addPartitionsToTxn(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.util.List<lawspec.data.TopicPartition> value3,
-          lawspec.data.BrokerState value4) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument3 = codec3.encode(value3);
-      var codec4 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate362(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::addPartitionsToTxn: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> addPartitionsToTxn(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Long value1,
+      java.lang.Short value2,
+      java.util.List<lawspec.data.TopicPartition> value3,
+      lawspec.data.BrokerState value4) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_162(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative14(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
   }
 
   public static java.lang.Boolean allKnown(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.TopicPartition> value0,
       lawspec.data.BrokerState value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate363(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::allKnown: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_163(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static lawspec.data.PartitionLog appendBatch(
@@ -82,243 +33,55 @@ public final class Model {
       java.lang.Long value1,
       java.lang.Boolean value2,
       lawspec.data.PartitionLog value3) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.recordCodec(_schema, 64, symbols), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate364(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::appendBatch: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_164(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative16(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3)));
   }
 
-  public static lawspec.data.Pair<java.lang.Long, java.util.List<lawspec.data.LogEntry>>
-      appendRecords(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Record> value0,
-          java.lang.Long value1,
-          java.lang.Long value2,
-          java.lang.Boolean value3,
-          java.util.List<lawspec.data.LogEntry> value4) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.recordCodec(_schema, 64, symbols), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument3 = codec3.encode(value3);
-      var codec4 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.logEntryCodec(_schema, 64, symbols), 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate365(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.logEntryCodec(_schema, 64, symbols),
-                  64,
-                  symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::appendRecords: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          java.lang.Long, java.util.List<lawspec.data.LogEntry>> appendRecords(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Record> value0,
+      java.lang.Long value1,
+      java.lang.Long value2,
+      java.lang.Boolean value3,
+      java.util.List<lawspec.data.LogEntry> value4) {
+    return lawspec.runtime.LawSpecTyped.toNative93(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_165(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative94(value4)));
   }
 
   public static lawspec.data.BrokerState applyOffsets(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.PendingOffset> value0,
       lawspec.data.BrokerState value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate366(symbols, argument0, argument1);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::applyOffsets: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_166(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      assignPartitions(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.Integer> value1,
-          java.util.List<java.lang.String> value2,
-          java.util.List<java.lang.String> value3,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value4) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var codec4 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate367(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::assignPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static java.util.Map<
+          java.lang.String, java.util.List<lawspec.data.TopicPartition>> assignPartitions(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<java.lang.Integer> value1,
+      java.util.List<java.lang.String> value2,
+      java.util.List<java.lang.String> value3,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value4) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_167(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3), lawspec.runtime.LawSpecTyped.fromNative56(value4)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      assignTo(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.TopicPartition value1,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate368(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::assignTo: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static java.util.Map<
+          java.lang.String, java.util.List<lawspec.data.TopicPartition>> assignTo(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      lawspec.data.TopicPartition value1,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_168(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      assignTopics(
-          Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1,
-          lawspec.data.BrokerState value2,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value3) {
-    try {
-      var codec0 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate369(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::assignTopics: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static java.util.Map<
+          java.lang.String, java.util.List<lawspec.data.TopicPartition>> assignTopics(
+      Map<String, Object> symbols,
+      java.util.List<java.lang.String> value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1,
+      lawspec.data.BrokerState value2,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value3) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_169(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative56(value3)));
   }
 
   public static lawspec.data.Group checkMember(
@@ -327,26 +90,7 @@ public final class Model {
       java.lang.String value1,
       java.lang.Integer value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate370(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::checkMember: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_170(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static lawspec.data.ProducerEntry checkTxnProducer(
@@ -355,26 +99,7 @@ public final class Model {
       java.lang.Long value1,
       java.lang.Short value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate371(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::checkTxnProducer: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative80(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_171(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static lawspec.data.BrokerState commitAll(
@@ -382,299 +107,79 @@ public final class Model {
       java.lang.String value0,
       java.util.List<lawspec.data.OffsetEntry> value1,
       lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate372(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::commitAll: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_172(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      computeAssignment(
-          Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0,
-          lawspec.data.BrokerState value1) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate373(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::computeAssignment: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static java.util.Map<
+          java.lang.String, java.util.List<lawspec.data.TopicPartition>> computeAssignment(
+      Map<String, Object> symbols,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0,
+      lawspec.data.BrokerState value1) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_173(lawspec.runtime.LawSpecTyped.fromNative52(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      createPartitions(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate374(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::createPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> createPartitions(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Integer value1,
+      lawspec.data.BrokerState value2) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_174(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      createTopic(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate375(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::createTopic: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> createTopic(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Integer value1,
+      lawspec.data.BrokerState value2) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_175(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState> describeGroup(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate376(symbols, argument0, argument1);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              lawspec.runtime.LawSpecDataCodecs.groupViewCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::describeGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative23(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_176(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      emptyAssignments(
-          Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
-    try {
-      var codec0 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate377(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::emptyAssignments: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static java.util.Map<
+          java.lang.String, java.util.List<lawspec.data.TopicPartition>> emptyAssignments(
+      Map<String, Object> symbols,
+      java.util.List<java.lang.String> value0,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_177(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)));
   }
 
   public static lawspec.data.BrokerState emptyBroker(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    try {
-      var codec0 = _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate378(symbols, argument0);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::emptyBroker: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_178(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static lawspec.data.Group emptyGroup(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    try {
-      var codec0 = _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate379(symbols, argument0);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::emptyGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_179(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static lawspec.data.PartitionLog emptyLog(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    try {
-      var codec0 = _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate380(symbols, argument0);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::emptyLog: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_180(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      endTxn(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.lang.Boolean value3,
-          lawspec.data.BrokerState value4) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument3 = codec3.encode(value3);
-      var codec4 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate381(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::endTxn: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> endTxn(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Long value1,
+      java.lang.Short value2,
+      java.lang.Boolean value3,
+      lawspec.data.BrokerState value4) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_181(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
   }
 
   public static java.lang.Integer expectedSequence(
       Map<String, Object> symbols,
       java.lang.Short value0,
       java.util.List<lawspec.data.BatchMeta> value1) {
-    try {
-      var codec0 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate382(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::expectedSequence: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_182(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1)));
   }
 
   public static lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState> fetch(
@@ -684,34 +189,7 @@ public final class Model {
       java.lang.Integer value2,
       lawspec.data.IsolationLevel value3,
       lawspec.data.BrokerState value4) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var codec4 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate383(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              lawspec.runtime.LawSpecDataCodecs.fetchResultCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::fetch: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative25(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_183(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> findDuplicate(
@@ -720,29 +198,7 @@ public final class Model {
       java.lang.Integer value1,
       java.lang.Integer value2,
       java.util.List<lawspec.data.BatchMeta> value3) {
-    try {
-      var codec0 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols), 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate384(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::findDuplicate: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_184(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative81(value3)));
   }
 
   public static lawspec.data.BrokerState finishTxn(
@@ -751,124 +207,35 @@ public final class Model {
       java.lang.Boolean value1,
       lawspec.data.TxnState value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.txnStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate385(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::finishTxn: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_185(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative96(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static lawspec.data.Group groupOf(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate386(symbols, argument0, argument1);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::groupOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_186(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      heartbeat(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate387(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::heartbeat: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> heartbeat(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.String value1,
+      java.lang.Integer value2,
+      lawspec.data.BrokerState value3) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_187(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static java.lang.Long highWatermark(
       Map<String, Object> symbols, lawspec.data.PartitionLog value0) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate388(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::highWatermark: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_188(lawspec.runtime.LawSpecTyped.fromNative83(value0)));
   }
 
-  public static lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState>
-      initProducerId(
-          Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
-          lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.maybe(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate389(symbols, argument0, argument1);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              lawspec.runtime.LawSpecDataCodecs.producerIdAndEpochCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::initProducerId: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState> initProducerId(
+      Map<String, Object> symbols,
+      lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
+      lawspec.data.BrokerState value1) {
+    return lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_189(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.lang.Boolean isAborted(
@@ -876,26 +243,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Long value1,
       java.util.List<lawspec.data.AbortedTxn> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.abortedTxnCodec(_schema, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate390(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::isAborted: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_190(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative97(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Integer, lawspec.data.BrokerState> joinGroup(
@@ -904,164 +252,48 @@ public final class Model {
       java.lang.String value1,
       java.util.List<java.lang.String> value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate391(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.scalar("Int32", 64, java.lang.Integer.class),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::joinGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative27(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_191(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static java.lang.Boolean knownPartition(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate392(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::knownPartition: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_192(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.lang.Long lastOffsetOf(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.FetchedRecord> value0,
       java.lang.Long value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.fetchedRecordCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate393(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lastOffsetOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_193(lawspec.runtime.LawSpecTyped.fromNative90(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Long lastStableOffset(
       Map<String, Object> symbols, lawspec.data.PartitionLog value0) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate394(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lastStableOffset: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_194(lawspec.runtime.LawSpecTyped.fromNative83(value0)));
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      lawspecCollectionsBoundedInt16(
-          Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate395(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int16", 64, java.lang.Short.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Short> lawspecCollectionsBoundedInt16(
+      Map<String, Object> symbols, java.lang.Number value0) {
+    return lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspecCollectionsBoundedInt32(
-          Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate396(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Integer> lawspecCollectionsBoundedInt32(
+      Map<String, Object> symbols, java.lang.Number value0) {
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> lawspecCollectionsBoundedInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate397(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte> lawspecCollectionsBoundedInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate398(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int8", 64, java.lang.Byte.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -1085,40 +317,16 @@ public final class Model {
     }
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspecCollectionsBoundedUInt16(
-          Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate400(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt16", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Integer> lawspecCollectionsBoundedUInt16(
+      Map<String, Object> symbols, java.lang.Number value0) {
+    return lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspecCollectionsBoundedUInt32(
-          Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate401(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt32", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspecCollectionsBoundedUInt32(
+      Map<String, Object> symbols, java.lang.Number value0) {
+    return lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger>
@@ -1139,22 +347,10 @@ public final class Model {
     }
   }
 
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short>
-      lawspecCollectionsBoundedUInt8(
-          Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate403(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt8", 64, java.lang.Short.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsB" + "oundedUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Short> lawspecCollectionsBoundedUInt8(
+      Map<String, Object> symbols, java.lang.Number value0) {
+    return lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -1201,66 +397,22 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsSaturatingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate406(symbols, argument0);
-      var resultCodec = _schema.scalar("Int16", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Integer lawspecCollectionsSaturatingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate407(symbols, argument0);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsSaturatingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate408(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Byte lawspecCollectionsSaturatingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate409(symbols, argument0);
-      var resultCodec = _schema.scalar("Int8", 64, java.lang.Byte.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsSaturatingIntSize(
@@ -1282,34 +434,12 @@ public final class Model {
 
   public static java.lang.Integer lawspecCollectionsSaturatingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate411(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt16", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsSaturatingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate412(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt32", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.math.BigInteger lawspecCollectionsSaturatingUInt64(
@@ -1330,18 +460,7 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsSaturatingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate414(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt8", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsS" + "aturatingUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsSaturatingUIntPtr(
@@ -1380,66 +499,22 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsWrappingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate417(symbols, argument0);
-      var resultCodec = _schema.scalar("Int16", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Integer lawspecCollectionsWrappingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate418(symbols, argument0);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsWrappingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate419(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Byte lawspecCollectionsWrappingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate420(symbols, argument0);
-      var resultCodec = _schema.scalar("Int8", 64, java.lang.Byte.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsWrappingIntSize(
@@ -1461,34 +536,12 @@ public final class Model {
 
   public static java.lang.Integer lawspecCollectionsWrappingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate422(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt16", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsWrappingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate423(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt32", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.math.BigInteger lawspecCollectionsWrappingUInt64(
@@ -1509,18 +562,7 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsWrappingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate425(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt8", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspecCollectionsW" + "rappingUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsWrappingUIntPtr(
@@ -1558,2934 +600,717 @@ public final class Model {
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
-      lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate428(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValDeleteItems_62318b0a9a214051: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate429(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValDeleteItems_ad1c27c4ed8864c5: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.Long, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.lang.Long> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate430(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValDelete_95f14dd183eea025: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
-      lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate431(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValDelete_d7a338e61b94bc91: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
-      lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
-          Map<String, Object> symbols, java.util.Map<java.lang.String, lawspec.data.Group> value0) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate432(symbols, argument0);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValEntries_668241931cc153f4: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          java.lang.String>>> lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_65(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<lawspec.data.TopicPartition>>>
-      lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
-          Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value0) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate433(symbols, argument0);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValEntries_6ea9a99b05e74c: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_66(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long, java.lang.Long> lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.Map<java.lang.Long, java.lang.Long> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_67(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          java.util.List<java.lang.String>> lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_68(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
-      lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
-          Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate434(symbols, argument0);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValEntries_df543c4156f9821a: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate435(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_18760777c36ef587: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate436(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_201f93149738fc4f: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>>
-      lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate437(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_224702891e6ebfba: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>>
-      lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate438(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_28070fe12955af99: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
-      lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate439(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_30e2507dcc3ef9ac: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate440(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_4bb0a47f584a2b9e: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  lawspec.data.Group>> lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
+      Map<String, Object> symbols, java.util.Map<java.lang.String, lawspec.data.Group> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_69(lawspec.runtime.LawSpecTyped.fromNative54(value0)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
-      lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate441(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_85bb2eea042e5fe3: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          lawspec.data.TopicPartition>>> lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
+      Map<String, Object> symbols,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_70(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>
-      lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate442(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_cbe112dc9dd1eb10: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          java.lang.String>>> lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
+      Map<String, Object> symbols,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_71(lawspec.runtime.LawSpecTyped.fromNative52(value0)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>>
-      lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate443(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_dd3ea08b63484ff8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_72(lawspec.runtime.LawSpecTyped.fromNative50(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<lawspec.data.TopicPartition>>>
-      lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate444(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValFromItems_ead6d6bde1a20a26: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<java.lang.String>
-      lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate445(symbols, argument0);
-      var resultCodec =
-          _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValKeysItems_e233e49033adca72: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<java.lang.String>
-      lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
-          Map<String, Object> symbols,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate446(symbols, argument0);
-      var resultCodec =
-          _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValKeys_c7c332043746df98: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.BatchMeta>>
-      lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate447(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_136cc6772b4e992f: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate448(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_5756b26180726581: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<java.lang.String>>
-      lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate449(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_69280184901ea585: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.TopicPartition>>
-      lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate450(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_82603a5935440f75: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry>
-      lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate451(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_8c8e1453bfc42ee5: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate452(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_9428a088248757a3: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
-          Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate453(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_b5b730fd09d3f4b3: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate454(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookupItems_ecc6f3f41725375: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group>
-      lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate455(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_ee46f4f96abfdf11: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog>
-      lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate456(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValLookupItems_f23b5066cffbd6eb: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<java.lang.String>>
-      lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate457(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_61e51068439aa457: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.BatchMeta>>
-      lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate458(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_65f44f3855baf0a5: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog>
-      lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate459(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_7acdaa8dcd255941: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, java.lang.Long> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate460(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_a6a374938d1c1ef1: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.lang.Long> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate461(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_d32eccc04e0ce84b: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
-          Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate462(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_d45d335232ddb9f5: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry>
-      lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate463(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_e75784f293b348fb: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>
-      lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.lang.Integer> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int32", 64, java.lang.Integer.class),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate464(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_ed82ee3bc3ed7c07: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<java.util.List<lawspec.data.TopicPartition>>
-      lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate465(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_f0a5427404f6c2eb: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group>
-      lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.Map<java.lang.String, lawspec.data.Group> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate466(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValLookup_f1a9f8275360594f: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate467(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_2bb044c13a34edfc: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, lawspec.data.Group>
-      lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate468(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_5ce58c09d80ccd54: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>
-      lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate469(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_a0c1d9feb5051d04: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>
-      lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate470(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_a4eebf20bfcd02b4: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate471(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_c9f1a347a852b1c2: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
-      lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
-          Map<String, Object> symbols,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate472(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_ca750953e04bcf02: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.String, java.lang.Integer>
-      lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate473(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int32", 64, java.lang.Integer.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_dbc2234a1277c15e: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.Long, lawspec.data.ProducerEntry>
-      lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate474(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_e2ff2d4e29c6936a: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<java.lang.Long, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate475(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_e41901007f8d5eea: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.Map<lawspec.data.GroupPartition, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate476(symbols, argument0);
-      var resultCodec =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValOf_ec3a06fbbd989d48: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate477(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_1a60d73f2ea7655c: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>>
-      lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.ProducerEntry value1,
-          java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate478(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_1d4fcedc9b0136e2: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_73(lawspec.runtime.LawSpecTyped.fromNative57(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>>
-      lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.BatchMeta> value1,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate479(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_2a3018cf45ad1ad9: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>>
-      lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate480(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int32", 64, java.lang.Integer.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_4b9848f70e8b7f53: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate481(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_4c71dc98d5546e58: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.lang.Integer>> lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_74(lawspec.runtime.LawSpecTyped.fromNative58(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<lawspec.data.TopicPartition>>>
-      lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.TopicPartition> value1,
-          java.util.List<
-                  lawspec.data.Entry<
-                          java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate482(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_565019ca06de701f: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>>
-      lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
-          Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.lang.Long value1,
-          java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value2) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate483(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_854f1183117f06f5: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>>
-      lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.Group value1,
-          java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate484(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_9bdf97a44332ea1: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  lawspec.data.ProducerEntry>> lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0,
+      java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_75(lawspec.runtime.LawSpecTyped.fromNative59(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>>
-      lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.List<
-                  lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate485(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_aacdaaddac214c4: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.data.Entry<
+                  java.lang.String,
+                  lawspec.data.Group>> lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_76(lawspec.runtime.LawSpecTyped.fromNative53(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)));
   }
 
   public static java.util.List<
-          lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>
-      lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.PartitionLog value1,
+          lawspec.data.Entry<
+                  lawspec.data.GroupPartition,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0,
+      java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_77(lawspec.runtime.LawSpecTyped.fromNative60(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          java.lang.String>>> lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_79(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  lawspec.data.TopicPartition,
+                  lawspec.data.PartitionLog>> lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0,
+      java.util.List<
+              lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_80(lawspec.runtime.LawSpecTyped.fromNative62(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  java.util.List<
+                          lawspec.data.BatchMeta>>> lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0,
+      java.util.List<
+              lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_81(lawspec.runtime.LawSpecTyped.fromNative63(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          lawspec.data.TopicPartition>>> lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<
+                      java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0,
+      java.util.List<
+              lawspec.data.Entry<
+                      java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_82(lawspec.runtime.LawSpecTyped.fromNative55(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)));
+  }
+
+  public static java.util.List<
+          java.lang.String> lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_84(lawspec.runtime.LawSpecTyped.fromNative49(value0)));
+  }
+
+  public static java.util.List<
+          java.lang.String> lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
+      Map<String, Object> symbols,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_85(lawspec.runtime.LawSpecTyped.fromNative52(value0)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.util.List<
-                  lawspec.data.Entry<
-                          lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value2) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate486(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPutItems_ee57bfced88cae9b: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+                  lawspec.data.BatchMeta>> lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<
+              lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_86(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)));
   }
 
-  public static java.util.Map<java.lang.String, lawspec.data.Group>
-      lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.Group value1,
-          java.util.Map<java.lang.String, lawspec.data.Group> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate487(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_64ef6963a054fec9: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_88(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)));
   }
 
-  public static java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>
-      lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
-          Map<String, Object> symbols,
-          lawspec.data.TopicPartition value0,
-          lawspec.data.PartitionLog value1,
-          java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value2) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate488(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_6a32d437b06cf1fb: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.util.List<
+                  java.lang.String>> lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_89(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
   }
 
-  public static java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>
-      lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.util.List<lawspec.data.BatchMeta> value1,
-          java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate489(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_84321765782615b9: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.util.List<
+                  lawspec.data.TopicPartition>> lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<
+              lawspec.data.Entry<
+                      java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_90(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.util.Map<java.lang.String, java.lang.Long> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate490(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_a0581d6dd36c2e58: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.ProducerEntry> lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_91(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.lang.Integer>
-      lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Integer value1,
-          java.util.Map<java.lang.String, java.lang.Integer> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int32", 64, java.lang.Integer.class),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate491(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.scalar("Int32", 64, java.lang.Integer.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_a2a3515700f0a6f: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Integer> lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_92(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)));
   }
 
-  public static java.util.Map<lawspec.data.GroupPartition, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
-          Map<String, Object> symbols,
-          lawspec.data.GroupPartition value0,
-          java.lang.Long value1,
-          java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value2) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate492(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              lawspec.runtime.LawSpecDataCodecs.groupPartitionCodec(_schema, 64, symbols),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_cab6769a52b0163d: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
+      Map<String, Object> symbols,
+      lawspec.data.GroupPartition value0,
+      java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_93(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)));
   }
 
-  public static java.util.Map<java.lang.Long, lawspec.data.ProducerEntry>
-      lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          lawspec.data.ProducerEntry value1,
-          java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate493(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_d00f0719b7ec97ee: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_95(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<java.lang.String>>
-      lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1,
-          java.util.Map<java.lang.String, java.util.List<java.lang.String>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate494(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_d378e301aa895004: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.Group> lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_96(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)));
   }
 
-  public static java.util.Map<java.lang.Long, java.lang.Long>
-      lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
-          Map<String, Object> symbols,
-          java.lang.Long value0,
-          java.lang.Long value1,
-          java.util.Map<java.lang.Long, java.lang.Long> value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate495(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_d4f4392b8878a23c: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.PartitionLog> lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
+      Map<String, Object> symbols,
+      lawspec.data.TopicPartition value0,
+      java.util.List<
+              lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_97(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)));
   }
 
-  public static java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>>
-      lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<lawspec.data.TopicPartition> value1,
-          java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate496(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValPut_ee3ccd7601ddf107: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.util.List<java.lang.String>> lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_98(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)));
   }
 
-  public static java.util.List<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
-          Map<String, Object> symbols,
-          java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Int64", 64, java.lang.Long.class),
-                  _schema.scalar("Int64", 64, java.lang.Long.class)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate497(symbols, argument0);
-      var resultCodec =
-          _schema.list(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl"
-              + "ectionsKeyValValuesItems_6f7cc84ccef252ae: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.util.List<
+                  lawspec.data.BatchMeta>> lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_99(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative72(value1)));
   }
 
-  public static java.util.List<java.lang.Long>
-      lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
-          Map<String, Object> symbols, java.util.Map<java.lang.Long, java.lang.Long> value0) {
-    try {
-      var codec0 =
-          _schema.keyVal(
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate498(symbols, argument0);
-      var resultCodec =
-          _schema.list(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsKeyValValues_152cb3cfa5a69daa: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.PartitionLog> lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
+      Map<String, Object> symbols,
+      lawspec.data.TopicPartition value0,
+      java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_100(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative73(value1)));
   }
 
-  public static java.util.List<java.lang.String>
-      lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
-          Map<String, Object> symbols,
-          java.util.List<java.lang.String> value0,
-          java.util.List<java.lang.String> value1) {
-    try {
-      var codec0 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate499(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsSetFromItems_25b2070f526ff089: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.Map<java.lang.Long, java.lang.Long> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_102(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)));
   }
 
-  public static java.util.List<java.lang.String>
-      lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.util.List<java.lang.String> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate500(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsSetInsertItems_a3dc35e775ac9977: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, java.lang.Long> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_104(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative76(value1)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
+      Map<String, Object> symbols,
+      lawspec.data.GroupPartition value0,
+      java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_105(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative77(value1)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.ProducerEntry> lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_106(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative78(value1)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.lang.Integer> lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, java.lang.Integer> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_107(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative79(value1)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          java.util.List<
+                  lawspec.data.TopicPartition>> lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_108(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)));
+  }
+
+  public static lawspec.runtime.LawSpecRuntime.Maybe<
+          lawspec.data.Group> lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.Map<java.lang.String, lawspec.data.Group> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_109(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative54(value1)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          java.util.List<
+                  lawspec.data.TopicPartition>> lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<
+                      java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_110(lawspec.runtime.LawSpecTyped.fromNative55(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.String, lawspec.data.Group> lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_111(lawspec.runtime.LawSpecTyped.fromNative53(value0)));
+  }
+
+  public static java.util.Map<
+          lawspec.data.TopicPartition,
+          lawspec.data.PartitionLog> lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_113(lawspec.runtime.LawSpecTyped.fromNative62(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long,
+          java.util.List<
+                  lawspec.data.BatchMeta>> lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_114(lawspec.runtime.LawSpecTyped.fromNative63(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.String, java.lang.Long> lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_116(lawspec.runtime.LawSpecTyped.fromNative57(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          java.util.List<java.lang.String>> lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
+      Map<String, Object> symbols,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_117(lawspec.runtime.LawSpecTyped.fromNative49(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.String, java.lang.Integer> lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_118(lawspec.runtime.LawSpecTyped.fromNative58(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long,
+          lawspec.data.ProducerEntry> lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_119(lawspec.runtime.LawSpecTyped.fromNative59(value0)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long, java.lang.Long> lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_120(lawspec.runtime.LawSpecTyped.fromNative50(value0)));
+  }
+
+  public static java.util.Map<
+          lawspec.data.GroupPartition,
+          java.lang.Long> lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_121(lawspec.runtime.LawSpecTyped.fromNative60(value0)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.lang.Long value1,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_122(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative50(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  lawspec.data.ProducerEntry>> lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      lawspec.data.ProducerEntry value1,
+      java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_123(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative59(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.Long,
+                  java.util.List<
+                          lawspec.data.BatchMeta>>> lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<lawspec.data.BatchMeta> value1,
+      java.util.List<
+              lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_124(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative63(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.lang.Integer>> lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Integer value1,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_125(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative58(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Long value1,
+      java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_126(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative57(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          lawspec.data.TopicPartition>>> lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<lawspec.data.TopicPartition> value1,
+      java.util.List<
+              lawspec.data.Entry<
+                      java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_127(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative55(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  lawspec.data.GroupPartition,
+                  java.lang.Long>> lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
+      Map<String, Object> symbols,
+      lawspec.data.GroupPartition value0,
+      java.lang.Long value1,
+      java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_128(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative60(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  lawspec.data.Group>> lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      lawspec.data.Group value1,
+      java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_129(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative53(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  java.lang.String,
+                  java.util.List<
+                          java.lang.String>>> lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<java.lang.String> value1,
+      java.util.List<
+              lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_131(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative49(value2)));
+  }
+
+  public static java.util.List<
+          lawspec.data.Entry<
+                  lawspec.data.TopicPartition,
+                  lawspec.data.PartitionLog>> lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
+      Map<String, Object> symbols,
+      lawspec.data.TopicPartition value0,
+      lawspec.data.PartitionLog value1,
+      java.util.List<
+              lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_133(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative62(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          lawspec.data.Group> lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      lawspec.data.Group value1,
+      java.util.Map<java.lang.String, lawspec.data.Group> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_135(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative54(value2)));
+  }
+
+  public static java.util.Map<
+          lawspec.data.TopicPartition,
+          lawspec.data.PartitionLog> lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
+      Map<String, Object> symbols,
+      lawspec.data.TopicPartition value0,
+      lawspec.data.PartitionLog value1,
+      java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_136(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative73(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long,
+          java.util.List<
+                  lawspec.data.BatchMeta>> lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.util.List<lawspec.data.BatchMeta> value1,
+      java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_137(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative72(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.String, java.lang.Long> lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Long value1,
+      java.util.Map<java.lang.String, java.lang.Long> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_139(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative76(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.String, java.lang.Integer> lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Integer value1,
+      java.util.Map<java.lang.String, java.lang.Integer> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_140(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative79(value2)));
+  }
+
+  public static java.util.Map<
+          lawspec.data.GroupPartition,
+          java.lang.Long> lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
+      Map<String, Object> symbols,
+      lawspec.data.GroupPartition value0,
+      java.lang.Long value1,
+      java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_141(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative77(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long,
+          lawspec.data.ProducerEntry> lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      lawspec.data.ProducerEntry value1,
+      java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_142(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative78(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          java.util.List<java.lang.String>> lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<java.lang.String> value1,
+      java.util.Map<java.lang.String, java.util.List<java.lang.String>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_143(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative52(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.Long, java.lang.Long> lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
+      Map<String, Object> symbols,
+      java.lang.Long value0,
+      java.lang.Long value1,
+      java.util.Map<java.lang.Long, java.lang.Long> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_144(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative51(value2)));
+  }
+
+  public static java.util.Map<
+          java.lang.String,
+          java.util.List<
+                  lawspec.data.TopicPartition>> lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<lawspec.data.TopicPartition> value1,
+      java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
+    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_145(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)));
+  }
+
+  public static java.util.List<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
+      Map<String, Object> symbols,
+      java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_146(lawspec.runtime.LawSpecTyped.fromNative50(value0)));
+  }
+
+  public static java.util.List<
+          java.lang.Long> lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
+      Map<String, Object> symbols, java.util.Map<java.lang.Long, java.lang.Long> value0) {
+    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_147(lawspec.runtime.LawSpecTyped.fromNative51(value0)));
+  }
+
+  public static java.util.List<
+          java.lang.String> lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
+      Map<String, Object> symbols,
+      java.util.List<java.lang.String> value0,
+      java.util.List<java.lang.String> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_149(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
+  }
+
+  public static java.util.List<
+          java.lang.String> lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.util.List<java.lang.String> value1) {
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_151(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
   }
 
   public static java.util.Set<java.lang.String> lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
       Map<String, Object> symbols, java.util.List<java.lang.String> value0) {
-    try {
-      var codec0 = _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate501(symbols, argument0);
-      var resultCodec =
-          _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsSetOf_83f32212ffd7f646: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_156(lawspec.runtime.LawSpecTyped.fromNative17(value0)));
   }
 
   public static java.util.Set<java.lang.String> lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
       Map<String, Object> symbols,
       java.util.Set<java.lang.String> value0,
       java.util.Set<java.lang.String> value1) {
-    try {
-      var codec0 = _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate502(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context =
-          "lawtwin.kafka.model::lawspec_lawspecColl" + "ectionsSetUnion_f2139edefc699bed: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_161(lawspec.runtime.LawSpecTyped.fromNative86(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      leaveGroup(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate503(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::leaveGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> leaveGroup(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.String value1,
+      lawspec.data.BrokerState value2) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_195(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> listOffsets(
@@ -4494,88 +1319,24 @@ public final class Model {
       lawspec.data.OffsetSpec value1,
       lawspec.data.IsolationLevel value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.offsetSpecCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate504(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::listOffsets: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_196(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative10(value1), lawspec.runtime.LawSpecTyped.fromNative9(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static lawspec.data.PartitionLog logOf(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate505(symbols, argument0, argument1);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::logOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_197(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.lang.Long max64(
       Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate506(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::max64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_198(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Integer maxPartitions(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    try {
-      var codec0 = _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate507(symbols, argument0);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::maxPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_199(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static java.util.List<lawspec.data.MemberAssignment> memberViews(
@@ -4583,127 +1344,32 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(
-                      lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                      64,
-                      symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate508(symbols, argument0);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.memberAssignmentCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::memberViews: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative88(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_200(lawspec.runtime.LawSpecTyped.fromNative55(value0)));
   }
 
   public static lawspec.data.Pair<
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>, lawspec.data.BrokerState>
-      metadata(
-          Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate509(symbols, argument0, argument1);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::metadata: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>,
+          lawspec.data.BrokerState> metadata(
+      Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_201(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.lang.Long min64(
       Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate510(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::min64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_202(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Long minOf(
       Map<String, Object> symbols, java.util.List<java.lang.Long> value0, java.lang.Long value1) {
-    try {
-      var codec0 = _schema.list(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate511(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::minOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_203(lawspec.runtime.LawSpecTyped.fromNative84(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
-  public static lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState>
-      newProducer(
-          Map<String, Object> symbols,
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
-          lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.maybe(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate512(symbols, argument0, argument1);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              lawspec.runtime.LawSpecDataCodecs.producerIdAndEpochCodec(_schema, 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::newProducer: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState> newProducer(
+      Map<String, Object> symbols,
+      lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
+      lawspec.data.BrokerState value1) {
+    return lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_204(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.lang.Long nextFetchOffset(
@@ -4712,170 +1378,43 @@ public final class Model {
       java.lang.Long value1,
       java.util.List<lawspec.data.FetchedRecord> value2,
       java.util.List<lawspec.data.FetchedRecord> value3) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.fetchedRecordCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.fetchedRecordCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate513(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::nextFetchOffset: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
-  }
-
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      offsetCommit(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          java.util.List<lawspec.data.OffsetEntry> value3,
-          lawspec.data.BrokerState value4) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument3 = codec3.encode(value3);
-      var codec4 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate514(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::offsetCommit: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_205(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative90(value2), lawspec.runtime.LawSpecTyped.fromNative90(value3)));
   }
 
   public static lawspec.data.Pair<
-          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>, lawspec.data.BrokerState>
-      offsetFetch(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          lawspec.data.TopicPartition value1,
-          lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate515(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::offsetFetch: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> offsetCommit(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.String value1,
+      java.lang.Integer value2,
+      java.util.List<lawspec.data.OffsetEntry> value3,
+      lawspec.data.BrokerState value4) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_206(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative15(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+  }
+
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long>,
+          lawspec.data.BrokerState> offsetFetch(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      lawspec.data.TopicPartition value1,
+      lawspec.data.BrokerState value2) {
+    return lawspec.runtime.LawSpecTyped.toNative24(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_207(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> offsetPartitions(
       Map<String, Object> symbols, java.util.List<lawspec.data.OffsetEntry> value0) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate516(symbols, argument0);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::offsetPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_208(lawspec.runtime.LawSpecTyped.fromNative15(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> partitionCountOf(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate517(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::partitionCountOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_209(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.util.List<java.lang.Integer> partitionsBelow(
       Map<String, Object> symbols, java.lang.Integer value0) {
-    try {
-      var codec0 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate518(symbols, argument0);
-      var resultCodec =
-          _schema.list(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::partitionsBelow: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_210(lawspec.runtime.LawSpecTyped.fromNative2(value0)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset> pendingFor(
@@ -4883,36 +1422,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<lawspec.data.OffsetEntry> value1,
       java.util.List<lawspec.data.PendingOffset> value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate519(
-              symbols, argument0, argument1, argument2);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::pendingFor: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_211(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative95(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> produce(
@@ -4921,38 +1431,7 @@ public final class Model {
       lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
       java.util.List<lawspec.data.Record> value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.producerTagCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.recordCodec(_schema, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate520(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::produce: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_212(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative6(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> produceTagged(
@@ -4962,36 +1441,7 @@ public final class Model {
       java.util.List<lawspec.data.Record> value2,
       lawspec.data.PartitionLog value3,
       lawspec.data.BrokerState value4) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerTagCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.recordCodec(_schema, 64, symbols), 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var codec4 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate521(
-              symbols, argument0, argument1, argument2, argument3, argument4);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.scalar("Int64", 64, java.lang.Long.class),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::produceTagged: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_213(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
   }
 
   public static lawspec.data.BrokerState putGroup(
@@ -4999,24 +1449,7 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.Group value1,
       lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate522(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::putGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_214(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static lawspec.data.BrokerState putLog(
@@ -5024,24 +1457,7 @@ public final class Model {
       lawspec.data.TopicPartition value0,
       lawspec.data.PartitionLog value1,
       lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate523(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::putLog: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_215(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static lawspec.data.BrokerState putProducer(
@@ -5049,24 +1465,7 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.ProducerEntry value1,
       lawspec.data.BrokerState value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.producerEntryCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate524(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::putProducer: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_216(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
   }
 
   public static java.util.List<lawspec.data.FetchedRecord> readable(
@@ -5077,61 +1476,12 @@ public final class Model {
       java.lang.Boolean value3,
       java.util.List<lawspec.data.AbortedTxn> value4,
       java.util.List<lawspec.data.FetchedRecord> value5) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.logEntryCodec(_schema, 64, symbols), 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument3 = codec3.encode(value3);
-      var codec4 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.abortedTxnCodec(_schema, 64, symbols), 64, symbols);
-      var argument4 = codec4.encode(value4);
-      var codec5 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.fetchedRecordCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument5 = codec5.encode(value5);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate525(
-              symbols, argument0, argument1, argument2, argument3, argument4, argument5);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.fetchedRecordCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::readable: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative90(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_217(lawspec.runtime.LawSpecTyped.fromNative94(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative97(value4), lawspec.runtime.LawSpecTyped.fromNative90(value5)));
   }
 
   public static lawspec.data.Group rebalance(
       Map<String, Object> symbols, lawspec.data.Group value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate526(symbols, argument0, argument1);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::rebalance: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_218(lawspec.runtime.LawSpecTyped.fromNative82(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static java.util.Map<java.lang.String, lawspec.data.Group> rebalanceGroups(
@@ -5140,64 +1490,12 @@ public final class Model {
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1,
       lawspec.data.BrokerState value2,
       java.util.Map<java.lang.String, lawspec.data.Group> value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate527(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          _schema.keyVal(
-              _schema.scalar("Text", 64, java.lang.String.class),
-              lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::rebalanceGroups: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_219(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative54(value3)));
   }
 
   public static lawspec.data.BrokerState rebalanceTopic(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate528(symbols, argument0, argument1);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::rebalanceTopic: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_220(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
   }
 
   public static lawspec.data.PartitionLog rememberBatch(
@@ -5205,88 +1503,21 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.BatchMeta value1,
       lawspec.data.PartitionLog value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.batchMetaCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate529(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::rememberBatch: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_221(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset> reversePending(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.PendingOffset> value0,
       java.util.List<lawspec.data.PendingOffset> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate530(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.pendingOffsetCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::reversePending: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_222(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative95(value1)));
   }
 
   public static java.util.Set<java.lang.String> subscribedTopics(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
       java.util.Set<java.lang.String> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate531(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.set(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::subscribedTopics: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_223(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)));
   }
 
   public static java.util.List<java.lang.String> subscribersOf(
@@ -5294,229 +1525,60 @@ public final class Model {
       java.lang.String value0,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.entryCodec(
-                  _schema,
-                  64,
-                  symbols,
-                  _schema.scalar("Text", 64, java.lang.String.class),
-                  _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols)),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate532(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(_schema.scalar("Text", 64, java.lang.String.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::subscribersOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_224(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
   }
 
   public static java.lang.Boolean subscribesTo(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.Group value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.groupCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate533(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::subscribesTo: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_225(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1)));
   }
 
   public static lawspec.data.Pair<
-          java.util.List<lawspec.data.TopicPartition>, lawspec.data.BrokerState>
-      syncGroup(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.String value1,
-          java.lang.Integer value2,
-          lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate534(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.list(
-                  lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-                  64,
-                  symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::syncGroup: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+          java.util.List<lawspec.data.TopicPartition>, lawspec.data.BrokerState> syncGroup(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.String value1,
+      java.lang.Integer value2,
+      lawspec.data.BrokerState value3) {
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_226(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> topicPartitions(
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<java.lang.Integer> value1) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.list(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate535(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::topicPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.topicPartitions_259(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1)));
   }
 
   public static java.lang.Boolean txnHasPartition(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.TxnState value1) {
-    try {
-      var codec0 = lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 = lawspec.runtime.LawSpecDataCodecs.txnStateCodec(_schema, 64, symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate536(symbols, argument0, argument1);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::txnHasPartition: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_227(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1)));
   }
 
-  public static lawspec.data.Pair<lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState>
-      txnOffsetCommit(
-          Map<String, Object> symbols,
-          java.lang.String value0,
-          java.lang.Long value1,
-          java.lang.Short value2,
-          java.lang.String value3,
-          java.util.List<lawspec.data.OffsetEntry> value4,
-          lawspec.data.BrokerState value5) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = _schema.scalar("Int16", 64, java.lang.Short.class);
-      var argument2 = codec2.encode(value2);
-      var codec3 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument3 = codec3.encode(value3);
-      var codec4 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument4 = codec4.encode(value4);
-      var codec5 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument5 = codec5.encode(value5);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate537(
-              symbols, argument0, argument1, argument2, argument3, argument4, argument5);
-      var resultCodec =
-          lawspec.runtime.LawSpecDataCodecs.pairCodec(
-              _schema,
-              64,
-              symbols,
-              _schema.supported(new lawspec.runtime.LawSpecSchema.Named("Unit"), 64, symbols),
-              lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols));
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::txnOffsetCommit: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+  public static lawspec.data.Pair<
+          lawspec.runtime.LawSpecRuntime.Value, lawspec.data.BrokerState> txnOffsetCommit(
+      Map<String, Object> symbols,
+      java.lang.String value0,
+      java.lang.Long value1,
+      java.lang.Short value2,
+      java.lang.String value3,
+      java.util.List<lawspec.data.OffsetEntry> value4,
+      lawspec.data.BrokerState value5) {
+    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_228(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative1(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4), lawspec.runtime.LawSpecTyped.fromNative22(value5)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> unionPartitions(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.TopicPartition> value0,
       java.util.List<lawspec.data.TopicPartition> value1) {
-    try {
-      var codec0 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument0 = codec0.encode(value0);
-      var codec1 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument1 = codec1.encode(value1);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate538(symbols, argument0, argument1);
-      var resultCodec =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::unionPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_229(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)));
   }
 
   public static java.lang.Boolean validTopicName(
       Map<String, Object> symbols, java.lang.String value0) {
-    try {
-      var codec0 = _schema.scalar("Text", 64, java.lang.String.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate539(symbols, argument0);
-      var resultCodec = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::validTopicName: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_230(lawspec.runtime.LawSpecTyped.fromNative1(value0)));
   }
 
   public static lawspec.data.PartitionLog writeMarker(
@@ -5524,24 +1586,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Boolean value1,
       lawspec.data.PartitionLog value2) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      var argument2 = codec2.encode(value2);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate540(
-              symbols, argument0, argument1, argument2);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.partitionLogCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::writeMarker: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_231(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)));
   }
 
   public static lawspec.data.BrokerState writeMarkers(
@@ -5550,29 +1595,6 @@ public final class Model {
       java.lang.Boolean value1,
       java.util.List<lawspec.data.TopicPartition> value2,
       lawspec.data.BrokerState value3) {
-    try {
-      var codec0 = _schema.scalar("Int64", 64, java.lang.Long.class);
-      var argument0 = codec0.encode(value0);
-      var codec1 = _schema.scalar("Bool", 64, java.lang.Boolean.class);
-      var argument1 = codec1.encode(value1);
-      var codec2 =
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols);
-      var argument2 = codec2.encode(value2);
-      var codec3 = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      var argument3 = codec3.encode(value3);
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate541(
-              symbols, argument0, argument1, argument2, argument3);
-      var resultCodec = lawspec.runtime.LawSpecDataCodecs.brokerStateCodec(_schema, 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka.model::writeMarkers: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_232(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative14(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
   }
 }

@@ -80,9 +80,9 @@ fn call_1(ctx: &mut ls::Context, args: Vec<ls::Value>) -> ls::Result<ls::Value> 
 // for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
 // (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField81x0 _match2__0__lawspecField81x1
-// _match2__0__lawspecField81x2 _match2__0__lawspecField81x3 _match2__0__lawspecField81x4
-// _match2__0__lawspecField81x5 -> _match2__0__lawspecField81x0 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField69x0 _match2__0__lawspecField69x1
+// _match2__0__lawspecField69x2 _match2__0__lawspecField69x3 _match2__0__lawspecField69x4
+// _match2__0__lawspecField69x5 -> _match2__0__lawspecField69x0 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> (attempt (getPetById (_match2__1__key)) ==
 // Either::Right(_match1__1__created)) } } = true
 fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
@@ -208,11 +208,11 @@ fn law_0(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                         "ch1__0__failure -> true; Either::Right _match1",
                         "__1__created -> match (match (_match1__1__crea",
                         "ted) { lawtwin.petstore.model::type::Pet::Pet ",
-                        "_match2__0__lawspecField81x0 _match2__0__lawsp",
-                        "ecField81x1 _match2__0__lawspecField81x2 _matc",
-                        "h2__0__lawspecField81x3 _match2__0__lawspecFie",
-                        "ld81x4 _match2__0__lawspecField81x5 -> _match2",
-                        "__0__lawspecField81x0 }) { Maybe::Nothing  -> ",
+                        "_match2__0__lawspecField69x0 _match2__0__lawsp",
+                        "ecField69x1 _match2__0__lawspecField69x2 _matc",
+                        "h2__0__lawspecField69x3 _match2__0__lawspecFie",
+                        "ld69x4 _match2__0__lawspecField69x5 -> _match2",
+                        "__0__lawspecField69x0 }) { Maybe::Nothing  -> ",
                         "false; Maybe::Just _match2__1__key -> (attempt",
                         " (getPetById (_match2__1__key)) == Either::Rig",
                         "ht(_match1__1__created)) } } = true",
@@ -1067,7 +1067,7 @@ fn run_0() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -1167,9 +1167,9 @@ fn search_case_0(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
 // (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField81x0 _match2__0__lawspecField81x1
-// _match2__0__lawspecField81x2 _match2__0__lawspecField81x3 _match2__0__lawspecField81x4
-// _match2__0__lawspecField81x5 -> _match2__0__lawspecField81x0 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField69x0 _match2__0__lawspecField69x1
+// _match2__0__lawspecField69x2 _match2__0__lawspecField69x3 _match2__0__lawspecField69x4
+// _match2__0__lawspecField69x5 -> _match2__0__lawspecField69x0 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> (attempt (getPetById (_match2__1__key)) ==
 // Either::Right(_match1__1__created)) } } = true
 fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
@@ -1288,11 +1288,11 @@ fn law_1(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                     "match1__0__failure -> true; Either::Right _mat",
                     "ch1__1__created -> match (match (_match1__1__c",
                     "reated) { lawtwin.petstore.model::type::Pet::P",
-                    "et _match2__0__lawspecField81x0 _match2__0__la",
-                    "wspecField81x1 _match2__0__lawspecField81x2 _m",
-                    "atch2__0__lawspecField81x3 _match2__0__lawspec",
-                    "Field81x4 _match2__0__lawspecField81x5 -> _mat",
-                    "ch2__0__lawspecField81x0 }) { Maybe::Nothing  ",
+                    "et _match2__0__lawspecField69x0 _match2__0__la",
+                    "wspecField69x1 _match2__0__lawspecField69x2 _m",
+                    "atch2__0__lawspecField69x3 _match2__0__lawspec",
+                    "Field69x4 _match2__0__lawspecField69x5 -> _mat",
+                    "ch2__0__lawspecField69x0 }) { Maybe::Nothing  ",
                     "-> false; Maybe::Just _match2__1__key -> (atte",
                     "mpt (getPetById (_match2__1__key)) == Either::",
                     "Right(_match1__1__created)) } } = true",
@@ -2132,7 +2132,7 @@ fn run_1() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -2232,9 +2232,9 @@ fn search_case_1(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
 // (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField93x0 _match2__0__lawspecField93x1
-// _match2__0__lawspecField93x2 _match2__0__lawspecField93x3 _match2__0__lawspecField93x4
-// _match2__0__lawspecField93x5 -> _match2__0__lawspecField93x0 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField81x0 _match2__0__lawspecField81x1
+// _match2__0__lawspecField81x2 _match2__0__lawspecField81x3 _match2__0__lawspecField81x4
+// _match2__0__lawspecField81x5 -> _match2__0__lawspecField81x0 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> let _let3__gone = attempt (deletePet (_match2__1__key)
 // (Maybe::Nothing())) in (attempt (getPetById (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -2395,11 +2395,11 @@ fn law_2(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                         "atch1__0__failure -> true; Either::Right _matc",
                         "h1__1__created -> match (match (_match1__1__cr",
                         "eated) { lawtwin.petstore.model::type::Pet::Pe",
-                        "t _match2__0__lawspecField93x0 _match2__0__law",
-                        "specField93x1 _match2__0__lawspecField93x2 _ma",
-                        "tch2__0__lawspecField93x3 _match2__0__lawspecF",
-                        "ield93x4 _match2__0__lawspecField93x5 -> _matc",
-                        "h2__0__lawspecField93x0 }) { Maybe::Nothing  -",
+                        "t _match2__0__lawspecField81x0 _match2__0__law",
+                        "specField81x1 _match2__0__lawspecField81x2 _ma",
+                        "tch2__0__lawspecField81x3 _match2__0__lawspecF",
+                        "ield81x4 _match2__0__lawspecField81x5 -> _matc",
+                        "h2__0__lawspecField81x0 }) { Maybe::Nothing  -",
                         "> false; Maybe::Just _match2__1__key -> let _l",
                         "et3__gone = attempt (deletePet (_match2__1__ke",
                         "y) (Maybe::Nothing())) in (attempt (getPetById",
@@ -3257,7 +3257,7 @@ fn run_2() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -3357,9 +3357,9 @@ fn search_case_2(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // for all (body :: lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt
 // (addPet (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField93x0 _match2__0__lawspecField93x1
-// _match2__0__lawspecField93x2 _match2__0__lawspecField93x3 _match2__0__lawspecField93x4
-// _match2__0__lawspecField93x5 -> _match2__0__lawspecField93x0 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::Pet::Pet _match2__0__lawspecField81x0 _match2__0__lawspecField81x1
+// _match2__0__lawspecField81x2 _match2__0__lawspecField81x3 _match2__0__lawspecField81x4
+// _match2__0__lawspecField81x5 -> _match2__0__lawspecField81x0 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> let _let3__gone = attempt (deletePet (_match2__1__key)
 // (Maybe::Nothing())) in (attempt (getPetById (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -3509,11 +3509,11 @@ fn law_3(ctx: &mut ls::Context, input_0: ls::Value) -> ls::Result<()> {
                     " _match1__0__failure -> true; Either::Right _m",
                     "atch1__1__created -> match (match (_match1__1_",
                     "_created) { lawtwin.petstore.model::type::Pet:",
-                    ":Pet _match2__0__lawspecField93x0 _match2__0__",
-                    "lawspecField93x1 _match2__0__lawspecField93x2 ",
-                    "_match2__0__lawspecField93x3 _match2__0__lawsp",
-                    "ecField93x4 _match2__0__lawspecField93x5 -> _m",
-                    "atch2__0__lawspecField93x0 }) { Maybe::Nothing",
+                    ":Pet _match2__0__lawspecField81x0 _match2__0__",
+                    "lawspecField81x1 _match2__0__lawspecField81x2 ",
+                    "_match2__0__lawspecField81x3 _match2__0__lawsp",
+                    "ecField81x4 _match2__0__lawspecField81x5 -> _m",
+                    "atch2__0__lawspecField81x0 }) { Maybe::Nothing",
                     "  -> false; Maybe::Just _match2__1__key -> let",
                     " _let3__gone = attempt (deletePet (_match2__1_",
                     "_key) (Maybe::Nothing())) in (attempt (getPetB",
@@ -4359,7 +4359,7 @@ fn run_3() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -4463,15 +4463,15 @@ fn search_case_3(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt (addPet
 // (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right _match1__1__created ->
 // match (match (_match1__1__created) { lawtwin.petstore.model::type::Pet::Pet
-// _match2__0__lawspecField123x0 _match2__0__lawspecField123x1 _match2__0__lawspecField123x2
-// _match2__0__lawspecField123x3 _match2__0__lawspecField123x4 _match2__0__lawspecField123x5 ->
-// _match2__0__lawspecField123x0 }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> match
+// _match2__0__lawspecField101x0 _match2__0__lawspecField101x1 _match2__0__lawspecField101x2
+// _match2__0__lawspecField101x3 _match2__0__lawspecField101x4 _match2__0__lawspecField101x5 ->
+// _match2__0__lawspecField101x0 }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> match
 // (attempt (updatePet (match (_input1) { lawtwin.petstore.model::type::Pet::Pet
-// _match3__0__lawspecField159x0 _match3__0__lawspecField159x1 _match3__0__lawspecField159x2
-// _match3__0__lawspecField159x3 _match3__0__lawspecField159x4 _match3__0__lawspecField159x5 ->
+// _match3__0__lawspecField123x0 _match3__0__lawspecField123x1 _match3__0__lawspecField123x2
+// _match3__0__lawspecField123x3 _match3__0__lawspecField123x4 _match3__0__lawspecField123x5 ->
 // lawtwin.petstore.model::type::Pet::Pet(Maybe::Just(_match2__1__key),
-// _match3__0__lawspecField159x1, _match3__0__lawspecField159x2, _match3__0__lawspecField159x3,
-// _match3__0__lawspecField159x4, _match3__0__lawspecField159x5) }))) { Either::Left
+// _match3__0__lawspecField123x1, _match3__0__lawspecField123x2, _match3__0__lawspecField123x3,
+// _match3__0__lawspecField123x4, _match3__0__lawspecField123x5) }))) { Either::Left
 // _match3__0__failure -> true; Either::Right _match3__1__replaced -> (attempt (getPetById
 // (_match2__1__key)) == Either::Right(_match3__1__replaced)) } } } = true
 fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -4676,23 +4676,23 @@ fn law_4(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         "er::Left _match1__0__failure -> true; Either::",
                         "Right _match1__1__created -> match (match (_ma",
                         "tch1__1__created) { lawtwin.petstore.model::ty",
-                        "pe::Pet::Pet _match2__0__lawspecField123x0 _ma",
-                        "tch2__0__lawspecField123x1 _match2__0__lawspec",
-                        "Field123x2 _match2__0__lawspecField123x3 _matc",
-                        "h2__0__lawspecField123x4 _match2__0__lawspecFi",
-                        "eld123x5 -> _match2__0__lawspecField123x0 }) {",
+                        "pe::Pet::Pet _match2__0__lawspecField101x0 _ma",
+                        "tch2__0__lawspecField101x1 _match2__0__lawspec",
+                        "Field101x2 _match2__0__lawspecField101x3 _matc",
+                        "h2__0__lawspecField101x4 _match2__0__lawspecFi",
+                        "eld101x5 -> _match2__0__lawspecField101x0 }) {",
                         " Maybe::Nothing  -> false; Maybe::Just _match2",
                         "__1__key -> match (attempt (updatePet (match (",
                         "_input1) { lawtwin.petstore.model::type::Pet::",
-                        "Pet _match3__0__lawspecField159x0 _match3__0__",
-                        "lawspecField159x1 _match3__0__lawspecField159x",
-                        "2 _match3__0__lawspecField159x3 _match3__0__la",
-                        "wspecField159x4 _match3__0__lawspecField159x5 ",
+                        "Pet _match3__0__lawspecField123x0 _match3__0__",
+                        "lawspecField123x1 _match3__0__lawspecField123x",
+                        "2 _match3__0__lawspecField123x3 _match3__0__la",
+                        "wspecField123x4 _match3__0__lawspecField123x5 ",
                         "-> lawtwin.petstore.model::type::Pet::Pet(Mayb",
                         "e::Just(_match2__1__key), _match3__0__lawspecF",
-                        "ield159x1, _match3__0__lawspecField159x2, _mat",
-                        "ch3__0__lawspecField159x3, _match3__0__lawspec",
-                        "Field159x4, _match3__0__lawspecField159x5) }))",
+                        "ield123x1, _match3__0__lawspecField123x2, _mat",
+                        "ch3__0__lawspecField123x3, _match3__0__lawspec",
+                        "Field123x4, _match3__0__lawspecField123x5) }))",
                         ") { Either::Left _match3__0__failure -> true; ",
                         "Either::Right _match3__1__replaced -> (attempt",
                         " (getPetById (_match2__1__key)) == Either::Rig",
@@ -5945,7 +5945,7 @@ fn run_4() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -6351,7 +6351,7 @@ fn run_4() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -6488,15 +6488,15 @@ fn search_case_4(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // lawtwin.petstore.model::type::Pet) . let _let0__sent = _input0 in match (attempt (addPet
 // (_let0__sent))) { Either::Left _match1__0__failure -> true; Either::Right _match1__1__created ->
 // match (match (_match1__1__created) { lawtwin.petstore.model::type::Pet::Pet
-// _match2__0__lawspecField123x0 _match2__0__lawspecField123x1 _match2__0__lawspecField123x2
-// _match2__0__lawspecField123x3 _match2__0__lawspecField123x4 _match2__0__lawspecField123x5 ->
-// _match2__0__lawspecField123x0 }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> match
+// _match2__0__lawspecField101x0 _match2__0__lawspecField101x1 _match2__0__lawspecField101x2
+// _match2__0__lawspecField101x3 _match2__0__lawspecField101x4 _match2__0__lawspecField101x5 ->
+// _match2__0__lawspecField101x0 }) { Maybe::Nothing -> false; Maybe::Just _match2__1__key -> match
 // (attempt (updatePet (match (_input1) { lawtwin.petstore.model::type::Pet::Pet
-// _match3__0__lawspecField159x0 _match3__0__lawspecField159x1 _match3__0__lawspecField159x2
-// _match3__0__lawspecField159x3 _match3__0__lawspecField159x4 _match3__0__lawspecField159x5 ->
+// _match3__0__lawspecField123x0 _match3__0__lawspecField123x1 _match3__0__lawspecField123x2
+// _match3__0__lawspecField123x3 _match3__0__lawspecField123x4 _match3__0__lawspecField123x5 ->
 // lawtwin.petstore.model::type::Pet::Pet(Maybe::Just(_match2__1__key),
-// _match3__0__lawspecField159x1, _match3__0__lawspecField159x2, _match3__0__lawspecField159x3,
-// _match3__0__lawspecField159x4, _match3__0__lawspecField159x5) }))) { Either::Left
+// _match3__0__lawspecField123x1, _match3__0__lawspecField123x2, _match3__0__lawspecField123x3,
+// _match3__0__lawspecField123x4, _match3__0__lawspecField123x5) }))) { Either::Left
 // _match3__0__failure -> true; Either::Right _match3__1__replaced -> (attempt (getPetById
 // (_match2__1__key)) == Either::Right(_match3__1__replaced)) } } } = true
 fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -6694,23 +6694,23 @@ fn law_5(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     "ither::Left _match1__0__failure -> true; Eithe",
                     "r::Right _match1__1__created -> match (match (",
                     "_match1__1__created) { lawtwin.petstore.model:",
-                    ":type::Pet::Pet _match2__0__lawspecField123x0 ",
-                    "_match2__0__lawspecField123x1 _match2__0__laws",
-                    "pecField123x2 _match2__0__lawspecField123x3 _m",
-                    "atch2__0__lawspecField123x4 _match2__0__lawspe",
-                    "cField123x5 -> _match2__0__lawspecField123x0 }",
+                    ":type::Pet::Pet _match2__0__lawspecField101x0 ",
+                    "_match2__0__lawspecField101x1 _match2__0__laws",
+                    "pecField101x2 _match2__0__lawspecField101x3 _m",
+                    "atch2__0__lawspecField101x4 _match2__0__lawspe",
+                    "cField101x5 -> _match2__0__lawspecField101x0 }",
                     ") { Maybe::Nothing  -> false; Maybe::Just _mat",
                     "ch2__1__key -> match (attempt (updatePet (matc",
                     "h (_input1) { lawtwin.petstore.model::type::Pe",
-                    "t::Pet _match3__0__lawspecField159x0 _match3__",
-                    "0__lawspecField159x1 _match3__0__lawspecField1",
-                    "59x2 _match3__0__lawspecField159x3 _match3__0_",
-                    "_lawspecField159x4 _match3__0__lawspecField159",
+                    "t::Pet _match3__0__lawspecField123x0 _match3__",
+                    "0__lawspecField123x1 _match3__0__lawspecField1",
+                    "23x2 _match3__0__lawspecField123x3 _match3__0_",
+                    "_lawspecField123x4 _match3__0__lawspecField123",
                     "x5 -> lawtwin.petstore.model::type::Pet::Pet(M",
                     "aybe::Just(_match2__1__key), _match3__0__lawsp",
-                    "ecField159x1, _match3__0__lawspecField159x2, _",
-                    "match3__0__lawspecField159x3, _match3__0__laws",
-                    "pecField159x4, _match3__0__lawspecField159x5) ",
+                    "ecField123x1, _match3__0__lawspecField123x2, _",
+                    "match3__0__lawspecField123x3, _match3__0__laws",
+                    "pecField123x4, _match3__0__lawspecField123x5) ",
                     "}))) { Either::Left _match3__0__failure -> tru",
                     "e; Either::Right _match3__1__replaced -> (atte",
                     "mpt (getPetById (_match2__1__key)) == Either::",
@@ -7948,7 +7948,7 @@ fn run_5() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -8354,7 +8354,7 @@ fn run_5() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Pet", vec![]),
                     64,
                     64,
@@ -8488,17 +8488,17 @@ fn search_case_5(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: a created order reads back [native]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField63x0
-// _match0__0__lawspecField63x1 _match0__0__lawspecField63x2 _match0__0__lawspecField63x3
-// _match0__0__lawspecField63x4 _match0__0__lawspecField63x5 ->
-// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField63x0,
-// _match0__0__lawspecField63x1, _match0__0__lawspecField63x2, Maybe::Just(_input1),
-// _match0__0__lawspecField63x4, _match0__0__lawspecField63x5) } in match (attempt (placeOrder
+// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField49x0
+// _match0__0__lawspecField49x1 _match0__0__lawspecField49x2 _match0__0__lawspecField49x3
+// _match0__0__lawspecField49x4 _match0__0__lawspecField49x5 ->
+// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField49x0,
+// _match0__0__lawspecField49x1, _match0__0__lawspecField49x2, Maybe::Just(_input1),
+// _match0__0__lawspecField49x4, _match0__0__lawspecField49x5) } in match (attempt (placeOrder
 // (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField114x0
-// _match2__0__lawspecField114x1 _match2__0__lawspecField114x2 _match2__0__lawspecField114x3
-// _match2__0__lawspecField114x4 _match2__0__lawspecField114x5 -> _match2__0__lawspecField114x0 }) {
+// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField92x0
+// _match2__0__lawspecField92x1 _match2__0__lawspecField92x2 _match2__0__lawspecField92x3
+// _match2__0__lawspecField92x4 _match2__0__lawspecField92x5 -> _match2__0__lawspecField92x0 }) {
 // Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt (getOrderById (_match2__1__key))
 // == Either::Right(_match1__1__created)) } } = true
 fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -8663,28 +8663,28 @@ fn law_6(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         "StoreApi: a created order reads back [native] ",
                         "| expect let _let0__sent = match (_input0) { l",
                         "awtwin.petstore.model::type::Order::Order _mat",
-                        "ch0__0__lawspecField63x0 _match0__0__lawspecFi",
-                        "eld63x1 _match0__0__lawspecField63x2 _match0__",
-                        "0__lawspecField63x3 _match0__0__lawspecField63",
-                        "x4 _match0__0__lawspecField63x5 -> lawtwin.pet",
+                        "ch0__0__lawspecField49x0 _match0__0__lawspecFi",
+                        "eld49x1 _match0__0__lawspecField49x2 _match0__",
+                        "0__lawspecField49x3 _match0__0__lawspecField49",
+                        "x4 _match0__0__lawspecField49x5 -> lawtwin.pet",
                         "store.model::type::Order::Order(_match0__0__la",
-                        "wspecField63x0, _match0__0__lawspecField63x1, ",
-                        "_match0__0__lawspecField63x2, Maybe::Just(_inp",
-                        "ut1), _match0__0__lawspecField63x4, _match0__0",
-                        "__lawspecField63x5) } in match (attempt (place",
+                        "wspecField49x0, _match0__0__lawspecField49x1, ",
+                        "_match0__0__lawspecField49x2, Maybe::Just(_inp",
+                        "ut1), _match0__0__lawspecField49x4, _match0__0",
+                        "__lawspecField49x5) } in match (attempt (place",
                         "Order (Maybe::Just(_let0__sent)))) { Either::L",
                         "eft _match1__0__failure -> true; Either::Right",
                         " _match1__1__created -> match (match (_match1_",
                         "_1__created) { lawtwin.petstore.model::type::O",
-                        "rder::Order _match2__0__lawspecField114x0 _mat",
-                        "ch2__0__lawspecField114x1 _match2__0__lawspecF",
-                        "ield114x2 _match2__0__lawspecField114x3 _match",
-                        "2__0__lawspecField114x4 _match2__0__lawspecFie",
-                        "ld114x5 -> _match2__0__lawspecField114x0 }) { ",
-                        "Maybe::Nothing  -> false; Maybe::Just _match2_",
-                        "_1__key -> (attempt (getOrderById (_match2__1_",
-                        "_key)) == Either::Right(_match1__1__created)) ",
-                        "} } = true",
+                        "rder::Order _match2__0__lawspecField92x0 _matc",
+                        "h2__0__lawspecField92x1 _match2__0__lawspecFie",
+                        "ld92x2 _match2__0__lawspecField92x3 _match2__0",
+                        "__lawspecField92x4 _match2__0__lawspecField92x",
+                        "5 -> _match2__0__lawspecField92x0 }) { Maybe::",
+                        "Nothing  -> false; Maybe::Just _match2__1__key",
+                        " -> (attempt (getOrderById (_match2__1__key)) ",
+                        "== Either::Right(_match1__1__created)) } } = t",
+                        "rue",
                     ),
                     left,
                     right,
@@ -9081,7 +9081,7 @@ fn run_6() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
                     64,
                     64,
@@ -9249,17 +9249,17 @@ fn search_case_6(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: a created order reads back [reference]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField63x0
-// _match0__0__lawspecField63x1 _match0__0__lawspecField63x2 _match0__0__lawspecField63x3
-// _match0__0__lawspecField63x4 _match0__0__lawspecField63x5 ->
-// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField63x0,
-// _match0__0__lawspecField63x1, _match0__0__lawspecField63x2, Maybe::Just(_input1),
-// _match0__0__lawspecField63x4, _match0__0__lawspecField63x5) } in match (attempt (placeOrder
+// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField49x0
+// _match0__0__lawspecField49x1 _match0__0__lawspecField49x2 _match0__0__lawspecField49x3
+// _match0__0__lawspecField49x4 _match0__0__lawspecField49x5 ->
+// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField49x0,
+// _match0__0__lawspecField49x1, _match0__0__lawspecField49x2, Maybe::Just(_input1),
+// _match0__0__lawspecField49x4, _match0__0__lawspecField49x5) } in match (attempt (placeOrder
 // (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField114x0
-// _match2__0__lawspecField114x1 _match2__0__lawspecField114x2 _match2__0__lawspecField114x3
-// _match2__0__lawspecField114x4 _match2__0__lawspecField114x5 -> _match2__0__lawspecField114x0 }) {
+// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField92x0
+// _match2__0__lawspecField92x1 _match2__0__lawspecField92x2 _match2__0__lawspecField92x3
+// _match2__0__lawspecField92x4 _match2__0__lawspecField92x5 -> _match2__0__lawspecField92x0 }) {
 // Maybe::Nothing -> false; Maybe::Just _match2__1__key -> (attempt (getOrderById (_match2__1__key))
 // == Either::Right(_match1__1__created)) } } = true
 fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -9415,28 +9415,28 @@ fn law_7(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     "StoreApi: a created order reads back [referenc",
                     "e] | expect let _let0__sent = match (_input0) ",
                     "{ lawtwin.petstore.model::type::Order::Order _",
-                    "match0__0__lawspecField63x0 _match0__0__lawspe",
-                    "cField63x1 _match0__0__lawspecField63x2 _match",
-                    "0__0__lawspecField63x3 _match0__0__lawspecFiel",
-                    "d63x4 _match0__0__lawspecField63x5 -> lawtwin.",
+                    "match0__0__lawspecField49x0 _match0__0__lawspe",
+                    "cField49x1 _match0__0__lawspecField49x2 _match",
+                    "0__0__lawspecField49x3 _match0__0__lawspecFiel",
+                    "d49x4 _match0__0__lawspecField49x5 -> lawtwin.",
                     "petstore.model::type::Order::Order(_match0__0_",
-                    "_lawspecField63x0, _match0__0__lawspecField63x",
-                    "1, _match0__0__lawspecField63x2, Maybe::Just(_",
-                    "input1), _match0__0__lawspecField63x4, _match0",
-                    "__0__lawspecField63x5) } in match (attempt (pl",
+                    "_lawspecField49x0, _match0__0__lawspecField49x",
+                    "1, _match0__0__lawspecField49x2, Maybe::Just(_",
+                    "input1), _match0__0__lawspecField49x4, _match0",
+                    "__0__lawspecField49x5) } in match (attempt (pl",
                     "aceOrder (Maybe::Just(_let0__sent)))) { Either",
                     "::Left _match1__0__failure -> true; Either::Ri",
                     "ght _match1__1__created -> match (match (_matc",
                     "h1__1__created) { lawtwin.petstore.model::type",
-                    "::Order::Order _match2__0__lawspecField114x0 _",
-                    "match2__0__lawspecField114x1 _match2__0__lawsp",
-                    "ecField114x2 _match2__0__lawspecField114x3 _ma",
-                    "tch2__0__lawspecField114x4 _match2__0__lawspec",
-                    "Field114x5 -> _match2__0__lawspecField114x0 })",
-                    " { Maybe::Nothing  -> false; Maybe::Just _matc",
-                    "h2__1__key -> (attempt (getOrderById (_match2_",
-                    "_1__key)) == Either::Right(_match1__1__created",
-                    ")) } } = true",
+                    "::Order::Order _match2__0__lawspecField92x0 _m",
+                    "atch2__0__lawspecField92x1 _match2__0__lawspec",
+                    "Field92x2 _match2__0__lawspecField92x3 _match2",
+                    "__0__lawspecField92x4 _match2__0__lawspecField",
+                    "92x5 -> _match2__0__lawspecField92x0 }) { Mayb",
+                    "e::Nothing  -> false; Maybe::Just _match2__1__",
+                    "key -> (attempt (getOrderById (_match2__1__key",
+                    ")) == Either::Right(_match1__1__created)) } } ",
+                    "= true",
                 ),
                 left,
                 right,
@@ -9818,7 +9818,7 @@ fn run_7() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
                     64,
                     64,
@@ -9986,17 +9986,17 @@ fn search_case_7(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: a deleted order is not found [native]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField68x0
-// _match0__0__lawspecField68x1 _match0__0__lawspecField68x2 _match0__0__lawspecField68x3
-// _match0__0__lawspecField68x4 _match0__0__lawspecField68x5 ->
-// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField68x0,
-// _match0__0__lawspecField68x1, _match0__0__lawspecField68x2, Maybe::Just(_input1),
-// _match0__0__lawspecField68x4, _match0__0__lawspecField68x5) } in match (attempt (placeOrder
+// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField54x0
+// _match0__0__lawspecField54x1 _match0__0__lawspecField54x2 _match0__0__lawspecField54x3
+// _match0__0__lawspecField54x4 _match0__0__lawspecField54x5 ->
+// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField54x0,
+// _match0__0__lawspecField54x1, _match0__0__lawspecField54x2, Maybe::Just(_input1),
+// _match0__0__lawspecField54x4, _match0__0__lawspecField54x5) } in match (attempt (placeOrder
 // (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField121x0
-// _match2__0__lawspecField121x1 _match2__0__lawspecField121x2 _match2__0__lawspecField121x3
-// _match2__0__lawspecField121x4 _match2__0__lawspecField121x5 -> _match2__0__lawspecField121x0 }) {
+// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField99x0
+// _match2__0__lawspecField99x1 _match2__0__lawspecField99x2 _match2__0__lawspecField99x3
+// _match2__0__lawspecField99x4 _match2__0__lawspecField99x5 -> _match2__0__lawspecField99x0 }) {
 // Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone = attempt (deleteOrder
 // (_match2__1__key)) in (attempt (getOrderById (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -10191,30 +10191,30 @@ fn law_8(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                         "StoreApi: a deleted order is not found [native",
                         "] | expect let _let0__sent = match (_input0) {",
                         " lawtwin.petstore.model::type::Order::Order _m",
-                        "atch0__0__lawspecField68x0 _match0__0__lawspec",
-                        "Field68x1 _match0__0__lawspecField68x2 _match0",
-                        "__0__lawspecField68x3 _match0__0__lawspecField",
-                        "68x4 _match0__0__lawspecField68x5 -> lawtwin.p",
+                        "atch0__0__lawspecField54x0 _match0__0__lawspec",
+                        "Field54x1 _match0__0__lawspecField54x2 _match0",
+                        "__0__lawspecField54x3 _match0__0__lawspecField",
+                        "54x4 _match0__0__lawspecField54x5 -> lawtwin.p",
                         "etstore.model::type::Order::Order(_match0__0__",
-                        "lawspecField68x0, _match0__0__lawspecField68x1",
-                        ", _match0__0__lawspecField68x2, Maybe::Just(_i",
-                        "nput1), _match0__0__lawspecField68x4, _match0_",
-                        "_0__lawspecField68x5) } in match (attempt (pla",
+                        "lawspecField54x0, _match0__0__lawspecField54x1",
+                        ", _match0__0__lawspecField54x2, Maybe::Just(_i",
+                        "nput1), _match0__0__lawspecField54x4, _match0_",
+                        "_0__lawspecField54x5) } in match (attempt (pla",
                         "ceOrder (Maybe::Just(_let0__sent)))) { Either:",
                         ":Left _match1__0__failure -> true; Either::Rig",
                         "ht _match1__1__created -> match (match (_match",
                         "1__1__created) { lawtwin.petstore.model::type:",
-                        ":Order::Order _match2__0__lawspecField121x0 _m",
-                        "atch2__0__lawspecField121x1 _match2__0__lawspe",
-                        "cField121x2 _match2__0__lawspecField121x3 _mat",
-                        "ch2__0__lawspecField121x4 _match2__0__lawspecF",
-                        "ield121x5 -> _match2__0__lawspecField121x0 }) ",
-                        "{ Maybe::Nothing  -> false; Maybe::Just _match",
-                        "2__1__key -> let _let3__gone = attempt (delete",
-                        "Order (_match2__1__key)) in (attempt (getOrder",
-                        "ById (_match2__1__key)) == Either::Left(lawtwi",
-                        "n.petstore.model::type::ApiError::NotFound()))",
-                        " } } = true",
+                        ":Order::Order _match2__0__lawspecField99x0 _ma",
+                        "tch2__0__lawspecField99x1 _match2__0__lawspecF",
+                        "ield99x2 _match2__0__lawspecField99x3 _match2_",
+                        "_0__lawspecField99x4 _match2__0__lawspecField9",
+                        "9x5 -> _match2__0__lawspecField99x0 }) { Maybe",
+                        "::Nothing  -> false; Maybe::Just _match2__1__k",
+                        "ey -> let _let3__gone = attempt (deleteOrder (",
+                        "_match2__1__key)) in (attempt (getOrderById (_",
+                        "match2__1__key)) == Either::Left(lawtwin.petst",
+                        "ore.model::type::ApiError::NotFound())) } } = ",
+                        "true",
                     ),
                     left,
                     right,
@@ -10611,7 +10611,7 @@ fn run_8() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
                     64,
                     64,
@@ -10779,17 +10779,17 @@ fn search_case_8(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // StoreApi: a deleted order is not found [reference]
 // for all (body :: lawtwin.petstore.model::type::Order) (shipDateValue :: Text) . let _let0__sent =
-// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField68x0
-// _match0__0__lawspecField68x1 _match0__0__lawspecField68x2 _match0__0__lawspecField68x3
-// _match0__0__lawspecField68x4 _match0__0__lawspecField68x5 ->
-// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField68x0,
-// _match0__0__lawspecField68x1, _match0__0__lawspecField68x2, Maybe::Just(_input1),
-// _match0__0__lawspecField68x4, _match0__0__lawspecField68x5) } in match (attempt (placeOrder
+// match (_input0) { lawtwin.petstore.model::type::Order::Order _match0__0__lawspecField54x0
+// _match0__0__lawspecField54x1 _match0__0__lawspecField54x2 _match0__0__lawspecField54x3
+// _match0__0__lawspecField54x4 _match0__0__lawspecField54x5 ->
+// lawtwin.petstore.model::type::Order::Order(_match0__0__lawspecField54x0,
+// _match0__0__lawspecField54x1, _match0__0__lawspecField54x2, Maybe::Just(_input1),
+// _match0__0__lawspecField54x4, _match0__0__lawspecField54x5) } in match (attempt (placeOrder
 // (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure -> true; Either::Right
 // _match1__1__created -> match (match (_match1__1__created) {
-// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField121x0
-// _match2__0__lawspecField121x1 _match2__0__lawspecField121x2 _match2__0__lawspecField121x3
-// _match2__0__lawspecField121x4 _match2__0__lawspecField121x5 -> _match2__0__lawspecField121x0 }) {
+// lawtwin.petstore.model::type::Order::Order _match2__0__lawspecField99x0
+// _match2__0__lawspecField99x1 _match2__0__lawspecField99x2 _match2__0__lawspecField99x3
+// _match2__0__lawspecField99x4 _match2__0__lawspecField99x5 -> _match2__0__lawspecField99x0 }) {
 // Maybe::Nothing -> false; Maybe::Just _match2__1__key -> let _let3__gone = attempt (deleteOrder
 // (_match2__1__key)) in (attempt (getOrderById (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -10971,30 +10971,30 @@ fn law_9(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::R
                     "StoreApi: a deleted order is not found [refere",
                     "nce] | expect let _let0__sent = match (_input0",
                     ") { lawtwin.petstore.model::type::Order::Order",
-                    " _match0__0__lawspecField68x0 _match0__0__laws",
-                    "pecField68x1 _match0__0__lawspecField68x2 _mat",
-                    "ch0__0__lawspecField68x3 _match0__0__lawspecFi",
-                    "eld68x4 _match0__0__lawspecField68x5 -> lawtwi",
+                    " _match0__0__lawspecField54x0 _match0__0__laws",
+                    "pecField54x1 _match0__0__lawspecField54x2 _mat",
+                    "ch0__0__lawspecField54x3 _match0__0__lawspecFi",
+                    "eld54x4 _match0__0__lawspecField54x5 -> lawtwi",
                     "n.petstore.model::type::Order::Order(_match0__",
-                    "0__lawspecField68x0, _match0__0__lawspecField6",
-                    "8x1, _match0__0__lawspecField68x2, Maybe::Just",
-                    "(_input1), _match0__0__lawspecField68x4, _matc",
-                    "h0__0__lawspecField68x5) } in match (attempt (",
+                    "0__lawspecField54x0, _match0__0__lawspecField5",
+                    "4x1, _match0__0__lawspecField54x2, Maybe::Just",
+                    "(_input1), _match0__0__lawspecField54x4, _matc",
+                    "h0__0__lawspecField54x5) } in match (attempt (",
                     "placeOrder (Maybe::Just(_let0__sent)))) { Eith",
                     "er::Left _match1__0__failure -> true; Either::",
                     "Right _match1__1__created -> match (match (_ma",
                     "tch1__1__created) { lawtwin.petstore.model::ty",
-                    "pe::Order::Order _match2__0__lawspecField121x0",
-                    " _match2__0__lawspecField121x1 _match2__0__law",
-                    "specField121x2 _match2__0__lawspecField121x3 _",
-                    "match2__0__lawspecField121x4 _match2__0__lawsp",
-                    "ecField121x5 -> _match2__0__lawspecField121x0 ",
-                    "}) { Maybe::Nothing  -> false; Maybe::Just _ma",
-                    "tch2__1__key -> let _let3__gone = attempt (del",
-                    "eteOrder (_match2__1__key)) in (attempt (getOr",
-                    "derById (_match2__1__key)) == Either::Left(law",
-                    "twin.petstore.model::type::ApiError::NotFound(",
-                    "))) } } = true",
+                    "pe::Order::Order _match2__0__lawspecField99x0 ",
+                    "_match2__0__lawspecField99x1 _match2__0__lawsp",
+                    "ecField99x2 _match2__0__lawspecField99x3 _matc",
+                    "h2__0__lawspecField99x4 _match2__0__lawspecFie",
+                    "ld99x5 -> _match2__0__lawspecField99x0 }) { Ma",
+                    "ybe::Nothing  -> false; Maybe::Just _match2__1",
+                    "__key -> let _let3__gone = attempt (deleteOrde",
+                    "r (_match2__1__key)) in (attempt (getOrderById",
+                    " (_match2__1__key)) == Either::Left(lawtwin.pe",
+                    "tstore.model::type::ApiError::NotFound())) } }",
+                    " = true",
                 ),
                 left,
                 right,
@@ -11376,7 +11376,7 @@ fn run_9() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::Order", vec![]),
                     64,
                     64,
@@ -11544,19 +11544,19 @@ fn search_case_9(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: a created user reads back [native]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = match
-// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField63x0
-// _match0__0__lawspecField63x1 _match0__0__lawspecField63x2 _match0__0__lawspecField63x3
-// _match0__0__lawspecField63x4 _match0__0__lawspecField63x5 _match0__0__lawspecField63x6
-// _match0__0__lawspecField63x7 ->
-// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField63x0, Maybe::Just(_input1),
-// _match0__0__lawspecField63x2, _match0__0__lawspecField63x3, _match0__0__lawspecField63x4,
-// _match0__0__lawspecField63x5, _match0__0__lawspecField63x6, _match0__0__lawspecField63x7) } in
+// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField49x0
+// _match0__0__lawspecField49x1 _match0__0__lawspecField49x2 _match0__0__lawspecField49x3
+// _match0__0__lawspecField49x4 _match0__0__lawspecField49x5 _match0__0__lawspecField49x6
+// _match0__0__lawspecField49x7 ->
+// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField49x0, Maybe::Just(_input1),
+// _match0__0__lawspecField49x2, _match0__0__lawspecField49x3, _match0__0__lawspecField49x4,
+// _match0__0__lawspecField49x5, _match0__0__lawspecField49x6, _match0__0__lawspecField49x7) } in
 // match (attempt (createUser (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
 // true; Either::Right _match1__1__created -> match (match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _match2__0__lawspecField114x0
-// _match2__0__lawspecField114x1 _match2__0__lawspecField114x2 _match2__0__lawspecField114x3
-// _match2__0__lawspecField114x4 _match2__0__lawspecField114x5 _match2__0__lawspecField114x6
-// _match2__0__lawspecField114x7 -> _match2__0__lawspecField114x1 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::User::User _match2__0__lawspecField92x0
+// _match2__0__lawspecField92x1 _match2__0__lawspecField92x2 _match2__0__lawspecField92x3
+// _match2__0__lawspecField92x4 _match2__0__lawspecField92x5 _match2__0__lawspecField92x6
+// _match2__0__lawspecField92x7 -> _match2__0__lawspecField92x1 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> (attempt (getUserByName (_match2__1__key)) ==
 // Either::Right(_match1__1__created)) } } = true
 fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -11729,31 +11729,31 @@ fn law_10(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                         "UserApi: a created user reads back [native] | ",
                         "expect let _let0__sent = match (_input0) { law",
                         "twin.petstore.model::type::User::User _match0_",
-                        "_0__lawspecField63x0 _match0__0__lawspecField6",
-                        "3x1 _match0__0__lawspecField63x2 _match0__0__l",
-                        "awspecField63x3 _match0__0__lawspecField63x4 _",
-                        "match0__0__lawspecField63x5 _match0__0__lawspe",
-                        "cField63x6 _match0__0__lawspecField63x7 -> law",
+                        "_0__lawspecField49x0 _match0__0__lawspecField4",
+                        "9x1 _match0__0__lawspecField49x2 _match0__0__l",
+                        "awspecField49x3 _match0__0__lawspecField49x4 _",
+                        "match0__0__lawspecField49x5 _match0__0__lawspe",
+                        "cField49x6 _match0__0__lawspecField49x7 -> law",
                         "twin.petstore.model::type::User::User(_match0_",
-                        "_0__lawspecField63x0, Maybe::Just(_input1), _m",
-                        "atch0__0__lawspecField63x2, _match0__0__lawspe",
-                        "cField63x3, _match0__0__lawspecField63x4, _mat",
-                        "ch0__0__lawspecField63x5, _match0__0__lawspecF",
-                        "ield63x6, _match0__0__lawspecField63x7) } in m",
+                        "_0__lawspecField49x0, Maybe::Just(_input1), _m",
+                        "atch0__0__lawspecField49x2, _match0__0__lawspe",
+                        "cField49x3, _match0__0__lawspecField49x4, _mat",
+                        "ch0__0__lawspecField49x5, _match0__0__lawspecF",
+                        "ield49x6, _match0__0__lawspecField49x7) } in m",
                         "atch (attempt (createUser (Maybe::Just(_let0__",
                         "sent)))) { Either::Left _match1__0__failure ->",
                         " true; Either::Right _match1__1__created -> ma",
                         "tch (match (_let0__sent) { lawtwin.petstore.mo",
                         "del::type::User::User _match2__0__lawspecField",
-                        "114x0 _match2__0__lawspecField114x1 _match2__0",
-                        "__lawspecField114x2 _match2__0__lawspecField11",
-                        "4x3 _match2__0__lawspecField114x4 _match2__0__",
-                        "lawspecField114x5 _match2__0__lawspecField114x",
-                        "6 _match2__0__lawspecField114x7 -> _match2__0_",
-                        "_lawspecField114x1 }) { Maybe::Nothing  -> fal",
-                        "se; Maybe::Just _match2__1__key -> (attempt (g",
-                        "etUserByName (_match2__1__key)) == Either::Rig",
-                        "ht(_match1__1__created)) } } = true",
+                        "92x0 _match2__0__lawspecField92x1 _match2__0__",
+                        "lawspecField92x2 _match2__0__lawspecField92x3 ",
+                        "_match2__0__lawspecField92x4 _match2__0__lawsp",
+                        "ecField92x5 _match2__0__lawspecField92x6 _matc",
+                        "h2__0__lawspecField92x7 -> _match2__0__lawspec",
+                        "Field92x1 }) { Maybe::Nothing  -> false; Maybe",
+                        "::Just _match2__1__key -> (attempt (getUserByN",
+                        "ame (_match2__1__key)) == Either::Right(_match",
+                        "1__1__created)) } } = true",
                     ),
                     left,
                     right,
@@ -12295,7 +12295,7 @@ fn run_10() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
                     64,
                     64,
@@ -12424,19 +12424,19 @@ fn search_case_10(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: a created user reads back [reference]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = match
-// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField63x0
-// _match0__0__lawspecField63x1 _match0__0__lawspecField63x2 _match0__0__lawspecField63x3
-// _match0__0__lawspecField63x4 _match0__0__lawspecField63x5 _match0__0__lawspecField63x6
-// _match0__0__lawspecField63x7 ->
-// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField63x0, Maybe::Just(_input1),
-// _match0__0__lawspecField63x2, _match0__0__lawspecField63x3, _match0__0__lawspecField63x4,
-// _match0__0__lawspecField63x5, _match0__0__lawspecField63x6, _match0__0__lawspecField63x7) } in
+// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField49x0
+// _match0__0__lawspecField49x1 _match0__0__lawspecField49x2 _match0__0__lawspecField49x3
+// _match0__0__lawspecField49x4 _match0__0__lawspecField49x5 _match0__0__lawspecField49x6
+// _match0__0__lawspecField49x7 ->
+// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField49x0, Maybe::Just(_input1),
+// _match0__0__lawspecField49x2, _match0__0__lawspecField49x3, _match0__0__lawspecField49x4,
+// _match0__0__lawspecField49x5, _match0__0__lawspecField49x6, _match0__0__lawspecField49x7) } in
 // match (attempt (createUser (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
 // true; Either::Right _match1__1__created -> match (match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _match2__0__lawspecField114x0
-// _match2__0__lawspecField114x1 _match2__0__lawspecField114x2 _match2__0__lawspecField114x3
-// _match2__0__lawspecField114x4 _match2__0__lawspecField114x5 _match2__0__lawspecField114x6
-// _match2__0__lawspecField114x7 -> _match2__0__lawspecField114x1 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::User::User _match2__0__lawspecField92x0
+// _match2__0__lawspecField92x1 _match2__0__lawspecField92x2 _match2__0__lawspecField92x3
+// _match2__0__lawspecField92x4 _match2__0__lawspecField92x5 _match2__0__lawspecField92x6
+// _match2__0__lawspecField92x7 -> _match2__0__lawspecField92x1 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> (attempt (getUserByName (_match2__1__key)) ==
 // Either::Right(_match1__1__created)) } } = true
 fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
@@ -12600,31 +12600,31 @@ fn law_11(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     "UserApi: a created user reads back [reference]",
                     " | expect let _let0__sent = match (_input0) { ",
                     "lawtwin.petstore.model::type::User::User _matc",
-                    "h0__0__lawspecField63x0 _match0__0__lawspecFie",
-                    "ld63x1 _match0__0__lawspecField63x2 _match0__0",
-                    "__lawspecField63x3 _match0__0__lawspecField63x",
-                    "4 _match0__0__lawspecField63x5 _match0__0__law",
-                    "specField63x6 _match0__0__lawspecField63x7 -> ",
+                    "h0__0__lawspecField49x0 _match0__0__lawspecFie",
+                    "ld49x1 _match0__0__lawspecField49x2 _match0__0",
+                    "__lawspecField49x3 _match0__0__lawspecField49x",
+                    "4 _match0__0__lawspecField49x5 _match0__0__law",
+                    "specField49x6 _match0__0__lawspecField49x7 -> ",
                     "lawtwin.petstore.model::type::User::User(_matc",
-                    "h0__0__lawspecField63x0, Maybe::Just(_input1),",
-                    " _match0__0__lawspecField63x2, _match0__0__law",
-                    "specField63x3, _match0__0__lawspecField63x4, _",
-                    "match0__0__lawspecField63x5, _match0__0__lawsp",
-                    "ecField63x6, _match0__0__lawspecField63x7) } i",
+                    "h0__0__lawspecField49x0, Maybe::Just(_input1),",
+                    " _match0__0__lawspecField49x2, _match0__0__law",
+                    "specField49x3, _match0__0__lawspecField49x4, _",
+                    "match0__0__lawspecField49x5, _match0__0__lawsp",
+                    "ecField49x6, _match0__0__lawspecField49x7) } i",
                     "n match (attempt (createUser (Maybe::Just(_let",
                     "0__sent)))) { Either::Left _match1__0__failure",
                     " -> true; Either::Right _match1__1__created ->",
                     " match (match (_let0__sent) { lawtwin.petstore",
                     ".model::type::User::User _match2__0__lawspecFi",
-                    "eld114x0 _match2__0__lawspecField114x1 _match2",
-                    "__0__lawspecField114x2 _match2__0__lawspecFiel",
-                    "d114x3 _match2__0__lawspecField114x4 _match2__",
-                    "0__lawspecField114x5 _match2__0__lawspecField1",
-                    "14x6 _match2__0__lawspecField114x7 -> _match2_",
-                    "_0__lawspecField114x1 }) { Maybe::Nothing  -> ",
-                    "false; Maybe::Just _match2__1__key -> (attempt",
-                    " (getUserByName (_match2__1__key)) == Either::",
-                    "Right(_match1__1__created)) } } = true",
+                    "eld92x0 _match2__0__lawspecField92x1 _match2__",
+                    "0__lawspecField92x2 _match2__0__lawspecField92",
+                    "x3 _match2__0__lawspecField92x4 _match2__0__la",
+                    "wspecField92x5 _match2__0__lawspecField92x6 _m",
+                    "atch2__0__lawspecField92x7 -> _match2__0__laws",
+                    "pecField92x1 }) { Maybe::Nothing  -> false; Ma",
+                    "ybe::Just _match2__1__key -> (attempt (getUser",
+                    "ByName (_match2__1__key)) == Either::Right(_ma",
+                    "tch1__1__created)) } } = true",
                 ),
                 left,
                 right,
@@ -13154,7 +13154,7 @@ fn run_11() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
                     64,
                     64,
@@ -13286,19 +13286,19 @@ fn search_case_11(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: a deleted user is not found [native]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = match
-// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField68x0
-// _match0__0__lawspecField68x1 _match0__0__lawspecField68x2 _match0__0__lawspecField68x3
-// _match0__0__lawspecField68x4 _match0__0__lawspecField68x5 _match0__0__lawspecField68x6
-// _match0__0__lawspecField68x7 ->
-// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField68x0, Maybe::Just(_input1),
-// _match0__0__lawspecField68x2, _match0__0__lawspecField68x3, _match0__0__lawspecField68x4,
-// _match0__0__lawspecField68x5, _match0__0__lawspecField68x6, _match0__0__lawspecField68x7) } in
+// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField54x0
+// _match0__0__lawspecField54x1 _match0__0__lawspecField54x2 _match0__0__lawspecField54x3
+// _match0__0__lawspecField54x4 _match0__0__lawspecField54x5 _match0__0__lawspecField54x6
+// _match0__0__lawspecField54x7 ->
+// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField54x0, Maybe::Just(_input1),
+// _match0__0__lawspecField54x2, _match0__0__lawspecField54x3, _match0__0__lawspecField54x4,
+// _match0__0__lawspecField54x5, _match0__0__lawspecField54x6, _match0__0__lawspecField54x7) } in
 // match (attempt (createUser (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
 // true; Either::Right _match1__1__created -> match (match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _match2__0__lawspecField121x0
-// _match2__0__lawspecField121x1 _match2__0__lawspecField121x2 _match2__0__lawspecField121x3
-// _match2__0__lawspecField121x4 _match2__0__lawspecField121x5 _match2__0__lawspecField121x6
-// _match2__0__lawspecField121x7 -> _match2__0__lawspecField121x1 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::User::User _match2__0__lawspecField99x0
+// _match2__0__lawspecField99x1 _match2__0__lawspecField99x2 _match2__0__lawspecField99x3
+// _match2__0__lawspecField99x4 _match2__0__lawspecField99x5 _match2__0__lawspecField99x6
+// _match2__0__lawspecField99x7 -> _match2__0__lawspecField99x1 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> let _let3__gone = attempt (deleteUser (_match2__1__key)) in
 // (attempt (getUserByName (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -13501,33 +13501,33 @@ fn law_12(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                         "UserApi: a deleted user is not found [native] ",
                         "| expect let _let0__sent = match (_input0) { l",
                         "awtwin.petstore.model::type::User::User _match",
-                        "0__0__lawspecField68x0 _match0__0__lawspecFiel",
-                        "d68x1 _match0__0__lawspecField68x2 _match0__0_",
-                        "_lawspecField68x3 _match0__0__lawspecField68x4",
-                        " _match0__0__lawspecField68x5 _match0__0__laws",
-                        "pecField68x6 _match0__0__lawspecField68x7 -> l",
+                        "0__0__lawspecField54x0 _match0__0__lawspecFiel",
+                        "d54x1 _match0__0__lawspecField54x2 _match0__0_",
+                        "_lawspecField54x3 _match0__0__lawspecField54x4",
+                        " _match0__0__lawspecField54x5 _match0__0__laws",
+                        "pecField54x6 _match0__0__lawspecField54x7 -> l",
                         "awtwin.petstore.model::type::User::User(_match",
-                        "0__0__lawspecField68x0, Maybe::Just(_input1), ",
-                        "_match0__0__lawspecField68x2, _match0__0__laws",
-                        "pecField68x3, _match0__0__lawspecField68x4, _m",
-                        "atch0__0__lawspecField68x5, _match0__0__lawspe",
-                        "cField68x6, _match0__0__lawspecField68x7) } in",
+                        "0__0__lawspecField54x0, Maybe::Just(_input1), ",
+                        "_match0__0__lawspecField54x2, _match0__0__laws",
+                        "pecField54x3, _match0__0__lawspecField54x4, _m",
+                        "atch0__0__lawspecField54x5, _match0__0__lawspe",
+                        "cField54x6, _match0__0__lawspecField54x7) } in",
                         " match (attempt (createUser (Maybe::Just(_let0",
                         "__sent)))) { Either::Left _match1__0__failure ",
                         "-> true; Either::Right _match1__1__created -> ",
                         "match (match (_let0__sent) { lawtwin.petstore.",
                         "model::type::User::User _match2__0__lawspecFie",
-                        "ld121x0 _match2__0__lawspecField121x1 _match2_",
-                        "_0__lawspecField121x2 _match2__0__lawspecField",
-                        "121x3 _match2__0__lawspecField121x4 _match2__0",
-                        "__lawspecField121x5 _match2__0__lawspecField12",
-                        "1x6 _match2__0__lawspecField121x7 -> _match2__",
-                        "0__lawspecField121x1 }) { Maybe::Nothing  -> f",
-                        "alse; Maybe::Just _match2__1__key -> let _let3",
-                        "__gone = attempt (deleteUser (_match2__1__key)",
-                        ") in (attempt (getUserByName (_match2__1__key)",
-                        ") == Either::Left(lawtwin.petstore.model::type",
-                        "::ApiError::NotFound())) } } = true",
+                        "ld99x0 _match2__0__lawspecField99x1 _match2__0",
+                        "__lawspecField99x2 _match2__0__lawspecField99x",
+                        "3 _match2__0__lawspecField99x4 _match2__0__law",
+                        "specField99x5 _match2__0__lawspecField99x6 _ma",
+                        "tch2__0__lawspecField99x7 -> _match2__0__lawsp",
+                        "ecField99x1 }) { Maybe::Nothing  -> false; May",
+                        "be::Just _match2__1__key -> let _let3__gone = ",
+                        "attempt (deleteUser (_match2__1__key)) in (att",
+                        "empt (getUserByName (_match2__1__key)) == Eith",
+                        "er::Left(lawtwin.petstore.model::type::ApiErro",
+                        "r::NotFound())) } } = true",
                     ),
                     left,
                     right,
@@ -14072,7 +14072,7 @@ fn run_12() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
                     64,
                     64,
@@ -14204,19 +14204,19 @@ fn search_case_12(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // Expansion:
 // UserApi: a deleted user is not found [reference]
 // for all (body :: lawtwin.petstore.model::type::User) (keyGiven :: Text) . let _let0__sent = match
-// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField68x0
-// _match0__0__lawspecField68x1 _match0__0__lawspecField68x2 _match0__0__lawspecField68x3
-// _match0__0__lawspecField68x4 _match0__0__lawspecField68x5 _match0__0__lawspecField68x6
-// _match0__0__lawspecField68x7 ->
-// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField68x0, Maybe::Just(_input1),
-// _match0__0__lawspecField68x2, _match0__0__lawspecField68x3, _match0__0__lawspecField68x4,
-// _match0__0__lawspecField68x5, _match0__0__lawspecField68x6, _match0__0__lawspecField68x7) } in
+// (_input0) { lawtwin.petstore.model::type::User::User _match0__0__lawspecField54x0
+// _match0__0__lawspecField54x1 _match0__0__lawspecField54x2 _match0__0__lawspecField54x3
+// _match0__0__lawspecField54x4 _match0__0__lawspecField54x5 _match0__0__lawspecField54x6
+// _match0__0__lawspecField54x7 ->
+// lawtwin.petstore.model::type::User::User(_match0__0__lawspecField54x0, Maybe::Just(_input1),
+// _match0__0__lawspecField54x2, _match0__0__lawspecField54x3, _match0__0__lawspecField54x4,
+// _match0__0__lawspecField54x5, _match0__0__lawspecField54x6, _match0__0__lawspecField54x7) } in
 // match (attempt (createUser (Maybe::Just(_let0__sent)))) { Either::Left _match1__0__failure ->
 // true; Either::Right _match1__1__created -> match (match (_let0__sent) {
-// lawtwin.petstore.model::type::User::User _match2__0__lawspecField121x0
-// _match2__0__lawspecField121x1 _match2__0__lawspecField121x2 _match2__0__lawspecField121x3
-// _match2__0__lawspecField121x4 _match2__0__lawspecField121x5 _match2__0__lawspecField121x6
-// _match2__0__lawspecField121x7 -> _match2__0__lawspecField121x1 }) { Maybe::Nothing -> false;
+// lawtwin.petstore.model::type::User::User _match2__0__lawspecField99x0
+// _match2__0__lawspecField99x1 _match2__0__lawspecField99x2 _match2__0__lawspecField99x3
+// _match2__0__lawspecField99x4 _match2__0__lawspecField99x5 _match2__0__lawspecField99x6
+// _match2__0__lawspecField99x7 -> _match2__0__lawspecField99x1 }) { Maybe::Nothing -> false;
 // Maybe::Just _match2__1__key -> let _let3__gone = attempt (deleteUser (_match2__1__key)) in
 // (attempt (getUserByName (_match2__1__key)) ==
 // Either::Left(lawtwin.petstore.model::type::ApiError::NotFound())) } } = true
@@ -14406,33 +14406,33 @@ fn law_13(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                     "UserApi: a deleted user is not found [referenc",
                     "e] | expect let _let0__sent = match (_input0) ",
                     "{ lawtwin.petstore.model::type::User::User _ma",
-                    "tch0__0__lawspecField68x0 _match0__0__lawspecF",
-                    "ield68x1 _match0__0__lawspecField68x2 _match0_",
-                    "_0__lawspecField68x3 _match0__0__lawspecField6",
-                    "8x4 _match0__0__lawspecField68x5 _match0__0__l",
-                    "awspecField68x6 _match0__0__lawspecField68x7 -",
+                    "tch0__0__lawspecField54x0 _match0__0__lawspecF",
+                    "ield54x1 _match0__0__lawspecField54x2 _match0_",
+                    "_0__lawspecField54x3 _match0__0__lawspecField5",
+                    "4x4 _match0__0__lawspecField54x5 _match0__0__l",
+                    "awspecField54x6 _match0__0__lawspecField54x7 -",
                     "> lawtwin.petstore.model::type::User::User(_ma",
-                    "tch0__0__lawspecField68x0, Maybe::Just(_input1",
-                    "), _match0__0__lawspecField68x2, _match0__0__l",
-                    "awspecField68x3, _match0__0__lawspecField68x4,",
-                    " _match0__0__lawspecField68x5, _match0__0__law",
-                    "specField68x6, _match0__0__lawspecField68x7) }",
+                    "tch0__0__lawspecField54x0, Maybe::Just(_input1",
+                    "), _match0__0__lawspecField54x2, _match0__0__l",
+                    "awspecField54x3, _match0__0__lawspecField54x4,",
+                    " _match0__0__lawspecField54x5, _match0__0__law",
+                    "specField54x6, _match0__0__lawspecField54x7) }",
                     " in match (attempt (createUser (Maybe::Just(_l",
                     "et0__sent)))) { Either::Left _match1__0__failu",
                     "re -> true; Either::Right _match1__1__created ",
                     "-> match (match (_let0__sent) { lawtwin.petsto",
                     "re.model::type::User::User _match2__0__lawspec",
-                    "Field121x0 _match2__0__lawspecField121x1 _matc",
-                    "h2__0__lawspecField121x2 _match2__0__lawspecFi",
-                    "eld121x3 _match2__0__lawspecField121x4 _match2",
-                    "__0__lawspecField121x5 _match2__0__lawspecFiel",
-                    "d121x6 _match2__0__lawspecField121x7 -> _match",
-                    "2__0__lawspecField121x1 }) { Maybe::Nothing  -",
-                    "> false; Maybe::Just _match2__1__key -> let _l",
-                    "et3__gone = attempt (deleteUser (_match2__1__k",
-                    "ey)) in (attempt (getUserByName (_match2__1__k",
-                    "ey)) == Either::Left(lawtwin.petstore.model::t",
-                    "ype::ApiError::NotFound())) } } = true",
+                    "Field99x0 _match2__0__lawspecField99x1 _match2",
+                    "__0__lawspecField99x2 _match2__0__lawspecField",
+                    "99x3 _match2__0__lawspecField99x4 _match2__0__",
+                    "lawspecField99x5 _match2__0__lawspecField99x6 ",
+                    "_match2__0__lawspecField99x7 -> _match2__0__la",
+                    "wspecField99x1 }) { Maybe::Nothing  -> false; ",
+                    "Maybe::Just _match2__1__key -> let _let3__gone",
+                    " = attempt (deleteUser (_match2__1__key)) in (",
+                    "attempt (getUserByName (_match2__1__key)) == E",
+                    "ither::Left(lawtwin.petstore.model::type::ApiE",
+                    "rror::NotFound())) } } = true",
                 ),
                 left,
                 right,
@@ -14962,7 +14962,7 @@ fn run_13() -> ls::Result<()> {
                     ),
                 ];
                 let base = Ok::<_, String>(Some(ls_gen::schema_strategy(
-                    &lawspec_schema::schema()?,
+                    lawspec_schema::schema()?,
                     &ls::TypeRef::named("lawtwin.petstore.model::type::User", vec![]),
                     64,
                     64,

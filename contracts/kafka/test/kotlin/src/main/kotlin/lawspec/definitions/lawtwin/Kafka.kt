@@ -14,64 +14,14 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate34(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::allAtLeas" + "t: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.allAtLeast_22(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative84(value1)))
 
     fun assignmentIn(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.MemberAssignment>,
-    ): kotlin.collections.List<lawspec.data.TopicPartition> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate35(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::assignmen" + "tIn: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.TopicPartition> = lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.assignmentIn_23(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative88(value1)))
 
     fun clusterAddPartitionsToTxnRequest(
         symbols: MutableMap<String, Any>,
@@ -80,50 +30,9 @@ object Kafka {
         value2: kotlin.Long,
         value3: kotlin.Short,
         value4: kotlin.collections.List<lawspec.data.TopicPartition>,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate36(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterAd" + "dPartitionsToTxnRequest:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_24(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative13(value3), lawspec.runtime.LawSpecTyped.fromNative14(value4)))
 
     fun clusterCommitOffsets(
         symbols: MutableMap<String, Any>,
@@ -132,268 +41,61 @@ object Kafka {
         value2: kotlin.String,
         value3: kotlin.Int,
         value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate37(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterCo" + "mmitOffsets: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4)))
 
     fun clusterCreatePartitions(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate38(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterCr" + "eatePartitions: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2)))
 
     fun clusterCreatePartitionsRequest(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate39(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterCr" + "eatePartitionsRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2)))
 
     fun clusterCreateTopic(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate40(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterCr" + "eateTopic: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2)))
 
     fun clusterCreateTopicsRequest(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate41(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterCr" + "eateTopicsRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2)))
 
     fun clusterDescribeGroup(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
-    ): lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate42(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupViewCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterDe" + "scribeGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.GroupView,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative23(lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1)))
 
     fun clusterDescribeGroupRequest(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
-    ): lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate43(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupViewCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterDe" + "scribeGroupRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.GroupView,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative23(lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1)))
 
     fun clusterEndTxnRequest(
         symbols: MutableMap<String, Any>,
@@ -402,45 +104,9 @@ object Kafka {
         value2: kotlin.Long,
         value3: kotlin.Short,
         value4: kotlin.Boolean,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate44(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterEn" + "dTxnRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_29(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative13(value3), lawspec.runtime.LawSpecTyped.fromNative16(value4)))
 
     fun clusterFetchOffset(
         symbols: MutableMap<String, Any>,
@@ -449,43 +115,7 @@ object Kafka {
         value2: lawspec.data.TopicPartition,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate45(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterFe" + "tchOffset: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative24(lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative5(value2)))
 
     fun clusterFetchRequest(
         symbols: MutableMap<String, Any>,
@@ -494,45 +124,9 @@ object Kafka {
         value2: kotlin.Long,
         value3: kotlin.Int,
         value4: lawspec.data.IsolationLevel,
-    ): lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate46(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.fetchResultCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterFe" + "tchRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.FetchResult,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative25(lawspec.runtime.LawSpecTyped.clusterFetchRequest_31(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3), lawspec.runtime.LawSpecTyped.fromNative9(value4)))
 
     fun clusterHeartbeat(
         symbols: MutableMap<String, Any>,
@@ -540,42 +134,9 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.String,
         value3: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate47(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterHe" + "artbeat: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3)))
 
     fun clusterHeartbeatRequest(
         symbols: MutableMap<String, Any>,
@@ -583,78 +144,17 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.String,
         value3: kotlin.Int,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate48(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterHe" + "artbeatRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3)))
 
     fun clusterInitProducerIdRequest(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
-    ): lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate49(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterIn" + "itProducerIdRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.ProducerIdAndEpoch,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_33(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative12(value1)))
 
     fun clusterJoinGroup(
         symbols: MutableMap<String, Any>,
@@ -662,47 +162,9 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.String,
         value3: kotlin.collections.List<kotlin.String>,
-    ): lawspec.data.Pair<kotlin.Int, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate50(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterJo" + "inGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Int,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative27(lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3)))
 
     fun clusterJoinGroupRequest(
         symbols: MutableMap<String, Any>,
@@ -710,125 +172,27 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.String,
         value3: kotlin.collections.List<kotlin.String>,
-    ): lawspec.data.Pair<kotlin.Int, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate51(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterJo" + "inGroupRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Int,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative27(lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3)))
 
     fun clusterLeaveGroup(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.String,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate52(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterLe" + "aveGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2)))
 
     fun clusterLeaveGroupRequest(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.BrokerState,
         value1: kotlin.String,
         value2: kotlin.String,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate53(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterLe" + "aveGroupRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2)))
 
     fun clusterListOffsets(
         symbols: MutableMap<String, Any>,
@@ -836,42 +200,9 @@ object Kafka {
         value1: lawspec.data.TopicPartition,
         value2: lawspec.data.OffsetSpec,
         value3: lawspec.data.IsolationLevel,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.offsetSpecCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate54(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterLi" + "stOffsets: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.clusterListOffsets_36(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative10(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3)))
 
     fun clusterListOffsetsRequest(
         symbols: MutableMap<String, Any>,
@@ -879,42 +210,9 @@ object Kafka {
         value1: lawspec.data.TopicPartition,
         value2: lawspec.data.OffsetSpec,
         value3: lawspec.data.IsolationLevel,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.offsetSpecCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate55(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterLi" + "stOffsetsRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.clusterListOffsets_36(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative10(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3)))
 
     fun clusterMetadataRequest(
         symbols: MutableMap<String, Any>,
@@ -922,36 +220,7 @@ object Kafka {
         value1: kotlin.String,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate56(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterMe" + "tadataRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1)))
 
     fun clusterOffsetCommitRequest(
         symbols: MutableMap<String, Any>,
@@ -960,50 +229,9 @@ object Kafka {
         value2: kotlin.String,
         value3: kotlin.Int,
         value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate57(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterOf" + "fsetCommitRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4)))
 
     fun clusterOffsetFetchRequest(
         symbols: MutableMap<String, Any>,
@@ -1012,43 +240,7 @@ object Kafka {
         value2: lawspec.data.TopicPartition,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate58(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterOf" + "fsetFetchRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative24(lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative5(value2)))
 
     fun clusterPartitionsFor(
         symbols: MutableMap<String, Any>,
@@ -1056,36 +248,7 @@ object Kafka {
         value1: kotlin.String,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate59(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterPa" + "rtitionsFor: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1)))
 
     fun clusterProduceRequest(
         symbols: MutableMap<String, Any>,
@@ -1093,68 +256,14 @@ object Kafka {
         value1: lawspec.data.TopicPartition,
         value2: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
         value3: kotlin.collections.List<lawspec.data.Record>,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.maybe(
-                    LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate60(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterPr" + "oduceRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.clusterProduceRequest_38(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative6(value2), lawspec.runtime.LawSpecTyped.fromNative7(value3)))
 
     fun clusterStart(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate61(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterSt" + "art: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.clusterStart_39(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun clusterSyncGroup(
         symbols: MutableMap<String, Any>,
@@ -1164,46 +273,7 @@ object Kafka {
         value3: kotlin.Int,
     ): lawspec.data.Pair<
         kotlin.collections.List<lawspec.data.TopicPartition>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate62(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterSy" + "ncGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3)))
 
     fun clusterSyncGroupRequest(
         symbols: MutableMap<String, Any>,
@@ -1213,46 +283,7 @@ object Kafka {
         value3: kotlin.Int,
     ): lawspec.data.Pair<
         kotlin.collections.List<lawspec.data.TopicPartition>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate63(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterSy" + "ncGroupRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative1(value2), lawspec.runtime.LawSpecTyped.fromNative2(value3)))
 
     fun clusterTxnOffsetCommitRequest(
         symbols: MutableMap<String, Any>,
@@ -1262,53 +293,9 @@ object Kafka {
         value3: kotlin.Short,
         value4: kotlin.String,
         value5: kotlin.collections.List<lawspec.data.OffsetEntry>,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument4 = codec4.encode(value4)
-            val codec5 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument5 = codec5.encode(value5)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate64(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                    argument5,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::clusterTx" + "nOffsetCommitRequest: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_41(lawspec.runtime.LawSpecTyped.fromNative22(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative13(value3), lawspec.runtime.LawSpecTyped.fromNative1(value4), lawspec.runtime.LawSpecTyped.fromNative15(value5)))
 
     fun committedFrom(
         symbols: MutableMap<String, Any>,
@@ -1344,37 +331,9 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: lawspec.data.ConsumerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ConsumerState> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate66(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::consumerA" + "ssign: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative31(lawspec.runtime.LawSpecTyped.consumerAssign_42(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative32(value1)))
 
     fun consumerClose(
         symbols: MutableMap<String, Any>,
@@ -1493,32 +452,9 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.IsolationLevel,
         value1: lawspec.data.ConsumerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ConsumerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate70(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::consumerI" + "solation: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative31(lawspec.runtime.LawSpecTyped.consumerIsolation_43(lawspec.runtime.LawSpecTyped.fromNative9(value0), lawspec.runtime.LawSpecTyped.fromNative32(value1)))
 
     fun consumerJoin(
         symbols: MutableMap<String, Any>,
@@ -1718,35 +654,8 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.List<lawspec.data.FetchedRecord>,
-    ): kotlin.collections.List<lawspec.data.ConsumerRecord> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate75(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.consumerRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::consumerR" + "ecords: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.ConsumerRecord> = lawspec.runtime.LawSpecTyped.toNative89(lawspec.runtime.LawSpecTyped.consumerRecords_44(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative90(value1)))
 
     fun consumerRefresh(
         symbols: MutableMap<String, Any>,
@@ -1794,76 +703,14 @@ object Kafka {
         value2: lawspec.data.ConsumerState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit>,
-        lawspec.data.ConsumerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate77(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.either(
-                        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                        LawSpecKotlinCodecs.unit(schema, bits),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::consumerS" + "eek: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative33(lawspec.runtime.LawSpecTyped.consumerSeek_45(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative32(value2)))
 
     fun coversOnce(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Int,
         value2: lawspec.data.GroupView,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.groupViewCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate78(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::coversOnc" + "e: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.coversOnce_46(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative18(value2)))
 
     fun created(
         symbols: MutableMap<String, Any>,
@@ -1895,70 +742,14 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerIdAndEpoch,
         value1: lawspec.data.ProducerIdAndEpoch,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate80(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::fencedBy:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.fencedBy_47(lawspec.runtime.LawSpecTyped.fromNative11(value0), lawspec.runtime.LawSpecTyped.fromNative11(value1)))
 
     fun followsBatch(
         symbols: MutableMap<String, Any>,
         value0: lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Long>,
         value1: kotlin.collections.List<lawspec.data.Record>,
         value2: lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate81(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::followsBa" + "tch: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.followsBatch_48(lawspec.runtime.LawSpecTyped.fromNative91(value0), lawspec.runtime.LawSpecTyped.fromNative7(value1), lawspec.runtime.LawSpecTyped.fromNative91(value2)))
 
     fun followsOne(
         symbols: MutableMap<String, Any>,
@@ -1966,155 +757,34 @@ object Kafka {
             lawspec.data.KafkaError,
             lawspec.data.RecordMetadata>,
         value1: lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate82(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::followsOn" + "e: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.followsOne_49(lawspec.runtime.LawSpecTyped.fromNative92(value0), lawspec.runtime.LawSpecTyped.fromNative91(value1)))
 
     fun freshConsumer(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.ConsumerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate83(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::freshCons" + "umer: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ConsumerState = lawspec.runtime.LawSpecTyped.toNative32(lawspec.runtime.LawSpecTyped.freshConsumer_50(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun freshProducer(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.ProducerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate84(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::freshProd" + "ucer: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ProducerState = lawspec.runtime.LawSpecTyped.toNative35(lawspec.runtime.LawSpecTyped.freshProducer_51(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun freshTransactions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.TransactionState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate85(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::freshTran" + "sactions: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.TransactionState = lawspec.runtime.LawSpecTyped.toNative38(lawspec.runtime.LawSpecTyped.freshTransactions_52(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun identityOf(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
-        lawspec.data.ProducerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate86(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.producerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::identityO" + "f: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.ProducerState> = lawspec.runtime.LawSpecTyped.toNative36(lawspec.runtime.LawSpecTyped.identityOf_53(lawspec.runtime.LawSpecTyped.fromNative35(value0)))
 
     fun increasing(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate87(symbols, argument0)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::increasin" + "g: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.increasing_54(lawspec.runtime.LawSpecTyped.fromNative84(value0)))
 
     fun joinAll(
         symbols: MutableMap<String, Any>,
@@ -2211,37 +881,9 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ConsumerState,
         value1: kotlin.collections.List<lawspec.data.TopicPartition>,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ConsumerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate90(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaCons" + "umerAssign: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative31(lawspec.runtime.LawSpecTyped.kafkaConsumerAssign_55(lawspec.runtime.LawSpecTyped.fromNative32(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)))
 
     fun kafkaConsumerClose(
         symbols: MutableMap<String, Any>,
@@ -2455,95 +1097,20 @@ object Kafka {
         value2: kotlin.Long,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit>,
-        lawspec.data.ConsumerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate96(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.either(
-                        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                        LawSpecKotlinCodecs.unit(schema, bits),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaCons" + "umerSeek: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative33(lawspec.runtime.LawSpecTyped.kafkaConsumerSeek_56(lawspec.runtime.LawSpecTyped.fromNative32(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2)))
 
     fun kafkaConsumerSetIsolationLevel(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ConsumerState,
         value1: lawspec.data.IsolationLevel,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ConsumerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate97(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaCons" + "umerSetIsolationLevel: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ConsumerState> = lawspec.runtime.LawSpecTyped.toNative31(lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel_57(lawspec.runtime.LawSpecTyped.fromNative32(value0), lawspec.runtime.LawSpecTyped.fromNative9(value1)))
 
     fun kafkaConsumerStart(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.ConsumerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate98(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaCons" + "umerStart: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ConsumerState = lawspec.runtime.LawSpecTyped.toNative32(lawspec.runtime.LawSpecTyped.kafkaConsumerStart_58(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun kafkaConsumerSubscribe(
         symbols: MutableMap<String, Any>,
@@ -2655,62 +1222,16 @@ object Kafka {
     fun kafkaProducerFlush(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ProducerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate101(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.producerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaProd" + "ucerFlush: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ProducerState> = lawspec.runtime.LawSpecTyped.toNative34(lawspec.runtime.LawSpecTyped.kafkaProducerFlush_59(lawspec.runtime.LawSpecTyped.fromNative35(value0)))
 
     fun kafkaProducerProducerIdentity(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
-        lawspec.data.ProducerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate102(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.producerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaProd" + "ucerProducerIdentity: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.ProducerState> = lawspec.runtime.LawSpecTyped.toNative36(lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity_60(lawspec.runtime.LawSpecTyped.fromNative35(value0)))
 
     fun kafkaProducerRetryLastSend(
         symbols: MutableMap<String, Any>,
@@ -2801,22 +1322,7 @@ object Kafka {
     fun kafkaProducerStart(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.ProducerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate105(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaProd" + "ucerStart: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ProducerState = lawspec.runtime.LawSpecTyped.toNative35(lawspec.runtime.LawSpecTyped.kafkaProducerStart_61(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun kafkaTransactionsAbortTransaction(
         symbols: MutableMap<String, Any>,
@@ -2911,34 +1417,7 @@ object Kafka {
         value0: lawspec.data.TransactionState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit>,
-        lawspec.data.TransactionState> {
-        try {
-            val codec0 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate108(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.either(
-                        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                        LawSpecKotlinCodecs.unit(schema, bits),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaTran" + "sactionsBeginTransaction" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.TransactionState> = lawspec.runtime.LawSpecTyped.toNative37(lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction_62(lawspec.runtime.LawSpecTyped.fromNative38(value0)))
 
     fun kafkaTransactionsCommitTransaction(
         symbols: MutableMap<String, Any>,
@@ -3131,180 +1610,40 @@ object Kafka {
     fun kafkaTransactionsStart(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.TransactionState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate113(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::kafkaTran" + "sactionsStart: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.TransactionState = lawspec.runtime.LawSpecTyped.toNative38(lawspec.runtime.LawSpecTyped.kafkaTransactionsStart_63(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun keepPositions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
         value2: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate114(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::keepPosit" + "ions: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative75(lawspec.runtime.LawSpecTyped.keepPositions_64(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative75(value1), lawspec.runtime.LawSpecTyped.fromNative75(value2)))
 
     fun lawspecCollectionsBoundedInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Short> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate115(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedInt16: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate116(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedInt32: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate117(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedInt64: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Byte> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate118(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int8", bits, kotlin.Byte::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedInt8: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Byte> = lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedIntSize(
         symbols: MutableMap<String, Any>,
@@ -3334,52 +1673,14 @@ object Kafka {
     fun lawspecCollectionsBoundedUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate120(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("UInt16", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedUInt16: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate121(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedUInt32: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedUInt64(
         symbols: MutableMap<String, Any>,
@@ -3409,27 +1710,8 @@ object Kafka {
     fun lawspecCollectionsBoundedUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Short> {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate123(symbols, argument0)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("UInt8", bits, kotlin.Short::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsBoundedUInt8: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsBoundedUIntPtr(
         symbols: MutableMap<String, Any>,
@@ -3484,82 +1766,22 @@ object Kafka {
     fun lawspecCollectionsSaturatingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate126(symbols, argument0)
-            val resultCodec = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingInt16" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate127(symbols, argument0)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingInt32" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate128(symbols, argument0)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingInt64" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Byte {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate129(symbols, argument0)
-            val resultCodec = schema.scalar("Int8", bits, kotlin.Byte::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingInt8:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingIntSize(
         symbols: MutableMap<String, Any>,
@@ -3585,42 +1807,12 @@ object Kafka {
     fun lawspecCollectionsSaturatingUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate131(symbols, argument0)
-            val resultCodec = schema.scalar("UInt16", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingUInt1" + "6: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate132(symbols, argument0)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingUInt3" + "2: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingUInt64(
         symbols: MutableMap<String, Any>,
@@ -3646,22 +1838,7 @@ object Kafka {
     fun lawspecCollectionsSaturatingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate134(symbols, argument0)
-            val resultCodec = schema.scalar("UInt8", bits, kotlin.Short::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsSaturatingUInt8" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsSaturatingUIntPtr(
         symbols: MutableMap<String, Any>,
@@ -3708,82 +1885,22 @@ object Kafka {
     fun lawspecCollectionsWrappingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate137(symbols, argument0)
-            val resultCodec = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingInt16: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate138(symbols, argument0)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingInt32: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate139(symbols, argument0)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingInt64: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Byte {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate140(symbols, argument0)
-            val resultCodec = schema.scalar("Int8", bits, kotlin.Byte::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingInt8: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingIntSize(
         symbols: MutableMap<String, Any>,
@@ -3809,42 +1926,12 @@ object Kafka {
     fun lawspecCollectionsWrappingUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate142(symbols, argument0)
-            val resultCodec = schema.scalar("UInt16", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingUInt16:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate143(symbols, argument0)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingUInt32:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingUInt64(
         symbols: MutableMap<String, Any>,
@@ -3870,22 +1957,7 @@ object Kafka {
     fun lawspecCollectionsWrappingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate145(symbols, argument0)
-            val resultCodec = schema.scalar("UInt8", bits, kotlin.Short::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspecCo" + "llectionsWrappingUInt8: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
 
     fun lawspecCollectionsWrappingUIntPtr(
         symbols: MutableMap<String, Any>,
@@ -3935,251 +2007,44 @@ object Kafka {
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate148(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValD" +
-                    "eleteItems_62318b0a9a214" +
-                    "051: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                kotlin.String>>> = lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_65(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)))
 
     fun lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate149(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValD" +
-                    "eleteItems_ad1c27c4ed886" +
-                    "4c5: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.Long,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_66(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)))
 
     fun lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.Map<kotlin.Long, kotlin.Long>,
-    ): kotlin.collections.Map<kotlin.Long, kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate150(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValD" +
-                    "elete_95f14dd183eea025: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_67(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)))
 
     fun lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate151(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValD" +
-                    "elete_d7a338e61b94bc91: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            kotlin.String>> = lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_68(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)))
 
     fun lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Map<kotlin.String, lawspec.data.Group>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate152(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValE" +
-                    "ntries_668241931cc153f4:" +
-                    " "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            lawspec.data.Group>> = lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_69(lawspec.runtime.LawSpecTyped.fromNative54(value0)))
 
     fun lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
         symbols: MutableMap<String, Any>,
@@ -4187,295 +2052,46 @@ object Kafka {
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>>> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate153(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValE" +
-                    "ntries_6ea9a99b05e74c: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                lawspec.data.TopicPartition>>> = lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_70(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate154(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValE" +
-                    "ntries_df543c4156f9821a:" +
-                    " "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                kotlin.String>>> = lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_71(lawspec.runtime.LawSpecTyped.fromNative52(value0)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate155(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_18760777c36ef58" +
-                    "7: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.Long,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_72(lawspec.runtime.LawSpecTyped.fromNative50(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>>,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate156(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_201f93149738fc4" +
-                    "f: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_73(lawspec.runtime.LawSpecTyped.fromNative57(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>>,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate157(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_224702891e6ebfb" +
-                    "a: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.Int>> = lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_74(lawspec.runtime.LawSpecTyped.fromNative58(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
         symbols: MutableMap<String, Any>,
@@ -4483,127 +2099,19 @@ object Kafka {
             lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>>,
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate158(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_28070fe12955af9" +
-                    "9: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.Long,
+            lawspec.data.ProducerEntry>> = lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_75(lawspec.runtime.LawSpecTyped.fromNative59(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate159(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_30e2507dcc3ef9a" +
-                    "c: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            lawspec.data.Group>> = lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_76(lawspec.runtime.LawSpecTyped.fromNative53(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
         symbols: MutableMap<String, Any>,
@@ -4611,64 +2119,10 @@ object Kafka {
             lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>>,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate160(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_4bb0a47f584a2b9" +
-                    "e: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.GroupPartition,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_77(lawspec.runtime.LawSpecTyped.fromNative60(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
         symbols: MutableMap<String, Any>,
@@ -4676,64 +2130,10 @@ object Kafka {
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>>,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate161(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_656b3e1b81a0457" +
-                    "e: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_78(lawspec.runtime.LawSpecTyped.fromNative61(value0), lawspec.runtime.LawSpecTyped.fromNative61(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
         symbols: MutableMap<String, Any>,
@@ -4742,76 +2142,10 @@ object Kafka {
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate162(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_85bb2eea042e5fe" +
-                    "3: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                kotlin.String>>> = lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_79(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
         symbols: MutableMap<String, Any>,
@@ -4820,64 +2154,9 @@ object Kafka {
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate163(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_cbe112dc9dd1eb1" +
-                    "0: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            lawspec.data.PartitionLog>> = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_80(lawspec.runtime.LawSpecTyped.fromNative62(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
         symbols: MutableMap<String, Any>,
@@ -4886,76 +2165,10 @@ object Kafka {
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate164(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_dd3ea08b63484ff" +
-                    "8: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.Long,
+            kotlin.collections.List<
+                lawspec.data.BatchMeta>>> = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_81(lawspec.runtime.LawSpecTyped.fromNative63(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
         symbols: MutableMap<String, Any>,
@@ -4968,76 +2181,10 @@ object Kafka {
                 kotlin.String,
                 kotlin.collections.List<lawspec.data.TopicPartition>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate165(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_ead6d6bde1a20a2" +
-                    "6: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                lawspec.data.TopicPartition>>> = lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_82(lawspec.runtime.LawSpecTyped.fromNative55(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)))
 
     fun lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9(
         symbols: MutableMap<String, Any>,
@@ -5045,355 +2192,56 @@ object Kafka {
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>>,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate166(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValF" +
-                    "romItems_faa46e63cbcd14e" +
-                    "9: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            kotlin.Int>> = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_83(lawspec.runtime.LawSpecTyped.fromNative64(value0), lawspec.runtime.LawSpecTyped.fromNative64(value1)))
 
     fun lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate167(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValK" +
-                    "eysItems_e233e49033adca7" +
-                    "2: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_84(lawspec.runtime.LawSpecTyped.fromNative49(value0)))
 
     fun lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate168(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValK" +
-                    "eys_c7c332043746df98: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_85(lawspec.runtime.LawSpecTyped.fromNative52(value0)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<lawspec.data.BatchMeta>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate169(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_136cc6772b4e9" +
-                    "92f: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            lawspec.data.BatchMeta>> = lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_86(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate170(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_1eb69f0fdf3c8" +
-                    "f0b: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_87(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative61(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate171(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_5756b26180726" +
-                    "581: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_88(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<kotlin.String>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate172(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_69280184901ea" +
-                    "585: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            kotlin.String>> = lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_89(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
         symbols: MutableMap<String, Any>,
@@ -5402,426 +2250,70 @@ object Kafka {
             lawspec.data.Entry<
                 kotlin.String,
                 kotlin.collections.List<lawspec.data.TopicPartition>>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate173(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_82603a5935440" +
-                    "f75: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_90(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate174(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_8c8e1453bfc42" +
-                    "ee5: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.ProducerEntry> = lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_91(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate175(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_9428a08824875" +
-                    "7a3: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_92(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.GroupPartition,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate176(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_b5b730fd09d3f" +
-                    "4b3: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_93(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate177(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_d4fb9ceeaac37" +
-                    "6dd: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_94(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative64(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate178(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_ecc6f3f417253" +
-                    "75: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_95(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate179(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(LawSpecDataCodecs.groupCodec(schema, bits, symbols), bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_ee46f4f96abfd" +
-                    "f11: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.Group> = lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_96(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate180(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookupItems_f23b5066cffbd" +
-                    "6eb: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.PartitionLog> = lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_97(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<kotlin.String>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate181(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_61e51068439aa457: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            kotlin.String>> = lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_98(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
         symbols: MutableMap<String, Any>,
@@ -5829,378 +2321,65 @@ object Kafka {
         value1: kotlin.collections.Map<
             kotlin.Long,
             kotlin.collections.List<lawspec.data.BatchMeta>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<lawspec.data.BatchMeta>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate182(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_65f44f3855baf0a5: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            lawspec.data.BatchMeta>> = lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_99(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative72(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.PartitionLog> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate183(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_7acdaa8dcd255941: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.PartitionLog> = lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_100(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative73(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate184(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_7e86ea7b8af5f7e9: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_101(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative74(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.Map<kotlin.Long, kotlin.Long>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate185(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_a6a374938d1c1ef1: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_102(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate186(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_be6dfdcf4e9ae9f5: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_103(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative75(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Map<kotlin.String, kotlin.Long>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate187(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_d32eccc04e0ce84b: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_104(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative76(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.GroupPartition,
         value1: kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate188(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_d45d335232ddb9f5: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_105(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative77(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.Map<kotlin.Long, lawspec.data.ProducerEntry>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerEntry> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate189(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_e75784f293b348fb: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.ProducerEntry> = lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_106(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative78(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Map<kotlin.String, kotlin.Int>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate190(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_ed82ee3bc3ed7c07: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_107(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative79(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
         symbols: MutableMap<String, Any>,
@@ -6208,87 +2387,16 @@ object Kafka {
         value1: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate191(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_f0a5427404f6c2eb: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_108(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)))
 
     fun lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Map<kotlin.String, lawspec.data.Group>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.Group> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate192(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(LawSpecDataCodecs.groupCodec(schema, bits, symbols), bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValL" +
-                    "ookup_f1a9f8275360594f: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.Group> = lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_109(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative54(value1)))
 
     fun lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
         symbols: MutableMap<String, Any>,
@@ -6296,561 +2404,106 @@ object Kafka {
             lawspec.data.Entry<
                 kotlin.String,
                 kotlin.collections.List<lawspec.data.TopicPartition>>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate193(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_2bb044c13a34edfc: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_110(lawspec.runtime.LawSpecTyped.fromNative55(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
-    ): kotlin.collections.Map<kotlin.String, lawspec.data.Group> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate194(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_5ce58c09d80ccd54: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        lawspec.data.Group> = lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_111(lawspec.runtime.LawSpecTyped.fromNative53(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate195(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_610caa8fbb581a02: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative74(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_112(lawspec.runtime.LawSpecTyped.fromNative64(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate196(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_a0c1d9feb5051d04: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        lawspec.data.PartitionLog> = lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_113(lawspec.runtime.LawSpecTyped.fromNative62(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>>,
-    ): kotlin.collections.Map<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate197(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_a4eebf20bfcd02b4: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        kotlin.collections.List<
+            lawspec.data.BatchMeta>> = lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_114(lawspec.runtime.LawSpecTyped.fromNative63(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate198(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_bd30e4f0b318724c: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative75(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_115(lawspec.runtime.LawSpecTyped.fromNative61(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate199(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_c9f1a347a852b1c2: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_116(lawspec.runtime.LawSpecTyped.fromNative57(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate200(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_ca750953e04bcf02: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            kotlin.String>> = lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_117(lawspec.runtime.LawSpecTyped.fromNative49(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.Int> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate201(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_dbc2234a1277c15e: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_118(lawspec.runtime.LawSpecTyped.fromNative58(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>>,
-    ): kotlin.collections.Map<kotlin.Long, lawspec.data.ProducerEntry> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate202(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_e2ff2d4e29c6936a: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        lawspec.data.ProducerEntry> = lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_119(lawspec.runtime.LawSpecTyped.fromNative59(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): kotlin.collections.Map<kotlin.Long, kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate203(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_e41901007f8d5eea: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_120(lawspec.runtime.LawSpecTyped.fromNative50(value0)))
 
     fun lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>>,
-    ): kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate204(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValO" + "f_ec3a06fbbd989d48: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.GroupPartition,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_121(lawspec.runtime.LawSpecTyped.fromNative60(value0)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
         value2: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate205(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_1a60d73f2ea7655c" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.Long,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_122(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative50(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
         symbols: MutableMap<String, Any>,
@@ -6858,60 +2511,10 @@ object Kafka {
         value1: lawspec.data.ProducerEntry,
         value2: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.Long, lawspec.data.ProducerEntry>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate206(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_1d4fcedc9b0136e2" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.Long,
+            lawspec.data.ProducerEntry>> = lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_123(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative59(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
         symbols: MutableMap<String, Any>,
@@ -6920,189 +2523,30 @@ object Kafka {
         value2: kotlin.collections.List<
             lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols), bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate207(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_2a3018cf45ad1ad9" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.Long,
+            kotlin.collections.List<
+                lawspec.data.BatchMeta>>> = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_124(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative63(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Int,
         value2: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Int>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate208(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_4b9848f70e8b7f53" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.Int>> = lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_125(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative58(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Long,
         value2: kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, kotlin.Long>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate209(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_4c71dc98d5546e58" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_126(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative57(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
         symbols: MutableMap<String, Any>,
@@ -7113,73 +2557,10 @@ object Kafka {
                 kotlin.String,
                 kotlin.collections.List<lawspec.data.TopicPartition>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate210(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_565019ca06de701f" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                lawspec.data.TopicPartition>>> = lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_127(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative55(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
         symbols: MutableMap<String, Any>,
@@ -7187,120 +2568,20 @@ object Kafka {
         value1: kotlin.Long,
         value2: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.GroupPartition, kotlin.Long>> {
-        try {
-            val codec0 = LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate211(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_854f1183117f06f5" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.GroupPartition,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_128(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative60(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Group,
         value2: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
-    ): kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate212(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_9bdf97a44332ea1:" +
-                    " "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            kotlin.String,
+            lawspec.data.Group>> = lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_129(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative53(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750(
         symbols: MutableMap<String, Any>,
@@ -7308,60 +2589,10 @@ object Kafka {
         value1: kotlin.Int,
         value2: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Int>> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate213(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_a229945e8cb36750" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            kotlin.Int>> = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_130(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative64(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
         symbols: MutableMap<String, Any>,
@@ -7370,73 +2601,10 @@ object Kafka {
         value2: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate214(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_aacdaaddac214c4:" +
-                    " "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            kotlin.String,
+            kotlin.collections.List<
+                kotlin.String>>> = lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_131(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative49(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d(
         symbols: MutableMap<String, Any>,
@@ -7444,60 +2612,10 @@ object Kafka {
         value1: kotlin.Long,
         value2: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>>,
-    ): kotlin.collections.List<lawspec.data.Entry<lawspec.data.TopicPartition, kotlin.Long>> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate215(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_b8b82d61b25bb98d" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            kotlin.Long>> = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_132(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative61(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
         symbols: MutableMap<String, Any>,
@@ -7506,213 +2624,36 @@ object Kafka {
         value2: kotlin.collections.List<
             lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>>,
     ): kotlin.collections.List<
-        lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate216(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "utItems_ee57bfced88cae9b" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.Entry<
+            lawspec.data.TopicPartition,
+            lawspec.data.PartitionLog>> = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_133(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative62(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.Int,
         value2: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate217(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_1e5631cf1010f058: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative74(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_134(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative74(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Group,
         value2: kotlin.collections.Map<kotlin.String, lawspec.data.Group>,
-    ): kotlin.collections.Map<kotlin.String, lawspec.data.Group> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate218(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_64ef6963a054fec9: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        lawspec.data.Group> = lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_135(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative54(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: lawspec.data.PartitionLog,
         value2: kotlin.collections.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate219(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_6a32d437b06cf1fb: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        lawspec.data.PartitionLog> = lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_136(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative73(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
         symbols: MutableMap<String, Any>,
@@ -7721,426 +2662,74 @@ object Kafka {
         value2: kotlin.collections.Map<
             kotlin.Long,
             kotlin.collections.List<lawspec.data.BatchMeta>>,
-    ): kotlin.collections.Map<kotlin.Long, kotlin.collections.List<lawspec.data.BatchMeta>> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols), bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate220(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_84321765782615b9: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        kotlin.collections.List<
+            lawspec.data.BatchMeta>> = lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_137(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative72(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.Long,
         value2: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
-    ): kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate221(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_9e5f815c293ac9e1: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.TopicPartition,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative75(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_138(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative75(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Long,
         value2: kotlin.collections.Map<kotlin.String, kotlin.Long>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate222(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_a0581d6dd36c2e58: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_139(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative76(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Int,
         value2: kotlin.collections.Map<kotlin.String, kotlin.Int>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate223(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsKeyValP" + "ut_a2a3515700f0a6f: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_140(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative79(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.GroupPartition,
         value1: kotlin.Long,
         value2: kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long>,
-    ): kotlin.collections.Map<lawspec.data.GroupPartition, kotlin.Long> {
-        try {
-            val codec0 = LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate224(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_cab6769a52b0163d: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        lawspec.data.GroupPartition,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_141(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative77(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: lawspec.data.ProducerEntry,
         value2: kotlin.collections.Map<kotlin.Long, lawspec.data.ProducerEntry>,
-    ): kotlin.collections.Map<kotlin.Long, lawspec.data.ProducerEntry> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate225(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_d00f0719b7ec97ee: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        lawspec.data.ProducerEntry> = lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_142(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative78(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<kotlin.String>,
         value2: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate226(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_d378e301aa895004: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            kotlin.String>> = lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_143(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative52(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
         value2: kotlin.collections.Map<kotlin.Long, kotlin.Long>,
-    ): kotlin.collections.Map<kotlin.Long, kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate227(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_d4f4392b8878a23c: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.Long,
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_144(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative51(value2)))
 
     fun lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
         symbols: MutableMap<String, Any>,
@@ -8149,685 +2738,115 @@ object Kafka {
         value2: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate228(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValP" +
-                    "ut_ee3ccd7601ddf107: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_145(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)))
 
     fun lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Entry<kotlin.Long, kotlin.Long>>,
-    ): kotlin.collections.List<kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate229(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValV" +
-                    "aluesItems_6f7cc84ccef25" +
-                    "2ae: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_146(lawspec.runtime.LawSpecTyped.fromNative50(value0)))
 
     fun lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Map<kotlin.Long, kotlin.Long>,
-    ): kotlin.collections.List<kotlin.Long> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate230(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsKeyValV" +
-                    "alues_152cb3cfa5a69daa: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_147(lawspec.runtime.LawSpecTyped.fromNative51(value0)))
 
     fun lawspec_lawspecCollectionsSetFromItems_1d74c254059339d3(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Long>,
         value1: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.collections.List<kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate231(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetFrom" +
-                    "Items_1d74c254059339d3: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_148(lawspec.runtime.LawSpecTyped.fromNative84(value0), lawspec.runtime.LawSpecTyped.fromNative84(value1)))
 
     fun lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.String>,
         value1: kotlin.collections.List<kotlin.String>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate232(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetFrom" +
-                    "Items_25b2070f526ff089: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_149(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)))
 
     fun lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Int>,
         value1: kotlin.collections.List<kotlin.Int>,
-    ): kotlin.collections.List<kotlin.Int> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate233(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetFrom" +
-                    "Items_ffc9b33e7d19d87c: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_150(lawspec.runtime.LawSpecTyped.fromNative85(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1)))
 
     fun lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<kotlin.String>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate234(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetInse" +
-                    "rtItems_a3dc35e775ac9977" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_151(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)))
 
     fun lawspec_lawspecCollectionsSetInsertItems_f40de20825416c4f(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.collections.List<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate235(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetInse" +
-                    "rtItems_f40de20825416c4f" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_152(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative84(value1)))
 
     fun lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Int,
         value1: kotlin.collections.List<kotlin.Int>,
-    ): kotlin.collections.List<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate236(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetInse" +
-                    "rtItems_fee347ca5af6d966" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_153(lawspec.runtime.LawSpecTyped.fromNative2(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1)))
 
     fun lawspec_lawspecCollectionsSetMemberItems_1cf181337c0427e8(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate237(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetMemb" +
-                    "erItems_1cf181337c0427e8" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMemberItems_154(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative84(value1)))
 
     fun lawspec_lawspecCollectionsSetMember_ad24e518e9752b84(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.collections.Set<kotlin.Long>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate238(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetMemb" +
-                    "er_ad24e518e9752b84: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMember_155(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative104(value1)))
 
     fun lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.String>,
-    ): kotlin.collections.Set<kotlin.String> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate239(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsSetOf_8" + "3f32212ffd7f646: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_156(lawspec.runtime.LawSpecTyped.fromNative17(value0)))
 
     fun lawspec_lawspecCollectionsSetOf_9446af497e0eb47e(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Int>,
-    ): kotlin.collections.Set<kotlin.Int> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate240(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsSetOf_9" + "446af497e0eb47e: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative87(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_157(lawspec.runtime.LawSpecTyped.fromNative85(value0)))
 
     fun lawspec_lawspecCollectionsSetOf_b2e15487e0114c0(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Long>,
-    ): kotlin.collections.Set<kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate241(symbols, argument0)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsSetOf_b" + "2e15487e0114c0: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative104(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_158(lawspec.runtime.LawSpecTyped.fromNative84(value0)))
 
     fun lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<kotlin.String>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate242(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetRemo" +
-                    "veItems_a3dc35e775ac9977" +
-                    ": "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemoveItems_159(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)))
 
     fun lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.Set<kotlin.String>,
-    ): kotlin.collections.Set<kotlin.String> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate243(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                (
-                    "lawtwin.kafka::lawspec_l" +
-                    "awspecCollectionsSetRemo" +
-                    "ve_1fda0e8e73969c67: "
-                ) +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemove_160(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)))
 
     fun lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Set<kotlin.String>,
         value1: kotlin.collections.Set<kotlin.String>,
-    ): kotlin.collections.Set<kotlin.String> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate244(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawspec_l" + "awspecCollectionsSetUnio" + "n_f2139edefc699bed: ") +
-                    error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_161(lawspec.runtime.LawSpecTyped.fromNative86(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)))
 
     fun lawtwinKafkaModelAddPartitionsToTxn(
         symbols: MutableMap<String, Any>,
@@ -8836,79 +2855,15 @@ object Kafka {
         value2: kotlin.Short,
         value3: kotlin.collections.List<lawspec.data.TopicPartition>,
         value4: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate245(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAddPartitionsToT" + "xn: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_162(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative14(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)))
 
     fun lawtwinKafkaModelAllKnown(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: lawspec.data.BrokerState,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate246(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAllKnown: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_163(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelAppendBatch(
         symbols: MutableMap<String, Any>,
@@ -8916,36 +2871,7 @@ object Kafka {
         value1: kotlin.Long,
         value2: kotlin.Boolean,
         value3: lawspec.data.PartitionLog,
-    ): lawspec.data.PartitionLog {
-        try {
-            val codec0 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate247(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAppendBatch: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.PartitionLog = lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_164(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative16(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3)))
 
     fun lawtwinKafkaModelAppendRecords(
         symbols: MutableMap<String, Any>,
@@ -8954,80 +2880,16 @@ object Kafka {
         value2: kotlin.Long,
         value3: kotlin.Boolean,
         value4: kotlin.collections.List<lawspec.data.LogEntry>,
-    ): lawspec.data.Pair<kotlin.Long, kotlin.collections.List<lawspec.data.LogEntry>> {
-        try {
-            val codec0 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(LawSpecDataCodecs.logEntryCodec(schema, bits, symbols), bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate248(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.logEntryCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAppendRecords: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        kotlin.collections.List<
+            lawspec.data.LogEntry>> = lawspec.runtime.LawSpecTyped.toNative93(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_165(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative94(value4)))
 
     fun lawtwinKafkaModelApplyOffsets(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.PendingOffset>,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate249(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelApplyOffsets: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_166(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelAssignPartitions(
         symbols: MutableMap<String, Any>,
@@ -9038,75 +2900,10 @@ object Kafka {
         value4: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate250(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAssignPartitions" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_167(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3), lawspec.runtime.LawSpecTyped.fromNative56(value4)))
 
     fun lawtwinKafkaModelAssignTo(
         symbols: MutableMap<String, Any>,
@@ -9115,54 +2912,10 @@ object Kafka {
         value2: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate251(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAssignTo: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_168(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)))
 
     fun lawtwinKafkaModelAssignTopics(
         symbols: MutableMap<String, Any>,
@@ -9173,77 +2926,10 @@ object Kafka {
         value3: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate252(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelAssignTopics: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_169(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative56(value3)))
 
     fun lawtwinKafkaModelCheckMember(
         symbols: MutableMap<String, Any>,
@@ -9251,35 +2937,7 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.Int,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.Group {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate253(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelCheckMember: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Group = lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_170(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelCheckTxnProducer(
         symbols: MutableMap<String, Any>,
@@ -9287,227 +2945,49 @@ object Kafka {
         value1: kotlin.Long,
         value2: kotlin.Short,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.ProducerEntry {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate254(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelCheckTxnProducer" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ProducerEntry = lawspec.runtime.LawSpecTyped.toNative80(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_171(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelCommitAll(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate255(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelCommitAll: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_172(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelComputeAssignment(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.Map<kotlin.String, kotlin.collections.List<kotlin.String>>,
         value1: lawspec.data.BrokerState,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate256(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelComputeAssignmen" + "t: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_173(lawspec.runtime.LawSpecTyped.fromNative52(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelCreatePartitions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Int,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate257(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelCreatePartitions" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_174(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelCreateTopic(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.Int,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate258(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelCreateTopic: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_175(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelDescribeGroup(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate259(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.groupViewCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelDescribeGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.GroupView,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative23(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_176(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelEmptyAssignments(
         symbols: MutableMap<String, Any>,
@@ -9515,112 +2995,25 @@ object Kafka {
         value1: kotlin.collections.Map<
             kotlin.String,
             kotlin.collections.List<lawspec.data.TopicPartition>>,
-    ): kotlin.collections.Map<kotlin.String, kotlin.collections.List<lawspec.data.TopicPartition>> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate260(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelEmptyAssignments" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        kotlin.collections.List<
+            lawspec.data.TopicPartition>> = lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_177(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)))
 
     fun lawtwinKafkaModelEmptyBroker(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate261(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelEmptyBroker: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_178(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun lawtwinKafkaModelEmptyGroup(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.Group {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate262(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelEmptyGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Group = lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_179(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun lawtwinKafkaModelEmptyLog(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): lawspec.data.PartitionLog {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate263(symbols, argument0)
-            val resultCodec = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelEmptyLog: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.PartitionLog = lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_180(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun lawtwinKafkaModelEndTxn(
         symbols: MutableMap<String, Any>,
@@ -9629,70 +3022,15 @@ object Kafka {
         value2: kotlin.Short,
         value3: kotlin.Boolean,
         value4: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate264(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelEndTxn: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_181(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)))
 
     fun lawtwinKafkaModelExpectedSequence(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Short,
         value1: kotlin.collections.List<lawspec.data.BatchMeta>,
-    ): kotlin.Int {
-        try {
-            val codec0 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols), bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate265(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelExpectedSequence" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_182(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1)))
 
     fun lawtwinKafkaModelFetch(
         symbols: MutableMap<String, Any>,
@@ -9701,45 +3039,9 @@ object Kafka {
         value2: kotlin.Int,
         value3: lawspec.data.IsolationLevel,
         value4: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate266(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.fetchResultCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelFetch: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.FetchResult,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative25(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_183(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)))
 
     fun lawtwinKafkaModelFindDuplicate(
         symbols: MutableMap<String, Any>,
@@ -9747,41 +3049,8 @@ object Kafka {
         value1: kotlin.Int,
         value2: kotlin.Int,
         value3: kotlin.collections.List<lawspec.data.BatchMeta>,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-        try {
-            val codec0 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols), bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate267(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelFindDuplicate: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_184(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative81(value3)))
 
     fun lawtwinKafkaModelFinishTxn(
         symbols: MutableMap<String, Any>,
@@ -9789,59 +3058,13 @@ object Kafka {
         value1: kotlin.Boolean,
         value2: lawspec.data.TxnState,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.txnStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate268(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelFinishTxn: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_185(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative96(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelGroupOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.Group {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate269(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelGroupOf: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Group = lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_186(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelHeartbeat(
         symbols: MutableMap<String, Any>,
@@ -9849,131 +3072,29 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.Int,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate270(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelHeartbeat: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_187(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelHighWatermark(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.PartitionLog,
-    ): kotlin.Long {
-        try {
-            val codec0 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate271(symbols, argument0)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelHighWatermark: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_188(lawspec.runtime.LawSpecTyped.fromNative83(value0)))
 
     fun lawtwinKafkaModelInitProducerId(
         symbols: MutableMap<String, Any>,
         value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState> {
-        try {
-            val codec0 =
-                schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate272(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelInitProducerId: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.ProducerIdAndEpoch,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_189(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelIsAborted(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
         value2: kotlin.collections.List<lawspec.data.AbortedTxn>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols), bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate273(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelIsAborted: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_190(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative97(value2)))
 
     fun lawtwinKafkaModelJoinGroup(
         symbols: MutableMap<String, Any>,
@@ -9981,159 +3102,35 @@ object Kafka {
         value1: kotlin.String,
         value2: kotlin.collections.List<kotlin.String>,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Int, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate274(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelJoinGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Int,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative27(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_191(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelKnownPartition(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: lawspec.data.BrokerState,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate275(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelKnownPartition: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_192(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelLastOffsetOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.FetchedRecord>,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate276(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelLastOffsetOf: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_193(lawspec.runtime.LawSpecTyped.fromNative90(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)))
 
     fun lawtwinKafkaModelLastStableOffset(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.PartitionLog,
-    ): kotlin.Long {
-        try {
-            val codec0 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate277(symbols, argument0)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelLastStableOffset" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_194(lawspec.runtime.LawSpecTyped.fromNative83(value0)))
 
     fun lawtwinKafkaModelLeaveGroup(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.String,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate278(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelLeaveGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_195(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelListOffsets(
         symbols: MutableMap<String, Any>,
@@ -10141,110 +3138,26 @@ object Kafka {
         value1: lawspec.data.OffsetSpec,
         value2: lawspec.data.IsolationLevel,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.offsetSpecCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate279(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelListOffsets: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_196(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative10(value1), lawspec.runtime.LawSpecTyped.fromNative9(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelLogOf(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.PartitionLog {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate280(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelLogOf: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.PartitionLog = lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_197(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelMax64(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate281(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMax64: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_198(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)))
 
     fun lawtwinKafkaModelMaxPartitions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Unit,
-    ): kotlin.Int {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate282(symbols, argument0)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMaxPartitions: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_199(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun lawtwinKafkaModelMemberViews(
         symbols: MutableMap<String, Any>,
@@ -10252,42 +3165,8 @@ object Kafka {
             lawspec.data.Entry<
                 kotlin.String,
                 kotlin.collections.List<lawspec.data.TopicPartition>>>,
-    ): kotlin.collections.List<lawspec.data.MemberAssignment> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate283(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMemberViews: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.MemberAssignment> = lawspec.runtime.LawSpecTyped.toNative88(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_200(lawspec.runtime.LawSpecTyped.fromNative55(value0)))
 
     fun lawtwinKafkaModelMetadata(
         symbols: MutableMap<String, Any>,
@@ -10295,125 +3174,27 @@ object Kafka {
         value1: lawspec.data.BrokerState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate284(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMetadata: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_201(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelMin64(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate285(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMin64: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_202(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)))
 
     fun lawtwinKafkaModelMinOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Long>,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate286(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelMinOf: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_203(lawspec.runtime.LawSpecTyped.fromNative84(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)))
 
     fun lawtwinKafkaModelNewProducer(
         symbols: MutableMap<String, Any>,
         value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<lawspec.data.ProducerIdAndEpoch, lawspec.data.BrokerState> {
-        try {
-            val codec0 =
-                schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate287(symbols, argument0, argument1)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelNewProducer: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        lawspec.data.ProducerIdAndEpoch,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_204(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelNextFetchOffset(
         symbols: MutableMap<String, Any>,
@@ -10421,45 +3202,7 @@ object Kafka {
         value1: kotlin.Long,
         value2: kotlin.collections.List<lawspec.data.FetchedRecord>,
         value3: kotlin.collections.List<lawspec.data.FetchedRecord>,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate288(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelNextFetchOffset:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_205(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative90(value2), lawspec.runtime.LawSpecTyped.fromNative90(value3)))
 
     fun lawtwinKafkaModelOffsetCommit(
         symbols: MutableMap<String, Any>,
@@ -10468,50 +3211,9 @@ object Kafka {
         value2: kotlin.Int,
         value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
         value4: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate289(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelOffsetCommit: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_206(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative15(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)))
 
     fun lawtwinKafkaModelOffsetFetch(
         symbols: MutableMap<String, Any>,
@@ -10520,174 +3222,34 @@ object Kafka {
         value2: lawspec.data.BrokerState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate290(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.maybe(
-                        schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelOffsetFetch: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative24(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_207(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelOffsetPartitions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.OffsetEntry>,
-    ): kotlin.collections.List<lawspec.data.TopicPartition> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate291(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelOffsetPartitions" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.TopicPartition> = lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_208(lawspec.runtime.LawSpecTyped.fromNative15(value0)))
 
     fun lawtwinKafkaModelPartitionCountOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.BrokerState,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate292(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPartitionCountOf" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_209(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelPartitionsBelow(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Int,
-    ): kotlin.collections.List<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate293(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPartitionsBelow:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_210(lawspec.runtime.LawSpecTyped.fromNative2(value0)))
 
     fun lawtwinKafkaModelPendingFor(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         value2: kotlin.collections.List<lawspec.data.PendingOffset>,
-    ): kotlin.collections.List<lawspec.data.PendingOffset> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate294(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPendingFor: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.PendingOffset> = lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_211(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative95(value2)))
 
     fun lawtwinKafkaModelProduce(
         symbols: MutableMap<String, Any>,
@@ -10695,48 +3257,9 @@ object Kafka {
         value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
         value2: kotlin.collections.List<lawspec.data.Record>,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.maybe(
-                    LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate295(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelProduce: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_212(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative6(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelProduceTagged(
         symbols: MutableMap<String, Any>,
@@ -10745,142 +3268,30 @@ object Kafka {
         value2: kotlin.collections.List<lawspec.data.Record>,
         value3: lawspec.data.PartitionLog,
         value4: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Long, lawspec.data.BrokerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.producerTagCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val codec4 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate296(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelProduceTagged: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Long,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_213(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)))
 
     fun lawtwinKafkaModelPutGroup(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Group,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate297(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPutGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_214(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelPutLog(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: lawspec.data.PartitionLog,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate298(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPutLog: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_215(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelPutProducer(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: lawspec.data.ProducerEntry,
         value2: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.producerEntryCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate299(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelPutProducer: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_216(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)))
 
     fun lawtwinKafkaModelReadable(
         symbols: MutableMap<String, Any>,
@@ -10890,77 +3301,14 @@ object Kafka {
         value3: kotlin.Boolean,
         value4: kotlin.collections.List<lawspec.data.AbortedTxn>,
         value5: kotlin.collections.List<lawspec.data.FetchedRecord>,
-    ): kotlin.collections.List<lawspec.data.FetchedRecord> {
-        try {
-            val codec0 =
-                schema.list(LawSpecDataCodecs.logEntryCodec(schema, bits, symbols), bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(LawSpecDataCodecs.abortedTxnCodec(schema, bits, symbols), bits, symbols)
-            val argument4 = codec4.encode(value4)
-            val codec5 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument5 = codec5.encode(value5)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate300(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                    argument5,
-                )
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelReadable: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.FetchedRecord> = lawspec.runtime.LawSpecTyped.toNative90(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_217(lawspec.runtime.LawSpecTyped.fromNative94(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative97(value4), lawspec.runtime.LawSpecTyped.fromNative90(value5)))
 
     fun lawtwinKafkaModelRebalance(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.Group,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.Group {
-        try {
-            val codec0 = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate301(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelRebalance: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Group = lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_218(lawspec.runtime.LawSpecTyped.fromNative82(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelRebalanceGroups(
         symbols: MutableMap<String, Any>,
@@ -10968,276 +3316,51 @@ object Kafka {
         value1: kotlin.collections.List<lawspec.data.Entry<kotlin.String, lawspec.data.Group>>,
         value2: lawspec.data.BrokerState,
         value3: kotlin.collections.Map<kotlin.String, lawspec.data.Group>,
-    ): kotlin.collections.Map<kotlin.String, lawspec.data.Group> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate302(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    LawSpecDataCodecs.groupCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelRebalanceGroups:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Map<
+        kotlin.String,
+        lawspec.data.Group> = lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_219(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative54(value3)))
 
     fun lawtwinKafkaModelRebalanceTopic(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate303(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelRebalanceTopic: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_220(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)))
 
     fun lawtwinKafkaModelRememberBatch(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: lawspec.data.BatchMeta,
         value2: lawspec.data.PartitionLog,
-    ): lawspec.data.PartitionLog {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.batchMetaCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate304(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelRememberBatch: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.PartitionLog = lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_221(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)))
 
     fun lawtwinKafkaModelReversePending(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.PendingOffset>,
         value1: kotlin.collections.List<lawspec.data.PendingOffset>,
-    ): kotlin.collections.List<lawspec.data.PendingOffset> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate305(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.pendingOffsetCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelReversePending: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.PendingOffset> = lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_222(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative95(value1)))
 
     fun lawtwinKafkaModelSubscribedTopics(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
         value1: kotlin.collections.Set<kotlin.String>,
-    ): kotlin.collections.Set<kotlin.String> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate306(symbols, argument0, argument1)
-            val resultCodec =
-                lawspec.runtime.LawSpecKotlinCodecs.set(
-                    schema,
-                    bits,
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelSubscribedTopics" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.Set<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_223(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)))
 
     fun lawtwinKafkaModelSubscribersOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<
             lawspec.data.Entry<kotlin.String, kotlin.collections.List<kotlin.String>>>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.entryCodec(
-                        schema,
-                        bits,
-                        schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                        schema.list(
-                            schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                            bits,
-                            symbols,
-                        ),
-                        symbols,
-                    ),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate307(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelSubscribersOf: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_224(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)))
 
     fun lawtwinKafkaModelSubscribesTo(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Group,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.groupCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate308(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelSubscribesTo: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_225(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1)))
 
     fun lawtwinKafkaModelSyncGroup(
         symbols: MutableMap<String, Any>,
@@ -11247,70 +3370,13 @@ object Kafka {
         value3: lawspec.data.BrokerState,
     ): lawspec.data.Pair<
         kotlin.collections.List<lawspec.data.TopicPartition>,
-        lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate309(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.list(
-                        LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelSyncGroup: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_226(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun lawtwinKafkaModelTxnHasPartition(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: lawspec.data.TxnState,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.txnStateCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate310(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelTxnHasPartition:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_227(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1)))
 
     fun lawtwinKafkaModelTxnOffsetCommit(
         symbols: MutableMap<String, Any>,
@@ -11320,144 +3386,28 @@ object Kafka {
         value3: kotlin.String,
         value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
         value5: lawspec.data.BrokerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.BrokerState> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int16", bits, kotlin.Short::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val codec5 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument5 = codec5.encode(value5)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate311(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                    argument5,
-                )
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelTxnOffsetCommit:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.BrokerState> = lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_228(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative1(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4), lawspec.runtime.LawSpecTyped.fromNative22(value5)))
 
     fun lawtwinKafkaModelUnionPartitions(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: kotlin.collections.List<lawspec.data.TopicPartition>,
-    ): kotlin.collections.List<lawspec.data.TopicPartition> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate312(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelUnionPartitions:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.TopicPartition> = lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_229(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)))
 
     fun lawtwinKafkaModelValidTopicName(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate313(symbols, argument0)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelValidTopicName: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_230(lawspec.runtime.LawSpecTyped.fromNative1(value0)))
 
     fun lawtwinKafkaModelWriteMarker(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Boolean,
         value2: lawspec.data.PartitionLog,
-    ): lawspec.data.PartitionLog {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate314(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.partitionLogCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelWriteMarker: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.PartitionLog = lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_231(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)))
 
     fun lawtwinKafkaModelWriteMarkers(
         symbols: MutableMap<String, Any>,
@@ -11465,247 +3415,55 @@ object Kafka {
         value1: kotlin.Boolean,
         value2: kotlin.collections.List<lawspec.data.TopicPartition>,
         value3: lawspec.data.BrokerState,
-    ): lawspec.data.BrokerState {
-        try {
-            val codec0 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument2 = codec2.encode(value2)
-            val codec3 = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            val argument3 = codec3.encode(value3)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate315(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                )
-            val resultCodec = LawSpecDataCodecs.brokerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::lawtwinKa" + "fkaModelWriteMarkers: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.BrokerState = lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_232(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative14(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)))
 
     fun memberIds(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.String>,
-    ): kotlin.collections.List<kotlin.String> {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate316(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::memberIds" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.String> = lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.memberIds_233(lawspec.runtime.LawSpecTyped.fromNative17(value0)))
 
     fun missingFrom(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: kotlin.collections.List<lawspec.data.TopicPartition>,
-    ): kotlin.collections.List<lawspec.data.TopicPartition> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate317(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::missingFr" + "om: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.TopicPartition> = lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.missingFrom_234(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)))
 
     fun mul32(
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate318(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::mul32: " + error.message, error)
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.mul32_235(lawspec.runtime.LawSpecTyped.fromNative47(value0), lawspec.runtime.LawSpecTyped.fromNative47(value1)))
 
-    fun murmur2(symbols: MutableMap<String, Any>, value0: kotlin.ByteArray): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate319(symbols, argument0)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::murmur2: " + error.message, error)
-        }
-    }
+    fun murmur2(
+        symbols: MutableMap<String, Any>,
+        value0: kotlin.ByteArray,
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.murmur2_236(lawspec.runtime.LawSpecTyped.fromNative100(value0)))
 
     fun murmurChunks(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<kotlin.Short>,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 =
-                schema.list(
-                    schema.scalar("UInt8", bits, kotlin.Short::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate320(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::murmurChu" + "nks: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.murmurChunks_237(lawspec.runtime.LawSpecTyped.fromNative101(value0), lawspec.runtime.LawSpecTyped.fromNative47(value1)))
 
-    fun murmurM(symbols: MutableMap<String, Any>, value0: kotlin.Unit): kotlin.Long {
-        try {
-            val codec0 = LawSpecKotlinCodecs.unit(schema, bits)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate321(symbols, argument0)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::murmurM: " + error.message, error)
-        }
-    }
+    fun murmurM(
+        symbols: MutableMap<String, Any>,
+        value0: kotlin.Unit,
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.murmurM_238(lawspec.runtime.LawSpecTyped.fromNative0(value0)))
 
     fun murmurPartitionerChoosePartition(
         symbols: MutableMap<String, Any>,
         value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
         value1: kotlin.Int,
-    ): kotlin.Int {
-        try {
-            val codec0 =
-                schema.maybe(
-                    schema.scalar("Bytes", bits, kotlin.ByteArray::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate322(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::murmurPar" + "titionerChoosePartition:" + " ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_239(lawspec.runtime.LawSpecTyped.fromNative20(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1)))
 
     fun ownedOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.MemberAssignment>,
-    ): kotlin.collections.List<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.memberAssignmentCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate323(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::ownedOf: " + error.message, error)
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.ownedOf_240(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative88(value1)))
 
     fun partitionOf(
         symbols: MutableMap<String, Any>,
@@ -11758,35 +3516,8 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: kotlin.collections.List<lawspec.data.TopicPartition>,
-    ): kotlin.collections.List<kotlin.Int> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate325(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::partition" + "sOfTopic: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.partitionsOfTopic_241(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)))
 
     fun pollPartitions(
         symbols: MutableMap<String, Any>,
@@ -11863,69 +3594,15 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Long>,
-    ): kotlin.collections.List<lawspec.data.OffsetEntry> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate327(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::positions" + "ToCommit: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.OffsetEntry> = lawspec.runtime.LawSpecTyped.toNative15(lawspec.runtime.LawSpecTyped.positionsToCommit_242(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative75(value1)))
 
     fun producerFlush(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerState,
-    ): lawspec.data.Pair<kotlin.Unit, lawspec.data.ProducerState> {
-        try {
-            val codec0 = LawSpecDataCodecs.producerStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate328(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    LawSpecKotlinCodecs.unit(schema, bits),
-                    LawSpecDataCodecs.producerStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::producerF" + "lush: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.Pair<
+        kotlin.Unit,
+        lawspec.data.ProducerState> = lawspec.runtime.LawSpecTyped.toNative34(lawspec.runtime.LawSpecTyped.producerFlush_243(lawspec.runtime.LawSpecTyped.fromNative35(value0)))
 
     fun producerIdempotent(
         symbols: MutableMap<String, Any>,
@@ -12152,84 +3829,20 @@ object Kafka {
     fun receivedOffsets(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.ConsumerRecord>,
-    ): kotlin.collections.List<kotlin.Long> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.consumerRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate334(symbols, argument0)
-            val resultCodec =
-                schema.list(
-                    schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::receivedO" + "ffsets: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.receivedOffsets_244(lawspec.runtime.LawSpecTyped.fromNative89(value0)))
 
     fun receivedRecords(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.ConsumerRecord>,
-    ): kotlin.collections.List<lawspec.data.Record> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.consumerRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate335(symbols, argument0)
-            val resultCodec =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::receivedR" + "ecords: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Record> = lawspec.runtime.LawSpecTyped.toNative7(lawspec.runtime.LawSpecTyped.receivedRecords_245(lawspec.runtime.LawSpecTyped.fromNative89(value0)))
 
     fun recordsOf(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.FetchedRecord>,
-    ): kotlin.collections.List<lawspec.data.Record> {
-        try {
-            val codec0 =
-                schema.list(
-                    LawSpecDataCodecs.fetchedRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate336(symbols, argument0)
-            val resultCodec =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::recordsOf" + ": ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.Record> = lawspec.runtime.LawSpecTyped.toNative7(lawspec.runtime.LawSpecTyped.recordsOf_246(lawspec.runtime.LawSpecTyped.fromNative90(value0)))
 
     fun resumesAtCommitted(
         symbols: MutableMap<String, Any>,
@@ -12280,89 +3893,18 @@ object Kafka {
         value1: lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.RecordMetadata>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                schema.either(
-                    LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                    LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate338(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::sameParti" + "tion: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.samePartition_247(lawspec.runtime.LawSpecTyped.fromNative92(value0), lawspec.runtime.LawSpecTyped.fromNative92(value1)))
 
     fun sequenceFor(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.collections.Map<lawspec.data.TopicPartition, kotlin.Int>,
-    ): kotlin.Int {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 =
-                lawspec.runtime.LawSpecKotlinCodecs.keyVal(
-                    schema,
-                    bits,
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType),
-                    symbols,
-                )
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate339(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::sequenceF" + "or: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.sequenceFor_248(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative74(value1)))
 
     fun smallBatch(
         symbols: MutableMap<String, Any>,
         value0: kotlin.collections.List<lawspec.data.Record>,
-    ): kotlin.Boolean {
-        try {
-            val codec0 =
-                schema.list(LawSpecDataCodecs.recordCodec(schema, bits, symbols), bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate340(symbols, argument0)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::smallBatc" + "h: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.smallBatch_249(lawspec.runtime.LawSpecTyped.fromNative7(value0)))
 
     fun stableBelowHigh(
         symbols: MutableMap<String, Any>,
@@ -12406,70 +3948,19 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerIdAndEpoch>,
         value1: kotlin.Int,
-    ): lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> {
-        try {
-            val codec0 =
-                schema.maybe(
-                    LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate342(symbols, argument0, argument1)
-            val resultCodec =
-                schema.maybe(
-                    LawSpecDataCodecs.producerTagCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::tagFor: " + error.message, error)
-        }
-    }
+    ): lawspec.runtime.LawSpecRuntime.Maybe<
+        lawspec.data.ProducerTag> = lawspec.runtime.LawSpecTyped.toNative6(lawspec.runtime.LawSpecTyped.tagFor_250(lawspec.runtime.LawSpecTyped.fromNative102(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1)))
 
     fun tagOf(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.ProducerIdAndEpoch,
         value1: kotlin.Int,
-    ): lawspec.data.ProducerTag {
-        try {
-            val codec0 = LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate343(symbols, argument0, argument1)
-            val resultCodec = LawSpecDataCodecs.producerTagCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::tagOf: " + error.message, error)
-        }
-    }
+    ): lawspec.data.ProducerTag = lawspec.runtime.LawSpecTyped.toNative98(lawspec.runtime.LawSpecTyped.tagOf_251(lawspec.runtime.LawSpecTyped.fromNative11(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1)))
 
-    fun toPositive(symbols: MutableMap<String, Any>, value0: kotlin.Long): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate344(symbols, argument0)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::toPositiv" + "e: ") + error.message,
-                error,
-            )
-        }
-    }
+    fun toPositive(
+        symbols: MutableMap<String, Any>,
+        value0: kotlin.Long,
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.toPositive_252(lawspec.runtime.LawSpecTyped.fromNative47(value0)))
 
     fun transactionThenRead(
         symbols: MutableMap<String, Any>,
@@ -12646,34 +4137,7 @@ object Kafka {
         value0: lawspec.data.TransactionState,
     ): lawspec.data.Pair<
         lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit>,
-        lawspec.data.TransactionState> {
-        try {
-            val codec0 = LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val result = lawspec.runtime.LawSpecDefinitionBodies.evaluate349(symbols, argument0)
-            val resultCodec =
-                LawSpecDataCodecs.pairCodec(
-                    schema,
-                    bits,
-                    schema.either(
-                        LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                        LawSpecKotlinCodecs.unit(schema, bits),
-                        bits,
-                        symbols,
-                    ),
-                    LawSpecDataCodecs.transactionStateCodec(schema, bits, symbols),
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::transacti" + "onsBegin: ") + error.message,
-                error,
-            )
-        }
-    }
+        lawspec.data.TransactionState> = lawspec.runtime.LawSpecTyped.toNative37(lawspec.runtime.LawSpecTyped.transactionsBegin_253(lawspec.runtime.LawSpecTyped.fromNative38(value0)))
 
     fun transactionsCommit(
         symbols: MutableMap<String, Any>,
@@ -12939,27 +4403,8 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.GroupView,
-    ): kotlin.collections.List<lawspec.data.TopicPartition> {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.groupViewCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate356(symbols, argument0, argument1)
-            val resultCodec =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::viewOf: " + error.message, error)
-        }
-    }
+    ): kotlin.collections.List<
+        lawspec.data.TopicPartition> = lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.viewOf_254(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative18(value1)))
 
     fun withAssignment(
         symbols: MutableMap<String, Any>,
@@ -12969,88 +4414,14 @@ object Kafka {
         value3: kotlin.collections.List<kotlin.String>,
         value4: kotlin.collections.List<lawspec.data.TopicPartition>,
         value5: lawspec.data.ConsumerState,
-    ): lawspec.data.ConsumerState {
-        try {
-            val codec0 =
-                schema.maybe(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val codec3 =
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                )
-            val argument3 = codec3.encode(value3)
-            val codec4 =
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                )
-            val argument4 = codec4.encode(value4)
-            val codec5 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument5 = codec5.encode(value5)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate357(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                    argument3,
-                    argument4,
-                    argument5,
-                )
-            val resultCodec = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::withAssig" + "nment: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ConsumerState = lawspec.runtime.LawSpecTyped.toNative32(lawspec.runtime.LawSpecTyped.withAssignment_255(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3), lawspec.runtime.LawSpecTyped.fromNative14(value4), lawspec.runtime.LawSpecTyped.fromNative32(value5)))
 
     fun withPosition(
         symbols: MutableMap<String, Any>,
         value0: lawspec.data.TopicPartition,
         value1: kotlin.Long,
         value2: lawspec.data.ConsumerState,
-    ): lawspec.data.ConsumerState {
-        try {
-            val codec0 = LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate358(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec = LawSpecDataCodecs.consumerStateCodec(schema, bits, symbols)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawtwin.kafka::withPosit" + "ion: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): lawspec.data.ConsumerState = lawspec.runtime.LawSpecTyped.toNative32(lawspec.runtime.LawSpecTyped.withPosition_256(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative32(value2)))
 
     fun writeAborted(
         symbols: MutableMap<String, Any>,
@@ -13098,50 +4469,12 @@ object Kafka {
         symbols: MutableMap<String, Any>,
         value0: kotlin.Long,
         value1: kotlin.Long,
-    ): kotlin.Long {
-        try {
-            val codec0 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate360(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("UInt32", bits, kotlin.Long::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::xor32: " + error.message, error)
-        }
-    }
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.xor32_257(lawspec.runtime.LawSpecTyped.fromNative47(value0), lawspec.runtime.LawSpecTyped.fromNative47(value1)))
 
     fun xorBits(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
         value1: java.math.BigInteger,
         value2: java.math.BigInteger,
-    ): java.math.BigInteger {
-        try {
-            val codec0 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument1 = codec1.encode(value1)
-            val codec2 = schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            val argument2 = codec2.encode(value2)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate361(
-                    symbols,
-                    argument0,
-                    argument1,
-                    argument2,
-                )
-            val resultCodec =
-                schema.scalar("Integer", bits, java.math.BigInteger::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException("lawtwin.kafka::xorBits: " + error.message, error)
-        }
-    }
+    ): java.math.BigInteger = lawspec.runtime.LawSpecTyped.toNative40(lawspec.runtime.LawSpecTyped.xorBits_258(lawspec.runtime.LawSpecTyped.fromNative40(value0), lawspec.runtime.LawSpecTyped.fromNative40(value1), lawspec.runtime.LawSpecTyped.fromNative40(value2)))
 }

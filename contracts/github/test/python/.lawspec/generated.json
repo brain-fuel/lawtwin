@@ -2,7 +2,7 @@
   "version": 1,
   "files": {
     "tests/test_lawspec_matchers_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
-    "tests/test_lawtwin_github_lawspec.py": "517f235ade26229b1c04c9ea7b8bd3b4b2731f3dcee833c61b676b7de71d6c21",
+    "tests/test_lawtwin_github_lawspec.py": "f13abe0c70c57cbe5b1d349a0de8c5401161db69e84a9cc5b84db8bd7aa17c08",
     "tests/test_lawtwin_github_handwritten_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
     "tests/test_lawtwin_github_laws_lawspec.py": "37f6887ede68b34b0d0cb6b2e7f20b951694714269134e0212ec89838e327216",
     "tests/test_lawtwin_github_model_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
@@ -21,7 +21,7 @@
     "src/lawspec_abilities/lawtwin/github/__init__.py": "1103bb98f41ef52cf4c6f63548d6e924fc5f126889b70efcac9148226b65afae",
     "src/lawspec_abilities/lawtwin/github/laws.py": "a0e3de197544a9e9a8e83c0cfc5ed21ae9999d54f9fd768d46e8b6643d261211",
     "src/lawspec_abilities/contracttest/github.py": "a7fd1330a5865ae4bb3ad879307ebe80618a489017b80cabc4dbbd5290366097",
-    "src/lawspec_remote.py": "5352cd90840d59065fd18407966907edbc7842d6db89e8db018ed1581060f5d0"
+    "src/lawspec_remote.py": "dd0fbe83dd77a553bc7df10d672c79cb3324ba86d28c1d988061282eb27ae34c"
   },
   "adapters": {
     "src/lawspec/matchers.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",

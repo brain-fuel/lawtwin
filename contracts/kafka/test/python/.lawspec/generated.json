@@ -3,7 +3,7 @@
   "files": {
     "tests/test_lawspec_collections_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
     "tests/test_lawspec_matchers_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
-    "tests/test_lawtwin_kafka_lawspec.py": "b39d353320756de9636e9b15be10d9cb771c3dd12c35b8f82c30c0dcef5d2d67",
+    "tests/test_lawtwin_kafka_lawspec.py": "5e946538afe82f3b9dae8910d8772e6ff142a07526b6d869c0952b55acb1e7bb",
     "tests/test_lawtwin_kafka_model_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
     "tests/test_contracttest_kafka_lawspec.py": "88bfc0fe678593de4c80eac150f2c42ed99699f7e934b8c277ba9569a88df0ac",
     "src/lawspec_data.py": "5044dfc3e4d828c18b2a69fb0bdfa898daea82b7260b9388c4475e914871ad1b",
@@ -18,7 +18,7 @@
     "src/lawspec_runtime.py": "7bf6419ad4c1519229af259dd41a391a7e6feab89a5c76a8f5071d44357129f6",
     "src/lawspec_abilities/lawtwin/kafka/__init__.py": "4b66fc55c36fd835f4d9fa03934c5457ec9f4643f2d046403704ce85f8a46558",
     "src/lawspec_abilities/contracttest/kafka.py": "abb8861f147a180660d967b73f62bae1691a5221d578d2a65bf98207f8199ca4",
-    "src/lawspec_remote.py": "62748ce0f09d33ec3f9a1dd18b79e834969bebf7610037bb9ddebf802f67498a"
+    "src/lawspec_remote.py": "c3a6d6fe9d859a1bc89dd4d72ab7e269def9502aaca5ad236c6ebc8439139e92"
   },
   "adapters": {
     "src/lawspec/collections.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",

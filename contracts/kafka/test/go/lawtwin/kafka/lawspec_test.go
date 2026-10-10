@@ -4280,9 +4280,9 @@ func TestBrokerAGapInSequenceNumbersIsRefused2_Property(t *testing.T) {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 })
+// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 })
+// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -4341,7 +4341,7 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary0(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -4381,11 +4381,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary0(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4394,11 +4394,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary0(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4561,7 +4561,7 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary1(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -4601,11 +4601,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary1(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4614,11 +4614,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary1(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4773,7 +4773,7 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary2(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -4813,11 +4813,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary2(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4826,11 +4826,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary2(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -4979,7 +4979,7 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary3(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -5019,11 +5019,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary3(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -5032,11 +5032,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Boundary3(t *testing.T) {
 										matched1528Fields := matched1528.Data.(lawSpecData)
 										switch matched1528Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1528Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1528Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1528Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1528Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -5321,7 +5321,7 @@ func TestBrokerANewEpochFencesTheOlderProducer_Property(t *testing.T) {
 		}()
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -5361,11 +5361,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Property(t *testing.T) {
 											matched1528Fields := matched1528.Data.(lawSpecData)
 											switch matched1528Fields.tag {
 											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												_match3__0__lawspecField263x0 := matched1528Fields.fields[0]
-												_ = _match3__0__lawspecField263x0
-												_match3__0__lawspecField263x1 := matched1528Fields.fields[1]
-												_ = _match3__0__lawspecField263x1
-												return _match3__0__lawspecField263x0
+												_match3__0__lawspecField191x0 := matched1528Fields.fields[0]
+												_ = _match3__0__lawspecField191x0
+												_match3__0__lawspecField191x1 := matched1528Fields.fields[1]
+												_ = _match3__0__lawspecField191x1
+												return _match3__0__lawspecField191x0
 											default:
 												panic("invalid constructor in match")
 											}
@@ -5374,11 +5374,11 @@ func TestBrokerANewEpochFencesTheOlderProducer_Property(t *testing.T) {
 											matched1528Fields := matched1528.Data.(lawSpecData)
 											switch matched1528Fields.tag {
 											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												_match3__0__lawspecField264x0 := matched1528Fields.fields[0]
-												_ = _match3__0__lawspecField264x0
-												_match3__0__lawspecField264x1 := matched1528Fields.fields[1]
-												_ = _match3__0__lawspecField264x1
-												return _match3__0__lawspecField264x1
+												_match3__0__lawspecField192x0 := matched1528Fields.fields[0]
+												_ = _match3__0__lawspecField192x0
+												_match3__0__lawspecField192x1 := matched1528Fields.fields[1]
+												_ = _match3__0__lawspecField192x1
+												return _match3__0__lawspecField192x1
 											default:
 												panic("invalid constructor in match")
 											}
@@ -5525,9 +5525,9 @@ func TestBrokerANewEpochFencesTheOlderProducer_Property(t *testing.T) {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 })
+// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 })
+// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -5580,7 +5580,7 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary0(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lsList("List lawtwin.kafka.model::type::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols)}), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -5620,11 +5620,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary0(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -5633,11 +5633,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary0(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -5794,7 +5794,7 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary1(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lsList("List lawtwin.kafka.model::type::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols)}), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -5834,11 +5834,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary1(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -5847,11 +5847,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary1(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -6000,7 +6000,7 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary2(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lsList("List lawtwin.kafka.model::type::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols)}), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -6040,11 +6040,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary2(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -6053,11 +6053,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary2(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -6200,7 +6200,7 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary3(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lsList("List lawtwin.kafka.model::type::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols)}), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -6240,11 +6240,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary3(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField263x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField263x0
-											_match3__0__lawspecField263x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField263x1
-											return _match3__0__lawspecField263x0
+											_match3__0__lawspecField191x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField191x0
+											_match3__0__lawspecField191x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField191x1
+											return _match3__0__lawspecField191x0
 										default:
 											panic("invalid constructor in match")
 										}
@@ -6253,11 +6253,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Boundary3(t *testing.T) {
 										matched1534Fields := matched1534.Data.(lawSpecData)
 										switch matched1534Fields.tag {
 										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											_match3__0__lawspecField264x0 := matched1534Fields.fields[0]
-											_ = _match3__0__lawspecField264x0
-											_match3__0__lawspecField264x1 := matched1534Fields.fields[1]
-											_ = _match3__0__lawspecField264x1
-											return _match3__0__lawspecField264x1
+											_match3__0__lawspecField192x0 := matched1534Fields.fields[0]
+											_ = _match3__0__lawspecField192x0
+											_match3__0__lawspecField192x1 := matched1534Fields.fields[1]
+											_ = _match3__0__lawspecField192x1
+											return _match3__0__lawspecField192x1
 										default:
 											panic("invalid constructor in match")
 										}
@@ -6536,7 +6536,7 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Property(t *testing.T) {
 		_ = _lawspecShared_cluster
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Broker": _lawspecShared_cluster})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Broker: a new epoch fences the older producer [cluster] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__old -> match (attempt (initProducerIdRequest (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 }) (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) And match (attempt (produceRequest (_let0__tp) (Maybe::Just(tagOf (_match1__1__old) (0))) (_input2))) { Either::Left _match3__0__lawspecFailure -> match (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match3__1__lawspecResult -> false }) } } = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -6576,11 +6576,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Property(t *testing.T) {
 											matched1534Fields := matched1534.Data.(lawSpecData)
 											switch matched1534Fields.tag {
 											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												_match3__0__lawspecField263x0 := matched1534Fields.fields[0]
-												_ = _match3__0__lawspecField263x0
-												_match3__0__lawspecField263x1 := matched1534Fields.fields[1]
-												_ = _match3__0__lawspecField263x1
-												return _match3__0__lawspecField263x0
+												_match3__0__lawspecField191x0 := matched1534Fields.fields[0]
+												_ = _match3__0__lawspecField191x0
+												_match3__0__lawspecField191x1 := matched1534Fields.fields[1]
+												_ = _match3__0__lawspecField191x1
+												return _match3__0__lawspecField191x0
 											default:
 												panic("invalid constructor in match")
 											}
@@ -6589,11 +6589,11 @@ func TestBrokerANewEpochFencesTheOlderProducer2_Property(t *testing.T) {
 											matched1534Fields := matched1534.Data.(lawSpecData)
 											switch matched1534Fields.tag {
 											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												_match3__0__lawspecField264x0 := matched1534Fields.fields[0]
-												_ = _match3__0__lawspecField264x0
-												_match3__0__lawspecField264x1 := matched1534Fields.fields[1]
-												_ = _match3__0__lawspecField264x1
-												return _match3__0__lawspecField264x1
+												_match3__0__lawspecField192x0 := matched1534Fields.fields[0]
+												_ = _match3__0__lawspecField192x0
+												_match3__0__lawspecField192x1 := matched1534Fields.fields[1]
+												_ = _match3__0__lawspecField192x1
+												return _match3__0__lawspecField192x1
 											default:
 												panic("invalid constructor in match")
 											}
@@ -16117,8 +16117,8 @@ func TestProducerRecordsSentToOnePartitionAreRead_Property(t *testing.T) {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-// _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
 func TestProducerAFlushedRecordIsInTheLogNative_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
 	_ = symbols
@@ -16136,7 +16136,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary0(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 0 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 0 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16166,11 +16166,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary0(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16203,7 +16203,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary1(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 1 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 1 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16233,11 +16233,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary1(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16280,7 +16280,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary2(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 2 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 2 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16310,11 +16310,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary2(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16345,7 +16345,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary3(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 3 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 3 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16375,11 +16375,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary3(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16410,7 +16410,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary4(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 4 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 4 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16440,11 +16440,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary4(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16478,7 +16478,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary5(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 5 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 5 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16508,11 +16508,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary5(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16559,7 +16559,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary6(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 6 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 6 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16589,11 +16589,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary6(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16624,7 +16624,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary7(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 7 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] boundary 7 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -16654,11 +16654,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Boundary7(t *testing.T) {
 							matched1504Fields := matched1504.Data.(lawSpecData)
 							switch matched1504Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -16818,7 +16818,7 @@ func TestProducerAFlushedRecordIsInTheLogNative_Property(t *testing.T) {
 		}()
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewProducerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] property | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [native] property | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 				return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 					_match0__0__e LawSpecValue,
 				) LawSpecValue {
@@ -16850,11 +16850,11 @@ func TestProducerAFlushedRecordIsInTheLogNative_Property(t *testing.T) {
 								matched1504Fields := matched1504.Data.(lawSpecData)
 								switch matched1504Fields.tag {
 								case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-									_match3__0__lawspecField69x0 := matched1504Fields.fields[0]
-									_ = _match3__0__lawspecField69x0
-									_match3__0__lawspecField69x1 := matched1504Fields.fields[1]
-									_ = _match3__0__lawspecField69x1
-									return _match3__0__lawspecField69x1
+									_match3__0__lawspecField55x0 := matched1504Fields.fields[0]
+									_ = _match3__0__lawspecField55x0
+									_match3__0__lawspecField55x1 := matched1504Fields.fields[1]
+									_ = _match3__0__lawspecField55x1
+									return _match3__0__lawspecField55x1
 								default:
 									panic("invalid constructor in match")
 								}
@@ -20815,7 +20815,7 @@ func TestGroupcoordinatorEveryPartitionHasExactlyOne2_Property(t *testing.T) {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } ==
+// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
 // _match0__1__gen)) } } = true
 var _lawspecInputs49 = []string{"(text)", "(int Int32 1 16)", "(text)", "(text)"}
 
@@ -20843,7 +20843,7 @@ func _lawspecCase49(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, _input1)) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native] search | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native] search | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -20875,11 +20875,11 @@ func _lawspecCase49(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 						matched2242Fields := matched2242.Data.(lawSpecData)
 						switch matched2242Fields.tag {
 						case "lawtwin.kafka.model::type::GroupView::GroupView":
-							_match2__0__lawspecField71x0 := matched2242Fields.fields[0]
-							_ = _match2__0__lawspecField71x0
-							_match2__0__lawspecField71x1 := matched2242Fields.fields[1]
-							_ = _match2__0__lawspecField71x1
-							return _match2__0__lawspecField71x0
+							_match2__0__lawspecField55x0 := matched2242Fields.fields[0]
+							_ = _match2__0__lawspecField55x0
+							_match2__0__lawspecField55x1 := matched2242Fields.fields[1]
+							_ = _match2__0__lawspecField55x1
+							return _match2__0__lawspecField55x0
 						default:
 							panic("invalid constructor in match")
 						}
@@ -21235,7 +21235,7 @@ func TestGroupcoordinatorASyncGivesAMemberThe_Property(t *testing.T) {
 					}
 				}()
 				if lsTruth(lawSpecEvaluate79(symbols, _input0, _input1)) {
-					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native] property | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
+					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [native] property | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
 						return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 								return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -21271,11 +21271,11 @@ func TestGroupcoordinatorASyncGivesAMemberThe_Property(t *testing.T) {
 									matched2242Fields := matched2242.Data.(lawSpecData)
 									switch matched2242Fields.tag {
 									case "lawtwin.kafka.model::type::GroupView::GroupView":
-										_match2__0__lawspecField71x0 := matched2242Fields.fields[0]
-										_ = _match2__0__lawspecField71x0
-										_match2__0__lawspecField71x1 := matched2242Fields.fields[1]
-										_ = _match2__0__lawspecField71x1
-										return _match2__0__lawspecField71x0
+										_match2__0__lawspecField55x0 := matched2242Fields.fields[0]
+										_ = _match2__0__lawspecField55x0
+										_match2__0__lawspecField55x1 := matched2242Fields.fields[1]
+										_ = _match2__0__lawspecField55x1
+										return _match2__0__lawspecField55x0
 									default:
 										panic("invalid constructor in match")
 									}
@@ -21304,7 +21304,7 @@ func TestGroupcoordinatorASyncGivesAMemberThe_Property(t *testing.T) {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } ==
+// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
 // _match0__1__gen)) } } = true
 var _lawspecInputs50 = []string{"(text)", "(int Int32 1 16)", "(text)", "(text)"}
 
@@ -21326,7 +21326,7 @@ func _lawspecCase50(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 		return 0, false
 	}
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, _input1)) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster] search | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster] search | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -21358,11 +21358,11 @@ func _lawspecCase50(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 						matched2247Fields := matched2247.Data.(lawSpecData)
 						switch matched2247Fields.tag {
 						case "lawtwin.kafka.model::type::GroupView::GroupView":
-							_match2__0__lawspecField71x0 := matched2247Fields.fields[0]
-							_ = _match2__0__lawspecField71x0
-							_match2__0__lawspecField71x1 := matched2247Fields.fields[1]
-							_ = _match2__0__lawspecField71x1
-							return _match2__0__lawspecField71x0
+							_match2__0__lawspecField55x0 := matched2247Fields.fields[0]
+							_ = _match2__0__lawspecField55x0
+							_match2__0__lawspecField55x1 := matched2247Fields.fields[1]
+							_ = _match2__0__lawspecField55x1
+							return _match2__0__lawspecField55x0
 						default:
 							panic("invalid constructor in match")
 						}
@@ -21712,7 +21712,7 @@ func TestGroupcoordinatorASyncGivesAMemberThe2_Property(t *testing.T) {
 					}
 				}()
 				if lsTruth(lawSpecEvaluate79(symbols, _input0, _input1)) {
-					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster] property | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0 _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
+					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: a sync gives a member the partitions the group view shows [cluster] property | expect match (attempt (joinGroup (_input2) (_input3) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> match (attempt (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true", func() LawSpecValue {
 						return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 								return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -21748,11 +21748,11 @@ func TestGroupcoordinatorASyncGivesAMemberThe2_Property(t *testing.T) {
 									matched2247Fields := matched2247.Data.(lawSpecData)
 									switch matched2247Fields.tag {
 									case "lawtwin.kafka.model::type::GroupView::GroupView":
-										_match2__0__lawspecField71x0 := matched2247Fields.fields[0]
-										_ = _match2__0__lawspecField71x0
-										_match2__0__lawspecField71x1 := matched2247Fields.fields[1]
-										_ = _match2__0__lawspecField71x1
-										return _match2__0__lawspecField71x0
+										_match2__0__lawspecField55x0 := matched2247Fields.fields[0]
+										_ = _match2__0__lawspecField55x0
+										_match2__0__lawspecField55x1 := matched2247Fields.fields[1]
+										_ = _match2__0__lawspecField55x1
+										return _match2__0__lawspecField55x0
 									default:
 										panic("invalid constructor in match")
 									}
@@ -24593,7 +24593,7 @@ func TestGroupcoordinatorAHeartbeatFromAnOlder2_Property(t *testing.T) {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } >
+// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
 // _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
 // Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -24638,7 +24638,7 @@ func _lawspecCase55(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] search | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] search | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -24674,11 +24674,11 @@ func _lawspecCase55(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 					matched2118Fields := matched2118.Data.(lawSpecData)
 					switch matched2118Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -24772,7 +24772,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary0(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 0 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 0 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -24808,11 +24808,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary0(t *testing.T) {
 					matched2118Fields := matched2118.Data.(lawSpecData)
 					switch matched2118Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -24929,7 +24929,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary1(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 1 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 1 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -24965,11 +24965,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary1(t *testing.T) {
 					matched2118Fields := matched2118.Data.(lawSpecData)
 					switch matched2118Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -25070,7 +25070,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary2(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 2 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 2 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -25106,11 +25106,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary2(t *testing.T) {
 					matched2118Fields := matched2118.Data.(lawSpecData)
 					switch matched2118Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -25199,7 +25199,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary3(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::GroupCoordinator": NewGroupCoordinatorHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 3 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] boundary 3 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -25235,11 +25235,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Boundary3(t *testing.T) {
 					matched2118Fields := matched2118.Data.(lawSpecData)
 					switch matched2118Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -25627,7 +25627,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Property(t *testing.T) {
 					}
 				}()
 				if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] property | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [native] property | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 						return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 								return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -25667,11 +25667,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Property(t *testing.T) {
 								matched2118Fields := matched2118.Data.(lawSpecData)
 								switch matched2118Fields.tag {
 								case "lawtwin.kafka.model::type::GroupView::GroupView":
-									_match1__0__lawspecField119x0 := matched2118Fields.fields[0]
-									_ = _match1__0__lawspecField119x0
-									_match1__0__lawspecField119x1 := matched2118Fields.fields[1]
-									_ = _match1__0__lawspecField119x1
-									return _match1__0__lawspecField119x0
+									_match1__0__lawspecField101x0 := matched2118Fields.fields[0]
+									_ = _match1__0__lawspecField101x0
+									_match1__0__lawspecField101x1 := matched2118Fields.fields[1]
+									_ = _match1__0__lawspecField101x1
+									return _match1__0__lawspecField101x0
 								default:
 									panic("invalid constructor in match")
 								}
@@ -25759,7 +25759,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration_Property(t *testing.T) {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } >
+// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
 // _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
 // Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -25798,7 +25798,7 @@ func _lawspecCase56(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 		return 0, false
 	}
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] search | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] search | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -25834,11 +25834,11 @@ func _lawspecCase56(t interface{ Fatalf(string, ...any) }, _values []LawSpecValu
 					matched2123Fields := matched2123.Data.(lawSpecData)
 					switch matched2123Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -25926,7 +25926,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary0(t *testing.T) {
 	_input2 := lsConvert("Text", lsSequence("Text", []int{32}), 64)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 0 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 0 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -25962,11 +25962,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary0(t *testing.T) {
 					matched2123Fields := matched2123.Data.(lawSpecData)
 					switch matched2123Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -26077,7 +26077,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary1(t *testing.T) {
 	}), 64)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 1 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 1 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -26113,11 +26113,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary1(t *testing.T) {
 					matched2123Fields := matched2123.Data.(lawSpecData)
 					switch matched2123Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -26212,7 +26212,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary2(t *testing.T) {
 	}), 64)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 2 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 2 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -26248,11 +26248,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary2(t *testing.T) {
 					matched2123Fields := matched2123.Data.(lawSpecData)
 					switch matched2123Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -26335,7 +26335,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary3(t *testing.T) {
 	_input2 := lsConvert("Text", lsSequence("Text", []int{97, 10, 9, 34, 92, 36, 0, 122}), 64)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 3 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] boundary 3 | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 			return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 					return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -26371,11 +26371,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Boundary3(t *testing.T) {
 					matched2123Fields := matched2123.Data.(lawSpecData)
 					switch matched2123Fields.tag {
 					case "lawtwin.kafka.model::type::GroupView::GroupView":
-						_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-						_ = _match1__0__lawspecField119x0
-						_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-						_ = _match1__0__lawspecField119x1
-						return _match1__0__lawspecField119x0
+						_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+						_ = _match1__0__lawspecField101x0
+						_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+						_ = _match1__0__lawspecField101x1
+						return _match1__0__lawspecField101x0
 					default:
 						panic("invalid constructor in match")
 					}
@@ -26757,7 +26757,7 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Property(t *testing.T) {
 					}
 				}()
 				if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] property | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0 _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
+					_lawspecAssert(t, "lawtwin.kafka::GroupCoordinator: leaving starts a new generation [cluster] property | expect match (attempt (joinGroup (_input1) (_input2) (List::Cons(_input0, List::Nil())))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId  -> true; lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition  -> false; lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTopic  -> false; lawtwin.kafka.model::type::KafkaError::InvalidPartitions  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRecord  -> false; lawtwin.kafka.model::type::KafkaError::InvalidRequest  -> false; lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange  -> false; lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch  -> false; lawtwin.kafka.model::type::KafkaError::ProducerFenced  -> false; lawtwin.kafka.model::type::KafkaError::UnknownProducerId  -> false; lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping  -> false; lawtwin.kafka.model::type::KafkaError::InvalidTxnState  -> false; lawtwin.kafka.model::type::KafkaError::InvalidGroupId  -> false; lawtwin.kafka.model::type::KafkaError::IllegalGeneration  -> false; lawtwin.kafka.model::type::KafkaError::IllegalState  -> false }; Either::Right _match1__1__lawspecResult -> false }) } = true", func() LawSpecValue {
 						return lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
 							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
 								return lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols).fromNative(native.(KafkaError))
@@ -26797,11 +26797,11 @@ func TestGroupcoordinatorLeavingStartsANewGeneration2_Property(t *testing.T) {
 								matched2123Fields := matched2123.Data.(lawSpecData)
 								switch matched2123Fields.tag {
 								case "lawtwin.kafka.model::type::GroupView::GroupView":
-									_match1__0__lawspecField119x0 := matched2123Fields.fields[0]
-									_ = _match1__0__lawspecField119x0
-									_match1__0__lawspecField119x1 := matched2123Fields.fields[1]
-									_ = _match1__0__lawspecField119x1
-									return _match1__0__lawspecField119x0
+									_match1__0__lawspecField101x0 := matched2123Fields.fields[0]
+									_ = _match1__0__lawspecField101x0
+									_match1__0__lawspecField101x1 := matched2123Fields.fields[1]
+									_ = _match1__0__lawspecField101x1
+									return _match1__0__lawspecField101x0
 								default:
 									panic("invalid constructor in match")
 								}
@@ -28645,8 +28645,8 @@ func TestTransactionsANewerInstanceFencesAZombie_Property(t *testing.T) {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-// _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
 func TestTransactionsAbortedRecordsAreNeverRead_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
 	_ = symbols
@@ -28668,7 +28668,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary0(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -28688,11 +28688,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary0(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -28750,7 +28750,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary1(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -28770,11 +28770,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary1(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -28812,7 +28812,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary2(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -28832,11 +28832,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary2(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -28868,7 +28868,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary3(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -28888,11 +28888,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary3(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -28927,7 +28927,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary4(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -28947,11 +28947,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary4(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -28983,7 +28983,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary5(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29003,11 +29003,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Boundary5(t *testing.T) {
 						matched1595Fields := matched1595.Data.(lawSpecData)
 						switch matched1595Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29175,7 +29175,7 @@ func TestTransactionsAbortedRecordsAreNeverRead_Property(t *testing.T) {
 		}()
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -29197,11 +29197,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Property(t *testing.T) {
 							matched1595Fields := matched1595.Data.(lawSpecData)
 							switch matched1595Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField186x0 := matched1595Fields.fields[0]
-								_ = _match2__0__lawspecField186x0
-								_match2__0__lawspecField186x1 := matched1595Fields.fields[1]
-								_ = _match2__0__lawspecField186x1
-								return _match2__0__lawspecField186x1
+								_match2__0__lawspecField162x0 := matched1595Fields.fields[0]
+								_ = _match2__0__lawspecField162x0
+								_match2__0__lawspecField162x1 := matched1595Fields.fields[1]
+								_ = _match2__0__lawspecField162x1
+								return _match2__0__lawspecField162x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -29234,11 +29234,11 @@ func TestTransactionsAbortedRecordsAreNeverRead_Property(t *testing.T) {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-// _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
 // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
 // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 })
+// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
 // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 func TestTransactionsCommittedRecordsAreRead_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
@@ -29265,7 +29265,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary0(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29293,11 +29293,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary0(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29306,11 +29306,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary0(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29382,7 +29382,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary1(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29410,11 +29410,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary1(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29423,11 +29423,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary1(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29467,7 +29467,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary2(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29495,11 +29495,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary2(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29508,11 +29508,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary2(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29546,7 +29546,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary3(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29574,11 +29574,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary3(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29587,11 +29587,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary3(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29631,7 +29631,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary4(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29659,11 +29659,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary4(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29672,11 +29672,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary4(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29710,7 +29710,7 @@ func TestTransactionsCommittedRecordsAreRead_Boundary5(t *testing.T) {
 	}()
 	lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -29738,11 +29738,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary5(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29751,11 +29751,11 @@ func TestTransactionsCommittedRecordsAreRead_Boundary5(t *testing.T) {
 						matched1703Fields := matched1703.Data.(lawSpecData)
 						switch matched1703Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -29928,7 +29928,7 @@ func TestTransactionsCommittedRecordsAreRead_Property(t *testing.T) {
 		}()
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewTransactionsHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0)), "lawtwin.kafka::ability::Broker": NewBrokerHandler(lsHandleCodec[any](_lawspecSchema, 64, "lawtwin.kafka::type::Cluster", symbols).toNative(_resource0))})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [native] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -29958,11 +29958,11 @@ func TestTransactionsCommittedRecordsAreRead_Property(t *testing.T) {
 							matched1703Fields := matched1703.Data.(lawSpecData)
 							switch matched1703Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField267x0 := matched1703Fields.fields[0]
-								_ = _match2__0__lawspecField267x0
-								_match2__0__lawspecField267x1 := matched1703Fields.fields[1]
-								_ = _match2__0__lawspecField267x1
-								return _match2__0__lawspecField267x1
+								_match2__0__lawspecField219x0 := matched1703Fields.fields[0]
+								_ = _match2__0__lawspecField219x0
+								_match2__0__lawspecField219x1 := matched1703Fields.fields[1]
+								_ = _match2__0__lawspecField219x1
+								return _match2__0__lawspecField219x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -29971,11 +29971,11 @@ func TestTransactionsCommittedRecordsAreRead_Property(t *testing.T) {
 							matched1703Fields := matched1703.Data.(lawSpecData)
 							switch matched1703Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField288x0 := matched1703Fields.fields[0]
-								_ = _match2__0__lawspecField288x0
-								_match2__0__lawspecField288x1 := matched1703Fields.fields[1]
-								_ = _match2__0__lawspecField288x1
-								return _match2__0__lawspecField288x1
+								_match2__0__lawspecField232x0 := matched1703Fields.fields[0]
+								_ = _match2__0__lawspecField232x0
+								_match2__0__lawspecField232x1 := matched1703Fields.fields[1]
+								_ = _match2__0__lawspecField232x1
+								return _match2__0__lawspecField232x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31347,8 +31347,8 @@ func TestProducerRecordsSentToOnePartitionAreRead2_Property(t *testing.T) {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-// _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
 func TestProducerAFlushedRecordIsInTheLog_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
 	_ = symbols
@@ -31360,7 +31360,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary0(t *testing.T) {
 	_input1 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 0 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 0 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31390,11 +31390,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary0(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31421,7 +31421,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary1(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 1 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 1 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31451,11 +31451,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary1(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31492,7 +31492,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary2(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 2 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 2 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31522,11 +31522,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary2(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31551,7 +31551,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary3(t *testing.T) {
 	_input1 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 3 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 3 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31581,11 +31581,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary3(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31610,7 +31610,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary4(t *testing.T) {
 	_input1 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 4 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 4 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31640,11 +31640,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary4(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31672,7 +31672,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary5(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 5 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 5 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31702,11 +31702,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary5(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31747,7 +31747,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary6(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 6 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 6 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31777,11 +31777,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary6(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31806,7 +31806,7 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary7(t *testing.T) {
 	_input1 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input1
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 7 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] boundary 7 | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 			return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 				_match0__0__e LawSpecValue,
 			) LawSpecValue {
@@ -31836,11 +31836,11 @@ func TestProducerAFlushedRecordIsInTheLog_Boundary7(t *testing.T) {
 							matched1522Fields := matched1522.Data.(lawSpecData)
 							switch matched1522Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-								_ = _match3__0__lawspecField69x0
-								_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-								_ = _match3__0__lawspecField69x1
-								return _match3__0__lawspecField69x1
+								_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+								_ = _match3__0__lawspecField55x0
+								_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+								_ = _match3__0__lawspecField55x1
+								return _match3__0__lawspecField55x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -31994,7 +31994,7 @@ func TestProducerAFlushedRecordIsInTheLog_Property(t *testing.T) {
 		_ = _lawspecShared_cluster
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Producer": NewKafkaProducer(symbols), "lawtwin.kafka::ability::Broker": _lawspecShared_cluster, "lawtwin.kafka::ability::Partitioner": NewMurmurPartitioner(symbols)})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] property | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0 _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Producer: a flushed record is in the log [reference] property | expect match (send (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input1))) { Either::Left _match0__0__e -> false; Either::Right _match0__1__md -> let _let1__lawspecIgnored = flush in match (attempt (listOffsetsRequest (lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0)) (lawtwin.kafka.model::type::OffsetSpec::Latest()) (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true", func() LawSpecValue {
 				return lsMatchEither(lsEitherCodec(_lawspecSchema, 64, lawSpecKafkaErrorCodec(_lawspecSchema, 64, symbols), lawSpecRecordMetadataCodec(_lawspecSchema, 64, symbols), symbols).fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Producer").(Producer).Send(lawSpecProducerRecordCodec(_lawspecSchema, 64, symbols).toNative(_lawspecSchema.construct(lsNamed("lawtwin.kafka::type::ProducerRecord"), "lawtwin.kafka::type::ProducerRecord::ProducerRecord", []LawSpecValue{_input0, _lawspecSchema.construct(lsNamed("lawtwin.kafka::type::PartitionChoice"), "lawtwin.kafka::type::PartitionChoice::ToPartition", []LawSpecValue{lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols), _input1}, 64, symbols)))), func(
 					_match0__0__e LawSpecValue,
 				) LawSpecValue {
@@ -32026,11 +32026,11 @@ func TestProducerAFlushedRecordIsInTheLog_Property(t *testing.T) {
 								matched1522Fields := matched1522.Data.(lawSpecData)
 								switch matched1522Fields.tag {
 								case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-									_match3__0__lawspecField69x0 := matched1522Fields.fields[0]
-									_ = _match3__0__lawspecField69x0
-									_match3__0__lawspecField69x1 := matched1522Fields.fields[1]
-									_ = _match3__0__lawspecField69x1
-									return _match3__0__lawspecField69x1
+									_match3__0__lawspecField55x0 := matched1522Fields.fields[0]
+									_ = _match3__0__lawspecField55x0
+									_match3__0__lawspecField55x1 := matched1522Fields.fields[1]
+									_ = _match3__0__lawspecField55x1
+									return _match3__0__lawspecField55x1
 								default:
 									panic("invalid constructor in match")
 								}
@@ -35771,8 +35771,8 @@ func TestTransactionsANewerInstanceFencesAZombie2_Property(t *testing.T) {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-// _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
 func TestTransactionsAbortedRecordsAreNeverRead2_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
 	_ = symbols
@@ -35788,7 +35788,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary0(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -35808,11 +35808,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary0(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -35864,7 +35864,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary1(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -35884,11 +35884,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary1(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -35920,7 +35920,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary2(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -35940,11 +35940,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary2(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -35970,7 +35970,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary3(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -35990,11 +35990,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary3(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36023,7 +36023,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary4(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36043,11 +36043,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary4(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36073,7 +36073,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary5(t *testing.T) {
 	_input2 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input2
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36093,11 +36093,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Boundary5(t *testing.T) {
 						matched1613Fields := matched1613.Data.(lawSpecData)
 						switch matched1613Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-							_ = _match2__0__lawspecField186x0
-							_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-							_ = _match2__0__lawspecField186x1
-							return _match2__0__lawspecField186x1
+							_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+							_ = _match2__0__lawspecField162x0
+							_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+							_ = _match2__0__lawspecField162x1
+							return _match2__0__lawspecField162x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36259,7 +36259,7 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Property(t *testing.T) {
 		_ = _lawspecShared_cluster
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewKafkaTransactions(symbols), "lawtwin.kafka::ability::Broker": _lawspecShared_cluster, "lawtwin.kafka::ability::Partitioner": NewMurmurPartitioner(symbols)})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0 _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Transactions: aborted records are never read committed [reference] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -36281,11 +36281,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Property(t *testing.T) {
 							matched1613Fields := matched1613.Data.(lawSpecData)
 							switch matched1613Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField186x0 := matched1613Fields.fields[0]
-								_ = _match2__0__lawspecField186x0
-								_match2__0__lawspecField186x1 := matched1613Fields.fields[1]
-								_ = _match2__0__lawspecField186x1
-								return _match2__0__lawspecField186x1
+								_match2__0__lawspecField162x0 := matched1613Fields.fields[0]
+								_ = _match2__0__lawspecField162x0
+								_match2__0__lawspecField162x1 := matched1613Fields.fields[1]
+								_ = _match2__0__lawspecField162x1
+								return _match2__0__lawspecField162x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -36318,11 +36318,11 @@ func TestTransactionsAbortedRecordsAreNeverRead2_Property(t *testing.T) {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-// _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
 // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
 // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 })
+// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
 // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 func TestTransactionsCommittedRecordsAreRead2_Boundary0(t *testing.T) {
 	symbols := map[string]*lawSpecSymbol{}
@@ -36343,7 +36343,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary0(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 0 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36371,11 +36371,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary0(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36384,11 +36384,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary0(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36454,7 +36454,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary1(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 1 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36482,11 +36482,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary1(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36495,11 +36495,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary1(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36533,7 +36533,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary2(t *testing.T) {
 	_input3 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 2 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36561,11 +36561,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary2(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36574,11 +36574,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary2(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36606,7 +36606,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary3(t *testing.T) {
 	_input3 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Just", []LawSpecValue{lsSequence("Bytes", []int{})}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 3 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36634,11 +36634,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary3(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36647,11 +36647,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary3(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36685,7 +36685,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary4(t *testing.T) {
 	}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 4 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36713,11 +36713,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary4(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36726,11 +36726,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary4(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36758,7 +36758,7 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary5(t *testing.T) {
 	_input3 := _lawspecSchema.validate(lsNamed("lawtwin.kafka.model::type::Record"), _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Record"), "lawtwin.kafka.model::type::Record::Record", []LawSpecValue{_lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), lsList("List lawtwin.kafka.model::type::Header", []LawSpecValue{_lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::Header"), "lawtwin.kafka.model::type::Header::Header", []LawSpecValue{lsSequence("Text", []int{}), _lawspecSchema.construct(lsNamed("Maybe", lsNamed("Bytes")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)})}, 64, symbols), 64, symbols)
 	_ = _input3
 	if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+		_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] boundary 5 | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 			return func() LawSpecValue {
 				_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 				_ = _let0__tp
@@ -36786,11 +36786,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary5(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField267x0
-							_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField267x1
-							return _match2__0__lawspecField267x1
+							_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField219x0
+							_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField219x1
+							return _match2__0__lawspecField219x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36799,11 +36799,11 @@ func TestTransactionsCommittedRecordsAreRead2_Boundary5(t *testing.T) {
 						matched1721Fields := matched1721.Data.(lawSpecData)
 						switch matched1721Fields.tag {
 						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-							_ = _match2__0__lawspecField288x0
-							_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-							_ = _match2__0__lawspecField288x1
-							return _match2__0__lawspecField288x1
+							_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+							_ = _match2__0__lawspecField232x0
+							_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+							_ = _match2__0__lawspecField232x1
+							return _match2__0__lawspecField232x1
 						default:
 							panic("invalid constructor in match")
 						}
@@ -36970,7 +36970,7 @@ func TestTransactionsCommittedRecordsAreRead2_Property(t *testing.T) {
 		_ = _lawspecShared_cluster
 		lsInstallHandlers(symbols, map[string]any{"lawtwin.kafka::ability::Transactions": NewKafkaTransactions(symbols), "lawtwin.kafka::ability::Broker": _lawspecShared_cluster, "lawtwin.kafka::ability::Partitioner": NewMurmurPartitioner(symbols)})
 		if lsTruth(lawSpecEvaluate79(symbols, _input0, lsConvert("Int32", lsInteger("Int32", "1"), 64))) {
-			_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0 _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
+			_lawspecAssert(t, "lawtwin.kafka::Transactions: committed records are read committed together and in order [reference] property | expect let _let0__tp = lawtwin.kafka.model::type::TopicPartition::TopicPartition(_input0, 0) in ((match (initTransactions (_input1)) { Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true } And (beginTransaction == Either::Right(unitValue))) And match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e -> false; Either::Right _match1__1__md -> (((match (sendInTransaction (lawtwin.kafka::type::ProducerRecord::ProducerRecord(_input0, lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true", func() LawSpecValue {
 				return func() LawSpecValue {
 					_let0__tp := _lawspecSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{_input0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
 					_ = _let0__tp
@@ -37000,11 +37000,11 @@ func TestTransactionsCommittedRecordsAreRead2_Property(t *testing.T) {
 							matched1721Fields := matched1721.Data.(lawSpecData)
 							switch matched1721Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField267x0 := matched1721Fields.fields[0]
-								_ = _match2__0__lawspecField267x0
-								_match2__0__lawspecField267x1 := matched1721Fields.fields[1]
-								_ = _match2__0__lawspecField267x1
-								return _match2__0__lawspecField267x1
+								_match2__0__lawspecField219x0 := matched1721Fields.fields[0]
+								_ = _match2__0__lawspecField219x0
+								_match2__0__lawspecField219x1 := matched1721Fields.fields[1]
+								_ = _match2__0__lawspecField219x1
+								return _match2__0__lawspecField219x1
 							default:
 								panic("invalid constructor in match")
 							}
@@ -37013,11 +37013,11 @@ func TestTransactionsCommittedRecordsAreRead2_Property(t *testing.T) {
 							matched1721Fields := matched1721.Data.(lawSpecData)
 							switch matched1721Fields.tag {
 							case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-								_match2__0__lawspecField288x0 := matched1721Fields.fields[0]
-								_ = _match2__0__lawspecField288x0
-								_match2__0__lawspecField288x1 := matched1721Fields.fields[1]
-								_ = _match2__0__lawspecField288x1
-								return _match2__0__lawspecField288x1
+								_match2__0__lawspecField232x0 := matched1721Fields.fields[0]
+								_ = _match2__0__lawspecField232x0
+								_match2__0__lawspecField232x1 := matched1721Fields.fields[1]
+								_ = _match2__0__lawspecField232x1
+								return _match2__0__lawspecField232x1
 							default:
 								panic("invalid constructor in match")
 							}

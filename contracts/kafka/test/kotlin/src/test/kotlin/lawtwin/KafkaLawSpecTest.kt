@@ -25637,10 +25637,10 @@ class KafkaLawSpecTest : StringSpec({
     // -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
     // (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
     // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0
+    // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0
     // }) (match (_match1__1__old) {
     // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1
+    // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1
     // }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
     // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -25869,18 +25869,18 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField263" +
+                        "tch3__0__lawspecField191" +
                         "x0 _match3__0__lawspecFi" +
-                        "eld263x1 -> _match3__0__" +
-                        "lawspecField263x0 }) (ma" +
+                        "eld191x1 -> _match3__0__" +
+                        "lawspecField191x0 }) (ma" +
                         "tch (_match1__1__old) { " +
                         "lawtwin.kafka.model::typ" +
                         "e::ProducerIdAndEpoch::P" +
                         "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField264x0 " +
+                        "3__0__lawspecField192x0 " +
                         "_match3__0__lawspecField" +
-                        "264x1 -> _match3__0__law" +
-                        "specField264x1 }) (List:" +
+                        "192x1 -> _match3__0__law" +
+                        "specField192x1 }) (List:" +
                         ":Cons(_let0__tp, List::N" +
                         "il())))) { Either::Left " +
                         "_match3__0__lawspecFailu" +
@@ -26373,9 +26373,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField263x0
+                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField191x0
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -26414,9 +26414,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField264x1
+                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField192x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -27463,18 +27463,18 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField263" +
+                        "tch3__0__lawspecField191" +
                         "x0 _match3__0__lawspecFi" +
-                        "eld263x1 -> _match3__0__" +
-                        "lawspecField263x0 }) (ma" +
+                        "eld191x1 -> _match3__0__" +
+                        "lawspecField191x0 }) (ma" +
                         "tch (_match1__1__old) { " +
                         "lawtwin.kafka.model::typ" +
                         "e::ProducerIdAndEpoch::P" +
                         "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField264x0 " +
+                        "3__0__lawspecField192x0 " +
                         "_match3__0__lawspecField" +
-                        "264x1 -> _match3__0__law" +
-                        "specField264x1 }) (List:" +
+                        "192x1 -> _match3__0__law" +
+                        "specField192x1 }) (List:" +
                         ":Cons(_let0__tp, List::N" +
                         "il())))) { Either::Left " +
                         "_match3__0__lawspecFailu" +
@@ -27967,9 +27967,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField263x0
+                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField191x0
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -28008,9 +28008,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField264x1
+                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField192x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -29002,18 +29002,18 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField263" +
+                        "tch3__0__lawspecField191" +
                         "x0 _match3__0__lawspecFi" +
-                        "eld263x1 -> _match3__0__" +
-                        "lawspecField263x0 }) (ma" +
+                        "eld191x1 -> _match3__0__" +
+                        "lawspecField191x0 }) (ma" +
                         "tch (_match1__1__old) { " +
                         "lawtwin.kafka.model::typ" +
                         "e::ProducerIdAndEpoch::P" +
                         "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField264x0 " +
+                        "3__0__lawspecField192x0 " +
                         "_match3__0__lawspecField" +
-                        "264x1 -> _match3__0__law" +
-                        "specField264x1 }) (List:" +
+                        "192x1 -> _match3__0__law" +
+                        "specField192x1 }) (List:" +
                         ":Cons(_let0__tp, List::N" +
                         "il())))) { Either::Left " +
                         "_match3__0__lawspecFailu" +
@@ -29506,9 +29506,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField263x0
+                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField191x0
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -29547,9 +29547,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField264x1
+                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField192x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -30597,18 +30597,18 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField263" +
+                        "tch3__0__lawspecField191" +
                         "x0 _match3__0__lawspecFi" +
-                        "eld263x1 -> _match3__0__" +
-                        "lawspecField263x0 }) (ma" +
+                        "eld191x1 -> _match3__0__" +
+                        "lawspecField191x0 }) (ma" +
                         "tch (_match1__1__old) { " +
                         "lawtwin.kafka.model::typ" +
                         "e::ProducerIdAndEpoch::P" +
                         "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField264x0 " +
+                        "3__0__lawspecField192x0 " +
                         "_match3__0__lawspecField" +
-                        "264x1 -> _match3__0__law" +
-                        "specField264x1 }) (List:" +
+                        "192x1 -> _match3__0__law" +
+                        "specField192x1 }) (List:" +
                         ":Cons(_let0__tp, List::N" +
                         "il())))) { Either::Left " +
                         "_match3__0__lawspecFailu" +
@@ -31101,9 +31101,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField263x0
+                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField191x0
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -31142,9 +31142,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField264x1
+                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField192x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -32318,18 +32318,18 @@ class KafkaLawSpecTest : StringSpec({
                             " lawtwin.kafka.model::ty" +
                             "pe::ProducerIdAndEpoch::" +
                             "ProducerIdAndEpoch _matc" +
-                            "h3__0__lawspecField263x0" +
+                            "h3__0__lawspecField191x0" +
                             " _match3__0__lawspecFiel" +
-                            "d263x1 -> _match3__0__la" +
-                            "wspecField263x0 }) (matc" +
+                            "d191x1 -> _match3__0__la" +
+                            "wspecField191x0 }) (matc" +
                             "h (_match1__1__old) { la" +
                             "wtwin.kafka.model::type:" +
                             ":ProducerIdAndEpoch::Pro" +
                             "ducerIdAndEpoch _match3_" +
-                            "_0__lawspecField264x0 _m" +
-                            "atch3__0__lawspecField26" +
-                            "4x1 -> _match3__0__lawsp" +
-                            "ecField264x1 }) (List::C" +
+                            "_0__lawspecField192x0 _m" +
+                            "atch3__0__lawspecField19" +
+                            "2x1 -> _match3__0__lawsp" +
+                            "ecField192x1 }) (List::C" +
                             "ons(_let0__tp, List::Nil" +
                             "())))) { Either::Left _m" +
                             "atch3__0__lawspecFailure" +
@@ -32834,9 +32834,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                                 "e::ProducerIdAndEpoch::P" +
                                                                                                                 "roducerIdAndEpoch"
                                                                                                             ) -> {
-                                                                                                                val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                                val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                                _match3__0__lawspecField263x0
+                                                                                                                val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                                val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                                _match3__0__lawspecField191x0
                                                                                                             }
                                                                                                             else -> {
                                                                                                                 throw IllegalArgumentException(
@@ -32875,9 +32875,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                                 "e::ProducerIdAndEpoch::P" +
                                                                                                                 "roducerIdAndEpoch"
                                                                                                             ) -> {
-                                                                                                                val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                                val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                                _match3__0__lawspecField264x1
+                                                                                                                val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                                val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                                _match3__0__lawspecField192x1
                                                                                                             }
                                                                                                             else -> {
                                                                                                                 throw IllegalArgumentException(
@@ -33749,10 +33749,10 @@ class KafkaLawSpecTest : StringSpec({
     // -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
     // (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
     // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField263x0 _match3__0__lawspecField263x1 -> _match3__0__lawspecField263x0
+    // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0
     // }) (match (_match1__1__old) {
     // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField264x0 _match3__0__lawspecField264x1 -> _match3__0__lawspecField264x1
+    // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1
     // }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
     // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -33963,18 +33963,18 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField26" +
-                    "3x0 _match3__0__lawspecF" +
-                    "ield263x1 -> _match3__0_" +
-                    "_lawspecField263x0 }) (m" +
+                    "atch3__0__lawspecField19" +
+                    "1x0 _match3__0__lawspecF" +
+                    "ield191x1 -> _match3__0_" +
+                    "_lawspecField191x0 }) (m" +
                     "atch (_match1__1__old) {" +
                     " lawtwin.kafka.model::ty" +
                     "pe::ProducerIdAndEpoch::" +
                     "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField264x0" +
+                    "h3__0__lawspecField192x0" +
                     " _match3__0__lawspecFiel" +
-                    "d264x1 -> _match3__0__la" +
-                    "wspecField264x1 }) (List" +
+                    "d192x1 -> _match3__0__la" +
+                    "wspecField192x1 }) (List" +
                     "::Cons(_let0__tp, List::" +
                     "Nil())))) { Either::Left" +
                     " _match3__0__lawspecFail" +
@@ -34461,9 +34461,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField263x0
+                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField191x0
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -34502,9 +34502,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField264x1
+                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField192x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -35512,18 +35512,18 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField26" +
-                    "3x0 _match3__0__lawspecF" +
-                    "ield263x1 -> _match3__0_" +
-                    "_lawspecField263x0 }) (m" +
+                    "atch3__0__lawspecField19" +
+                    "1x0 _match3__0__lawspecF" +
+                    "ield191x1 -> _match3__0_" +
+                    "_lawspecField191x0 }) (m" +
                     "atch (_match1__1__old) {" +
                     " lawtwin.kafka.model::ty" +
                     "pe::ProducerIdAndEpoch::" +
                     "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField264x0" +
+                    "h3__0__lawspecField192x0" +
                     " _match3__0__lawspecFiel" +
-                    "d264x1 -> _match3__0__la" +
-                    "wspecField264x1 }) (List" +
+                    "d192x1 -> _match3__0__la" +
+                    "wspecField192x1 }) (List" +
                     "::Cons(_let0__tp, List::" +
                     "Nil())))) { Either::Left" +
                     " _match3__0__lawspecFail" +
@@ -36010,9 +36010,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField263x0
+                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField191x0
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -36051,9 +36051,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField264x1
+                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField192x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -37006,18 +37006,18 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField26" +
-                    "3x0 _match3__0__lawspecF" +
-                    "ield263x1 -> _match3__0_" +
-                    "_lawspecField263x0 }) (m" +
+                    "atch3__0__lawspecField19" +
+                    "1x0 _match3__0__lawspecF" +
+                    "ield191x1 -> _match3__0_" +
+                    "_lawspecField191x0 }) (m" +
                     "atch (_match1__1__old) {" +
                     " lawtwin.kafka.model::ty" +
                     "pe::ProducerIdAndEpoch::" +
                     "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField264x0" +
+                    "h3__0__lawspecField192x0" +
                     " _match3__0__lawspecFiel" +
-                    "d264x1 -> _match3__0__la" +
-                    "wspecField264x1 }) (List" +
+                    "d192x1 -> _match3__0__la" +
+                    "wspecField192x1 }) (List" +
                     "::Cons(_let0__tp, List::" +
                     "Nil())))) { Either::Left" +
                     " _match3__0__lawspecFail" +
@@ -37504,9 +37504,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField263x0
+                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField191x0
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -37545,9 +37545,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField264x1
+                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField192x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -38556,18 +38556,18 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField26" +
-                    "3x0 _match3__0__lawspecF" +
-                    "ield263x1 -> _match3__0_" +
-                    "_lawspecField263x0 }) (m" +
+                    "atch3__0__lawspecField19" +
+                    "1x0 _match3__0__lawspecF" +
+                    "ield191x1 -> _match3__0_" +
+                    "_lawspecField191x0 }) (m" +
                     "atch (_match1__1__old) {" +
                     " lawtwin.kafka.model::ty" +
                     "pe::ProducerIdAndEpoch::" +
                     "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField264x0" +
+                    "h3__0__lawspecField192x0" +
                     " _match3__0__lawspecFiel" +
-                    "d264x1 -> _match3__0__la" +
-                    "wspecField264x1 }) (List" +
+                    "d192x1 -> _match3__0__la" +
+                    "wspecField192x1 }) (List" +
                     "::Cons(_let0__tp, List::" +
                     "Nil())))) { Either::Left" +
                     " _match3__0__lawspecFail" +
@@ -39054,9 +39054,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField263x0
+                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField191x0
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -39095,9 +39095,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField264x1
+                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                        _match3__0__lawspecField192x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -40233,18 +40233,18 @@ class KafkaLawSpecTest : StringSpec({
                         "{ lawtwin.kafka.model::t" +
                         "ype::ProducerIdAndEpoch:" +
                         ":ProducerIdAndEpoch _mat" +
-                        "ch3__0__lawspecField263x" +
+                        "ch3__0__lawspecField191x" +
                         "0 _match3__0__lawspecFie" +
-                        "ld263x1 -> _match3__0__l" +
-                        "awspecField263x0 }) (mat" +
+                        "ld191x1 -> _match3__0__l" +
+                        "awspecField191x0 }) (mat" +
                         "ch (_match1__1__old) { l" +
                         "awtwin.kafka.model::type" +
                         "::ProducerIdAndEpoch::Pr" +
                         "oducerIdAndEpoch _match3" +
-                        "__0__lawspecField264x0 _" +
-                        "match3__0__lawspecField2" +
-                        "64x1 -> _match3__0__laws" +
-                        "pecField264x1 }) (List::" +
+                        "__0__lawspecField192x0 _" +
+                        "match3__0__lawspecField1" +
+                        "92x1 -> _match3__0__laws" +
+                        "pecField192x1 }) (List::" +
                         "Cons(_let0__tp, List::Ni" +
                         "l())))) { Either::Left _" +
                         "match3__0__lawspecFailur" +
@@ -40737,9 +40737,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField263x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField263x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField263x0
+                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField191x0
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -40778,9 +40778,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField264x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField264x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField264x1
+                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
+                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
+                                                                                                            _match3__0__lawspecField192x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -76742,8 +76742,8 @@ class KafkaLawSpecTest : StringSpec({
     // (lawtwin.kafka.model::type::OffsetSpec::Latest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
     // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-    // _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+    // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
     ("lawProducerAFlushedRecor" + "dIsInTheLogNative_bounda" + "ry0") {
         val symbols = mutableMapOf<String, Any>()
         val _input0 =
@@ -76857,9 +76857,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -77141,9 +77141,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -77379,9 +77379,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -77663,9 +77663,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -77901,9 +77901,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -78185,9 +78185,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -78390,9 +78390,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -78674,9 +78674,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -78916,9 +78916,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -79200,9 +79200,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -79401,9 +79401,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -79685,9 +79685,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -79926,9 +79926,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -80210,9 +80210,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -80411,9 +80411,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
                         "etadata _match3__0__laws" +
-                        "pecField69x0 _match3__0_" +
-                        "_lawspecField69x1 -> _ma" +
-                        "tch3__0__lawspecField69x" +
+                        "pecField55x0 _match3__0_" +
+                        "_lawspecField55x1 -> _ma" +
+                        "tch3__0__lawspecField55x" +
                         "1 }) } } = true"
                     ),
                     {
@@ -80695,9 +80695,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -81021,9 +81021,9 @@ class KafkaLawSpecTest : StringSpec({
                             "{ lawtwin.kafka::type::R" +
                             "ecordMetadata::RecordMet" +
                             "adata _match3__0__lawspe" +
-                            "cField69x0 _match3__0__l" +
-                            "awspecField69x1 -> _matc" +
-                            "h3__0__lawspecField69x1 " +
+                            "cField55x0 _match3__0__l" +
+                            "awspecField55x1 -> _matc" +
+                            "h3__0__lawspecField55x1 " +
                             "}) } } = true"
                         ),
                         {
@@ -81324,9 +81324,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "ordMetadata::RecordMetad" +
                                                                         "ata"
                                                                     ) -> {
-                                                                        val _match3__0__lawspecField69x0 = _fields[0]
-                                                                        val _match3__0__lawspecField69x1 = _fields[1]
-                                                                        _match3__0__lawspecField69x1
+                                                                        val _match3__0__lawspecField55x0 = _fields[0]
+                                                                        val _match3__0__lawspecField55x1 = _fields[1]
+                                                                        _match3__0__lawspecField55x1
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -101327,8 +101327,8 @@ class KafkaLawSpecTest : StringSpec({
     // (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false;
     // Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) ==
     // _match1__1__tps) And (match (describeGroup (_input2)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0
-    // _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } =
+    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0
+    // _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } =
     // true
     val _lawspecInputs49 = listOf("(text)", "(int Int32 1 16)", "(text)", "(text)")
 
@@ -101443,9 +101443,9 @@ class KafkaLawSpecTest : StringSpec({
                         "put2)) { lawtwin.kafka.m" +
                         "odel::type::GroupView::G" +
                         "roupView _match2__0__law" +
-                        "specField71x0 _match2__0" +
-                        "__lawspecField71x1 -> _m" +
-                        "atch2__0__lawspecField71" +
+                        "specField55x0 _match2__0" +
+                        "__lawspecField55x1 -> _m" +
+                        "atch2__0__lawspecField55" +
                         "x0 } == _match0__1__gen)" +
                         ") } } = true"
                     ),
@@ -101826,9 +101826,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                             "lawtwin.kafka.model::typ" +
                                                                             "e::GroupView::GroupView"
                                                                         ) -> {
-                                                                            val _match2__0__lawspecField71x0 = _fields[0]
-                                                                            val _match2__0__lawspecField71x1 = _fields[1]
-                                                                            _match2__0__lawspecField71x0
+                                                                            val _match2__0__lawspecField55x0 = _fields[0]
+                                                                            val _match2__0__lawspecField55x1 = _fields[1]
+                                                                            _match2__0__lawspecField55x0
                                                                         }
                                                                         else -> {
                                                                             throw IllegalArgumentException(
@@ -102406,10 +102406,10 @@ class KafkaLawSpecTest : StringSpec({
                                         "input2)) { lawtwin.kafka" +
                                         ".model::type::GroupView:" +
                                         ":GroupView _match2__0__l" +
-                                        "awspecField71x0 _match2_" +
-                                        "_0__lawspecField71x1 -> " +
+                                        "awspecField55x0 _match2_" +
+                                        "_0__lawspecField55x1 -> " +
                                         "_match2__0__lawspecField" +
-                                        "71x0 } == _match0__1__ge" +
+                                        "55x0 } == _match0__1__ge" +
                                         "n)) } } = true"
                                     ),
                                     {
@@ -102823,9 +102823,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "lawtwin.kafka.model::typ" +
                                                                                             "e::GroupView::GroupView"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField71x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField71x1 = _fields[1]
-                                                                                            _match2__0__lawspecField71x0
+                                                                                            val _match2__0__lawspecField55x0 = _fields[0]
+                                                                                            val _match2__0__lawspecField55x1 = _fields[1]
+                                                                                            _match2__0__lawspecField55x0
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -102929,8 +102929,8 @@ class KafkaLawSpecTest : StringSpec({
     // (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false;
     // Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) ==
     // _match1__1__tps) And (match (describeGroup (_input2)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField71x0
-    // _match2__0__lawspecField71x1 -> _match2__0__lawspecField71x0 } == _match0__1__gen)) } } =
+    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0
+    // _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } =
     // true
     val _lawspecInputs50 = listOf("(text)", "(int Int32 1 16)", "(text)", "(text)")
 
@@ -103020,10 +103020,10 @@ class KafkaLawSpecTest : StringSpec({
                     "nput2)) { lawtwin.kafka." +
                     "model::type::GroupView::" +
                     "GroupView _match2__0__la" +
-                    "wspecField71x0 _match2__" +
-                    "0__lawspecField71x1 -> _" +
-                    "match2__0__lawspecField7" +
-                    "1x0 } == _match0__1__gen" +
+                    "wspecField55x0 _match2__" +
+                    "0__lawspecField55x1 -> _" +
+                    "match2__0__lawspecField5" +
+                    "5x0 } == _match0__1__gen" +
                     ")) } } = true"
                 ),
                 {
@@ -103395,9 +103395,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match2__0__lawspecField71x0 = _fields[0]
-                                                                        val _match2__0__lawspecField71x1 = _fields[1]
-                                                                        _match2__0__lawspecField71x0
+                                                                        val _match2__0__lawspecField55x0 = _fields[0]
+                                                                        val _match2__0__lawspecField55x1 = _fields[1]
+                                                                        _match2__0__lawspecField55x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -103932,10 +103932,10 @@ class KafkaLawSpecTest : StringSpec({
                                     "_input2)) { lawtwin.kafk" +
                                     "a.model::type::GroupView" +
                                     "::GroupView _match2__0__" +
-                                    "lawspecField71x0 _match2" +
-                                    "__0__lawspecField71x1 ->" +
+                                    "lawspecField55x0 _match2" +
+                                    "__0__lawspecField55x1 ->" +
                                     " _match2__0__lawspecFiel" +
-                                    "d71x0 } == _match0__1__g" +
+                                    "d55x0 } == _match0__1__g" +
                                     "en)) } } = true"
                                 ),
                                 {
@@ -104341,9 +104341,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "lawtwin.kafka.model::typ" +
                                                                                         "e::GroupView::GroupView"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField71x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField71x1 = _fields[1]
-                                                                                        _match2__0__lawspecField71x0
+                                                                                        val _match2__0__lawspecField55x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField55x1 = _fields[1]
+                                                                                        _match2__0__lawspecField55x0
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -116434,8 +116434,8 @@ class KafkaLawSpecTest : StringSpec({
     // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup
     // (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
     // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0
-    // _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And
+    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
+    // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And
     // match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
     // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -116543,9 +116543,9 @@ class KafkaLawSpecTest : StringSpec({
                         ") { lawtwin.kafka.model:" +
                         ":type::GroupView::GroupV" +
                         "iew _match1__0__lawspecF" +
-                        "ield119x0 _match1__0__la" +
-                        "wspecField119x1 -> _matc" +
-                        "h1__0__lawspecField119x0" +
+                        "ield101x0 _match1__0__la" +
+                        "wspecField101x1 -> _matc" +
+                        "h1__0__lawspecField101x0" +
                         " } > _match0__1__gen)) A" +
                         "nd match (attempt (heart" +
                         "beat (_input1) (_input2)" +
@@ -116931,9 +116931,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                        _match1__0__lawspecField119x0
+                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                        _match1__0__lawspecField101x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -117456,10 +117456,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
                         "oupView _match1__0__laws" +
-                        "pecField119x0 _match1__0" +
-                        "__lawspecField119x1 -> _" +
+                        "pecField101x0 _match1__0" +
+                        "__lawspecField101x1 -> _" +
                         "match1__0__lawspecField1" +
-                        "19x0 } > _match0__1__gen" +
+                        "01x0 } > _match0__1__gen" +
                         ")) And match (attempt (h" +
                         "eartbeat (_input1) (_inp" +
                         "ut2) (_match0__1__gen)))" +
@@ -117844,9 +117844,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                        _match1__0__lawspecField119x0
+                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                        _match1__0__lawspecField101x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -118369,10 +118369,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
                         "oupView _match1__0__laws" +
-                        "pecField119x0 _match1__0" +
-                        "__lawspecField119x1 -> _" +
+                        "pecField101x0 _match1__0" +
+                        "__lawspecField101x1 -> _" +
                         "match1__0__lawspecField1" +
-                        "19x0 } > _match0__1__gen" +
+                        "01x0 } > _match0__1__gen" +
                         ")) And match (attempt (h" +
                         "eartbeat (_input1) (_inp" +
                         "ut2) (_match0__1__gen)))" +
@@ -118757,9 +118757,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                        _match1__0__lawspecField119x0
+                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                        _match1__0__lawspecField101x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -119280,10 +119280,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
                         "oupView _match1__0__laws" +
-                        "pecField119x0 _match1__0" +
-                        "__lawspecField119x1 -> _" +
+                        "pecField101x0 _match1__0" +
+                        "__lawspecField101x1 -> _" +
                         "match1__0__lawspecField1" +
-                        "19x0 } > _match0__1__gen" +
+                        "01x0 } > _match0__1__gen" +
                         ")) And match (attempt (h" +
                         "eartbeat (_input1) (_inp" +
                         "ut2) (_match0__1__gen)))" +
@@ -119668,9 +119668,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                        _match1__0__lawspecField119x0
+                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                        _match1__0__lawspecField101x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -120191,10 +120191,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
                         "oupView _match1__0__laws" +
-                        "pecField119x0 _match1__0" +
-                        "__lawspecField119x1 -> _" +
+                        "pecField101x0 _match1__0" +
+                        "__lawspecField101x1 -> _" +
                         "match1__0__lawspecField1" +
-                        "19x0 } > _match0__1__gen" +
+                        "01x0 } > _match0__1__gen" +
                         ")) And match (attempt (h" +
                         "eartbeat (_input1) (_inp" +
                         "ut2) (_match0__1__gen)))" +
@@ -120579,9 +120579,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                        _match1__0__lawspecField119x0
+                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                        _match1__0__lawspecField101x0
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -121465,9 +121465,9 @@ class KafkaLawSpecTest : StringSpec({
                                         "1)) { lawtwin.kafka.mode" +
                                         "l::type::GroupView::Grou" +
                                         "pView _match1__0__lawspe" +
-                                        "cField119x0 _match1__0__" +
-                                        "lawspecField119x1 -> _ma" +
-                                        "tch1__0__lawspecField119" +
+                                        "cField101x0 _match1__0__" +
+                                        "lawspecField101x1 -> _ma" +
+                                        "tch1__0__lawspecField101" +
                                         "x0 } > _match0__1__gen))" +
                                         " And match (attempt (hea" +
                                         "rtbeat (_input1) (_input" +
@@ -121891,9 +121891,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "lawtwin.kafka.model::typ" +
                                                                                         "e::GroupView::GroupView"
                                                                                     ) -> {
-                                                                                        val _match1__0__lawspecField119x0 = _fields[0]
-                                                                                        val _match1__0__lawspecField119x1 = _fields[1]
-                                                                                        _match1__0__lawspecField119x0
+                                                                                        val _match1__0__lawspecField101x0 = _fields[0]
+                                                                                        val _match1__0__lawspecField101x1 = _fields[1]
+                                                                                        _match1__0__lawspecField101x0
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -122383,8 +122383,8 @@ class KafkaLawSpecTest : StringSpec({
     // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup
     // (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
     // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField119x0
-    // _match1__0__lawspecField119x1 -> _match1__0__lawspecField119x0 } > _match0__1__gen)) And
+    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
+    // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And
     // match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
     // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -122467,9 +122467,9 @@ class KafkaLawSpecTest : StringSpec({
                     ")) { lawtwin.kafka.model" +
                     "::type::GroupView::Group" +
                     "View _match1__0__lawspec" +
-                    "Field119x0 _match1__0__l" +
-                    "awspecField119x1 -> _mat" +
-                    "ch1__0__lawspecField119x" +
+                    "Field101x0 _match1__0__l" +
+                    "awspecField101x1 -> _mat" +
+                    "ch1__0__lawspecField101x" +
                     "0 } > _match0__1__gen)) " +
                     "And match (attempt (hear" +
                     "tbeat (_input1) (_input2" +
@@ -122847,9 +122847,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                    _match1__0__lawspecField119x0
+                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                    _match1__0__lawspecField101x0
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -123295,10 +123295,10 @@ class KafkaLawSpecTest : StringSpec({
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
                     "roupView _match1__0__law" +
-                    "specField119x0 _match1__" +
-                    "0__lawspecField119x1 -> " +
+                    "specField101x0 _match1__" +
+                    "0__lawspecField101x1 -> " +
                     "_match1__0__lawspecField" +
-                    "119x0 } > _match0__1__ge" +
+                    "101x0 } > _match0__1__ge" +
                     "n)) And match (attempt (" +
                     "heartbeat (_input1) (_in" +
                     "put2) (_match0__1__gen))" +
@@ -123676,9 +123676,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                    _match1__0__lawspecField119x0
+                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                    _match1__0__lawspecField101x0
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -124124,10 +124124,10 @@ class KafkaLawSpecTest : StringSpec({
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
                     "roupView _match1__0__law" +
-                    "specField119x0 _match1__" +
-                    "0__lawspecField119x1 -> " +
+                    "specField101x0 _match1__" +
+                    "0__lawspecField101x1 -> " +
                     "_match1__0__lawspecField" +
-                    "119x0 } > _match0__1__ge" +
+                    "101x0 } > _match0__1__ge" +
                     "n)) And match (attempt (" +
                     "heartbeat (_input1) (_in" +
                     "put2) (_match0__1__gen))" +
@@ -124505,9 +124505,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                    _match1__0__lawspecField119x0
+                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                    _match1__0__lawspecField101x0
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -124951,10 +124951,10 @@ class KafkaLawSpecTest : StringSpec({
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
                     "roupView _match1__0__law" +
-                    "specField119x0 _match1__" +
-                    "0__lawspecField119x1 -> " +
+                    "specField101x0 _match1__" +
+                    "0__lawspecField101x1 -> " +
                     "_match1__0__lawspecField" +
-                    "119x0 } > _match0__1__ge" +
+                    "101x0 } > _match0__1__ge" +
                     "n)) And match (attempt (" +
                     "heartbeat (_input1) (_in" +
                     "put2) (_match0__1__gen))" +
@@ -125332,9 +125332,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                    _match1__0__lawspecField119x0
+                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                    _match1__0__lawspecField101x0
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -125778,10 +125778,10 @@ class KafkaLawSpecTest : StringSpec({
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
                     "roupView _match1__0__law" +
-                    "specField119x0 _match1__" +
-                    "0__lawspecField119x1 -> " +
+                    "specField101x0 _match1__" +
+                    "0__lawspecField101x1 -> " +
                     "_match1__0__lawspecField" +
-                    "119x0 } > _match0__1__ge" +
+                    "101x0 } > _match0__1__ge" +
                     "n)) And match (attempt (" +
                     "heartbeat (_input1) (_in" +
                     "put2) (_match0__1__gen))" +
@@ -126159,9 +126159,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                    _match1__0__lawspecField119x0
+                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                    _match1__0__lawspecField101x0
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -126965,10 +126965,10 @@ class KafkaLawSpecTest : StringSpec({
                                     "t1)) { lawtwin.kafka.mod" +
                                     "el::type::GroupView::Gro" +
                                     "upView _match1__0__lawsp" +
-                                    "ecField119x0 _match1__0_" +
-                                    "_lawspecField119x1 -> _m" +
-                                    "atch1__0__lawspecField11" +
-                                    "9x0 } > _match0__1__gen)" +
+                                    "ecField101x0 _match1__0_" +
+                                    "_lawspecField101x1 -> _m" +
+                                    "atch1__0__lawspecField10" +
+                                    "1x0 } > _match0__1__gen)" +
                                     ") And match (attempt (he" +
                                     "artbeat (_input1) (_inpu" +
                                     "t2) (_match0__1__gen))) " +
@@ -127381,9 +127381,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "lawtwin.kafka.model::typ" +
                                                                                     "e::GroupView::GroupView"
                                                                                 ) -> {
-                                                                                    val _match1__0__lawspecField119x0 = _fields[0]
-                                                                                    val _match1__0__lawspecField119x1 = _fields[1]
-                                                                                    _match1__0__lawspecField119x0
+                                                                                    val _match1__0__lawspecField101x0 = _fields[0]
+                                                                                    val _match1__0__lawspecField101x1 = _fields[1]
+                                                                                    _match1__0__lawspecField101x0
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -137841,8 +137841,8 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
     // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-    // _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+    // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
     ("lawTransactionsAbortedRe" + "cordsAreNeverRead_bounda" + "ry0") {
         val symbols = mutableMapOf<String, Any>()
         val _input0 =
@@ -138032,10 +138032,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -138369,9 +138369,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -138633,10 +138633,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -138970,9 +138970,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -139198,10 +139198,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -139535,9 +139535,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -139800,10 +139800,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -140137,9 +140137,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -140361,10 +140361,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -140698,9 +140698,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -140922,10 +140922,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField186x0 " +
+                        "2__0__lawspecField162x0 " +
                         "_match2__0__lawspecField" +
-                        "186x1 -> _match2__0__law" +
-                        "specField186x1 }) == Lis" +
+                        "162x1 -> _match2__0__law" +
+                        "specField162x1 }) == Lis" +
                         "t::Nil())) }) = true"
                     ),
                     {
@@ -141259,9 +141259,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -141660,10 +141660,10 @@ class KafkaLawSpecTest : StringSpec({
                             "1__1__md) { lawtwin.kafk" +
                             "a::type::RecordMetadata:" +
                             ":RecordMetadata _match2_" +
-                            "_0__lawspecField186x0 _m" +
-                            "atch2__0__lawspecField18" +
-                            "6x1 -> _match2__0__lawsp" +
-                            "ecField186x1 }) == List:" +
+                            "_0__lawspecField162x0 _m" +
+                            "atch2__0__lawspecField16" +
+                            "2x1 -> _match2__0__lawsp" +
+                            "ecField162x1 }) == List:" +
                             ":Nil())) }) = true"
                         ),
                         {
@@ -142007,9 +142007,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "ordMetadata::RecordMetad" +
                                                                                             "ata"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                            _match2__0__lawspecField186x1
+                                                                                            val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                            val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                            _match2__0__lawspecField162x1
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -142098,11 +142098,11 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
     // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-    // _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+    // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
     // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
     // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-    // _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1
+    // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1
     // }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
     ("lawTransactionsCommitted" + "RecordsAreRead_boundary0") {
         val symbols = mutableMapOf<String, Any>()
@@ -142415,9 +142415,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -142426,10 +142426,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -142829,9 +142829,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -142953,9 +142953,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -143369,9 +143369,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -143380,10 +143380,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -143783,9 +143783,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -143907,9 +143907,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -144250,9 +144250,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -144261,10 +144261,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -144664,9 +144664,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -144788,9 +144788,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -145205,9 +145205,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -145216,10 +145216,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -145619,9 +145619,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -145743,9 +145743,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -146082,9 +146082,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -146093,10 +146093,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -146496,9 +146496,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -146620,9 +146620,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -146959,9 +146959,9 @@ class KafkaLawSpecTest : StringSpec({
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
                         "ata _match2__0__lawspecF" +
-                        "ield267x0 _match2__0__la" +
-                        "wspecField267x1 -> _matc" +
-                        "h2__0__lawspecField267x1" +
+                        "ield219x0 _match2__0__la" +
+                        "wspecField219x1 -> _matc" +
+                        "h2__0__lawspecField219x1" +
                         " }) == List::Nil())) And" +
                         " (commitTransaction == E" +
                         "ither::Right(unitValue))" +
@@ -146970,10 +146970,10 @@ class KafkaLawSpecTest : StringSpec({
                         "__1__md) { lawtwin.kafka" +
                         "::type::RecordMetadata::" +
                         "RecordMetadata _match2__" +
-                        "0__lawspecField288x0 _ma" +
-                        "tch2__0__lawspecField288" +
+                        "0__lawspecField232x0 _ma" +
+                        "tch2__0__lawspecField232" +
                         "x1 -> _match2__0__lawspe" +
-                        "cField288x1 }) == List::" +
+                        "cField232x1 }) == List::" +
                         "Cons(_input2, List::Cons" +
                         "(_input3, List::Nil())))" +
                         ") }) = true"
@@ -147373,9 +147373,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -147497,9 +147497,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -147961,9 +147961,9 @@ class KafkaLawSpecTest : StringSpec({
                             "wtwin.kafka::type::Recor" +
                             "dMetadata::RecordMetadat" +
                             "a _match2__0__lawspecFie" +
-                            "ld267x0 _match2__0__laws" +
-                            "pecField267x1 -> _match2" +
-                            "__0__lawspecField267x1 }" +
+                            "ld219x0 _match2__0__laws" +
+                            "pecField219x1 -> _match2" +
+                            "__0__lawspecField219x1 }" +
                             ") == List::Nil())) And (" +
                             "commitTransaction == Eit" +
                             "her::Right(unitValue))) " +
@@ -147972,10 +147972,10 @@ class KafkaLawSpecTest : StringSpec({
                             "1__md) { lawtwin.kafka::" +
                             "type::RecordMetadata::Re" +
                             "cordMetadata _match2__0_" +
-                            "_lawspecField288x0 _matc" +
-                            "h2__0__lawspecField288x1" +
+                            "_lawspecField232x0 _matc" +
+                            "h2__0__lawspecField232x1" +
                             " -> _match2__0__lawspecF" +
-                            "ield288x1 }) == List::Co" +
+                            "ield232x1 }) == List::Co" +
                             "ns(_input2, List::Cons(_" +
                             "input3, List::Nil())))) " +
                             "}) = true"
@@ -148383,9 +148383,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "ordMetadata::RecordMetad" +
                                                                                                             "ata"
                                                                                                         ) -> {
-                                                                                                            val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                            val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                            _match2__0__lawspecField267x1
+                                                                                                            val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                            val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                            _match2__0__lawspecField219x1
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -148507,9 +148507,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "ordMetadata::RecordMetad" +
                                                                                             "ata"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                            _match2__0__lawspecField288x1
+                                                                                            val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                            val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                            _match2__0__lawspecField232x1
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -155794,8 +155794,8 @@ class KafkaLawSpecTest : StringSpec({
     // (lawtwin.kafka.model::type::OffsetSpec::Latest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
     // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField69x0
-    // _match3__0__lawspecField69x1 -> _match3__0__lawspecField69x1 }) } } = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
+    // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
     ("lawProducerAFlushedRecor" + "dIsInTheLog_boundary0") {
         val symbols = mutableMapOf<String, Any>()
         val _lawspecShared_cluster = lawspec.abilities.lawtwin.Kafka.Cluster(symbols)
@@ -155897,10 +155897,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -156175,9 +156175,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -156386,10 +156386,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -156664,9 +156664,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -156875,10 +156875,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -157153,9 +157153,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -157331,10 +157331,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -157609,9 +157609,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -157824,10 +157824,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -158102,9 +158102,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -158276,10 +158276,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -158554,9 +158554,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -158768,10 +158768,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -159046,9 +159046,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -159220,10 +159220,10 @@ class KafkaLawSpecTest : StringSpec({
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
                     "rdMetadata _match3__0__l" +
-                    "awspecField69x0 _match3_" +
-                    "_0__lawspecField69x1 -> " +
+                    "awspecField55x0 _match3_" +
+                    "_0__lawspecField55x1 -> " +
                     "_match3__0__lawspecField" +
-                    "69x1 }) } } = true"
+                    "55x1 }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -159498,9 +159498,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField69x0 = _fields[0]
-                                                                val _match3__0__lawspecField69x1 = _fields[1]
-                                                                _match3__0__lawspecField69x1
+                                                                val _match3__0__lawspecField55x0 = _fields[0]
+                                                                val _match3__0__lawspecField55x1 = _fields[1]
+                                                                _match3__0__lawspecField55x1
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -159797,9 +159797,9 @@ class KafkaLawSpecTest : StringSpec({
                         "d) { lawtwin.kafka::type" +
                         "::RecordMetadata::Record" +
                         "Metadata _match3__0__law" +
-                        "specField69x0 _match3__0" +
-                        "__lawspecField69x1 -> _m" +
-                        "atch3__0__lawspecField69" +
+                        "specField55x0 _match3__0" +
+                        "__lawspecField55x1 -> _m" +
+                        "atch3__0__lawspecField55" +
                         "x1 }) } } = true"
                     ),
                     {
@@ -160081,9 +160081,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField69x0 = _fields[0]
-                                                                    val _match3__0__lawspecField69x1 = _fields[1]
-                                                                    _match3__0__lawspecField69x1
+                                                                    val _match3__0__lawspecField55x0 = _fields[0]
+                                                                    val _match3__0__lawspecField55x1 = _fields[1]
+                                                                    _match3__0__lawspecField55x1
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -181607,8 +181607,8 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
     // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField186x0
-    // _match2__0__lawspecField186x1 -> _match2__0__lawspecField186x1 }) == List::Nil())) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
+    // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
     ("lawTransactionsAbortedRe" + "cordsAreNeverRead2_bound" + "ary0") {
         val symbols = mutableMapOf<String, Any>()
         val _lawspecShared_cluster = lawspec.abilities.lawtwin.Kafka.Cluster(symbols)
@@ -181783,10 +181783,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -182112,9 +182112,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -182346,10 +182346,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -182675,9 +182675,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -182873,10 +182873,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -183202,9 +183202,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -183437,10 +183437,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -183766,9 +183766,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -183960,10 +183960,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -184289,9 +184289,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -184483,10 +184483,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField186" +
+                    "tch2__0__lawspecField162" +
                     "x0 _match2__0__lawspecFi" +
-                    "eld186x1 -> _match2__0__" +
-                    "lawspecField186x1 }) == " +
+                    "eld162x1 -> _match2__0__" +
+                    "lawspecField162x1 }) == " +
                     "List::Nil())) }) = true"
                 ),
                 {
@@ -184812,9 +184812,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                    _match2__0__lawspecField186x1
+                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                    _match2__0__lawspecField162x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -185180,10 +185180,10 @@ class KafkaLawSpecTest : StringSpec({
                         "tch1__1__md) { lawtwin.k" +
                         "afka::type::RecordMetada" +
                         "ta::RecordMetadata _matc" +
-                        "h2__0__lawspecField186x0" +
+                        "h2__0__lawspecField162x0" +
                         " _match2__0__lawspecFiel" +
-                        "d186x1 -> _match2__0__la" +
-                        "wspecField186x1 }) == Li" +
+                        "d162x1 -> _match2__0__la" +
+                        "wspecField162x1 }) == Li" +
                         "st::Nil())) }) = true"
                     ),
                     {
@@ -185517,9 +185517,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField186x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField186x1 = _fields[1]
-                                                                                        _match2__0__lawspecField186x1
+                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
+                                                                                        _match2__0__lawspecField162x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -185590,11 +185590,11 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
     // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField267x0
-    // _match2__0__lawspecField267x1 -> _match2__0__lawspecField267x1 }) == List::Nil())) And
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
+    // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
     // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
     // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-    // _match2__0__lawspecField288x0 _match2__0__lawspecField288x1 -> _match2__0__lawspecField288x1
+    // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1
     // }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
     ("lawTransactionsCommitted" + "RecordsAreRead2_boundary" + "0") {
         val symbols = mutableMapOf<String, Any>()
@@ -185892,10 +185892,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -185903,10 +185903,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -186300,9 +186300,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -186424,9 +186424,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -186810,10 +186810,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -186821,10 +186821,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -187218,9 +187218,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -187342,9 +187342,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -187655,10 +187655,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -187666,10 +187666,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -188063,9 +188063,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -188187,9 +188187,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -188574,10 +188574,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -188585,10 +188585,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -188982,9 +188982,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -189106,9 +189106,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -189415,10 +189415,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -189426,10 +189426,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -189823,9 +189823,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -189947,9 +189947,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -190256,10 +190256,10 @@ class KafkaLawSpecTest : StringSpec({
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
                     "tadata _match2__0__lawsp" +
-                    "ecField267x0 _match2__0_" +
-                    "_lawspecField267x1 -> _m" +
-                    "atch2__0__lawspecField26" +
-                    "7x1 }) == List::Nil())) " +
+                    "ecField219x0 _match2__0_" +
+                    "_lawspecField219x1 -> _m" +
+                    "atch2__0__lawspecField21" +
+                    "9x1 }) == List::Nil())) " +
                     "And (commitTransaction =" +
                     "= Either::Right(unitValu" +
                     "e))) And (committedFrom " +
@@ -190267,10 +190267,10 @@ class KafkaLawSpecTest : StringSpec({
                     "ch1__1__md) { lawtwin.ka" +
                     "fka::type::RecordMetadat" +
                     "a::RecordMetadata _match" +
-                    "2__0__lawspecField288x0 " +
+                    "2__0__lawspecField232x0 " +
                     "_match2__0__lawspecField" +
-                    "288x1 -> _match2__0__law" +
-                    "specField288x1 }) == Lis" +
+                    "232x1 -> _match2__0__law" +
+                    "specField232x1 }) == Lis" +
                     "t::Cons(_input2, List::C" +
                     "ons(_input3, List::Nil()" +
                     ")))) }) = true"
@@ -190664,9 +190664,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField267x1
+                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                    _match2__0__lawspecField219x1
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -190788,9 +190788,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                    _match2__0__lawspecField288x1
+                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                    _match2__0__lawspecField232x1
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -191219,9 +191219,9 @@ class KafkaLawSpecTest : StringSpec({
                         " lawtwin.kafka::type::Re" +
                         "cordMetadata::RecordMeta" +
                         "data _match2__0__lawspec" +
-                        "Field267x0 _match2__0__l" +
-                        "awspecField267x1 -> _mat" +
-                        "ch2__0__lawspecField267x" +
+                        "Field219x0 _match2__0__l" +
+                        "awspecField219x1 -> _mat" +
+                        "ch2__0__lawspecField219x" +
                         "1 }) == List::Nil())) An" +
                         "d (commitTransaction == " +
                         "Either::Right(unitValue)" +
@@ -191230,10 +191230,10 @@ class KafkaLawSpecTest : StringSpec({
                         "1__1__md) { lawtwin.kafk" +
                         "a::type::RecordMetadata:" +
                         ":RecordMetadata _match2_" +
-                        "_0__lawspecField288x0 _m" +
-                        "atch2__0__lawspecField28" +
-                        "8x1 -> _match2__0__lawsp" +
-                        "ecField288x1 }) == List:" +
+                        "_0__lawspecField232x0 _m" +
+                        "atch2__0__lawspecField23" +
+                        "2x1 -> _match2__0__lawsp" +
+                        "ecField232x1 }) == List:" +
                         ":Cons(_input2, List::Con" +
                         "s(_input3, List::Nil()))" +
                         ")) }) = true"
@@ -191633,9 +191633,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField267x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField267x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField267x1
+                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
+                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
+                                                                                                        _match2__0__lawspecField219x1
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -191757,9 +191757,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField288x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField288x1 = _fields[1]
-                                                                                        _match2__0__lawspecField288x1
+                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
+                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
+                                                                                        _match2__0__lawspecField232x1
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(

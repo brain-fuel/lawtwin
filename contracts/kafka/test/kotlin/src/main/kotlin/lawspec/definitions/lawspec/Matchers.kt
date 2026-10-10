@@ -13,23 +13,5 @@ object Matchers {
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Regex,
-    ): kotlin.Boolean {
-        try {
-            val codec0 = schema.scalar("Text", bits, kotlin.String::class.javaObjectType)
-            val argument0 = codec0.encode(value0)
-            val codec1 = LawSpecDataCodecs.regexCodec(schema, bits, symbols)
-            val argument1 = codec1.encode(value1)
-            val result =
-                lawspec.runtime.LawSpecDefinitionBodies.evaluate33(symbols, argument0, argument1)
-            val resultCodec = schema.scalar("Bool", bits, kotlin.Boolean::class.javaObjectType)
-            return resultCodec.decode(result)
-        } catch (failure: lawspec.runtime.LawSpecRuntime.Failure) {
-            throw failure
-        } catch (error: RuntimeException) {
-            throw IllegalArgumentException(
-                ("lawspec.matchers::matche" + "rsMatchesRegex: ") + error.message,
-                error,
-            )
-        }
-    }
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_21(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative103(value1)))
 }

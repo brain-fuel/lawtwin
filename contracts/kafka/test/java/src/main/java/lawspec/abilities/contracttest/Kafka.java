@@ -11,492 +11,474 @@ public final class Kafka {
 
   private static final lawspec.runtime.LawSpecSchema _schema = lawspec.runtime.LawSpecDataSchema.create();
 
-  /** The spec handler cluster for Broker, Admin, GroupCoordinator. */
+  /** The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed. */
   public static final class Cluster implements lawspec.abilities.lawtwin.Kafka.Broker, lawspec.abilities.lawtwin.Kafka.Admin, lawspec.abilities.lawtwin.Kafka.GroupCoordinator {
     private final Map<String, Object> symbols;
-    private Value state;
+    private lawspec.runtime.LawSpecTyped.BrokerState state;
 
+    /** The handler for a law, in its context. */
     public Cluster(Map<String, Object> symbols) {
       this.symbols = symbols;
-      this.state = lawspec.runtime.LawSpecDefinitionBodies.evaluate567(
-          symbols, LawSpecRuntime.absent("Unit"));
+      this.state = lawspec.runtime.LawSpecTyped.start2();
+    }
+
+    /** The handler on its own, outside any law: the embedding entry point. */
+    public Cluster() {
+      this(new java.util.HashMap<>());
     }
 
     @Override
-    public void createTopicsRequest(java.lang.String value0, java.lang.Integer value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate547(
-          symbols,
+    public synchronized void createTopicsRequest(
+        java.lang.String value0,
+        java.lang.Integer value1
+    ) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative2(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void createPartitionsRequest(java.lang.String value0, java.lang.Integer value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate545(
-          symbols,
+    public synchronized void createPartitionsRequest(
+        java.lang.String value0,
+        java.lang.Integer value1
+    ) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative2(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.runtime.LawSpecRuntime.Maybe<
+    public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
             java.lang.Integer> metadataRequest(java.lang.String value0) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate562(
-          symbols, state, _schema.scalar("Text", 64, java.lang.String.class).encode(value0)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.maybe(
-          _schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols).decode(result);
+      var pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+          state,
+          lawspec.runtime.LawSpecTyped.fromNative1(value0)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative3(result);
     }
 
     @Override
-    public java.lang.Long produceRequest(
+    public synchronized java.lang.Long produceRequest(
         lawspec.data.TopicPartition value0,
         lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
         java.util.List<lawspec.data.Record> value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate566(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterProduceRequest_38(
           state,
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value0),
-          _schema.maybe(
-              lawspec.runtime.LawSpecDataCodecs.producerTagCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value1),
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.recordCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.scalar("Int64", 64, java.lang.Long.class).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative5(value0),
+          lawspec.runtime.LawSpecTyped.fromNative6(value1),
+          lawspec.runtime.LawSpecTyped.fromNative7(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative4(result);
     }
 
     @Override
-    public lawspec.data.FetchResult fetchRequest(
+    public synchronized lawspec.data.FetchResult fetchRequest(
         lawspec.data.TopicPartition value0,
         java.lang.Long value1,
         java.lang.Integer value2,
         lawspec.data.IsolationLevel value3
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate552(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterFetchRequest_31(
           state,
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value0),
-          _schema.scalar("Int64", 64, java.lang.Long.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2),
-          lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(
-              _schema, 64, symbols).encode(value3)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return lawspec.runtime.LawSpecDataCodecs.fetchResultCodec(
-          _schema, 64, symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative5(value0),
+          lawspec.runtime.LawSpecTyped.fromNative4(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2),
+          lawspec.runtime.LawSpecTyped.fromNative9(value3)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative8(result);
     }
 
     @Override
-    public java.lang.Long listOffsetsRequest(
+    public synchronized java.lang.Long listOffsetsRequest(
         lawspec.data.TopicPartition value0,
         lawspec.data.OffsetSpec value1,
         lawspec.data.IsolationLevel value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate561(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
           state,
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value0),
-          lawspec.runtime.LawSpecDataCodecs.offsetSpecCodec(_schema, 64, symbols).encode(value1),
-          lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(
-              _schema, 64, symbols).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.scalar("Int64", 64, java.lang.Long.class).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative5(value0),
+          lawspec.runtime.LawSpecTyped.fromNative10(value1),
+          lawspec.runtime.LawSpecTyped.fromNative9(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative4(result);
     }
 
     @Override
-    public lawspec.data.ProducerIdAndEpoch initProducerIdRequest(
+    public synchronized lawspec.data.ProducerIdAndEpoch initProducerIdRequest(
         lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate555(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_33(
           state,
-          _schema.maybe(
-              _schema.scalar("Text", 64, java.lang.String.class), 64, symbols).encode(value0)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return lawspec.runtime.LawSpecDataCodecs.producerIdAndEpochCodec(
-          _schema, 64, symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative12(value0)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative11(result);
     }
 
     @Override
-    public void addPartitionsToTxnRequest(
+    public synchronized void addPartitionsToTxnRequest(
         java.lang.String value0,
         java.lang.Long value1,
         java.lang.Short value2,
         java.util.List<lawspec.data.TopicPartition> value3
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate542(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_24(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int64", 64, java.lang.Long.class).encode(value1),
-          _schema.scalar("Int16", 64, java.lang.Short.class).encode(value2),
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value3)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative4(value1),
+          lawspec.runtime.LawSpecTyped.fromNative13(value2),
+          lawspec.runtime.LawSpecTyped.fromNative14(value3)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void txnOffsetCommitRequest(
+    public synchronized void txnOffsetCommitRequest(
         java.lang.String value0,
         java.lang.Long value1,
         java.lang.Short value2,
         java.lang.String value3,
         java.util.List<lawspec.data.OffsetEntry> value4
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate570(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_41(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int64", 64, java.lang.Long.class).encode(value1),
-          _schema.scalar("Int16", 64, java.lang.Short.class).encode(value2),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value3),
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value4)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative4(value1),
+          lawspec.runtime.LawSpecTyped.fromNative13(value2),
+          lawspec.runtime.LawSpecTyped.fromNative1(value3),
+          lawspec.runtime.LawSpecTyped.fromNative15(value4)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void endTxnRequest(
+    public synchronized void endTxnRequest(
         java.lang.String value0,
         java.lang.Long value1,
         java.lang.Short value2,
         java.lang.Boolean value3
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate550(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_29(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int64", 64, java.lang.Long.class).encode(value1),
-          _schema.scalar("Int16", 64, java.lang.Short.class).encode(value2),
-          _schema.scalar("Bool", 64, java.lang.Boolean.class).encode(value3)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative4(value1),
+          lawspec.runtime.LawSpecTyped.fromNative13(value2),
+          lawspec.runtime.LawSpecTyped.fromNative16(value3)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public java.lang.Integer joinGroupRequest(
+    public synchronized java.lang.Integer joinGroupRequest(
         java.lang.String value0,
         java.lang.String value1,
         java.util.List<java.lang.String> value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate557(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.list(
-              _schema.scalar("Text", 64, java.lang.String.class), 64, symbols).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.scalar("Int32", 64, java.lang.Integer.class).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative17(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative2(result);
     }
 
     @Override
-    public java.util.List<
+    public synchronized java.util.List<
             lawspec.data.TopicPartition> syncGroupRequest(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate569(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.list(
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-          64,
-          symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative14(result);
     }
 
     @Override
-    public void heartbeatRequest(
+    public synchronized void heartbeatRequest(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate554(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void leaveGroupRequest(java.lang.String value0, java.lang.String value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate559(
-          symbols,
+    public synchronized void leaveGroupRequest(java.lang.String value0, java.lang.String value1) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.data.GroupView describeGroupRequest(java.lang.String value0) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate549(
-          symbols, state, _schema.scalar("Text", 64, java.lang.String.class).encode(value0)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return lawspec.runtime.LawSpecDataCodecs.groupViewCodec(_schema, 64, symbols).decode(result);
+    public synchronized lawspec.data.GroupView describeGroupRequest(java.lang.String value0) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+          state,
+          lawspec.runtime.LawSpecTyped.fromNative1(value0)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative18(result);
     }
 
     @Override
-    public void offsetCommitRequest(
+    public synchronized void offsetCommitRequest(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2,
         java.util.List<lawspec.data.OffsetEntry> value3
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate563(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2),
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value3)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2),
+          lawspec.runtime.LawSpecTyped.fromNative15(value3)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.runtime.LawSpecRuntime.Maybe<
+    public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
             java.lang.Long> offsetFetchRequest(
         java.lang.String value0,
         lawspec.data.TopicPartition value1
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate564(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.maybe(
-          _schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative5(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative19(result);
     }
 
     @Override
-    public void createTopic(java.lang.String value0, java.lang.Integer value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate546(
-          symbols,
+    public synchronized void createTopic(java.lang.String value0, java.lang.Integer value1) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative2(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void createPartitions(java.lang.String value0, java.lang.Integer value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate544(
-          symbols,
+    public synchronized void createPartitions(java.lang.String value0, java.lang.Integer value1) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative2(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.runtime.LawSpecRuntime.Maybe<
+    public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
             java.lang.Integer> partitionsFor(java.lang.String value0) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate565(
-          symbols, state, _schema.scalar("Text", 64, java.lang.String.class).encode(value0)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.maybe(
-          _schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols).decode(result);
+      var pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+          state,
+          lawspec.runtime.LawSpecTyped.fromNative1(value0)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative3(result);
     }
 
     @Override
-    public java.lang.Long listOffsets(
+    public synchronized java.lang.Long listOffsets(
         lawspec.data.TopicPartition value0,
         lawspec.data.OffsetSpec value1,
         lawspec.data.IsolationLevel value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate560(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
           state,
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value0),
-          lawspec.runtime.LawSpecDataCodecs.offsetSpecCodec(_schema, 64, symbols).encode(value1),
-          lawspec.runtime.LawSpecDataCodecs.isolationLevelCodec(
-              _schema, 64, symbols).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.scalar("Int64", 64, java.lang.Long.class).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative5(value0),
+          lawspec.runtime.LawSpecTyped.fromNative10(value1),
+          lawspec.runtime.LawSpecTyped.fromNative9(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative4(result);
     }
 
     @Override
-    public java.lang.Integer joinGroup(
+    public synchronized java.lang.Integer joinGroup(
         java.lang.String value0,
         java.lang.String value1,
         java.util.List<java.lang.String> value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate556(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.list(
-              _schema.scalar("Text", 64, java.lang.String.class), 64, symbols).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.scalar("Int32", 64, java.lang.Integer.class).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative17(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative2(result);
     }
 
     @Override
-    public java.util.List<
+    public synchronized java.util.List<
             lawspec.data.TopicPartition> syncGroup(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate568(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.list(
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(_schema, 64, symbols),
-          64,
-          symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative14(result);
     }
 
     @Override
-    public void heartbeat(
+    public synchronized void heartbeat(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate553(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public void leaveGroup(java.lang.String value0, java.lang.String value1) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate558(
-          symbols,
+    public synchronized void leaveGroup(java.lang.String value0, java.lang.String value1) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.data.GroupView describeGroup(java.lang.String value0) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate548(
-          symbols, state, _schema.scalar("Text", 64, java.lang.String.class).encode(value0)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return lawspec.runtime.LawSpecDataCodecs.groupViewCodec(_schema, 64, symbols).decode(result);
+    public synchronized lawspec.data.GroupView describeGroup(java.lang.String value0) {
+      var pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+          state,
+          lawspec.runtime.LawSpecTyped.fromNative1(value0)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative18(result);
     }
 
     @Override
-    public void commitOffsets(
+    public synchronized void commitOffsets(
         java.lang.String value0,
         java.lang.String value1,
         java.lang.Integer value2,
         java.util.List<lawspec.data.OffsetEntry> value3
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate543(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value1),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value2),
-          _schema.list(
-              lawspec.runtime.LawSpecDataCodecs.offsetEntryCodec(_schema, 64, symbols),
-              64,
-              symbols).encode(value3)));
-      state = pair.get(1);
-      var result = pair.get(0);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative1(value1),
+          lawspec.runtime.LawSpecTyped.fromNative2(value2),
+          lawspec.runtime.LawSpecTyped.fromNative15(value3)
+      );
+      state = pair.second;
+      var result = pair.first;
     }
 
     @Override
-    public lawspec.runtime.LawSpecRuntime.Maybe<
+    public synchronized lawspec.runtime.LawSpecRuntime.Maybe<
             java.lang.Long> fetchOffset(
         java.lang.String value0,
         lawspec.data.TopicPartition value1
     ) {
-      var pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate551(
-          symbols,
+      var pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
           state,
-          _schema.scalar("Text", 64, java.lang.String.class).encode(value0),
-          lawspec.runtime.LawSpecDataCodecs.topicPartitionCodec(
-              _schema, 64, symbols).encode(value1)));
-      state = pair.get(1);
-      var result = pair.get(0);
-      return _schema.maybe(
-          _schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols).decode(result);
+          lawspec.runtime.LawSpecTyped.fromNative1(value0),
+          lawspec.runtime.LawSpecTyped.fromNative5(value1)
+      );
+      state = pair.second;
+      var result = pair.first;
+      return lawspec.runtime.LawSpecTyped.toNative19(result);
     }
   }
 
-  /** The spec handler murmurPartitioner for Partitioner. */
+  /** The spec handler murmurPartitioner for Partitioner, with its state typed. */
   public static final class MurmurPartitioner implements lawspec.abilities.lawtwin.Kafka.Partitioner {
     private final Map<String, Object> symbols;
-    private Value state;
 
+    /** The handler for a law, in its context. */
     public MurmurPartitioner(Map<String, Object> symbols) {
       this.symbols = symbols;
     }
 
+    /** The handler on its own, outside any law: the embedding entry point. */
+    public MurmurPartitioner() {
+      this(new java.util.HashMap<>());
+    }
+
     @Override
-    public java.lang.Integer choosePartition(
+    public synchronized java.lang.Integer choosePartition(
         lawspec.runtime.LawSpecRuntime.Maybe<byte[]> value0,
         java.lang.Integer value1
     ) {
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate865(
-          symbols,
-          _schema.maybe(_schema.scalar("Bytes", 64, byte[].class), 64, symbols).encode(value0),
-          _schema.scalar("Int32", 64, java.lang.Integer.class).encode(value1));
-      return _schema.scalar("Int32", 64, java.lang.Integer.class).decode(result);
+      var result = lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_239(
+          lawspec.runtime.LawSpecTyped.fromNative20(value0),
+          lawspec.runtime.LawSpecTyped.fromNative2(value1)
+      );
+      return lawspec.runtime.LawSpecTyped.toNative2(result);
     }
   }
 

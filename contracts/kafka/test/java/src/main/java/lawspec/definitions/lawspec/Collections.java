@@ -11,70 +11,22 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short> boundedInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate0(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int16", 64, java.lang.Short.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> boundedInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate1(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int32", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> boundedInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate2(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int64", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte> boundedInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate3(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("Int8", 64, java.lang.Byte.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -100,36 +52,12 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> boundedUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate5(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt16", 64, java.lang.Integer.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> boundedUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate6(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt32", 64, java.lang.Long.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> boundedUInt64(
@@ -151,19 +79,7 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short> boundedUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate8(symbols, argument0);
-      var resultCodec =
-          _schema.maybe(_schema.scalar("UInt8", 64, java.lang.Short.class), 64, symbols);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::boundedUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -210,66 +126,22 @@ public final class Collections {
 
   public static java.lang.Short saturatingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate11(symbols, argument0);
-      var resultCodec = _schema.scalar("Int16", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Integer saturatingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate12(symbols, argument0);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long saturatingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate13(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Byte saturatingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate14(symbols, argument0);
-      var resultCodec = _schema.scalar("Int8", 64, java.lang.Byte.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value saturatingIntSize(
@@ -291,34 +163,12 @@ public final class Collections {
 
   public static java.lang.Integer saturatingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate16(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt16", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long saturatingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate17(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt32", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.math.BigInteger saturatingUInt64(
@@ -339,18 +189,7 @@ public final class Collections {
 
   public static java.lang.Short saturatingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate19(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt8", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::saturatingUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value saturatingUIntPtr(
@@ -389,64 +228,20 @@ public final class Collections {
 
   public static java.lang.Short wrappingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate22(symbols, argument0);
-      var resultCodec = _schema.scalar("Int16", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Integer wrappingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate23(symbols, argument0);
-      var resultCodec = _schema.scalar("Int32", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long wrappingInt64(Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate24(symbols, argument0);
-      var resultCodec = _schema.scalar("Int64", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingInt64: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Byte wrappingInt8(Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate25(symbols, argument0);
-      var resultCodec = _schema.scalar("Int8", 64, java.lang.Byte.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value wrappingIntSize(
@@ -468,34 +263,12 @@ public final class Collections {
 
   public static java.lang.Integer wrappingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate27(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt16", 64, java.lang.Integer.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingUInt16: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.lang.Long wrappingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate28(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt32", 64, java.lang.Long.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingUInt32: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static java.math.BigInteger wrappingUInt64(
@@ -516,18 +289,7 @@ public final class Collections {
 
   public static java.lang.Short wrappingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    try {
-      var codec0 = _schema.scalar("Integer", 64, java.lang.Number.class);
-      var argument0 = codec0.encode(value0);
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate30(symbols, argument0);
-      var resultCodec = _schema.scalar("UInt8", 64, java.lang.Short.class);
-      return resultCodec.decode(result);
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawspec.collections::wrappingUInt8: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value wrappingUIntPtr(

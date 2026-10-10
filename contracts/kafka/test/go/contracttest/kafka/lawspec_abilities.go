@@ -79,435 +79,252 @@ type Transactions interface {
 	AbortTransaction() LawSpecEither[KafkaError, LawSpecUnit]
 }
 
-// Cluster is the spec handler cluster for Broker, Admin, GroupCoordinator.
+// Cluster is the spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed.
 type Cluster struct {
 	symbols map[string]*LawSpecSymbol
-	state   LawSpecValue
+	state   *lsfBrokerState
+	lock    lsfLock
 }
 
 // NewCluster makes cluster; symbols is the context of the law it serves.
 func NewCluster(symbols map[string]*LawSpecSymbol) *Cluster {
 	handler := &Cluster{symbols: symbols}
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	handler.state = lawSpecEvaluate567(symbols, lsAbsent("Unit"))
+	handler.state = lsfClusterStart_42(lsfUnit{})
 	return handler
 }
 
+// StartCluster makes cluster on its own, outside any law: the embedding entry point.
+func StartCluster() *Cluster {
+	return NewCluster(map[string]*LawSpecSymbol{})
+}
+
 func (handler *Cluster) CreateTopicsRequest(value0 string, value1 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate547(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCreateTopic_30(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) CreatePartitionsRequest(value0 string, value1 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate545(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCreatePartitions_29(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) MetadataRequest(value0 string) LawSpecMaybe[int32] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int32](schema, bits, "Int32"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate562(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterMetadataRequest_40(handler.state, lsfFromnative_437d0abf423f(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_e0f8ce0ed062(pair.fFirst)
 }
 
 func (handler *Cluster) ProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) int64 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-	codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-	result, next := lsPairFields(lawSpecEvaluate566(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterProduceRequest_41(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c818bd20f406(value1), lsfFromnative_e3583a5b5bdc(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_44a08172da10(pair.fFirst)
 }
 
 func (handler *Cluster) FetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) FetchResult {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-	result, next := lsPairFields(lawSpecEvaluate552(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterFetchRequest_34(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_a519f593a6ed(value3))
+	handler.state = pair.fSecond
+	return lsfTonative_d2a1db54643f(pair.fFirst)
 }
 
 func (handler *Cluster) ListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
-	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-	result, next := lsPairFields(lawSpecEvaluate561(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterListOffsets_39(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_44a08172da10(pair.fFirst)
 }
 
 func (handler *Cluster) InitProducerIdRequest(value0 LawSpecMaybe[string]) ProducerIdAndEpoch {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-	result, next := lsPairFields(lawSpecEvaluate555(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterInitProducerIdRequest_36(handler.state, lsfFromnative_01d86fc44f8c(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_6a5ea41697b3(pair.fFirst)
 }
 
 func (handler *Cluster) AddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate542(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterAddPartitionsToTxnRequest_27(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_3250492fe9ac(value3))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) TxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsScalarCodec[string](schema, bits, "Text")
-	codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate570(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3), codec4.fromNative(value4)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterTxnOffsetCommitRequest_44(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_437d0abf423f(value3), lsfFromnative_582052f40a9c(value4))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) EndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-	codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate550(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterEndTxnRequest_32(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_d267428fb2ca(value3))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) JoinGroupRequest(value0 string, value1 string, value2 []string) int32 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-	result, next := lsPairFields(lawSpecEvaluate557(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterJoinGroup_37(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_b862204e9be7(pair.fFirst)
 }
 
 func (handler *Cluster) SyncGroupRequest(value0 string, value1 string, value2 int32) []TopicPartition {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate569(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterSyncGroup_43(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_3250492fe9ac(pair.fFirst)
 }
 
 func (handler *Cluster) HeartbeatRequest(value0 string, value1 string, value2 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate554(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterHeartbeat_35(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) LeaveGroupRequest(value0 string, value1 string) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate559(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterLeaveGroup_38(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) DescribeGroupRequest(value0 string) GroupView {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lawSpecGroupViewCodec(schema, bits, symbols)
-	result, next := lsPairFields(lawSpecEvaluate549(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterDescribeGroup_31(handler.state, lsfFromnative_437d0abf423f(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_9b6e0477a826(pair.fFirst)
 }
 
 func (handler *Cluster) OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate563(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCommitOffsets_28(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate564(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterFetchOffset_33(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
+	handler.state = pair.fSecond
+	return lsfTonative_c09136e29464(pair.fFirst)
 }
 
 func (handler *Cluster) CreateTopic(value0 string, value1 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate546(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCreateTopic_30(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) CreatePartitions(value0 string, value1 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate544(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCreatePartitions_29(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) PartitionsFor(value0 string) LawSpecMaybe[int32] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int32](schema, bits, "Int32"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate565(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterMetadataRequest_40(handler.state, lsfFromnative_437d0abf423f(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_e0f8ce0ed062(pair.fFirst)
 }
 
 func (handler *Cluster) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lawSpecOffsetSpecCodec(schema, bits, symbols)
-	codec2 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-	result, next := lsPairFields(lawSpecEvaluate560(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterListOffsets_39(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_44a08172da10(pair.fFirst)
 }
 
 func (handler *Cluster) JoinGroup(value0 string, value1 string, value2 []string) int32 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-	result, next := lsPairFields(lawSpecEvaluate556(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterJoinGroup_37(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_b862204e9be7(pair.fFirst)
 }
 
 func (handler *Cluster) SyncGroup(value0 string, value1 string, value2 int32) []TopicPartition {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate568(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterSyncGroup_43(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_3250492fe9ac(pair.fFirst)
 }
 
 func (handler *Cluster) Heartbeat(value0 string, value1 string, value2 int32) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate553(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterHeartbeat_35(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) LeaveGroup(value0 string, value1 string) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate558(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterLeaveGroup_38(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) DescribeGroup(value0 string) GroupView {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lawSpecGroupViewCodec(schema, bits, symbols)
-	result, next := lsPairFields(lawSpecEvaluate548(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterDescribeGroup_31(handler.state, lsfFromnative_437d0abf423f(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_9b6e0477a826(pair.fFirst)
 }
 
 func (handler *Cluster) CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-	codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate543(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2), codec3.fromNative(value3)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterCommitOffsets_28(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *Cluster) FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate551(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfClusterFetchOffset_33(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
+	handler.state = pair.fSecond
+	return lsfTonative_c09136e29464(pair.fFirst)
 }
 
-// MurmurPartitioner is the spec handler murmurPartitioner for Partitioner.
+// MurmurPartitioner is the spec handler murmurPartitioner for Partitioner, with its state typed.
 type MurmurPartitioner struct {
 	symbols map[string]*LawSpecSymbol
-	state   LawSpecValue
 }
 
 // NewMurmurPartitioner makes murmurPartitioner; symbols is the context of the law it serves.
@@ -516,17 +333,14 @@ func NewMurmurPartitioner(symbols map[string]*LawSpecSymbol) *MurmurPartitioner 
 	return handler
 }
 
+// StartMurmurPartitioner makes murmurPartitioner on its own, outside any law: the embedding entry point.
+func StartMurmurPartitioner() *MurmurPartitioner {
+	return NewMurmurPartitioner(map[string]*LawSpecSymbol{})
+}
+
 func (handler *MurmurPartitioner) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
-	codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-	result := lawSpecEvaluate865(symbols, codec0.fromNative(value0), codec1.fromNative(value1))
-	return resultCodec.toNative(result)
+	result := lsfMurmurPartitionerChoosePartition_242(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1))
+	return lsfTonative_b862204e9be7(result)
 }
 
 // KafkaProducer is the spec handler kafkaProducer for Producer.

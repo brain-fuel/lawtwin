@@ -2,7 +2,7 @@
   "version": 1,
   "files": {
     "tests/test_lawspec_matchers_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
-    "tests/test_lawtwin_petstore_lawspec.py": "ceaf349b68a9b722d4ff7859a3827f548bd6abea36e2dfdac62ef0a1874d28a3",
+    "tests/test_lawtwin_petstore_lawspec.py": "8503f135c87123fa7cc2a0c5ed9fa4ba6e0a03135f0b98a6d6e9c199be2d4772",
     "tests/test_lawtwin_petstore_handwritten_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
     "tests/test_lawtwin_petstore_laws_lawspec.py": "947e76ef2e2d55d8a60bd0b4df068926ef14a725c6e5b50760ef73f55e4f39ef",
     "tests/test_lawtwin_petstore_model_lawspec.py": "e320fdcca187f12e456d93feb9e3abf75d0220fdb3a4dc94f7047292ff529c69",
@@ -21,7 +21,7 @@
     "src/lawspec_abilities/lawtwin/petstore/__init__.py": "a5b8c8852db7c4239659d1f61aab488953e9373803ac4e6f2ccaa2c0ea2d0a86",
     "src/lawspec_abilities/lawtwin/petstore/laws.py": "7b2b2f8d7e4ac84af6ca12c7379047fac794b4e337394a7f234b2e3a33a02ce1",
     "src/lawspec_abilities/contracttest/petstore.py": "4bd22ababfd19e6861bd5071451e348201855b7c4d52cd68c1e89b5d75fd3b10",
-    "src/lawspec_remote.py": "444858ee04ef4dc5063cbba43fe5efd1950f5185ae620f3bc520169d1c1e0f21"
+    "src/lawspec_remote.py": "94d0454dc469534948928a681365ccd3e0130d933496735111b50c4c539aafd7"
   },
   "adapters": {
     "src/lawspec/matchers.py": "793cc8eebc43773543a5d937d8fba4b6246c8155cc3c10f6800402771761513a",
