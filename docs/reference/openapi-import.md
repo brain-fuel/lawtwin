@@ -244,7 +244,9 @@ On the vendored documents (`openapi/`, with their licences in
 
 Both packages compile with `lawspec check`, and their laws pass on Rust and
 Python. The whole GitHub description, 1,232 operations, imports in under
-a second into 2,108 types, 145 resources and 87 laws.
+a second into 2,108 types, 145 resources and 87 laws. The `lawspec-gaps` build does not finish
+compiling that package within 30 minutes, so select what you test against
+with `--tag` or `--path`.
 
 Not handled yet:
 
