@@ -818,17 +818,20 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -840,27 +843,32 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "default_",
           "wire": "default",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "archivedAt",
           "wire": "archived_at",
           "type": "Maybe Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -872,7 +880,8 @@
         {
           "name": "archivedBy",
           "wire": "archived_by",
-          "type": "Maybe SimpleUser"
+          "type": "Maybe SimpleUser",
+          "required": true
         }
       ]
     },
@@ -884,32 +893,38 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "login",
           "wire": "login",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "avatarUrl",
           "wire": "avatar_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -921,12 +936,14 @@
         {
           "name": "gravatarId",
           "wire": "gravatar_id",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -939,6 +956,7 @@
           "name": "htmlUrl",
           "wire": "html_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -951,6 +969,7 @@
           "name": "followersUrl",
           "wire": "followers_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -962,22 +981,26 @@
         {
           "name": "followingUrl",
           "wire": "following_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "gistsUrl",
           "wire": "gists_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "starredUrl",
           "wire": "starred_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "subscriptionsUrl",
           "wire": "subscriptions_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -990,6 +1013,7 @@
           "name": "organizationsUrl",
           "wire": "organizations_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1002,6 +1026,7 @@
           "name": "reposUrl",
           "wire": "repos_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1013,12 +1038,14 @@
         {
           "name": "eventsUrl",
           "wire": "events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "receivedEventsUrl",
           "wire": "received_events_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1030,22 +1057,26 @@
         {
           "name": "type_",
           "wire": "type",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "siteAdmin",
           "wire": "site_admin",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "starredAt",
           "wire": "starred_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userViewType",
           "wire": "user_view_type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -1057,17 +1088,20 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -1079,22 +1113,26 @@
         {
           "name": "newName",
           "wire": "new_name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "archived",
           "wire": "archived",
-          "type": "Maybe Bool"
+          "type": "Maybe Bool",
+          "required": false
         }
       ]
     },
@@ -1156,6 +1194,7 @@
           "name": "url",
           "wire": "url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1168,6 +1207,7 @@
           "name": "htmlUrl",
           "wire": "html_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1180,6 +1220,7 @@
           "name": "labelsUrl",
           "wire": "labels_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1191,52 +1232,62 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "number",
           "wire": "number",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "MilestoneState"
+          "type": "MilestoneState",
+          "required": true
         },
         {
           "name": "title",
           "wire": "title",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "creator",
           "wire": "creator",
-          "type": "Maybe NullableSimpleUser"
+          "type": "Maybe NullableSimpleUser",
+          "required": true
         },
         {
           "name": "openIssues",
           "wire": "open_issues",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "closedIssues",
           "wire": "closed_issues",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "createdAt",
           "wire": "created_at",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1249,6 +1300,7 @@
           "name": "updatedAt",
           "wire": "updated_at",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1261,6 +1313,7 @@
           "name": "closedAt",
           "wire": "closed_at",
           "type": "Maybe Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1273,6 +1326,7 @@
           "name": "dueOn",
           "wire": "due_on",
           "type": "Maybe Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1306,32 +1360,38 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "login",
           "wire": "login",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "avatarUrl",
           "wire": "avatar_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1343,12 +1403,14 @@
         {
           "name": "gravatarId",
           "wire": "gravatar_id",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1361,6 +1423,7 @@
           "name": "htmlUrl",
           "wire": "html_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1373,6 +1436,7 @@
           "name": "followersUrl",
           "wire": "followers_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1384,22 +1448,26 @@
         {
           "name": "followingUrl",
           "wire": "following_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "gistsUrl",
           "wire": "gists_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "starredUrl",
           "wire": "starred_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "subscriptionsUrl",
           "wire": "subscriptions_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1412,6 +1480,7 @@
           "name": "organizationsUrl",
           "wire": "organizations_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1424,6 +1493,7 @@
           "name": "reposUrl",
           "wire": "repos_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1435,12 +1505,14 @@
         {
           "name": "eventsUrl",
           "wire": "events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "receivedEventsUrl",
           "wire": "received_events_url",
           "type": "Text",
+          "required": true,
           "constraints": [
             {
               "check": "regex",
@@ -1452,22 +1524,26 @@
         {
           "name": "type_",
           "wire": "type",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "siteAdmin",
           "wire": "site_admin",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "starredAt",
           "wire": "starred_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userViewType",
           "wire": "user_view_type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -1479,22 +1555,26 @@
         {
           "name": "title",
           "wire": "title",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "Maybe MilestoneState"
+          "type": "Maybe MilestoneState",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "dueOn",
           "wire": "due_on",
           "type": "Maybe Text",
+          "required": false,
           "constraints": [
             {
               "check": "regex",
@@ -1513,22 +1593,26 @@
         {
           "name": "title",
           "wire": "title",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "Maybe MilestoneState"
+          "type": "Maybe MilestoneState",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "dueOn",
           "wire": "due_on",
           "type": "Maybe Text",
+          "required": false,
           "constraints": [
             {
               "check": "regex",

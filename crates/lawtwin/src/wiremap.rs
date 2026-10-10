@@ -210,7 +210,7 @@ pub fn wire_map(
             Def::Record { name, fields, wire, .. } => json!({
                 "type": name, "schema": wire, "kind": "record",
                 "fields": fields.iter().map(|f| {
-                    let mut v = json!({ "name": f.name, "wire": f.wire, "type": f.ty.lawspec() });
+                    let mut v = json!({ "name": f.name, "wire": f.wire, "type": f.ty.lawspec(), "required": f.required });
                     let c = constraints(&f.ty);
                     if !c.is_empty() {
                         v["constraints"] = Value::Array(c);

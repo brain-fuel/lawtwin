@@ -706,32 +706,38 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "category",
           "wire": "category",
-          "type": "Maybe Category"
+          "type": "Maybe Category",
+          "required": false
         },
         {
           "name": "photoUrls",
           "wire": "photoUrls",
-          "type": "List Text"
+          "type": "List Text",
+          "required": true
         },
         {
           "name": "tags",
           "wire": "tags",
-          "type": "Maybe (List Tag)"
+          "type": "Maybe (List Tag)",
+          "required": false
         },
         {
           "name": "status",
           "wire": "status",
-          "type": "Maybe PetStatus"
+          "type": "Maybe PetStatus",
+          "required": false
         }
       ]
     },
@@ -743,12 +749,14 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -760,12 +768,14 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -796,17 +806,20 @@
         {
           "name": "code",
           "wire": "code",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         },
         {
           "name": "type_",
           "wire": "type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "message",
           "wire": "message",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -818,22 +831,26 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "petId",
           "wire": "petId",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "quantity",
           "wire": "quantity",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         },
         {
           "name": "shipDate",
           "wire": "shipDate",
           "type": "Maybe Text",
+          "required": false,
           "constraints": [
             {
               "check": "regex",
@@ -845,12 +862,14 @@
         {
           "name": "status",
           "wire": "status",
-          "type": "Maybe OrderStatus"
+          "type": "Maybe OrderStatus",
+          "required": false
         },
         {
           "name": "complete",
           "wire": "complete",
-          "type": "Maybe Bool"
+          "type": "Maybe Bool",
+          "required": false
         }
       ]
     },
@@ -881,42 +900,50 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "username",
           "wire": "username",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "firstName",
           "wire": "firstName",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "lastName",
           "wire": "lastName",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "password",
           "wire": "password",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "phone",
           "wire": "phone",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userStatus",
           "wire": "userStatus",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         }
       ]
     }

@@ -179,6 +179,9 @@ pub struct Field {
     pub ty: Ty,
     /// The first sentence of its description.
     pub doc: String,
+    /// Whether the property must be present; a `Maybe` field that is
+    /// required is nullable, and is written `null` when it holds nothing.
+    pub required: bool,
 }
 
 /// A named type of the package.
@@ -703,6 +706,7 @@ impl<'d> Types<'d> {
                 .map(names::summary)
                 .unwrap_or_default();
             fields.push(Field {
+                required: required.contains(&wire_name),
                 wire: wire_name,
                 name: field_name,
                 ty,
