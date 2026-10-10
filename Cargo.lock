@@ -408,6 +408,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "lawtwin-http"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "axum",
+ "httparse",
+ "lawtwin-wire",
+ "num-bigint",
+ "num-complex",
+ "num-rational",
+ "num-traits",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
 name = "lawtwin-kafka"
 version = "0.1.0"
 dependencies = [

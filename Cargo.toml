@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["crates/lawtwin", "crates/lawtwin-wire", "twins/kafka/rust", "twins/kafka/conformance"]
+members = ["crates/lawtwin", "crates/lawtwin-wire", "twins/kafka/rust", "twins/kafka/conformance", "twins/http/rust"]
 # Each contract's test project is a crate of its own, made by LawSpec. The
 # Kafka twin's Rust core depends on the Rust one by path: it runs the very
 # code the contract's laws run on.
