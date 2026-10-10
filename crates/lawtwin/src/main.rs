@@ -14,6 +14,7 @@ mod names;
 mod natives;
 mod openapi;
 mod regex;
+mod twinfile;
 mod wiremap;
 
 use std::path::{Path, PathBuf};
@@ -181,6 +182,10 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     write(
         &o.out.join("lawtwin-openapi.json"),
         &(serde_json::to_string_pretty(&map).unwrap() + "\n"),
+    )?;
+    write_once(
+        &o.out.join("lawtwin.json"),
+        &twinfile::twin_file(&o.package, &o.version, &api, &package.resource_laws),
     )?;
     // The test project.
     let test = o.out.join("test");
