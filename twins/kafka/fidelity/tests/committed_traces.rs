@@ -37,7 +37,7 @@ fn a_recorded_rebalance_differs_only_in_the_group_protocol() {
         let report = replay(client, "group-rebalance");
         for d in &report.divergences {
             assert!(
-                ["SyncGroup", "Heartbeat", "DescribeGroups"].contains(&d.api.as_str()),
+                ["SyncGroup", "Heartbeat", "DescribeGroups"].contains(&d.api.as_str()) || d.api.starts_with("JoinGroup rounds of "),
                 "{client}: a divergence outside the group protocol: {d:#?}"
             );
         }

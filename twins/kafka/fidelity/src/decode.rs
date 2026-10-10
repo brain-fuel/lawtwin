@@ -182,7 +182,7 @@ pub struct Decoder {
 }
 
 fn tag_of(b: &Batch) -> Option<ProducerTag> {
-    (b.producer_id >= 0).then(|| ProducerTag {
+    (b.producer_id >= 0).then_some(ProducerTag {
         producer_id: b.producer_id,
         producer_epoch: b.producer_epoch,
         base_sequence: b.base_sequence,

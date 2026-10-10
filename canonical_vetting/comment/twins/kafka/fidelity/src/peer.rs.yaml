@@ -217,3 +217,6 @@ decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/transaction:
 decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/value:
   digest: sha256:563745894a4c833c
   verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/type/Outcomes:
+  digest: sha256:aeb7901285245cdb
+  verdict: pending

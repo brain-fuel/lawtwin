@@ -381,9 +381,7 @@ pub fn report(config: &ConformConfig, runs: &[Run], skipped: &BTreeMap<String, S
     let scenarios_hold = runs.iter().all(|r| r.real.passed || r.twin.as_ref().is_some_and(|t| !t.passed));
     let accounted = kinds.values().all(|(k, _, _)| k.decision.is_some()) && notes.keys().all(|k| note_decision(k).is_some());
     let exact = kinds.is_empty();
-    let number = if runs.is_empty() {
-        0
-    } else if !real_lawful {
+    let number = if runs.is_empty() || !real_lawful {
         0
     } else if !scenarios_hold {
         1

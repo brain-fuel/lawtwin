@@ -86,8 +86,11 @@ fn producer(twin: &Ctx, extra: &[(&str, &str)]) -> BaseProducer<Deliveries> {
     c.create_with_context(Deliveries::default()).unwrap()
 }
 
+/// Each delivery's partition and offset, or why it failed.
+type Outcomes = Arc<Mutex<Vec<Result<(i32, i64), String>>>>;
+
 #[derive(Clone, Default)]
-struct Deliveries(Arc<Mutex<Vec<Result<(i32, i64), String>>>>);
+struct Deliveries(Outcomes);
 
 impl ClientContext for Deliveries {}
 impl ProducerContext for Deliveries {

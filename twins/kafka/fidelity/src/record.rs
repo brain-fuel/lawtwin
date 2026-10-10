@@ -915,7 +915,7 @@ impl Recorder {
                         result = client.send(self, req.clone(), 7).await.map(|r: OffsetCommitResponse| {
                             r.topics.iter().flat_map(|t| t.partitions.iter().map(|p| p.error_code)).find(|c| *c != 0).unwrap_or(0)
                         });
-                        if !matches!(result, Ok(14 | 15 | 16)) {
+                        if !matches!(result, Ok(14..=16)) {
                             break;
                         }
                         tokio::time::sleep(Duration::from_millis(100)).await;

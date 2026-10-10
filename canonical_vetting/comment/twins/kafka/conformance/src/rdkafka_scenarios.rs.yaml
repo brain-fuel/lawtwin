@@ -16,3 +16,6 @@ decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/impl/Ctx/function
 decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/struct/Ctx:
   digest: sha256:813231c33f8e61ab
   verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/type/Outcomes:
+  digest: sha256:44af0c1abe577eee
+  verdict: pending

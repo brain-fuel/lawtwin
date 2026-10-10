@@ -179,8 +179,11 @@ pub struct Sent {
     pub error: Option<String>,
 }
 
+/// Each record's partition and offset once acknowledged, or why not.
+type Outcomes = Arc<Mutex<BTreeMap<usize, Result<(i32, i64), String>>>>;
+
 #[derive(Clone, Default)]
-struct Deliveries(Arc<Mutex<BTreeMap<usize, Result<(i32, i64), String>>>>);
+struct Deliveries(Outcomes);
 
 impl ClientContext for Deliveries {}
 impl ProducerContext for Deliveries {
