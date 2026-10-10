@@ -31,7 +31,8 @@ What a release covers is decided in the ledger (ref:DEC-first-release-scope).
 - `lawtwin import openapi <doc>` turns an OpenAPI 3.x document
   (ref:openapi-3-1) into a LawSpec package: types, one operation per
   endpoint, status codes as typed failures, and laws for stateful resources
-  where the document allows.
+  where the document allows. Done in this repository, with the Petstore
+  and GitHub contracts imported from their documents.
 - A stateful HTTP twin, faults (latency, 5xx, 429, timeouts), record and
   replay through an HTTP proxy, and conformance against a real endpoint.
 

@@ -20,8 +20,8 @@ canon:
   locator: https://github.com/brain-fuel/canon/tree/2f22e6e
 lawspec:
   kind: package
-  title: LawSpec 0.21.0, the executable specification language, from npm
-  locator: https://www.npmjs.com/package/lawspec/v/0.21.0
+  title: LawSpec, the executable specification language; 0.21.0 is on npm, and the contracts need main after the lawspec-gaps and lawspec-codegen merges
+  locator: https://github.com/brain-fuel/lawspec
 lawspec-roadmap:
   kind: discussion
   title: The LawSpec roadmap, the milestones each minor release delivers
@@ -70,6 +70,18 @@ kafka-protocol-crate:
   kind: package
   title: kafka-protocol, the Rust implementation of the Kafka wire protocol
   locator: https://crates.io/crates/kafka-protocol
+openapi-3-0:
+  kind: article
+  title: OpenAPI Specification, version 3.0.3
+  locator: https://spec.openapis.org/oas/v3.0.3
+swagger-petstore:
+  kind: article
+  title: Swagger Petstore, OpenAPI 3.0, version 1.0.27, vendored as openapi/petstore3.json
+  locator: https://petstore3.swagger.io/api/v3/openapi.json
+github-rest-api-description:
+  kind: package
+  title: GitHub's REST API description, version 1.1.4, of which openapi/github-labels-milestones.json is a subset
+  locator: https://github.com/github/rest-api-description
 openapi-3-1:
   kind: article
   title: OpenAPI Specification, version 3.1.0

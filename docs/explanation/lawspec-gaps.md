@@ -347,7 +347,8 @@ if any, is not yet known.
 ## Found while re-expressing the contract
 
 Running the re-expressed contract on the `lawspec-gaps` build (34e34a8) on
-five targets found five more. None changes what the contract says.
+five targets found five more, and writing the OpenAPI importer found five
+after them. None changes what a contract says.
 
 ### 18. On Rust, a failing spec handler clause poisons the handler
 
@@ -406,3 +407,68 @@ The `lawspec-gaps` checkout's `npm/core.wasm` is from before the branch, so
 `npx` cannot run it. `tools/stage-lawspec.sh` stages the checkout's CLI with
 its native compiler instead; see [Run a contract's
 laws](../how-to/run-contract-laws.md).
+
+## Found while writing the OpenAPI importer
+
+### 23. A regex field contract is not proved through a record update
+
+```lawspec fragment
+type Pet is
+  Pet
+    id :: Maybe Int64
+    name :: (v :: Text where v matches regex "[a-z]+")
+end
+
+definition withId (body :: Pet) (key :: Int64) :: Pet is body with id = Just key end
+```
+
+fails with `constructor field refinement could not be proved`, though
+`name` is copied unchanged. The same holds for an explicit `match` and
+rebuild, and for a guard `if body.name matches regex "[a-z]+" then ...`.
+Length and numeric bounds on fields are proved. The importer therefore
+keeps every constraint out of its types, as validation
+(ref:DEC-openapi-constraints-as-validation).
+
+**Would close it:** the facts of a field's refinement, regexes included,
+for the fields a record update or a rebuild copies.
+
+### 24. A definition that says `fails with` but never raises breaks `by`
+
+A clause `addPet by model.modelAddPet`, where `modelAddPet` says `fails
+with ApiError` and has no `raise`, fails with `core: referenceAddPet: it
+uses lawspec::ability::Fail(ApiError) (through modelAddPet), but its row is
+empty`. The importer writes `fails with` only on definitions that raise.
+
+**Would close it:** a failing row taken from the definition's signature,
+whether or not its body raises.
+
+### 25. A refinement in a data type cannot call a definition
+
+`name :: (v :: Text where validName v)` in a `type` fails with `unknown
+value: validName`, where a law's input may say the same. The importer
+writes predicates inline.
+
+**Would close it:** checked definitions in field refinements, as in
+inputs.
+
+### 26. On Rust, a handler named like its ability does not compile
+
+A spec handler `counter` for an ability `Counter` becomes a Rust struct
+`Counter`, beside the trait `Counter`: `the name Counter is defined
+multiple times`. The importer names its handler `reference`, and its
+abilities `<Tag>Api`.
+
+**Would close it:** distinct Rust names for a spec handler's struct and
+the ability's trait.
+
+### 27. Laws filter records whose fields a regex constrains
+
+A record input with a regex-constrained field, `(body :: Pet where
+model.validPet body)`, is drawn from any record and filtered: Proptest
+gives up with `Too many local rejects`, and Hypothesis fails its
+`filter_too_much` health check. A text input refined by the same regex is
+drawn from it. The importer's laws draw each constrained top-level field
+as a refined input and put it into the record.
+
+**Would close it:** generating a record's fields from the regexes a
+refinement of the record states.

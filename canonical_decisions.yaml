@@ -96,3 +96,21 @@ DEC-contract-test-shared-cluster:
   opened: 0.1.0
   decided: 0.1.0
   refs: [lawspec, kafka-murmur2]
+
+DEC-openapi-constraints-as-validation:
+  status: decided
+  question: An OpenAPI schema constrains values with bounds, lengths, patterns and formats. Do the imported package's types carry those constraints?
+  answer: |
+    No. The types are plain, and the constraints are validation. Each constrained property a law draws gets a named refinement, so laws send valid values; each request body with a constraint gets a checked definition `valid<Type>`, and the model refuses a request that breaks one with UnprocessableEntity when the operation documents 422, otherwise BadRequest. A twin must be able to receive an invalid request and refuse it as the service does; a type that carried the constraint would reject the request before the model saw it. LawSpec also cannot yet prove a regex field contract when the model builds a record from a request (gap 23), so constraints on fields would stop the model compiling.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [openapi-3-0, openapi-3-1, lawspec]
+
+DEC-openapi-resources:
+  status: decided
+  question: Which operations of an imported service does the reference model answer, and how does the importer find them?
+  answer: |
+    Those of a resource: a GET on an item path whose response is a record, with its collection's POST (create), GET of a list (list), PUT (replace, or on the collection with the key in the body), PATCH (update) and the item's DELETE. The key is the item path's last parameter, joined with the collection's own parameters in a key record; a record's field holds it when named like the parameter. A create takes the key from the body, or from a counter the service keeps when the key is an integer. Every other operation is answered by a hand-written unit the importer writes once, failing with Unmodelled until its author writes it; hand-written laws go in a unit also written once. The importer recognises only what the document shows; it does not guess how a filter, a page or one resource's effect on another behaves.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [openapi-3-0, openapi-3-1, swagger-petstore, github-rest-api-description]

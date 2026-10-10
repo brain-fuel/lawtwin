@@ -32,10 +32,13 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | --- | --- |
 | `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0 |
 | `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java and Kotlin targets |
+| `crates/lawtwin/` | The `lawtwin` command, with `lawtwin import openapi` |
+| `contracts/petstore/`, `contracts/github/` | Contracts imported from the Swagger Petstore and from GitHub's label and milestone endpoints, with their test projects |
+| `openapi/` | The OpenAPI documents they are imported from, with their licences in `openapi/NOTICE` |
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
-The Kafka twin server, the control plane, conformance, record and replay,
-and the OpenAPI importer follow; [the roadmap](docs/explanation/roadmap.md)
+The twin servers, the control plane, conformance, and record and replay
+follow; [the roadmap](docs/explanation/roadmap.md)
 lists what each release covers.
 
 ## The Kafka contract
@@ -60,6 +63,21 @@ LawSpec checkout first with `make lawspec-stage LAWSPEC_HOME=<checkout>`.
 You also need Node 22 or later, Rust 1.85 or later, and Python 3.13 or
 later; Go, a JDK with Maven, and Gradle run the Kafka contract's other
 targets. `make help` lists every task.
+
+## The OpenAPI importer
+
+`lawtwin import openapi` turns an OpenAPI 3.0 or 3.1 document into a
+contract package: its schemas as types, an ability per tag with an
+operation per path and method, a typed failure per documented failing
+status, a reference model of the resources it recognises, and laws over
+them. [The OpenAPI importer](docs/reference/openapi-import.md) says what it
+writes; [Import an OpenAPI document](docs/how-to/import-an-openapi-document.md)
+shows how.
+
+```sh
+make build
+target/release/lawtwin import openapi openapi/petstore3.json --package lawtwin.petstore --out contracts/petstore
+```
 
 ## Development
 
