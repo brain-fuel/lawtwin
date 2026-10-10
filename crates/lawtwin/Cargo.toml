@@ -1,0 +1,16 @@
+[package]
+name = "lawtwin"
+description = "LawTwin: contract-governed stand-ins for dependencies you do not control"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "lawtwin"
+path = "src/main.rs"
+
+[dependencies]
+serde_json = { version = "1", features = ["preserve_order"] }
+serde_yaml = "0.9"

@@ -1,0 +1,51 @@
+OpenAPI documents vendored for the importer's tests and the imported
+contracts. Each is used under its own licence.
+
+petstore3.json
+  Swagger Petstore - OpenAPI 3.0, version 1.0.27, as served at
+  https://petstore3.swagger.io/api/v3/openapi.json (fetched 2026-10-09).
+  Licensed under the Apache License 2.0:
+  https://www.apache.org/licenses/LICENSE-2.0.html
+  Unchanged.
+
+github-labels-milestones.json
+  A subset of GitHub's REST API description, version 1.1.4, from
+  https://github.com/github/rest-api-description
+  (descriptions/api.github.com/api.github.com.json, fetched 2026-10-09):
+  the paths /repos/{owner}/{repo}/labels, /repos/{owner}/{repo}/labels/{name},
+  /repos/{owner}/{repo}/milestones and
+  /repos/{owner}/{repo}/milestones/{milestone_number}, with every component
+  they reference, and a sentence added to info.description saying so.
+  Licensed under the MIT License:
+
+    MIT License
+
+    Copyright GitHub, Inc.
+
+    Permission is hereby granted, free of charge, to any person obtaining a
+    copy of this software and associated documentation files (the
+    "Software"), to deal in the Software without restriction, including
+    without limitation the rights to use, copy, modify, merge, publish,
+    distribute, sublicense, and/or sell copies of the Software, and to
+    permit persons to whom the Software is furnished to do so, subject to
+    the following conditions:
+
+    The above copyright notice and this permission notice shall be included
+    in all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+    OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+    CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+    TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+    SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+crates/lawtwin/tests/fixtures/petstore.yaml
+  The Swagger Petstore (OpenAPI 3.0.0, YAML) from
+  https://github.com/OAI/OpenAPI-Specification
+  (_archive_/schemas/v3.0/pass/petstore.yaml), whose info names the MIT
+  licence. Unchanged.
+
+crates/lawtwin/tests/fixtures/features-3.1.yaml
+  Written for LawTwin, under LawTwin's licence.

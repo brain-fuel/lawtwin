@@ -8,18 +8,27 @@
 LAWSPEC_REQUIRED := LawSpec main after the lawspec-gaps and lawspec-codegen merges (npm release pending)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
-CONTRACTS := contracts/kafka
+CONTRACTS := contracts/kafka contracts/petstore contracts/github
+LAWTWIN   := target/release/lawtwin
 TARGET    ?=
 TARGETARG := $(if $(TARGET),--target $(TARGET),)
 PYTHON313 ?= python3.13
 GRADLE_HOME ?=
 CANON     ?= stack --no-terminal --stack-yaml $(CANON_HOME)/stack.yaml exec canon --
 
+comma := ,
+
 # Kotlin test projects run `gradle`; GRADLE_HOME puts one on the path.
 export PATH := $(if $(GRADLE_HOME),$(GRADLE_HOME)/bin:,)$(PATH)
 
+# The OpenAPI documents the importer is tested on, and the contracts made
+# from them: document, package, directory.
+OPENAPI_IMPORTS := \
+  openapi/petstore3.json,lawtwin.petstore,contracts/petstore \
+  openapi/github-labels-milestones.json,lawtwin.github,contracts/github
+
 .DEFAULT_GOAL := help
-.PHONY: help lawspec-version lawspec-stage contract-check contract-generate contract-generate-check python-env contract-test canon ci
+.PHONY: help lawspec-version lawspec-stage build test openapi-import openapi-import-check contract-check contract-generate contract-generate-check python-env contract-test canon ci
 
 help: ## List the tasks
 	@awk -F':.*## ' '/^[a-z-]+:.*## / {printf "  %-24s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -30,6 +39,22 @@ lawspec-version: ## Say which LawSpec the contracts need
 lawspec-stage: ## Stage the LawSpec CLI from LAWSPEC_HOME into .lawspec-cli
 	@test -n "$(LAWSPEC_HOME)" || { echo "set LAWSPEC_HOME to a checkout of $(LAWSPEC_REQUIRED), built with stack build"; exit 1; }
 	LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
+
+build: ## Build the lawtwin command
+	cargo build --release
+
+test: ## Run the lawtwin command's own tests
+	cargo test
+
+openapi-import: build ## Import each vendored OpenAPI document into its contract
+	@for i in $(OPENAPI_IMPORTS); do \
+	  set -- $$(echo $$i | tr , ' '); \
+	  $(LAWTWIN) import openapi $$1 --package $$2 --out $$3 || exit 1; \
+	done
+
+openapi-import-check: openapi-import ## Fail if an imported contract differs from what the importer writes
+	@git diff --exit-code -- $(foreach i,$(OPENAPI_IMPORTS),$(word 3,$(subst $(comma), ,$(i)))) || \
+	  { echo "an imported contract is stale: run make openapi-import"; exit 1; }
 
 contract-check: ## Compile each contract package and its laws
 	@for c in $(CONTRACTS); do \
@@ -58,4 +83,4 @@ canon: ## Check the canonical format with canon 0.2.0 (needs CANON_HOME)
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 
-ci: contract-check contract-generate-check contract-test canon ## Every check
+ci: test openapi-import-check contract-check contract-generate-check contract-test canon ## Every check

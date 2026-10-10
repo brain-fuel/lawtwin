@@ -1,0 +1,139 @@
+openapi: 3.1.0
+info:
+  title: Feature tour
+  version: "1"
+  license:
+    name: MIT
+    identifier: MIT
+paths:
+  /notes:
+    post:
+      operationId: createNote
+      tags: [notes]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewNote'
+      responses:
+        "201":
+          description: created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Note'
+        "409":
+          description: conflict
+        "422":
+          description: invalid
+    get:
+      operationId: listNotes
+      tags: [notes]
+      parameters:
+        - name: limit
+          in: query
+          schema: {type: integer, format: int32, minimum: 1, maximum: 100}
+      responses:
+        "200":
+          description: notes
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: '#/components/schemas/Note'}
+  /notes/{noteId}:
+    parameters:
+      - name: noteId
+        in: path
+        required: true
+        schema: {type: integer, format: int64}
+    get:
+      operationId: getNote
+      tags: [notes]
+      responses:
+        "200":
+          description: a note
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Note'}
+        "404":
+          description: missing
+    patch:
+      operationId: editNote
+      tags: [notes]
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema: {$ref: '#/components/schemas/NotePatch'}
+      responses:
+        "200":
+          description: edited
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Note'}
+    delete:
+      operationId: deleteNote
+      tags: [notes]
+      responses:
+        "204": {description: gone}
+  /search:
+    get:
+      operationId: search
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema: {type: string, pattern: "^[a-z]+$"}
+      responses:
+        "200":
+          description: hits
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Hit'}
+        4XX:
+          description: client error
+        "503":
+          description: down
+components:
+  schemas:
+    NewNote:
+      type: object
+      required: [title]
+      properties:
+        title: {type: string, minLength: 1, maxLength: 80}
+        body: {type: [string, "null"]}
+        tags:
+          type: array
+          maxItems: 5
+          items: {type: string, pattern: "^[a-z0-9-]+$"}
+        priority: {type: number, exclusiveMinimum: 0, maximum: 10}
+        meta:
+          type: object
+          additionalProperties: {type: string}
+    Note:
+      allOf:
+        - $ref: '#/components/schemas/NewNote'
+        - type: object
+          required: [id, created]
+          properties:
+            id: {type: integer, format: int64}
+            created: {type: string, format: date-time}
+            kind: {const: note}
+            author:
+              type: object
+              properties:
+                name: {type: string}
+                email: {type: string, format: email}
+    NotePatch:
+      type: object
+      properties:
+        title: {type: string, minLength: 1}
+        body: {type: [string, "null"]}
+    Hit:
+      oneOf:
+        - $ref: '#/components/schemas/Note'
+        - type: object
+          properties:
+            url: {type: string, format: uri}
+        - type: "null"
