@@ -1,0 +1,21 @@
+decision/rust/twins/http/rust/src/lib.rs:
+  digest: sha256:3a06173314ff6418
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/function/run:
+  digest: sha256:c358c68b00837f6c
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/function/start:
+  digest: sha256:844190afd62f3626
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/impl/Running/function/wait:
+  digest: sha256:d1a31ded7d679bf0
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/struct/Running:
+  digest: sha256:da9ef8ecac176c9e
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/struct/Running/field/admin:
+  digest: sha256:6f3aa65c082de2dd
+  verdict: pending
+decision/rust/twins/http/rust/src/lib.rs/struct/Running/field/api:
+  digest: sha256:d57754bdbf75af73
+  verdict: pending

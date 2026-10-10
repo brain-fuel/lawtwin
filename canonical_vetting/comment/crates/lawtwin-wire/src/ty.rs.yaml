@@ -1,0 +1,21 @@
+decision/rust/crates/lawtwin-wire/src/ty.rs:
+  digest: sha256:620eab9233a6ef59
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/enum/Ty:
+  digest: sha256:821bb58a5736fafa
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/enum/Ty/variant/Named:
+  digest: sha256:7d87d929649974df
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/impl/Ty/function/is_maybe:
+  digest: sha256:264d499c7704c056
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/impl/Ty/function/parse:
+  digest: sha256:a74886a66164e96c
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/impl/Ty/function/unmaybe:
+  digest: sha256:8cd40e26dd5c31c1
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/ty.rs/module/tests/function/parses_and_prints:
+  digest: sha256:538ddf50ad541dd6
+  verdict: pending

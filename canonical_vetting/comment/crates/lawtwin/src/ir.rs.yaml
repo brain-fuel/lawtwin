@@ -157,6 +157,9 @@ decision/rust/crates/lawtwin/src/ir.rs/struct/Field/field/doc:
 decision/rust/crates/lawtwin/src/ir.rs/struct/Field/field/name:
   digest: sha256:deb3cbd2b1dc4c58
   verdict: pending
+decision/rust/crates/lawtwin/src/ir.rs/struct/Field/field/required:
+  digest: sha256:e3934e77be44528f
+  verdict: pending
 decision/rust/crates/lawtwin/src/ir.rs/struct/Field/field/ty:
   digest: sha256:3ca3ae63258078be
   verdict: pending

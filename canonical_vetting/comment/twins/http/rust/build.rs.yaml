@@ -1,0 +1,9 @@
+decision/rust/twins/http/rust/build.rs:
+  digest: sha256:0ca9c1cb77487ddd
+  verdict: pending
+decision/rust/twins/http/rust/build.rs/function/bind:
+  digest: sha256:0e89860331ab9c3e
+  verdict: pending
+decision/rust/twins/http/rust/build.rs/function/embed:
+  digest: sha256:a2a3d60519c27853
+  verdict: pending

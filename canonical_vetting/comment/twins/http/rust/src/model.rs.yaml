@@ -1,0 +1,45 @@
+decision/rust/twins/http/rust/src/model.rs:
+  digest: sha256:098cbb7641f29c6a
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/enum/Outcome:
+  digest: sha256:1fcfdc29d5ae1162
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/enum/Outcome/variant/Defect:
+  digest: sha256:7f89c90d443b121b
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/enum/Outcome/variant/Failure:
+  digest: sha256:f1150c9db7e7e5e7
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/function/panic_text:
+  digest: sha256:a85fae8fd7a84bd6
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract:
+  digest: sha256:d73a3566935a93fc
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract/field/name:
+  digest: sha256:eeeaa466924631b4
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract/field/package:
+  digest: sha256:30a2632fe56f4632
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract/field/start:
+  digest: sha256:e6f5f813e99e2578
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract/field/twin_file:
+  digest: sha256:73db3aedbc5d50c3
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/struct/Contract/field/wire_map:
+  digest: sha256:164a723f16da9f05
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/trait/Model:
+  digest: sha256:ceb310fe138300cf
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/trait/Model/function/boxed:
+  digest: sha256:72064ea40f0fc5ec
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/trait/Model/function/call:
+  digest: sha256:39d5c1c916622a64
+  verdict: pending
+decision/rust/twins/http/rust/src/model.rs/trait/Model/function/state:
+  digest: sha256:e9397ff8b49a3174
+  verdict: pending

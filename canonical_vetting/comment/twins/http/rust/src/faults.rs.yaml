@@ -1,0 +1,51 @@
+decision/rust/twins/http/rust/src/faults.rs:
+  digest: sha256:1847b88668614b50
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/const/IMPLEMENTED:
+  digest: sha256:9fafdd0257565dc7
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/function/check:
+  digest: sha256:06c9d4cb515878d6
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/impl/Active/function/matches:
+  digest: sha256:899013ad1ed4d42b
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/impl/Active/function/to_json:
+  digest: sha256:8e07fb8645779f0f
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/impl/TwinFile/function/decl:
+  digest: sha256:fe06d662fa7a2897
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/impl/TwinFile/function/parse:
+  digest: sha256:1358238395024697
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/Active:
+  digest: sha256:ea83e52f80a2b578
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/Active/field/params:
+  digest: sha256:824479c3d96f952b
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/Active/field/remaining:
+  digest: sha256:a931f91933e53ea9
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/Active/field/until_ms:
+  digest: sha256:ad6f048de8d58791
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/Active/field/window_start_ms:
+  digest: sha256:4656ab54b5b06f6c
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/FaultDecl:
+  digest: sha256:fd326580b2cb9316
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/FaultDecl/field/laws:
+  digest: sha256:b753438d206a7730
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/ParamDecl:
+  digest: sha256:73ef84033dd7f757
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/ParamDecl/field/ty:
+  digest: sha256:39e79b3f89745f9d
+  verdict: pending
+decision/rust/twins/http/rust/src/faults.rs/struct/TwinFile:
+  digest: sha256:366aab460f74e63d
+  verdict: pending

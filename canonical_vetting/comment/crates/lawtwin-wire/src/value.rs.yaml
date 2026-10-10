@@ -1,0 +1,42 @@
+decision/rust/crates/lawtwin-wire/src/value.rs:
+  digest: sha256:92f68c7739ecc17d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/enum/V:
+  digest: sha256:2ebc475c021a9dde
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/enum/V/variant/Data:
+  digest: sha256:8f97e5f3ee3efa15
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/enum/V/variant/Map:
+  digest: sha256:0cbaeff01a5fc9ed
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/function/order:
+  digest: sha256:f881dfca1cd39b5f
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/function/text_of:
+  digest: sha256:2b2a825d2bd6d5ce
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/impl/V/function/ctor:
+  digest: sha256:06e616c23bbf279f
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/impl/WireMap/function/decode:
+  digest: sha256:1ea2147a9bc6747c
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/impl/WireMap/function/decode_text:
+  digest: sha256:591fadb395308f88
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/impl/WireMap/function/encode:
+  digest: sha256:4640f2720a42112d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/impl/WireMap/function/encode_untyped:
+  digest: sha256:0ec35305e1416c96
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/module/tests/function/round_trips_a_record:
+  digest: sha256:aa8d8e4988d7a812
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/module/tests/function/says_where_a_value_breaks_its_type:
+  digest: sha256:4378fa78ae23a51e
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/value.rs/struct/Mismatch:
+  digest: sha256:ba24351b1bcf00e7
+  verdict: pending

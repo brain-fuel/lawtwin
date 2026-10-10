@@ -1,0 +1,33 @@
+decision/rust/crates/lawtwin-wire/src/traffic.rs:
+  digest: sha256:cf9e1dcf8ec099f1
+  verdict: pending
+"decision/rust/crates/lawtwin-wire/src/traffic.rs/impl/Gen<'m>/function/args":
+  digest: sha256:d8f54c95d87f8865
+  verdict: pending
+"decision/rust/crates/lawtwin-wire/src/traffic.rs/impl/Gen<'m>/function/invalid":
+  digest: sha256:fe3234a1352ec8f2
+  verdict: pending
+"decision/rust/crates/lawtwin-wire/src/traffic.rs/impl/Gen<'m>/function/text":
+  digest: sha256:5f00c1ae37ca72c8
+  verdict: pending
+"decision/rust/crates/lawtwin-wire/src/traffic.rs/impl/Gen<'m>/function/value":
+  digest: sha256:dd9694f171c395ce
+  verdict: pending
+"decision/rust/crates/lawtwin-wire/src/traffic.rs/impl/Gen<'m>/function/word":
+  digest: sha256:96ee6d1cd2f91867
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/traffic.rs/module/tests/function/seeded_and_valid:
+  digest: sha256:298b324551bc97d3
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/traffic.rs/struct/Gen:
+  digest: sha256:44ce798b0bf3a075
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/traffic.rs/struct/Invalid:
+  digest: sha256:59e88e4dcb00cc4f
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/traffic.rs/struct/Invalid/field/args:
+  digest: sha256:99b47e973a420bbc
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/traffic.rs/struct/Invalid/field/raw_body:
+  digest: sha256:22f5a9d2703b5450
+  verdict: pending

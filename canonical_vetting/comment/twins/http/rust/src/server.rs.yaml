@@ -1,0 +1,15 @@
+decision/rust/twins/http/rust/src/server.rs:
+  digest: sha256:7a4d9eea5b1b7041
+  verdict: pending
+decision/rust/twins/http/rust/src/server.rs/const/MAX_REQUEST:
+  digest: sha256:d86a4a4542c8eaf5
+  verdict: pending
+decision/rust/twins/http/rust/src/server.rs/function/read_request:
+  digest: sha256:ab5e20204dcf6116
+  verdict: pending
+decision/rust/twins/http/rust/src/server.rs/function/serve:
+  digest: sha256:4597cc071dc48ca7
+  verdict: pending
+decision/rust/twins/http/rust/src/server.rs/struct/Request:
+  digest: sha256:0f8998ad9febc864
+  verdict: pending

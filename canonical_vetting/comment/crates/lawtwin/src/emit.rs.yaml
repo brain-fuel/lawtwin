@@ -4,6 +4,9 @@ decision/rust/crates/lawtwin/src/emit.rs:
 decision/rust/crates/lawtwin/src/emit.rs/const/STATE:
   digest: sha256:3f7524f4a45ce317
   verdict: pending
+decision/rust/crates/lawtwin/src/emit.rs/function/law_kind:
+  digest: sha256:637a1567d2f78321
+  verdict: pending
 decision/rust/crates/lawtwin/src/emit.rs/function/split_words:
   digest: sha256:2ea764115bdfcf06
   verdict: pending
@@ -75,6 +78,9 @@ decision/rust/crates/lawtwin/src/emit.rs/struct/Package/field/laws:
   verdict: pending
 decision/rust/crates/lawtwin/src/emit.rs/struct/Package/field/model:
   digest: sha256:d10fc554ce7c1cdb
+  verdict: pending
+decision/rust/crates/lawtwin/src/emit.rs/struct/Package/field/resource_laws:
+  digest: sha256:1e5b134cda5c0bec
   verdict: pending
 decision/rust/crates/lawtwin/src/emit.rs/struct/Package/field/unmodelled:
   digest: sha256:fe402bf027ce6b2a

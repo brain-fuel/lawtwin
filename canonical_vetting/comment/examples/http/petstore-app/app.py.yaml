@@ -1,0 +1,69 @@
+decision/python/examples/http/petstore-app/app.py:
+  digest: sha256:03a40333cb0615db
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler:
+  digest: sha256:a087b1d9fb29876c
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/answer:
+  digest: sha256:f5fb60dc6ea6f3f3
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/body:
+  digest: sha256:f207bdbc65438462
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/do_DELETE:
+  digest: sha256:f2d86624e147aae2
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/do_GET:
+  digest: sha256:22e1fc6d61d3fc26
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/do_POST:
+  digest: sha256:bbb83228f918c9be
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/do_PUT:
+  digest: sha256:370a652a7921d921
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/log_message:
+  digest: sha256:6cfb2c2d3fcd3cf1
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/route:
+  digest: sha256:763167e8c3df714f
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Handler/function/send:
+  digest: sha256:1c0cadb9913480e1
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Invalid:
+  digest: sha256:356af9c8bd54e6d4
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Invalid/function/__init__:
+  digest: sha256:db8cb91a25a73141
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Store:
+  digest: sha256:fdf1818938951773
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/class/Store/function/__init__:
+  digest: sha256:d139a8869073a196
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/check_order:
+  digest: sha256:5cbcb9bef749ba7e
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/check_pet:
+  digest: sha256:9cbb2a5535764744
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/check_user:
+  digest: sha256:73327a70d2b86f72
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/clean:
+  digest: sha256:feceb2d9f3bff4bd
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/integer:
+  digest: sha256:84833670c33add25
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/main:
+  digest: sha256:a94e978e12fe43d6
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/optional:
+  digest: sha256:2018539daa0281c3
+  verdict: pending
+decision/python/examples/http/petstore-app/app.py/function/text:
+  digest: sha256:33ca36d93adad577
+  verdict: pending

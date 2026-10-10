@@ -10,6 +10,9 @@ registry/canon:
 registry/containerfile:
   digest: sha256:d3664230fbdcf88a
   verdict: pending
+registry/curl:
+  digest: sha256:f2ad236b12d25127
+  verdict: pending
 registry/diataxis:
   digest: sha256:da6d545b5d1d42a6
   verdict: pending
@@ -73,6 +76,9 @@ registry/openapi-3-0:
 registry/openapi-3-1:
   digest: sha256:5c0b4023910100be
   verdict: pending
+registry/openapi-generator:
+  digest: sha256:b30618f264072d64
+  verdict: pending
 registry/opentofu:
   digest: sha256:7a60058e1d7431d2
   verdict: pending
@@ -85,9 +91,15 @@ registry/podman-compose:
 registry/rdkafka-crate:
   digest: sha256:6fcddd0795d3e28e
   verdict: pending
+registry/reqwest:
+  digest: sha256:275b848af664e3e8
+  verdict: pending
 registry/semver-2:
   digest: sha256:7ef7fa24c6809d32
   verdict: pending
 registry/swagger-petstore:
   digest: sha256:bc72a14fac42684a
+  verdict: pending
+registry/swagger-petstore3-server:
+  digest: sha256:84e9cb17643eacbc
   verdict: pending

@@ -1,0 +1,36 @@
+decision/rust/crates/lawtwin/src/http/mod.rs:
+  digest: sha256:36422fc02d06e76c
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/conform:
+  digest: sha256:fd5e679b6918ecbd
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/contract:
+  digest: sha256:7c26b7a9b1c5eeaf
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/duration:
+  digest: sha256:2c0a50fdee948898
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/peer:
+  digest: sha256:910ce1150dc0d3bf
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/run:
+  digest: sha256:2dc7474f5cb2be51
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/function/up:
+  digest: sha256:facbfc3632a81485
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/impl/Args/function/flag:
+  digest: sha256:6b7c59ed77f58674
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/impl/Args/function/rest:
+  digest: sha256:ab5a59035423b681
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/impl/Args/function/value:
+  digest: sha256:dab6d7084bb977c6
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/struct/Args:
+  digest: sha256:41b888d76aa87679
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/mod.rs/type/Outcome:
+  digest: sha256:9146a9b39811965a
+  verdict: pending

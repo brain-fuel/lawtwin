@@ -1,0 +1,9 @@
+decision/rust/twins/http/conformance/src/lib.rs:
+  digest: sha256:cfdb09e2c03d6dc8
+  verdict: pending
+decision/rust/twins/http/conformance/src/lib.rs/const/CONTRACTS:
+  digest: sha256:14ccdc1e9af81ab4
+  verdict: pending
+decision/rust/twins/http/conformance/src/lib.rs/function/golden_dir:
+  digest: sha256:f7aa71d762568001
+  verdict: pending

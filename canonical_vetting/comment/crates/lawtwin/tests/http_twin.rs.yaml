@@ -1,0 +1,9 @@
+decision/rust/crates/lawtwin/tests/http_twin.rs:
+  digest: sha256:88f173cc4fca2bd4
+  verdict: pending
+decision/rust/crates/lawtwin/tests/http_twin.rs/function/petstore_app:
+  digest: sha256:2bb70890f031796e
+  verdict: pending
+decision/rust/crates/lawtwin/tests/http_twin.rs/struct/Proc:
+  digest: sha256:a485e6bd69322f9c
+  verdict: pending

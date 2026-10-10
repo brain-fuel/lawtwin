@@ -1,0 +1,27 @@
+decision/rust/crates/lawtwin-wire/src/rng.rs:
+  digest: sha256:e9cc26b9ccb59c4f
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/below:
+  digest: sha256:43f2fe215a44e783
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/between:
+  digest: sha256:6e41b1207e96ba4c
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/chance:
+  digest: sha256:6a0aff3a87785790
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/new:
+  digest: sha256:58f6591a18a8c2d3
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/next_u64:
+  digest: sha256:8a1fd511a8323dcc
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/impl/Rng/function/pick:
+  digest: sha256:72e4045b122aa26b
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/module/tests/function/matches_splitmix64:
+  digest: sha256:381ee259466b7161
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/rng.rs/struct/Rng:
+  digest: sha256:42524252ae8231cd
+  verdict: pending

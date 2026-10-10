@@ -1,0 +1,24 @@
+decision/rust/crates/lawtwin-wire/src/laws.rs:
+  digest: sha256:0d789e8ab891e87c
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/enum/Known/variant/Gone:
+  digest: sha256:54fd6438b221666e
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/enum/Known/variant/Record:
+  digest: sha256:b2eff8f5c88a9d8e
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/function/check_history:
+  digest: sha256:0b6e989ce92bd1d9
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/function/check_state:
+  digest: sha256:0fdd9e76d95fe455
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/function/key_of:
+  digest: sha256:2f6dca82ff669f39
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/function/update_problems:
+  digest: sha256:4c17ab049888344d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/laws.rs/function/wire_of:
+  digest: sha256:8abc6ccf126ff00e
+  verdict: pending
