@@ -28,3 +28,5 @@ base64 = "0.22"
 crc32c = "0.6"
 
 [dev-dependencies]
+# librdkafka, built from source, drives the twin as a real client does.
+rdkafka = { version = "0.39", features = ["cmake-build"] }
