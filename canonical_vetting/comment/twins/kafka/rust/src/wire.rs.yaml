@@ -22,6 +22,12 @@ decision/rust/twins/kafka/rust/src/wire.rs/function/encode_fetched:
 decision/rust/twins/kafka/rust/src/wire.rs/function/error_code:
   digest: sha256:0632acd685416cc3
   verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/error_code_for:
+  digest: sha256:f77fb8c249bd2a35
+  verdict: pending
+decision/rust/twins/kafka/rust/src/wire.rs/function/fenced_as_epoch:
+  digest: sha256:854db6e6ee2a0f37
+  verdict: pending
 decision/rust/twins/kafka/rust/src/wire.rs/function/serve:
   digest: sha256:7dcd5dd8c0397648
   verdict: pending

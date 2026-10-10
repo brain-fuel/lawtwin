@@ -582,7 +582,7 @@ components:
       properties:
         seq: { type: integer, minimum: 1 }
         at: { type: integer, description: The twin clock, in milliseconds since the Unix epoch. }
-        source: { type: string, enum: [wire, force, fault, coordinator, replay] }
+        source: { type: string, enum: [wire, force, fault, coordinator, replay, observed] }
         op: { type: string, description: The ability operation, such as produceRequest. }
         answer:
           oneOf:

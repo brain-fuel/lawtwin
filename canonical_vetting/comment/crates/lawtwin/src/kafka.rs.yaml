@@ -1,0 +1,15 @@
+decision/rust/crates/lawtwin/src/kafka.rs:
+  digest: sha256:0b43badf4b644f9d
+  verdict: pending
+decision/rust/crates/lawtwin/src/kafka.rs/const/USAGE:
+  digest: sha256:9f5376cc93e11e3a
+  verdict: pending
+decision/rust/crates/lawtwin/src/kafka.rs/function/program:
+  digest: sha256:ad2ea1b46e759c2b
+  verdict: pending
+decision/rust/crates/lawtwin/src/kafka.rs/function/run:
+  digest: sha256:078752cb73cd79bc
+  verdict: pending
+decision/rust/crates/lawtwin/src/kafka.rs/type/Outcome:
+  digest: sha256:9146a9b39811965a
+  verdict: pending

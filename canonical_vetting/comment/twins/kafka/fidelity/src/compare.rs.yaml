@@ -1,0 +1,54 @@
+decision/rust/twins/kafka/fidelity/src/compare.rs:
+  digest: sha256:cf84060a4f130d8d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/function/compare:
+  digest: sha256:baad206180b58bee
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/function/same:
+  digest: sha256:130be5584e969e43
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/function/step:
+  digest: sha256:0c5119b35f823953
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/impl/Checker/function/step:
+  digest: sha256:88b68709f2e79315
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/impl/Renaming/function/learn:
+  digest: sha256:9d46aecba16619b5
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/impl/Renaming/function/op:
+  digest: sha256:6f5fdee201a4dfd5
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Checker:
+  digest: sha256:d01c10076eafc0f3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Checker/field/model:
+  digest: sha256:e82e8d805e082c24
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Checker/field/renaming:
+  digest: sha256:9681f6e648f250b3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Divergence:
+  digest: sha256:8cba446b70fdedc7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Divergence/field/model:
+  digest: sha256:eee52e85f475c2b9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Divergence/field/op:
+  digest: sha256:d7eda5fc8470cf1b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Divergence/field/recorded:
+  digest: sha256:29d49263d8e75821
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Divergence/field/seq:
+  digest: sha256:011c0ba4fedeb34f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Renaming:
+  digest: sha256:69fb3c317acbb289
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Renaming/field/generations:
+  digest: sha256:363db539b131c48c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/compare.rs/struct/Renaming/field/producers:
+  digest: sha256:7d9fc0e5a94cc3d1
+  verdict: pending

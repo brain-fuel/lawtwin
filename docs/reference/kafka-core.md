@@ -97,7 +97,9 @@ command, given the core interface's options (by default the Rust core,
 kit:
 
 1. runs the six client scenarios with librdkafka, kafkajs, franz-go and the
-   Java client, each against a fresh core;
+   Java client, each against a fresh core (the same scenarios run against
+   real Kafka in [conformance](kafka-conform.md), each in a namespace a
+   scenario reads from `LAWTWIN_NS`);
 2. after each, replays the core's history through the reference model
    (the Rust code LawSpec generates from the contract) and fails on any
    answer that differs, checks the contract's laws over the history and the

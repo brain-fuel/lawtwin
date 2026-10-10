@@ -1,0 +1,87 @@
+decision/rust/twins/kafka/fidelity/src/replay.rs:
+  digest: sha256:6195754476e5d268
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/observed_topics:
+  digest: sha256:03f16a4ac8cfa9d6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/replay_frames:
+  digest: sha256:157531e4c33209f1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/replay_trace:
+  digest: sha256:89538a880f2db6bf
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/retried_by_kafka:
+  digest: sha256:20d95a5f04eb1020
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/same_item:
+  digest: sha256:be7f7617a1113d1b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/function/trace_prefix:
+  digest: sha256:268a80200c6ee0bd
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/impl/Names/function/batches:
+  digest: sha256:4bda4c787808c743
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/impl/Names/function/item:
+  digest: sha256:97650a3dfa52aa8c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/impl/Names/function/learn:
+  digest: sha256:9e8b63d2efcd908a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/impl/Names/function/request:
+  digest: sha256:0b42a7473c60dd4e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/FrameDivergence:
+  digest: sha256:17fe739e83a94726
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/FrameDivergence/field/api:
+  digest: sha256:29cda9b8ece62d02
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/FrameDivergence/field/n:
+  digest: sha256:828586c8f34b796a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/FrameDivergence/field/recorded:
+  digest: sha256:2984b65ec7413ff2
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/FrameDivergence/field/replayed:
+  digest: sha256:b70ea9d3b4d32856
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/Names:
+  digest: sha256:a3104d8aade9aca8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/Names/field/generations:
+  digest: sha256:29e9486839d85216
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/Names/field/members:
+  digest: sha256:4f11a2a226523308
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/Names/field/producers:
+  digest: sha256:755e17f48dd309a9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport:
+  digest: sha256:3884b5dbb1978709
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/answered:
+  digest: sha256:cdd12dd56b75be93
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/core:
+  digest: sha256:d0b74ec30d966d99
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/divergences:
+  digest: sha256:8090a29cce3573c9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/requests:
+  digest: sha256:d495e17c9ec6a026
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/skipped:
+  digest: sha256:408445089edbe2ce
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/stalled:
+  digest: sha256:9e58284f3b577539
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/trace:
+  digest: sha256:27c79d0b6208772e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/replay.rs/struct/ReplayReport/field/violations:
+  digest: sha256:6eeeae1894c65541
+  verdict: pending

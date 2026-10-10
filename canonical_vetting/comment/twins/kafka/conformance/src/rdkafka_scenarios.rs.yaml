@@ -1,0 +1,18 @@
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs:
+  digest: sha256:00e986054f5e0768
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/const/SCENARIOS:
+  digest: sha256:607c5604fa0e0cbe
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/function/drain:
+  digest: sha256:3b1c8838c7ce0a8b
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/function/run:
+  digest: sha256:f50f9419cf47574f
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/impl/Ctx/function/new:
+  digest: sha256:03c766a20ef2ed37
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/rdkafka_scenarios.rs/struct/Ctx:
+  digest: sha256:813231c33f8e61ab
+  verdict: pending

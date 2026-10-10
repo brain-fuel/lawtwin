@@ -1,0 +1,219 @@
+decision/rust/twins/kafka/fidelity/src/peer.rs:
+  digest: sha256:7d2d9203c28790a8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/const/SEQ_HEADER:
+  digest: sha256:4349d1b653cdfa67
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault:
+  digest: sha256:2013c3f3fdd9a4c9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Abort:
+  digest: sha256:82ea03ab28eda72d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Duplicate:
+  digest: sha256:8a02f17a38082d91
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Hang:
+  digest: sha256:98a0c6f306819543
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Late:
+  digest: sha256:e7989138b0b4ff80
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Poison:
+  digest: sha256:c8a66367537a74de
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/enum/PeerFault/variant/Tombstone:
+  digest: sha256:026ae425d0abfe56
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/audit:
+  digest: sha256:d1c8c8e1789e90fd
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/chance:
+  digest: sha256:ed777270050c4d57
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/check_reads:
+  digest: sha256:383d019b5b74c88c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/command:
+  digest: sha256:cb8785fbe0406e87
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/consume:
+  digest: sha256:de9dc2c877786f78
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/contract_valid:
+  digest: sha256:341d9d2255981941
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/function/produce:
+  digest: sha256:106d1ef78843c015
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/impl/Wire/function/scan:
+  digest: sha256:f0de17c1b029cc4d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Audit:
+  digest: sha256:bcd5a2763e92ab28
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Audit/field/all:
+  digest: sha256:fdb682d86b5174dc
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Audit/field/committed:
+  digest: sha256:0ef46372c7f319a0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Audit/field/stable:
+  digest: sha256:eaffeeca55dc2260
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions:
+  digest: sha256:6b4b3cce2ced0127
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/bootstrap:
+  digest: sha256:72e0bed066806a44
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/commit:
+  digest: sha256:4e29128202836fd9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/duration:
+  digest: sha256:50fb669166d76d13
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/expect:
+  digest: sha256:2971f3f7678b0dd3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/format:
+  digest: sha256:68c13d759ef66e0b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/from:
+  digest: sha256:29aeb9197287efff
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/group:
+  digest: sha256:821ae22d488749cf
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/idle:
+  digest: sha256:24e81cf9a31b1946
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/isolation:
+  digest: sha256:da798c627169aebf
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ConsumeOptions/field/value_type:
+  digest: sha256:e7ebbb05ca570be7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/PeerViolation:
+  digest: sha256:ef454353decdec43
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/PeerViolation/field/detail:
+  digest: sha256:497fdf4db529ad90
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/PeerViolation/field/law:
+  digest: sha256:48af578d96eb23c7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/PeerViolation/field/offset:
+  digest: sha256:3f650b96b09a6bce
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/PeerViolation/field/partition:
+  digest: sha256:5757eaf1d2a8d70f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions:
+  digest: sha256:eb52dba5a58cf92a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/bootstrap:
+  digest: sha256:72e0bed066806a44
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/count:
+  digest: sha256:4e7b9628eda2a011
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/duration:
+  digest: sha256:8c9a0ee56f86cc2b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/faults:
+  digest: sha256:50cb4cb8753720b7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/format:
+  digest: sha256:68c13d759ef66e0b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/headers:
+  digest: sha256:b795f7fccbe9278c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/idempotent:
+  digest: sha256:3464751189b9aca1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/keys:
+  digest: sha256:909bd87ae89b5b1c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/late_by_ms:
+  digest: sha256:37f2f778c19431c0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/log:
+  digest: sha256:db1732640474d4a6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/partition:
+  digest: sha256:7180053945e04f8f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/rate:
+  digest: sha256:61f830082c08941f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/seed:
+  digest: sha256:2e399c14d7ecfb53
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/seq_header:
+  digest: sha256:f41b2ab3aedb5d8b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/topic:
+  digest: sha256:a37b520c59b33307
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/transactional_id:
+  digest: sha256:042da85fc678b2fe
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/txn_size:
+  digest: sha256:c1ae2e4da0071481
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/ProduceOptions/field/value_type:
+  digest: sha256:e7ebbb05ca570be7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read:
+  digest: sha256:7482b5f6f42d0f4f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read/field/assignment:
+  digest: sha256:47e5210f5cacb6f0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read/field/key:
+  digest: sha256:07f0bc63d426efc8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read/field/offset:
+  digest: sha256:42402dbc14fff720
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read/field/partition:
+  digest: sha256:34dd92eafbc6ba92
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Read/field/value:
+  digest: sha256:e709a965aa9c65c4
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent:
+  digest: sha256:19731e3df3b22054
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/error:
+  digest: sha256:8c02778e0608f3ca
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/faults:
+  digest: sha256:e636414c189c568a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/key:
+  digest: sha256:07f0bc63d426efc8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/offset:
+  digest: sha256:e5413509a2d4df8b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/outcome:
+  digest: sha256:65c5736bd7d58e7a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/partition:
+  digest: sha256:cfa1ad7da39568ff
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/seq:
+  digest: sha256:175c1b6d051f9ea1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/transaction:
+  digest: sha256:e88c56037bdc167d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/peer.rs/struct/Sent/field/value:
+  digest: sha256:563745894a4c833c
+  verdict: pending

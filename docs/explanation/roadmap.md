@@ -28,8 +28,13 @@ What a release covers is decided in the ledger (ref:DEC-first-release-scope).
   OpenAPI document.
 - The core conformance kit: done. All four clients pass every scenario on
   the Rust core, as a program and as an image.
-- Conformance against the `apache/kafka` image (ref:apache-kafka-image),
-  then record and replay through a Kafka proxy.
+- Conformance against the `apache/kafka` image (ref:apache-kafka-image):
+  done. Release 0.1.0 reaches level 3 against `apache/kafka:4.3.1`, and
+  each divergence is a ledger decision.
+- Record and replay through a Kafka proxy: done; a recorded trace replays
+  through the Rust core, and a broken core is caught.
+- Simulated producers and consumers (`lawtwin peer kafka`): done, against
+  the twin and real Kafka.
 
 **Cores in every target language.** Each twin gets a core in every LawSpec
 target language, each embedding the model LawSpec generates for it, each

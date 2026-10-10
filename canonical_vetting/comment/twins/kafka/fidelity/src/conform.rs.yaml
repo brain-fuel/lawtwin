@@ -1,0 +1,138 @@
+decision/rust/twins/kafka/fidelity/src/conform.rs:
+  digest: sha256:694b438b1a6e3b0b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/const/CLIENTS:
+  digest: sha256:79c15bf830c9719f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/const/LEVELS:
+  digest: sha256:a2bd2cd3b657902b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/const/SCENARIOS:
+  digest: sha256:71d7b55707375766
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/enum/Client:
+  digest: sha256:f7b470b4549cf18b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/against_real:
+  digest: sha256:81dde4e0e77ca057
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/against_twin:
+  digest: sha256:71a575aa4b511d6e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/classify:
+  digest: sha256:4713992ad0a09284
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/command:
+  digest: sha256:baf198bbf5acf1be
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/conform:
+  digest: sha256:f9e376f15e06a5cb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/drive:
+  digest: sha256:8fcd788bec2a4f67
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/markdown:
+  digest: sha256:4be154510febb3ac
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/note_decision:
+  digest: sha256:e01b2d7c4a638e6f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/probe_version:
+  digest: sha256:960b7e22baf64e9f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/function/report:
+  digest: sha256:974e1009e93ccdc0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig:
+  digest: sha256:aef79e297ef67e9a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/clients:
+  digest: sha256:a6677e425ccaeb49
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/clients_dir:
+  digest: sha256:6c5b1c3ccbd1dfcb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/frames:
+  digest: sha256:1b895b701370cfa9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/out:
+  digest: sha256:8a039ad8c2981cf3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/real:
+  digest: sha256:b92c5050bdc3e2cb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/real_name:
+  digest: sha256:482037f7c754a335
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/release:
+  digest: sha256:6c80bfde89833b4d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/scenarios:
+  digest: sha256:a1351e791691b26f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/ConformConfig/field/twin:
+  digest: sha256:161e94db208f2370
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Kind:
+  digest: sha256:203eda9da717c36d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Kind/field/decision:
+  digest: sha256:04c32fff88b9377b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Kind/field/kind:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Kind/field/summary:
+  digest: sha256:b4bb42622311c008
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Level:
+  digest: sha256:9ee20d881fa62a96
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Level/field/means:
+  digest: sha256:32dc61bcd84a1bee
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Level/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Level/field/number:
+  digest: sha256:175c1b6d051f9ea1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Run:
+  digest: sha256:daaf3422f528c0b6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Run/field/client:
+  digest: sha256:56d0f4c61cef59c3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Run/field/real:
+  digest: sha256:cda242d90098dba3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Run/field/scenario:
+  digest: sha256:37f56907552372e0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Run/field/twin:
+  digest: sha256:12665beacaa08da0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side:
+  digest: sha256:db6df7a73c38105e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/divergences:
+  digest: sha256:5ff5537bec04eb8c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/millis:
+  digest: sha256:514595457a60e557
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/notes:
+  digest: sha256:a1e94084764840dd
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/operations:
+  digest: sha256:64f4b8dc9ada1ffa
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/output:
+  digest: sha256:78c9ade318f712e6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/passed:
+  digest: sha256:10d52bd03ce210cb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/conform.rs/struct/Side/field/violations:
+  digest: sha256:b76dcaa582748710
+  verdict: pending

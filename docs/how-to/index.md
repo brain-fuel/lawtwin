@@ -18,6 +18,14 @@ These guides show how to do one task.
 - [Check a Kafka core with the conformance kit](check-a-kafka-core.md): run
   the kit against the Rust core, its image or another core, and record the
   golden session again.
+- [Check the Kafka twin's conformance against real Kafka](check-kafka-conformance.md):
+  run the kit's scenarios against `apache/kafka` or a broker of your own,
+  and read the report.
+- [Record real Kafka traffic and replay it through a twin core](record-and-replay-kafka.md):
+  the recording proxy, replay, and a broken core caught.
+- [Feed and check an application with simulated Kafka peers](feed-and-check-an-app-with-kafka-peers.md):
+  produce seeded, typed records with faults, and check what an application
+  writes.
 - [Run the HTTP twin and drive it from a test](run-the-http-twin.md): start
   it for a contract, force records, raise faults, check the laws.
 - [Test an application's API with the client twin](test-an-app-with-the-client-twin.md):

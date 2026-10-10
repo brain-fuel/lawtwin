@@ -10,3 +10,6 @@ decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/sce
 decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios/method/main:
   digest: sha256:415fba265937df7e
   verdict: pending
+decision/java/twins/kafka/conformance/clients/java/src/main/java/dev/lawtwin/scenarios/Scenarios.java/package/dev.lawtwin.scenarios/class/Scenarios/method/n:
+  digest: sha256:a2a8cece0bb8eda3
+  verdict: pending

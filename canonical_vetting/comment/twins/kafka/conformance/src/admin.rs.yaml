@@ -1,0 +1,24 @@
+decision/rust/twins/kafka/conformance/src/admin.rs:
+  digest: sha256:842b71d51806eeb6
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/function/dechunk:
+  digest: sha256:d0a29ff20f5e1a7a
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/impl/Admin/function/call:
+  digest: sha256:1f2d7ec5b9cf32c4
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/impl/Admin/function/get:
+  digest: sha256:3b476fe001cc1341
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/impl/Admin/function/new:
+  digest: sha256:e6b7634d496f9f72
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/impl/Admin/function/post:
+  digest: sha256:44c8b2df9d951d31
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/impl/Admin/function/raw:
+  digest: sha256:6cfcbb0a79549f16
+  verdict: pending
+decision/rust/twins/kafka/conformance/src/admin.rs/struct/Admin:
+  digest: sha256:10f891bef43d6491
+  verdict: pending

@@ -1,0 +1,27 @@
+decision/rust/twins/kafka/fidelity/tests/support.rs:
+  digest: sha256:80d3db6d0ca70381
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/function/real_kafka:
+  digest: sha256:6db751f456f9b3a9
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/function/unique:
+  digest: sha256:284f453bbaa80c0f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/impl/Recording/function/admin_url:
+  digest: sha256:a52dd69bdc6c85ab
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/impl/Recording/function/bootstrap:
+  digest: sha256:93ea0cb3043ffe60
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/impl/Recording/function/start:
+  digest: sha256:752f877f4f8932e6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/struct/Recording:
+  digest: sha256:2ae5d5c428126772
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/struct/Recording/field/running:
+  digest: sha256:373d33aceaa307ee
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/support.rs/struct/Recording/field/runtime:
+  digest: sha256:aeafd38a9cef25a4
+  verdict: pending

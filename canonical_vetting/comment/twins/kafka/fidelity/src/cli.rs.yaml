@@ -1,0 +1,33 @@
+decision/rust/twins/kafka/fidelity/src/cli.rs:
+  digest: sha256:9479dcb55b75709e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/const/USAGE:
+  digest: sha256:00d1c0f0db19f76a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/all:
+  digest: sha256:7136531c3d8236bb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/get:
+  digest: sha256:f8eb12f4ebf67c6e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/has:
+  digest: sha256:1333318ea23f5654
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/known:
+  digest: sha256:01476a172f31a165
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/parse:
+  digest: sha256:34a10c967a4e11bd
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/impl/Args/function/parsed:
+  digest: sha256:1656c26fe1599928
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/struct/Args:
+  digest: sha256:45825b1bf7bd7754
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/struct/Args/field/options:
+  digest: sha256:b157d5a50cec65a5
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/cli.rs/struct/Args/field/words:
+  digest: sha256:0f4fb85830859590
+  verdict: pending

@@ -1,0 +1,93 @@
+decision/rust/twins/kafka/fidelity/src/decode.rs:
+  digest: sha256:1596c0aef4972ce8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item:
+  digest: sha256:f22d5285c995d360
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Call:
+  digest: sha256:f9d7e47fe0f17e37
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Call/field/answer:
+  digest: sha256:29d49263d8e75821
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Call/field/op:
+  digest: sha256:ed60286cda2ed96c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Call/field/source:
+  digest: sha256:68b39cfc2f4f0ffa
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Note:
+  digest: sha256:ff0bcc7836ac9e03
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Note/field/control:
+  digest: sha256:202faec0b45a259a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Note/field/detail:
+  digest: sha256:16ea3804f081f973
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/enum/Item/variant/Note/field/source:
+  digest: sha256:68b39cfc2f4f0ffa
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/assignment_partitions:
+  digest: sha256:740c9f7c3dc6db82
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/contract_code:
+  digest: sha256:d2e6dc73cba026c3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/contract_error:
+  digest: sha256:21dc5704ae6aff99
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/fenced:
+  digest: sha256:2bf6d93fbb3cd0ba
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/kafka_error_name:
+  digest: sha256:731d4bcd3617de1b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/readable:
+  digest: sha256:f6d579e61a50c562
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/record_of:
+  digest: sha256:b9b4ee1bf2827e30
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/refused:
+  digest: sha256:5e36d0465aa8a12d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/retriable:
+  digest: sha256:cbc1be1fbc64a6a2
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/split_request:
+  digest: sha256:5ab427c30ed4a803
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/function/split_response:
+  digest: sha256:69a534ff1f02770e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/impl/Decoder/function/frame:
+  digest: sha256:cc9e216c38124d22
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/impl/Decoder/function/generation:
+  digest: sha256:13356ba3ba495a91
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/impl/Decoder/function/leader:
+  digest: sha256:3dac7a5d988aacef
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/impl/Decoder/function/new:
+  digest: sha256:b2abdd40e450aa95
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/Decoder:
+  digest: sha256:187fede1af4e9df0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/GroupState/field/answered:
+  digest: sha256:add4d4cea1f13431
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/GroupState/field/generation:
+  digest: sha256:0a4f6561df74ae15
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/GroupState/field/in_model:
+  digest: sha256:fe5128fc1a4ea5f8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/GroupState/field/leader:
+  digest: sha256:ef71fba29ac90617
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/decode.rs/struct/GroupState/field/round:
+  digest: sha256:69ba1c545d257f92
+  verdict: pending

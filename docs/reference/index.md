@@ -23,6 +23,14 @@ These pages state what LawTwin's parts are and do.
 - [Kafka twin cores](kafka-core.md): a core per LawSpec target language, the
   interface every core takes, the rules that make cores agree byte for
   byte, and the conformance kit.
+- [Recording a Kafka broker](kafka-record.md): `lawtwin record kafka`, the
+  trace, how requests become operations, and the recorder's control plane.
+- [Replaying a Kafka trace through a core](kafka-replay.md):
+  `lawtwin replay kafka`, how it replays and compares, and its report.
+- [Conformance of the Kafka twin against real Kafka](kafka-conform.md):
+  `lawtwin conform kafka`, the levels, the report, and release 0.1.0's.
+- [Simulated Kafka peers](kafka-peers.md): `lawtwin peer kafka produce` and
+  `consume`, their faults and checks, and value types.
 - [The HTTP twin](http-twin.md): how it serves an imported OpenAPI
   contract, the requests it refuses, its responses, faults and forced
   states, its history, and where it differs from a real service.

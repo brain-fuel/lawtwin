@@ -1,0 +1,6 @@
+decision/rust/twins/kafka/fidelity/tests/record_replay.rs:
+  digest: sha256:31d2fc95207e83da
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/record_replay.rs/function/session:
+  digest: sha256:4512010c4b2bd340
+  verdict: pending

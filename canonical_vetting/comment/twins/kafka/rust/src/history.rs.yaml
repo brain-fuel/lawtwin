@@ -151,6 +151,9 @@ decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Fault:
 decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Force:
   digest: sha256:eaffd1dd559af9ed
   verdict: pending
+decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Observed:
+  digest: sha256:db60a67ee8747ab2
+  verdict: pending
 decision/rust/twins/kafka/rust/src/history.rs/enum/Source/variant/Replay:
   digest: sha256:1b597a9518303d63
   verdict: pending

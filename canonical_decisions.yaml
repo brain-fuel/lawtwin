@@ -379,7 +379,7 @@ DEC-kafka-divergence-auto-create:
 
 DEC-simulated-peers:
   status: decided
-  question: How does LawTwin play the other parties on a topic: a producer an application consumes from, and a consumer of what it produces?
+  question: "How does LawTwin play the other parties on a topic: a producer an application consumes from, and a consumer of what it produces?"
   answer: |
     As real clients (librdkafka), so they work against a twin and against real Kafka alike. `lawtwin peer kafka produce` sends records valid under the Kafka contract, with values drawn from a seed and, given one, generated from a LawSpec type and its refinements, at a rate, with keys, headers, idempotence, transactions, and faults a producer shows: duplicates of a lost acknowledgement, values that are not of the type, tombstones, aborted transactions, late timestamps, and a transaction left open. `lawtwin peer kafka consume` joins a group, reads committed or uncommitted, and checks what it reads against the contract's consumer-side laws (a poll reads each partition in offset order, records with one key go to one partition, read-committed fetches never see open or aborted transactions, committed records are read committed together and in order) and the value type; to tell committed records from aborted ones it reads each partition again over the wire, both ways. Each reports what it did and what broke, as JSON.
   opened: 0.1.0

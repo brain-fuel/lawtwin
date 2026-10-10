@@ -1,6 +1,12 @@
 ledger/DEC-classic-groups-over-coordinator:
   digest: sha256:aab48d99c9e58de4
   verdict: pending
+ledger/DEC-compare-up-to-renaming:
+  digest: sha256:096b6a53b2acc1ee
+  verdict: pending
+ledger/DEC-conformance-levels:
+  digest: sha256:6d71d57876c7e773
+  verdict: pending
 ledger/DEC-contract-test-shared-cluster:
   digest: sha256:954e5994101bbf5c
   verdict: pending
@@ -18,6 +24,12 @@ ledger/DEC-dependency-contracts-in-lawspec:
   verdict: pending
 ledger/DEC-embed-generated-model:
   digest: sha256:f9598596b9ee95e8
+  verdict: pending
+ledger/DEC-fenced-producer-spelling:
+  digest: sha256:5c70ec58bbeeb5d1
+  verdict: pending
+ledger/DEC-fetch-sizing:
+  digest: sha256:53f42c43eaf42f86
   verdict: pending
 ledger/DEC-fidelity:
   digest: sha256:e7183af2df73e568
@@ -46,6 +58,18 @@ ledger/DEC-http-replay-in-contract-terms:
 ledger/DEC-kafka-broker-and-clients:
   digest: sha256:2a8509989de0db52
   verdict: pending
+ledger/DEC-kafka-divergence-auto-create:
+  digest: sha256:bdbb50eb76025cab
+  verdict: pending
+ledger/DEC-kafka-divergence-coordinator-timing:
+  digest: sha256:9c92c913b9ea72d7
+  verdict: pending
+ledger/DEC-kafka-divergence-group-assignment:
+  digest: sha256:cba155b7c346430a
+  verdict: pending
+ledger/DEC-kafka-divergence-rebalance-heartbeat:
+  digest: sha256:ea4dbaa3e4aabbae
+  verdict: pending
 ledger/DEC-kafka-model-scope:
   digest: sha256:d4030f54bb981310
   verdict: pending
@@ -61,8 +85,29 @@ ledger/DEC-openapi-constraints-as-validation:
 ledger/DEC-openapi-resources:
   digest: sha256:7ea478a4d5cac373
   verdict: pending
+ledger/DEC-peer-value-types:
+  digest: sha256:7f822987c1556adf
+  verdict: pending
 ledger/DEC-petstore3-divergences:
   digest: sha256:068d320a0d0b5b45
+  verdict: pending
+ledger/DEC-recorded-history:
+  digest: sha256:befe70d3f43a00fc
+  verdict: pending
+ledger/DEC-recorder-control-plane:
+  digest: sha256:72f20659ab5ea0bf
+  verdict: pending
+ledger/DEC-recorder-negotiates-twin-versions:
+  digest: sha256:3fe7ecdafbcf9d9e
+  verdict: pending
+ledger/DEC-replay-over-the-wire:
+  digest: sha256:b007c3c63b272ee7
+  verdict: pending
+ledger/DEC-retriable-errors-not-answers:
+  digest: sha256:1ad7e319ec4da7e2
+  verdict: pending
+ledger/DEC-simulated-peers:
+  digest: sha256:cf38a142ad65acf8
   verdict: pending
 ledger/DEC-three-planes:
   digest: sha256:1260cf798d59b1e1

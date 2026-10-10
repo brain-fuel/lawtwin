@@ -31,6 +31,9 @@ decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/start:
 decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/start_advertising:
   digest: sha256:51d57057ac2fd76f
   verdict: pending
+decision/rust/twins/kafka/conformance/src/core.rs/impl/TestTwin/function/start_core:
+  digest: sha256:12b09468efbede62
+  verdict: pending
 decision/rust/twins/kafka/conformance/src/core.rs/struct/TestTwin:
   digest: sha256:c49b271e6c60550e
   verdict: pending

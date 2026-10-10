@@ -1,0 +1,9 @@
+decision/rust/twins/kafka/fidelity/tests/peers.rs:
+  digest: sha256:3eec1901e132e00f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/peers.rs/function/consumer_peer_checks_an_application:
+  digest: sha256:bf5c251ab731a2fb
+  verdict: pending
+decision/rust/twins/kafka/fidelity/tests/peers.rs/function/producer_and_consumer_peers:
+  digest: sha256:2616e24f881c4913
+  verdict: pending

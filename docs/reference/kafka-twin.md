@@ -61,7 +61,7 @@ A refusal of the contract is answered with Kafka's error code:
 | `OffsetOutOfRange` | 1 OFFSET_OUT_OF_RANGE |
 | `OutOfOrderSequenceNumber` | 45 OUT_OF_ORDER_SEQUENCE_NUMBER |
 | `InvalidProducerEpoch` | 47 INVALID_PRODUCER_EPOCH |
-| `ProducerFenced` | 90 PRODUCER_FENCED |
+| `ProducerFenced` | 90 PRODUCER_FENCED; 47 INVALID_PRODUCER_EPOCH on AddPartitionsToTxn, AddOffsetsToTxn and EndTxn below version 2, and on TxnOffsetCommit, as Kafka spells it (ref:DEC-fenced-producer-spelling) |
 | `UnknownProducerId` | 59 UNKNOWN_PRODUCER_ID |
 | `InvalidProducerIdMapping` | 49 INVALID_PRODUCER_ID_MAPPING |
 | `InvalidTxnState`, `IllegalState` | 48 INVALID_TXN_STATE |
@@ -207,4 +207,19 @@ The twin is the contract's model, which is one broker with one replica
 - No authentication, TLS or quotas.
 
 Conformance against the `apache/kafka` image (ref:apache-kafka-image)
-records each divergence in the ledger as it is found.
+records each divergence in the ledger
+([conformance against real Kafka](kafka-conform.md)). Release 0.1.0
+reaches level 3 against `apache/kafka:4.3.1`: every client scenario passes
+and every law holds against it, and what differs is accounted for:
+
+- a group's partitions are the contract coordinator's, where Kafka's
+  classic protocol lets the client's assignor choose
+  (ref:DEC-kafka-divergence-group-assignment);
+- Kafka answers retriable errors while its coordinators load, a
+  transaction's markers are written or a new topic's leader is elected,
+  which the twin never does unless a fault is raised
+  (ref:DEC-kafka-divergence-coordinator-timing), and creates a topic a
+  Metadata request names a moment later (ref:DEC-kafka-divergence-auto-create);
+- a heartbeat after a member leaves is a new generation at once in the
+  contract, and a round in Kafka; both answer REBALANCE_IN_PROGRESS
+  (ref:DEC-kafka-divergence-rebalance-heartbeat).

@@ -1,0 +1,189 @@
+decision/rust/twins/kafka/fidelity/src/lawtype.rs:
+  digest: sha256:c383e86825edb025
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr:
+  digest: sha256:cebe7ded3debb72d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/App:
+  digest: sha256:1e2d97a5f5d3f6f1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Bin:
+  digest: sha256:3c228d248a21f307
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Bool:
+  digest: sha256:d93a88ca503d4917
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Float:
+  digest: sha256:238623986bc4d906
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/If:
+  digest: sha256:f8a62680852abf83
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Int:
+  digest: sha256:3d46ba51619ec4ba
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Matches:
+  digest: sha256:1e72ddddf5a50b91
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Name:
+  digest: sha256:cdec181320dc6740
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Text:
+  digest: sha256:f779e4caf9a1177a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Expr/variant/Un:
+  digest: sha256:fb22ae89ce6de27e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Format:
+  digest: sha256:bba787b1123b7402
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Format/variant/Json:
+  digest: sha256:81f1bdb1cafe5986
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Format/variant/LawSpec:
+  digest: sha256:3f850e89ae5caf6b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty:
+  digest: sha256:22fa63d17ff19357
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Bool:
+  digest: sha256:ff08ec3b395063b6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Bytes:
+  digest: sha256:3def44e59a6c3615
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Either:
+  digest: sha256:75d0804a07d85f77
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Float:
+  digest: sha256:6e8b2fa6af69542c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Int:
+  digest: sha256:953272ba1fb3a4ed
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Integer:
+  digest: sha256:c1882705ebcd4470
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/List:
+  digest: sha256:8ada43026d466d6a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Maybe:
+  digest: sha256:62efe367ebb1076b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Named:
+  digest: sha256:9940bea0ee22945b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Refined:
+  digest: sha256:ebb68433b6be886c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Text:
+  digest: sha256:2697bc4691863667
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/Ty/variant/Unit:
+  digest: sha256:5502b8b96778727c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V:
+  digest: sha256:f9e25d4063fbafb8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Bool:
+  digest: sha256:e6a6787a0b7db18d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Bytes:
+  digest: sha256:224e028d1f708345
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Data:
+  digest: sha256:06eb5f4fee5fb1b3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Either:
+  digest: sha256:0c88a45732cbd306
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Float:
+  digest: sha256:6e8b2fa6af69542c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Int:
+  digest: sha256:6ef279a6933464cf
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/List:
+  digest: sha256:7c1068982fb36a6d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Maybe:
+  digest: sha256:c1115d21cc9cd676
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Text:
+  digest: sha256:f06dce27b84e18cc
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/enum/V/variant/Unit:
+  digest: sha256:a22e6beb9747b6b7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Parser/function/skip_block:
+  digest: sha256:5679aaa3d36e1b3e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types/function/load:
+  digest: sha256:f3b8fcdbe71c6a73
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types/function/parse_type:
+  digest: sha256:2e185ec442755d2e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types/function/read:
+  digest: sha256:c11facc33b1d1673
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#2/function/eval:
+  digest: sha256:b605914c82570ad3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#3/function/check:
+  digest: sha256:bb34b129b4ac2679
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#3/function/generate:
+  digest: sha256:5e53ed13a7f229d1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/encode:
+  digest: sha256:4712120aa60d1c5f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/from_json:
+  digest: sha256:c84a0018adde6596
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/from_lawspec:
+  digest: sha256:01f8afc530e97001
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/to_json:
+  digest: sha256:5debb2444247a279
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/to_lawspec:
+  digest: sha256:8d6c55b4c42b3e3a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/impl/Types#4/function/validate:
+  digest: sha256:536eb493f9b7e6b1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Bounds:
+  digest: sha256:5f84d0bdf97ec153
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Ctor:
+  digest: sha256:dda553a06e8cb797
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Ctor/field/fields:
+  digest: sha256:9aafc3f5416d537c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Ctor/field/name:
+  digest: sha256:d0c2f83eb0432e99
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Def:
+  digest: sha256:fbda881c7ca1109b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Def/field/body:
+  digest: sha256:3c47295380a96c26
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Def/field/params:
+  digest: sha256:108197c3fb933e47
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Types:
+  digest: sha256:253ecad77b5d607a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Types/field/data:
+  digest: sha256:93b5066bcdc38ced
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Types/field/defs:
+  digest: sha256:0b60e736fc0a0f44
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/lawtype.rs/struct/Types/field/refinements:
+  digest: sha256:dbe02b709829a8c4
+  verdict: pending

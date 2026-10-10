@@ -1,0 +1,132 @@
+decision/rust/twins/kafka/fidelity/src/record.rs:
+  digest: sha256:5fd6f7045e649a13
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/control_plane:
+  digest: sha256:3e055fe1c060fd08
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/cut_records:
+  digest: sha256:34d3a3a306bc6a7b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/encode_batch:
+  digest: sha256:0c8236ffb5f7b8c7
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/note_kind:
+  digest: sha256:41a175c73651a20a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/rewrite_request:
+  digest: sha256:e5af20b0d1545fb8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/run:
+  digest: sha256:b644a10ed712c9bf
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/start:
+  digest: sha256:a86b59974b7b674d
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/function/with_suffix:
+  digest: sha256:fae70713e380cc4f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/advertised:
+  digest: sha256:7672a2b53f8781ca
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/check_laws:
+  digest: sha256:4eda7b55072274e5
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/describe:
+  digest: sha256:90f9594cf9971939
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/divergences:
+  digest: sha256:4cd2074a99ebd420
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/force:
+  digest: sha256:6dbbf046a1234e35
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/frames:
+  digest: sha256:6aeef58ef4cf6e90
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/history:
+  digest: sha256:703aad13fc544fe5
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/not_leader_answer:
+  digest: sha256:03a8139fc93f126c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/notes:
+  digest: sha256:ece10a9ca64e7e03
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/record:
+  digest: sha256:fd23c342b6bcf99a
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/respond:
+  digest: sha256:02139e16ea6247a3
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/summary:
+  digest: sha256:2a356e95a1f2de15
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/impl/Recorder/function/violations:
+  digest: sha256:ad45af0b164e3760
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Found:
+  digest: sha256:29c64916d25b7c08
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Found/field/storm_waiting:
+  digest: sha256:5b2cc5f15ad2fce0
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Pending:
+  digest: sha256:5d9d1495081a96be
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Pending/field/answered:
+  digest: sha256:d75730837762381c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Pending/field/local:
+  digest: sha256:b4b4ad92a0602ff1
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Recorder:
+  digest: sha256:0d219c75cc0437c4
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Recorder/field/config:
+  digest: sha256:630d9ad22fec212b
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Recorder/field/epoch:
+  digest: sha256:1b6308ad359a0f04
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Recorder/field/shadow:
+  digest: sha256:d89b91d99f6d382f
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig:
+  digest: sha256:c063428855bb69f8
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/admin_listen:
+  digest: sha256:5ada7679f1e870c6
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/advertise:
+  digest: sha256:85704650a1e8fbad
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/clock:
+  digest: sha256:ed778bc1e9af7596
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/listen:
+  digest: sha256:aca02db220909927
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/out:
+  digest: sha256:fcf264872d80cb90
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/upstream:
+  digest: sha256:3b04d8aa3601251c
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/RecorderConfig/field/verbose:
+  digest: sha256:d502785404c89812
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Running:
+  digest: sha256:a01dcee9b2b0a002
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Running/field/admin:
+  digest: sha256:1297b43b2be9958e
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Running/field/kafka:
+  digest: sha256:14d7db2214126cf4
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Running/field/recorder:
+  digest: sha256:373d33aceaa307ee
+  verdict: pending
+decision/rust/twins/kafka/fidelity/src/record.rs/struct/Upstream:
+  digest: sha256:8506588837a80e53
+  verdict: pending

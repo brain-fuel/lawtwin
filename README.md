@@ -35,6 +35,8 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | `twins/kafka/rust/` | The Kafka twin's Rust core: the contract's generated model behind the Kafka wire protocol, with the control plane; its image is `lawtwin/kafka:0.1.0` |
 | `twins/kafka/conformance/` | The core conformance kit every Kafka core must pass, with librdkafka, kafkajs, franz-go and the Java client |
 | `twins/kafka/shared/` | The golden wire session every core answers byte for byte |
+| `twins/kafka/fidelity/` | The Kafka twin's fidelity tools (`lawtwin-kafka-fidelity`): conformance against real Kafka, record and replay, and the simulated producer and consumer |
+| `twins/kafka/conformance/reports/` | The conformance report of each Kafka twin release against `apache/kafka`, with its traces |
 | `crates/lawtwin/` | The `lawtwin` command: `lawtwin import openapi`, `lawtwin up`, and the control-plane commands |
 | `examples/kafka/` | Running the Kafka twin with podman compose |
 | `contracts/petstore/lawtwin.json`, `contracts/github/lawtwin.json` | The twin files of the imported contracts: the HTTP twin's faults and their effect on each law |
@@ -46,8 +48,7 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | `openapi/` | The OpenAPI documents they are imported from, with their licences in `openapi/NOTICE` |
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
-Conformance against the real Kafka, and record and replay for Kafka,
-follow; [the roadmap](docs/explanation/roadmap.md) lists what each release
+[The roadmap](docs/explanation/roadmap.md) lists what each release
 covers.
 
 ## The Kafka twin
@@ -73,6 +74,18 @@ language; each must pass the same conformance kit (`make core-conformance`).
 [The Kafka twin](docs/reference/kafka-twin.md),
 [the control plane](docs/reference/control-plane.md) and [Run the Kafka
 twin](docs/how-to/run-the-kafka-twin.md) say more.
+
+Against real Kafka, `make conform-kafka` runs the same scenarios against
+`apache/kafka:4.3.1` in podman through a recording proxy and checks the
+contract's laws over what it recorded: release 0.1.0 reaches level 3, every
+scenario passing and every law holding, with each divergence a ledger
+decision ([the report](twins/kafka/conformance/reports/0.1.0/report.md)).
+`lawtwin record kafka` records a real broker's traffic, `lawtwin replay kafka`
+replays it through a core, and `lawtwin peer kafka produce` and `consume`
+play the producers and consumers around an application
+([conformance](docs/reference/kafka-conform.md),
+[recording](docs/reference/kafka-record.md),
+[replay](docs/reference/kafka-replay.md), [peers](docs/reference/kafka-peers.md)).
 
 ## The Kafka contract
 

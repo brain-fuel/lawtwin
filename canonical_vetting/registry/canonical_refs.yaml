@@ -46,11 +46,20 @@ registry/kafkajs:
 registry/keep-a-changelog:
   digest: sha256:c2fd784f65633045
   verdict: pending
+registry/kip-227:
+  digest: sha256:7b5c1c162ab76245
+  verdict: pending
 registry/kip-447:
   digest: sha256:8dc61d17da0e27f7
   verdict: pending
+registry/kip-588:
+  digest: sha256:6befcf95ce1d1b8d
+  verdict: pending
 registry/kip-848:
   digest: sha256:8738319c3ed4d5fd
+  verdict: pending
+registry/kip-890:
+  digest: sha256:27c077abea0dcf4e
   verdict: pending
 registry/kip-98:
   digest: sha256:29fb787eb80f18ab

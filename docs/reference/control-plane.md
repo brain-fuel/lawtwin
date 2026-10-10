@@ -153,7 +153,7 @@ the call of the contract's ability it is, with the model's answer
 | --- | --- |
 | `seq` | the entry's position, from 1 |
 | `at` | the twin clock, in milliseconds since the Unix epoch |
-| `source` | `wire` (a client's request), `force`, `fault`, `coordinator` (a session or rebalance that timed out) or `replay` |
+| `source` | `wire` (a client's request), `force`, `fault`, `coordinator` (a session or rebalance that timed out), `replay`, or `observed` (in a [recording](kafka-record.md), state the real broker held before it started) |
 | `op` and its arguments | the ability's operation, with its arguments by name |
 | `answer` | `{"ok": result}`, or `{"error": "<KafkaError>"}` when the contract refused it |
 | `control`, `detail` | a control-plane event instead of an operation |
