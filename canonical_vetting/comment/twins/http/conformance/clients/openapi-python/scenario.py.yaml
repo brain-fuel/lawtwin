@@ -1,0 +1,6 @@
+decision/python/twins/http/conformance/clients/openapi-python/scenario.py:
+  digest: sha256:4ea985cc196e19b2
+  verdict: pending
+decision/python/twins/http/conformance/clients/openapi-python/scenario.py/function/main:
+  digest: sha256:8012b8e7e52ed652
+  verdict: pending

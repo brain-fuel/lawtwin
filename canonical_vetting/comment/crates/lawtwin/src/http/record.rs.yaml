@@ -1,0 +1,9 @@
+decision/rust/crates/lawtwin/src/http/record.rs:
+  digest: sha256:6727d45c0299732f
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/record.rs/function/record:
+  digest: sha256:822d44e5752b61b9
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/record.rs/function/replay:
+  digest: sha256:8652561194628bfa
+  verdict: pending

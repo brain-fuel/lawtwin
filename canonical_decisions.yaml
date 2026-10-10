@@ -205,3 +205,57 @@ DEC-kafka-wire-versions:
   opened: 0.1.0
   decided: 0.1.0
   refs: [kafka-protocol, kafka-protocol-crate]
+
+DEC-http-contract-registry:
+  status: decided
+  question: The HTTP twin serves any imported OpenAPI contract. Is there one core build, and one image, per contract, or one that serves any of them?
+  answer: |
+    One that serves any: a registry of compiled contracts. The Rust core's build script finds every contract under contracts/ that has a wire map and a generated Rust test project, and brings that project's sources in as a module of its own, since LawSpec names every test crate alike and they cannot all be dependencies; it binds each contract's reference handler, so the twin runs the code the laws check. The core serves the one contract it is started with (--contract, LAWTWIN_CONTRACT or TWIN_CONFIG). Adding a contract means importing it, generating its test project, and rebuilding. A binary per contract, chosen at build time, was considered and rejected: one image deploys anywhere, and Ironframe picks the contract by configuration.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawspec, openapi-3-1]
+
+DEC-http-faults:
+  status: decided
+  question: Which faults does the HTTP twin show, and how do they stay within the contract?
+  answer: |
+    latency, server-error (a 5xx status), rate-limit (429 with Retry-After, in windows of the twin clock), timeout (no answer; the connection held, then closed), connection-reset and slow-body (the body a few bytes at a time), declared in each contract's twin file with their effect on each law. A fault answers in the model's place, either before the request reaches the model or, with applied=true, after the model has run it, so the client does not learn that it took effect; it never changes what the model answers. Each may be limited to an operation, a count, a probability drawn from the seed, or a time on the twin clock.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-http-refusals:
+  status: decided
+  question: How does the HTTP twin answer a request that breaks the document?
+  answer: |
+    Before the model: a body that is not JSON is refused 400, as servers do, whatever the operation documents; a missing or mistyped parameter or field, or an unknown enum value, is refused 422 when the operation documents 422 and not 400, and 400 otherwise. A value that breaks a constraint reaches the model, which refuses it as the importer wrote it. A refusal's body is the one the document gives the status, built from its schema; when the document gives none, it is {"message": "<why>"}. A path with no operation is 404, and a method the path lacks 405 with Allow.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [openapi-3-0, openapi-3-1]
+
+DEC-openapi-client-twin:
+  status: decided
+  question: How does LawTwin check an application that serves an API, rather than one that calls it?
+  answer: |
+    With a simulated client, lawtwin peer http call. It walks the sequences the contract's laws are about (create, read, list, update, replace, delete, read) with values drawn from a seed, and on request sends requests that break the document, retries and duplicates writes, and hangs up before answers. It reads every answer as the model's and checks the laws over them with the same check a twin runs over its own history. It reports violations of a law, findings (what the contract forbids that is not a law, such as an invalid request accepted or answered 5xx), and problems (answers that break the document, such as an undocumented status).
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-http-replay-in-contract-terms:
+  status: decided
+  question: When a recorded exchange is replayed through the twin, or a real service and the twin answer the same traffic, what counts as the same answer?
+  answer: |
+    The same status and the same answer in the contract's terms: the response read by the wire map as {"ok": value} or {"error": "<ApiError>"}, so property order, spacing and fields the document does not give are not divergences. A request the document refuses is compared by its status. A failure's body is the service's own unless the document types it, which the importer does not yet, so it is not compared. Headers other than those the contract states are not compared.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [lawtwin-plan]
+
+DEC-petstore3-divergences:
+  status: decided
+  question: Where does the Swagger Petstore 3 reference server part from the Petstore contract, and does the twin follow it?
+  answer: |
+    The contract's laws hold on Petstore 3. With seed 1, two rounds, retries and invalid requests, lawtwin conform http sends 84 requests and finds 36 divergences: Petstore 3 fills in values the document does not (tags [], userStatus 0, quantity 0, complete false); writes a ship date back as 2026-12-11T11:22:33.000+00:00; overwrites a pet whose id is taken, where the model answers 422; gives an order without an id the id 0; accepts a pet without its required name; answers 500 for a user it cannot find and for POST /pet without an id; and answers a missing pet 404 with the text "Pet not found" as application/xml. A trace recorded through it replays through the twin with 19 divergences in 32 exchanges. The twin follows the contract, not Petstore 3's defaults; a test that depends on them states them in the contract's hand-written units.
+  opened: 0.1.0
+  decided: 0.1.0
+  refs: [swagger-petstore3-server, swagger-petstore]

@@ -12,5 +12,12 @@ name = "lawtwin"
 path = "src/main.rs"
 
 [dependencies]
+lawtwin-wire = { path = "../lawtwin-wire" }
 serde_json = { version = "1", features = ["preserve_order"] }
 serde_yaml = "0.9"
+
+[dev-dependencies]
+# The HTTP twin's Rust core, run in-process by the tests of the HTTP commands.
+lawtwin-http = { path = "../../twins/http/rust" }
+lawtwin-wire = { path = "../lawtwin-wire" }
+serde_json = { version = "1", features = ["preserve_order"] }

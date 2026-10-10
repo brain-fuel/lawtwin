@@ -1,0 +1,21 @@
+decision/rust/twins/http/conformance/src/session.rs:
+  digest: sha256:08dbef7b8ec6d4c8
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/const/COMPARED_HEADERS:
+  digest: sha256:75d96bbd5a2a2fd5
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/function/replay_steps:
+  digest: sha256:c0515c8d222c368e
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/function/request_json:
+  digest: sha256:562b913defd86e91
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/function/request_of:
+  digest: sha256:295f5f70d9bf806b
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/function/response_json:
+  digest: sha256:481e77ed784d3a17
+  verdict: pending
+decision/rust/twins/http/conformance/src/session.rs/function/script:
+  digest: sha256:2420f42407b797c8
+  verdict: pending

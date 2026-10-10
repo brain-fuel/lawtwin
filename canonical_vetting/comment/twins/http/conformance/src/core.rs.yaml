@@ -1,0 +1,45 @@
+decision/rust/twins/http/conformance/src/core.rs:
+  digest: sha256:6d876c23341db298
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/function/core_name:
+  digest: sha256:817d3333faf278b5
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/function/wire_map:
+  digest: sha256:14c51a735eef1a03
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/admin:
+  digest: sha256:a4a80aca34d49b0f
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/assert_lawful:
+  digest: sha256:a03a3579f390893c
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/endpoint:
+  digest: sha256:e572f8158291841c
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/history:
+  digest: sha256:3a1b70c52e222403
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/history_text:
+  digest: sha256:d1e5bb817ade6914
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/send:
+  digest: sha256:a52ac8ccc970004f
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/start:
+  digest: sha256:1891bd330f7a50c1
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/start_advertising:
+  digest: sha256:df0945a38c50eb2f
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/impl/TestTwin/function/url:
+  digest: sha256:d628222ebe7fdfd8
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/struct/TestTwin:
+  digest: sha256:5a91188f8ce64c14
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/struct/TestTwin/field/admin:
+  digest: sha256:6b758f86809667a7
+  verdict: pending
+decision/rust/twins/http/conformance/src/core.rs/struct/TestTwin/field/api:
+  digest: sha256:07994946d834a6da
+  verdict: pending

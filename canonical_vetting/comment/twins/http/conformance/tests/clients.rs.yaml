@@ -1,0 +1,6 @@
+decision/rust/twins/http/conformance/tests/clients.rs:
+  digest: sha256:d68876cdf6694567
+  verdict: pending
+decision/rust/twins/http/conformance/tests/clients.rs/function/a_client_generated_from_the_petstore_document:
+  digest: sha256:603809a6ac2f1c26
+  verdict: pending

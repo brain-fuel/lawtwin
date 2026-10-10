@@ -1,0 +1,111 @@
+decision/rust/crates/lawtwin-wire/src/map.rs:
+  digest: sha256:99ce75ea9321c51a
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/enum/Role:
+  digest: sha256:7117023ef232f9d8
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/enum/TypeDef:
+  digest: sha256:649e2feb274fc855
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/function/find_contract:
+  digest: sha256:a83ae3acf97afc4f
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/function/status_matches:
+  digest: sha256:d7018de3bdbdc73d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/function/status_number:
+  digest: sha256:c7b8500557628192
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/Operation/function/body:
+  digest: sha256:52b2a69aa84e1202
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/Operation/function/documents:
+  digest: sha256:646d51935d64c8ba
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/Operation/function/failure:
+  digest: sha256:2c72e8ac302822a0
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/Operation/function/invalid_status:
+  digest: sha256:e147d7e02767a81e
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/Operation/function/success_status:
+  digest: sha256:38d58ec0c856b842
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/failure_constructor:
+  digest: sha256:80a864cb1092138d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/failure_status:
+  digest: sha256:a707fc0716be3b61
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/key_record:
+  digest: sha256:763b4a7083fc87a4
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/load:
+  digest: sha256:277c14b6b2cfcf72
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/op:
+  digest: sha256:2c1f9a9962f11397
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/parse:
+  digest: sha256:f58686f1681c7028
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/role:
+  digest: sha256:8b526b1601d15434
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/ty:
+  digest: sha256:2570dee0417dee99
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/impl/WireMap/function/type_def:
+  digest: sha256:24360169cfcac046
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Alternative:
+  digest: sha256:14f4ca8015a0272d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Body:
+  digest: sha256:5999811369cd5115
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/EnumValue:
+  digest: sha256:a8e8542b1c7cc956
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Failure:
+  digest: sha256:46f529c3ccdbe10e
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Field:
+  digest: sha256:4e386adb80668cdf
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Header:
+  digest: sha256:839e27b0f49f897d
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/KeyPart:
+  digest: sha256:29e548374fe0c119
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/KeyType:
+  digest: sha256:e439ba17f0c34fc4
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/OpFailure:
+  digest: sha256:228a987c6a387357
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Operation:
+  digest: sha256:44f30178c72fc710
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Param:
+  digest: sha256:170cf786aa0defcb
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Resource:
+  digest: sha256:52b5152438aaf8fa
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Resource/field/laws:
+  digest: sha256:f90d44600f1c4270
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Response:
+  digest: sha256:bcebb5e341cd8d52
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/Source:
+  digest: sha256:7ffba1a97cdee617
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/StateField:
+  digest: sha256:7b95ef3d217ca4e8
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/map.rs/struct/WireMap:
+  digest: sha256:fd28cfb5c9830365
+  verdict: pending

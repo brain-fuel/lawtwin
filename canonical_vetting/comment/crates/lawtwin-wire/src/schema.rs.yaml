@@ -1,0 +1,15 @@
+decision/rust/crates/lawtwin-wire/src/schema.rs:
+  digest: sha256:62c274ca6c9ae4eb
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/schema.rs/function/instance:
+  digest: sha256:89c94c791b2b34a3
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/schema.rs/function/violations:
+  digest: sha256:141e0e2276bde750
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/schema.rs/module/tests/function/builds_and_checks:
+  digest: sha256:fee8db94afb05c9b
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/schema.rs/struct/Problem:
+  digest: sha256:3c795dc549214fb2
+  verdict: pending

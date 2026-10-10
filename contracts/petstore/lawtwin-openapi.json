@@ -43,20 +43,24 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Pet"
+        "type": "Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         },
         {
           "status": "422",
-          "constructor": "UnprocessableEntity"
+          "constructor": "UnprocessableEntity",
+          "body": null
         }
       ],
       "modelled": true
@@ -80,16 +84,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Pet"
+        "type": "Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "422",
-          "constructor": "UnprocessableEntity"
+          "constructor": "UnprocessableEntity",
+          "body": null
         }
       ],
       "modelled": true
@@ -113,12 +120,14 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "List Pet"
+        "type": "List Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         }
       ],
       "modelled": false
@@ -142,12 +151,14 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "List Pet"
+        "type": "List Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         }
       ],
       "modelled": false
@@ -171,16 +182,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Pet"
+        "type": "Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -218,12 +232,14 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Pet"
+        "type": "Pet",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         }
       ],
       "modelled": false
@@ -254,12 +270,14 @@
       "response": {
         "status": "200",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         }
       ],
       "modelled": true
@@ -297,16 +315,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "ApiResponse"
+        "type": "ApiResponse",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": false
@@ -322,7 +343,8 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "KeyVal Text Int32"
+        "type": "KeyVal Text Int32",
+        "headers": []
       },
       "failures": [],
       "modelled": false
@@ -346,16 +368,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Order"
+        "type": "Order",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "422",
-          "constructor": "UnprocessableEntity"
+          "constructor": "UnprocessableEntity",
+          "body": null
         }
       ],
       "modelled": true
@@ -379,16 +404,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Order"
+        "type": "Order",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -412,16 +440,19 @@
       "response": {
         "status": "200",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -445,7 +476,8 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "User"
+        "type": "User",
+        "headers": []
       },
       "failures": [],
       "modelled": true
@@ -469,7 +501,8 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "User"
+        "type": "User",
+        "headers": []
       },
       "failures": [],
       "modelled": false
@@ -500,12 +533,33 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Text"
+        "type": "Text",
+        "headers": [
+          {
+            "name": "X-Rate-Limit",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": null
+          },
+          {
+            "name": "X-Expires-After",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "example": null
+          }
+        ]
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         }
       ],
       "modelled": false
@@ -521,7 +575,8 @@
       "response": {
         "status": "200",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [],
       "modelled": false
@@ -545,16 +600,19 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "User"
+        "type": "User",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -585,16 +643,19 @@
       "response": {
         "status": "200",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -618,16 +679,19 @@
       "response": {
         "status": "200",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [
         {
           "status": "400",
-          "constructor": "BadRequest"
+          "constructor": "BadRequest",
+          "body": null
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": null
         }
       ],
       "modelled": true
@@ -642,32 +706,38 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "category",
           "wire": "category",
-          "type": "Maybe Category"
+          "type": "Maybe Category",
+          "required": false
         },
         {
           "name": "photoUrls",
           "wire": "photoUrls",
-          "type": "List Text"
+          "type": "List Text",
+          "required": true
         },
         {
           "name": "tags",
           "wire": "tags",
-          "type": "Maybe (List Tag)"
+          "type": "Maybe (List Tag)",
+          "required": false
         },
         {
           "name": "status",
           "wire": "status",
-          "type": "Maybe PetStatus"
+          "type": "Maybe PetStatus",
+          "required": false
         }
       ]
     },
@@ -679,12 +749,14 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -696,12 +768,14 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -732,17 +806,20 @@
         {
           "name": "code",
           "wire": "code",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         },
         {
           "name": "type_",
           "wire": "type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "message",
           "wire": "message",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -754,32 +831,45 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "petId",
           "wire": "petId",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "quantity",
           "wire": "quantity",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         },
         {
           "name": "shipDate",
           "wire": "shipDate",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         },
         {
           "name": "status",
           "wire": "status",
-          "type": "Maybe OrderStatus"
+          "type": "Maybe OrderStatus",
+          "required": false
         },
         {
           "name": "complete",
           "wire": "complete",
-          "type": "Maybe Bool"
+          "type": "Maybe Bool",
+          "required": false
         }
       ]
     },
@@ -810,42 +900,50 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Maybe Int64"
+          "type": "Maybe Int64",
+          "required": false
         },
         {
           "name": "username",
           "wire": "username",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "firstName",
           "wire": "firstName",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "lastName",
           "wire": "lastName",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "password",
           "wire": "password",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "phone",
           "wire": "phone",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userStatus",
           "wire": "userStatus",
-          "type": "Maybe Int32"
+          "type": "Maybe Int32",
+          "required": false
         }
       ]
     }
@@ -857,14 +955,25 @@
       "item": "/pet/{petId}",
       "key": "petId",
       "keyField": "id",
+      "keyType": {
+        "type": "Int64"
+      },
+      "parents": [],
       "stateField": "pets",
+      "counterField": "nextPetKey",
       "keys": "client or assigned",
       "read": "getPetById",
       "create": "addPet",
       "delete": "deletePet",
       "list": null,
       "replace": "updatePet",
-      "update": null
+      "replaceByBodyKey": true,
+      "update": null,
+      "laws": {
+        "createdReadsBack": "a created pet reads back",
+        "deletedIsNotFound": "a deleted pet is not found",
+        "replacedReadsBack": "a replaced pet reads back as replaced"
+      }
     },
     {
       "record": "Order",
@@ -872,14 +981,24 @@
       "item": "/store/order/{orderId}",
       "key": "orderId",
       "keyField": "id",
+      "keyType": {
+        "type": "Int64"
+      },
+      "parents": [],
       "stateField": "orders",
+      "counterField": "nextOrderKey",
       "keys": "client or assigned",
       "read": "getOrderById",
       "create": "placeOrder",
       "delete": "deleteOrder",
       "list": null,
       "replace": null,
-      "update": null
+      "replaceByBodyKey": false,
+      "update": null,
+      "laws": {
+        "createdReadsBack": "a created order reads back",
+        "deletedIsNotFound": "a deleted order is not found"
+      }
     },
     {
       "record": "User",
@@ -887,14 +1006,46 @@
       "item": "/user/{username}",
       "key": "username",
       "keyField": "username",
+      "keyType": {
+        "type": "Text"
+      },
+      "parents": [],
       "stateField": "users",
+      "counterField": null,
       "keys": "client",
       "read": "getUserByName",
       "create": "createUser",
       "delete": "deleteUser",
       "list": null,
       "replace": "updateUser",
-      "update": null
+      "replaceByBodyKey": false,
+      "update": null,
+      "laws": {
+        "createdReadsBack": "a created user reads back",
+        "deletedIsNotFound": "a deleted user is not found"
+      }
+    }
+  ],
+  "state": [
+    {
+      "field": "pets",
+      "type": "KeyVal Int64 Pet"
+    },
+    {
+      "field": "nextPetKey",
+      "type": "Int64"
+    },
+    {
+      "field": "orders",
+      "type": "KeyVal Int64 Order"
+    },
+    {
+      "field": "nextOrderKey",
+      "type": "Int64"
+    },
+    {
+      "field": "users",
+      "type": "KeyVal Text User"
     }
   ]
 }

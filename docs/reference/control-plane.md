@@ -29,7 +29,7 @@ show, and says what forcing a state refuses. For each fault it gives:
 | --- | --- |
 | `name` | the name a test raises it by |
 | `summary` | what a client sees, in a sentence |
-| `params` | each parameter: its name, type (`duration`, `int32`, `topic`, `group` or `api`), whether it is required, and its default |
+| `params` | each parameter: its name, type (`duration`, `int32`, `topic`, `group` or `api` for Kafka; `duration`, `int32`, `boolean`, `operation` or `status` for HTTP), whether it is required, and its default |
 | `changes` | what changes in the twin while it is active |
 | `laws` | for each law the fault touches, whether it still holds and how; every law not named holds |
 
@@ -39,8 +39,11 @@ names is a law of the contract, and that every declared fault is
 implemented. [The Kafka twin](kafka-twin.md#faults) lists the Kafka
 twin's faults with their effect on each law.
 
-The HTTP twin, which follows, declares `latency`, `server-error` (a 5xx
-status), `rate-limit` (429 with `Retry-After`) and `timeout` the same way.
+The HTTP twin declares `latency`, `server-error` (a 5xx status),
+`rate-limit` (429 with `Retry-After`), `timeout`, `connection-reset` and
+`slow-body` the same way, in `contracts/<name>/lawtwin.json`, which the
+OpenAPI importer writes once for each contract;
+[the HTTP twin](http-twin.md#faults) lists them.
 
 ## Commands
 
@@ -51,6 +54,7 @@ twin's admin API, at `--admin <url>` or `LAWTWIN_ADMIN`, by default
 | Command | Admin API | Does |
 | --- | --- | --- |
 | `lawtwin up kafka` | | starts the Kafka twin (see below) |
+| `lawtwin up http --contract <name>` | | starts the HTTP twin for an imported contract ([HTTP twin cores](http-core.md#the-core-interface)) |
 | `lawtwin inspect [--records]` | `GET /v1/state` | shows the model's state, and with `--records` every log entry |
 | `lawtwin force <state.json \| ->` | `POST /v1/state` | forces a state, or refuses it with the law that forbids it (exit 2) |
 | `lawtwin fault <name> [<param>=<value>]...` | `POST /v1/faults/{name}` | raises a declared fault |
@@ -106,7 +110,8 @@ operation, or the result breaks an invariant the laws state, the copy is
 dropped and the twin is as it was. Otherwise the copy becomes the twin's
 state, and each operation is written to the history with the source
 `force`, so a forced state replays like any other. [The Kafka
-twin](kafka-twin.md#forcing-a-state) gives its forced-state document.
+twin](kafka-twin.md#forcing-a-state) and [the HTTP
+twin](http-twin.md#forcing-a-state) give their forced-state documents.
 
 ## Faults
 

@@ -1,0 +1,21 @@
+decision/rust/twins/http/rust/src/force.rs:
+  digest: sha256:8478d1badc0e3503
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/enum/Refused:
+  digest: sha256:28664503beb8a05e
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/enum/Refused/variant/Law:
+  digest: sha256:1ed037bd61f9efef
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/enum/Refused/variant/Malformed:
+  digest: sha256:63fae51e0dfc6a6b
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/function/reach:
+  digest: sha256:8a9720eae93f564f
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/function/shaped:
+  digest: sha256:abca5a76c01f12e9
+  verdict: pending
+decision/rust/twins/http/rust/src/force.rs/type/Reached:
+  digest: sha256:07cf3e0c7db5cdf6
+  verdict: pending

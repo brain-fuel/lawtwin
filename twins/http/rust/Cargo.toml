@@ -1,0 +1,32 @@
+[package]
+name = "lawtwin-http"
+description = "The HTTP twin's Rust core: an imported OpenAPI contract's reference model behind HTTP/1.1"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+build = "build.rs"
+
+[lib]
+path = "src/lib.rs"
+
+# The core: the twin as a program, with the options every HTTP core takes.
+[[bin]]
+name = "lawtwin-http"
+path = "src/main.rs"
+
+[dependencies]
+lawtwin-wire = { path = "../../../crates/lawtwin-wire" }
+# The crates the code LawSpec generates for each contract uses; the
+# versions are the ones its test projects pin.
+num-bigint = "=0.4.8"
+num-rational = "=0.4.2"
+num-complex = "=0.4.6"
+num-traits = "=0.2.19"
+tokio = { version = "1", features = ["rt-multi-thread", "net", "io-util", "sync", "time", "macros", "signal"] }
+axum = { version = "0.8", default-features = false, features = ["http1", "json", "query", "tokio"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["preserve_order"] }
+httparse = "1"
+anyhow = "1"

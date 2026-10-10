@@ -1,6 +1,24 @@
 decision/rust/crates/lawtwin/src/wiremap.rs:
   digest: sha256:79d0d67c92da9161
   verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/body_of:
+  digest: sha256:c751e1df649e4286
+  verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/constraints:
+  digest: sha256:f4de8b2b2d18847d
+  verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/headers_of:
+  digest: sha256:541324cc838f88d6
+  verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/inline:
+  digest: sha256:998218896e11d527
+  verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/resource_json:
+  digest: sha256:b473544908e90734
+  verdict: pending
+decision/rust/crates/lawtwin/src/wiremap.rs/function/response:
+  digest: sha256:07647b74ee8dc72f
+  verdict: pending
 decision/rust/crates/lawtwin/src/wiremap.rs/function/wire_map:
   digest: sha256:59d292143ddd990a
   verdict: pending

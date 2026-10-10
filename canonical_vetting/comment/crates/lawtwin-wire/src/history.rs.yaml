@@ -1,0 +1,18 @@
+decision/rust/crates/lawtwin-wire/src/history.rs:
+  digest: sha256:f52695842e9cfebb
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/history.rs/const/RESERVED:
+  digest: sha256:b37f36067fce9262
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/history.rs/function/arg:
+  digest: sha256:8d300155bf318510
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/history.rs/function/control_entry:
+  digest: sha256:696710b4a448d078
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/history.rs/function/op_entry:
+  digest: sha256:48a59232ccc2f2de
+  verdict: pending
+decision/rust/crates/lawtwin-wire/src/history.rs/function/parse:
+  digest: sha256:c8e820029b6417ef
+  verdict: pending

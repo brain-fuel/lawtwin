@@ -1,0 +1,9 @@
+decision/rust/twins/http/rust/src/admin.rs:
+  digest: sha256:4ebac53b80aebec6
+  verdict: pending
+decision/rust/twins/http/rust/src/admin.rs/function/router:
+  digest: sha256:13dda807a4f78858
+  verdict: pending
+decision/rust/twins/http/rust/src/admin.rs/function/state_json:
+  digest: sha256:dc7b2417bb9ff78e
+  verdict: pending

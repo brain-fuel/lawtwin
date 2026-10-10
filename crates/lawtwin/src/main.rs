@@ -9,11 +9,13 @@
 mod api;
 mod control;
 mod emit;
+mod http;
 mod ir;
 mod names;
 mod natives;
 mod openapi;
 mod regex;
+mod twinfile;
 mod wiremap;
 
 use std::path::{Path, PathBuf};
@@ -168,6 +170,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
     }
     write_once(&src.join("laws.lawspec"), &package.laws)?;
     let map = wiremap::wire_map(
+        &doc,
         &o.package,
         &source,
         &doc.title,
@@ -175,10 +178,15 @@ fn import_openapi(o: &Options) -> Result<(), String> {
         &types,
         &api,
         &package.unmodelled,
+        &package.resource_laws,
     );
     write(
         &o.out.join("lawtwin-openapi.json"),
         &(serde_json::to_string_pretty(&map).unwrap() + "\n"),
+    )?;
+    write_once(
+        &o.out.join("lawtwin.json"),
+        &twinfile::twin_file(&o.package, &o.version, &api, &package.resource_laws),
     )?;
     // The test project.
     let test = o.out.join("test");
@@ -223,7 +231,7 @@ fn import_openapi(o: &Options) -> Result<(), String> {
 
 /// The usage text, with the control-plane commands.
 fn usage() -> String {
-    USAGE.replace("{CONTROL}", control::USAGE)
+    USAGE.replace("{CONTROL}", &format!("{}\n{}", control::USAGE, http::USAGE))
 }
 
 fn main() -> ExitCode {
@@ -245,7 +253,7 @@ fn main() -> ExitCode {
             println!("{}", usage());
             Ok(())
         }
-        Some(command) => match control::run(command, &args[1..]) {
+        Some(command) => match http::run(command, &args[1..]).or_else(|| control::run(command, &args[1..])) {
             Some(Ok(())) => Ok(()),
             Some(Err((e, code))) => {
                 eprintln!("lawtwin: {e}");

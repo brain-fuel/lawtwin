@@ -1,0 +1,291 @@
+{
+  "lawtwin": 1,
+  "twin": "http",
+  "contract": {
+    "package": "lawtwin.github",
+    "version": "0.1.0",
+    "ability": "IssuesApi",
+    "handler": "reference"
+  },
+  "about": "The HTTP twin's control plane for this contract: the faults it can be told to show, and what each does to the contract's laws. The contract itself (src/) never mentions them. A law not named under a fault holds while the fault is active, for every request the model answers. Written once by `lawtwin import openapi`; yours from then on.",
+  "faults": [
+    {
+      "name": "latency",
+      "summary": "Responses are slow: each matching response is held back before it is sent.",
+      "params": [
+        {
+          "name": "delay",
+          "type": "duration",
+          "required": true,
+          "summary": "How long, in real time, each response is held back."
+        },
+        {
+          "name": "jitter",
+          "type": "duration",
+          "required": false,
+          "default": "0ms",
+          "summary": "Up to this much more, drawn from the seeded generator."
+        },
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation; without it, every operation."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared."
+        }
+      ],
+      "changes": "Only when an answer is sent. Every request reaches the model as usual.",
+      "laws": {}
+    },
+    {
+      "name": "server-error",
+      "summary": "The service fails: matching requests are answered with a 5xx status and the body the document gives that status, if any.",
+      "params": [
+        {
+          "name": "status",
+          "type": "status",
+          "required": false,
+          "default": 500,
+          "summary": "The status, 500 to 599."
+        },
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation of the contract, by its name; without it, every operation."
+        },
+        {
+          "name": "count",
+          "type": "int32",
+          "required": false,
+          "summary": "How many requests it answers before it ends by itself; without it, until it is cleared."
+        },
+        {
+          "name": "probability",
+          "type": "int32",
+          "required": false,
+          "default": 100,
+          "summary": "The chance, in percent, that a matching request is affected, drawn from the seeded generator."
+        },
+        {
+          "name": "applied",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "summary": "Whether the request reaches the model first: true runs the operation and then answers as the fault says, so the client does not learn that it took effect."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared or used up."
+        }
+      ],
+      "changes": "With applied=false the request never reaches the model. With applied=true the model runs it, and the client is told it failed.",
+      "laws": {
+        "a created label reads back": "Holds for every read that reaches the model. A read answered with a 5xx status is not the record, so a client sees the law broken for it; a write answered with a 5xx status before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted label is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete answered with a 5xx status before it reaches the model left the record, so a read still finds it; a read answered with a 5xx status is not NotFound.",
+        "the list holds a created label": "Holds for every list that reaches the model; a list answered with a 5xx status holds nothing.",
+        "an update changes only the fields it gives to a label": "Holds for every update and read that reach the model; an update answered with a 5xx status before it reaches the model changed nothing, and a read answered with a 5xx status gives no record to compare.",
+        "a created milestone reads back": "Holds for every read that reaches the model. A read answered with a 5xx status is not the record, so a client sees the law broken for it; a write answered with a 5xx status before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted milestone is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete answered with a 5xx status before it reaches the model left the record, so a read still finds it; a read answered with a 5xx status is not NotFound.",
+        "the list holds a created milestone": "Holds for every list that reaches the model; a list answered with a 5xx status holds nothing.",
+        "an update changes only the fields it gives to a milestone": "Holds for every update and read that reach the model; an update answered with a 5xx status before it reaches the model changed nothing, and a read answered with a 5xx status gives no record to compare."
+      }
+    },
+    {
+      "name": "rate-limit",
+      "summary": "The service limits its rate: past `limit` requests in a window of the twin clock, requests are answered 429 Too Many Requests with Retry-After, the seconds left in the window.",
+      "params": [
+        {
+          "name": "limit",
+          "type": "int32",
+          "required": false,
+          "default": 0,
+          "summary": "How many requests a window lets through; 0 refuses every one."
+        },
+        {
+          "name": "window",
+          "type": "duration",
+          "required": false,
+          "default": "1s",
+          "summary": "The window, on the twin clock; it starts when the fault is raised, and the next one when it ends."
+        },
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation; without it, every operation, counted together."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared."
+        }
+      ],
+      "changes": "A refused request never reaches the model. On the frozen clock a window ends only when a test advances the clock past it.",
+      "laws": {
+        "a created label reads back": "Holds for every read that reaches the model. A read refused with 429 is not the record, so a client sees the law broken for it; a write refused with 429 before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted label is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete refused with 429 before it reaches the model left the record, so a read still finds it; a read refused with 429 is not NotFound.",
+        "the list holds a created label": "Holds for every list that reaches the model; a list refused with 429 holds nothing.",
+        "an update changes only the fields it gives to a label": "Holds for every update and read that reach the model; an update refused with 429 before it reaches the model changed nothing, and a read refused with 429 gives no record to compare.",
+        "a created milestone reads back": "Holds for every read that reaches the model. A read refused with 429 is not the record, so a client sees the law broken for it; a write refused with 429 before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted milestone is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete refused with 429 before it reaches the model left the record, so a read still finds it; a read refused with 429 is not NotFound.",
+        "the list holds a created milestone": "Holds for every list that reaches the model; a list refused with 429 holds nothing.",
+        "an update changes only the fields it gives to a milestone": "Holds for every update and read that reach the model; an update refused with 429 before it reaches the model changed nothing, and a read refused with 429 gives no record to compare."
+      }
+    },
+    {
+      "name": "timeout",
+      "summary": "The service hangs: matching requests get no response; the connection is held open, then closed with nothing sent.",
+      "params": [
+        {
+          "name": "hold",
+          "type": "duration",
+          "required": false,
+          "default": "30s",
+          "summary": "How long, in real time, the connection is held before it is closed."
+        },
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation of the contract, by its name; without it, every operation."
+        },
+        {
+          "name": "count",
+          "type": "int32",
+          "required": false,
+          "summary": "How many requests it answers before it ends by itself; without it, until it is cleared."
+        },
+        {
+          "name": "probability",
+          "type": "int32",
+          "required": false,
+          "default": 100,
+          "summary": "The chance, in percent, that a matching request is affected, drawn from the seeded generator."
+        },
+        {
+          "name": "applied",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "summary": "Whether the request reaches the model first: true runs the operation and then answers as the fault says, so the client does not learn that it took effect."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared or used up."
+        }
+      ],
+      "changes": "With applied=false the request never reaches the model. With applied=true the model runs it, and the client never hears so.",
+      "laws": {
+        "a created label reads back": "Holds for every read that reaches the model. A read that times out is not the record, so a client sees the law broken for it; a write that times out before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted label is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete that times out before it reaches the model left the record, so a read still finds it; a read that times out is not NotFound.",
+        "the list holds a created label": "Holds for every list that reaches the model; a list that times out holds nothing.",
+        "an update changes only the fields it gives to a label": "Holds for every update and read that reach the model; an update that times out before it reaches the model changed nothing, and a read that times out gives no record to compare.",
+        "a created milestone reads back": "Holds for every read that reaches the model. A read that times out is not the record, so a client sees the law broken for it; a write that times out before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted milestone is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete that times out before it reaches the model left the record, so a read still finds it; a read that times out is not NotFound.",
+        "the list holds a created milestone": "Holds for every list that reaches the model; a list that times out holds nothing.",
+        "an update changes only the fields it gives to a milestone": "Holds for every update and read that reach the model; an update that times out before it reaches the model changed nothing, and a read that times out gives no record to compare."
+      }
+    },
+    {
+      "name": "connection-reset",
+      "summary": "The connection breaks: matching requests are answered by resetting the connection, with nothing sent.",
+      "params": [
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation of the contract, by its name; without it, every operation."
+        },
+        {
+          "name": "count",
+          "type": "int32",
+          "required": false,
+          "summary": "How many requests it answers before it ends by itself; without it, until it is cleared."
+        },
+        {
+          "name": "probability",
+          "type": "int32",
+          "required": false,
+          "default": 100,
+          "summary": "The chance, in percent, that a matching request is affected, drawn from the seeded generator."
+        },
+        {
+          "name": "applied",
+          "type": "boolean",
+          "required": false,
+          "default": false,
+          "summary": "Whether the request reaches the model first: true runs the operation and then answers as the fault says, so the client does not learn that it took effect."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared or used up."
+        }
+      ],
+      "changes": "With applied=false the request never reaches the model. With applied=true the model runs it, and the connection is reset before the answer.",
+      "laws": {
+        "a created label reads back": "Holds for every read that reaches the model. A read whose connection is reset is not the record, so a client sees the law broken for it; a write whose connection is reset before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted label is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete whose connection is reset before it reaches the model left the record, so a read still finds it; a read whose connection is reset is not NotFound.",
+        "the list holds a created label": "Holds for every list that reaches the model; a list whose connection is reset holds nothing.",
+        "an update changes only the fields it gives to a label": "Holds for every update and read that reach the model; an update whose connection is reset before it reaches the model changed nothing, and a read whose connection is reset gives no record to compare.",
+        "a created milestone reads back": "Holds for every read that reaches the model. A read whose connection is reset is not the record, so a client sees the law broken for it; a write whose connection is reset before it reaches the model wrote nothing, and claims nothing. With applied=true the write took effect: the record reads back once the fault lets reads through.",
+        "a deleted milestone is not found": "Holds when the delete reaches the model: with applied=true the record is gone though the client was told otherwise. A delete whose connection is reset before it reaches the model left the record, so a read still finds it; a read whose connection is reset is not NotFound.",
+        "the list holds a created milestone": "Holds for every list that reaches the model; a list whose connection is reset holds nothing.",
+        "an update changes only the fields it gives to a milestone": "Holds for every update and read that reach the model; an update whose connection is reset before it reaches the model changed nothing, and a read whose connection is reset gives no record to compare."
+      }
+    },
+    {
+      "name": "slow-body",
+      "summary": "Bodies trickle: each matching response's body is sent a few bytes at a time, with a pause between.",
+      "params": [
+        {
+          "name": "chunk",
+          "type": "int32",
+          "required": false,
+          "default": 16,
+          "summary": "How many bytes each write sends."
+        },
+        {
+          "name": "delay",
+          "type": "duration",
+          "required": false,
+          "default": "100ms",
+          "summary": "How long, in real time, between writes."
+        },
+        {
+          "name": "operation",
+          "type": "operation",
+          "required": false,
+          "summary": "Only requests for this operation; without it, every operation."
+        },
+        {
+          "name": "for",
+          "type": "duration",
+          "required": false,
+          "summary": "How long, on the twin clock; without it, until it is cleared."
+        }
+      ],
+      "changes": "Only how the answer is sent: its headers at once, its body slowly. Every request reaches the model as usual.",
+      "laws": {}
+    }
+  ],
+  "force": {
+    "about": "A forced state names records of each resource. Each is reached through the contract's own operations: a create, then an update or replace for what the create does not set; it must then read back as given. A state the operations do not reach is refused with the law that forbids it, and nothing is applied.",
+    "refusals": {
+      "a created label reads back": "a Label the contract's create, then its update or replace, would not read back as given: a field the service sets itself, a key the service assigns differently, a key already held, or a value that breaks the document's constraints",
+      "a created milestone reads back": "a Milestone the contract's create, then its update or replace, would not read back as given: a field the service sets itself, a key the service assigns differently, a key already held, or a value that breaks the document's constraints"
+    }
+  }
+}

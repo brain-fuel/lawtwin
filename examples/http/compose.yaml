@@ -1,0 +1,26 @@
+# The HTTP twin for local runs with podman compose, serving two contracts
+# from the one image:
+#   podman compose -f examples/http/compose.yaml up -d
+#   curl -X POST localhost:8080/pet -H 'Content-Type: application/json' -d '{"name":"Rex","photoUrls":[]}'
+#   lawtwin --admin http://localhost:9644 inspect
+#   podman compose -f examples/http/compose.yaml down
+# The Petstore twin answers on localhost:8080 (admin 9644), the GitHub
+# labels and milestones twin on localhost:8081 (admin 9645). For
+# applications in the same compose project, set "advertise" to the service
+# name, such as "petstore:8080", so Location headers name it.
+name: lawtwin-http
+services:
+  petstore:
+    image: docker.io/lawtwin/http:0.1.0
+    ports:
+      - "8080:8080"
+      - "9644:9644"
+    environment:
+      TWIN_CONFIG: '{"contract": "petstore", "seed": 42, "clock": "frozen", "advertise": "localhost:8080"}'
+  github:
+    image: docker.io/lawtwin/http:0.1.0
+    ports:
+      - "8081:8080"
+      - "9645:9644"
+    environment:
+      TWIN_CONFIG: '{"contract": "github", "seed": 42, "clock": "frozen", "advertise": "localhost:8081"}'

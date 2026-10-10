@@ -36,7 +36,7 @@ target language, each embedding the model LawSpec generates for it, each
 with its own image or native deployment, and each checked by the same
 conformance kit, golden session included (ref:DEC-core-per-target):
 
-1. Rust: done for Kafka.
+1. Rust: done for Kafka and HTTP.
 2. Go, and the JVM (Java and Kotlin).
 3. Python, JavaScript and TypeScript, and Haskell.
 4. The BEAM (Erlang, Elixir and Gleam), deployed as an OTP release or an
@@ -49,12 +49,19 @@ conformance kit, golden session included (ref:DEC-core-per-target):
   endpoint, status codes as typed failures, and laws for stateful resources
   where the document allows. Done in this repository, with the Petstore
   and GitHub contracts imported from their documents.
-- A stateful HTTP twin, faults (latency, 5xx, 429, timeouts), record and
-  replay through an HTTP proxy, and conformance against a real endpoint.
+- The HTTP twin's Rust core: done. One core serves any imported contract,
+  with the shared control plane, faults (latency, 5xx, 429 with
+  `Retry-After`, timeouts, connection resets, slow bodies), forced states,
+  and a conformance kit with golden sessions. Its image is 5 MB.
+- The OpenAPI client twin, `lawtwin peer http call`: done.
+- Record and replay through an HTTP proxy, and `lawtwin conform http`
+  against a real endpoint: done, against a hand-written Petstore and the
+  Swagger Petstore 3.
 
 **Packaging.** A Containerfile per core (ref:containerfile): done for the
-Kafka twin's Rust core, `lawtwin/kafka:0.1.0`. `podman compose` for local
-runs (ref:podman-compose): done, in `examples/kafka/`. OpenTofu modules for
+Kafka twin's Rust core, `lawtwin/kafka:0.1.0`, and the HTTP twin's,
+`lawtwin/http:0.1.0`. `podman compose` for local runs (ref:podman-compose):
+done, in `examples/kafka/` and `examples/http/`. OpenTofu modules for
 AWS ECS Fargate, GCP Cloud Run and Azure Container Apps (ref:opentofu).
 
 ## Later tiers

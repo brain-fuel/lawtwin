@@ -1,0 +1,60 @@
+decision/rust/crates/lawtwin/src/http/session.rs:
+  digest: sha256:458fd6ff2cb42b5c
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/function/body_record:
+  digest: sha256:54704f57c205fe92
+  verdict: pending
+"decision/rust/crates/lawtwin/src/http/session.rs/impl/Session<'m>/function/call":
+  digest: sha256:09e3aa9f228312fa
+  verdict: pending
+"decision/rust/crates/lawtwin/src/http/session.rs/impl/Session<'m>/function/place":
+  digest: sha256:5e50f3e9879bdbaf
+  verdict: pending
+"decision/rust/crates/lawtwin/src/http/session.rs/impl/Session<'m>/function/report":
+  digest: sha256:567b875bd21fc5bf
+  verdict: pending
+"decision/rust/crates/lawtwin/src/http/session.rs/impl/Session<'m>/function/run":
+  digest: sha256:89b9b89473dc3a22
+  verdict: pending
+"decision/rust/crates/lawtwin/src/http/session.rs/impl/Session<'m>/function/violations":
+  digest: sha256:749da3b191d0a19b
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options:
+  digest: sha256:7ce4f5e3ab50c728
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/all_operations:
+  digest: sha256:ed899b926ee205c4
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/duplicates:
+  digest: sha256:96905ce217d14fb9
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/invalid:
+  digest: sha256:546cdc57b4439108
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/retries:
+  digest: sha256:937893cbc861c24c
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/rounds:
+  digest: sha256:df8d4bd11d540daf
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/timeout:
+  digest: sha256:eb97bfce04fb3e28
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Options/field/timeouts:
+  digest: sha256:29af46286289718c
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Session:
+  digest: sha256:ce4b4c437a73a935
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Session/field/entries:
+  digest: sha256:55a22c102d4d12d1
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Session/field/exchanges:
+  digest: sha256:ee1baf1b25e7b8d9
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Session/field/findings:
+  digest: sha256:546ba513eb0ea578
+  verdict: pending
+decision/rust/crates/lawtwin/src/http/session.rs/struct/Session/field/problems:
+  digest: sha256:50fa1864cb402f5c
+  verdict: pending

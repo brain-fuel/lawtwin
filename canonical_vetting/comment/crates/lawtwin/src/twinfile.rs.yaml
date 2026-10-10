@@ -1,0 +1,9 @@
+decision/rust/crates/lawtwin/src/twinfile.rs:
+  digest: sha256:49b0de699b946641
+  verdict: pending
+decision/rust/crates/lawtwin/src/twinfile.rs/function/refusing_effect:
+  digest: sha256:701ba84e972bd1f2
+  verdict: pending
+decision/rust/crates/lawtwin/src/twinfile.rs/function/twin_file:
+  digest: sha256:471e3d318435fc8c
+  verdict: pending

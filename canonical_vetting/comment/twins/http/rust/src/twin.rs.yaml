@@ -1,0 +1,84 @@
+decision/rust/twins/http/rust/src/twin.rs:
+  digest: sha256:493eaf45aeeeb653
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/const/EPOCH_MS:
+  digest: sha256:63cc8dadb4777c80
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/enum/Action/variant/Hang:
+  digest: sha256:490a907dd2b1b3a4
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/enum/Action/variant/Reset:
+  digest: sha256:66826dcbb8e43a75
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/enum/Action/variant/Respond/field/slow:
+  digest: sha256:f03485594b059f9a
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/function/http_date:
+  digest: sha256:036c0ea9e98fe498
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/clear:
+  digest: sha256:812b49e928409ead
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/effects:
+  digest: sha256:099603a6463626c3
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/expire:
+  digest: sha256:255860a00226ad20
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/failure_body:
+  digest: sha256:d14feb2582fac664
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/location:
+  digest: sha256:f39e0a033e832e6c
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/raise:
+  digest: sha256:ce97443b43580ec4
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/record:
+  digest: sha256:cf55b8424969550c
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/reset:
+  digest: sha256:5f3b8ce2cd700569
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Core/function/success:
+  digest: sha256:8cc0d1488b02f17c
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/impl/Twin/function/handle:
+  digest: sha256:57ccb848dc46c287
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/module/tests/function/dates:
+  digest: sha256:532eaf839e42439b
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config:
+  digest: sha256:769b49325d7b9823
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config/field/admin_listen:
+  digest: sha256:6f3aa65c082de2dd
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config/field/advertised:
+  digest: sha256:88fbe875bb5b7da5
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config/field/contract:
+  digest: sha256:53b8b8cb499a3735
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config/field/listen:
+  digest: sha256:f57a1215c3f85e35
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Config/field/mutant:
+  digest: sha256:0e7904659ec15eeb
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Core:
+  digest: sha256:39ffda600420da44
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Effects:
+  digest: sha256:550355b3187ab5e7
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Plan:
+  digest: sha256:05e4e605fc0d6b95
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Plan/field/delay_ms:
+  digest: sha256:cf2fc0c98adccc99
+  verdict: pending
+decision/rust/twins/http/rust/src/twin.rs/struct/Twin:
+  digest: sha256:fdeb3d42104d1040
+  verdict: pending

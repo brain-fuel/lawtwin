@@ -64,12 +64,42 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "List Label"
+        "type": "List Label",
+        "headers": [
+          {
+            "name": "Link",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "<https://api.github.com/resource?page=2>; rel=\"next\", <https://api.github.com/resource?page=5>; rel=\"last\""
+          }
+        ]
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -107,16 +137,109 @@
       "response": {
         "status": "201",
         "content": "application/json",
-        "type": "Label"
+        "type": "Label",
+        "headers": [
+          {
+            "name": "Location",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "https://api.github.com/repos/octocat/Hello-World/labels/bug"
+          }
+        ]
       },
       "failures": [
         {
           "status": "422",
-          "constructor": "UnprocessableEntity"
+          "constructor": "UnprocessableEntity",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "required": [
+                "message",
+                "documentation_url"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "code"
+                    ],
+                    "properties": {
+                      "resource": {
+                        "type": "string"
+                      },
+                      "field": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "index": {
+                        "type": "integer"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          {
+                            "type": "array",
+                            "nullable": true,
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         },
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -154,12 +277,33 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Label"
+        "type": "Label",
+        "headers": []
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -197,7 +341,8 @@
       "response": {
         "status": "204",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [],
       "modelled": true
@@ -242,7 +387,8 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Label"
+        "type": "Label",
+        "headers": []
       },
       "failures": [],
       "modelled": true
@@ -308,12 +454,42 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "List Milestone"
+        "type": "List Milestone",
+        "headers": [
+          {
+            "name": "Link",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "<https://api.github.com/resource?page=2>; rel=\"next\", <https://api.github.com/resource?page=5>; rel=\"last\""
+          }
+        ]
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -351,16 +527,109 @@
       "response": {
         "status": "201",
         "content": "application/json",
-        "type": "Milestone"
+        "type": "Milestone",
+        "headers": [
+          {
+            "name": "Location",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "example": "https://api.github.com/repos/octocat/Hello-World/milestones/1"
+          }
+        ]
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         },
         {
           "status": "422",
-          "constructor": "UnprocessableEntity"
+          "constructor": "UnprocessableEntity",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "required": [
+                "message",
+                "documentation_url"
+              ],
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "errors": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "code"
+                    ],
+                    "properties": {
+                      "resource": {
+                        "type": "string"
+                      },
+                      "field": {
+                        "type": "string"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "code": {
+                        "type": "string"
+                      },
+                      "index": {
+                        "type": "integer"
+                      },
+                      "value": {
+                        "oneOf": [
+                          {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          {
+                            "type": "array",
+                            "nullable": true,
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -398,12 +667,33 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Milestone"
+        "type": "Milestone",
+        "headers": []
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -441,12 +731,33 @@
       "response": {
         "status": "204",
         "content": null,
-        "type": "Unit"
+        "type": "Unit",
+        "headers": []
       },
       "failures": [
         {
           "status": "404",
-          "constructor": "NotFound"
+          "constructor": "NotFound",
+          "body": {
+            "content": "application/json",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                },
+                "documentation_url": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "status": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       ],
       "modelled": true
@@ -491,7 +802,8 @@
       "response": {
         "status": "200",
         "content": "application/json",
-        "type": "Milestone"
+        "type": "Milestone",
+        "headers": []
       },
       "failures": [],
       "modelled": true
@@ -506,47 +818,70 @@
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "default_",
           "wire": "default",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "archivedAt",
           "wire": "archived_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         },
         {
           "name": "archivedBy",
           "wire": "archived_by",
-          "type": "Maybe SimpleUser"
+          "type": "Maybe SimpleUser",
+          "required": true
         }
       ]
     },
@@ -558,112 +893,190 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "login",
           "wire": "login",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "avatarUrl",
           "wire": "avatar_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "gravatarId",
           "wire": "gravatar_id",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "htmlUrl",
           "wire": "html_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "followersUrl",
           "wire": "followers_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "followingUrl",
           "wire": "following_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "gistsUrl",
           "wire": "gists_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "starredUrl",
           "wire": "starred_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "subscriptionsUrl",
           "wire": "subscriptions_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "organizationsUrl",
           "wire": "organizations_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "reposUrl",
           "wire": "repos_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "eventsUrl",
           "wire": "events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "receivedEventsUrl",
           "wire": "received_events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "type_",
           "wire": "type",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "siteAdmin",
           "wire": "site_admin",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "starredAt",
           "wire": "starred_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userViewType",
           "wire": "user_view_type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -675,17 +1088,20 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -697,22 +1113,26 @@
         {
           "name": "newName",
           "wire": "new_name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "color",
           "wire": "color",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "archived",
           "wire": "archived",
-          "type": "Maybe Bool"
+          "type": "Maybe Bool",
+          "required": false
         }
       ]
     },
@@ -773,82 +1193,147 @@
         {
           "name": "url",
           "wire": "url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "htmlUrl",
           "wire": "html_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "labelsUrl",
           "wire": "labels_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "number",
           "wire": "number",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "MilestoneState"
+          "type": "MilestoneState",
+          "required": true
         },
         {
           "name": "title",
           "wire": "title",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "creator",
           "wire": "creator",
-          "type": "Maybe NullableSimpleUser"
+          "type": "Maybe NullableSimpleUser",
+          "required": true
         },
         {
           "name": "openIssues",
           "wire": "open_issues",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "closedIssues",
           "wire": "closed_issues",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "createdAt",
           "wire": "created_at",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         },
         {
           "name": "updatedAt",
           "wire": "updated_at",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         },
         {
           "name": "closedAt",
           "wire": "closed_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         },
         {
           "name": "dueOn",
           "wire": "due_on",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         }
       ]
     },
@@ -875,112 +1360,190 @@
         {
           "name": "name",
           "wire": "name",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "email",
           "wire": "email",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "login",
           "wire": "login",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "id",
           "wire": "id",
-          "type": "Int64"
+          "type": "Int64",
+          "required": true
         },
         {
           "name": "nodeId",
           "wire": "node_id",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "avatarUrl",
           "wire": "avatar_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "gravatarId",
           "wire": "gravatar_id",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": true
         },
         {
           "name": "url",
           "wire": "url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "htmlUrl",
           "wire": "html_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "followersUrl",
           "wire": "followers_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "followingUrl",
           "wire": "following_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "gistsUrl",
           "wire": "gists_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "starredUrl",
           "wire": "starred_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "subscriptionsUrl",
           "wire": "subscriptions_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "organizationsUrl",
           "wire": "organizations_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "reposUrl",
           "wire": "repos_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "eventsUrl",
           "wire": "events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "receivedEventsUrl",
           "wire": "received_events_url",
-          "type": "Text"
+          "type": "Text",
+          "required": true,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "[A-Za-z][A-Za-z0-9+.\\-]*:\\S*",
+              "origin": "format uri"
+            }
+          ]
         },
         {
           "name": "type_",
           "wire": "type",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "siteAdmin",
           "wire": "site_admin",
-          "type": "Bool"
+          "type": "Bool",
+          "required": true
         },
         {
           "name": "starredAt",
           "wire": "starred_at",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "userViewType",
           "wire": "user_view_type",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         }
       ]
     },
@@ -992,22 +1555,33 @@
         {
           "name": "title",
           "wire": "title",
-          "type": "Text"
+          "type": "Text",
+          "required": true
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "Maybe MilestoneState"
+          "type": "Maybe MilestoneState",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "dueOn",
           "wire": "due_on",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         }
       ]
     },
@@ -1019,22 +1593,33 @@
         {
           "name": "title",
           "wire": "title",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "state_",
           "wire": "state",
-          "type": "Maybe MilestoneState"
+          "type": "Maybe MilestoneState",
+          "required": false
         },
         {
           "name": "description_",
           "wire": "description",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false
         },
         {
           "name": "dueOn",
           "wire": "due_on",
-          "type": "Maybe Text"
+          "type": "Maybe Text",
+          "required": false,
+          "constraints": [
+            {
+              "check": "regex",
+              "regex": "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+\\-]\\d{2}:\\d{2})",
+              "origin": "format date-time"
+            }
+          ]
         }
       ]
     }
@@ -1046,14 +1631,49 @@
       "item": "/repos/{owner}/{repo}/labels/{name}",
       "key": "name",
       "keyField": "name",
+      "keyType": {
+        "type": "LabelKey",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "Text"
+          },
+          {
+            "name": "repo",
+            "type": "Text"
+          },
+          {
+            "name": "name",
+            "type": "Text"
+          }
+        ]
+      },
+      "parents": [
+        {
+          "name": "owner",
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "type": "Text"
+        }
+      ],
       "stateField": "labels",
+      "counterField": null,
       "keys": "client",
       "read": "issuesGetLabel",
       "create": "issuesCreateLabel",
       "delete": "issuesDeleteLabel",
       "list": "issuesListLabelsForRepo",
       "replace": null,
-      "update": "issuesUpdateLabel"
+      "replaceByBodyKey": false,
+      "update": "issuesUpdateLabel",
+      "laws": {
+        "createdReadsBack": "a created label reads back",
+        "deletedIsNotFound": "a deleted label is not found",
+        "listHoldsCreated": "the list holds a created label",
+        "updateChangesOnlyGivenFields": "an update changes only the fields it gives to a label"
+      }
     },
     {
       "record": "Milestone",
@@ -1061,14 +1681,63 @@
       "item": "/repos/{owner}/{repo}/milestones/{milestone_number}",
       "key": "milestoneNumber",
       "keyField": "number",
+      "keyType": {
+        "type": "MilestoneKey",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "Text"
+          },
+          {
+            "name": "repo",
+            "type": "Text"
+          },
+          {
+            "name": "milestoneNumber",
+            "type": "Int64"
+          }
+        ]
+      },
+      "parents": [
+        {
+          "name": "owner",
+          "type": "Text"
+        },
+        {
+          "name": "repo",
+          "type": "Text"
+        }
+      ],
       "stateField": "milestones",
+      "counterField": "nextMilestoneKey",
       "keys": "assigned",
       "read": "issuesGetMilestone",
       "create": "issuesCreateMilestone",
       "delete": "issuesDeleteMilestone",
       "list": "issuesListMilestones",
       "replace": null,
-      "update": "issuesUpdateMilestone"
+      "replaceByBodyKey": false,
+      "update": "issuesUpdateMilestone",
+      "laws": {
+        "createdReadsBack": "a created milestone reads back",
+        "deletedIsNotFound": "a deleted milestone is not found",
+        "listHoldsCreated": "the list holds a created milestone",
+        "updateChangesOnlyGivenFields": "an update changes only the fields it gives to a milestone"
+      }
+    }
+  ],
+  "state": [
+    {
+      "field": "labels",
+      "type": "KeyVal LabelKey Label"
+    },
+    {
+      "field": "milestones",
+      "type": "KeyVal MilestoneKey Milestone"
+    },
+    {
+      "field": "nextMilestoneKey",
+      "type": "Int64"
     }
   ]
 }

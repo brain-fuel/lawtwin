@@ -31,6 +31,18 @@ ledger/DEC-force-through-operations:
 ledger/DEC-history-as-ability-calls:
   digest: sha256:62c37e0f8c60afa8
   verdict: pending
+ledger/DEC-http-contract-registry:
+  digest: sha256:9a2aa5d1545a1897
+  verdict: pending
+ledger/DEC-http-faults:
+  digest: sha256:e251e076593ac000
+  verdict: pending
+ledger/DEC-http-refusals:
+  digest: sha256:085ce09ec1ba7f74
+  verdict: pending
+ledger/DEC-http-replay-in-contract-terms:
+  digest: sha256:01fee567c04f0c30
+  verdict: pending
 ledger/DEC-kafka-broker-and-clients:
   digest: sha256:2a8509989de0db52
   verdict: pending
@@ -40,11 +52,17 @@ ledger/DEC-kafka-model-scope:
 ledger/DEC-kafka-wire-versions:
   digest: sha256:898332bc3df1f003
   verdict: pending
+ledger/DEC-openapi-client-twin:
+  digest: sha256:0e59392be6d868a1
+  verdict: pending
 ledger/DEC-openapi-constraints-as-validation:
   digest: sha256:917c83d2b83ef898
   verdict: pending
 ledger/DEC-openapi-resources:
   digest: sha256:7ea478a4d5cac373
+  verdict: pending
+ledger/DEC-petstore3-divergences:
+  digest: sha256:068d320a0d0b5b45
   verdict: pending
 ledger/DEC-three-planes:
   digest: sha256:1260cf798d59b1e1

@@ -1,0 +1,18 @@
+decision/rust/twins/http/rust/src/history.rs:
+  digest: sha256:a77087d7312c0be3
+  verdict: pending
+decision/rust/twins/http/rust/src/history.rs/function/answer_json:
+  digest: sha256:ee5092976823d703
+  verdict: pending
+decision/rust/twins/http/rust/src/history.rs/function/call_json:
+  digest: sha256:cc619cf83fbff08b
+  verdict: pending
+decision/rust/twins/http/rust/src/history.rs/function/replay:
+  digest: sha256:75407cfa6367d701
+  verdict: pending
+decision/rust/twins/http/rust/src/history.rs/struct/Replayed:
+  digest: sha256:3884b5dbb1978709
+  verdict: pending
+decision/rust/twins/http/rust/src/history.rs/struct/Replayed/field/entries:
+  digest: sha256:8d3afc32fccd0d29
+  verdict: pending

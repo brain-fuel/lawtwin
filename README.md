@@ -37,11 +37,16 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | `twins/kafka/shared/` | The golden wire session every core answers byte for byte |
 | `crates/lawtwin/` | The `lawtwin` command: `lawtwin import openapi`, `lawtwin up`, and the control-plane commands |
 | `examples/kafka/` | Running the Kafka twin with podman compose |
+| `contracts/petstore/lawtwin.json`, `contracts/github/lawtwin.json` | The twin files of the imported contracts: the HTTP twin's faults and their effect on each law |
+| `crates/lawtwin-wire/` | The wire map of an imported contract, read once for the HTTP cores, the client twin and conformance runs |
+| `twins/http/rust/` | The HTTP twin's Rust core: any imported contract's generated model behind HTTP/1.1, with the control plane; its image is `lawtwin/http:0.1.0` |
+| `twins/http/conformance/`, `twins/http/shared/` | The core conformance kit every HTTP core must pass, and its golden sessions |
+| `examples/http/` | Running the HTTP twin with podman compose; a hand-written Petstore; the Swagger Petstore 3 built for this machine |
 | `contracts/petstore/`, `contracts/github/` | Contracts imported from the Swagger Petstore and from GitHub's label and milestone endpoints, with their test projects |
 | `openapi/` | The OpenAPI documents they are imported from, with their licences in `openapi/NOTICE` |
 | `docs/` | The documentation: explanation, reference and how-to pages |
 
-Conformance against the real Kafka, record and replay, and the HTTP twin
+Conformance against the real Kafka, and record and replay for Kafka,
 follow; [the roadmap](docs/explanation/roadmap.md) lists what each release
 covers.
 
@@ -92,6 +97,30 @@ later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
 with Maven, and Gradle run the Kafka contract's other targets and the
 conformance kit's clients, and podman builds the image. `make help` lists
 every task.
+
+## The HTTP twin
+
+The HTTP twin serves any imported OpenAPI contract: requests are routed and
+read by the contract's wire map, refused as the document says, answered by
+the contract's generated reference model, and shaped as the document
+describes. The same control plane forces states, raises faults (latency,
+5xx, 429 with Retry-After, timeouts, resets, slow bodies) and checks the
+laws:
+
+```sh
+make image-http                                    # lawtwin/http:0.1.0, under 5 MB
+podman run --rm -p 8080:8080 -p 9644:9644 -e TWIN_CONFIG='{"contract":"petstore"}' lawtwin/http:0.1.0
+lawtwin fault rate-limit limit=10 window=1s        # a declared fault
+lawtwin peer http call --contract petstore --target http://localhost:3000 --invalid --retries
+lawtwin record http --contract petstore --upstream http://real:8080 --listen 127.0.0.1:8081
+lawtwin replay http trace.jsonl --contract petstore # through the twin, divergences reported
+```
+
+`lawtwin peer http call` is the simulated client of your own API, and
+`lawtwin conform http` runs the contract's laws against a real service and
+the twin. [The HTTP twin](docs/reference/http-twin.md), [HTTP twin
+cores](docs/reference/http-core.md) and [Run the HTTP
+twin](docs/how-to/run-the-http-twin.md) say more.
 
 ## The OpenAPI importer
 
