@@ -18,3 +18,13 @@ These guides show how to do one task.
 - [Check a Kafka core with the conformance kit](check-a-kafka-core.md): run
   the kit against the Rust core, its image or another core, and record the
   golden session again.
+- [Run the HTTP twin and drive it from a test](run-the-http-twin.md): start
+  it for a contract, force records, raise faults, check the laws.
+- [Test an application's API with the client twin](test-an-app-with-the-client-twin.md):
+  call it with seeded, broken and faulty traffic and check its answers
+  against the contract's laws.
+- [Record real HTTP traffic, replay it through the twin, and check conformance](record-and-replay-http.md):
+  the recording proxy, replay, and `lawtwin conform http`.
+- [Check an HTTP core with the conformance kit](check-an-http-core.md): run
+  the kit against a core or its image, and record the golden sessions
+  again.

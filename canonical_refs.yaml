@@ -122,3 +122,19 @@ kafka-java-client:
   kind: package
   title: kafka-clients, Apache Kafka's Java client, 4.3.1
   locator: https://central.sonatype.com/artifact/org.apache.kafka/kafka-clients
+swagger-petstore3-server:
+  kind: package
+  title: The Swagger Petstore 3 reference server, built from source by examples/http/petstore3/Containerfile
+  locator: https://github.com/swagger-api/swagger-petstore
+reqwest:
+  kind: package
+  title: reqwest, an HTTP client for Rust, version 0.12
+  locator: https://docs.rs/reqwest/0.12
+curl:
+  kind: package
+  title: curl, the command-line HTTP client
+  locator: https://curl.se/
+openapi-generator:
+  kind: package
+  title: OpenAPI Generator, version 7.9.0, which generates clients from OpenAPI documents
+  locator: https://openapi-generator.tech/

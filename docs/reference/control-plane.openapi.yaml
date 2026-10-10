@@ -68,7 +68,11 @@ paths:
         required: true
         content:
           application/json:
-            schema: { $ref: "#/components/schemas/ForcedState" }
+            schema:
+              description: A forced state, in the running twin's terms.
+              oneOf:
+                - $ref: "#/components/schemas/ForcedState"
+                - $ref: "#/components/schemas/HttpForcedState"
       responses:
         "200":
           description: The state was reached.
@@ -398,7 +402,7 @@ components:
       required: [name, type, required, summary]
       properties:
         name: { type: string }
-        type: { type: string, enum: [duration, int32, topic, group, api] }
+        type: { type: string, enum: [duration, int32, topic, group, api, boolean, operation, status] }
         required: { type: boolean }
         default: {}
         summary: { type: string }
@@ -434,9 +438,29 @@ components:
         faults: { type: array, items: { $ref: "#/components/schemas/ActiveFault" } }
         historyLength: { type: integer }
       additionalProperties: true
+    HttpForcedState:
+      type: object
+      description: A state to reach, for the HTTP twin. Each record is reached by its resource's create, then its update or replace, and must read back as given; a body is sent to the create as it is.
+      additionalProperties: false
+      properties:
+        reset: { type: boolean, description: Start from an empty service first. }
+        resources:
+          type: object
+          description: Records by the name of the record a resource keeps, such as Pet.
+          additionalProperties:
+            type: array
+            items:
+              oneOf:
+                - type: object
+                  description: A record, for a resource without parents.
+                - type: object
+                  properties:
+                    parents: { type: object, description: The collection's path parameters, such as owner and repo. }
+                    record: { type: object }
+                    body: { type: object, description: The create's body, sent as it is. }
     ForcedState:
       type: object
-      description: A state to reach. For the Kafka twin, its parts are reached in this order.
+      description: A state to reach, for the Kafka twin. Its parts are reached in this order.
       additionalProperties: false
       properties:
         reset: { type: boolean, description: Start from an empty cluster first. }

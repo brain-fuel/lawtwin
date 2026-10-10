@@ -41,6 +41,7 @@ Only local references (`#/...`) are followed. Swagger 2.0 is refused.
 | `src/handwritten.lawspec` | once | unit `<name>.handwritten`: a definition for each operation the importer cannot model, failing with `Unmodelled` until you write it |
 | `src/laws.lawspec` | once | unit `<name>.laws`: your own laws about the service |
 | `lawtwin-openapi.json` | every import | the wire map: each operation's method, path, parameters, media types and failing statuses, each type's wire names, and each resource |
+| `lawtwin.json` | once | the twin file: the HTTP twin's faults and their effect on each of the package's laws, and what forcing a state refuses ([the HTTP twin](http-twin.md#faults)) |
 | `test/` | once, except the native handlers | the test project that runs the laws on Rust and Python |
 
 A file written once is yours: the importer never writes it again. When a
@@ -48,8 +49,20 @@ new import has an operation that `src/handwritten.lawspec` lacks, the
 importer names it. The hand-written unit writes the model's types
 qualified, as `model.Pet`, so a new import does not break it.
 
-LawSpec never reads the wire map. The HTTP twin and conformance runs use it
-to put each request and response into the package's names.
+LawSpec never reads the wire map. The HTTP twin, the client twin, record
+and replay, and conformance runs use it to put each request and response
+into the package's names. Besides each operation, type and resource, it
+gives:
+
+| Where | Field | Is |
+| --- | --- | --- |
+| a record's field | `required` | whether the property must be present; a required `Maybe` field is nullable, and written `null` when it holds nothing |
+| a parameter or field | `constraints` | its checks: `minimum`, `maximum`, `minLength`, `maxLength`, `regex` (with its `origin`, such as `format date-time`), `finite`, `minItems`, `maxItems`, `oneOf` |
+| an operation's `response` | `headers` | each documented header: its name, whether it is required, its schema and its example |
+| an operation's failure | `body` | the documented body's media type and schema, with its references written out |
+| a resource | `keyType`, `parents`, `counterField`, `replaceByBodyKey` | the type it is kept under (with its fields, for a key record), the collection's path parameters, the State field with the next key, and whether its replace takes the key from the body |
+| a resource | `laws` | each generated law's title, by kind: `createdReadsBack`, `deletedIsNotFound`, `listHoldsCreated`, `updateChangesOnlyGivenFields`, `replacedReadsBack` |
+| the map | `state` | the model's `State`, field by field, in its constructor's order |
 
 ## Types
 
