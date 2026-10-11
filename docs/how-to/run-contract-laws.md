@@ -6,7 +6,7 @@ title: Run a contract's laws
 # Run a contract's laws
 
 This guide compiles the contracts and runs their laws: the Kafka contract on
-the Rust, Python, Go, Java and Kotlin targets, and each imported OpenAPI
+the Rust, Python, Go, Java, Kotlin, F# and C# targets, and each imported OpenAPI
 contract on Rust and Python.
 
 ## Before you start
@@ -21,7 +21,8 @@ You need:
 - Rust 1.85 or later;
 - Python 3.13 or later, as `python3.13`, or named with `PYTHON313`;
 - for the Kafka contract's other targets, Go 1.25 or later, JDK 25 with
-  Maven, and Gradle 9.3 (on the path, or named with `GRADLE_HOME`).
+  Maven, Gradle 9.3 (on the path, or named with `GRADLE_HOME`), and the
+  .NET 10 SDK for F# and C#.
 
 ## Stage LawSpec
 

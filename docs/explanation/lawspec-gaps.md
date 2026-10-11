@@ -556,3 +556,22 @@ on the compiler's cache.
 
 **Would close it:** a typed-path choice that depends only on the program,
 not on what the cache holds.
+
+## Found running the laws on F# and C#
+
+### 33. On F# and C#, a law with several non-empty texts draws no input
+
+On branch `integration-0.22` (f37e577), four Kafka laws stop on F# and C#
+with `CannotSatisfy` after 10,000 draws, under every handler, the spec
+handlers too: `a member of an older generation cannot commit`, `a commit
+from an older generation is refused`, `a heartbeat from an older
+generation asks the member to rejoin` and `a restarted consumer resumes at
+its committed offset`, 8 runs of 79. Each draws a valid topic name and two
+or three `Text where x != ""`, one of them also unlike another. The .NET
+harness draws the first case at size 0 and keeps that size while it
+discards, and at size 0 a text is empty unless a witness is chosen, one
+draw in ten, so these domains are almost never met. The same laws pass on
+the other five targets.
+
+**Would close it:** growing the size as draws are discarded, or drawing a
+`Text where x != ""` from its refinement, as topic names are.

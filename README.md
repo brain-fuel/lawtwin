@@ -31,7 +31,7 @@ twin. [The three planes](docs/explanation/three-planes.md) explains why.
 | Path | What it is |
 | --- | --- |
 | `contracts/kafka/` | The Kafka dependency contract, the LawSpec package `lawtwin.kafka` 0.1.0, and its twin file `lawtwin.json`, which declares the twin's faults |
-| `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java and Kotlin targets |
+| `contracts/kafka/test/` | The project that runs the contract's laws on the Rust, Python, Go, Java, Kotlin, F# and C# targets |
 | `twins/kafka/rust/` | The Kafka twin's Rust core: the contract's generated model behind the Kafka wire protocol, with the control plane; its image is `lawtwin/kafka:0.1.0` |
 | `twins/kafka/conformance/` | The core conformance kit every Kafka core must pass, with librdkafka, kafkajs, franz-go and the Java client |
 | `twins/kafka/shared/` | The golden wire session every core answers byte for byte |
@@ -107,7 +107,7 @@ The contracts need LawSpec branch `integration-0.22` at f37e577, to be
 released as 0.23; its npm release is pending, so stage it from a checkout of that branch first with
 `make lawspec-stage LAWSPEC_HOME=<checkout>`. You also need Node 22 or
 later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
-with Maven, and Gradle run the Kafka contract's other targets and the
+with Maven, Gradle, and the .NET 10 SDK run the Kafka contract's other targets and the
 conformance kit's clients, and podman builds the image. `make help` lists
 every task.
 

@@ -91,7 +91,7 @@ python-env: ## Make each contract test project's Python environment
 	      $$c/test/python/.venv/bin/pip install -q -e "$$c/test/python[test]" ) || exit 1; \
 	done
 
-contract-test: python-env ## Run each contract's laws on every target (TARGET=rust, python, go, java or kotlin for one)
+contract-test: python-env ## Run each contract's laws on every target (TARGET=rust, python, go, java, kotlin, fsharp or csharp for one)
 	@for c in $(CONTRACTS); do $(LAWSPEC) test $(TARGETARG) --config $$c/test/lawspec.json || exit 1; done
 
 core-conformance: ## Check a Kafka core with the conformance kit (CORE=<command> or CORE=image:<image>)

@@ -223,8 +223,8 @@ checks the hash against the vectors of Kafka's own tests.
 
 ## Running the laws
 
-`contracts/kafka/test/` runs every law on Rust, Python, Go, Java and
-Kotlin; see [Run a contract's laws](../how-to/run-contract-laws.md). There
+`contracts/kafka/test/` runs every law on Rust, Python, Go, Java,
+Kotlin, F# and C#; see [Run a contract's laws](../how-to/run-contract-laws.md). There
 are 40 laws; each ability law runs once per lawful handler of its ability,
 79 runs in all. The native handlers there are made with a `Cluster` that
 holds the reference model, so each case gets a fresh cluster
@@ -232,7 +232,11 @@ holds the reference model, so each case gets a fresh cluster
 from their refinements, which LawSpec now generates from rather than
 filters, so the project binds no generators.
 
-With LawSpec branch `lawspec-lawtwin` (e99a0bc), all 79 runs pass on Rust;
+With LawSpec branch `integration-0.22` (f37e577), all 79 runs pass on
+Rust, Python, Go, Java and Kotlin; on F# and C# 71 pass and 8 stop because
+no input satisfies their domain ([gap
+33](../explanation/lawspec-gaps.md#33-on-f-and-c-a-law-with-several-non-empty-texts-draws-no-input)).
+With branch `lawspec-lawtwin` (e99a0bc), all 79 runs passed on Rust;
 on the `lawspec-gaps` build 18 failed there, for the two reasons the [gap
 report](../explanation/lawspec-gaps.md#found-while-re-expressing-the-contract)
 gives, both now closed. The Kafka twin's Rust core runs the same generated
