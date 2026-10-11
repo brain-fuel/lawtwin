@@ -37,6 +37,18 @@ let private failureOf (property: Value list -> Value) (values: Value list) : exn
     | :? LawSpecException as e when e.Code = "StrategyOutsideRefinement" || e.Code = "StrategyDiscards" -> raise e
     | e -> Some e
 
+/// The size a case draws at, as QuickCheck's computeSize gives it: it grows
+/// with the passed cases up to the largest size, cycling over the run, and
+/// a tenth of the case's discards is added, so a domain that small draws
+/// rarely meet is reached at larger sizes instead of discarding at one size.
+let private maxSize = 100
+
+let private sizeOf (cases: int) (passed: int) (discards: int) =
+    let grown =
+        if (passed / maxSize) * maxSize + maxSize <= cases || passed >= cases || cases % maxSize = 0 then passed % maxSize
+        else (passed % maxSize) * maxSize / (cases % maxSize)
+    min maxSize (grown + discards / 10)
+
 /// Check a property over a generator of its inputs.
 [<CompiledName("Check")>]
 let check (label: string) (settings: Settings) (gen: Gen<Value list>) (property: Value list -> Value) =
@@ -45,13 +57,12 @@ let check (label: string) (settings: Settings) (gen: Gen<Value list>) (property:
     let mutable passed = 0
     let mutable failure = None
     while failure.IsNone && passed < settings.Cases do
-        let size = min 99 passed
         let mutable drawn = None
         let mutable discards = 0
         while drawn.IsNone do
             let s1, s2 = Random.split state
             state <- s2
-            match Gen.run gen s1 size with
+            match Gen.run gen s1 (sizeOf settings.Cases passed discards) with
             | Some tree -> drawn <- Some tree
             | None ->
                 discards <- discards + 1

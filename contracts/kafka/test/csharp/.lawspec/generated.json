@@ -29,7 +29,7 @@
     "lawspec/LawSpec.Testing/LawSpec.Testing.fsproj": "c07baa39f8c753394ae5beeba225c71853ab4016659872d34f49a26bf4b8cf30",
     "lawspec/LawSpec.Testing/Model.fs": "a23e09e4c5ac961503038043eab50971f4aff61d4c6060206f1fed432e3832ec",
     "lawspec/LawSpec.Testing/ModelParallel.fs": "c2c021dfe8521def93cf28595aadddc12a648d09d81d48f4f3996e8b5b636218",
-    "lawspec/LawSpec.Testing/Property.fs": "6dc7700d884f73fc16f62ddd71bada27928854f58a1718d41cec93cded1e44b8",
+    "lawspec/LawSpec.Testing/Property.fs": "549e6ffb0f9d6244882d9dcd3811421238a34a67384f1f8d5bf15d455a8b591f",
     "lawspec/LawSpec.Testing/Resources.fs": "0ddc6431ec1d88498fb81954c5950b6a1972979eebd8b082b24c05085dfdefed",
     "lawspec/LawSpec.Testing/Schedule.fs": "09228fc442407a2ba9a19dedd1d4ba106f1d573d4a9dd3b5e90e0a561cb33a2e",
     "lawspec/LawSpec.Testing/Search.fs": "489795ec0112ff86bd5b39ee1d9fcf2401916f7c48acb8e5f38e909424316547",
@@ -53,7 +53,7 @@
     "src/LawSpec/Definitions/ContracttestKafka.cs": "25aeb3b14f3c8db28f7a74be224d2e03630455f2c314cedc683123b9f11a6d70",
     "src/LawSpec/Handlers/LawtwinKafka.cs": "dfe1e3c0d2816c5f6357a799ebcda283ea542d79976b7b50ccd5e66e904a56e9",
     "src/LawSpec/Handlers/ContracttestKafka.cs": "99040d1e524d751747413f58a07d5481051172e55632dbd29691c834ce308903",
-    "tests/LawSpec/LawtwinKafka.cs": "ce31805d093da18ade9927530268a2edf05c9bff25d8c2e2ec3b9c1702b0f921",
+    "tests/LawSpec/LawtwinKafka.cs": "c4cb4f5a7e8a8a3ecc537c0bcba4b2e2d2c17ccb1950fd921a524bb95e97dc0a",
     "src/LawSpec.Sources.props": "8c7acddddfddf096615d30d3ada89d93444aad65d1233130d6b79006d45ddbce",
     "tests/LawSpec.Tests.props": "947cca6b77575b78d6eb4b382b1134617dbb0baaa40715e0874c8da2cfaf4b37"
   },

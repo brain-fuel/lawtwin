@@ -233,9 +233,10 @@ from their refinements, which LawSpec now generates from rather than
 filters, so the project binds no generators.
 
 With LawSpec branch `integration-0.22` (f37e577), all 79 runs pass on
-Rust, Python, Go, Java and Kotlin; on F# and C# 71 pass and 8 stop because
-no input satisfies their domain ([gap
-33](../explanation/lawspec-gaps.md#33-on-f-and-c-a-law-with-several-non-empty-texts-draws-no-input)).
+Rust, Python, Go, Java and Kotlin; on F# and C# 71 passed and 8 stopped
+because no input satisfied their domain ([gap
+33](../explanation/lawspec-gaps.md#33-on-f-and-c-a-law-with-several-non-empty-texts-draws-no-input)),
+and with c0f87ce, which closes it, all 79 pass on F# and C# too.
 With branch `lawspec-lawtwin` (e99a0bc), all 79 runs passed on Rust;
 on the `lawspec-gaps` build 18 failed there, for the two reasons the [gap
 report](../explanation/lawspec-gaps.md#found-while-re-expressing-the-contract)

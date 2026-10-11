@@ -561,6 +561,8 @@ not on what the cache holds.
 
 ### 33. On F# and C#, a law with several non-empty texts draws no input
 
+**Closed** by LawSpec branch `integration-0.22` (c0f87ce). The .NET harness grows the size with passed cases and with discards, as QuickCheck does, and draws a `Text where x != ""` from its refinement as a minimum length of one; all 79 Kafka runs pass on F# and on C#.
+
 On branch `integration-0.22` (f37e577), four Kafka laws stop on F# and C#
 with `CannotSatisfy` after 10,000 draws, under every handler, the spec
 handlers too: `a member of an older generation cannot commit`, `a commit
