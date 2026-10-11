@@ -9,9 +9,9 @@ Writing the Kafka contract in LawSpec 0.21.0 (ref:lawspec) showed what the
 language could not state, or could not generate well, for a dependency
 contract of this size. LawSpec branch `lawspec-gaps` closes all but one of
 the seventeen, and the contract is now written with them. It needs LawSpec
-branch `lawspec-lawtwin` at e99a0bc, which has those fixes, typed native
-code, and fixes for most of the gaps found since; the npm release is
-pending. Each gap below has the example that found it, what
+branch `integration-0.22` at f37e577, to be released as 0.23, which has
+those fixes, typed native code, and fixes for most of the gaps found since;
+the npm release is pending. Each gap below has the example that found it, what
 the contract does instead, and what would close it. This page is for the
 LawSpec roadmap (ref:lawspec-roadmap); LawTwin does not change LawSpec.
 

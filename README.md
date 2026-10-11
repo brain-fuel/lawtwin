@@ -103,8 +103,8 @@ make contract-check      # compile the package and its laws
 make contract-test       # run them on every target (TARGET=rust, for example, for one)
 ```
 
-The contracts need LawSpec branch `lawspec-lawtwin` at e99a0bc; its npm
-release is pending, so stage it from a checkout of that branch first with
+The contracts need LawSpec branch `integration-0.22` at f37e577, to be
+released as 0.23; its npm release is pending, so stage it from a checkout of that branch first with
 `make lawspec-stage LAWSPEC_HOME=<checkout>`. You also need Node 22 or
 later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
 with Maven, and Gradle run the Kafka contract's other targets and the
@@ -156,7 +156,7 @@ LawTwin is checked by [canon](https://github.com/brain-fuel/canon) from its
 first commit: `canon.yaml`, the reference registry `canonical_refs.yaml`, the
 decision ledger `canonical_decisions.yaml`, and `canonical_vetting/`. Vetting
 is deferred to 1.0 (`DEC-vetting-deferred-to-1.0`). Run `make canon` with
-`CANON_HOME` naming a canon 0.2.0 checkout built with `stack build`.
+`CANON_HOME` naming a canon 0.2.2 checkout built with `stack build`.
 
 Every check runs locally; there is no hosted CI. `make ci` runs them all.
 

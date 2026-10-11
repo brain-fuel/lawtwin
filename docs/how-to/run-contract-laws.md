@@ -13,7 +13,8 @@ contract on Rust and Python.
 
 You need:
 
-- LawSpec branch `lawspec-lawtwin` at e99a0bc (ref:lawspec), staged with
+- LawSpec branch `integration-0.22` at f37e577 (ref:lawspec), to be
+  released as 0.23, staged with
   `make lawspec-stage LAWSPEC_HOME=<checkout>`. Its npm release is pending;
   `make lawspec-version` prints what the contracts need;
 - Node 22 or later;

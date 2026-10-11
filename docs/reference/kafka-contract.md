@@ -14,8 +14,8 @@ title: The Kafka contract
 | `lawtwin.kafka.model` | the data of a cluster, and one checked definition for each request it answers |
 | `lawtwin.kafka` | the `Cluster` resource, the abilities, their laws, the reference handlers, and the client handlers |
 
-The package is written for LawSpec branch `lawspec-lawtwin` at e99a0bc,
-which has the `lawspec-gaps` fixes and typed native code (ref:lawspec): it
+The package is written for LawSpec branch `integration-0.22` at f37e577,
+to be released as 0.23, which has the `lawspec-gaps` fixes and typed native code (ref:lawspec): it
 uses handlers of several abilities, handler sets, `fails
 with` on operations, field access and record update, `Bytes` and `Text`
 operations, and wrapping and saturating arithmetic.

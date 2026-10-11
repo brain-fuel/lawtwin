@@ -2,12 +2,12 @@
 # there is no hosted CI.
 
 # The contracts and the Kafka twin's Rust core need LawSpec branch
-# lawspec-lawtwin at e99a0bc, which has the lawspec-gaps fixes and typed
-# native code for checked definitions and spec handlers; its npm release is
-# pending. Stage the CLI from a checkout of it with
+# integration-0.22 at f37e577, to be released as 0.23: 0.22.0 with the
+# lawspec-gaps fixes, typed native code on every target, and the F# and C#
+# targets; its npm release is pending. Stage the CLI from a checkout of it with
 # `make lawspec-stage LAWSPEC_HOME=<checkout>`, or set LAWSPEC to another way
 # of running it.
-LAWSPEC_REQUIRED := LawSpec branch lawspec-lawtwin at e99a0bc (npm release pending)
+LAWSPEC_REQUIRED := LawSpec branch integration-0.22 at f37e577, to be released as 0.23 (npm release pending)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
 CONTRACTS := contracts/kafka contracts/petstore contracts/github
@@ -151,8 +151,8 @@ compose-up-http: ## Run the HTTP twin with podman compose (examples/http/compose
 compose-down-http: ## Stop the HTTP compose example
 	$(PODMAN) compose -f examples/http/compose.yaml down
 
-canon: ## Check the canonical format with canon 0.2.0 (needs CANON_HOME)
-	@test -n "$(CANON_HOME)" || { echo "set CANON_HOME to a canon 0.2.0 checkout built with stack build"; exit 1; }
+canon: ## Check the canonical format with canon 0.2.2 (needs CANON_HOME)
+	@test -n "$(CANON_HOME)" || { echo "set CANON_HOME to a canon 0.2.2 checkout built with stack build"; exit 1; }
 	@ln -sfn "$(CANON_HOME)" .canon
 	$(CANON) check
 

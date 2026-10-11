@@ -16,11 +16,11 @@ diataxis:
   locator: https://diataxis.fr/
 canon:
   kind: package
-  title: canon, the canonical format checker, version 0.2.0 at commit 2f22e6e
-  locator: https://github.com/brain-fuel/canon/tree/2f22e6e
+  title: canon, the canonical format checker, version 0.2.2 at commit 26de9f5
+  locator: https://github.com/brain-fuel/canon/tree/26de9f5
 lawspec:
   kind: package
-  title: LawSpec, the executable specification language; 0.21.0 is on npm, and the contracts and the Kafka twin need branch lawspec-lawtwin at e99a0bc
+  title: LawSpec, the executable specification language; 0.22.0 is on npm, and the contracts and the Kafka twin need branch integration-0.22 at f37e577, to be released as 0.23
   locator: https://github.com/brain-fuel/lawspec
 lawspec-roadmap:
   kind: discussion
