@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+  <Import Project="LawSpec.Tests.props" />
+  <ItemGroup>
+    <ProjectReference Include="../src/KafkaContract.csproj" />
+    <ProjectReference Include="../lawspec/LawSpec.Testing/LawSpec.Testing.fsproj" />
+    <PackageReference Include="xunit.v3" Version="4.0.2" />
+  </ItemGroup>
+</Project>

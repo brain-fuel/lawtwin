@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="src/KafkaContract.fsproj" />
+  <Project Path="tests/KafkaContract.Tests.fsproj" />
+  <Project Path="lawspec/LawSpec.Runtime/LawSpec.Runtime.fsproj" />
+  <Project Path="lawspec/LawSpec.Testing/LawSpec.Testing.fsproj" />
+</Solution>

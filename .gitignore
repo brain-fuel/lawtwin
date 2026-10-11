@@ -9,9 +9,11 @@
 .lawspec/failures/
 .lawspec/coverage/
 
-# Rust, Maven and Gradle build output
+# Rust, Maven, Gradle and .NET build output
 target/
 build/
+bin/
+obj/
 .gradle/
 .kotlin/
 

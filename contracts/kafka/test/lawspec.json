@@ -33,6 +33,14 @@
     {
       "language": "kotlin",
       "root": "kotlin"
+    },
+    {
+      "language": "fsharp",
+      "root": "fsharp"
+    },
+    {
+      "language": "csharp",
+      "root": "csharp"
     }
   ]
 }
