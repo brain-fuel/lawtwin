@@ -22,6 +22,53 @@ import lawspec.runtime.LawSpecRuntime.Value;
 public final class LawSpecFast {
   private LawSpecFast() {}
 
+  /**
+   * An embedded handler's operation that fails with E, as a value: what it
+   * gave, or the failure it raised. Its try method returns one rather than
+   * throwing.
+   */
+  public static final class Outcome<T, E> {
+    private final boolean failed;
+    private final T value;
+    private final E failure;
+
+    private Outcome(boolean failed, T value, E failure) {
+      this.failed = failed;
+      this.value = value;
+      this.failure = failure;
+    }
+
+    public static <T, E> Outcome<T, E> success(T value) {
+      return new Outcome<>(false, value, null);
+    }
+
+    public static <T, E> Outcome<T, E> failure(E failure) {
+      return new Outcome<>(true, null, failure);
+    }
+
+    /** Whether the operation failed. */
+    public boolean failed() {
+      return failed;
+    }
+
+    /** What the operation gave; it must not have failed. */
+    public T value() {
+      if (failed) throw new IllegalStateException("the operation failed with " + failure);
+      return value;
+    }
+
+    /** The failure the operation raised; it must have failed. */
+    public E failure() {
+      if (!failed) throw new IllegalStateException("the operation did not fail");
+      return failure;
+    }
+
+    @Override
+    public String toString() {
+      return failed ? "Failure(" + failure + ")" : "Success(" + value + ")";
+    }
+  }
+
   /** Unit's one value. */
   public enum Unit {
     UNIT

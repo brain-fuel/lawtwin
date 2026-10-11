@@ -17,14 +17,14 @@ public final class Model {
       java.lang.Short value2,
       java.util.List<lawspec.data.TopicPartition> value3,
       lawspec.data.BrokerState value4) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_162(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative14(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_8d367d82(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative14(value3), lawspec.runtime.LawSpecTyped.fromNative30(value4)));
   }
 
   public static java.lang.Boolean allKnown(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.TopicPartition> value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_163(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_12a378f8(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static lawspec.data.PartitionLog appendBatch(
@@ -33,7 +33,7 @@ public final class Model {
       java.lang.Long value1,
       java.lang.Boolean value2,
       lawspec.data.PartitionLog value3) {
-    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_164(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative16(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative99(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_8797ae9f(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative16(value2), lawspec.runtime.LawSpecTyped.fromNative99(value3)));
   }
 
   public static lawspec.data.Pair<
@@ -44,14 +44,14 @@ public final class Model {
       java.lang.Long value2,
       java.lang.Boolean value3,
       java.util.List<lawspec.data.LogEntry> value4) {
-    return lawspec.runtime.LawSpecTyped.toNative93(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_165(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative94(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative108(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_f5613738(lawspec.runtime.LawSpecTyped.fromNative7(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative109(value4)));
   }
 
   public static lawspec.data.BrokerState applyOffsets(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.PendingOffset> value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_166(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_c0f73b56(lawspec.runtime.LawSpecTyped.fromNative110(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.util.Map<
@@ -62,7 +62,7 @@ public final class Model {
       java.util.List<java.lang.String> value2,
       java.util.List<java.lang.String> value3,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value4) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_167(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3), lawspec.runtime.LawSpecTyped.fromNative56(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_598afda2(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative101(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative17(value3), lawspec.runtime.LawSpecTyped.fromNative72(value4)));
   }
 
   public static java.util.Map<
@@ -71,7 +71,7 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.TopicPartition value1,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_168(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_98dab4ee(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative72(value2)));
   }
 
   public static java.util.Map<
@@ -81,7 +81,7 @@ public final class Model {
       java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1,
       lawspec.data.BrokerState value2,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value3) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_169(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative56(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_0d94256d(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative65(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2), lawspec.runtime.LawSpecTyped.fromNative72(value3)));
   }
 
   public static lawspec.data.Group checkMember(
@@ -90,7 +90,7 @@ public final class Model {
       java.lang.String value1,
       java.lang.Integer value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_170(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative98(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_f218b850(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static lawspec.data.ProducerEntry checkTxnProducer(
@@ -99,7 +99,7 @@ public final class Model {
       java.lang.Long value1,
       java.lang.Short value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative80(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_171(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative96(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_2936d9ae(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static lawspec.data.BrokerState commitAll(
@@ -107,7 +107,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<lawspec.data.OffsetEntry> value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_172(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_4ae78738(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static java.util.Map<
@@ -115,7 +115,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_173(lawspec.runtime.LawSpecTyped.fromNative52(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_07bd1943(lawspec.runtime.LawSpecTyped.fromNative68(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -124,7 +124,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.Integer value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_174(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_8c9ce76b(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static lawspec.data.Pair<
@@ -133,12 +133,12 @@ public final class Model {
       java.lang.String value0,
       java.lang.Integer value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_175(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_0d831a39(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static lawspec.data.Pair<lawspec.data.GroupView, lawspec.data.BrokerState> describeGroup(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative23(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_176(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative31(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_bf8df8f8(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.util.Map<
@@ -146,22 +146,22 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<java.lang.String> value0,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_177(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_91b44e0d(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative72(value1)));
   }
 
   public static lawspec.data.BrokerState emptyBroker(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_178(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_d5fd8237(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static lawspec.data.Group emptyGroup(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_179(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative98(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_2fc4809b(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static lawspec.data.PartitionLog emptyLog(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_180(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative99(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_a7825ed0(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static lawspec.data.Pair<
@@ -172,14 +172,14 @@ public final class Model {
       java.lang.Short value2,
       java.lang.Boolean value3,
       lawspec.data.BrokerState value4) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_181(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_b2637a52(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative30(value4)));
   }
 
   public static java.lang.Integer expectedSequence(
       Map<String, Object> symbols,
       java.lang.Short value0,
       java.util.List<lawspec.data.BatchMeta> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_182(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_83e363c8(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative97(value1)));
   }
 
   public static lawspec.data.Pair<lawspec.data.FetchResult, lawspec.data.BrokerState> fetch(
@@ -189,7 +189,7 @@ public final class Model {
       java.lang.Integer value2,
       lawspec.data.IsolationLevel value3,
       lawspec.data.BrokerState value4) {
-    return lawspec.runtime.LawSpecTyped.toNative25(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_183(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative33(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_29936450(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative9(value3), lawspec.runtime.LawSpecTyped.fromNative30(value4)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> findDuplicate(
@@ -198,7 +198,7 @@ public final class Model {
       java.lang.Integer value1,
       java.lang.Integer value2,
       java.util.List<lawspec.data.BatchMeta> value3) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_184(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative81(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_3335aea4(lawspec.runtime.LawSpecTyped.fromNative13(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative97(value3)));
   }
 
   public static lawspec.data.BrokerState finishTxn(
@@ -207,12 +207,12 @@ public final class Model {
       java.lang.Boolean value1,
       lawspec.data.TxnState value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_185(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative96(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_7545803e(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative111(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static lawspec.data.Group groupOf(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_186(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative98(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_abe7cb22(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -222,12 +222,12 @@ public final class Model {
       java.lang.String value1,
       java.lang.Integer value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_187(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_0f08a54d(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static java.lang.Long highWatermark(
       Map<String, Object> symbols, lawspec.data.PartitionLog value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_188(lawspec.runtime.LawSpecTyped.fromNative83(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_da6ed677(lawspec.runtime.LawSpecTyped.fromNative99(value0)));
   }
 
   public static lawspec.data.Pair<
@@ -235,7 +235,7 @@ public final class Model {
       Map<String, Object> symbols,
       lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_189(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative34(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_cedb7e1b(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.lang.Boolean isAborted(
@@ -243,7 +243,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Long value1,
       java.util.List<lawspec.data.AbortedTxn> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_190(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative97(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_b12645e5(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative112(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Integer, lawspec.data.BrokerState> joinGroup(
@@ -252,48 +252,48 @@ public final class Model {
       java.lang.String value1,
       java.util.List<java.lang.String> value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative27(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_191(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative35(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_9a1e92f5(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative17(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static java.lang.Boolean knownPartition(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_192(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_71d3099f(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.lang.Long lastOffsetOf(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.FetchedRecord> value0,
       java.lang.Long value1) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_193(lawspec.runtime.LawSpecTyped.fromNative90(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_544a605b(lawspec.runtime.LawSpecTyped.fromNative107(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Long lastStableOffset(
       Map<String, Object> symbols, lawspec.data.PartitionLog value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_194(lawspec.runtime.LawSpecTyped.fromNative83(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_e8497029(lawspec.runtime.LawSpecTyped.fromNative99(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.lang.Short> lawspecCollectionsBoundedInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.boundedInt16_cdb4a79e(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.lang.Integer> lawspecCollectionsBoundedInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_b3381d93(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> lawspecCollectionsBoundedInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_13153a18(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte> lawspecCollectionsBoundedInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.boundedInt8_9822648b(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -320,13 +320,13 @@ public final class Model {
   public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.lang.Integer> lawspecCollectionsBoundedUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.boundedUInt16_fab24aa3(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.lang.Long> lawspecCollectionsBoundedUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.boundedUInt32_f7521c17(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger>
@@ -350,7 +350,7 @@ public final class Model {
   public static lawspec.runtime.LawSpecRuntime.Maybe<
           java.lang.Short> lawspecCollectionsBoundedUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.boundedUInt8_8ce0c76e(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -397,22 +397,22 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsSaturatingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_770015a8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Integer lawspecCollectionsSaturatingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_9e8d3b43(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsSaturatingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_5bce4ed8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Byte lawspecCollectionsSaturatingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.saturatingInt8_54855fd8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsSaturatingIntSize(
@@ -434,12 +434,12 @@ public final class Model {
 
   public static java.lang.Integer lawspecCollectionsSaturatingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.saturatingUInt16_c4c11e3b(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsSaturatingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.saturatingUInt32_6d025357(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.math.BigInteger lawspecCollectionsSaturatingUInt64(
@@ -460,7 +460,7 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsSaturatingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.saturatingUInt8_cf40d611(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsSaturatingUIntPtr(
@@ -499,22 +499,22 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsWrappingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_989a4ce2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Integer lawspecCollectionsWrappingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_e1b5a7b2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsWrappingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_698b955a(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Byte lawspecCollectionsWrappingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.wrappingInt8_728a92af(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsWrappingIntSize(
@@ -536,12 +536,12 @@ public final class Model {
 
   public static java.lang.Integer lawspecCollectionsWrappingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.wrappingUInt16_e5742dd2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long lawspecCollectionsWrappingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.wrappingUInt32_1ef3ce20(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.math.BigInteger lawspecCollectionsWrappingUInt64(
@@ -562,7 +562,7 @@ public final class Model {
 
   public static java.lang.Short lawspecCollectionsWrappingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.wrappingUInt8_6ce2e7d2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value lawspecCollectionsWrappingUIntPtr(
@@ -608,7 +608,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_65(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_5df79bd1(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative65(value1)));
   }
 
   public static java.util.List<
@@ -618,7 +618,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_66(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_6394b670(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative66(value1)));
   }
 
   public static java.util.Map<
@@ -626,7 +626,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.Map<java.lang.Long, java.lang.Long> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_67(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_daac10f4(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative67(value1)));
   }
 
   public static java.util.Map<
@@ -635,7 +635,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_68(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_9159aa73(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative68(value1)));
   }
 
   public static java.util.List<
@@ -643,7 +643,7 @@ public final class Model {
                   java.lang.String,
                   lawspec.data.Group>> lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
       Map<String, Object> symbols, java.util.Map<java.lang.String, lawspec.data.Group> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_69(lawspec.runtime.LawSpecTyped.fromNative54(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative69(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_a865cc3f(lawspec.runtime.LawSpecTyped.fromNative70(value0)));
   }
 
   public static java.util.List<
@@ -653,7 +653,7 @@ public final class Model {
                           lawspec.data.TopicPartition>>> lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
       Map<String, Object> symbols,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_70(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_d490695f(lawspec.runtime.LawSpecTyped.fromNative72(value0)));
   }
 
   public static java.util.List<
@@ -663,7 +663,7 @@ public final class Model {
                           java.lang.String>>> lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
       Map<String, Object> symbols,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_71(lawspec.runtime.LawSpecTyped.fromNative52(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_90fdb0cf(lawspec.runtime.LawSpecTyped.fromNative68(value0)));
   }
 
   public static java.util.List<
@@ -673,7 +673,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_72(lawspec.runtime.LawSpecTyped.fromNative50(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_b1d7a6fe(lawspec.runtime.LawSpecTyped.fromNative66(value0), lawspec.runtime.LawSpecTyped.fromNative66(value1)));
   }
 
   public static java.util.List<
@@ -683,7 +683,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_73(lawspec.runtime.LawSpecTyped.fromNative57(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_06f4d2c6(lawspec.runtime.LawSpecTyped.fromNative73(value0), lawspec.runtime.LawSpecTyped.fromNative73(value1)));
   }
 
   public static java.util.List<
@@ -693,7 +693,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_74(lawspec.runtime.LawSpecTyped.fromNative58(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative74(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_a82586cc(lawspec.runtime.LawSpecTyped.fromNative74(value0), lawspec.runtime.LawSpecTyped.fromNative74(value1)));
   }
 
   public static java.util.List<
@@ -703,7 +703,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0,
       java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_75(lawspec.runtime.LawSpecTyped.fromNative59(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative75(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_cbeefea2(lawspec.runtime.LawSpecTyped.fromNative75(value0), lawspec.runtime.LawSpecTyped.fromNative75(value1)));
   }
 
   public static java.util.List<
@@ -713,7 +713,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0,
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_76(lawspec.runtime.LawSpecTyped.fromNative53(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative69(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_32478a30(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative69(value1)));
   }
 
   public static java.util.List<
@@ -723,7 +723,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0,
       java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_77(lawspec.runtime.LawSpecTyped.fromNative60(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_3a24ccf2(lawspec.runtime.LawSpecTyped.fromNative76(value0), lawspec.runtime.LawSpecTyped.fromNative76(value1)));
   }
 
   public static java.util.List<
@@ -735,7 +735,7 @@ public final class Model {
       java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_79(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_92b072e4(lawspec.runtime.LawSpecTyped.fromNative65(value0), lawspec.runtime.LawSpecTyped.fromNative65(value1)));
   }
 
   public static java.util.List<
@@ -747,7 +747,7 @@ public final class Model {
               lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0,
       java.util.List<
               lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_80(lawspec.runtime.LawSpecTyped.fromNative62(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_d863ec47(lawspec.runtime.LawSpecTyped.fromNative78(value0), lawspec.runtime.LawSpecTyped.fromNative78(value1)));
   }
 
   public static java.util.List<
@@ -760,7 +760,7 @@ public final class Model {
               lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0,
       java.util.List<
               lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_81(lawspec.runtime.LawSpecTyped.fromNative63(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_4e4ef1c4(lawspec.runtime.LawSpecTyped.fromNative79(value0), lawspec.runtime.LawSpecTyped.fromNative79(value1)));
   }
 
   public static java.util.List<
@@ -775,7 +775,7 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_82(lawspec.runtime.LawSpecTyped.fromNative55(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_6be3ca15(lawspec.runtime.LawSpecTyped.fromNative71(value0), lawspec.runtime.LawSpecTyped.fromNative71(value1)));
   }
 
   public static java.util.List<
@@ -783,14 +783,14 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_84(lawspec.runtime.LawSpecTyped.fromNative49(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_e033276a(lawspec.runtime.LawSpecTyped.fromNative65(value0)));
   }
 
   public static java.util.List<
           java.lang.String> lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
       Map<String, Object> symbols,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_85(lawspec.runtime.LawSpecTyped.fromNative52(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_34e9a8ae(lawspec.runtime.LawSpecTyped.fromNative68(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -800,7 +800,7 @@ public final class Model {
       java.lang.Long value0,
       java.util.List<
               lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_86(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative63(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative81(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_b9936fbc(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative79(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -808,7 +808,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_88(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative57(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_ebcd945a(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative73(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -818,7 +818,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_89(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_71a2ad87(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative65(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -829,7 +829,7 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_90(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative55(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_a13d293f(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative71(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -837,7 +837,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_91(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative59(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_9c1371ef(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative75(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -845,7 +845,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_92(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative58(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_4e6d941b(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative74(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -853,7 +853,7 @@ public final class Model {
       Map<String, Object> symbols,
       lawspec.data.GroupPartition value0,
       java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_93(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative60(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_634e3159(lawspec.runtime.LawSpecTyped.fromNative85(value0), lawspec.runtime.LawSpecTyped.fromNative76(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -861,7 +861,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_95(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative50(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_ae57d2cd(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative66(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -869,7 +869,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_96(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_3c718024(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative69(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -878,7 +878,7 @@ public final class Model {
       lawspec.data.TopicPartition value0,
       java.util.List<
               lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_97(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative62(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative87(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_8d0d5317(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative78(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -886,7 +886,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_98(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative52(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_a9059595(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative68(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -895,7 +895,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_99(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative72(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative81(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_b2bbd077(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative88(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -903,7 +903,7 @@ public final class Model {
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_100(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative73(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative87(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_8a481efc(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative89(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -911,7 +911,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.Map<java.lang.Long, java.lang.Long> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_102(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative51(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_65e9c66c(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative67(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -919,7 +919,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, java.lang.Long> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_104(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative76(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_24612a0e(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative92(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -927,7 +927,7 @@ public final class Model {
       Map<String, Object> symbols,
       lawspec.data.GroupPartition value0,
       java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_105(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative77(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_cd13c56f(lawspec.runtime.LawSpecTyped.fromNative85(value0), lawspec.runtime.LawSpecTyped.fromNative93(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -935,7 +935,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.Long value0,
       java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_106(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative78(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_6946d404(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative94(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -943,7 +943,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, java.lang.Integer> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_107(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative79(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_7f47bbb6(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative95(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -952,7 +952,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_108(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative56(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_ce7e98b5(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative72(value1)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<
@@ -960,7 +960,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.Map<java.lang.String, lawspec.data.Group> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_109(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative54(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_0bbb87c8(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative70(value1)));
   }
 
   public static java.util.Map<
@@ -971,14 +971,14 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_110(lawspec.runtime.LawSpecTyped.fromNative55(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_b3b63ee9(lawspec.runtime.LawSpecTyped.fromNative71(value0)));
   }
 
   public static java.util.Map<
           java.lang.String, lawspec.data.Group> lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_111(lawspec.runtime.LawSpecTyped.fromNative53(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_315c22fb(lawspec.runtime.LawSpecTyped.fromNative69(value0)));
   }
 
   public static java.util.Map<
@@ -987,7 +987,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<
               lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_113(lawspec.runtime.LawSpecTyped.fromNative62(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative89(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_66dd9a82(lawspec.runtime.LawSpecTyped.fromNative78(value0)));
   }
 
   public static java.util.Map<
@@ -997,14 +997,14 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<
               lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_114(lawspec.runtime.LawSpecTyped.fromNative63(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative88(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_3adee7cf(lawspec.runtime.LawSpecTyped.fromNative79(value0)));
   }
 
   public static java.util.Map<
           java.lang.String, java.lang.Long> lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_116(lawspec.runtime.LawSpecTyped.fromNative57(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative92(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_eeff9798(lawspec.runtime.LawSpecTyped.fromNative73(value0)));
   }
 
   public static java.util.Map<
@@ -1013,14 +1013,14 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_117(lawspec.runtime.LawSpecTyped.fromNative49(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_afdc1c77(lawspec.runtime.LawSpecTyped.fromNative65(value0)));
   }
 
   public static java.util.Map<
           java.lang.String, java.lang.Integer> lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_118(lawspec.runtime.LawSpecTyped.fromNative58(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_924ce6dd(lawspec.runtime.LawSpecTyped.fromNative74(value0)));
   }
 
   public static java.util.Map<
@@ -1028,14 +1028,14 @@ public final class Model {
           lawspec.data.ProducerEntry> lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_119(lawspec.runtime.LawSpecTyped.fromNative59(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative94(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_66da004b(lawspec.runtime.LawSpecTyped.fromNative75(value0)));
   }
 
   public static java.util.Map<
           java.lang.Long, java.lang.Long> lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_120(lawspec.runtime.LawSpecTyped.fromNative50(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_b2ceee25(lawspec.runtime.LawSpecTyped.fromNative66(value0)));
   }
 
   public static java.util.Map<
@@ -1043,7 +1043,7 @@ public final class Model {
           java.lang.Long> lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_121(lawspec.runtime.LawSpecTyped.fromNative60(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative93(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_14405d63(lawspec.runtime.LawSpecTyped.fromNative76(value0)));
   }
 
   public static java.util.List<
@@ -1054,7 +1054,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Long value1,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative50(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_122(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative50(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative66(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_fb1bb5ca(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative66(value2)));
   }
 
   public static java.util.List<
@@ -1065,7 +1065,7 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.ProducerEntry value1,
       java.util.List<lawspec.data.Entry<java.lang.Long, lawspec.data.ProducerEntry>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_123(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative59(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative75(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_97a64264(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1), lawspec.runtime.LawSpecTyped.fromNative75(value2)));
   }
 
   public static java.util.List<
@@ -1078,7 +1078,7 @@ public final class Model {
       java.util.List<lawspec.data.BatchMeta> value1,
       java.util.List<
               lawspec.data.Entry<java.lang.Long, java.util.List<lawspec.data.BatchMeta>>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_124(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative63(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_054f1ef1(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative97(value1), lawspec.runtime.LawSpecTyped.fromNative79(value2)));
   }
 
   public static java.util.List<
@@ -1089,7 +1089,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.Integer value1,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Integer>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_125(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative58(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative74(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_8d4f5385(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative74(value2)));
   }
 
   public static java.util.List<
@@ -1100,7 +1100,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.Long value1,
       java.util.List<lawspec.data.Entry<java.lang.String, java.lang.Long>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_126(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative57(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_5d998955(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative73(value2)));
   }
 
   public static java.util.List<
@@ -1114,7 +1114,7 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_127(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative55(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative71(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_80dc1939(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative71(value2)));
   }
 
   public static java.util.List<
@@ -1125,7 +1125,7 @@ public final class Model {
       lawspec.data.GroupPartition value0,
       java.lang.Long value1,
       java.util.List<lawspec.data.Entry<lawspec.data.GroupPartition, java.lang.Long>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_128(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative60(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_28cf0caf(lawspec.runtime.LawSpecTyped.fromNative85(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative76(value2)));
   }
 
   public static java.util.List<
@@ -1136,7 +1136,7 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.Group value1,
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative53(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_129(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative53(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative69(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_883fe52d(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative69(value2)));
   }
 
   public static java.util.List<
@@ -1149,7 +1149,7 @@ public final class Model {
       java.util.List<java.lang.String> value1,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative49(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_131(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative49(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative65(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_c4168a80(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative65(value2)));
   }
 
   public static java.util.List<
@@ -1161,7 +1161,7 @@ public final class Model {
       lawspec.data.PartitionLog value1,
       java.util.List<
               lawspec.data.Entry<lawspec.data.TopicPartition, lawspec.data.PartitionLog>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_133(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative62(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_523d104d(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative78(value2)));
   }
 
   public static java.util.Map<
@@ -1171,7 +1171,7 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.Group value1,
       java.util.Map<java.lang.String, lawspec.data.Group> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_135(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative54(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_ce8624cf(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative70(value2)));
   }
 
   public static java.util.Map<
@@ -1181,7 +1181,7 @@ public final class Model {
       lawspec.data.TopicPartition value0,
       lawspec.data.PartitionLog value1,
       java.util.Map<lawspec.data.TopicPartition, lawspec.data.PartitionLog> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative73(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_136(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative73(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative89(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_5ab157dd(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative89(value2)));
   }
 
   public static java.util.Map<
@@ -1192,7 +1192,7 @@ public final class Model {
       java.lang.Long value0,
       java.util.List<lawspec.data.BatchMeta> value1,
       java.util.Map<java.lang.Long, java.util.List<lawspec.data.BatchMeta>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_137(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative81(value1), lawspec.runtime.LawSpecTyped.fromNative72(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative88(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_c59d14e0(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative97(value1), lawspec.runtime.LawSpecTyped.fromNative88(value2)));
   }
 
   public static java.util.Map<
@@ -1201,7 +1201,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.Long value1,
       java.util.Map<java.lang.String, java.lang.Long> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative76(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_139(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative76(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative92(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_3034b895(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative92(value2)));
   }
 
   public static java.util.Map<
@@ -1210,7 +1210,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.Integer value1,
       java.util.Map<java.lang.String, java.lang.Integer> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative79(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_140(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative79(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_a8f49e3e(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative2(value1), lawspec.runtime.LawSpecTyped.fromNative95(value2)));
   }
 
   public static java.util.Map<
@@ -1220,7 +1220,7 @@ public final class Model {
       lawspec.data.GroupPartition value0,
       java.lang.Long value1,
       java.util.Map<lawspec.data.GroupPartition, java.lang.Long> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative77(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_141(lawspec.runtime.LawSpecTyped.fromNative69(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative77(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative93(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_9fc3570a(lawspec.runtime.LawSpecTyped.fromNative85(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative93(value2)));
   }
 
   public static java.util.Map<
@@ -1230,7 +1230,7 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.ProducerEntry value1,
       java.util.Map<java.lang.Long, lawspec.data.ProducerEntry> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative78(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_142(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative78(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative94(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_87e622e8(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1), lawspec.runtime.LawSpecTyped.fromNative94(value2)));
   }
 
   public static java.util.Map<
@@ -1240,7 +1240,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<java.lang.String> value1,
       java.util.Map<java.lang.String, java.util.List<java.lang.String>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative52(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_143(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative52(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative68(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_3b439cbe(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1), lawspec.runtime.LawSpecTyped.fromNative68(value2)));
   }
 
   public static java.util.Map<
@@ -1249,7 +1249,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Long value1,
       java.util.Map<java.lang.Long, java.lang.Long> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative51(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_144(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative51(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative67(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_5cd34b74(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative67(value2)));
   }
 
   public static java.util.Map<
@@ -1260,20 +1260,20 @@ public final class Model {
       java.lang.String value0,
       java.util.List<lawspec.data.TopicPartition> value1,
       java.util.Map<java.lang.String, java.util.List<lawspec.data.TopicPartition>> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative56(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_145(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative56(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative72(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_efc6b866(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1), lawspec.runtime.LawSpecTyped.fromNative72(value2)));
   }
 
   public static java.util.List<
           java.lang.Long> lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.Long, java.lang.Long>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_146(lawspec.runtime.LawSpecTyped.fromNative50(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative100(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_40ef8eee(lawspec.runtime.LawSpecTyped.fromNative66(value0)));
   }
 
   public static java.util.List<
           java.lang.Long> lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
       Map<String, Object> symbols, java.util.Map<java.lang.Long, java.lang.Long> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative84(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_147(lawspec.runtime.LawSpecTyped.fromNative51(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative100(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_33bc036c(lawspec.runtime.LawSpecTyped.fromNative67(value0)));
   }
 
   public static java.util.List<
@@ -1281,7 +1281,7 @@ public final class Model {
       Map<String, Object> symbols,
       java.util.List<java.lang.String> value0,
       java.util.List<java.lang.String> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_149(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_b46ce3bb(lawspec.runtime.LawSpecTyped.fromNative17(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
   }
 
   public static java.util.List<
@@ -1289,19 +1289,19 @@ public final class Model {
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<java.lang.String> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_151(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_fd8b28ec(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative17(value1)));
   }
 
   public static java.util.Set<java.lang.String> lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
       Map<String, Object> symbols, java.util.List<java.lang.String> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_156(lawspec.runtime.LawSpecTyped.fromNative17(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative102(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_381c9692(lawspec.runtime.LawSpecTyped.fromNative17(value0)));
   }
 
   public static java.util.Set<java.lang.String> lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
       Map<String, Object> symbols,
       java.util.Set<java.lang.String> value0,
       java.util.Set<java.lang.String> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_161(lawspec.runtime.LawSpecTyped.fromNative86(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative102(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_604ff278(lawspec.runtime.LawSpecTyped.fromNative102(value0), lawspec.runtime.LawSpecTyped.fromNative102(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -1310,7 +1310,7 @@ public final class Model {
       java.lang.String value0,
       java.lang.String value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_195(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_5e5a3f69(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> listOffsets(
@@ -1319,24 +1319,24 @@ public final class Model {
       lawspec.data.OffsetSpec value1,
       lawspec.data.IsolationLevel value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_196(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative10(value1), lawspec.runtime.LawSpecTyped.fromNative9(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative36(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_9c6c9426(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative10(value1), lawspec.runtime.LawSpecTyped.fromNative9(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static lawspec.data.PartitionLog logOf(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_197(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative99(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_b86b131a(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.lang.Long max64(
       Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_198(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_98542b8b(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Integer maxPartitions(
       Map<String, Object> symbols, lawspec.runtime.LawSpecRuntime.Value value0) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_199(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_6be37992(lawspec.runtime.LawSpecTyped.fromNative0(value0)));
   }
 
   public static java.util.List<lawspec.data.MemberAssignment> memberViews(
@@ -1344,24 +1344,24 @@ public final class Model {
       java.util.List<
               lawspec.data.Entry<
                       java.lang.String, java.util.List<lawspec.data.TopicPartition>>> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative88(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_200(lawspec.runtime.LawSpecTyped.fromNative55(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative104(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_a87b1b1a(lawspec.runtime.LawSpecTyped.fromNative71(value0)));
   }
 
   public static lawspec.data.Pair<
           lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer>,
           lawspec.data.BrokerState> metadata(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_201(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative37(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_97bb5c4c(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.lang.Long min64(
       Map<String, Object> symbols, java.lang.Long value0, java.lang.Long value1) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_202(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_b47ce987(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static java.lang.Long minOf(
       Map<String, Object> symbols, java.util.List<java.lang.Long> value0, java.lang.Long value1) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_203(lawspec.runtime.LawSpecTyped.fromNative84(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_c4e891de(lawspec.runtime.LawSpecTyped.fromNative100(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -1369,7 +1369,7 @@ public final class Model {
       Map<String, Object> symbols,
       lawspec.runtime.LawSpecRuntime.Maybe<java.lang.String> value0,
       lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative26(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_204(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative34(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_89b0852d(lawspec.runtime.LawSpecTyped.fromNative12(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.lang.Long nextFetchOffset(
@@ -1378,7 +1378,7 @@ public final class Model {
       java.lang.Long value1,
       java.util.List<lawspec.data.FetchedRecord> value2,
       java.util.List<lawspec.data.FetchedRecord> value3) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_205(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative90(value2), lawspec.runtime.LawSpecTyped.fromNative90(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_28fd5a97(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative107(value2), lawspec.runtime.LawSpecTyped.fromNative107(value3)));
   }
 
   public static lawspec.data.Pair<
@@ -1389,7 +1389,7 @@ public final class Model {
       java.lang.Integer value2,
       java.util.List<lawspec.data.OffsetEntry> value3,
       lawspec.data.BrokerState value4) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_206(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative15(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_01d91ef0(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative15(value3), lawspec.runtime.LawSpecTyped.fromNative30(value4)));
   }
 
   public static lawspec.data.Pair<
@@ -1399,22 +1399,22 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.TopicPartition value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative24(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_207(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative32(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_f56dbfcd(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative5(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> offsetPartitions(
       Map<String, Object> symbols, java.util.List<lawspec.data.OffsetEntry> value0) {
-    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_208(lawspec.runtime.LawSpecTyped.fromNative15(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_ffb8aecd(lawspec.runtime.LawSpecTyped.fromNative15(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> partitionCountOf(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_209(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_ff180c35(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.util.List<java.lang.Integer> partitionsBelow(
       Map<String, Object> symbols, java.lang.Integer value0) {
-    return lawspec.runtime.LawSpecTyped.toNative85(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_210(lawspec.runtime.LawSpecTyped.fromNative2(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative101(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_19525eca(lawspec.runtime.LawSpecTyped.fromNative2(value0)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset> pendingFor(
@@ -1422,7 +1422,7 @@ public final class Model {
       java.lang.String value0,
       java.util.List<lawspec.data.OffsetEntry> value1,
       java.util.List<lawspec.data.PendingOffset> value2) {
-    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_211(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative95(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative110(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_50512591(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative15(value1), lawspec.runtime.LawSpecTyped.fromNative110(value2)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> produce(
@@ -1431,7 +1431,7 @@ public final class Model {
       lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag> value1,
       java.util.List<lawspec.data.Record> value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_212(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative6(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative36(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_834568df(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative6(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static lawspec.data.Pair<java.lang.Long, lawspec.data.BrokerState> produceTagged(
@@ -1441,7 +1441,7 @@ public final class Model {
       java.util.List<lawspec.data.Record> value2,
       lawspec.data.PartitionLog value3,
       lawspec.data.BrokerState value4) {
-    return lawspec.runtime.LawSpecTyped.toNative28(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_213(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative83(value3), lawspec.runtime.LawSpecTyped.fromNative22(value4)));
+    return lawspec.runtime.LawSpecTyped.toNative36(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_86f854e7(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative113(value1), lawspec.runtime.LawSpecTyped.fromNative7(value2), lawspec.runtime.LawSpecTyped.fromNative99(value3), lawspec.runtime.LawSpecTyped.fromNative30(value4)));
   }
 
   public static lawspec.data.BrokerState putGroup(
@@ -1449,7 +1449,7 @@ public final class Model {
       java.lang.String value0,
       lawspec.data.Group value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_214(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_f45eaad0(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static lawspec.data.BrokerState putLog(
@@ -1457,7 +1457,7 @@ public final class Model {
       lawspec.data.TopicPartition value0,
       lawspec.data.PartitionLog value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_215(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative83(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_cb3cbf5e(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static lawspec.data.BrokerState putProducer(
@@ -1465,7 +1465,7 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.ProducerEntry value1,
       lawspec.data.BrokerState value2) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_216(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative80(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_4ef907a5(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2)));
   }
 
   public static java.util.List<lawspec.data.FetchedRecord> readable(
@@ -1476,12 +1476,12 @@ public final class Model {
       java.lang.Boolean value3,
       java.util.List<lawspec.data.AbortedTxn> value4,
       java.util.List<lawspec.data.FetchedRecord> value5) {
-    return lawspec.runtime.LawSpecTyped.toNative90(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_217(lawspec.runtime.LawSpecTyped.fromNative94(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative97(value4), lawspec.runtime.LawSpecTyped.fromNative90(value5)));
+    return lawspec.runtime.LawSpecTyped.toNative107(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_adec3284(lawspec.runtime.LawSpecTyped.fromNative109(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative4(value2), lawspec.runtime.LawSpecTyped.fromNative16(value3), lawspec.runtime.LawSpecTyped.fromNative112(value4), lawspec.runtime.LawSpecTyped.fromNative107(value5)));
   }
 
   public static lawspec.data.Group rebalance(
       Map<String, Object> symbols, lawspec.data.Group value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative82(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_218(lawspec.runtime.LawSpecTyped.fromNative82(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative98(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_c9984d55(lawspec.runtime.LawSpecTyped.fromNative98(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static java.util.Map<java.lang.String, lawspec.data.Group> rebalanceGroups(
@@ -1490,12 +1490,12 @@ public final class Model {
       java.util.List<lawspec.data.Entry<java.lang.String, lawspec.data.Group>> value1,
       lawspec.data.BrokerState value2,
       java.util.Map<java.lang.String, lawspec.data.Group> value3) {
-    return lawspec.runtime.LawSpecTyped.toNative54(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_219(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative53(value1), lawspec.runtime.LawSpecTyped.fromNative22(value2), lawspec.runtime.LawSpecTyped.fromNative54(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative70(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_ad90673b(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative69(value1), lawspec.runtime.LawSpecTyped.fromNative30(value2), lawspec.runtime.LawSpecTyped.fromNative70(value3)));
   }
 
   public static lawspec.data.BrokerState rebalanceTopic(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.BrokerState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_220(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative22(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_823cd68b(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative30(value1)));
   }
 
   public static lawspec.data.PartitionLog rememberBatch(
@@ -1503,21 +1503,21 @@ public final class Model {
       java.lang.Long value0,
       lawspec.data.BatchMeta value1,
       lawspec.data.PartitionLog value2) {
-    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_221(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative99(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative99(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_33fa600f(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative114(value1), lawspec.runtime.LawSpecTyped.fromNative99(value2)));
   }
 
   public static java.util.List<lawspec.data.PendingOffset> reversePending(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.PendingOffset> value0,
       java.util.List<lawspec.data.PendingOffset> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative95(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_222(lawspec.runtime.LawSpecTyped.fromNative95(value0), lawspec.runtime.LawSpecTyped.fromNative95(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative110(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_51ca5898(lawspec.runtime.LawSpecTyped.fromNative110(value0), lawspec.runtime.LawSpecTyped.fromNative110(value1)));
   }
 
   public static java.util.Set<java.lang.String> subscribedTopics(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value0,
       java.util.Set<java.lang.String> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative86(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_223(lawspec.runtime.LawSpecTyped.fromNative49(value0), lawspec.runtime.LawSpecTyped.fromNative86(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative102(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_c1d720b5(lawspec.runtime.LawSpecTyped.fromNative65(value0), lawspec.runtime.LawSpecTyped.fromNative102(value1)));
   }
 
   public static java.util.List<java.lang.String> subscribersOf(
@@ -1525,12 +1525,12 @@ public final class Model {
       java.lang.String value0,
       java.util.List<
               lawspec.data.Entry<java.lang.String, java.util.List<java.lang.String>>> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_224(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative49(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative17(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_e9347318(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative65(value1)));
   }
 
   public static java.lang.Boolean subscribesTo(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.Group value1) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_225(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative82(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_c3c674c3(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative98(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -1540,21 +1540,21 @@ public final class Model {
       java.lang.String value1,
       java.lang.Integer value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_226(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative38(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_b3d01c80(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative1(value1), lawspec.runtime.LawSpecTyped.fromNative2(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> topicPartitions(
       Map<String, Object> symbols,
       java.lang.String value0,
       java.util.List<java.lang.Integer> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.topicPartitions_259(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative85(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.topicPartitions_a717cef5(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative101(value1)));
   }
 
   public static java.lang.Boolean txnHasPartition(
       Map<String, Object> symbols,
       lawspec.data.TopicPartition value0,
       lawspec.data.TxnState value1) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_227(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative96(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_8fa1cfc0(lawspec.runtime.LawSpecTyped.fromNative5(value0), lawspec.runtime.LawSpecTyped.fromNative111(value1)));
   }
 
   public static lawspec.data.Pair<
@@ -1566,19 +1566,19 @@ public final class Model {
       java.lang.String value3,
       java.util.List<lawspec.data.OffsetEntry> value4,
       lawspec.data.BrokerState value5) {
-    return lawspec.runtime.LawSpecTyped.toNative21(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_228(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative1(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4), lawspec.runtime.LawSpecTyped.fromNative22(value5)));
+    return lawspec.runtime.LawSpecTyped.toNative29(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative4(value1), lawspec.runtime.LawSpecTyped.fromNative13(value2), lawspec.runtime.LawSpecTyped.fromNative1(value3), lawspec.runtime.LawSpecTyped.fromNative15(value4), lawspec.runtime.LawSpecTyped.fromNative30(value5)));
   }
 
   public static java.util.List<lawspec.data.TopicPartition> unionPartitions(
       Map<String, Object> symbols,
       java.util.List<lawspec.data.TopicPartition> value0,
       java.util.List<lawspec.data.TopicPartition> value1) {
-    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_229(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative14(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_c791d224(lawspec.runtime.LawSpecTyped.fromNative14(value0), lawspec.runtime.LawSpecTyped.fromNative14(value1)));
   }
 
   public static java.lang.Boolean validTopicName(
       Map<String, Object> symbols, java.lang.String value0) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_230(lawspec.runtime.LawSpecTyped.fromNative1(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_39dd4596(lawspec.runtime.LawSpecTyped.fromNative1(value0)));
   }
 
   public static lawspec.data.PartitionLog writeMarker(
@@ -1586,7 +1586,7 @@ public final class Model {
       java.lang.Long value0,
       java.lang.Boolean value1,
       lawspec.data.PartitionLog value2) {
-    return lawspec.runtime.LawSpecTyped.toNative83(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_231(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative83(value2)));
+    return lawspec.runtime.LawSpecTyped.toNative99(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_8dc995f8(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative99(value2)));
   }
 
   public static lawspec.data.BrokerState writeMarkers(
@@ -1595,6 +1595,6 @@ public final class Model {
       java.lang.Boolean value1,
       java.util.List<lawspec.data.TopicPartition> value2,
       lawspec.data.BrokerState value3) {
-    return lawspec.runtime.LawSpecTyped.toNative22(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_232(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative14(value2), lawspec.runtime.LawSpecTyped.fromNative22(value3)));
+    return lawspec.runtime.LawSpecTyped.toNative30(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_c507f08e(lawspec.runtime.LawSpecTyped.fromNative4(value0), lawspec.runtime.LawSpecTyped.fromNative16(value1), lawspec.runtime.LawSpecTyped.fromNative14(value2), lawspec.runtime.LawSpecTyped.fromNative30(value3)));
   }
 }

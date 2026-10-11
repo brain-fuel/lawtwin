@@ -3329,7 +3329,7 @@ pub fn recorded_root() -> std::path::PathBuf {
 }
 
 pub fn recorded(key: &str, value: &Value) -> Result<bool> {
-    let text = render(value);
+    let text = recorded_text(value);
     let mut path = recorded_root();
     for part in key.split('/') {
         path.push(part);
@@ -3920,6 +3920,90 @@ pub fn render(v: &Value) -> String {
         Value::Handle(h) => h.label(),
         other => format!("{other:?}"),
     }
+}
+
+/// Typed snapshot text with identities numbered inside one recording.
+/// ref:REQ-law-primitives ref:DEC-portable-exact-arithmetic
+pub fn recorded_text(value: &Value) -> String {
+    #[derive(Default)]
+    struct Recording {
+        symbols: Vec<Symbol>,
+        handles: HashMap<&'static str, Vec<Handle>>,
+    }
+    fn quote(text: &str) -> String {
+        format!("\"{}\"", text.replace('\\', "\\\\").replace('"', "\\\""))
+    }
+    fn float32(value: f32) -> String {
+        if value.is_nan() { "float32NaN".into() }
+        else { format!("float32Bits(\"{:08x}\")", value.to_bits()) }
+    }
+    fn float64(value: f64) -> String {
+        if value.is_nan() { "float64NaN".into() }
+        else { format!("float64Bits(\"{:016x}\")", value.to_bits()) }
+    }
+    fn units<T: std::fmt::Display>(name: &str, values: &[T]) -> String {
+        format!("{name}([{}])", values.iter().map(ToString::to_string).collect::<Vec<_>>().join(", "))
+    }
+    impl Recording {
+        fn values(&mut self, values: &[Value]) -> String {
+            values.iter().map(|value| self.render(value)).collect::<Vec<_>>().join(", ")
+        }
+        fn render(&mut self, value: &Value) -> String {
+            match value {
+                Value::Bool(v) => v.to_string(),
+                Value::Integer(v) => v.to_string(),
+                Value::Decimal(v) => {
+                    let (mut c, mut e) = (v.coefficient.clone(), v.exponent.clone());
+                    if c.is_zero() { return "0e0".into(); }
+                    while (&c % 10u8).is_zero() { c /= 10u8; e += 1u8; }
+                    format!("{c}e{e}")
+                }
+                Value::Rational(v) => format!("rational({}, {})", v.numer(), v.denom()),
+                Value::Float32(v) => float32(*v),
+                Value::Float64(v) => float64(*v),
+                Value::Complex32(v) => format!("Complex64({}, {})", float32(v.re), float32(v.im)),
+                Value::Complex64(v) => format!("Complex128({}, {})", float64(v.re), float64(v.im)),
+                Value::Char(v) => quote(&v.to_string()),
+                Value::CodePoint(v) => v.to_string(),
+                Value::CodeUnit16(v) => v.to_string(),
+                Value::Text(v) => quote(v),
+                Value::CodePointText(v) => units("codePoints", v),
+                Value::Utf16Text(v) => units("utf16", v),
+                Value::Bytes(v) => units("bytes", v),
+                Value::Symbol(v) => {
+                    let number = match self.symbols.iter().position(|other| other == v) {
+                        Some(i) => i + 1,
+                        None => { self.symbols.push(v.clone()); self.symbols.len() }
+                    };
+                    format!("symbol({number}, {})", quote(v.description()))
+                }
+                Value::Unit => "()".into(),
+                Value::Null | Value::Nullable(None) => "null".into(),
+                Value::Undefined | Value::Optional(None) => "undefined".into(),
+                Value::Nullable(Some(v)) => format!("nullable({})", self.render(v)),
+                Value::Optional(Some(v)) => format!("optional({})", self.render(v)),
+                Value::List(vs) => format!("[{}]", self.values(vs)),
+                Value::Maybe(None) => "Nothing".into(),
+                Value::Maybe(Some(v)) => format!("Just({})", self.render(v)),
+                Value::Left(v) => format!("Left({})", self.render(v)),
+                Value::Right(v) => format!("Right({})", self.render(v)),
+                Value::Data(tag, vs) => {
+                    let name = tag.rsplit("::").next().unwrap_or(tag);
+                    if vs.is_empty() { name.into() } else { format!("{name}({})", self.values(vs)) }
+                }
+                Value::Handle(v) => {
+                    let name = v.0.name.get().copied().unwrap_or("Handle");
+                    let known = self.handles.entry(name).or_default();
+                    let number = match known.iter().position(|other| other.same(v)) {
+                        Some(i) => i + 1,
+                        None => { known.push(v.clone()); known.len() }
+                    };
+                    format!("{}#{number}", name.rsplit("::").next().unwrap_or(name))
+                }
+            }
+        }
+    }
+    Recording::default().render(value)
 }
 
 /// A descriptor text's data types and its last form, the one generated.

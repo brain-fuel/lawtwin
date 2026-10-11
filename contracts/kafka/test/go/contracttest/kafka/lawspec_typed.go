@@ -337,8 +337,8 @@ func lsfOrderingOf(c int) lsfOrdering {
 	return lsfOrdering_Greater
 }
 
-// lsfBoundedInt16_0 is lawspec.collections::boundedInt16.
-func lsfBoundedInt16_0(lValue0 lsfInt) lsfMaybe[int16] {
+// lsfBoundedInt16_cdb4a79e is lawspec.collections::boundedInt16.
+func lsfBoundedInt16_cdb4a79e(lValue0 lsfInt) lsfMaybe[int16] {
 	if ((lsfCmpInt(lValue0, lsfSmall(int64(-32768))) >= 0) && (lsfCmpInt(lValue0, lsfSmall(int64(32767))) <= 0)) {
 		return lsfJust[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
 	} else {
@@ -346,8 +346,8 @@ func lsfBoundedInt16_0(lValue0 lsfInt) lsfMaybe[int16] {
 	}
 }
 
-// lsfBoundedInt32_1 is lawspec.collections::boundedInt32.
-func lsfBoundedInt32_1(lValue1 lsfInt) lsfMaybe[int32] {
+// lsfBoundedInt32_b3381d93 is lawspec.collections::boundedInt32.
+func lsfBoundedInt32_b3381d93(lValue1 lsfInt) lsfMaybe[int32] {
 	if ((lsfCmpInt(lValue1, lsfSmall(int64(-2147483648))) >= 0) && (lsfCmpInt(lValue1, lsfSmall(int64(2147483647))) <= 0)) {
 		return lsfJust[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
 	} else {
@@ -355,8 +355,8 @@ func lsfBoundedInt32_1(lValue1 lsfInt) lsfMaybe[int32] {
 	}
 }
 
-// lsfBoundedInt64_2 is lawspec.collections::boundedInt64.
-func lsfBoundedInt64_2(lValue2 lsfInt) lsfMaybe[int64] {
+// lsfBoundedInt64_13153a18 is lawspec.collections::boundedInt64.
+func lsfBoundedInt64_13153a18(lValue2 lsfInt) lsfMaybe[int64] {
 	if ((lsfCmpInt(lValue2, lsfSmall(-9223372036854775808)) >= 0) && (lsfCmpInt(lValue2, lsfSmall(9223372036854775807)) <= 0)) {
 		return lsfJust[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
 	} else {
@@ -364,8 +364,8 @@ func lsfBoundedInt64_2(lValue2 lsfInt) lsfMaybe[int64] {
 	}
 }
 
-// lsfBoundedInt8_3 is lawspec.collections::boundedInt8.
-func lsfBoundedInt8_3(lValue3 lsfInt) lsfMaybe[int8] {
+// lsfBoundedInt8_9822648b is lawspec.collections::boundedInt8.
+func lsfBoundedInt8_9822648b(lValue3 lsfInt) lsfMaybe[int8] {
 	if ((lsfCmpInt(lValue3, lsfSmall(int64(-128))) >= 0) && (lsfCmpInt(lValue3, lsfSmall(int64(127))) <= 0)) {
 		return lsfJust[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
 	} else {
@@ -373,8 +373,8 @@ func lsfBoundedInt8_3(lValue3 lsfInt) lsfMaybe[int8] {
 	}
 }
 
-// lsfBoundedUInt16_4 is lawspec.collections::boundedUInt16.
-func lsfBoundedUInt16_4(lValue4 lsfInt) lsfMaybe[uint16] {
+// lsfBoundedUInt16_fab24aa3 is lawspec.collections::boundedUInt16.
+func lsfBoundedUInt16_fab24aa3(lValue4 lsfInt) lsfMaybe[uint16] {
 	if ((lsfCmpInt(lValue4, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue4, lsfSmall(int64(65535))) <= 0)) {
 		return lsfJust[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
 	} else {
@@ -382,8 +382,8 @@ func lsfBoundedUInt16_4(lValue4 lsfInt) lsfMaybe[uint16] {
 	}
 }
 
-// lsfBoundedUInt32_5 is lawspec.collections::boundedUInt32.
-func lsfBoundedUInt32_5(lValue5 lsfInt) lsfMaybe[uint32] {
+// lsfBoundedUInt32_f7521c17 is lawspec.collections::boundedUInt32.
+func lsfBoundedUInt32_f7521c17(lValue5 lsfInt) lsfMaybe[uint32] {
 	if ((lsfCmpInt(lValue5, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue5, lsfSmall(int64(4294967295))) <= 0)) {
 		return lsfJust[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
 	} else {
@@ -391,8 +391,8 @@ func lsfBoundedUInt32_5(lValue5 lsfInt) lsfMaybe[uint32] {
 	}
 }
 
-// lsfBoundedUInt64_6 is lawspec.collections::boundedUInt64.
-func lsfBoundedUInt64_6(lValue6 lsfInt) lsfMaybe[uint64] {
+// lsfBoundedUInt64_ca410424 is lawspec.collections::boundedUInt64.
+func lsfBoundedUInt64_ca410424(lValue6 lsfInt) lsfMaybe[uint64] {
 	if ((lsfCmpInt(lValue6, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue6, lsfFromBig(lsInt("18446744073709551615"))) <= 0)) {
 		return lsfJust[uint64](lsfNarrowUint64(lValue6))
 	} else {
@@ -400,8 +400,8 @@ func lsfBoundedUInt64_6(lValue6 lsfInt) lsfMaybe[uint64] {
 	}
 }
 
-// lsfBoundedUInt8_7 is lawspec.collections::boundedUInt8.
-func lsfBoundedUInt8_7(lValue7 lsfInt) lsfMaybe[uint8] {
+// lsfBoundedUInt8_8ce0c76e is lawspec.collections::boundedUInt8.
+func lsfBoundedUInt8_8ce0c76e(lValue7 lsfInt) lsfMaybe[uint8] {
 	if ((lsfCmpInt(lValue7, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue7, lsfSmall(int64(255))) <= 0)) {
 		return lsfJust[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
 	} else {
@@ -409,8 +409,8 @@ func lsfBoundedUInt8_7(lValue7 lsfInt) lsfMaybe[uint8] {
 	}
 }
 
-// lsfSaturatingInt16_8 is lawspec.collections::saturatingInt16.
-func lsfSaturatingInt16_8(lValue8 lsfInt) int16 {
+// lsfSaturatingInt16_770015a8 is lawspec.collections::saturatingInt16.
+func lsfSaturatingInt16_770015a8(lValue8 lsfInt) int16 {
 	if (lsfCmpInt(lValue8, lsfSmall(int64(32767))) > 0) {
 		return int16(lsfNarrow(int64(32767), -32768, 32767, "Int16"))
 	} else {
@@ -422,8 +422,8 @@ func lsfSaturatingInt16_8(lValue8 lsfInt) int16 {
 	}
 }
 
-// lsfSaturatingInt32_9 is lawspec.collections::saturatingInt32.
-func lsfSaturatingInt32_9(lValue9 lsfInt) int32 {
+// lsfSaturatingInt32_9e8d3b43 is lawspec.collections::saturatingInt32.
+func lsfSaturatingInt32_9e8d3b43(lValue9 lsfInt) int32 {
 	if (lsfCmpInt(lValue9, lsfSmall(int64(2147483647))) > 0) {
 		return int32(lsfNarrow(int64(2147483647), -2147483648, 2147483647, "Int32"))
 	} else {
@@ -435,8 +435,8 @@ func lsfSaturatingInt32_9(lValue9 lsfInt) int32 {
 	}
 }
 
-// lsfSaturatingInt64_10 is lawspec.collections::saturatingInt64.
-func lsfSaturatingInt64_10(lValue10 lsfInt) int64 {
+// lsfSaturatingInt64_5bce4ed8 is lawspec.collections::saturatingInt64.
+func lsfSaturatingInt64_5bce4ed8(lValue10 lsfInt) int64 {
 	if (lsfCmpInt(lValue10, lsfSmall(9223372036854775807)) > 0) {
 		return int64(lsfNarrowInt(lsfSmall(9223372036854775807), -1 << 63, 9223372036854775807, "Int64"))
 	} else {
@@ -448,8 +448,8 @@ func lsfSaturatingInt64_10(lValue10 lsfInt) int64 {
 	}
 }
 
-// lsfSaturatingInt8_11 is lawspec.collections::saturatingInt8.
-func lsfSaturatingInt8_11(lValue11 lsfInt) int8 {
+// lsfSaturatingInt8_54855fd8 is lawspec.collections::saturatingInt8.
+func lsfSaturatingInt8_54855fd8(lValue11 lsfInt) int8 {
 	if (lsfCmpInt(lValue11, lsfSmall(int64(127))) > 0) {
 		return int8(lsfNarrow(int64(127), -128, 127, "Int8"))
 	} else {
@@ -461,8 +461,8 @@ func lsfSaturatingInt8_11(lValue11 lsfInt) int8 {
 	}
 }
 
-// lsfSaturatingUInt16_12 is lawspec.collections::saturatingUInt16.
-func lsfSaturatingUInt16_12(lValue12 lsfInt) uint16 {
+// lsfSaturatingUInt16_c4c11e3b is lawspec.collections::saturatingUInt16.
+func lsfSaturatingUInt16_c4c11e3b(lValue12 lsfInt) uint16 {
 	if (lsfCmpInt(lValue12, lsfSmall(int64(65535))) > 0) {
 		return uint16(lsfNarrow(int64(65535), 0, 65535, "UInt16"))
 	} else {
@@ -474,8 +474,8 @@ func lsfSaturatingUInt16_12(lValue12 lsfInt) uint16 {
 	}
 }
 
-// lsfSaturatingUInt32_13 is lawspec.collections::saturatingUInt32.
-func lsfSaturatingUInt32_13(lValue13 lsfInt) uint32 {
+// lsfSaturatingUInt32_6d025357 is lawspec.collections::saturatingUInt32.
+func lsfSaturatingUInt32_6d025357(lValue13 lsfInt) uint32 {
 	if (lsfCmpInt(lValue13, lsfSmall(int64(4294967295))) > 0) {
 		return uint32(lsfNarrow(int64(4294967295), 0, 4294967295, "UInt32"))
 	} else {
@@ -487,8 +487,8 @@ func lsfSaturatingUInt32_13(lValue13 lsfInt) uint32 {
 	}
 }
 
-// lsfSaturatingUInt64_14 is lawspec.collections::saturatingUInt64.
-func lsfSaturatingUInt64_14(lValue14 lsfInt) uint64 {
+// lsfSaturatingUInt64_dce984c8 is lawspec.collections::saturatingUInt64.
+func lsfSaturatingUInt64_dce984c8(lValue14 lsfInt) uint64 {
 	if (lsfCmpInt(lValue14, lsfFromBig(lsInt("18446744073709551615"))) > 0) {
 		return lsfNarrowUint64(lsfFromBig(lsInt("18446744073709551615")))
 	} else {
@@ -500,8 +500,8 @@ func lsfSaturatingUInt64_14(lValue14 lsfInt) uint64 {
 	}
 }
 
-// lsfSaturatingUInt8_15 is lawspec.collections::saturatingUInt8.
-func lsfSaturatingUInt8_15(lValue15 lsfInt) uint8 {
+// lsfSaturatingUInt8_cf40d611 is lawspec.collections::saturatingUInt8.
+func lsfSaturatingUInt8_cf40d611(lValue15 lsfInt) uint8 {
 	if (lsfCmpInt(lValue15, lsfSmall(int64(255))) > 0) {
 		return uint8(lsfNarrow(int64(255), 0, 255, "UInt8"))
 	} else {
@@ -513,8 +513,8 @@ func lsfSaturatingUInt8_15(lValue15 lsfInt) uint8 {
 	}
 }
 
-// lsfWrappingInt16_16 is lawspec.collections::wrappingInt16.
-func lsfWrappingInt16_16(lValue16 lsfInt) int16 {
+// lsfWrappingInt16_989a4ce2 is lawspec.collections::wrappingInt16.
+func lsfWrappingInt16_989a4ce2(lValue16 lsfInt) int16 {
 	lR17 := lValue16.Sub(lsfSmall(int64(-32768))).Rem(lsfSmall(int64(32767)).Sub(lsfSmall(int64(-32768))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR17, lsfSmall(int64(0))) < 0) {
 		return int16(lsfNarrowInt(lR17.Add(lsfSmall(int64(32767)).Sub(lsfSmall(int64(-32768))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-32768))), -32768, 32767, "Int16"))
@@ -523,8 +523,8 @@ func lsfWrappingInt16_16(lValue16 lsfInt) int16 {
 	}
 }
 
-// lsfWrappingInt32_17 is lawspec.collections::wrappingInt32.
-func lsfWrappingInt32_17(lValue18 lsfInt) int32 {
+// lsfWrappingInt32_e1b5a7b2 is lawspec.collections::wrappingInt32.
+func lsfWrappingInt32_e1b5a7b2(lValue18 lsfInt) int32 {
 	lR19 := lValue18.Sub(lsfSmall(int64(-2147483648))).Rem(lsfSmall(int64(2147483647)).Sub(lsfSmall(int64(-2147483648))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR19, lsfSmall(int64(0))) < 0) {
 		return int32(lsfNarrowInt(lR19.Add(lsfSmall(int64(2147483647)).Sub(lsfSmall(int64(-2147483648))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-2147483648))), -2147483648, 2147483647, "Int32"))
@@ -533,8 +533,8 @@ func lsfWrappingInt32_17(lValue18 lsfInt) int32 {
 	}
 }
 
-// lsfWrappingInt64_18 is lawspec.collections::wrappingInt64.
-func lsfWrappingInt64_18(lValue20 lsfInt) int64 {
+// lsfWrappingInt64_698b955a is lawspec.collections::wrappingInt64.
+func lsfWrappingInt64_698b955a(lValue20 lsfInt) int64 {
 	lR21 := lValue20.Sub(lsfSmall(-9223372036854775808)).Rem(lsfSmall(9223372036854775807).Sub(lsfSmall(-9223372036854775808)).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR21, lsfSmall(int64(0))) < 0) {
 		return int64(lsfNarrowInt(lR21.Add(lsfSmall(9223372036854775807).Sub(lsfSmall(-9223372036854775808)).Add(lsfSmall(int64(1)))).Add(lsfSmall(-9223372036854775808)), -1 << 63, 9223372036854775807, "Int64"))
@@ -543,8 +543,8 @@ func lsfWrappingInt64_18(lValue20 lsfInt) int64 {
 	}
 }
 
-// lsfWrappingInt8_19 is lawspec.collections::wrappingInt8.
-func lsfWrappingInt8_19(lValue22 lsfInt) int8 {
+// lsfWrappingInt8_728a92af is lawspec.collections::wrappingInt8.
+func lsfWrappingInt8_728a92af(lValue22 lsfInt) int8 {
 	lR23 := lValue22.Sub(lsfSmall(int64(-128))).Rem(lsfSmall(int64(127)).Sub(lsfSmall(int64(-128))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR23, lsfSmall(int64(0))) < 0) {
 		return int8(lsfNarrowInt(lR23.Add(lsfSmall(int64(127)).Sub(lsfSmall(int64(-128))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-128))), -128, 127, "Int8"))
@@ -553,8 +553,8 @@ func lsfWrappingInt8_19(lValue22 lsfInt) int8 {
 	}
 }
 
-// lsfWrappingUInt16_20 is lawspec.collections::wrappingUInt16.
-func lsfWrappingUInt16_20(lValue24 lsfInt) uint16 {
+// lsfWrappingUInt16_e5742dd2 is lawspec.collections::wrappingUInt16.
+func lsfWrappingUInt16_e5742dd2(lValue24 lsfInt) uint16 {
 	lR25 := lValue24.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(65535)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR25, lsfSmall(int64(0))) < 0) {
 		return uint16(lsfNarrowInt(lR25.Add(lsfSmall(int64(65535)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 65535, "UInt16"))
@@ -563,8 +563,8 @@ func lsfWrappingUInt16_20(lValue24 lsfInt) uint16 {
 	}
 }
 
-// lsfWrappingUInt32_21 is lawspec.collections::wrappingUInt32.
-func lsfWrappingUInt32_21(lValue26 lsfInt) uint32 {
+// lsfWrappingUInt32_1ef3ce20 is lawspec.collections::wrappingUInt32.
+func lsfWrappingUInt32_1ef3ce20(lValue26 lsfInt) uint32 {
 	lR27 := lValue26.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(4294967295)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR27, lsfSmall(int64(0))) < 0) {
 		return uint32(lsfNarrowInt(lR27.Add(lsfSmall(int64(4294967295)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 4294967295, "UInt32"))
@@ -573,8 +573,8 @@ func lsfWrappingUInt32_21(lValue26 lsfInt) uint32 {
 	}
 }
 
-// lsfWrappingUInt64_22 is lawspec.collections::wrappingUInt64.
-func lsfWrappingUInt64_22(lValue28 lsfInt) uint64 {
+// lsfWrappingUInt64_362f8288 is lawspec.collections::wrappingUInt64.
+func lsfWrappingUInt64_362f8288(lValue28 lsfInt) uint64 {
 	lR29 := lValue28.Sub(lsfSmall(int64(0))).Rem(lsfFromBig(lsInt("18446744073709551615")).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR29, lsfSmall(int64(0))) < 0) {
 		return lsfNarrowUint64(lR29.Add(lsfFromBig(lsInt("18446744073709551615")).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))))
@@ -583,8 +583,8 @@ func lsfWrappingUInt64_22(lValue28 lsfInt) uint64 {
 	}
 }
 
-// lsfWrappingUInt8_23 is lawspec.collections::wrappingUInt8.
-func lsfWrappingUInt8_23(lValue30 lsfInt) uint8 {
+// lsfWrappingUInt8_6ce2e7d2 is lawspec.collections::wrappingUInt8.
+func lsfWrappingUInt8_6ce2e7d2(lValue30 lsfInt) uint8 {
 	lR31 := lValue30.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(255)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR31, lsfSmall(int64(0))) < 0) {
 		return uint8(lsfNarrowInt(lR31.Add(lsfSmall(int64(255)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 255, "UInt8"))
@@ -593,19 +593,19 @@ func lsfWrappingUInt8_23(lValue30 lsfInt) uint8 {
 	}
 }
 
-// lsfAllAtLeast_25 is lawtwin.kafka::allAtLeast.
-func lsfAllAtLeast_25(lFloor32 int64, lXs33 *lsfList[int64]) bool {
+// lsfAllAtLeast_3df55027 is lawtwin.kafka::allAtLeast.
+func lsfAllAtLeast_3df55027(lFloor32 int64, lXs33 *lsfList[int64]) bool {
 	if lXs33 == nil {
 		return true
 	} else {
 		lH34 := lXs33.head
 		lT35 := lXs33.tail
-		return ((lH34 >= lFloor32) && lsfAllAtLeast_25(lFloor32, lT35))
+		return ((lH34 >= lFloor32) && lsfAllAtLeast_3df55027(lFloor32, lT35))
 	}
 }
 
-// lsfAssignmentIn_26 is lawtwin.kafka::assignmentIn.
-func lsfAssignmentIn_26(lM36 string, lMs37 *lsfList[*lsfMemberAssignment]) *lsfList[*lsfTopicPartition] {
+// lsfAssignmentIn_4b795225 is lawtwin.kafka::assignmentIn.
+func lsfAssignmentIn_4b795225(lM36 string, lMs37 *lsfList[*lsfMemberAssignment]) *lsfList[*lsfTopicPartition] {
 	for {
 		if lMs37 == nil {
 			return (*lsfList[*lsfTopicPartition])(nil)
@@ -613,11 +613,11 @@ func lsfAssignmentIn_26(lM36 string, lMs37 *lsfList[*lsfMemberAssignment]) *lsfL
 			lA38 := lMs37.head
 			lRest39 := lMs37.tail
 			var lValue40 string
-			lLawspecfield6x041 := lA38.fMemberId
-			lValue40 = lLawspecfield6x041
+			lLawspecfieldmemberid41 := lA38.fMemberId
+			lValue40 = lLawspecfieldmemberid41
 			if ((lValue40) == (lM36)) {
-				lLawspecfield7x142 := lA38.fAssigned
-				return lLawspecfield7x142
+				lLawspecfieldassigned42 := lA38.fAssigned
+				return lLawspecfieldassigned42
 			} else {
 				lNext43 := lRest39
 				lMs37 = lNext43
@@ -627,663 +627,1344 @@ func lsfAssignmentIn_26(lM36 string, lMs37 *lsfList[*lsfMemberAssignment]) *lsfL
 	}
 }
 
-// lsfClusterAddPartitionsToTxnRequest_27 is lawtwin.kafka::clusterAddPartitionsToTxnRequest.
-func lsfClusterAddPartitionsToTxnRequest_27(lState44 *lsfBrokerState, lValue045 string, lValue146 int64, lValue247 int16, lValue348 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelAddPartitionsToTxn_165(lValue045, lValue146, lValue247, lValue348, lState44)
+// lsfClusterAddPartitionsToTxnRequest_026ba83d is lawtwin.kafka::clusterAddPartitionsToTxnRequest.
+func lsfClusterAddPartitionsToTxnRequest_026ba83d(lState44 *lsfBrokerState, lValue045 string, lValue146 int64, lValue247 int16, lValue348 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82(lValue045, lValue146, lValue247, lValue348, lState44)
 }
 
-// lsfClusterCommitOffsets_28 is lawtwin.kafka::clusterCommitOffsets.
-func lsfClusterCommitOffsets_28(lState49 *lsfBrokerState, lValue050 string, lValue151 string, lValue252 int32, lValue353 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelOffsetCommit_209(lValue050, lValue151, lValue252, lValue353, lState49)
+// lsfClusterCommitOffsets_d3b39e4c is lawtwin.kafka::clusterCommitOffsets.
+func lsfClusterCommitOffsets_d3b39e4c(lState49 *lsfBrokerState, lValue050 string, lValue151 string, lValue252 int32, lValue353 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelOffsetCommit_01d91ef0(lValue050, lValue151, lValue252, lValue353, lState49)
 }
 
-// lsfClusterCreatePartitions_29 is lawtwin.kafka::clusterCreatePartitions.
-func lsfClusterCreatePartitions_29(lState54 *lsfBrokerState, lValue055 string, lValue156 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelCreatePartitions_177(lValue055, lValue156, lState54)
+// lsfClusterCreatePartitions_0f2bdce3 is lawtwin.kafka::clusterCreatePartitions.
+func lsfClusterCreatePartitions_0f2bdce3(lState54 *lsfBrokerState, lValue055 string, lValue156 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelCreatePartitions_8c9ce76b(lValue055, lValue156, lState54)
 }
 
-// lsfClusterCreateTopic_30 is lawtwin.kafka::clusterCreateTopic.
-func lsfClusterCreateTopic_30(lState57 *lsfBrokerState, lValue058 string, lValue159 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelCreateTopic_178(lValue058, lValue159, lState57)
+// lsfClusterCreateTopic_25a8c8e9 is lawtwin.kafka::clusterCreateTopic.
+func lsfClusterCreateTopic_25a8c8e9(lState57 *lsfBrokerState, lValue058 string, lValue159 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelCreateTopic_0d831a39(lValue058, lValue159, lState57)
 }
 
-// lsfClusterDescribeGroup_31 is lawtwin.kafka::clusterDescribeGroup.
-func lsfClusterDescribeGroup_31(lState60 *lsfBrokerState, lValue061 string) *lsfPair[*lsfGroupView, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelDescribeGroup_179(lValue061, lState60)
+// lsfClusterDescribeGroup_c1f8efd4 is lawtwin.kafka::clusterDescribeGroup.
+func lsfClusterDescribeGroup_c1f8efd4(lState60 *lsfBrokerState, lValue061 string) *lsfPair[*lsfGroupView, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelDescribeGroup_bf8df8f8(lValue061, lState60)
 }
 
-// lsfClusterEndTxnRequest_32 is lawtwin.kafka::clusterEndTxnRequest.
-func lsfClusterEndTxnRequest_32(lState62 *lsfBrokerState, lValue063 string, lValue164 int64, lValue265 int16, lValue366 bool) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelEndTxn_184(lValue063, lValue164, lValue265, lValue366, lState62)
+// lsfClusterEndTxnRequest_e8879acb is lawtwin.kafka::clusterEndTxnRequest.
+func lsfClusterEndTxnRequest_e8879acb(lState62 *lsfBrokerState, lValue063 string, lValue164 int64, lValue265 int16, lValue366 bool) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelEndTxn_b2637a52(lValue063, lValue164, lValue265, lValue366, lState62)
 }
 
-// lsfClusterFetchOffset_33 is lawtwin.kafka::clusterFetchOffset.
-func lsfClusterFetchOffset_33(lState67 *lsfBrokerState, lValue068 string, lValue169 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelOffsetFetch_210(lValue068, lValue169, lState67)
+// lsfClusterFetchOffset_53ffef89 is lawtwin.kafka::clusterFetchOffset.
+func lsfClusterFetchOffset_53ffef89(lState67 *lsfBrokerState, lValue068 string, lValue169 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelOffsetFetch_f56dbfcd(lValue068, lValue169, lState67)
 }
 
-// lsfClusterFetchRequest_34 is lawtwin.kafka::clusterFetchRequest.
-func lsfClusterFetchRequest_34(lState70 *lsfBrokerState, lValue071 *lsfTopicPartition, lValue172 int64, lValue273 int32, lValue374 lsfIsolationLevel) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelFetch_186(lValue071, lValue172, lValue273, lValue374, lState70)
+// lsfClusterFetchRequest_53f6507d is lawtwin.kafka::clusterFetchRequest.
+func lsfClusterFetchRequest_53f6507d(lState70 *lsfBrokerState, lValue071 *lsfTopicPartition, lValue172 int64, lValue273 int32, lValue374 lsfIsolationLevel) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelFetch_29936450(lValue071, lValue172, lValue273, lValue374, lState70)
 }
 
-// lsfClusterHeartbeat_35 is lawtwin.kafka::clusterHeartbeat.
-func lsfClusterHeartbeat_35(lState75 *lsfBrokerState, lValue076 string, lValue177 string, lValue278 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelHeartbeat_190(lValue076, lValue177, lValue278, lState75)
+// lsfClusterHeartbeat_3af82cc2 is lawtwin.kafka::clusterHeartbeat.
+func lsfClusterHeartbeat_3af82cc2(lState75 *lsfBrokerState, lValue076 string, lValue177 string, lValue278 int32) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelHeartbeat_0f08a54d(lValue076, lValue177, lValue278, lState75)
 }
 
-// lsfClusterInitProducerIdRequest_36 is lawtwin.kafka::clusterInitProducerIdRequest.
-func lsfClusterInitProducerIdRequest_36(lState79 *lsfBrokerState, lValue080 lsfMaybe[string]) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelInitProducerId_192(lValue080, lState79)
+// lsfClusterInitProducerIdRequest_f11b7e7d is lawtwin.kafka::clusterInitProducerIdRequest.
+func lsfClusterInitProducerIdRequest_f11b7e7d(lState79 *lsfBrokerState, lValue080 lsfMaybe[string]) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lValue080, lState79)
 }
 
-// lsfClusterJoinGroup_37 is lawtwin.kafka::clusterJoinGroup.
-func lsfClusterJoinGroup_37(lState81 *lsfBrokerState, lValue082 string, lValue183 string, lValue284 *lsfList[string]) *lsfPair[int32, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelJoinGroup_194(lValue082, lValue183, lValue284, lState81)
+// lsfClusterJoinGroup_2f7f09cb is lawtwin.kafka::clusterJoinGroup.
+func lsfClusterJoinGroup_2f7f09cb(lState81 *lsfBrokerState, lValue082 string, lValue183 string, lValue284 *lsfList[string]) *lsfPair[int32, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelJoinGroup_9a1e92f5(lValue082, lValue183, lValue284, lState81)
 }
 
-// lsfClusterLeaveGroup_38 is lawtwin.kafka::clusterLeaveGroup.
-func lsfClusterLeaveGroup_38(lState85 *lsfBrokerState, lValue086 string, lValue187 string) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelLeaveGroup_198(lValue086, lValue187, lState85)
+// lsfClusterLeaveGroup_cd94c353 is lawtwin.kafka::clusterLeaveGroup.
+func lsfClusterLeaveGroup_cd94c353(lState85 *lsfBrokerState, lValue086 string, lValue187 string) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelLeaveGroup_5e5a3f69(lValue086, lValue187, lState85)
 }
 
-// lsfClusterListOffsets_39 is lawtwin.kafka::clusterListOffsets.
-func lsfClusterListOffsets_39(lState88 *lsfBrokerState, lValue089 *lsfTopicPartition, lValue190 lsfOffsetSpec, lValue291 lsfIsolationLevel) *lsfPair[int64, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelListOffsets_199(lValue089, lValue190, lValue291, lState88)
+// lsfClusterListOffsets_1dede442 is lawtwin.kafka::clusterListOffsets.
+func lsfClusterListOffsets_1dede442(lState88 *lsfBrokerState, lValue089 *lsfTopicPartition, lValue190 lsfOffsetSpec, lValue291 lsfIsolationLevel) *lsfPair[int64, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelListOffsets_9c6c9426(lValue089, lValue190, lValue291, lState88)
 }
 
-// lsfClusterMetadataRequest_40 is lawtwin.kafka::clusterMetadataRequest.
-func lsfClusterMetadataRequest_40(lState92 *lsfBrokerState, lValue093 string) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelMetadata_204(lValue093, lState92)
+// lsfClusterMetadataRequest_3507727c is lawtwin.kafka::clusterMetadataRequest.
+func lsfClusterMetadataRequest_3507727c(lState92 *lsfBrokerState, lValue093 string) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelMetadata_97bb5c4c(lValue093, lState92)
 }
 
-// lsfClusterProduceRequest_41 is lawtwin.kafka::clusterProduceRequest.
-func lsfClusterProduceRequest_41(lState94 *lsfBrokerState, lValue095 *lsfTopicPartition, lValue196 lsfMaybe[*lsfProducerTag], lValue297 *lsfList[*lsfRecord]) *lsfPair[int64, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelProduce_215(lValue095, lValue196, lValue297, lState94)
+// lsfClusterProduceRequest_619c7f1f is lawtwin.kafka::clusterProduceRequest.
+func lsfClusterProduceRequest_619c7f1f(lState94 *lsfBrokerState, lValue095 *lsfTopicPartition, lValue196 lsfMaybe[*lsfProducerTag], lValue297 *lsfList[*lsfRecord]) *lsfPair[int64, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelProduce_834568df(lValue095, lValue196, lValue297, lState94)
 }
 
-// lsfClusterStart_42 is lawtwin.kafka::clusterStart.
-func lsfClusterStart_42(lLawspecunit98 lsfUnit) *lsfBrokerState {
-	return lsfLawtwinKafkaModelEmptyBroker_181(lsfUnit{})
+// lsfClusterStart_659e952a is lawtwin.kafka::clusterStart.
+func lsfClusterStart_659e952a(lLawspecunit98 lsfUnit) *lsfBrokerState {
+	return lsfLawtwinKafkaModelEmptyBroker_d5fd8237(lsfUnit{})
 }
 
-// lsfClusterSyncGroup_43 is lawtwin.kafka::clusterSyncGroup.
-func lsfClusterSyncGroup_43(lState99 *lsfBrokerState, lValue0100 string, lValue1101 string, lValue2102 int32) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
-	return lsfLawtwinKafkaModelSyncGroup_229(lValue0100, lValue1101, lValue2102, lState99)
+// lsfClusterSyncGroup_fa44a945 is lawtwin.kafka::clusterSyncGroup.
+func lsfClusterSyncGroup_fa44a945(lState99 *lsfBrokerState, lValue0100 string, lValue1101 string, lValue2102 int32) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
+	return lsfLawtwinKafkaModelSyncGroup_b3d01c80(lValue0100, lValue1101, lValue2102, lState99)
 }
 
-// lsfClusterTxnOffsetCommitRequest_44 is lawtwin.kafka::clusterTxnOffsetCommitRequest.
-func lsfClusterTxnOffsetCommitRequest_44(lState103 *lsfBrokerState, lValue0104 string, lValue1105 int64, lValue2106 int16, lValue3107 string, lValue4108 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
-	return lsfLawtwinKafkaModelTxnOffsetCommit_231(lValue0104, lValue1105, lValue2106, lValue3107, lValue4108, lState103)
+// lsfClusterTxnOffsetCommitRequest_08ba35de is lawtwin.kafka::clusterTxnOffsetCommitRequest.
+func lsfClusterTxnOffsetCommitRequest_08ba35de(lState103 *lsfBrokerState, lValue0104 string, lValue1105 int64, lValue2106 int16, lValue3107 string, lValue4108 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfUnit, *lsfBrokerState] {
+	return lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lValue0104, lValue1105, lValue2106, lValue3107, lValue4108, lState103)
 }
 
-// lsfConsumerAssign_45 is lawtwin.kafka::consumerAssign.
-func lsfConsumerAssign_45(lTps109 *lsfList[*lsfTopicPartition], lC110 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfWithAssignment_258(lsfNothing[string](), "", int32(-1), (*lsfList[string])(nil), lTps109, lC110)}
+// lsfCommittedFrom_a524f37d is lawtwin.kafka::committedFrom.
+func lsfCommittedFrom_a524f37d(symbols map[string]*LawSpecSymbol, lTp109 *lsfTopicPartition, lOffset110 int64) *lsfList[*lsfRecord] {
+	return lsfReadFrom_f028a48d(symbols, lTp109, lOffset110, lsfIsolationLevel_ReadCommitted)
 }
 
-// lsfConsumerIsolation_46 is lawtwin.kafka::consumerIsolation.
-func lsfConsumerIsolation_46(lLevel111 lsfIsolationLevel, lC112 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
-	var lValue113 *lsfConsumerState
-	lLawspecfield6x0114 := lC112.fGroup
-	lLawspecfield6x1115 := lC112.fMember
-	lLawspecfield6x2116 := lC112.fGeneration
-	lLawspecfield6x3117 := lC112.fSubscription
-	lLawspecfield6x4118 := lC112.fAssigned
-	lLawspecfield6x5119 := lC112.fPositions
-	lValue113 = &lsfConsumerState{lLawspecfield6x0114, lLawspecfield6x1115, lLawspecfield6x2116, lLawspecfield6x3117, lLawspecfield6x4118, lLawspecfield6x5119, lLevel111}
-	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lValue113}
+// lsfConsumerAssign_793a07ba is lawtwin.kafka::consumerAssign.
+func lsfConsumerAssign_793a07ba(lTps111 *lsfList[*lsfTopicPartition], lC112 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfWithAssignment_7d6291b1(lsfNothing[string](), "", int32(-1), (*lsfList[string])(nil), lTps111, lC112)}
 }
 
-// lsfConsumerRecords_47 is lawtwin.kafka::consumerRecords.
-func lsfConsumerRecords_47(lTp120 *lsfTopicPartition, lRs121 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfConsumerRecord] {
-	if lRs121 == nil {
+// lsfConsumerClose_00c5e7f3 is lawtwin.kafka::consumerClose.
+func lsfConsumerClose_00c5e7f3(symbols map[string]*LawSpecSymbol, lC113 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
+	var lValue114 lsfMaybe[string]
+	lLawspecfieldgroup115 := lC113.fGroup
+	lValue114 = lLawspecfieldgroup115
+	lMatched116 := lValue114
+	if lMatched116.ok {
+		lGroup117 := lMatched116.v
+		var lValue118 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted119 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted119 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue120 string
+			lLawspecfieldmember121 := lC113.fMember
+			lValue120 = lLawspecfieldmember121
+			lPerformed122 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).LeaveGroupRequest(codec0.toNative(lsfTo_437d0abf423f(lGroup117)), codec1.toNative(lsfTo_437d0abf423f(lValue120)))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted119 = lsfRight[lsfKafkaError, lsfUnit](lPerformed122)
+		}()
+		lMatched123 := lAttempted119
+		if !lMatched123.right {
+			lLawspecfailure124 := lMatched123.l
+			lValue118 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure124)
+		} else {
+			lLawspecvalue125 := lMatched123.r
+			lValue118 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue125)
+		}
+		_ = lValue118
+		return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfFreshConsumer_c2da4184(lsfUnit{})}
+	} else {
+		return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lsfFreshConsumer_c2da4184(lsfUnit{})}
+	}
+}
+
+// lsfConsumerCommit_787f4c15 is lawtwin.kafka::consumerCommit.
+func lsfConsumerCommit_787f4c15(symbols map[string]*LawSpecSymbol, lC126 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	var lValue127 lsfMaybe[string]
+	lLawspecfieldgroup128 := lC126.fGroup
+	lValue127 = lLawspecfieldgroup128
+	lMatched129 := lValue127
+	if lMatched129.ok {
+		lGroup130 := lMatched129.v
+		var lValue131 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted132 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted132 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue133 string
+			lLawspecfieldmember134 := lC126.fMember
+			lValue133 = lLawspecfieldmember134
+			var lValue135 int32
+			lLawspecfieldgeneration136 := lC126.fGeneration
+			lValue135 = lLawspecfieldgeneration136
+			var lValue137 *lsfList[*lsfTopicPartition]
+			lLawspecfieldassigned138 := lC126.fAssigned
+			lValue137 = lLawspecfieldassigned138
+			var lValue139 *lsfMap[*lsfTopicPartition, int64]
+			lLawspecfieldpositions140 := lC126.fPositions
+			lValue139 = lLawspecfieldpositions140
+			lPerformed141 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetCommitRequest(codec0.toNative(lsfTo_437d0abf423f(lGroup130)), codec1.toNative(lsfTo_437d0abf423f(lValue133)), codec2.toNative(lsfTo_b862204e9be7(lValue135)), codec3.toNative(lsfTo_582052f40a9c(lsfPositionsToCommit_67969440(lValue137, lValue139))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted132 = lsfRight[lsfKafkaError, lsfUnit](lPerformed141)
+		}()
+		lMatched142 := lAttempted132
+		if !lMatched142.right {
+			lLawspecfailure143 := lMatched142.l
+			lValue131 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure143)
+		} else {
+			lLawspecvalue144 := lMatched142.r
+			lValue131 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue144)
+		}
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lValue131, lC126}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_InvalidGroupId), lC126}
+	}
+}
+
+// lsfConsumerCommitted_06365ac2 is lawtwin.kafka::consumerCommitted.
+func lsfConsumerCommitted_06365ac2(symbols map[string]*LawSpecSymbol, lTp145 *lsfTopicPartition, lC146 *lsfConsumerState) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
+	var lValue147 lsfMaybe[string]
+	lLawspecfieldgroup148 := lC146.fGroup
+	lValue147 = lLawspecfieldgroup148
+	lMatched149 := lValue147
+	if lMatched149.ok {
+		lGroup150 := lMatched149.v
+		lPerformed151 := lsfFrom_c09136e29464(func() LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			codec0 := lsScalarCodec[string](schema, bits, "Text")
+			codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+			resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lGroup150)), codec1.toNative(lsfTo_57a515e0e489(lTp145))))
+		}())
+		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lPerformed151, lC146}
+	} else {
+		return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lsfNothing[int64](), lC146}
+	}
+}
+
+// lsfConsumerIsolation_2aacd289 is lawtwin.kafka::consumerIsolation.
+func lsfConsumerIsolation_2aacd289(lLevel152 lsfIsolationLevel, lC153 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
+	var lValue154 *lsfConsumerState
+	lReplacement155 := lLevel152
+	lLawspecfieldgroup156 := lC153.fGroup
+	lLawspecfieldmember157 := lC153.fMember
+	lLawspecfieldgeneration158 := lC153.fGeneration
+	lLawspecfieldsubscription159 := lC153.fSubscription
+	lLawspecfieldassigned160 := lC153.fAssigned
+	lLawspecfieldpositions161 := lC153.fPositions
+	lValue154 = &lsfConsumerState{lLawspecfieldgroup156, lLawspecfieldmember157, lLawspecfieldgeneration158, lLawspecfieldsubscription159, lLawspecfieldassigned160, lLawspecfieldpositions161, lReplacement155}
+	return &lsfPair[lsfUnit, *lsfConsumerState]{lsfUnit{}, lValue154}
+}
+
+// lsfConsumerJoin_198e034e is lawtwin.kafka::consumerJoin.
+func lsfConsumerJoin_198e034e(symbols map[string]*LawSpecSymbol, lG162 string, lM163 string, lTopics164 *lsfList[string], lC165 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
+	var lValue166 lsfEither[lsfKafkaError, int32]
+	var lAttempted167 lsfEither[lsfKafkaError, int32]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted167 = lsfLeft[lsfKafkaError, int32](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed168 := lsfFrom_b862204e9be7(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsScalarCodec[string](schema, bits, "Text")
+				codec1 := lsScalarCodec[string](schema, bits, "Text")
+				codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(lsfTo_437d0abf423f(lG162)), codec1.toNative(lsfTo_437d0abf423f(lM163)), codec2.toNative(lsfTo_8ec0351dc657(lTopics164))))
+			}()
+		}))
+		lAttempted167 = lsfRight[lsfKafkaError, int32](lPerformed168)
+	}()
+	lMatched169 := lAttempted167
+	if !lMatched169.right {
+		lLawspecfailure170 := lMatched169.l
+		lValue166 = lsfLeft[lsfKafkaError, int32](lLawspecfailure170)
+	} else {
+		lLawspecvalue171 := lMatched169.r
+		lValue166 = lsfRight[lsfKafkaError, int32](lLawspecvalue171)
+	}
+	lMatched172 := lValue166
+	if !lMatched172.right {
+		lE173 := lMatched172.l
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lE173), lC165}
+	} else {
+		lGen174 := lMatched172.r
+		var lValue175 lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]]
+		var lAttempted176 lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted176 = lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed177 := lsfFrom_3250492fe9ac(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					resultCodec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).SyncGroupRequest(codec0.toNative(lsfTo_437d0abf423f(lG162)), codec1.toNative(lsfTo_437d0abf423f(lM163)), codec2.toNative(lsfTo_b862204e9be7(lGen174))))
+				}()
+			}))
+			lAttempted176 = lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lPerformed177)
+		}()
+		lMatched178 := lAttempted176
+		if !lMatched178.right {
+			lLawspecfailure179 := lMatched178.l
+			lValue175 = lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lLawspecfailure179)
+		} else {
+			lLawspecvalue180 := lMatched178.r
+			lValue175 = lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lLawspecvalue180)
+		}
+		lMatched181 := lValue175
+		if !lMatched181.right {
+			lE182 := lMatched181.l
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lE182), lC165}
+		} else {
+			lTps183 := lMatched181.r
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lTps183), lsfWithAssignment_7d6291b1(lsfJust[string](lG162), lM163, lGen174, lTopics164, lTps183, lC165)}
+		}
+	}
+}
+
+// lsfConsumerPoll_d12c6262 is lawtwin.kafka::consumerPoll.
+func lsfConsumerPoll_d12c6262(symbols map[string]*LawSpecSymbol, lN184 int32, lC185 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
+	lRefreshed186 := lsfConsumerRefresh_99e956fa(symbols, lC185)
+	var lValue187 lsfEither[lsfKafkaError, lsfUnit]
+	lLawspecfieldfirst188 := lRefreshed186.fFirst
+	lValue187 = lLawspecfieldfirst188
+	lMatched189 := lValue187
+	if !lMatched189.right {
+		lE190 := lMatched189.l
+		var lValue191 *lsfConsumerState
+		lLawspecfieldsecond192 := lRefreshed186.fSecond
+		lValue191 = lLawspecfieldsecond192
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]{lsfLeft[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lE190), lValue191}
+	} else {
+		var lValue193 *lsfList[*lsfTopicPartition]
+		var lValue194 *lsfConsumerState
+		lLawspecfieldsecond195 := lRefreshed186.fSecond
+		lValue194 = lLawspecfieldsecond195
+		lMatched196 := lValue194
+		lLawspecfieldassigned197 := lMatched196.fAssigned
+		lValue193 = lLawspecfieldassigned197
+		var lValue198 *lsfConsumerState
+		lLawspecfieldsecond199 := lRefreshed186.fSecond
+		lValue198 = lLawspecfieldsecond199
+		return lsfPollPartitions_9d6feda1(symbols, lValue193, lN184, lValue198, (*lsfList[*lsfConsumerRecord])(nil))
+	}
+}
+
+// lsfConsumerPosition_4da411a3 is lawtwin.kafka::consumerPosition.
+func lsfConsumerPosition_4da411a3(symbols map[string]*LawSpecSymbol, lTp200 *lsfTopicPartition, lC201 *lsfConsumerState) *lsfPair[int64, *lsfConsumerState] {
+	var lValue202 *lsfMap[*lsfTopicPartition, int64]
+	lLawspecfieldpositions203 := lC201.fPositions
+	lValue202 = lLawspecfieldpositions203
+	lMatched204 := lsfLookup(lValue202, lTp200, lsfCmp_57a515e0e489)
+	if lMatched204.ok {
+		lO205 := lMatched204.v
+		return &lsfPair[int64, *lsfConsumerState]{lO205, lC201}
+	} else {
+		var lValue206 int64
+		var lValue207 lsfMaybe[string]
+		lLawspecfieldgroup208 := lC201.fGroup
+		lValue207 = lLawspecfieldgroup208
+		lMatched209 := lValue207
+		if lMatched209.ok {
+			lGroup210 := lMatched209.v
+			lPerformed211 := lsfFrom_c09136e29464(func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsScalarCodec[string](schema, bits, "Text")
+				codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lGroup210)), codec1.toNative(lsfTo_57a515e0e489(lTp200))))
+			}())
+			lMatched212 := lPerformed211
+			if lMatched212.ok {
+				lO213 := lMatched212.v
+				lValue206 = lO213
+			} else {
+				lValue206 = int64(0)
+			}
+		} else {
+			lValue206 = int64(0)
+		}
+		lFrom214 := lValue206
+		return &lsfPair[int64, *lsfConsumerState]{lFrom214, lsfWithPosition_867e6b19(lTp200, lFrom214, lC201)}
+	}
+}
+
+// lsfConsumerPositionOf_71a8a523 is lawtwin.kafka::consumerPositionOf.
+func lsfConsumerPositionOf_71a8a523(symbols map[string]*LawSpecSymbol, lTp215 *lsfTopicPartition, lC216 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
+	var lValue217 *lsfList[*lsfTopicPartition]
+	lLawspecfieldassigned218 := lC216.fAssigned
+	lValue217 = lLawspecfieldassigned218
+	lAll219 := true
+	for lCell220 := lValue217; lCell220 != nil; lCell220 = lCell220.tail {
+		lItem221 := lCell220.head
+		if !(!(lsfEq_57a515e0e489(lItem221, lTp215))) { lAll219 = false; break }
+	}
+	if !(lAll219) {
+		lP222 := lsfConsumerPosition_4da411a3(symbols, lTp215, lC216)
+		var lValue223 int64
+		lLawspecfieldfirst224 := lP222.fFirst
+		lValue223 = lLawspecfieldfirst224
+		var lValue225 *lsfConsumerState
+		lLawspecfieldsecond226 := lP222.fSecond
+		lValue225 = lLawspecfieldsecond226
+		return &lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]{lsfRight[lsfKafkaError, int64](lValue223), lValue225}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]{lsfLeft[lsfKafkaError, int64](lsfKafkaError_IllegalState), lC216}
+	}
+}
+
+// lsfConsumerRecords_9d810f29 is lawtwin.kafka::consumerRecords.
+func lsfConsumerRecords_9d810f29(lTp227 *lsfTopicPartition, lRs228 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfConsumerRecord] {
+	if lRs228 == nil {
 		return (*lsfList[*lsfConsumerRecord])(nil)
 	} else {
-		lR122 := lRs121.head
-		lRest123 := lRs121.tail
-		var lValue124 int64
-		lLawspecfield10x0125 := lR122.fOffset
-		lValue124 = lLawspecfield10x0125
-		var lValue126 *lsfRecord
-		lLawspecfield11x1127 := lR122.fEntry
-		lValue126 = lLawspecfield11x1127
-		return lsfCons[*lsfConsumerRecord](&lsfConsumerRecord{lTp120, lValue124, lValue126}, lsfConsumerRecords_47(lTp120, lRest123))
+		lR229 := lRs228.head
+		lRest230 := lRs228.tail
+		var lValue231 int64
+		lLawspecfieldoffset232 := lR229.fOffset
+		lValue231 = lLawspecfieldoffset232
+		var lValue233 *lsfRecord
+		lLawspecfieldentry234 := lR229.fEntry
+		lValue233 = lLawspecfieldentry234
+		return lsfCons[*lsfConsumerRecord](&lsfConsumerRecord{lTp227, lValue231, lValue233}, lsfConsumerRecords_9d810f29(lTp227, lRest230))
 	}
 }
 
-// lsfConsumerSeek_48 is lawtwin.kafka::consumerSeek.
-func lsfConsumerSeek_48(lTp128 *lsfTopicPartition, lOffset129 int64, lC130 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
-	var lValue131 *lsfList[*lsfTopicPartition]
-	lLawspecfield16x4132 := lC130.fAssigned
-	lValue131 = lLawspecfield16x4132
-	lAll133 := true
-	for lCell134 := lValue131; lCell134 != nil; lCell134 = lCell134.tail {
-		lItem135 := lCell134.head
-		if !(!(lsfEq_57a515e0e489(lItem135, lTp128))) { lAll133 = false; break }
-	}
-	if (!(lAll133) && (lOffset129 >= int64(0))) {
-		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lsfWithPosition_259(lTp128, lOffset129, lC130)}
+// lsfConsumerRefresh_99e956fa is lawtwin.kafka::consumerRefresh.
+func lsfConsumerRefresh_99e956fa(symbols map[string]*LawSpecSymbol, lC235 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	var lValue236 lsfMaybe[string]
+	lLawspecfieldgroup237 := lC235.fGroup
+	lValue236 = lLawspecfieldgroup237
+	lMatched238 := lValue236
+	if lMatched238.ok {
+		lGroup239 := lMatched238.v
+		var lValue240 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted241 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted241 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue242 string
+			lLawspecfieldmember243 := lC235.fMember
+			lValue242 = lLawspecfieldmember243
+			var lValue244 int32
+			lLawspecfieldgeneration245 := lC235.fGeneration
+			lValue244 = lLawspecfieldgeneration245
+			lPerformed246 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).HeartbeatRequest(codec0.toNative(lsfTo_437d0abf423f(lGroup239)), codec1.toNative(lsfTo_437d0abf423f(lValue242)), codec2.toNative(lsfTo_b862204e9be7(lValue244)))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted241 = lsfRight[lsfKafkaError, lsfUnit](lPerformed246)
+		}()
+		lMatched247 := lAttempted241
+		if !lMatched247.right {
+			lLawspecfailure248 := lMatched247.l
+			lValue240 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure248)
+		} else {
+			lLawspecvalue249 := lMatched247.r
+			lValue240 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue249)
+		}
+		lMatched250 := lValue240
+		if !lMatched250.right {
+			lE251 := lMatched250.l
+			if ((lsfEq_26c7dcf285c5(lE251, lsfKafkaError_IllegalGeneration)) || (lsfEq_26c7dcf285c5(lE251, lsfKafkaError_UnknownMemberId))) {
+				var lValue252 string
+				lLawspecfieldmember253 := lC235.fMember
+				lValue252 = lLawspecfieldmember253
+				var lValue254 *lsfList[string]
+				lLawspecfieldsubscription255 := lC235.fSubscription
+				lValue254 = lLawspecfieldsubscription255
+				lS256 := lsfConsumerJoin_198e034e(symbols, lGroup239, lValue252, lValue254, lC235)
+				var lValue257 lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]]
+				lLawspecfieldfirst258 := lS256.fFirst
+				lValue257 = lLawspecfieldfirst258
+				lMatched259 := lValue257
+				if !lMatched259.right {
+					lE2260 := lMatched259.l
+					var lValue261 *lsfConsumerState
+					lLawspecfieldsecond262 := lS256.fSecond
+					lValue261 = lLawspecfieldsecond262
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfLeft[lsfKafkaError, lsfUnit](lE2260), lValue261}
+				} else {
+					var lValue263 *lsfConsumerState
+					lLawspecfieldsecond264 := lS256.fSecond
+					lValue263 = lLawspecfieldsecond264
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue263}
+				}
+			} else {
+				return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfLeft[lsfKafkaError, lsfUnit](lE251), lC235}
+			}
+		} else {
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lC235}
+		}
 	} else {
-		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lC130}
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lC235}
 	}
 }
 
-// lsfCoversOnce_49 is lawtwin.kafka::coversOnce.
-func lsfCoversOnce_49(lT136 string, lN137 int32, lView138 *lsfGroupView) bool {
-	var lValue139 *lsfList[*lsfMemberAssignment]
-	lLawspecfield4x1140 := lView138.fMembers
-	lValue139 = lLawspecfield4x1140
-	lOwned141 := lsfOwnedOf_243(lT136, lValue139)
-	return ((int64(lOwned141.length()) == int64(lN137)) && (lsfEq_cd87ee93b56a(lsfSetOf(lOwned141, lsfCmp_b862204e9be7), lsfSetOf(lsfRange(int32(0), lN137), lsfCmp_b862204e9be7))))
+// lsfConsumerSeek_975a7017 is lawtwin.kafka::consumerSeek.
+func lsfConsumerSeek_975a7017(lTp265 *lsfTopicPartition, lOffset266 int64, lC267 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	var lValue268 *lsfList[*lsfTopicPartition]
+	lLawspecfieldassigned269 := lC267.fAssigned
+	lValue268 = lLawspecfieldassigned269
+	lAll270 := true
+	for lCell271 := lValue268; lCell271 != nil; lCell271 = lCell271.tail {
+		lItem272 := lCell271.head
+		if !(!(lsfEq_57a515e0e489(lItem272, lTp265))) { lAll270 = false; break }
+	}
+	if (!(lAll270) && (lOffset266 >= int64(0))) {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lsfWithPosition_867e6b19(lTp265, lOffset266, lC267)}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lC267}
+	}
 }
 
-// lsfFencedBy_50 is lawtwin.kafka::fencedBy.
-func lsfFencedBy_50(lOld142 *lsfProducerIdAndEpoch, lNew143 *lsfProducerIdAndEpoch) bool {
-	var lValue144 int64
-	lLawspecfield0x0145 := lNew143.fProducerId
-	lValue144 = lLawspecfield0x0145
-	var lValue146 int64
-	lLawspecfield1x0147 := lOld142.fProducerId
-	lValue146 = lLawspecfield1x0147
-	var lLogic152 bool
-	if (lValue144 == lValue146) {
-		var lValue148 int16
-		lLawspecfield2x1149 := lNew143.fProducerEpoch
-		lValue148 = lLawspecfield2x1149
-		var lValue150 int16
-		lLawspecfield3x1151 := lOld142.fProducerEpoch
-		lValue150 = lLawspecfield3x1151
-		lLogic152 = (lValue148 > lValue150)
-	} else { lLogic152 = false }
-	var lLogic157 bool
-	if !(lLogic152) {
-		var lValue153 int64
-		lLawspecfield4x0154 := lNew143.fProducerId
-		lValue153 = lLawspecfield4x0154
-		var lValue155 int64
-		lLawspecfield5x0156 := lOld142.fProducerId
-		lValue155 = lLawspecfield5x0156
-		lLogic157 = (lValue153 != lValue155)
-	} else { lLogic157 = true }
-	return lLogic157
+// lsfCoversOnce_231e9ee6 is lawtwin.kafka::coversOnce.
+func lsfCoversOnce_231e9ee6(lT273 string, lN274 int32, lView275 *lsfGroupView) bool {
+	var lValue276 *lsfList[*lsfMemberAssignment]
+	lLawspecfieldmembers277 := lView275.fMembers
+	lValue276 = lLawspecfieldmembers277
+	lOwned278 := lsfOwnedOf_0d7fb3ae(lT273, lValue276)
+	return ((int64(lOwned278.length()) == int64(lN274)) && (lsfEq_cd87ee93b56a(lsfSetOf(lOwned278, lsfCmp_b862204e9be7), lsfSetOf(lsfRange(int32(0), lN274), lsfCmp_b862204e9be7))))
 }
 
-// lsfFollowsBatch_51 is lawtwin.kafka::followsBatch.
-func lsfFollowsBatch_51(lA158 lsfEither[lsfKafkaError, int64], lBatch159 *lsfList[*lsfRecord], lB160 lsfEither[lsfKafkaError, int64]) bool {
-	if !lA158.right {
+// lsfCreated_5201db31 is lawtwin.kafka::created.
+func lsfCreated_5201db31(symbols map[string]*LawSpecSymbol, lT279 string, lN280 int32) bool {
+	var lValue281 lsfEither[lsfKafkaError, lsfUnit]
+	var lAttempted282 lsfEither[lsfKafkaError, lsfUnit]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted282 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed283 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsScalarCodec[string](schema, bits, "Text")
+				codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+				resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+				return func() LawSpecValue {
+					lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).CreateTopicsRequest(codec0.toNative(lsfTo_437d0abf423f(lT279)), codec1.toNative(lsfTo_b862204e9be7(lN280)))
+					return resultCodec.fromNative(LawSpecUnit{})
+				}()
+			}()
+		}))
+		lAttempted282 = lsfRight[lsfKafkaError, lsfUnit](lPerformed283)
+	}()
+	lMatched284 := lAttempted282
+	if !lMatched284.right {
+		lLawspecfailure285 := lMatched284.l
+		lValue281 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure285)
+	} else {
+		lLawspecvalue286 := lMatched284.r
+		lValue281 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue286)
+	}
+	lMatched287 := lValue281
+	if !lMatched287.right {
 		return false
 	} else {
-		lX161 := lA158.r
-		if !lB160.right {
+		return true
+	}
+}
+
+// lsfFencedBy_c383bb89 is lawtwin.kafka::fencedBy.
+func lsfFencedBy_c383bb89(lOld288 *lsfProducerIdAndEpoch, lNew289 *lsfProducerIdAndEpoch) bool {
+	var lValue290 int64
+	lLawspecfieldproducerid291 := lNew289.fProducerId
+	lValue290 = lLawspecfieldproducerid291
+	var lValue292 int64
+	lLawspecfieldproducerid293 := lOld288.fProducerId
+	lValue292 = lLawspecfieldproducerid293
+	var lLogic298 bool
+	if (lValue290 == lValue292) {
+		var lValue294 int16
+		lLawspecfieldproducerepoch295 := lNew289.fProducerEpoch
+		lValue294 = lLawspecfieldproducerepoch295
+		var lValue296 int16
+		lLawspecfieldproducerepoch297 := lOld288.fProducerEpoch
+		lValue296 = lLawspecfieldproducerepoch297
+		lLogic298 = (lValue294 > lValue296)
+	} else { lLogic298 = false }
+	var lLogic303 bool
+	if !(lLogic298) {
+		var lValue299 int64
+		lLawspecfieldproducerid300 := lNew289.fProducerId
+		lValue299 = lLawspecfieldproducerid300
+		var lValue301 int64
+		lLawspecfieldproducerid302 := lOld288.fProducerId
+		lValue301 = lLawspecfieldproducerid302
+		lLogic303 = (lValue299 != lValue301)
+	} else { lLogic303 = true }
+	return lLogic303
+}
+
+// lsfFollowsBatch_00cf360a is lawtwin.kafka::followsBatch.
+func lsfFollowsBatch_00cf360a(lA304 lsfEither[lsfKafkaError, int64], lBatch305 *lsfList[*lsfRecord], lB306 lsfEither[lsfKafkaError, int64]) bool {
+	if !lA304.right {
+		return false
+	} else {
+		lX307 := lA304.r
+		if !lB306.right {
 			return false
 		} else {
-			lY162 := lB160.r
-			return (lsfCmpInt(lsfSmall(lY162), lsfSmall(lX161).Add(lsfSmall(int64(lBatch159.length())))) == 0)
+			lY308 := lB306.r
+			return (lsfCmpInt(lsfSmall(lY308), lsfSmall(lX307).Add(lsfSmall(int64(lBatch305.length())))) == 0)
 		}
 	}
 }
 
-// lsfFollowsOne_52 is lawtwin.kafka::followsOne.
-func lsfFollowsOne_52(lA163 lsfEither[lsfKafkaError, *lsfRecordMetadata], lLatest164 lsfEither[lsfKafkaError, int64]) bool {
-	if !lA163.right {
+// lsfFollowsOne_4f3a93e2 is lawtwin.kafka::followsOne.
+func lsfFollowsOne_4f3a93e2(lA309 lsfEither[lsfKafkaError, *lsfRecordMetadata], lLatest310 lsfEither[lsfKafkaError, int64]) bool {
+	if !lA309.right {
 		return false
 	} else {
-		lMd165 := lA163.r
-		if !lLatest164.right {
+		lMd311 := lA309.r
+		if !lLatest310.right {
 			return false
 		} else {
-			lL166 := lLatest164.r
-			var lValue167 int64
-			lLawspecfield28x1168 := lMd165.fSentAt
-			lValue167 = lLawspecfield28x1168
-			return (lsfCmpInt(lsfSmall(lL166), lsfSmall(lValue167).Add(lsfSmall(int64(1)))) == 0)
+			lL312 := lLatest310.r
+			var lValue313 int64
+			lLawspecfieldsentat314 := lMd311.fSentAt
+			lValue313 = lLawspecfieldsentat314
+			return (lsfCmpInt(lsfSmall(lL312), lsfSmall(lValue313).Add(lsfSmall(int64(1)))) == 0)
 		}
 	}
 }
 
-// lsfFreshConsumer_53 is lawtwin.kafka::freshConsumer.
-func lsfFreshConsumer_53(lU169 lsfUnit) *lsfConsumerState {
+// lsfFreshConsumer_c2da4184 is lawtwin.kafka::freshConsumer.
+func lsfFreshConsumer_c2da4184(lU315 lsfUnit) *lsfConsumerState {
 	return &lsfConsumerState{lsfNothing[string](), "", int32(-1), (*lsfList[string])(nil), (*lsfList[*lsfTopicPartition])(nil), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int64]])(nil), lsfCmp_57a515e0e489), lsfIsolationLevel_ReadUncommitted}
 }
 
-// lsfFreshProducer_54 is lawtwin.kafka::freshProducer.
-func lsfFreshProducer_54(lU170 lsfUnit) *lsfProducerState {
+// lsfFreshProducer_deea7b00 is lawtwin.kafka::freshProducer.
+func lsfFreshProducer_deea7b00(lU316 lsfUnit) *lsfProducerState {
 	return &lsfProducerState{lsfNothing[*lsfProducerIdAndEpoch](), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489), lsfNothing[*lsfLastSend]()}
 }
 
-// lsfFreshTransactions_55 is lawtwin.kafka::freshTransactions.
-func lsfFreshTransactions_55(lU171 lsfUnit) *lsfTransactionState {
+// lsfFreshTransactions_533fb432 is lawtwin.kafka::freshTransactions.
+func lsfFreshTransactions_533fb432(lU317 lsfUnit) *lsfTransactionState {
 	return &lsfTransactionState{"", lsfNothing[*lsfProducerIdAndEpoch](), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489), false, (*lsfList[*lsfTopicPartition])(nil), false}
 }
 
-// lsfIdentityOf_56 is lawtwin.kafka::identityOf.
-func lsfIdentityOf_56(lSt172 *lsfProducerState) *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState] {
-	var lValue173 lsfMaybe[*lsfProducerIdAndEpoch]
-	lLawspecfield6x0174 := lSt172.fIdentity
-	lValue173 = lLawspecfield6x0174
-	return &lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState]{lValue173, lSt172}
+// lsfIdentityOf_96976095 is lawtwin.kafka::identityOf.
+func lsfIdentityOf_96976095(lSt318 *lsfProducerState) *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState] {
+	var lValue319 lsfMaybe[*lsfProducerIdAndEpoch]
+	lLawspecfieldidentity320 := lSt318.fIdentity
+	lValue319 = lLawspecfieldidentity320
+	return &lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState]{lValue319, lSt318}
 }
 
-// lsfIncreasing_57 is lawtwin.kafka::increasing.
-func lsfIncreasing_57(lXs175 *lsfList[int64]) bool {
-	if lXs175 == nil {
+// lsfIncreasing_d02ccce0 is lawtwin.kafka::increasing.
+func lsfIncreasing_d02ccce0(lXs321 *lsfList[int64]) bool {
+	if lXs321 == nil {
 		return true
 	} else {
-		lH176 := lXs175.head
-		lT177 := lXs175.tail
-		if lT177 == nil {
+		lH322 := lXs321.head
+		lT323 := lXs321.tail
+		if lT323 == nil {
 			return true
 		} else {
-			lH2178 := lT177.head
-			return ((lH176 < lH2178) && lsfIncreasing_57(lT177))
+			lH2324 := lT323.head
+			return ((lH322 < lH2324) && lsfIncreasing_d02ccce0(lT323))
 		}
 	}
 }
 
-// lsfKafkaConsumerAssign_58 is lawtwin.kafka::kafkaConsumerAssign.
-func lsfKafkaConsumerAssign_58(lConsumerstate179 *lsfConsumerState, lValue0180 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return lsfConsumerAssign_45(lValue0180, lConsumerstate179)
-}
-
-// lsfKafkaConsumerSeek_59 is lawtwin.kafka::kafkaConsumerSeek.
-func lsfKafkaConsumerSeek_59(lConsumerstate181 *lsfConsumerState, lValue0182 *lsfTopicPartition, lValue1183 int64) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
-	return lsfConsumerSeek_48(lValue0182, lValue1183, lConsumerstate181)
-}
-
-// lsfKafkaConsumerSetIsolationLevel_60 is lawtwin.kafka::kafkaConsumerSetIsolationLevel.
-func lsfKafkaConsumerSetIsolationLevel_60(lConsumerstate184 *lsfConsumerState, lValue0185 lsfIsolationLevel) *lsfPair[lsfUnit, *lsfConsumerState] {
-	return lsfConsumerIsolation_46(lValue0185, lConsumerstate184)
-}
-
-// lsfKafkaConsumerStart_61 is lawtwin.kafka::kafkaConsumerStart.
-func lsfKafkaConsumerStart_61(lLawspecunit186 lsfUnit) *lsfConsumerState {
-	return lsfFreshConsumer_53(lsfUnit{})
-}
-
-// lsfKafkaProducerFlush_62 is lawtwin.kafka::kafkaProducerFlush.
-func lsfKafkaProducerFlush_62(lProducerstate187 *lsfProducerState) *lsfPair[lsfUnit, *lsfProducerState] {
-	return lsfProducerFlush_246(lProducerstate187)
-}
-
-// lsfKafkaProducerProducerIdentity_63 is lawtwin.kafka::kafkaProducerProducerIdentity.
-func lsfKafkaProducerProducerIdentity_63(lProducerstate188 *lsfProducerState) *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState] {
-	return lsfIdentityOf_56(lProducerstate188)
-}
-
-// lsfKafkaProducerStart_64 is lawtwin.kafka::kafkaProducerStart.
-func lsfKafkaProducerStart_64(lLawspecunit189 lsfUnit) *lsfProducerState {
-	return lsfFreshProducer_54(lsfUnit{})
-}
-
-// lsfKafkaTransactionsBeginTransaction_65 is lawtwin.kafka::kafkaTransactionsBeginTransaction.
-func lsfKafkaTransactionsBeginTransaction_65(lTxnstate190 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
-	return lsfTransactionsBegin_256(lTxnstate190)
-}
-
-// lsfKafkaTransactionsStart_66 is lawtwin.kafka::kafkaTransactionsStart.
-func lsfKafkaTransactionsStart_66(lLawspecunit191 lsfUnit) *lsfTransactionState {
-	return lsfFreshTransactions_55(lsfUnit{})
-}
-
-// lsfKeepPositions_67 is lawtwin.kafka::keepPositions.
-func lsfKeepPositions_67(lTps192 *lsfList[*lsfTopicPartition], lPositions193 *lsfMap[*lsfTopicPartition, int64], lAcc194 *lsfMap[*lsfTopicPartition, int64]) *lsfMap[*lsfTopicPartition, int64] {
-	for {
-		if lTps192 == nil {
-			return lAcc194
+// lsfJoinAll_67d573a5 is lawtwin.kafka::joinAll.
+func lsfJoinAll_67d573a5(symbols map[string]*LawSpecSymbol, lG325 string, lMs326 *lsfList[string], lTopics327 *lsfList[string]) bool {
+	if lMs326 == nil {
+		return true
+	} else {
+		lM328 := lMs326.head
+		lRest329 := lMs326.tail
+		var lValue330 bool
+		var lValue331 lsfEither[lsfKafkaError, int32]
+		var lAttempted332 lsfEither[lsfKafkaError, int32]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted332 = lsfLeft[lsfKafkaError, int32](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed333 := lsfFrom_b862204e9be7(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(lsfTo_437d0abf423f(lG325)), codec1.toNative(lsfTo_437d0abf423f(lM328)), codec2.toNative(lsfTo_8ec0351dc657(lTopics327))))
+				}()
+			}))
+			lAttempted332 = lsfRight[lsfKafkaError, int32](lPerformed333)
+		}()
+		lMatched334 := lAttempted332
+		if !lMatched334.right {
+			lLawspecfailure335 := lMatched334.l
+			lValue331 = lsfLeft[lsfKafkaError, int32](lLawspecfailure335)
 		} else {
-			lTp195 := lTps192.head
-			lRest196 := lTps192.tail
-			lMatched197 := lsfLookup(lPositions193, lTp195, lsfCmp_57a515e0e489)
-			if lMatched197.ok {
-				lO198 := lMatched197.v
-				lNext199 := lRest196
-				lNext200 := lsfPut(lAcc194, lTp195, lO198, lsfCmp_57a515e0e489)
-				lTps192 = lNext199
-				lAcc194 = lNext200
+			lLawspecvalue336 := lMatched334.r
+			lValue331 = lsfRight[lsfKafkaError, int32](lLawspecvalue336)
+		}
+		lMatched337 := lValue331
+		if !lMatched337.right {
+			lValue330 = false
+		} else {
+			lValue330 = true
+		}
+		return (lValue330 && lsfJoinAll_67d573a5(symbols, lG325, lRest329, lTopics327))
+	}
+}
+
+// lsfJoinEach_78c50afb is lawtwin.kafka::joinEach.
+func lsfJoinEach_78c50afb(symbols map[string]*LawSpecSymbol, lG338 string, lMs339 *lsfList[string], lTopics340 *lsfList[string]) bool {
+	if lMs339 == nil {
+		return true
+	} else {
+		lM341 := lMs339.head
+		lRest342 := lMs339.tail
+		var lValue343 bool
+		var lValue344 lsfEither[lsfKafkaError, int32]
+		var lAttempted345 lsfEither[lsfKafkaError, int32]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted345 = lsfLeft[lsfKafkaError, int32](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed346 := lsfFrom_b862204e9be7(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[string](schema, bits, "Text")
+					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::GroupCoordinator").(GroupCoordinator).JoinGroup(codec0.toNative(lsfTo_437d0abf423f(lG338)), codec1.toNative(lsfTo_437d0abf423f(lM341)), codec2.toNative(lsfTo_8ec0351dc657(lTopics340))))
+				}()
+			}))
+			lAttempted345 = lsfRight[lsfKafkaError, int32](lPerformed346)
+		}()
+		lMatched347 := lAttempted345
+		if !lMatched347.right {
+			lLawspecfailure348 := lMatched347.l
+			lValue344 = lsfLeft[lsfKafkaError, int32](lLawspecfailure348)
+		} else {
+			lLawspecvalue349 := lMatched347.r
+			lValue344 = lsfRight[lsfKafkaError, int32](lLawspecvalue349)
+		}
+		lMatched350 := lValue344
+		if !lMatched350.right {
+			lValue343 = false
+		} else {
+			lValue343 = true
+		}
+		return (lValue343 && lsfJoinEach_78c50afb(symbols, lG338, lRest342, lTopics340))
+	}
+}
+
+// lsfKafkaConsumerAssign_6414ad54 is lawtwin.kafka::kafkaConsumerAssign.
+func lsfKafkaConsumerAssign_6414ad54(lConsumerstate351 *lsfConsumerState, lValue0352 *lsfList[*lsfTopicPartition]) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return lsfConsumerAssign_793a07ba(lValue0352, lConsumerstate351)
+}
+
+// lsfKafkaConsumerClose_ece19793 is lawtwin.kafka::kafkaConsumerClose.
+func lsfKafkaConsumerClose_ece19793(symbols map[string]*LawSpecSymbol, lConsumerstate353 *lsfConsumerState) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return lsfConsumerClose_00c5e7f3(symbols, lConsumerstate353)
+}
+
+// lsfKafkaConsumerCommitSync_d47684fe is lawtwin.kafka::kafkaConsumerCommitSync.
+func lsfKafkaConsumerCommitSync_d47684fe(symbols map[string]*LawSpecSymbol, lConsumerstate354 *lsfConsumerState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	return lsfConsumerCommit_787f4c15(symbols, lConsumerstate354)
+}
+
+// lsfKafkaConsumerCommittedOffset_c045e1a8 is lawtwin.kafka::kafkaConsumerCommittedOffset.
+func lsfKafkaConsumerCommittedOffset_c045e1a8(symbols map[string]*LawSpecSymbol, lConsumerstate355 *lsfConsumerState, lValue0356 *lsfTopicPartition) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
+	return lsfConsumerCommitted_06365ac2(symbols, lValue0356, lConsumerstate355)
+}
+
+// lsfKafkaConsumerPoll_591504e0 is lawtwin.kafka::kafkaConsumerPoll.
+func lsfKafkaConsumerPoll_591504e0(symbols map[string]*LawSpecSymbol, lConsumerstate357 *lsfConsumerState, lValue0358 int32) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
+	return lsfConsumerPoll_d12c6262(symbols, lValue0358, lConsumerstate357)
+}
+
+// lsfKafkaConsumerPosition_7784665f is lawtwin.kafka::kafkaConsumerPosition.
+func lsfKafkaConsumerPosition_7784665f(symbols map[string]*LawSpecSymbol, lConsumerstate359 *lsfConsumerState, lValue0360 *lsfTopicPartition) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
+	return lsfConsumerPositionOf_71a8a523(symbols, lValue0360, lConsumerstate359)
+}
+
+// lsfKafkaConsumerSeek_5fe046a7 is lawtwin.kafka::kafkaConsumerSeek.
+func lsfKafkaConsumerSeek_5fe046a7(lConsumerstate361 *lsfConsumerState, lValue0362 *lsfTopicPartition, lValue1363 int64) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
+	return lsfConsumerSeek_975a7017(lValue0362, lValue1363, lConsumerstate361)
+}
+
+// lsfKafkaConsumerSetIsolationLevel_bc2459d3 is lawtwin.kafka::kafkaConsumerSetIsolationLevel.
+func lsfKafkaConsumerSetIsolationLevel_bc2459d3(lConsumerstate364 *lsfConsumerState, lValue0365 lsfIsolationLevel) *lsfPair[lsfUnit, *lsfConsumerState] {
+	return lsfConsumerIsolation_2aacd289(lValue0365, lConsumerstate364)
+}
+
+// lsfKafkaConsumerStart_9e580acc is lawtwin.kafka::kafkaConsumerStart.
+func lsfKafkaConsumerStart_9e580acc(lLawspecunit366 lsfUnit) *lsfConsumerState {
+	return lsfFreshConsumer_c2da4184(lsfUnit{})
+}
+
+// lsfKafkaConsumerSubscribe_ce34eaf5 is lawtwin.kafka::kafkaConsumerSubscribe.
+func lsfKafkaConsumerSubscribe_ce34eaf5(symbols map[string]*LawSpecSymbol, lConsumerstate367 *lsfConsumerState, lValue0368 string, lValue1369 string, lValue2370 *lsfList[string]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
+	return lsfConsumerJoin_198e034e(symbols, lValue0368, lValue1369, lValue2370, lConsumerstate367)
+}
+
+// lsfKafkaProducerEnableIdempotence_a79d2db8 is lawtwin.kafka::kafkaProducerEnableIdempotence.
+func lsfKafkaProducerEnableIdempotence_a79d2db8(symbols map[string]*LawSpecSymbol, lProducerstate371 *lsfProducerState) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState] {
+	return lsfProducerIdempotent_c8ab8a13(symbols, lProducerstate371)
+}
+
+// lsfKafkaProducerFlush_584e906f is lawtwin.kafka::kafkaProducerFlush.
+func lsfKafkaProducerFlush_584e906f(lProducerstate372 *lsfProducerState) *lsfPair[lsfUnit, *lsfProducerState] {
+	return lsfProducerFlush_f30611db(lProducerstate372)
+}
+
+// lsfKafkaProducerProducerIdentity_a0ee547d is lawtwin.kafka::kafkaProducerProducerIdentity.
+func lsfKafkaProducerProducerIdentity_a0ee547d(lProducerstate373 *lsfProducerState) *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState] {
+	return lsfIdentityOf_96976095(lProducerstate373)
+}
+
+// lsfKafkaProducerRetryLastSend_9cbd6c72 is lawtwin.kafka::kafkaProducerRetryLastSend.
+func lsfKafkaProducerRetryLastSend_9cbd6c72(symbols map[string]*LawSpecSymbol, lProducerstate374 *lsfProducerState) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	return lsfProducerRetry_aaf3a88a(symbols, lProducerstate374)
+}
+
+// lsfKafkaProducerSend_a4612365 is lawtwin.kafka::kafkaProducerSend.
+func lsfKafkaProducerSend_a4612365(symbols map[string]*LawSpecSymbol, lProducerstate375 *lsfProducerState, lValue0376 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	return lsfProducerSend_9064c6b5(symbols, lValue0376, lProducerstate375)
+}
+
+// lsfKafkaProducerStart_58ddcfc8 is lawtwin.kafka::kafkaProducerStart.
+func lsfKafkaProducerStart_58ddcfc8(lLawspecunit377 lsfUnit) *lsfProducerState {
+	return lsfFreshProducer_deea7b00(lsfUnit{})
+}
+
+// lsfKafkaTransactionsAbortTransaction_a2a1e35e is lawtwin.kafka::kafkaTransactionsAbortTransaction.
+func lsfKafkaTransactionsAbortTransaction_a2a1e35e(symbols map[string]*LawSpecSymbol, lTxnstate378 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsAbort_256496fb(symbols, lTxnstate378)
+}
+
+// lsfKafkaTransactionsAddPartitionsToTransaction_3d7d0621 is lawtwin.kafka::kafkaTransactionsAddPartitionsToTransaction.
+func lsfKafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols map[string]*LawSpecSymbol, lTxnstate379 *lsfTransactionState, lValue0380 *lsfList[*lsfTopicPartition]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsAdd_1f41c92e(symbols, lValue0380, lTxnstate379)
+}
+
+// lsfKafkaTransactionsBeginTransaction_3c1e648e is lawtwin.kafka::kafkaTransactionsBeginTransaction.
+func lsfKafkaTransactionsBeginTransaction_3c1e648e(lTxnstate381 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsBegin_5d267b99(lTxnstate381)
+}
+
+// lsfKafkaTransactionsCommitTransaction_e0a5e067 is lawtwin.kafka::kafkaTransactionsCommitTransaction.
+func lsfKafkaTransactionsCommitTransaction_e0a5e067(symbols map[string]*LawSpecSymbol, lTxnstate382 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsCommit_afadd0fa(symbols, lTxnstate382)
+}
+
+// lsfKafkaTransactionsInitTransactions_96f85461 is lawtwin.kafka::kafkaTransactionsInitTransactions.
+func lsfKafkaTransactionsInitTransactions_96f85461(symbols map[string]*LawSpecSymbol, lTxnstate383 *lsfTransactionState, lValue0384 string) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
+	return lsfTransactionsInit_d69a08bc(symbols, lValue0384, lTxnstate383)
+}
+
+// lsfKafkaTransactionsSendInTransaction_09c804c7 is lawtwin.kafka::kafkaTransactionsSendInTransaction.
+func lsfKafkaTransactionsSendInTransaction_09c804c7(symbols map[string]*LawSpecSymbol, lTxnstate385 *lsfTransactionState, lValue0386 *lsfProducerRecord) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
+	return lsfTransactionsSend_558d813c(symbols, lValue0386, lTxnstate385)
+}
+
+// lsfKafkaTransactionsSendOffsetsToTransaction_d24938fc is lawtwin.kafka::kafkaTransactionsSendOffsetsToTransaction.
+func lsfKafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols map[string]*LawSpecSymbol, lTxnstate387 *lsfTransactionState, lValue0388 string, lValue1389 *lsfList[*lsfOffsetEntry]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsOffsets_b33ea106(symbols, lValue0388, lValue1389, lTxnstate387)
+}
+
+// lsfKafkaTransactionsStart_68a77cf3 is lawtwin.kafka::kafkaTransactionsStart.
+func lsfKafkaTransactionsStart_68a77cf3(lLawspecunit390 lsfUnit) *lsfTransactionState {
+	return lsfFreshTransactions_533fb432(lsfUnit{})
+}
+
+// lsfKeepPositions_f10bd26f is lawtwin.kafka::keepPositions.
+func lsfKeepPositions_f10bd26f(lTps391 *lsfList[*lsfTopicPartition], lPositions392 *lsfMap[*lsfTopicPartition, int64], lAcc393 *lsfMap[*lsfTopicPartition, int64]) *lsfMap[*lsfTopicPartition, int64] {
+	for {
+		if lTps391 == nil {
+			return lAcc393
+		} else {
+			lTp394 := lTps391.head
+			lRest395 := lTps391.tail
+			lMatched396 := lsfLookup(lPositions392, lTp394, lsfCmp_57a515e0e489)
+			if lMatched396.ok {
+				lO397 := lMatched396.v
+				lNext398 := lRest395
+				lNext399 := lsfPut(lAcc393, lTp394, lO397, lsfCmp_57a515e0e489)
+				lTps391 = lNext398
+				lAcc393 = lNext399
 				continue
 			} else {
-				lNext201 := lRest196
-				lTps192 = lNext201
+				lNext400 := lRest395
+				lTps391 = lNext400
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValDeleteItems_68 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051.
-func lsfLawspecCollectionsKeyValDeleteItems_68(lK202 string, lEs203 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
-	if lEs203 == nil {
-		return lEs203
+// lsfLawspecCollectionsKeyValDeleteItems_5df79bd1 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a214051.
+func lsfLawspecCollectionsKeyValDeleteItems_5df79bd1(lK401 string, lEs402 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
+	if lEs402 == nil {
+		return lEs402
 	} else {
-		lE204 := lEs203.head
-		lT205 := lEs203.tail
-		lKey206 := lE204.fKey
-		lMatched207 := lsfOrderingOf(lsfCmp_437d0abf423f(lK202, lKey206))
-		switch lMatched207 {
+		lE403 := lEs402.head
+		lT404 := lEs402.tail
+		lKey405 := lE403.fKey
+		lMatched406 := lsfOrderingOf(lsfCmp_437d0abf423f(lK401, lKey405))
+		switch lMatched406 {
 			case lsfOrdering_Less:
-				return lEs203
+				return lEs402
 			case lsfOrdering_Equal:
-				return lT205
+				return lT404
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, *lsfList[string]]](lE204, lsfLawspecCollectionsKeyValDeleteItems_68(lK202, lT205))
+				return lsfCons[*lsfEntry[string, *lsfList[string]]](lE403, lsfLawspecCollectionsKeyValDeleteItems_5df79bd1(lK401, lT404))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValDeleteItems_69 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5.
-func lsfLawspecCollectionsKeyValDeleteItems_69(lK208 int64, lEs209 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
-	if lEs209 == nil {
-		return lEs209
+// lsfLawspecCollectionsKeyValDeleteItems_6394b670 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5.
+func lsfLawspecCollectionsKeyValDeleteItems_6394b670(lK407 int64, lEs408 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
+	if lEs408 == nil {
+		return lEs408
 	} else {
-		lE210 := lEs209.head
-		lT211 := lEs209.tail
-		lKey212 := lE210.fKey
-		lMatched213 := lsfOrderingOf(lsfCmp_44a08172da10(lK208, lKey212))
-		switch lMatched213 {
+		lE409 := lEs408.head
+		lT410 := lEs408.tail
+		lKey411 := lE409.fKey
+		lMatched412 := lsfOrderingOf(lsfCmp_44a08172da10(lK407, lKey411))
+		switch lMatched412 {
 			case lsfOrdering_Less:
-				return lEs209
+				return lEs408
 			case lsfOrdering_Equal:
-				return lT211
+				return lT410
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[int64, int64]](lE210, lsfLawspecCollectionsKeyValDeleteItems_69(lK208, lT211))
+				return lsfCons[*lsfEntry[int64, int64]](lE409, lsfLawspecCollectionsKeyValDeleteItems_6394b670(lK407, lT410))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValDelete_70 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025.
-func lsfLawspecCollectionsKeyValDelete_70(lK214 int64, lM215 *lsfMap[int64, int64]) *lsfMap[int64, int64] {
-	return lsfDelete(lM215, lK214, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValDelete_daac10f4 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025.
+func lsfLawspecCollectionsKeyValDelete_daac10f4(lK413 int64, lM414 *lsfMap[int64, int64]) *lsfMap[int64, int64] {
+	return lsfDelete(lM414, lK413, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValDelete_71 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91.
-func lsfLawspecCollectionsKeyValDelete_71(lK216 string, lM217 *lsfMap[string, *lsfList[string]]) *lsfMap[string, *lsfList[string]] {
-	return lsfDelete(lM217, lK216, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValDelete_9159aa73 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91.
+func lsfLawspecCollectionsKeyValDelete_9159aa73(lK415 string, lM416 *lsfMap[string, *lsfList[string]]) *lsfMap[string, *lsfList[string]] {
+	return lsfDelete(lM416, lK415, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValEntries_72 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4.
-func lsfLawspecCollectionsKeyValEntries_72(lM218 *lsfMap[string, *lsfGroup]) *lsfList[*lsfEntry[string, *lsfGroup]] {
-	return lsfToList(lM218, lsfEntryOf[string, *lsfGroup])
+// lsfLawspecCollectionsKeyValEntries_a865cc3f is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4.
+func lsfLawspecCollectionsKeyValEntries_a865cc3f(lM417 *lsfMap[string, *lsfGroup]) *lsfList[*lsfEntry[string, *lsfGroup]] {
+	return lsfToList(lM417, lsfEntryOf[string, *lsfGroup])
 }
 
-// lsfLawspecCollectionsKeyValEntries_73 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c.
-func lsfLawspecCollectionsKeyValEntries_73(lM219 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
-	return lsfToList(lM219, lsfEntryOf[string, *lsfList[*lsfTopicPartition]])
+// lsfLawspecCollectionsKeyValEntries_d490695f is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c.
+func lsfLawspecCollectionsKeyValEntries_d490695f(lM418 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
+	return lsfToList(lM418, lsfEntryOf[string, *lsfList[*lsfTopicPartition]])
 }
 
-// lsfLawspecCollectionsKeyValEntries_74 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a.
-func lsfLawspecCollectionsKeyValEntries_74(lM220 *lsfMap[string, *lsfList[string]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
-	return lsfToList(lM220, lsfEntryOf[string, *lsfList[string]])
+// lsfLawspecCollectionsKeyValEntries_90fdb0cf is lawtwin.kafka::lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a.
+func lsfLawspecCollectionsKeyValEntries_90fdb0cf(lM419 *lsfMap[string, *lsfList[string]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
+	return lsfToList(lM419, lsfEntryOf[string, *lsfList[string]])
 }
 
-// lsfLawspecCollectionsKeyValFromItems_75 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587.
-func lsfLawspecCollectionsKeyValFromItems_75(lEs221 *lsfList[*lsfEntry[int64, int64]], lAcc222 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
+// lsfLawspecCollectionsKeyValFromItems_b1d7a6fe is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587.
+func lsfLawspecCollectionsKeyValFromItems_b1d7a6fe(lEs420 *lsfList[*lsfEntry[int64, int64]], lAcc421 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
 	for {
-		if lEs221 == nil {
-			return lAcc222
+		if lEs420 == nil {
+			return lAcc421
 		} else {
-			lE223 := lEs221.head
-			lT224 := lEs221.tail
-			lKey225 := lE223.fKey
-			lValue226 := lE223.fValue
-			lNext227 := lT224
-			lNext228 := lsfLawspecCollectionsKeyValPutItems_125(lKey225, lValue226, lAcc222)
-			lEs221 = lNext227
-			lAcc222 = lNext228
+			lE422 := lEs420.head
+			lT423 := lEs420.tail
+			lKey424 := lE422.fKey
+			lValue425 := lE422.fValue
+			lNext426 := lT423
+			lNext427 := lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lKey424, lValue425, lAcc421)
+			lEs420 = lNext426
+			lAcc421 = lNext427
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_76 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f.
-func lsfLawspecCollectionsKeyValFromItems_76(lEs229 *lsfList[*lsfEntry[string, int64]], lAcc230 *lsfList[*lsfEntry[string, int64]]) *lsfList[*lsfEntry[string, int64]] {
+// lsfLawspecCollectionsKeyValFromItems_06f4d2c6 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f.
+func lsfLawspecCollectionsKeyValFromItems_06f4d2c6(lEs428 *lsfList[*lsfEntry[string, int64]], lAcc429 *lsfList[*lsfEntry[string, int64]]) *lsfList[*lsfEntry[string, int64]] {
 	for {
-		if lEs229 == nil {
-			return lAcc230
+		if lEs428 == nil {
+			return lAcc429
 		} else {
-			lE231 := lEs229.head
-			lT232 := lEs229.tail
-			lKey233 := lE231.fKey
-			lValue234 := lE231.fValue
-			lNext235 := lT232
-			lNext236 := lsfLawspecCollectionsKeyValPutItems_129(lKey233, lValue234, lAcc230)
-			lEs229 = lNext235
-			lAcc230 = lNext236
+			lE430 := lEs428.head
+			lT431 := lEs428.tail
+			lKey432 := lE430.fKey
+			lValue433 := lE430.fValue
+			lNext434 := lT431
+			lNext435 := lsfLawspecCollectionsKeyValPutItems_5d998955(lKey432, lValue433, lAcc429)
+			lEs428 = lNext434
+			lAcc429 = lNext435
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_77 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba.
-func lsfLawspecCollectionsKeyValFromItems_77(lEs237 *lsfList[*lsfEntry[string, int32]], lAcc238 *lsfList[*lsfEntry[string, int32]]) *lsfList[*lsfEntry[string, int32]] {
+// lsfLawspecCollectionsKeyValFromItems_a82586cc is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba.
+func lsfLawspecCollectionsKeyValFromItems_a82586cc(lEs436 *lsfList[*lsfEntry[string, int32]], lAcc437 *lsfList[*lsfEntry[string, int32]]) *lsfList[*lsfEntry[string, int32]] {
 	for {
-		if lEs237 == nil {
-			return lAcc238
+		if lEs436 == nil {
+			return lAcc437
 		} else {
-			lE239 := lEs237.head
-			lT240 := lEs237.tail
-			lKey241 := lE239.fKey
-			lValue242 := lE239.fValue
-			lNext243 := lT240
-			lNext244 := lsfLawspecCollectionsKeyValPutItems_128(lKey241, lValue242, lAcc238)
-			lEs237 = lNext243
-			lAcc238 = lNext244
+			lE438 := lEs436.head
+			lT439 := lEs436.tail
+			lKey440 := lE438.fKey
+			lValue441 := lE438.fValue
+			lNext442 := lT439
+			lNext443 := lsfLawspecCollectionsKeyValPutItems_8d4f5385(lKey440, lValue441, lAcc437)
+			lEs436 = lNext442
+			lAcc437 = lNext443
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_78 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99.
-func lsfLawspecCollectionsKeyValFromItems_78(lEs245 *lsfList[*lsfEntry[int64, *lsfProducerEntry]], lAcc246 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfList[*lsfEntry[int64, *lsfProducerEntry]] {
+// lsfLawspecCollectionsKeyValFromItems_cbeefea2 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99.
+func lsfLawspecCollectionsKeyValFromItems_cbeefea2(lEs444 *lsfList[*lsfEntry[int64, *lsfProducerEntry]], lAcc445 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfList[*lsfEntry[int64, *lsfProducerEntry]] {
 	for {
-		if lEs245 == nil {
-			return lAcc246
+		if lEs444 == nil {
+			return lAcc445
 		} else {
-			lE247 := lEs245.head
-			lT248 := lEs245.tail
-			lKey249 := lE247.fKey
-			lValue250 := lE247.fValue
-			lNext251 := lT248
-			lNext252 := lsfLawspecCollectionsKeyValPutItems_126(lKey249, lValue250, lAcc246)
-			lEs245 = lNext251
-			lAcc246 = lNext252
+			lE446 := lEs444.head
+			lT447 := lEs444.tail
+			lKey448 := lE446.fKey
+			lValue449 := lE446.fValue
+			lNext450 := lT447
+			lNext451 := lsfLawspecCollectionsKeyValPutItems_97a64264(lKey448, lValue449, lAcc445)
+			lEs444 = lNext450
+			lAcc445 = lNext451
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_79 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac.
-func lsfLawspecCollectionsKeyValFromItems_79(lEs253 *lsfList[*lsfEntry[string, *lsfGroup]], lAcc254 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfList[*lsfEntry[string, *lsfGroup]] {
+// lsfLawspecCollectionsKeyValFromItems_32478a30 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac.
+func lsfLawspecCollectionsKeyValFromItems_32478a30(lEs452 *lsfList[*lsfEntry[string, *lsfGroup]], lAcc453 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfList[*lsfEntry[string, *lsfGroup]] {
 	for {
-		if lEs253 == nil {
-			return lAcc254
+		if lEs452 == nil {
+			return lAcc453
 		} else {
-			lE255 := lEs253.head
-			lT256 := lEs253.tail
-			lKey257 := lE255.fKey
-			lValue258 := lE255.fValue
-			lNext259 := lT256
-			lNext260 := lsfLawspecCollectionsKeyValPutItems_132(lKey257, lValue258, lAcc254)
-			lEs253 = lNext259
-			lAcc254 = lNext260
+			lE454 := lEs452.head
+			lT455 := lEs452.tail
+			lKey456 := lE454.fKey
+			lValue457 := lE454.fValue
+			lNext458 := lT455
+			lNext459 := lsfLawspecCollectionsKeyValPutItems_883fe52d(lKey456, lValue457, lAcc453)
+			lEs452 = lNext458
+			lAcc453 = lNext459
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_80 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e.
-func lsfLawspecCollectionsKeyValFromItems_80(lEs261 *lsfList[*lsfEntry[*lsfGroupPartition, int64]], lAcc262 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfList[*lsfEntry[*lsfGroupPartition, int64]] {
+// lsfLawspecCollectionsKeyValFromItems_3a24ccf2 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e.
+func lsfLawspecCollectionsKeyValFromItems_3a24ccf2(lEs460 *lsfList[*lsfEntry[*lsfGroupPartition, int64]], lAcc461 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfList[*lsfEntry[*lsfGroupPartition, int64]] {
 	for {
-		if lEs261 == nil {
-			return lAcc262
+		if lEs460 == nil {
+			return lAcc461
 		} else {
-			lE263 := lEs261.head
-			lT264 := lEs261.tail
-			lKey265 := lE263.fKey
-			lValue266 := lE263.fValue
-			lNext267 := lT264
-			lNext268 := lsfLawspecCollectionsKeyValPutItems_131(lKey265, lValue266, lAcc262)
-			lEs261 = lNext267
-			lAcc262 = lNext268
+			lE462 := lEs460.head
+			lT463 := lEs460.tail
+			lKey464 := lE462.fKey
+			lValue465 := lE462.fValue
+			lNext466 := lT463
+			lNext467 := lsfLawspecCollectionsKeyValPutItems_28cf0caf(lKey464, lValue465, lAcc461)
+			lEs460 = lNext466
+			lAcc461 = lNext467
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_81 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e.
-func lsfLawspecCollectionsKeyValFromItems_81(lEs269 *lsfList[*lsfEntry[*lsfTopicPartition, int64]], lAcc270 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfList[*lsfEntry[*lsfTopicPartition, int64]] {
+// lsfLawspecCollectionsKeyValFromItems_1e161219 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e.
+func lsfLawspecCollectionsKeyValFromItems_1e161219(lEs468 *lsfList[*lsfEntry[*lsfTopicPartition, int64]], lAcc469 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfList[*lsfEntry[*lsfTopicPartition, int64]] {
 	for {
-		if lEs269 == nil {
-			return lAcc270
+		if lEs468 == nil {
+			return lAcc469
 		} else {
-			lE271 := lEs269.head
-			lT272 := lEs269.tail
-			lKey273 := lE271.fKey
-			lValue274 := lE271.fValue
-			lNext275 := lT272
-			lNext276 := lsfLawspecCollectionsKeyValPutItems_135(lKey273, lValue274, lAcc270)
-			lEs269 = lNext275
-			lAcc270 = lNext276
+			lE470 := lEs468.head
+			lT471 := lEs468.tail
+			lKey472 := lE470.fKey
+			lValue473 := lE470.fValue
+			lNext474 := lT471
+			lNext475 := lsfLawspecCollectionsKeyValPutItems_4266176b(lKey472, lValue473, lAcc469)
+			lEs468 = lNext474
+			lAcc469 = lNext475
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_82 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3.
-func lsfLawspecCollectionsKeyValFromItems_82(lEs277 *lsfList[*lsfEntry[string, *lsfList[string]]], lAcc278 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
+// lsfLawspecCollectionsKeyValFromItems_92b072e4 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3.
+func lsfLawspecCollectionsKeyValFromItems_92b072e4(lEs476 *lsfList[*lsfEntry[string, *lsfList[string]]], lAcc477 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
 	for {
-		if lEs277 == nil {
-			return lAcc278
+		if lEs476 == nil {
+			return lAcc477
 		} else {
-			lE279 := lEs277.head
-			lT280 := lEs277.tail
-			lKey281 := lE279.fKey
-			lValue282 := lE279.fValue
-			lNext283 := lT280
-			lNext284 := lsfLawspecCollectionsKeyValPutItems_134(lKey281, lValue282, lAcc278)
-			lEs277 = lNext283
-			lAcc278 = lNext284
+			lE478 := lEs476.head
+			lT479 := lEs476.tail
+			lKey480 := lE478.fKey
+			lValue481 := lE478.fValue
+			lNext482 := lT479
+			lNext483 := lsfLawspecCollectionsKeyValPutItems_c4168a80(lKey480, lValue481, lAcc477)
+			lEs476 = lNext482
+			lAcc477 = lNext483
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_83 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10.
-func lsfLawspecCollectionsKeyValFromItems_83(lEs285 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]], lAcc286 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]] {
+// lsfLawspecCollectionsKeyValFromItems_d863ec47 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10.
+func lsfLawspecCollectionsKeyValFromItems_d863ec47(lEs484 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]], lAcc485 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]] {
 	for {
-		if lEs285 == nil {
-			return lAcc286
+		if lEs484 == nil {
+			return lAcc485
 		} else {
-			lE287 := lEs285.head
-			lT288 := lEs285.tail
-			lKey289 := lE287.fKey
-			lValue290 := lE287.fValue
-			lNext291 := lT288
-			lNext292 := lsfLawspecCollectionsKeyValPutItems_136(lKey289, lValue290, lAcc286)
-			lEs285 = lNext291
-			lAcc286 = lNext292
+			lE486 := lEs484.head
+			lT487 := lEs484.tail
+			lKey488 := lE486.fKey
+			lValue489 := lE486.fValue
+			lNext490 := lT487
+			lNext491 := lsfLawspecCollectionsKeyValPutItems_523d104d(lKey488, lValue489, lAcc485)
+			lEs484 = lNext490
+			lAcc485 = lNext491
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_84 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8.
-func lsfLawspecCollectionsKeyValFromItems_84(lEs293 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]], lAcc294 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]] {
+// lsfLawspecCollectionsKeyValFromItems_4e4ef1c4 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8.
+func lsfLawspecCollectionsKeyValFromItems_4e4ef1c4(lEs492 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]], lAcc493 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]] {
 	for {
-		if lEs293 == nil {
-			return lAcc294
+		if lEs492 == nil {
+			return lAcc493
 		} else {
-			lE295 := lEs293.head
-			lT296 := lEs293.tail
-			lKey297 := lE295.fKey
-			lValue298 := lE295.fValue
-			lNext299 := lT296
-			lNext300 := lsfLawspecCollectionsKeyValPutItems_127(lKey297, lValue298, lAcc294)
-			lEs293 = lNext299
-			lAcc294 = lNext300
+			lE494 := lEs492.head
+			lT495 := lEs492.tail
+			lKey496 := lE494.fKey
+			lValue497 := lE494.fValue
+			lNext498 := lT495
+			lNext499 := lsfLawspecCollectionsKeyValPutItems_054f1ef1(lKey496, lValue497, lAcc493)
+			lEs492 = lNext498
+			lAcc493 = lNext499
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_85 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26.
-func lsfLawspecCollectionsKeyValFromItems_85(lEs301 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]], lAcc302 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
+// lsfLawspecCollectionsKeyValFromItems_6be3ca15 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26.
+func lsfLawspecCollectionsKeyValFromItems_6be3ca15(lEs500 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]], lAcc501 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
 	for {
-		if lEs301 == nil {
-			return lAcc302
+		if lEs500 == nil {
+			return lAcc501
 		} else {
-			lE303 := lEs301.head
-			lT304 := lEs301.tail
-			lKey305 := lE303.fKey
-			lValue306 := lE303.fValue
-			lNext307 := lT304
-			lNext308 := lsfLawspecCollectionsKeyValPutItems_130(lKey305, lValue306, lAcc302)
-			lEs301 = lNext307
-			lAcc302 = lNext308
+			lE502 := lEs500.head
+			lT503 := lEs500.tail
+			lKey504 := lE502.fKey
+			lValue505 := lE502.fValue
+			lNext506 := lT503
+			lNext507 := lsfLawspecCollectionsKeyValPutItems_80dc1939(lKey504, lValue505, lAcc501)
+			lEs500 = lNext506
+			lAcc501 = lNext507
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValFromItems_86 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9.
-func lsfLawspecCollectionsKeyValFromItems_86(lEs309 *lsfList[*lsfEntry[*lsfTopicPartition, int32]], lAcc310 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfList[*lsfEntry[*lsfTopicPartition, int32]] {
+// lsfLawspecCollectionsKeyValFromItems_c033ba9e is lawtwin.kafka::lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9.
+func lsfLawspecCollectionsKeyValFromItems_c033ba9e(lEs508 *lsfList[*lsfEntry[*lsfTopicPartition, int32]], lAcc509 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfList[*lsfEntry[*lsfTopicPartition, int32]] {
 	for {
-		if lEs309 == nil {
-			return lAcc310
+		if lEs508 == nil {
+			return lAcc509
 		} else {
-			lE311 := lEs309.head
-			lT312 := lEs309.tail
-			lKey313 := lE311.fKey
-			lValue314 := lE311.fValue
-			lNext315 := lT312
-			lNext316 := lsfLawspecCollectionsKeyValPutItems_133(lKey313, lValue314, lAcc310)
-			lEs309 = lNext315
-			lAcc310 = lNext316
+			lE510 := lEs508.head
+			lT511 := lEs508.tail
+			lKey512 := lE510.fKey
+			lValue513 := lE510.fValue
+			lNext514 := lT511
+			lNext515 := lsfLawspecCollectionsKeyValPutItems_3f0139cf(lKey512, lValue513, lAcc509)
+			lEs508 = lNext514
+			lAcc509 = lNext515
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValKeysItems_87 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72.
-func lsfLawspecCollectionsKeyValKeysItems_87(lEs317 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[string] {
-	if lEs317 == nil {
+// lsfLawspecCollectionsKeyValKeysItems_e033276a is lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72.
+func lsfLawspecCollectionsKeyValKeysItems_e033276a(lEs516 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[string] {
+	if lEs516 == nil {
 		return (*lsfList[string])(nil)
 	} else {
-		lE318 := lEs317.head
-		lT319 := lEs317.tail
-		lKey320 := lE318.fKey
-		return lsfCons[string](lKey320, lsfLawspecCollectionsKeyValKeysItems_87(lT319))
+		lE517 := lEs516.head
+		lT518 := lEs516.tail
+		lKey519 := lE517.fKey
+		return lsfCons[string](lKey519, lsfLawspecCollectionsKeyValKeysItems_e033276a(lT518))
 	}
 }
 
-// lsfLawspecCollectionsKeyValKeys_88 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98.
-func lsfLawspecCollectionsKeyValKeys_88(lM321 *lsfMap[string, *lsfList[string]]) *lsfList[string] {
-	return lsfToList(lM321, func(k string, _ *lsfList[string]) string { return k })
+// lsfLawspecCollectionsKeyValKeys_34e9a8ae is lawtwin.kafka::lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98.
+func lsfLawspecCollectionsKeyValKeys_34e9a8ae(lM520 *lsfMap[string, *lsfList[string]]) *lsfList[string] {
+	return lsfToList(lM520, func(k string, _ *lsfList[string]) string { return k })
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_89 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f.
-func lsfLawspecCollectionsKeyValLookupItems_89(lK322 int64, lEs323 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) lsfMaybe[*lsfList[*lsfBatchMeta]] {
+// lsfLawspecCollectionsKeyValLookupItems_b9936fbc is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f.
+func lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lK521 int64, lEs522 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) lsfMaybe[*lsfList[*lsfBatchMeta]] {
 	for {
-		if lEs323 == nil {
+		if lEs522 == nil {
 			return lsfNothing[*lsfList[*lsfBatchMeta]]()
 		} else {
-			lE324 := lEs323.head
-			lT325 := lEs323.tail
-			lKey326 := lE324.fKey
-			lValue327 := lE324.fValue
-			lMatched328 := lsfOrderingOf(lsfCmp_44a08172da10(lK322, lKey326))
-			switch lMatched328 {
+			lE523 := lEs522.head
+			lT524 := lEs522.tail
+			lKey525 := lE523.fKey
+			lValue526 := lE523.fValue
+			lMatched527 := lsfOrderingOf(lsfCmp_44a08172da10(lK521, lKey525))
+			switch lMatched527 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfList[*lsfBatchMeta]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[*lsfBatchMeta]](lValue327)
+					return lsfJust[*lsfList[*lsfBatchMeta]](lValue526)
 				case lsfOrdering_Greater:
-					lNext329 := lT325
-					lEs323 = lNext329
+					lNext528 := lT524
+					lEs522 = lNext528
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1292,25 +1973,25 @@ func lsfLawspecCollectionsKeyValLookupItems_89(lK322 int64, lEs323 *lsfList[*lsf
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_90 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b.
-func lsfLawspecCollectionsKeyValLookupItems_90(lK330 *lsfTopicPartition, lEs331 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) lsfMaybe[int64] {
+// lsfLawspecCollectionsKeyValLookupItems_154c41d9 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b.
+func lsfLawspecCollectionsKeyValLookupItems_154c41d9(lK529 *lsfTopicPartition, lEs530 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) lsfMaybe[int64] {
 	for {
-		if lEs331 == nil {
+		if lEs530 == nil {
 			return lsfNothing[int64]()
 		} else {
-			lE332 := lEs331.head
-			lT333 := lEs331.tail
-			lKey334 := lE332.fKey
-			lValue335 := lE332.fValue
-			lMatched336 := lsfOrderingOf(lsfCmp_57a515e0e489(lK330, lKey334))
-			switch lMatched336 {
+			lE531 := lEs530.head
+			lT532 := lEs530.tail
+			lKey533 := lE531.fKey
+			lValue534 := lE531.fValue
+			lMatched535 := lsfOrderingOf(lsfCmp_57a515e0e489(lK529, lKey533))
+			switch lMatched535 {
 				case lsfOrdering_Less:
 					return lsfNothing[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lValue335)
+					return lsfJust[int64](lValue534)
 				case lsfOrdering_Greater:
-					lNext337 := lT333
-					lEs331 = lNext337
+					lNext536 := lT532
+					lEs530 = lNext536
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1319,25 +2000,25 @@ func lsfLawspecCollectionsKeyValLookupItems_90(lK330 *lsfTopicPartition, lEs331 
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_91 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581.
-func lsfLawspecCollectionsKeyValLookupItems_91(lK338 string, lEs339 *lsfList[*lsfEntry[string, int64]]) lsfMaybe[int64] {
+// lsfLawspecCollectionsKeyValLookupItems_ebcd945a is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581.
+func lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lK537 string, lEs538 *lsfList[*lsfEntry[string, int64]]) lsfMaybe[int64] {
 	for {
-		if lEs339 == nil {
+		if lEs538 == nil {
 			return lsfNothing[int64]()
 		} else {
-			lE340 := lEs339.head
-			lT341 := lEs339.tail
-			lKey342 := lE340.fKey
-			lValue343 := lE340.fValue
-			lMatched344 := lsfOrderingOf(lsfCmp_437d0abf423f(lK338, lKey342))
-			switch lMatched344 {
+			lE539 := lEs538.head
+			lT540 := lEs538.tail
+			lKey541 := lE539.fKey
+			lValue542 := lE539.fValue
+			lMatched543 := lsfOrderingOf(lsfCmp_437d0abf423f(lK537, lKey541))
+			switch lMatched543 {
 				case lsfOrdering_Less:
 					return lsfNothing[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lValue343)
+					return lsfJust[int64](lValue542)
 				case lsfOrdering_Greater:
-					lNext345 := lT341
-					lEs339 = lNext345
+					lNext544 := lT540
+					lEs538 = lNext544
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1346,25 +2027,25 @@ func lsfLawspecCollectionsKeyValLookupItems_91(lK338 string, lEs339 *lsfList[*ls
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_92 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585.
-func lsfLawspecCollectionsKeyValLookupItems_92(lK346 string, lEs347 *lsfList[*lsfEntry[string, *lsfList[string]]]) lsfMaybe[*lsfList[string]] {
+// lsfLawspecCollectionsKeyValLookupItems_71a2ad87 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585.
+func lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lK545 string, lEs546 *lsfList[*lsfEntry[string, *lsfList[string]]]) lsfMaybe[*lsfList[string]] {
 	for {
-		if lEs347 == nil {
+		if lEs546 == nil {
 			return lsfNothing[*lsfList[string]]()
 		} else {
-			lE348 := lEs347.head
-			lT349 := lEs347.tail
-			lKey350 := lE348.fKey
-			lValue351 := lE348.fValue
-			lMatched352 := lsfOrderingOf(lsfCmp_437d0abf423f(lK346, lKey350))
-			switch lMatched352 {
+			lE547 := lEs546.head
+			lT548 := lEs546.tail
+			lKey549 := lE547.fKey
+			lValue550 := lE547.fValue
+			lMatched551 := lsfOrderingOf(lsfCmp_437d0abf423f(lK545, lKey549))
+			switch lMatched551 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfList[string]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[string]](lValue351)
+					return lsfJust[*lsfList[string]](lValue550)
 				case lsfOrdering_Greater:
-					lNext353 := lT349
-					lEs347 = lNext353
+					lNext552 := lT548
+					lEs546 = lNext552
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1373,25 +2054,25 @@ func lsfLawspecCollectionsKeyValLookupItems_92(lK346 string, lEs347 *lsfList[*ls
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_93 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75.
-func lsfLawspecCollectionsKeyValLookupItems_93(lK354 string, lEs355 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) lsfMaybe[*lsfList[*lsfTopicPartition]] {
+// lsfLawspecCollectionsKeyValLookupItems_a13d293f is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75.
+func lsfLawspecCollectionsKeyValLookupItems_a13d293f(lK553 string, lEs554 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) lsfMaybe[*lsfList[*lsfTopicPartition]] {
 	for {
-		if lEs355 == nil {
+		if lEs554 == nil {
 			return lsfNothing[*lsfList[*lsfTopicPartition]]()
 		} else {
-			lE356 := lEs355.head
-			lT357 := lEs355.tail
-			lKey358 := lE356.fKey
-			lValue359 := lE356.fValue
-			lMatched360 := lsfOrderingOf(lsfCmp_437d0abf423f(lK354, lKey358))
-			switch lMatched360 {
+			lE555 := lEs554.head
+			lT556 := lEs554.tail
+			lKey557 := lE555.fKey
+			lValue558 := lE555.fValue
+			lMatched559 := lsfOrderingOf(lsfCmp_437d0abf423f(lK553, lKey557))
+			switch lMatched559 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfList[*lsfTopicPartition]]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfList[*lsfTopicPartition]](lValue359)
+					return lsfJust[*lsfList[*lsfTopicPartition]](lValue558)
 				case lsfOrdering_Greater:
-					lNext361 := lT357
-					lEs355 = lNext361
+					lNext560 := lT556
+					lEs554 = lNext560
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1400,25 +2081,25 @@ func lsfLawspecCollectionsKeyValLookupItems_93(lK354 string, lEs355 *lsfList[*ls
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_94 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5.
-func lsfLawspecCollectionsKeyValLookupItems_94(lK362 int64, lEs363 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) lsfMaybe[*lsfProducerEntry] {
+// lsfLawspecCollectionsKeyValLookupItems_9c1371ef is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5.
+func lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lK561 int64, lEs562 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) lsfMaybe[*lsfProducerEntry] {
 	for {
-		if lEs363 == nil {
+		if lEs562 == nil {
 			return lsfNothing[*lsfProducerEntry]()
 		} else {
-			lE364 := lEs363.head
-			lT365 := lEs363.tail
-			lKey366 := lE364.fKey
-			lValue367 := lE364.fValue
-			lMatched368 := lsfOrderingOf(lsfCmp_44a08172da10(lK362, lKey366))
-			switch lMatched368 {
+			lE563 := lEs562.head
+			lT564 := lEs562.tail
+			lKey565 := lE563.fKey
+			lValue566 := lE563.fValue
+			lMatched567 := lsfOrderingOf(lsfCmp_44a08172da10(lK561, lKey565))
+			switch lMatched567 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfProducerEntry]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfProducerEntry](lValue367)
+					return lsfJust[*lsfProducerEntry](lValue566)
 				case lsfOrdering_Greater:
-					lNext369 := lT365
-					lEs363 = lNext369
+					lNext568 := lT564
+					lEs562 = lNext568
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1427,25 +2108,25 @@ func lsfLawspecCollectionsKeyValLookupItems_94(lK362 int64, lEs363 *lsfList[*lsf
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_95 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3.
-func lsfLawspecCollectionsKeyValLookupItems_95(lK370 string, lEs371 *lsfList[*lsfEntry[string, int32]]) lsfMaybe[int32] {
+// lsfLawspecCollectionsKeyValLookupItems_4e6d941b is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3.
+func lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lK569 string, lEs570 *lsfList[*lsfEntry[string, int32]]) lsfMaybe[int32] {
 	for {
-		if lEs371 == nil {
+		if lEs570 == nil {
 			return lsfNothing[int32]()
 		} else {
-			lE372 := lEs371.head
-			lT373 := lEs371.tail
-			lKey374 := lE372.fKey
-			lValue375 := lE372.fValue
-			lMatched376 := lsfOrderingOf(lsfCmp_437d0abf423f(lK370, lKey374))
-			switch lMatched376 {
+			lE571 := lEs570.head
+			lT572 := lEs570.tail
+			lKey573 := lE571.fKey
+			lValue574 := lE571.fValue
+			lMatched575 := lsfOrderingOf(lsfCmp_437d0abf423f(lK569, lKey573))
+			switch lMatched575 {
 				case lsfOrdering_Less:
 					return lsfNothing[int32]()
 				case lsfOrdering_Equal:
-					return lsfJust[int32](lValue375)
+					return lsfJust[int32](lValue574)
 				case lsfOrdering_Greater:
-					lNext377 := lT373
-					lEs371 = lNext377
+					lNext576 := lT572
+					lEs570 = lNext576
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1454,25 +2135,25 @@ func lsfLawspecCollectionsKeyValLookupItems_95(lK370 string, lEs371 *lsfList[*ls
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_96 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3.
-func lsfLawspecCollectionsKeyValLookupItems_96(lK378 *lsfGroupPartition, lEs379 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) lsfMaybe[int64] {
+// lsfLawspecCollectionsKeyValLookupItems_634e3159 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3.
+func lsfLawspecCollectionsKeyValLookupItems_634e3159(lK577 *lsfGroupPartition, lEs578 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) lsfMaybe[int64] {
 	for {
-		if lEs379 == nil {
+		if lEs578 == nil {
 			return lsfNothing[int64]()
 		} else {
-			lE380 := lEs379.head
-			lT381 := lEs379.tail
-			lKey382 := lE380.fKey
-			lValue383 := lE380.fValue
-			lMatched384 := lsfOrderingOf(lsfCmp_213d3554d90b(lK378, lKey382))
-			switch lMatched384 {
+			lE579 := lEs578.head
+			lT580 := lEs578.tail
+			lKey581 := lE579.fKey
+			lValue582 := lE579.fValue
+			lMatched583 := lsfOrderingOf(lsfCmp_213d3554d90b(lK577, lKey581))
+			switch lMatched583 {
 				case lsfOrdering_Less:
 					return lsfNothing[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lValue383)
+					return lsfJust[int64](lValue582)
 				case lsfOrdering_Greater:
-					lNext385 := lT381
-					lEs379 = lNext385
+					lNext584 := lT580
+					lEs578 = lNext584
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1481,25 +2162,25 @@ func lsfLawspecCollectionsKeyValLookupItems_96(lK378 *lsfGroupPartition, lEs379 
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_97 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd.
-func lsfLawspecCollectionsKeyValLookupItems_97(lK386 *lsfTopicPartition, lEs387 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) lsfMaybe[int32] {
+// lsfLawspecCollectionsKeyValLookupItems_eaf6916f is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd.
+func lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lK585 *lsfTopicPartition, lEs586 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) lsfMaybe[int32] {
 	for {
-		if lEs387 == nil {
+		if lEs586 == nil {
 			return lsfNothing[int32]()
 		} else {
-			lE388 := lEs387.head
-			lT389 := lEs387.tail
-			lKey390 := lE388.fKey
-			lValue391 := lE388.fValue
-			lMatched392 := lsfOrderingOf(lsfCmp_57a515e0e489(lK386, lKey390))
-			switch lMatched392 {
+			lE587 := lEs586.head
+			lT588 := lEs586.tail
+			lKey589 := lE587.fKey
+			lValue590 := lE587.fValue
+			lMatched591 := lsfOrderingOf(lsfCmp_57a515e0e489(lK585, lKey589))
+			switch lMatched591 {
 				case lsfOrdering_Less:
 					return lsfNothing[int32]()
 				case lsfOrdering_Equal:
-					return lsfJust[int32](lValue391)
+					return lsfJust[int32](lValue590)
 				case lsfOrdering_Greater:
-					lNext393 := lT389
-					lEs387 = lNext393
+					lNext592 := lT588
+					lEs586 = lNext592
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1508,25 +2189,25 @@ func lsfLawspecCollectionsKeyValLookupItems_97(lK386 *lsfTopicPartition, lEs387 
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_98 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375.
-func lsfLawspecCollectionsKeyValLookupItems_98(lK394 int64, lEs395 *lsfList[*lsfEntry[int64, int64]]) lsfMaybe[int64] {
+// lsfLawspecCollectionsKeyValLookupItems_ae57d2cd is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375.
+func lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lK593 int64, lEs594 *lsfList[*lsfEntry[int64, int64]]) lsfMaybe[int64] {
 	for {
-		if lEs395 == nil {
+		if lEs594 == nil {
 			return lsfNothing[int64]()
 		} else {
-			lE396 := lEs395.head
-			lT397 := lEs395.tail
-			lKey398 := lE396.fKey
-			lValue399 := lE396.fValue
-			lMatched400 := lsfOrderingOf(lsfCmp_44a08172da10(lK394, lKey398))
-			switch lMatched400 {
+			lE595 := lEs594.head
+			lT596 := lEs594.tail
+			lKey597 := lE595.fKey
+			lValue598 := lE595.fValue
+			lMatched599 := lsfOrderingOf(lsfCmp_44a08172da10(lK593, lKey597))
+			switch lMatched599 {
 				case lsfOrdering_Less:
 					return lsfNothing[int64]()
 				case lsfOrdering_Equal:
-					return lsfJust[int64](lValue399)
+					return lsfJust[int64](lValue598)
 				case lsfOrdering_Greater:
-					lNext401 := lT397
-					lEs395 = lNext401
+					lNext600 := lT596
+					lEs594 = lNext600
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1535,25 +2216,25 @@ func lsfLawspecCollectionsKeyValLookupItems_98(lK394 int64, lEs395 *lsfList[*lsf
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_99 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11.
-func lsfLawspecCollectionsKeyValLookupItems_99(lK402 string, lEs403 *lsfList[*lsfEntry[string, *lsfGroup]]) lsfMaybe[*lsfGroup] {
+// lsfLawspecCollectionsKeyValLookupItems_3c718024 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11.
+func lsfLawspecCollectionsKeyValLookupItems_3c718024(lK601 string, lEs602 *lsfList[*lsfEntry[string, *lsfGroup]]) lsfMaybe[*lsfGroup] {
 	for {
-		if lEs403 == nil {
+		if lEs602 == nil {
 			return lsfNothing[*lsfGroup]()
 		} else {
-			lE404 := lEs403.head
-			lT405 := lEs403.tail
-			lKey406 := lE404.fKey
-			lValue407 := lE404.fValue
-			lMatched408 := lsfOrderingOf(lsfCmp_437d0abf423f(lK402, lKey406))
-			switch lMatched408 {
+			lE603 := lEs602.head
+			lT604 := lEs602.tail
+			lKey605 := lE603.fKey
+			lValue606 := lE603.fValue
+			lMatched607 := lsfOrderingOf(lsfCmp_437d0abf423f(lK601, lKey605))
+			switch lMatched607 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfGroup]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfGroup](lValue407)
+					return lsfJust[*lsfGroup](lValue606)
 				case lsfOrdering_Greater:
-					lNext409 := lT405
-					lEs403 = lNext409
+					lNext608 := lT604
+					lEs602 = lNext608
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1562,25 +2243,25 @@ func lsfLawspecCollectionsKeyValLookupItems_99(lK402 string, lEs403 *lsfList[*ls
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookupItems_100 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb.
-func lsfLawspecCollectionsKeyValLookupItems_100(lK410 *lsfTopicPartition, lEs411 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) lsfMaybe[*lsfPartitionLog] {
+// lsfLawspecCollectionsKeyValLookupItems_8d0d5317 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb.
+func lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lK609 *lsfTopicPartition, lEs610 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) lsfMaybe[*lsfPartitionLog] {
 	for {
-		if lEs411 == nil {
+		if lEs610 == nil {
 			return lsfNothing[*lsfPartitionLog]()
 		} else {
-			lE412 := lEs411.head
-			lT413 := lEs411.tail
-			lKey414 := lE412.fKey
-			lValue415 := lE412.fValue
-			lMatched416 := lsfOrderingOf(lsfCmp_57a515e0e489(lK410, lKey414))
-			switch lMatched416 {
+			lE611 := lEs610.head
+			lT612 := lEs610.tail
+			lKey613 := lE611.fKey
+			lValue614 := lE611.fValue
+			lMatched615 := lsfOrderingOf(lsfCmp_57a515e0e489(lK609, lKey613))
+			switch lMatched615 {
 				case lsfOrdering_Less:
 					return lsfNothing[*lsfPartitionLog]()
 				case lsfOrdering_Equal:
-					return lsfJust[*lsfPartitionLog](lValue415)
+					return lsfJust[*lsfPartitionLog](lValue614)
 				case lsfOrdering_Greater:
-					lNext417 := lT413
-					lEs411 = lNext417
+					lNext616 := lT612
+					lEs610 = lNext616
 					continue
 				default:
 					panic("unreachable branch reached")
@@ -1589,845 +2270,847 @@ func lsfLawspecCollectionsKeyValLookupItems_100(lK410 *lsfTopicPartition, lEs411
 	}
 }
 
-// lsfLawspecCollectionsKeyValLookup_101 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457.
-func lsfLawspecCollectionsKeyValLookup_101(lK418 string, lM419 *lsfMap[string, *lsfList[string]]) lsfMaybe[*lsfList[string]] {
-	return lsfLookup(lM419, lK418, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValLookup_a9059595 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457.
+func lsfLawspecCollectionsKeyValLookup_a9059595(lK617 string, lM618 *lsfMap[string, *lsfList[string]]) lsfMaybe[*lsfList[string]] {
+	return lsfLookup(lM618, lK617, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValLookup_102 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5.
-func lsfLawspecCollectionsKeyValLookup_102(lK420 int64, lM421 *lsfMap[int64, *lsfList[*lsfBatchMeta]]) lsfMaybe[*lsfList[*lsfBatchMeta]] {
-	return lsfLookup(lM421, lK420, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValLookup_b2bbd077 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5.
+func lsfLawspecCollectionsKeyValLookup_b2bbd077(lK619 int64, lM620 *lsfMap[int64, *lsfList[*lsfBatchMeta]]) lsfMaybe[*lsfList[*lsfBatchMeta]] {
+	return lsfLookup(lM620, lK619, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValLookup_103 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941.
-func lsfLawspecCollectionsKeyValLookup_103(lK422 *lsfTopicPartition, lM423 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) lsfMaybe[*lsfPartitionLog] {
-	return lsfLookup(lM423, lK422, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValLookup_8a481efc is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941.
+func lsfLawspecCollectionsKeyValLookup_8a481efc(lK621 *lsfTopicPartition, lM622 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) lsfMaybe[*lsfPartitionLog] {
+	return lsfLookup(lM622, lK621, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValLookup_104 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9.
-func lsfLawspecCollectionsKeyValLookup_104(lK424 *lsfTopicPartition, lM425 *lsfMap[*lsfTopicPartition, int32]) lsfMaybe[int32] {
-	return lsfLookup(lM425, lK424, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValLookup_8e671f4d is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9.
+func lsfLawspecCollectionsKeyValLookup_8e671f4d(lK623 *lsfTopicPartition, lM624 *lsfMap[*lsfTopicPartition, int32]) lsfMaybe[int32] {
+	return lsfLookup(lM624, lK623, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValLookup_105 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1.
-func lsfLawspecCollectionsKeyValLookup_105(lK426 int64, lM427 *lsfMap[int64, int64]) lsfMaybe[int64] {
-	return lsfLookup(lM427, lK426, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValLookup_65e9c66c is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1.
+func lsfLawspecCollectionsKeyValLookup_65e9c66c(lK625 int64, lM626 *lsfMap[int64, int64]) lsfMaybe[int64] {
+	return lsfLookup(lM626, lK625, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValLookup_106 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5.
-func lsfLawspecCollectionsKeyValLookup_106(lK428 *lsfTopicPartition, lM429 *lsfMap[*lsfTopicPartition, int64]) lsfMaybe[int64] {
-	return lsfLookup(lM429, lK428, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValLookup_a6e9da81 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5.
+func lsfLawspecCollectionsKeyValLookup_a6e9da81(lK627 *lsfTopicPartition, lM628 *lsfMap[*lsfTopicPartition, int64]) lsfMaybe[int64] {
+	return lsfLookup(lM628, lK627, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValLookup_107 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b.
-func lsfLawspecCollectionsKeyValLookup_107(lK430 string, lM431 *lsfMap[string, int64]) lsfMaybe[int64] {
-	return lsfLookup(lM431, lK430, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValLookup_24612a0e is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b.
+func lsfLawspecCollectionsKeyValLookup_24612a0e(lK629 string, lM630 *lsfMap[string, int64]) lsfMaybe[int64] {
+	return lsfLookup(lM630, lK629, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValLookup_108 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5.
-func lsfLawspecCollectionsKeyValLookup_108(lK432 *lsfGroupPartition, lM433 *lsfMap[*lsfGroupPartition, int64]) lsfMaybe[int64] {
-	return lsfLookup(lM433, lK432, lsfCmp_213d3554d90b)
+// lsfLawspecCollectionsKeyValLookup_cd13c56f is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5.
+func lsfLawspecCollectionsKeyValLookup_cd13c56f(lK631 *lsfGroupPartition, lM632 *lsfMap[*lsfGroupPartition, int64]) lsfMaybe[int64] {
+	return lsfLookup(lM632, lK631, lsfCmp_213d3554d90b)
 }
 
-// lsfLawspecCollectionsKeyValLookup_109 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb.
-func lsfLawspecCollectionsKeyValLookup_109(lK434 int64, lM435 *lsfMap[int64, *lsfProducerEntry]) lsfMaybe[*lsfProducerEntry] {
-	return lsfLookup(lM435, lK434, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValLookup_6946d404 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb.
+func lsfLawspecCollectionsKeyValLookup_6946d404(lK633 int64, lM634 *lsfMap[int64, *lsfProducerEntry]) lsfMaybe[*lsfProducerEntry] {
+	return lsfLookup(lM634, lK633, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValLookup_110 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07.
-func lsfLawspecCollectionsKeyValLookup_110(lK436 string, lM437 *lsfMap[string, int32]) lsfMaybe[int32] {
-	return lsfLookup(lM437, lK436, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValLookup_7f47bbb6 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07.
+func lsfLawspecCollectionsKeyValLookup_7f47bbb6(lK635 string, lM636 *lsfMap[string, int32]) lsfMaybe[int32] {
+	return lsfLookup(lM636, lK635, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValLookup_111 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb.
-func lsfLawspecCollectionsKeyValLookup_111(lK438 string, lM439 *lsfMap[string, *lsfList[*lsfTopicPartition]]) lsfMaybe[*lsfList[*lsfTopicPartition]] {
-	return lsfLookup(lM439, lK438, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValLookup_ce7e98b5 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb.
+func lsfLawspecCollectionsKeyValLookup_ce7e98b5(lK637 string, lM638 *lsfMap[string, *lsfList[*lsfTopicPartition]]) lsfMaybe[*lsfList[*lsfTopicPartition]] {
+	return lsfLookup(lM638, lK637, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValLookup_112 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f.
-func lsfLawspecCollectionsKeyValLookup_112(lK440 string, lM441 *lsfMap[string, *lsfGroup]) lsfMaybe[*lsfGroup] {
-	return lsfLookup(lM441, lK440, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValLookup_0bbb87c8 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f.
+func lsfLawspecCollectionsKeyValLookup_0bbb87c8(lK639 string, lM640 *lsfMap[string, *lsfGroup]) lsfMaybe[*lsfGroup] {
+	return lsfLookup(lM640, lK639, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_113 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc.
-func lsfLawspecCollectionsKeyValOf_113(lEs442 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
-	return lsfKeyValOf(lEs442, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValOf_b3b63ee9 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc.
+func lsfLawspecCollectionsKeyValOf_b3b63ee9(lEs641 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+	return lsfKeyValOf(lEs641, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_114 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54.
-func lsfLawspecCollectionsKeyValOf_114(lEs443 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfMap[string, *lsfGroup] {
-	return lsfKeyValOf(lEs443, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValOf_315c22fb is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54.
+func lsfLawspecCollectionsKeyValOf_315c22fb(lEs642 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfMap[string, *lsfGroup] {
+	return lsfKeyValOf(lEs642, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_115 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02.
-func lsfLawspecCollectionsKeyValOf_115(lEs444 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfMap[*lsfTopicPartition, int32] {
-	return lsfKeyValOf(lEs444, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValOf_8d386a7a is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02.
+func lsfLawspecCollectionsKeyValOf_8d386a7a(lEs643 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfMap[*lsfTopicPartition, int32] {
+	return lsfKeyValOf(lEs643, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValOf_116 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04.
-func lsfLawspecCollectionsKeyValOf_116(lEs445 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfMap[*lsfTopicPartition, *lsfPartitionLog] {
-	return lsfKeyValOf(lEs445, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValOf_66dd9a82 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04.
+func lsfLawspecCollectionsKeyValOf_66dd9a82(lEs644 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfMap[*lsfTopicPartition, *lsfPartitionLog] {
+	return lsfKeyValOf(lEs644, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValOf_117 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4.
-func lsfLawspecCollectionsKeyValOf_117(lEs446 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfMap[int64, *lsfList[*lsfBatchMeta]] {
-	return lsfKeyValOf(lEs446, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValOf_3adee7cf is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4.
+func lsfLawspecCollectionsKeyValOf_3adee7cf(lEs645 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfMap[int64, *lsfList[*lsfBatchMeta]] {
+	return lsfKeyValOf(lEs645, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValOf_118 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c.
-func lsfLawspecCollectionsKeyValOf_118(lEs447 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfMap[*lsfTopicPartition, int64] {
-	return lsfKeyValOf(lEs447, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValOf_a1009097 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c.
+func lsfLawspecCollectionsKeyValOf_a1009097(lEs646 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfMap[*lsfTopicPartition, int64] {
+	return lsfKeyValOf(lEs646, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValOf_119 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2.
-func lsfLawspecCollectionsKeyValOf_119(lEs448 *lsfList[*lsfEntry[string, int64]]) *lsfMap[string, int64] {
-	return lsfKeyValOf(lEs448, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValOf_eeff9798 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2.
+func lsfLawspecCollectionsKeyValOf_eeff9798(lEs647 *lsfList[*lsfEntry[string, int64]]) *lsfMap[string, int64] {
+	return lsfKeyValOf(lEs647, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_120 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02.
-func lsfLawspecCollectionsKeyValOf_120(lEs449 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfMap[string, *lsfList[string]] {
-	return lsfKeyValOf(lEs449, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValOf_afdc1c77 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02.
+func lsfLawspecCollectionsKeyValOf_afdc1c77(lEs648 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfMap[string, *lsfList[string]] {
+	return lsfKeyValOf(lEs648, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_121 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e.
-func lsfLawspecCollectionsKeyValOf_121(lEs450 *lsfList[*lsfEntry[string, int32]]) *lsfMap[string, int32] {
-	return lsfKeyValOf(lEs450, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValOf_924ce6dd is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e.
+func lsfLawspecCollectionsKeyValOf_924ce6dd(lEs649 *lsfList[*lsfEntry[string, int32]]) *lsfMap[string, int32] {
+	return lsfKeyValOf(lEs649, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValOf_122 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a.
-func lsfLawspecCollectionsKeyValOf_122(lEs451 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfMap[int64, *lsfProducerEntry] {
-	return lsfKeyValOf(lEs451, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValOf_66da004b is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a.
+func lsfLawspecCollectionsKeyValOf_66da004b(lEs650 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfMap[int64, *lsfProducerEntry] {
+	return lsfKeyValOf(lEs650, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValOf_123 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea.
-func lsfLawspecCollectionsKeyValOf_123(lEs452 *lsfList[*lsfEntry[int64, int64]]) *lsfMap[int64, int64] {
-	return lsfKeyValOf(lEs452, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValOf_b2ceee25 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea.
+func lsfLawspecCollectionsKeyValOf_b2ceee25(lEs651 *lsfList[*lsfEntry[int64, int64]]) *lsfMap[int64, int64] {
+	return lsfKeyValOf(lEs651, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValOf_124 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48.
-func lsfLawspecCollectionsKeyValOf_124(lEs453 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfMap[*lsfGroupPartition, int64] {
-	return lsfKeyValOf(lEs453, lsfCmp_213d3554d90b)
+// lsfLawspecCollectionsKeyValOf_14405d63 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48.
+func lsfLawspecCollectionsKeyValOf_14405d63(lEs652 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfMap[*lsfGroupPartition, int64] {
+	return lsfKeyValOf(lEs652, lsfCmp_213d3554d90b)
 }
 
-// lsfLawspecCollectionsKeyValPutItems_125 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c.
-func lsfLawspecCollectionsKeyValPutItems_125(lK454 int64, lV455 int64, lEs456 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
-	if lEs456 == nil {
-		return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK454, lV455}, (*lsfList[*lsfEntry[int64, int64]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_fb1bb5ca is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c.
+func lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lK653 int64, lV654 int64, lEs655 *lsfList[*lsfEntry[int64, int64]]) *lsfList[*lsfEntry[int64, int64]] {
+	if lEs655 == nil {
+		return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK653, lV654}, (*lsfList[*lsfEntry[int64, int64]])(nil))
 	} else {
-		lE457 := lEs456.head
-		lT458 := lEs456.tail
-		lKey459 := lE457.fKey
-		lMatched460 := lsfOrderingOf(lsfCmp_44a08172da10(lK454, lKey459))
-		switch lMatched460 {
+		lE656 := lEs655.head
+		lT657 := lEs655.tail
+		lKey658 := lE656.fKey
+		lMatched659 := lsfOrderingOf(lsfCmp_44a08172da10(lK653, lKey658))
+		switch lMatched659 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK454, lV455}, lEs456)
+				return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK653, lV654}, lEs655)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK454, lV455}, lT458)
+				return lsfCons[*lsfEntry[int64, int64]](&lsfEntry[int64, int64]{lK653, lV654}, lT657)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[int64, int64]](lE457, lsfLawspecCollectionsKeyValPutItems_125(lK454, lV455, lT458))
+				return lsfCons[*lsfEntry[int64, int64]](lE656, lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lK653, lV654, lT657))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_126 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2.
-func lsfLawspecCollectionsKeyValPutItems_126(lK461 int64, lV462 *lsfProducerEntry, lEs463 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfList[*lsfEntry[int64, *lsfProducerEntry]] {
-	if lEs463 == nil {
-		return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK461, lV462}, (*lsfList[*lsfEntry[int64, *lsfProducerEntry]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_97a64264 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2.
+func lsfLawspecCollectionsKeyValPutItems_97a64264(lK660 int64, lV661 *lsfProducerEntry, lEs662 *lsfList[*lsfEntry[int64, *lsfProducerEntry]]) *lsfList[*lsfEntry[int64, *lsfProducerEntry]] {
+	if lEs662 == nil {
+		return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK660, lV661}, (*lsfList[*lsfEntry[int64, *lsfProducerEntry]])(nil))
 	} else {
-		lE464 := lEs463.head
-		lT465 := lEs463.tail
-		lKey466 := lE464.fKey
-		lMatched467 := lsfOrderingOf(lsfCmp_44a08172da10(lK461, lKey466))
-		switch lMatched467 {
+		lE663 := lEs662.head
+		lT664 := lEs662.tail
+		lKey665 := lE663.fKey
+		lMatched666 := lsfOrderingOf(lsfCmp_44a08172da10(lK660, lKey665))
+		switch lMatched666 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK461, lV462}, lEs463)
+				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK660, lV661}, lEs662)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK461, lV462}, lT465)
+				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](&lsfEntry[int64, *lsfProducerEntry]{lK660, lV661}, lT664)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](lE464, lsfLawspecCollectionsKeyValPutItems_126(lK461, lV462, lT465))
+				return lsfCons[*lsfEntry[int64, *lsfProducerEntry]](lE663, lsfLawspecCollectionsKeyValPutItems_97a64264(lK660, lV661, lT664))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_127 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9.
-func lsfLawspecCollectionsKeyValPutItems_127(lK468 int64, lV469 *lsfList[*lsfBatchMeta], lEs470 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]] {
-	if lEs470 == nil {
-		return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK468, lV469}, (*lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_054f1ef1 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9.
+func lsfLawspecCollectionsKeyValPutItems_054f1ef1(lK667 int64, lV668 *lsfList[*lsfBatchMeta], lEs669 *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]]) *lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]] {
+	if lEs669 == nil {
+		return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK667, lV668}, (*lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]])(nil))
 	} else {
-		lE471 := lEs470.head
-		lT472 := lEs470.tail
-		lKey473 := lE471.fKey
-		lMatched474 := lsfOrderingOf(lsfCmp_44a08172da10(lK468, lKey473))
-		switch lMatched474 {
+		lE670 := lEs669.head
+		lT671 := lEs669.tail
+		lKey672 := lE670.fKey
+		lMatched673 := lsfOrderingOf(lsfCmp_44a08172da10(lK667, lKey672))
+		switch lMatched673 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK468, lV469}, lEs470)
+				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK667, lV668}, lEs669)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK468, lV469}, lT472)
+				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](&lsfEntry[int64, *lsfList[*lsfBatchMeta]]{lK667, lV668}, lT671)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](lE471, lsfLawspecCollectionsKeyValPutItems_127(lK468, lV469, lT472))
+				return lsfCons[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]](lE670, lsfLawspecCollectionsKeyValPutItems_054f1ef1(lK667, lV668, lT671))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_128 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53.
-func lsfLawspecCollectionsKeyValPutItems_128(lK475 string, lV476 int32, lEs477 *lsfList[*lsfEntry[string, int32]]) *lsfList[*lsfEntry[string, int32]] {
-	if lEs477 == nil {
-		return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK475, lV476}, (*lsfList[*lsfEntry[string, int32]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_8d4f5385 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53.
+func lsfLawspecCollectionsKeyValPutItems_8d4f5385(lK674 string, lV675 int32, lEs676 *lsfList[*lsfEntry[string, int32]]) *lsfList[*lsfEntry[string, int32]] {
+	if lEs676 == nil {
+		return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK674, lV675}, (*lsfList[*lsfEntry[string, int32]])(nil))
 	} else {
-		lE478 := lEs477.head
-		lT479 := lEs477.tail
-		lKey480 := lE478.fKey
-		lMatched481 := lsfOrderingOf(lsfCmp_437d0abf423f(lK475, lKey480))
-		switch lMatched481 {
+		lE677 := lEs676.head
+		lT678 := lEs676.tail
+		lKey679 := lE677.fKey
+		lMatched680 := lsfOrderingOf(lsfCmp_437d0abf423f(lK674, lKey679))
+		switch lMatched680 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK475, lV476}, lEs477)
+				return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK674, lV675}, lEs676)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK475, lV476}, lT479)
+				return lsfCons[*lsfEntry[string, int32]](&lsfEntry[string, int32]{lK674, lV675}, lT678)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, int32]](lE478, lsfLawspecCollectionsKeyValPutItems_128(lK475, lV476, lT479))
+				return lsfCons[*lsfEntry[string, int32]](lE677, lsfLawspecCollectionsKeyValPutItems_8d4f5385(lK674, lV675, lT678))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_129 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58.
-func lsfLawspecCollectionsKeyValPutItems_129(lK482 string, lV483 int64, lEs484 *lsfList[*lsfEntry[string, int64]]) *lsfList[*lsfEntry[string, int64]] {
-	if lEs484 == nil {
-		return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK482, lV483}, (*lsfList[*lsfEntry[string, int64]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_5d998955 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58.
+func lsfLawspecCollectionsKeyValPutItems_5d998955(lK681 string, lV682 int64, lEs683 *lsfList[*lsfEntry[string, int64]]) *lsfList[*lsfEntry[string, int64]] {
+	if lEs683 == nil {
+		return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK681, lV682}, (*lsfList[*lsfEntry[string, int64]])(nil))
 	} else {
-		lE485 := lEs484.head
-		lT486 := lEs484.tail
-		lKey487 := lE485.fKey
-		lMatched488 := lsfOrderingOf(lsfCmp_437d0abf423f(lK482, lKey487))
-		switch lMatched488 {
+		lE684 := lEs683.head
+		lT685 := lEs683.tail
+		lKey686 := lE684.fKey
+		lMatched687 := lsfOrderingOf(lsfCmp_437d0abf423f(lK681, lKey686))
+		switch lMatched687 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK482, lV483}, lEs484)
+				return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK681, lV682}, lEs683)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK482, lV483}, lT486)
+				return lsfCons[*lsfEntry[string, int64]](&lsfEntry[string, int64]{lK681, lV682}, lT685)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, int64]](lE485, lsfLawspecCollectionsKeyValPutItems_129(lK482, lV483, lT486))
+				return lsfCons[*lsfEntry[string, int64]](lE684, lsfLawspecCollectionsKeyValPutItems_5d998955(lK681, lV682, lT685))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_130 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f.
-func lsfLawspecCollectionsKeyValPutItems_130(lK489 string, lV490 *lsfList[*lsfTopicPartition], lEs491 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
-	if lEs491 == nil {
-		return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK489, lV490}, (*lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_80dc1939 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f.
+func lsfLawspecCollectionsKeyValPutItems_80dc1939(lK688 string, lV689 *lsfList[*lsfTopicPartition], lEs690 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]] {
+	if lEs690 == nil {
+		return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK688, lV689}, (*lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]])(nil))
 	} else {
-		lE492 := lEs491.head
-		lT493 := lEs491.tail
-		lKey494 := lE492.fKey
-		lMatched495 := lsfOrderingOf(lsfCmp_437d0abf423f(lK489, lKey494))
-		switch lMatched495 {
+		lE691 := lEs690.head
+		lT692 := lEs690.tail
+		lKey693 := lE691.fKey
+		lMatched694 := lsfOrderingOf(lsfCmp_437d0abf423f(lK688, lKey693))
+		switch lMatched694 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK489, lV490}, lEs491)
+				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK688, lV689}, lEs690)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK489, lV490}, lT493)
+				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](&lsfEntry[string, *lsfList[*lsfTopicPartition]]{lK688, lV689}, lT692)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](lE492, lsfLawspecCollectionsKeyValPutItems_130(lK489, lV490, lT493))
+				return lsfCons[*lsfEntry[string, *lsfList[*lsfTopicPartition]]](lE691, lsfLawspecCollectionsKeyValPutItems_80dc1939(lK688, lV689, lT692))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_131 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5.
-func lsfLawspecCollectionsKeyValPutItems_131(lK496 *lsfGroupPartition, lV497 int64, lEs498 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfList[*lsfEntry[*lsfGroupPartition, int64]] {
-	if lEs498 == nil {
-		return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK496, lV497}, (*lsfList[*lsfEntry[*lsfGroupPartition, int64]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_28cf0caf is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5.
+func lsfLawspecCollectionsKeyValPutItems_28cf0caf(lK695 *lsfGroupPartition, lV696 int64, lEs697 *lsfList[*lsfEntry[*lsfGroupPartition, int64]]) *lsfList[*lsfEntry[*lsfGroupPartition, int64]] {
+	if lEs697 == nil {
+		return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK695, lV696}, (*lsfList[*lsfEntry[*lsfGroupPartition, int64]])(nil))
 	} else {
-		lE499 := lEs498.head
-		lT500 := lEs498.tail
-		lKey501 := lE499.fKey
-		lMatched502 := lsfOrderingOf(lsfCmp_213d3554d90b(lK496, lKey501))
-		switch lMatched502 {
+		lE698 := lEs697.head
+		lT699 := lEs697.tail
+		lKey700 := lE698.fKey
+		lMatched701 := lsfOrderingOf(lsfCmp_213d3554d90b(lK695, lKey700))
+		switch lMatched701 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK496, lV497}, lEs498)
+				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK695, lV696}, lEs697)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK496, lV497}, lT500)
+				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](&lsfEntry[*lsfGroupPartition, int64]{lK695, lV696}, lT699)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](lE499, lsfLawspecCollectionsKeyValPutItems_131(lK496, lV497, lT500))
+				return lsfCons[*lsfEntry[*lsfGroupPartition, int64]](lE698, lsfLawspecCollectionsKeyValPutItems_28cf0caf(lK695, lV696, lT699))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_132 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1.
-func lsfLawspecCollectionsKeyValPutItems_132(lK503 string, lV504 *lsfGroup, lEs505 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfList[*lsfEntry[string, *lsfGroup]] {
-	if lEs505 == nil {
-		return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK503, lV504}, (*lsfList[*lsfEntry[string, *lsfGroup]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_883fe52d is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1.
+func lsfLawspecCollectionsKeyValPutItems_883fe52d(lK702 string, lV703 *lsfGroup, lEs704 *lsfList[*lsfEntry[string, *lsfGroup]]) *lsfList[*lsfEntry[string, *lsfGroup]] {
+	if lEs704 == nil {
+		return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK702, lV703}, (*lsfList[*lsfEntry[string, *lsfGroup]])(nil))
 	} else {
-		lE506 := lEs505.head
-		lT507 := lEs505.tail
-		lKey508 := lE506.fKey
-		lMatched509 := lsfOrderingOf(lsfCmp_437d0abf423f(lK503, lKey508))
-		switch lMatched509 {
+		lE705 := lEs704.head
+		lT706 := lEs704.tail
+		lKey707 := lE705.fKey
+		lMatched708 := lsfOrderingOf(lsfCmp_437d0abf423f(lK702, lKey707))
+		switch lMatched708 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK503, lV504}, lEs505)
+				return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK702, lV703}, lEs704)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK503, lV504}, lT507)
+				return lsfCons[*lsfEntry[string, *lsfGroup]](&lsfEntry[string, *lsfGroup]{lK702, lV703}, lT706)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, *lsfGroup]](lE506, lsfLawspecCollectionsKeyValPutItems_132(lK503, lV504, lT507))
+				return lsfCons[*lsfEntry[string, *lsfGroup]](lE705, lsfLawspecCollectionsKeyValPutItems_883fe52d(lK702, lV703, lT706))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_133 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750.
-func lsfLawspecCollectionsKeyValPutItems_133(lK510 *lsfTopicPartition, lV511 int32, lEs512 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfList[*lsfEntry[*lsfTopicPartition, int32]] {
-	if lEs512 == nil {
-		return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK510, lV511}, (*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_3f0139cf is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750.
+func lsfLawspecCollectionsKeyValPutItems_3f0139cf(lK709 *lsfTopicPartition, lV710 int32, lEs711 *lsfList[*lsfEntry[*lsfTopicPartition, int32]]) *lsfList[*lsfEntry[*lsfTopicPartition, int32]] {
+	if lEs711 == nil {
+		return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK709, lV710}, (*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil))
 	} else {
-		lE513 := lEs512.head
-		lT514 := lEs512.tail
-		lKey515 := lE513.fKey
-		lMatched516 := lsfOrderingOf(lsfCmp_57a515e0e489(lK510, lKey515))
-		switch lMatched516 {
+		lE712 := lEs711.head
+		lT713 := lEs711.tail
+		lKey714 := lE712.fKey
+		lMatched715 := lsfOrderingOf(lsfCmp_57a515e0e489(lK709, lKey714))
+		switch lMatched715 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK510, lV511}, lEs512)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK709, lV710}, lEs711)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK510, lV511}, lT514)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](&lsfEntry[*lsfTopicPartition, int32]{lK709, lV710}, lT713)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](lE513, lsfLawspecCollectionsKeyValPutItems_133(lK510, lV511, lT514))
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int32]](lE712, lsfLawspecCollectionsKeyValPutItems_3f0139cf(lK709, lV710, lT713))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_134 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4.
-func lsfLawspecCollectionsKeyValPutItems_134(lK517 string, lV518 *lsfList[string], lEs519 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
-	if lEs519 == nil {
-		return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK517, lV518}, (*lsfList[*lsfEntry[string, *lsfList[string]]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_c4168a80 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4.
+func lsfLawspecCollectionsKeyValPutItems_c4168a80(lK716 string, lV717 *lsfList[string], lEs718 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[*lsfEntry[string, *lsfList[string]]] {
+	if lEs718 == nil {
+		return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK716, lV717}, (*lsfList[*lsfEntry[string, *lsfList[string]]])(nil))
 	} else {
-		lE520 := lEs519.head
-		lT521 := lEs519.tail
-		lKey522 := lE520.fKey
-		lMatched523 := lsfOrderingOf(lsfCmp_437d0abf423f(lK517, lKey522))
-		switch lMatched523 {
+		lE719 := lEs718.head
+		lT720 := lEs718.tail
+		lKey721 := lE719.fKey
+		lMatched722 := lsfOrderingOf(lsfCmp_437d0abf423f(lK716, lKey721))
+		switch lMatched722 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK517, lV518}, lEs519)
+				return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK716, lV717}, lEs718)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK517, lV518}, lT521)
+				return lsfCons[*lsfEntry[string, *lsfList[string]]](&lsfEntry[string, *lsfList[string]]{lK716, lV717}, lT720)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[string, *lsfList[string]]](lE520, lsfLawspecCollectionsKeyValPutItems_134(lK517, lV518, lT521))
+				return lsfCons[*lsfEntry[string, *lsfList[string]]](lE719, lsfLawspecCollectionsKeyValPutItems_c4168a80(lK716, lV717, lT720))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_135 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d.
-func lsfLawspecCollectionsKeyValPutItems_135(lK524 *lsfTopicPartition, lV525 int64, lEs526 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfList[*lsfEntry[*lsfTopicPartition, int64]] {
-	if lEs526 == nil {
-		return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK524, lV525}, (*lsfList[*lsfEntry[*lsfTopicPartition, int64]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_4266176b is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d.
+func lsfLawspecCollectionsKeyValPutItems_4266176b(lK723 *lsfTopicPartition, lV724 int64, lEs725 *lsfList[*lsfEntry[*lsfTopicPartition, int64]]) *lsfList[*lsfEntry[*lsfTopicPartition, int64]] {
+	if lEs725 == nil {
+		return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK723, lV724}, (*lsfList[*lsfEntry[*lsfTopicPartition, int64]])(nil))
 	} else {
-		lE527 := lEs526.head
-		lT528 := lEs526.tail
-		lKey529 := lE527.fKey
-		lMatched530 := lsfOrderingOf(lsfCmp_57a515e0e489(lK524, lKey529))
-		switch lMatched530 {
+		lE726 := lEs725.head
+		lT727 := lEs725.tail
+		lKey728 := lE726.fKey
+		lMatched729 := lsfOrderingOf(lsfCmp_57a515e0e489(lK723, lKey728))
+		switch lMatched729 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK524, lV525}, lEs526)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK723, lV724}, lEs725)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK524, lV525}, lT528)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](&lsfEntry[*lsfTopicPartition, int64]{lK723, lV724}, lT727)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](lE527, lsfLawspecCollectionsKeyValPutItems_135(lK524, lV525, lT528))
+				return lsfCons[*lsfEntry[*lsfTopicPartition, int64]](lE726, lsfLawspecCollectionsKeyValPutItems_4266176b(lK723, lV724, lT727))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPutItems_136 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b.
-func lsfLawspecCollectionsKeyValPutItems_136(lK531 *lsfTopicPartition, lV532 *lsfPartitionLog, lEs533 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]] {
-	if lEs533 == nil {
-		return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK531, lV532}, (*lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]])(nil))
+// lsfLawspecCollectionsKeyValPutItems_523d104d is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b.
+func lsfLawspecCollectionsKeyValPutItems_523d104d(lK730 *lsfTopicPartition, lV731 *lsfPartitionLog, lEs732 *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]]) *lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]] {
+	if lEs732 == nil {
+		return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK730, lV731}, (*lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]])(nil))
 	} else {
-		lE534 := lEs533.head
-		lT535 := lEs533.tail
-		lKey536 := lE534.fKey
-		lMatched537 := lsfOrderingOf(lsfCmp_57a515e0e489(lK531, lKey536))
-		switch lMatched537 {
+		lE733 := lEs732.head
+		lT734 := lEs732.tail
+		lKey735 := lE733.fKey
+		lMatched736 := lsfOrderingOf(lsfCmp_57a515e0e489(lK730, lKey735))
+		switch lMatched736 {
 			case lsfOrdering_Less:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK531, lV532}, lEs533)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK730, lV731}, lEs732)
 			case lsfOrdering_Equal:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK531, lV532}, lT535)
+				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](&lsfEntry[*lsfTopicPartition, *lsfPartitionLog]{lK730, lV731}, lT734)
 			case lsfOrdering_Greater:
-				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](lE534, lsfLawspecCollectionsKeyValPutItems_136(lK531, lV532, lT535))
+				return lsfCons[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]](lE733, lsfLawspecCollectionsKeyValPutItems_523d104d(lK730, lV731, lT734))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsKeyValPut_137 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058.
-func lsfLawspecCollectionsKeyValPut_137(lK538 *lsfTopicPartition, lV539 int32, lM540 *lsfMap[*lsfTopicPartition, int32]) *lsfMap[*lsfTopicPartition, int32] {
-	return lsfPut(lM540, lK538, lV539, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValPut_cabf14cc is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058.
+func lsfLawspecCollectionsKeyValPut_cabf14cc(lK737 *lsfTopicPartition, lV738 int32, lM739 *lsfMap[*lsfTopicPartition, int32]) *lsfMap[*lsfTopicPartition, int32] {
+	return lsfPut(lM739, lK737, lV738, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValPut_138 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9.
-func lsfLawspecCollectionsKeyValPut_138(lK541 string, lV542 *lsfGroup, lM543 *lsfMap[string, *lsfGroup]) *lsfMap[string, *lsfGroup] {
-	return lsfPut(lM543, lK541, lV542, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValPut_ce8624cf is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9.
+func lsfLawspecCollectionsKeyValPut_ce8624cf(lK740 string, lV741 *lsfGroup, lM742 *lsfMap[string, *lsfGroup]) *lsfMap[string, *lsfGroup] {
+	return lsfPut(lM742, lK740, lV741, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValPut_139 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb.
-func lsfLawspecCollectionsKeyValPut_139(lK544 *lsfTopicPartition, lV545 *lsfPartitionLog, lM546 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) *lsfMap[*lsfTopicPartition, *lsfPartitionLog] {
-	return lsfPut(lM546, lK544, lV545, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValPut_5ab157dd is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb.
+func lsfLawspecCollectionsKeyValPut_5ab157dd(lK743 *lsfTopicPartition, lV744 *lsfPartitionLog, lM745 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) *lsfMap[*lsfTopicPartition, *lsfPartitionLog] {
+	return lsfPut(lM745, lK743, lV744, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValPut_140 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_84321765782615b9.
-func lsfLawspecCollectionsKeyValPut_140(lK547 int64, lV548 *lsfList[*lsfBatchMeta], lM549 *lsfMap[int64, *lsfList[*lsfBatchMeta]]) *lsfMap[int64, *lsfList[*lsfBatchMeta]] {
-	return lsfPut(lM549, lK547, lV548, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValPut_c59d14e0 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_84321765782615b9.
+func lsfLawspecCollectionsKeyValPut_c59d14e0(lK746 int64, lV747 *lsfList[*lsfBatchMeta], lM748 *lsfMap[int64, *lsfList[*lsfBatchMeta]]) *lsfMap[int64, *lsfList[*lsfBatchMeta]] {
+	return lsfPut(lM748, lK746, lV747, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValPut_141 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1.
-func lsfLawspecCollectionsKeyValPut_141(lK550 *lsfTopicPartition, lV551 int64, lM552 *lsfMap[*lsfTopicPartition, int64]) *lsfMap[*lsfTopicPartition, int64] {
-	return lsfPut(lM552, lK550, lV551, lsfCmp_57a515e0e489)
+// lsfLawspecCollectionsKeyValPut_01a600ed is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1.
+func lsfLawspecCollectionsKeyValPut_01a600ed(lK749 *lsfTopicPartition, lV750 int64, lM751 *lsfMap[*lsfTopicPartition, int64]) *lsfMap[*lsfTopicPartition, int64] {
+	return lsfPut(lM751, lK749, lV750, lsfCmp_57a515e0e489)
 }
 
-// lsfLawspecCollectionsKeyValPut_142 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58.
-func lsfLawspecCollectionsKeyValPut_142(lK553 string, lV554 int64, lM555 *lsfMap[string, int64]) *lsfMap[string, int64] {
-	return lsfPut(lM555, lK553, lV554, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValPut_3034b895 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58.
+func lsfLawspecCollectionsKeyValPut_3034b895(lK752 string, lV753 int64, lM754 *lsfMap[string, int64]) *lsfMap[string, int64] {
+	return lsfPut(lM754, lK752, lV753, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValPut_143 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f.
-func lsfLawspecCollectionsKeyValPut_143(lK556 string, lV557 int32, lM558 *lsfMap[string, int32]) *lsfMap[string, int32] {
-	return lsfPut(lM558, lK556, lV557, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValPut_a8f49e3e is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f.
+func lsfLawspecCollectionsKeyValPut_a8f49e3e(lK755 string, lV756 int32, lM757 *lsfMap[string, int32]) *lsfMap[string, int32] {
+	return lsfPut(lM757, lK755, lV756, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValPut_144 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d.
-func lsfLawspecCollectionsKeyValPut_144(lK559 *lsfGroupPartition, lV560 int64, lM561 *lsfMap[*lsfGroupPartition, int64]) *lsfMap[*lsfGroupPartition, int64] {
-	return lsfPut(lM561, lK559, lV560, lsfCmp_213d3554d90b)
+// lsfLawspecCollectionsKeyValPut_9fc3570a is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d.
+func lsfLawspecCollectionsKeyValPut_9fc3570a(lK758 *lsfGroupPartition, lV759 int64, lM760 *lsfMap[*lsfGroupPartition, int64]) *lsfMap[*lsfGroupPartition, int64] {
+	return lsfPut(lM760, lK758, lV759, lsfCmp_213d3554d90b)
 }
 
-// lsfLawspecCollectionsKeyValPut_145 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee.
-func lsfLawspecCollectionsKeyValPut_145(lK562 int64, lV563 *lsfProducerEntry, lM564 *lsfMap[int64, *lsfProducerEntry]) *lsfMap[int64, *lsfProducerEntry] {
-	return lsfPut(lM564, lK562, lV563, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValPut_87e622e8 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee.
+func lsfLawspecCollectionsKeyValPut_87e622e8(lK761 int64, lV762 *lsfProducerEntry, lM763 *lsfMap[int64, *lsfProducerEntry]) *lsfMap[int64, *lsfProducerEntry] {
+	return lsfPut(lM763, lK761, lV762, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValPut_146 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d378e301aa895004.
-func lsfLawspecCollectionsKeyValPut_146(lK565 string, lV566 *lsfList[string], lM567 *lsfMap[string, *lsfList[string]]) *lsfMap[string, *lsfList[string]] {
-	return lsfPut(lM567, lK565, lV566, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValPut_3b439cbe is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d378e301aa895004.
+func lsfLawspecCollectionsKeyValPut_3b439cbe(lK764 string, lV765 *lsfList[string], lM766 *lsfMap[string, *lsfList[string]]) *lsfMap[string, *lsfList[string]] {
+	return lsfPut(lM766, lK764, lV765, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValPut_147 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c.
-func lsfLawspecCollectionsKeyValPut_147(lK568 int64, lV569 int64, lM570 *lsfMap[int64, int64]) *lsfMap[int64, int64] {
-	return lsfPut(lM570, lK568, lV569, lsfCmp_44a08172da10)
+// lsfLawspecCollectionsKeyValPut_5cd34b74 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c.
+func lsfLawspecCollectionsKeyValPut_5cd34b74(lK767 int64, lV768 int64, lM769 *lsfMap[int64, int64]) *lsfMap[int64, int64] {
+	return lsfPut(lM769, lK767, lV768, lsfCmp_44a08172da10)
 }
 
-// lsfLawspecCollectionsKeyValPut_148 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107.
-func lsfLawspecCollectionsKeyValPut_148(lK571 string, lV572 *lsfList[*lsfTopicPartition], lM573 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
-	return lsfPut(lM573, lK571, lV572, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsKeyValPut_efc6b866 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107.
+func lsfLawspecCollectionsKeyValPut_efc6b866(lK770 string, lV771 *lsfList[*lsfTopicPartition], lM772 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+	return lsfPut(lM772, lK770, lV771, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsKeyValValuesItems_149 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae.
-func lsfLawspecCollectionsKeyValValuesItems_149(lEs574 *lsfList[*lsfEntry[int64, int64]]) *lsfList[int64] {
-	if lEs574 == nil {
+// lsfLawspecCollectionsKeyValValuesItems_40ef8eee is lawtwin.kafka::lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae.
+func lsfLawspecCollectionsKeyValValuesItems_40ef8eee(lEs773 *lsfList[*lsfEntry[int64, int64]]) *lsfList[int64] {
+	if lEs773 == nil {
 		return (*lsfList[int64])(nil)
 	} else {
-		lE575 := lEs574.head
-		lT576 := lEs574.tail
-		lValue577 := lE575.fValue
-		return lsfCons[int64](lValue577, lsfLawspecCollectionsKeyValValuesItems_149(lT576))
+		lE774 := lEs773.head
+		lT775 := lEs773.tail
+		lValue776 := lE774.fValue
+		return lsfCons[int64](lValue776, lsfLawspecCollectionsKeyValValuesItems_40ef8eee(lT775))
 	}
 }
 
-// lsfLawspecCollectionsKeyValValues_150 is lawtwin.kafka::lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa.
-func lsfLawspecCollectionsKeyValValues_150(lM578 *lsfMap[int64, int64]) *lsfList[int64] {
-	return lsfToList(lM578, func(_ int64, v int64) int64 { return v })
+// lsfLawspecCollectionsKeyValValues_33bc036c is lawtwin.kafka::lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa.
+func lsfLawspecCollectionsKeyValValues_33bc036c(lM777 *lsfMap[int64, int64]) *lsfList[int64] {
+	return lsfToList(lM777, func(_ int64, v int64) int64 { return v })
 }
 
-// lsfLawspecCollectionsSetFromItems_152 is lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089.
-func lsfLawspecCollectionsSetFromItems_152(lXs579 *lsfList[string], lAcc580 *lsfList[string]) *lsfList[string] {
+// lsfLawspecCollectionsSetFromItems_b46ce3bb is lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089.
+func lsfLawspecCollectionsSetFromItems_b46ce3bb(lXs778 *lsfList[string], lAcc779 *lsfList[string]) *lsfList[string] {
 	for {
-		if lXs579 == nil {
-			return lAcc580
+		if lXs778 == nil {
+			return lAcc779
 		} else {
-			lH581 := lXs579.head
-			lT582 := lXs579.tail
-			lNext583 := lT582
-			lNext584 := lsfLawspecCollectionsSetInsertItems_154(lH581, lAcc580)
-			lXs579 = lNext583
-			lAcc580 = lNext584
+			lH780 := lXs778.head
+			lT781 := lXs778.tail
+			lNext782 := lT781
+			lNext783 := lsfLawspecCollectionsSetInsertItems_fd8b28ec(lH780, lAcc779)
+			lXs778 = lNext782
+			lAcc779 = lNext783
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsSetFromItems_153 is lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c.
-func lsfLawspecCollectionsSetFromItems_153(lXs585 *lsfList[int32], lAcc586 *lsfList[int32]) *lsfList[int32] {
+// lsfLawspecCollectionsSetFromItems_357dd072 is lawtwin.kafka::lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c.
+func lsfLawspecCollectionsSetFromItems_357dd072(lXs784 *lsfList[int32], lAcc785 *lsfList[int32]) *lsfList[int32] {
 	for {
-		if lXs585 == nil {
-			return lAcc586
+		if lXs784 == nil {
+			return lAcc785
 		} else {
-			lH587 := lXs585.head
-			lT588 := lXs585.tail
-			lNext589 := lT588
-			lNext590 := lsfLawspecCollectionsSetInsertItems_156(lH587, lAcc586)
-			lXs585 = lNext589
-			lAcc586 = lNext590
+			lH786 := lXs784.head
+			lT787 := lXs784.tail
+			lNext788 := lT787
+			lNext789 := lsfLawspecCollectionsSetInsertItems_708d991b(lH786, lAcc785)
+			lXs784 = lNext788
+			lAcc785 = lNext789
 			continue
 		}
 	}
 }
 
-// lsfLawspecCollectionsSetInsertItems_154 is lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977.
-func lsfLawspecCollectionsSetInsertItems_154(lX591 string, lXs592 *lsfList[string]) *lsfList[string] {
-	if lXs592 == nil {
-		return lsfCons[string](lX591, (*lsfList[string])(nil))
+// lsfLawspecCollectionsSetInsertItems_fd8b28ec is lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977.
+func lsfLawspecCollectionsSetInsertItems_fd8b28ec(lX790 string, lXs791 *lsfList[string]) *lsfList[string] {
+	if lXs791 == nil {
+		return lsfCons[string](lX790, (*lsfList[string])(nil))
 	} else {
-		lH593 := lXs592.head
-		lT594 := lXs592.tail
-		lMatched595 := lsfOrderingOf(lsfCmp_437d0abf423f(lX591, lH593))
-		switch lMatched595 {
+		lH792 := lXs791.head
+		lT793 := lXs791.tail
+		lMatched794 := lsfOrderingOf(lsfCmp_437d0abf423f(lX790, lH792))
+		switch lMatched794 {
 			case lsfOrdering_Less:
-				return lsfCons[string](lX591, lXs592)
+				return lsfCons[string](lX790, lXs791)
 			case lsfOrdering_Equal:
-				return lXs592
+				return lXs791
 			case lsfOrdering_Greater:
-				return lsfCons[string](lH593, lsfLawspecCollectionsSetInsertItems_154(lX591, lT594))
+				return lsfCons[string](lH792, lsfLawspecCollectionsSetInsertItems_fd8b28ec(lX790, lT793))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsSetInsertItems_156 is lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966.
-func lsfLawspecCollectionsSetInsertItems_156(lX596 int32, lXs597 *lsfList[int32]) *lsfList[int32] {
-	if lXs597 == nil {
-		return lsfCons[int32](lX596, (*lsfList[int32])(nil))
+// lsfLawspecCollectionsSetInsertItems_708d991b is lawtwin.kafka::lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966.
+func lsfLawspecCollectionsSetInsertItems_708d991b(lX795 int32, lXs796 *lsfList[int32]) *lsfList[int32] {
+	if lXs796 == nil {
+		return lsfCons[int32](lX795, (*lsfList[int32])(nil))
 	} else {
-		lH598 := lXs597.head
-		lT599 := lXs597.tail
-		lMatched600 := lsfOrderingOf(lsfCmp_b862204e9be7(lX596, lH598))
-		switch lMatched600 {
+		lH797 := lXs796.head
+		lT798 := lXs796.tail
+		lMatched799 := lsfOrderingOf(lsfCmp_b862204e9be7(lX795, lH797))
+		switch lMatched799 {
 			case lsfOrdering_Less:
-				return lsfCons[int32](lX596, lXs597)
+				return lsfCons[int32](lX795, lXs796)
 			case lsfOrdering_Equal:
-				return lXs597
+				return lXs796
 			case lsfOrdering_Greater:
-				return lsfCons[int32](lH598, lsfLawspecCollectionsSetInsertItems_156(lX596, lT599))
+				return lsfCons[int32](lH797, lsfLawspecCollectionsSetInsertItems_708d991b(lX795, lT798))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsSetOf_159 is lawtwin.kafka::lawspec_lawspecCollectionsSetOf_83f32212ffd7f646.
-func lsfLawspecCollectionsSetOf_159(lXs601 *lsfList[string]) *lsfMap[string, lsfUnit] {
-	return lsfSetOf(lXs601, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsSetOf_381c9692 is lawtwin.kafka::lawspec_lawspecCollectionsSetOf_83f32212ffd7f646.
+func lsfLawspecCollectionsSetOf_381c9692(lXs800 *lsfList[string]) *lsfMap[string, lsfUnit] {
+	return lsfSetOf(lXs800, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsSetOf_160 is lawtwin.kafka::lawspec_lawspecCollectionsSetOf_9446af497e0eb47e.
-func lsfLawspecCollectionsSetOf_160(lXs602 *lsfList[int32]) *lsfMap[int32, lsfUnit] {
-	return lsfSetOf(lXs602, lsfCmp_b862204e9be7)
+// lsfLawspecCollectionsSetOf_04775bf4 is lawtwin.kafka::lawspec_lawspecCollectionsSetOf_9446af497e0eb47e.
+func lsfLawspecCollectionsSetOf_04775bf4(lXs801 *lsfList[int32]) *lsfMap[int32, lsfUnit] {
+	return lsfSetOf(lXs801, lsfCmp_b862204e9be7)
 }
 
-// lsfLawspecCollectionsSetRemoveItems_162 is lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977.
-func lsfLawspecCollectionsSetRemoveItems_162(lX603 string, lXs604 *lsfList[string]) *lsfList[string] {
-	if lXs604 == nil {
-		return lXs604
+// lsfLawspecCollectionsSetRemoveItems_64279e04 is lawtwin.kafka::lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977.
+func lsfLawspecCollectionsSetRemoveItems_64279e04(lX802 string, lXs803 *lsfList[string]) *lsfList[string] {
+	if lXs803 == nil {
+		return lXs803
 	} else {
-		lH605 := lXs604.head
-		lT606 := lXs604.tail
-		lMatched607 := lsfOrderingOf(lsfCmp_437d0abf423f(lX603, lH605))
-		switch lMatched607 {
+		lH804 := lXs803.head
+		lT805 := lXs803.tail
+		lMatched806 := lsfOrderingOf(lsfCmp_437d0abf423f(lX802, lH804))
+		switch lMatched806 {
 			case lsfOrdering_Less:
-				return lXs604
+				return lXs803
 			case lsfOrdering_Equal:
-				return lT606
+				return lT805
 			case lsfOrdering_Greater:
-				return lsfCons[string](lH605, lsfLawspecCollectionsSetRemoveItems_162(lX603, lT606))
+				return lsfCons[string](lH804, lsfLawspecCollectionsSetRemoveItems_64279e04(lX802, lT805))
 			default:
 				panic("unreachable branch reached")
 		}
 	}
 }
 
-// lsfLawspecCollectionsSetRemove_163 is lawtwin.kafka::lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67.
-func lsfLawspecCollectionsSetRemove_163(lX608 string, lS609 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
-	return lsfDelete(lS609, lX608, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsSetRemove_7ffea813 is lawtwin.kafka::lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67.
+func lsfLawspecCollectionsSetRemove_7ffea813(lX807 string, lS808 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
+	return lsfDelete(lS808, lX807, lsfCmp_437d0abf423f)
 }
 
-// lsfLawspecCollectionsSetUnion_164 is lawtwin.kafka::lawspec_lawspecCollectionsSetUnion_f2139edefc699bed.
-func lsfLawspecCollectionsSetUnion_164(lS610 *lsfMap[string, lsfUnit], lT611 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
-	return lsfSetUnion(lS610, lT611, lsfCmp_437d0abf423f)
+// lsfLawspecCollectionsSetUnion_604ff278 is lawtwin.kafka::lawspec_lawspecCollectionsSetUnion_f2139edefc699bed.
+func lsfLawspecCollectionsSetUnion_604ff278(lS809 *lsfMap[string, lsfUnit], lT810 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
+	return lsfSetUnion(lS809, lT810, lsfCmp_437d0abf423f)
 }
 
-// lsfLawtwinKafkaModelAddPartitionsToTxn_165 is lawtwin.kafka::lawtwinKafkaModelAddPartitionsToTxn.
-func lsfLawtwinKafkaModelAddPartitionsToTxn_165(lTxid612 string, lPid613 int64, lEpoch614 int16, lTps615 *lsfList[*lsfTopicPartition], lB616 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	lEntry617 := lsfLawtwinKafkaModelCheckTxnProducer_174(lTxid612, lPid613, lEpoch614, lB616)
-	if !(lsfLawtwinKafkaModelAllKnown_166(lTps615, lB616)) {
+// lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82 is lawtwin.kafka::lawtwinKafkaModelAddPartitionsToTxn.
+func lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82(lTxid811 string, lPid812 int64, lEpoch813 int16, lTps814 *lsfList[*lsfTopicPartition], lB815 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	lEntry816 := lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lTxid811, lPid812, lEpoch813, lB815)
+	if !(lsfLawtwinKafkaModelAllKnown_12a378f8(lTps814, lB815)) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 	} else {
-		var lValue618 lsfTxnState
-		var lValue619 lsfTxnState
-		lLawspecfield17x2620 := lEntry617.fTxn
-		lValue619 = lLawspecfield17x2620
-		lMatched621 := lValue619
-		switch lVariant622 := lMatched621.(type) {
+		var lValue817 lsfTxnState
+		var lValue818 lsfTxnState
+		lLawspecfieldtxn819 := lEntry816.fTxn
+		lValue818 = lLawspecfieldtxn819
+		lMatched820 := lValue818
+		switch lVariant821 := lMatched820.(type) {
 			case *lsfTxnState_NoTxn:
-				lValue618 = &lsfTxnState_Ongoing{lsfLawtwinKafkaModelUnionPartitions_232(lTps615, (*lsfList[*lsfTopicPartition])(nil)), (*lsfList[*lsfPendingOffset])(nil)}
+				lValue817 = &lsfTxnState_Ongoing{lsfLawtwinKafkaModelUnionPartitions_c791d224(lTps814, (*lsfList[*lsfTopicPartition])(nil)), (*lsfList[*lsfPendingOffset])(nil)}
 			case *lsfTxnState_Ongoing:
-				lPs623 := lVariant622.fTxnPartitions
-				lOs624 := lVariant622.fTxnOffsets
-				lValue618 = &lsfTxnState_Ongoing{lsfLawtwinKafkaModelUnionPartitions_232(lTps615, lPs623), lOs624}
+				lPs822 := lVariant821.fTxnPartitions
+				lOs823 := lVariant821.fTxnOffsets
+				lValue817 = &lsfTxnState_Ongoing{lsfLawtwinKafkaModelUnionPartitions_c791d224(lTps814, lPs822), lOs823}
 			default:
 				panic("unreachable branch reached")
 		}
-		lNext625 := lValue618
-		var lValue626 *lsfProducerEntry
-		lLawspecfield23x0627 := lEntry617.fEpoch
-		lLawspecfield23x1628 := lEntry617.fTransactionalId
-		lValue626 = &lsfProducerEntry{lLawspecfield23x0627, lLawspecfield23x1628, lNext625}
-		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_219(lPid613, lValue626, lB616)}
+		lNext824 := lValue817
+		var lValue825 *lsfProducerEntry
+		lReplacement826 := lNext824
+		lLawspecfieldepoch827 := lEntry816.fEpoch
+		lLawspecfieldtransactionalid828 := lEntry816.fTransactionalId
+		lValue825 = &lsfProducerEntry{lLawspecfieldepoch827, lLawspecfieldtransactionalid828, lReplacement826}
+		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_4ef907a5(lPid812, lValue825, lB815)}
 	}
 }
 
-// lsfLawtwinKafkaModelAllKnown_166 is lawtwin.kafka::lawtwinKafkaModelAllKnown.
-func lsfLawtwinKafkaModelAllKnown_166(lTps629 *lsfList[*lsfTopicPartition], lB630 *lsfBrokerState) bool {
-	if lTps629 == nil {
+// lsfLawtwinKafkaModelAllKnown_12a378f8 is lawtwin.kafka::lawtwinKafkaModelAllKnown.
+func lsfLawtwinKafkaModelAllKnown_12a378f8(lTps829 *lsfList[*lsfTopicPartition], lB830 *lsfBrokerState) bool {
+	if lTps829 == nil {
 		return true
 	} else {
-		lH631 := lTps629.head
-		lT632 := lTps629.tail
-		return (lsfLawtwinKafkaModelKnownPartition_195(lH631, lB630) && lsfLawtwinKafkaModelAllKnown_166(lT632, lB630))
+		lH831 := lTps829.head
+		lT832 := lTps829.tail
+		return (lsfLawtwinKafkaModelKnownPartition_71d3099f(lH831, lB830) && lsfLawtwinKafkaModelAllKnown_12a378f8(lT832, lB830))
 	}
 }
 
-// lsfLawtwinKafkaModelAppendBatch_167 is lawtwin.kafka::lawtwinKafkaModelAppendBatch.
-func lsfLawtwinKafkaModelAppendBatch_167(lRs633 *lsfList[*lsfRecord], lWriter634 int64, lTransactional635 bool, lL636 *lsfPartitionLog) *lsfPartitionLog {
-	var lValue637 int64
-	lLawspecfield22x1638 := lL636.fLogEndOffset
-	lValue637 = lLawspecfield22x1638
-	var lValue639 *lsfList[lsfLogEntry]
-	lLawspecfield23x0640 := lL636.fEntries
-	lValue639 = lLawspecfield23x0640
-	lAppended641 := lsfLawtwinKafkaModelAppendRecords_168(lRs633, lValue637, lWriter634, lTransactional635, lValue639)
-	var lValue642 *lsfMap[int64, int64]
-	if lTransactional635 {
-		var lValue643 *lsfMap[int64, int64]
-		lLawspecfield66x2644 := lL636.fOpenTxns
-		lValue643 = lLawspecfield66x2644
-		lMatched645 := lsfLookup(lValue643, lWriter634, lsfCmp_44a08172da10)
-		if lMatched645.ok {
-			lLawspecfield87x2646 := lL636.fOpenTxns
-			lValue642 = lLawspecfield87x2646
+// lsfLawtwinKafkaModelAppendBatch_8797ae9f is lawtwin.kafka::lawtwinKafkaModelAppendBatch.
+func lsfLawtwinKafkaModelAppendBatch_8797ae9f(lRs833 *lsfList[*lsfRecord], lWriter834 int64, lTransactional835 bool, lL836 *lsfPartitionLog) *lsfPartitionLog {
+	var lValue837 int64
+	lLawspecfieldlogendoffset838 := lL836.fLogEndOffset
+	lValue837 = lLawspecfieldlogendoffset838
+	var lValue839 *lsfList[lsfLogEntry]
+	lLawspecfieldentries840 := lL836.fEntries
+	lValue839 = lLawspecfieldentries840
+	lAppended841 := lsfLawtwinKafkaModelAppendRecords_f5613738(lRs833, lValue837, lWriter834, lTransactional835, lValue839)
+	var lValue842 *lsfMap[int64, int64]
+	if lTransactional835 {
+		var lValue843 *lsfMap[int64, int64]
+		lLawspecfieldopentxns844 := lL836.fOpenTxns
+		lValue843 = lLawspecfieldopentxns844
+		lMatched845 := lsfLookup(lValue843, lWriter834, lsfCmp_44a08172da10)
+		if lMatched845.ok {
+			lLawspecfieldopentxns846 := lL836.fOpenTxns
+			lValue842 = lLawspecfieldopentxns846
 		} else {
-			var lValue647 int64
-			lLawspecfield85x1648 := lL636.fLogEndOffset
-			lValue647 = lLawspecfield85x1648
-			var lValue649 *lsfMap[int64, int64]
-			lLawspecfield86x2650 := lL636.fOpenTxns
-			lValue649 = lLawspecfield86x2650
-			lValue642 = lsfPut(lValue649, lWriter634, lValue647, lsfCmp_44a08172da10)
+			var lValue847 int64
+			lLawspecfieldlogendoffset848 := lL836.fLogEndOffset
+			lValue847 = lLawspecfieldlogendoffset848
+			var lValue849 *lsfMap[int64, int64]
+			lLawspecfieldopentxns850 := lL836.fOpenTxns
+			lValue849 = lLawspecfieldopentxns850
+			lValue842 = lsfPut(lValue849, lWriter834, lValue847, lsfCmp_44a08172da10)
 		}
 	} else {
-		lLawspecfield88x2651 := lL636.fOpenTxns
-		lValue642 = lLawspecfield88x2651
+		lLawspecfieldopentxns851 := lL836.fOpenTxns
+		lValue842 = lLawspecfieldopentxns851
 	}
-	lOpen652 := lValue642
-	var lValue653 *lsfPartitionLog
-	var lValue654 int64
-	lLawspecfield126x0655 := lAppended641.fFirst
-	lValue654 = lLawspecfield126x0655
-	lLawspecupdate117656 := lValue654
-	var lValue657 *lsfPartitionLog
-	var lValue658 *lsfList[lsfLogEntry]
-	lLawspecfield140x1659 := lAppended641.fSecond
-	lValue658 = lLawspecfield140x1659
-	lLawspecupdate133660 := lValue658
-	lLawspecfield133x1661 := lL636.fLogEndOffset
-	lLawspecfield133x2662 := lL636.fOpenTxns
-	lLawspecfield133x3663 := lL636.fAbortedTxns
-	lLawspecfield133x4664 := lL636.fBatches
-	lValue657 = &lsfPartitionLog{lLawspecupdate133660, lLawspecfield133x1661, lLawspecfield133x2662, lLawspecfield133x3663, lLawspecfield133x4664}
-	lMatched665 := lValue657
-	lLawspecfield117x0666 := lMatched665.fEntries
-	lLawspecfield117x2667 := lMatched665.fOpenTxns
-	lLawspecfield117x3668 := lMatched665.fAbortedTxns
-	lLawspecfield117x4669 := lMatched665.fBatches
-	lValue653 = &lsfPartitionLog{lLawspecfield117x0666, lLawspecupdate117656, lLawspecfield117x2667, lLawspecfield117x3668, lLawspecfield117x4669}
-	lMatched670 := lValue653
-	lLawspecfield104x0671 := lMatched670.fEntries
-	lLawspecfield104x1672 := lMatched670.fLogEndOffset
-	lLawspecfield104x3673 := lMatched670.fAbortedTxns
-	lLawspecfield104x4674 := lMatched670.fBatches
-	return &lsfPartitionLog{lLawspecfield104x0671, lLawspecfield104x1672, lOpen652, lLawspecfield104x3673, lLawspecfield104x4674}
+	lOpen852 := lValue842
+	lReplacement853 := lOpen852
+	var lValue854 *lsfPartitionLog
+	var lValue855 int64
+	lLawspecfieldfirst856 := lAppended841.fFirst
+	lValue855 = lLawspecfieldfirst856
+	lReplacement857 := lValue855
+	var lValue858 *lsfPartitionLog
+	var lValue859 *lsfList[lsfLogEntry]
+	lLawspecfieldsecond860 := lAppended841.fSecond
+	lValue859 = lLawspecfieldsecond860
+	lReplacement861 := lValue859
+	lLawspecfieldlogendoffset862 := lL836.fLogEndOffset
+	lLawspecfieldopentxns863 := lL836.fOpenTxns
+	lLawspecfieldabortedtxns864 := lL836.fAbortedTxns
+	lLawspecfieldbatches865 := lL836.fBatches
+	lValue858 = &lsfPartitionLog{lReplacement861, lLawspecfieldlogendoffset862, lLawspecfieldopentxns863, lLawspecfieldabortedtxns864, lLawspecfieldbatches865}
+	lMatched866 := lValue858
+	lLawspecfieldentries867 := lMatched866.fEntries
+	lLawspecfieldopentxns868 := lMatched866.fOpenTxns
+	lLawspecfieldabortedtxns869 := lMatched866.fAbortedTxns
+	lLawspecfieldbatches870 := lMatched866.fBatches
+	lValue854 = &lsfPartitionLog{lLawspecfieldentries867, lReplacement857, lLawspecfieldopentxns868, lLawspecfieldabortedtxns869, lLawspecfieldbatches870}
+	lMatched871 := lValue854
+	lLawspecfieldentries872 := lMatched871.fEntries
+	lLawspecfieldlogendoffset873 := lMatched871.fLogEndOffset
+	lLawspecfieldabortedtxns874 := lMatched871.fAbortedTxns
+	lLawspecfieldbatches875 := lMatched871.fBatches
+	return &lsfPartitionLog{lLawspecfieldentries872, lLawspecfieldlogendoffset873, lReplacement853, lLawspecfieldabortedtxns874, lLawspecfieldbatches875}
 }
 
-// lsfLawtwinKafkaModelAppendRecords_168 is lawtwin.kafka::lawtwinKafkaModelAppendRecords.
-func lsfLawtwinKafkaModelAppendRecords_168(lRs675 *lsfList[*lsfRecord], lOffset676 int64, lWriter677 int64, lTransactional678 bool, lEs679 *lsfList[lsfLogEntry]) *lsfPair[int64, *lsfList[lsfLogEntry]] {
+// lsfLawtwinKafkaModelAppendRecords_f5613738 is lawtwin.kafka::lawtwinKafkaModelAppendRecords.
+func lsfLawtwinKafkaModelAppendRecords_f5613738(lRs876 *lsfList[*lsfRecord], lOffset877 int64, lWriter878 int64, lTransactional879 bool, lEs880 *lsfList[lsfLogEntry]) *lsfPair[int64, *lsfList[lsfLogEntry]] {
 	for {
-		if lRs675 == nil {
-			return &lsfPair[int64, *lsfList[lsfLogEntry]]{lOffset676, lEs679}
+		if lRs876 == nil {
+			return &lsfPair[int64, *lsfList[lsfLogEntry]]{lOffset877, lEs880}
 		} else {
-			lR680 := lRs675.head
-			lRest681 := lRs675.tail
-			lNext682 := lRest681
-			lNext683 := lsfSaturatingInt64_10(lsfSmall(lOffset676).Add(lsfSmall(int64(1))))
-			lNext684 := lsfCons[lsfLogEntry](&lsfLogEntry_DataEntry{lOffset676, lR680, lWriter677, lTransactional678}, lEs679)
-			lRs675 = lNext682
-			lOffset676 = lNext683
-			lEs679 = lNext684
+			lR881 := lRs876.head
+			lRest882 := lRs876.tail
+			lNext883 := lRest882
+			lNext884 := lsfSaturatingInt64_5bce4ed8(lsfSmall(lOffset877).Add(lsfSmall(int64(1))))
+			lNext885 := lsfCons[lsfLogEntry](&lsfLogEntry_DataEntry{lOffset877, lR881, lWriter878, lTransactional879}, lEs880)
+			lRs876 = lNext883
+			lOffset877 = lNext884
+			lEs880 = lNext885
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelApplyOffsets_169 is lawtwin.kafka::lawtwinKafkaModelApplyOffsets.
-func lsfLawtwinKafkaModelApplyOffsets_169(lOs685 *lsfList[*lsfPendingOffset], lB686 *lsfBrokerState) *lsfBrokerState {
+// lsfLawtwinKafkaModelApplyOffsets_c0f73b56 is lawtwin.kafka::lawtwinKafkaModelApplyOffsets.
+func lsfLawtwinKafkaModelApplyOffsets_c0f73b56(lOs886 *lsfList[*lsfPendingOffset], lB887 *lsfBrokerState) *lsfBrokerState {
 	for {
-		if lOs685 == nil {
-			return lB686
+		if lOs886 == nil {
+			return lB887
 		} else {
-			lO687 := lOs685.head
-			lRest688 := lOs685.tail
-			lNext689 := lRest688
-			var lValue690 *lsfBrokerState
-			var lValue691 string
-			lLawspecfield33x0692 := lO687.fPendingGroup
-			lValue691 = lLawspecfield33x0692
-			var lValue693 *lsfTopicPartition
-			var lValue694 *lsfOffsetEntry
-			lLawspecfield34x1695 := lO687.fPendingEntry
-			lValue694 = lLawspecfield34x1695
-			lMatched696 := lValue694
-			lLawspecfield35x0697 := lMatched696.fTopicPartition
-			lValue693 = lLawspecfield35x0697
-			var lValue698 int64
-			var lValue699 *lsfOffsetEntry
-			lLawspecfield36x1700 := lO687.fPendingEntry
-			lValue699 = lLawspecfield36x1700
-			lMatched701 := lValue699
-			lLawspecfield37x1702 := lMatched701.fOffset
-			lValue698 = lLawspecfield37x1702
-			var lValue703 *lsfMap[*lsfGroupPartition, int64]
-			lLawspecfield38x6704 := lB686.fCommitted
-			lValue703 = lLawspecfield38x6704
-			lLawspecupdate14705 := lsfPut(lValue703, &lsfGroupPartition{lValue691, lValue693}, lValue698, lsfCmp_213d3554d90b)
-			lLawspecfield14x0706 := lB686.fTopics
-			lLawspecfield14x1707 := lB686.fLogs
-			lLawspecfield14x2708 := lB686.fProducers
-			lLawspecfield14x3709 := lB686.fTransactionalIds
-			lLawspecfield14x4710 := lB686.fNextProducerId
-			lLawspecfield14x5711 := lB686.fGroups
-			lValue690 = &lsfBrokerState{lLawspecfield14x0706, lLawspecfield14x1707, lLawspecfield14x2708, lLawspecfield14x3709, lLawspecfield14x4710, lLawspecfield14x5711, lLawspecupdate14705}
-			lNext712 := lValue690
-			lOs685 = lNext689
-			lB686 = lNext712
+			lO888 := lOs886.head
+			lRest889 := lOs886.tail
+			lNext890 := lRest889
+			var lValue891 *lsfBrokerState
+			var lValue892 string
+			lLawspecfieldpendinggroup893 := lO888.fPendingGroup
+			lValue892 = lLawspecfieldpendinggroup893
+			var lValue894 *lsfTopicPartition
+			var lValue895 *lsfOffsetEntry
+			lLawspecfieldpendingentry896 := lO888.fPendingEntry
+			lValue895 = lLawspecfieldpendingentry896
+			lMatched897 := lValue895
+			lLawspecfieldtopicpartition898 := lMatched897.fTopicPartition
+			lValue894 = lLawspecfieldtopicpartition898
+			var lValue899 int64
+			var lValue900 *lsfOffsetEntry
+			lLawspecfieldpendingentry901 := lO888.fPendingEntry
+			lValue900 = lLawspecfieldpendingentry901
+			lMatched902 := lValue900
+			lLawspecfieldoffset903 := lMatched902.fOffset
+			lValue899 = lLawspecfieldoffset903
+			var lValue904 *lsfMap[*lsfGroupPartition, int64]
+			lLawspecfieldcommitted905 := lB887.fCommitted
+			lValue904 = lLawspecfieldcommitted905
+			lReplacement906 := lsfPut(lValue904, &lsfGroupPartition{lValue892, lValue894}, lValue899, lsfCmp_213d3554d90b)
+			lLawspecfieldtopics907 := lB887.fTopics
+			lLawspecfieldlogs908 := lB887.fLogs
+			lLawspecfieldproducers909 := lB887.fProducers
+			lLawspecfieldtransactionalids910 := lB887.fTransactionalIds
+			lLawspecfieldnextproducerid911 := lB887.fNextProducerId
+			lLawspecfieldgroups912 := lB887.fGroups
+			lValue891 = &lsfBrokerState{lLawspecfieldtopics907, lLawspecfieldlogs908, lLawspecfieldproducers909, lLawspecfieldtransactionalids910, lLawspecfieldnextproducerid911, lLawspecfieldgroups912, lReplacement906}
+			lNext913 := lValue891
+			lOs886 = lNext890
+			lB887 = lNext913
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelAssignPartitions_170 is lawtwin.kafka::lawtwinKafkaModelAssignPartitions.
-func lsfLawtwinKafkaModelAssignPartitions_170(lTopic713 string, lPs714 *lsfList[int32], lOwners715 *lsfList[string], lWaiting716 *lsfList[string], lA717 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+// lsfLawtwinKafkaModelAssignPartitions_598afda2 is lawtwin.kafka::lawtwinKafkaModelAssignPartitions.
+func lsfLawtwinKafkaModelAssignPartitions_598afda2(lTopic914 string, lPs915 *lsfList[int32], lOwners916 *lsfList[string], lWaiting917 *lsfList[string], lA918 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
 	for {
-		if lPs714 == nil {
-			return lA717
+		if lPs915 == nil {
+			return lA918
 		} else {
-			lP718 := lPs714.head
-			lRest719 := lPs714.tail
-			if lWaiting716 == nil {
-				if lOwners715 == nil {
-					return lA717
+			lP919 := lPs915.head
+			lRest920 := lPs915.tail
+			if lWaiting917 == nil {
+				if lOwners916 == nil {
+					return lA918
 				} else {
-					lOwner720 := lOwners715.head
-					lLater721 := lOwners715.tail
-					lNext722 := lRest719
-					lNext723 := lLater721
-					lNext724 := lsfLawtwinKafkaModelAssignTo_171(lOwner720, &lsfTopicPartition{lTopic713, lP718}, lA717)
-					lPs714 = lNext722
-					lWaiting716 = lNext723
-					lA717 = lNext724
+					lOwner921 := lOwners916.head
+					lLater922 := lOwners916.tail
+					lNext923 := lRest920
+					lNext924 := lLater922
+					lNext925 := lsfLawtwinKafkaModelAssignTo_98dab4ee(lOwner921, &lsfTopicPartition{lTopic914, lP919}, lA918)
+					lPs915 = lNext923
+					lWaiting917 = lNext924
+					lA918 = lNext925
 					continue
 				}
 			} else {
-				lOwner725 := lWaiting716.head
-				lLater726 := lWaiting716.tail
-				lNext727 := lRest719
-				lNext728 := lLater726
-				lNext729 := lsfLawtwinKafkaModelAssignTo_171(lOwner725, &lsfTopicPartition{lTopic713, lP718}, lA717)
-				lPs714 = lNext727
-				lWaiting716 = lNext728
-				lA717 = lNext729
+				lOwner926 := lWaiting917.head
+				lLater927 := lWaiting917.tail
+				lNext928 := lRest920
+				lNext929 := lLater927
+				lNext930 := lsfLawtwinKafkaModelAssignTo_98dab4ee(lOwner926, &lsfTopicPartition{lTopic914, lP919}, lA918)
+				lPs915 = lNext928
+				lWaiting917 = lNext929
+				lA918 = lNext930
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelAssignTo_171 is lawtwin.kafka::lawtwinKafkaModelAssignTo.
-func lsfLawtwinKafkaModelAssignTo_171(lMember730 string, lTp731 *lsfTopicPartition, lA732 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
-	lMatched733 := lsfLookup(lA732, lMember730, lsfCmp_437d0abf423f)
-	if lMatched733.ok {
-		lTps734 := lMatched733.v
-		return lsfPut(lA732, lMember730, lsfAppend(lTps734, lsfCons[*lsfTopicPartition](lTp731, (*lsfList[*lsfTopicPartition])(nil))), lsfCmp_437d0abf423f)
+// lsfLawtwinKafkaModelAssignTo_98dab4ee is lawtwin.kafka::lawtwinKafkaModelAssignTo.
+func lsfLawtwinKafkaModelAssignTo_98dab4ee(lMember931 string, lTp932 *lsfTopicPartition, lA933 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+	lMatched934 := lsfLookup(lA933, lMember931, lsfCmp_437d0abf423f)
+	if lMatched934.ok {
+		lTps935 := lMatched934.v
+		return lsfPut(lA933, lMember931, lsfAppend(lTps935, lsfCons[*lsfTopicPartition](lTp932, (*lsfList[*lsfTopicPartition])(nil))), lsfCmp_437d0abf423f)
 	} else {
-		return lsfPut(lA732, lMember730, lsfCons[*lsfTopicPartition](lTp731, (*lsfList[*lsfTopicPartition])(nil)), lsfCmp_437d0abf423f)
+		return lsfPut(lA933, lMember931, lsfCons[*lsfTopicPartition](lTp932, (*lsfList[*lsfTopicPartition])(nil)), lsfCmp_437d0abf423f)
 	}
 }
 
-// lsfLawtwinKafkaModelAssignTopics_172 is lawtwin.kafka::lawtwinKafkaModelAssignTopics.
-func lsfLawtwinKafkaModelAssignTopics_172(lTopics735 *lsfList[string], lSubs736 *lsfList[*lsfEntry[string, *lsfList[string]]], lB737 *lsfBrokerState, lA738 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+// lsfLawtwinKafkaModelAssignTopics_0d94256d is lawtwin.kafka::lawtwinKafkaModelAssignTopics.
+func lsfLawtwinKafkaModelAssignTopics_0d94256d(lTopics936 *lsfList[string], lSubs937 *lsfList[*lsfEntry[string, *lsfList[string]]], lB938 *lsfBrokerState, lA939 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
 	for {
-		if lTopics735 == nil {
-			return lA738
+		if lTopics936 == nil {
+			return lA939
 		} else {
-			lTopic739 := lTopics735.head
-			lRest740 := lTopics735.tail
-			lMatched741 := lsfLawtwinKafkaModelPartitionCountOf_212(lTopic739, lB737)
-			if lMatched741.ok {
-				lN742 := lMatched741.v
-				lNext743 := lRest740
-				var lValue744 *lsfMap[string, *lsfList[*lsfTopicPartition]]
-				lOwners745 := lsfLawtwinKafkaModelSubscribersOf_227(lTopic739, lSubs736)
-				lValue744 = lsfLawtwinKafkaModelAssignPartitions_170(lTopic739, lsfLawtwinKafkaModelPartitionsBelow_213(lN742), lOwners745, lOwners745, lA738)
-				lNext746 := lValue744
-				lTopics735 = lNext743
-				lA738 = lNext746
+			lTopic940 := lTopics936.head
+			lRest941 := lTopics936.tail
+			lMatched942 := lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lTopic940, lB938)
+			if lMatched942.ok {
+				lN943 := lMatched942.v
+				lNext944 := lRest941
+				var lValue945 *lsfMap[string, *lsfList[*lsfTopicPartition]]
+				lOwners946 := lsfLawtwinKafkaModelSubscribersOf_e9347318(lTopic940, lSubs937)
+				lValue945 = lsfLawtwinKafkaModelAssignPartitions_598afda2(lTopic940, lsfLawtwinKafkaModelPartitionsBelow_19525eca(lN943), lOwners946, lOwners946, lA939)
+				lNext947 := lValue945
+				lTopics936 = lNext944
+				lA939 = lNext947
 				continue
 			} else {
-				lNext747 := lRest740
-				lTopics735 = lNext747
+				lNext948 := lRest941
+				lTopics936 = lNext948
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelCheckMember_173 is lawtwin.kafka::lawtwinKafkaModelCheckMember.
-func lsfLawtwinKafkaModelCheckMember_173(lG748 string, lMember749 string, lGeneration750 int32, lB751 *lsfBrokerState) *lsfGroup {
-	if ((lG748) == ("")) {
+// lsfLawtwinKafkaModelCheckMember_f218b850 is lawtwin.kafka::lawtwinKafkaModelCheckMember.
+func lsfLawtwinKafkaModelCheckMember_f218b850(lG949 string, lMember950 string, lGeneration951 int32, lB952 *lsfBrokerState) *lsfGroup {
+	if ((lG949) == ("")) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidGroupId)})
 	} else {
-		lGroup752 := lsfLawtwinKafkaModelGroupOf_189(lG748, lB751)
-		var lValue753 *lsfMap[string, *lsfList[string]]
-		lLawspecfield39x1754 := lGroup752.fSubscriptions
-		lValue753 = lLawspecfield39x1754
-		lMatched755 := lsfLookup(lValue753, lMember749, lsfCmp_437d0abf423f)
-		if lMatched755.ok {
-			var lValue756 int32
-			lLawspecfield46x0757 := lGroup752.fGroupGeneration
-			lValue756 = lLawspecfield46x0757
-			if (lGeneration750 != lValue756) {
+		lGroup953 := lsfLawtwinKafkaModelGroupOf_abe7cb22(lG949, lB952)
+		var lValue954 *lsfMap[string, *lsfList[string]]
+		lLawspecfieldsubscriptions955 := lGroup953.fSubscriptions
+		lValue954 = lLawspecfieldsubscriptions955
+		lMatched956 := lsfLookup(lValue954, lMember950, lsfCmp_437d0abf423f)
+		if lMatched956.ok {
+			var lValue957 int32
+			lLawspecfieldgroupgeneration958 := lGroup953.fGroupGeneration
+			lValue957 = lLawspecfieldgroupgeneration958
+			if (lGeneration951 != lValue957) {
 				panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_IllegalGeneration)})
 			} else {
-				return lGroup752
+				return lGroup953
 			}
 		} else {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownMemberId)})
@@ -2435,36 +3118,36 @@ func lsfLawtwinKafkaModelCheckMember_173(lG748 string, lMember749 string, lGener
 	}
 }
 
-// lsfLawtwinKafkaModelCheckTxnProducer_174 is lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer.
-func lsfLawtwinKafkaModelCheckTxnProducer_174(lTxid758 string, lPid759 int64, lEpoch760 int16, lB761 *lsfBrokerState) *lsfProducerEntry {
-	var lValue762 *lsfMap[string, int64]
-	lLawspecfield38x3763 := lB761.fTransactionalIds
-	lValue762 = lLawspecfield38x3763
-	lMatched764 := lsfLookup(lValue762, lTxid758, lsfCmp_437d0abf423f)
-	if lMatched764.ok {
-		lMapped765 := lMatched764.v
-		if (lMapped765 != lPid759) {
+// lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae is lawtwin.kafka::lawtwinKafkaModelCheckTxnProducer.
+func lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lTxid959 string, lPid960 int64, lEpoch961 int16, lB962 *lsfBrokerState) *lsfProducerEntry {
+	var lValue963 *lsfMap[string, int64]
+	lLawspecfieldtransactionalids964 := lB962.fTransactionalIds
+	lValue963 = lLawspecfieldtransactionalids964
+	lMatched965 := lsfLookup(lValue963, lTxid959, lsfCmp_437d0abf423f)
+	if lMatched965.ok {
+		lMapped966 := lMatched965.v
+		if (lMapped966 != lPid960) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidProducerIdMapping)})
 		} else {
-			var lValue766 *lsfMap[int64, *lsfProducerEntry]
-			lLawspecfield72x2767 := lB761.fProducers
-			lValue766 = lLawspecfield72x2767
-			lMatched768 := lsfLookup(lValue766, lPid759, lsfCmp_44a08172da10)
-			if lMatched768.ok {
-				lEntry769 := lMatched768.v
-				var lValue770 int16
-				lLawspecfield80x0771 := lEntry769.fEpoch
-				lValue770 = lLawspecfield80x0771
-				if (lEpoch760 < lValue770) {
+			var lValue967 *lsfMap[int64, *lsfProducerEntry]
+			lLawspecfieldproducers968 := lB962.fProducers
+			lValue967 = lLawspecfieldproducers968
+			lMatched969 := lsfLookup(lValue967, lPid960, lsfCmp_44a08172da10)
+			if lMatched969.ok {
+				lEntry970 := lMatched969.v
+				var lValue971 int16
+				lLawspecfieldepoch972 := lEntry970.fEpoch
+				lValue971 = lLawspecfieldepoch972
+				if (lEpoch961 < lValue971) {
 					panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_ProducerFenced)})
 				} else {
-					var lValue772 int16
-					lLawspecfield83x0773 := lEntry769.fEpoch
-					lValue772 = lLawspecfield83x0773
-					if (lEpoch760 > lValue772) {
+					var lValue973 int16
+					lLawspecfieldepoch974 := lEntry970.fEpoch
+					lValue973 = lLawspecfieldepoch974
+					if (lEpoch961 > lValue973) {
 						panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidProducerEpoch)})
 					} else {
-						return lEntry769
+						return lEntry970
 					}
 				}
 			} else {
@@ -2476,556 +3159,559 @@ func lsfLawtwinKafkaModelCheckTxnProducer_174(lTxid758 string, lPid759 int64, lE
 	}
 }
 
-// lsfLawtwinKafkaModelCommitAll_175 is lawtwin.kafka::lawtwinKafkaModelCommitAll.
-func lsfLawtwinKafkaModelCommitAll_175(lG774 string, lOffsets775 *lsfList[*lsfOffsetEntry], lB776 *lsfBrokerState) *lsfBrokerState {
+// lsfLawtwinKafkaModelCommitAll_4ae78738 is lawtwin.kafka::lawtwinKafkaModelCommitAll.
+func lsfLawtwinKafkaModelCommitAll_4ae78738(lG975 string, lOffsets976 *lsfList[*lsfOffsetEntry], lB977 *lsfBrokerState) *lsfBrokerState {
 	for {
-		if lOffsets775 == nil {
-			return lB776
+		if lOffsets976 == nil {
+			return lB977
 		} else {
-			lO777 := lOffsets775.head
-			lRest778 := lOffsets775.tail
-			lNext779 := lRest778
-			var lValue780 *lsfBrokerState
-			var lValue781 *lsfTopicPartition
-			lLawspecfield33x0782 := lO777.fTopicPartition
-			lValue781 = lLawspecfield33x0782
-			var lValue783 int64
-			lLawspecfield34x1784 := lO777.fOffset
-			lValue783 = lLawspecfield34x1784
-			var lValue785 *lsfMap[*lsfGroupPartition, int64]
-			lLawspecfield35x6786 := lB776.fCommitted
-			lValue785 = lLawspecfield35x6786
-			lLawspecupdate14787 := lsfPut(lValue785, &lsfGroupPartition{lG774, lValue781}, lValue783, lsfCmp_213d3554d90b)
-			lLawspecfield14x0788 := lB776.fTopics
-			lLawspecfield14x1789 := lB776.fLogs
-			lLawspecfield14x2790 := lB776.fProducers
-			lLawspecfield14x3791 := lB776.fTransactionalIds
-			lLawspecfield14x4792 := lB776.fNextProducerId
-			lLawspecfield14x5793 := lB776.fGroups
-			lValue780 = &lsfBrokerState{lLawspecfield14x0788, lLawspecfield14x1789, lLawspecfield14x2790, lLawspecfield14x3791, lLawspecfield14x4792, lLawspecfield14x5793, lLawspecupdate14787}
-			lNext794 := lValue780
-			lOffsets775 = lNext779
-			lB776 = lNext794
+			lO978 := lOffsets976.head
+			lRest979 := lOffsets976.tail
+			lNext980 := lRest979
+			var lValue981 *lsfBrokerState
+			var lValue982 *lsfTopicPartition
+			lLawspecfieldtopicpartition983 := lO978.fTopicPartition
+			lValue982 = lLawspecfieldtopicpartition983
+			var lValue984 int64
+			lLawspecfieldoffset985 := lO978.fOffset
+			lValue984 = lLawspecfieldoffset985
+			var lValue986 *lsfMap[*lsfGroupPartition, int64]
+			lLawspecfieldcommitted987 := lB977.fCommitted
+			lValue986 = lLawspecfieldcommitted987
+			lReplacement988 := lsfPut(lValue986, &lsfGroupPartition{lG975, lValue982}, lValue984, lsfCmp_213d3554d90b)
+			lLawspecfieldtopics989 := lB977.fTopics
+			lLawspecfieldlogs990 := lB977.fLogs
+			lLawspecfieldproducers991 := lB977.fProducers
+			lLawspecfieldtransactionalids992 := lB977.fTransactionalIds
+			lLawspecfieldnextproducerid993 := lB977.fNextProducerId
+			lLawspecfieldgroups994 := lB977.fGroups
+			lValue981 = &lsfBrokerState{lLawspecfieldtopics989, lLawspecfieldlogs990, lLawspecfieldproducers991, lLawspecfieldtransactionalids992, lLawspecfieldnextproducerid993, lLawspecfieldgroups994, lReplacement988}
+			lNext995 := lValue981
+			lOffsets976 = lNext980
+			lB977 = lNext995
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelComputeAssignment_176 is lawtwin.kafka::lawtwinKafkaModelComputeAssignment.
-func lsfLawtwinKafkaModelComputeAssignment_176(lSubscriptions795 *lsfMap[string, *lsfList[string]], lB796 *lsfBrokerState) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
-	lSubs797 := lsfToList(lSubscriptions795, lsfEntryOf[string, *lsfList[string]])
-	var lValue798 *lsfList[string]
-	lMatched799 := lsfLawtwinKafkaModelSubscribedTopics_226(lSubs797, lsfSetOf((*lsfList[string])(nil), lsfCmp_437d0abf423f))
-	lItems800 := lsfSetItems(lMatched799)
-	lValue798 = lItems800
-	return lsfLawtwinKafkaModelAssignTopics_172(lValue798, lSubs797, lB796, lsfLawtwinKafkaModelEmptyAssignments_180(lsfToList(lSubscriptions795, func(k string, _ *lsfList[string]) string { return k }), lsfKeyValOf((*lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]])(nil), lsfCmp_437d0abf423f)))
+// lsfLawtwinKafkaModelComputeAssignment_07bd1943 is lawtwin.kafka::lawtwinKafkaModelComputeAssignment.
+func lsfLawtwinKafkaModelComputeAssignment_07bd1943(lSubscriptions996 *lsfMap[string, *lsfList[string]], lB997 *lsfBrokerState) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+	lSubs998 := lsfToList(lSubscriptions996, lsfEntryOf[string, *lsfList[string]])
+	var lValue999 *lsfList[string]
+	lMatched1000 := lsfLawtwinKafkaModelSubscribedTopics_c1d720b5(lSubs998, lsfSetOf((*lsfList[string])(nil), lsfCmp_437d0abf423f))
+	lItems1001 := lsfSetItems(lMatched1000)
+	lValue999 = lItems1001
+	return lsfLawtwinKafkaModelAssignTopics_0d94256d(lValue999, lSubs998, lB997, lsfLawtwinKafkaModelEmptyAssignments_91b44e0d(lsfToList(lSubscriptions996, func(k string, _ *lsfList[string]) string { return k }), lsfKeyValOf((*lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]])(nil), lsfCmp_437d0abf423f)))
 }
 
-// lsfLawtwinKafkaModelCreatePartitions_177 is lawtwin.kafka::lawtwinKafkaModelCreatePartitions.
-func lsfLawtwinKafkaModelCreatePartitions_177(lName801 string, lTotal802 int32, lB803 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	lMatched804 := lsfLawtwinKafkaModelPartitionCountOf_212(lName801, lB803)
-	if lMatched804.ok {
-		lN805 := lMatched804.v
-		if ((lTotal802 <= lN805) || (lTotal802 > lsfLawtwinKafkaModelMaxPartitions_202(lsfUnit{}))) {
+// lsfLawtwinKafkaModelCreatePartitions_8c9ce76b is lawtwin.kafka::lawtwinKafkaModelCreatePartitions.
+func lsfLawtwinKafkaModelCreatePartitions_8c9ce76b(lName1002 string, lTotal1003 int32, lB1004 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	lMatched1005 := lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lName1002, lB1004)
+	if lMatched1005.ok {
+		lN1006 := lMatched1005.v
+		if ((lTotal1003 <= lN1006) || (lTotal1003 > lsfLawtwinKafkaModelMaxPartitions_6be37992(lsfUnit{}))) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidPartitions)})
 		} else {
-			var lValue806 *lsfBrokerState
-			var lValue807 *lsfMap[string, int32]
-			lLawspecfield54x0808 := lB803.fTopics
-			lValue807 = lLawspecfield54x0808
-			lLawspecupdate35809 := lsfPut(lValue807, lName801, lTotal802, lsfCmp_437d0abf423f)
-			lLawspecfield35x1810 := lB803.fLogs
-			lLawspecfield35x2811 := lB803.fProducers
-			lLawspecfield35x3812 := lB803.fTransactionalIds
-			lLawspecfield35x4813 := lB803.fNextProducerId
-			lLawspecfield35x5814 := lB803.fGroups
-			lLawspecfield35x6815 := lB803.fCommitted
-			lValue806 = &lsfBrokerState{lLawspecupdate35809, lLawspecfield35x1810, lLawspecfield35x2811, lLawspecfield35x3812, lLawspecfield35x4813, lLawspecfield35x5814, lLawspecfield35x6815}
-			return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelRebalanceTopic_223(lName801, lValue806)}
+			var lValue1007 *lsfBrokerState
+			var lValue1008 *lsfMap[string, int32]
+			lLawspecfieldtopics1009 := lB1004.fTopics
+			lValue1008 = lLawspecfieldtopics1009
+			lReplacement1010 := lsfPut(lValue1008, lName1002, lTotal1003, lsfCmp_437d0abf423f)
+			lLawspecfieldlogs1011 := lB1004.fLogs
+			lLawspecfieldproducers1012 := lB1004.fProducers
+			lLawspecfieldtransactionalids1013 := lB1004.fTransactionalIds
+			lLawspecfieldnextproducerid1014 := lB1004.fNextProducerId
+			lLawspecfieldgroups1015 := lB1004.fGroups
+			lLawspecfieldcommitted1016 := lB1004.fCommitted
+			lValue1007 = &lsfBrokerState{lReplacement1010, lLawspecfieldlogs1011, lLawspecfieldproducers1012, lLawspecfieldtransactionalids1013, lLawspecfieldnextproducerid1014, lLawspecfieldgroups1015, lLawspecfieldcommitted1016}
+			return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lName1002, lValue1007)}
 		}
 	} else {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 	}
 }
 
-// lsfLawtwinKafkaModelCreateTopic_178 is lawtwin.kafka::lawtwinKafkaModelCreateTopic.
-func lsfLawtwinKafkaModelCreateTopic_178(lName816 string, lN817 int32, lB818 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	if !(lsfLawtwinKafkaModelValidTopicName_233(lName816)) {
+// lsfLawtwinKafkaModelCreateTopic_0d831a39 is lawtwin.kafka::lawtwinKafkaModelCreateTopic.
+func lsfLawtwinKafkaModelCreateTopic_0d831a39(lName1017 string, lN1018 int32, lB1019 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	if !(lsfLawtwinKafkaModelValidTopicName_39dd4596(lName1017)) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidTopic)})
 	} else {
-		if ((int64(lN817) < int64(1)) || (lN817 > lsfLawtwinKafkaModelMaxPartitions_202(lsfUnit{}))) {
+		if ((int64(lN1018) < int64(1)) || (lN1018 > lsfLawtwinKafkaModelMaxPartitions_6be37992(lsfUnit{}))) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidPartitions)})
 		} else {
-			lMatched819 := lsfLawtwinKafkaModelPartitionCountOf_212(lName816, lB818)
-			if lMatched819.ok {
+			lMatched1020 := lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lName1017, lB1019)
+			if lMatched1020.ok {
 				panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_TopicAlreadyExists)})
 			} else {
-				var lValue820 *lsfBrokerState
-				var lValue821 *lsfMap[string, int32]
-				lLawspecfield67x0822 := lB818.fTopics
-				lValue821 = lLawspecfield67x0822
-				lLawspecupdate48823 := lsfPut(lValue821, lName816, lN817, lsfCmp_437d0abf423f)
-				lLawspecfield48x1824 := lB818.fLogs
-				lLawspecfield48x2825 := lB818.fProducers
-				lLawspecfield48x3826 := lB818.fTransactionalIds
-				lLawspecfield48x4827 := lB818.fNextProducerId
-				lLawspecfield48x5828 := lB818.fGroups
-				lLawspecfield48x6829 := lB818.fCommitted
-				lValue820 = &lsfBrokerState{lLawspecupdate48823, lLawspecfield48x1824, lLawspecfield48x2825, lLawspecfield48x3826, lLawspecfield48x4827, lLawspecfield48x5828, lLawspecfield48x6829}
-				return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelRebalanceTopic_223(lName816, lValue820)}
+				var lValue1021 *lsfBrokerState
+				var lValue1022 *lsfMap[string, int32]
+				lLawspecfieldtopics1023 := lB1019.fTopics
+				lValue1022 = lLawspecfieldtopics1023
+				lReplacement1024 := lsfPut(lValue1022, lName1017, lN1018, lsfCmp_437d0abf423f)
+				lLawspecfieldlogs1025 := lB1019.fLogs
+				lLawspecfieldproducers1026 := lB1019.fProducers
+				lLawspecfieldtransactionalids1027 := lB1019.fTransactionalIds
+				lLawspecfieldnextproducerid1028 := lB1019.fNextProducerId
+				lLawspecfieldgroups1029 := lB1019.fGroups
+				lLawspecfieldcommitted1030 := lB1019.fCommitted
+				lValue1021 = &lsfBrokerState{lReplacement1024, lLawspecfieldlogs1025, lLawspecfieldproducers1026, lLawspecfieldtransactionalids1027, lLawspecfieldnextproducerid1028, lLawspecfieldgroups1029, lLawspecfieldcommitted1030}
+				return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lName1017, lValue1021)}
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelDescribeGroup_179 is lawtwin.kafka::lawtwinKafkaModelDescribeGroup.
-func lsfLawtwinKafkaModelDescribeGroup_179(lG830 string, lB831 *lsfBrokerState) *lsfPair[*lsfGroupView, *lsfBrokerState] {
-	lGroup832 := lsfLawtwinKafkaModelGroupOf_189(lG830, lB831)
-	var lValue833 int32
-	lLawspecfield16x0834 := lGroup832.fGroupGeneration
-	lValue833 = lLawspecfield16x0834
-	var lValue835 *lsfMap[string, *lsfList[*lsfTopicPartition]]
-	lLawspecfield27x2836 := lGroup832.fAssignment
-	lValue835 = lLawspecfield27x2836
-	return &lsfPair[*lsfGroupView, *lsfBrokerState]{&lsfGroupView{lValue833, lsfLawtwinKafkaModelMemberViews_203(lsfToList(lValue835, lsfEntryOf[string, *lsfList[*lsfTopicPartition]]))}, lB831}
+// lsfLawtwinKafkaModelDescribeGroup_bf8df8f8 is lawtwin.kafka::lawtwinKafkaModelDescribeGroup.
+func lsfLawtwinKafkaModelDescribeGroup_bf8df8f8(lG1031 string, lB1032 *lsfBrokerState) *lsfPair[*lsfGroupView, *lsfBrokerState] {
+	lGroup1033 := lsfLawtwinKafkaModelGroupOf_abe7cb22(lG1031, lB1032)
+	var lValue1034 int32
+	lLawspecfieldgroupgeneration1035 := lGroup1033.fGroupGeneration
+	lValue1034 = lLawspecfieldgroupgeneration1035
+	var lValue1036 *lsfMap[string, *lsfList[*lsfTopicPartition]]
+	lLawspecfieldassignment1037 := lGroup1033.fAssignment
+	lValue1036 = lLawspecfieldassignment1037
+	return &lsfPair[*lsfGroupView, *lsfBrokerState]{&lsfGroupView{lValue1034, lsfLawtwinKafkaModelMemberViews_a87b1b1a(lsfToList(lValue1036, lsfEntryOf[string, *lsfList[*lsfTopicPartition]]))}, lB1032}
 }
 
-// lsfLawtwinKafkaModelEmptyAssignments_180 is lawtwin.kafka::lawtwinKafkaModelEmptyAssignments.
-func lsfLawtwinKafkaModelEmptyAssignments_180(lMembers837 *lsfList[string], lA838 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
+// lsfLawtwinKafkaModelEmptyAssignments_91b44e0d is lawtwin.kafka::lawtwinKafkaModelEmptyAssignments.
+func lsfLawtwinKafkaModelEmptyAssignments_91b44e0d(lMembers1038 *lsfList[string], lA1039 *lsfMap[string, *lsfList[*lsfTopicPartition]]) *lsfMap[string, *lsfList[*lsfTopicPartition]] {
 	for {
-		if lMembers837 == nil {
-			return lA838
+		if lMembers1038 == nil {
+			return lA1039
 		} else {
-			lM839 := lMembers837.head
-			lRest840 := lMembers837.tail
-			lNext841 := lRest840
-			lNext842 := lsfPut(lA838, lM839, (*lsfList[*lsfTopicPartition])(nil), lsfCmp_437d0abf423f)
-			lMembers837 = lNext841
-			lA838 = lNext842
+			lM1040 := lMembers1038.head
+			lRest1041 := lMembers1038.tail
+			lNext1042 := lRest1041
+			lNext1043 := lsfPut(lA1039, lM1040, (*lsfList[*lsfTopicPartition])(nil), lsfCmp_437d0abf423f)
+			lMembers1038 = lNext1042
+			lA1039 = lNext1043
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelEmptyBroker_181 is lawtwin.kafka::lawtwinKafkaModelEmptyBroker.
-func lsfLawtwinKafkaModelEmptyBroker_181(lU843 lsfUnit) *lsfBrokerState {
+// lsfLawtwinKafkaModelEmptyBroker_d5fd8237 is lawtwin.kafka::lawtwinKafkaModelEmptyBroker.
+func lsfLawtwinKafkaModelEmptyBroker_d5fd8237(lU1044 lsfUnit) *lsfBrokerState {
 	return &lsfBrokerState{lsfKeyValOf((*lsfList[*lsfEntry[string, int32]])(nil), lsfCmp_437d0abf423f), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, *lsfPartitionLog]])(nil), lsfCmp_57a515e0e489), lsfKeyValOf((*lsfList[*lsfEntry[int64, *lsfProducerEntry]])(nil), lsfCmp_44a08172da10), lsfKeyValOf((*lsfList[*lsfEntry[string, int64]])(nil), lsfCmp_437d0abf423f), int64(0), lsfKeyValOf((*lsfList[*lsfEntry[string, *lsfGroup]])(nil), lsfCmp_437d0abf423f), lsfKeyValOf((*lsfList[*lsfEntry[*lsfGroupPartition, int64]])(nil), lsfCmp_213d3554d90b)}
 }
 
-// lsfLawtwinKafkaModelEmptyGroup_182 is lawtwin.kafka::lawtwinKafkaModelEmptyGroup.
-func lsfLawtwinKafkaModelEmptyGroup_182(lU844 lsfUnit) *lsfGroup {
+// lsfLawtwinKafkaModelEmptyGroup_2fc4809b is lawtwin.kafka::lawtwinKafkaModelEmptyGroup.
+func lsfLawtwinKafkaModelEmptyGroup_2fc4809b(lU1045 lsfUnit) *lsfGroup {
 	return &lsfGroup{int32(0), lsfKeyValOf((*lsfList[*lsfEntry[string, *lsfList[string]]])(nil), lsfCmp_437d0abf423f), lsfKeyValOf((*lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]])(nil), lsfCmp_437d0abf423f)}
 }
 
-// lsfLawtwinKafkaModelEmptyLog_183 is lawtwin.kafka::lawtwinKafkaModelEmptyLog.
-func lsfLawtwinKafkaModelEmptyLog_183(lU845 lsfUnit) *lsfPartitionLog {
+// lsfLawtwinKafkaModelEmptyLog_a7825ed0 is lawtwin.kafka::lawtwinKafkaModelEmptyLog.
+func lsfLawtwinKafkaModelEmptyLog_a7825ed0(lU1046 lsfUnit) *lsfPartitionLog {
 	return &lsfPartitionLog{(*lsfList[lsfLogEntry])(nil), int64(0), lsfKeyValOf((*lsfList[*lsfEntry[int64, int64]])(nil), lsfCmp_44a08172da10), (*lsfList[*lsfAbortedTxn])(nil), lsfKeyValOf((*lsfList[*lsfEntry[int64, *lsfList[*lsfBatchMeta]]])(nil), lsfCmp_44a08172da10)}
 }
 
-// lsfLawtwinKafkaModelEndTxn_184 is lawtwin.kafka::lawtwinKafkaModelEndTxn.
-func lsfLawtwinKafkaModelEndTxn_184(lTxid846 string, lPid847 int64, lEpoch848 int16, lCommit849 bool, lB850 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	lEntry851 := lsfLawtwinKafkaModelCheckTxnProducer_174(lTxid846, lPid847, lEpoch848, lB850)
-	var lValue852 lsfTxnState
-	lLawspecfield9x2853 := lEntry851.fTxn
-	lValue852 = lLawspecfield9x2853
-	lMatched854 := lValue852
-	switch lMatched854.(type) {
+// lsfLawtwinKafkaModelEndTxn_b2637a52 is lawtwin.kafka::lawtwinKafkaModelEndTxn.
+func lsfLawtwinKafkaModelEndTxn_b2637a52(lTxid1047 string, lPid1048 int64, lEpoch1049 int16, lCommit1050 bool, lB1051 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	lEntry1052 := lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lTxid1047, lPid1048, lEpoch1049, lB1051)
+	var lValue1053 lsfTxnState
+	lLawspecfieldtxn1054 := lEntry1052.fTxn
+	lValue1053 = lLawspecfieldtxn1054
+	lMatched1055 := lValue1053
+	switch lMatched1055.(type) {
 		case *lsfTxnState_NoTxn:
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidTxnState)})
 		case *lsfTxnState_Ongoing:
-			var lValue856 *lsfProducerEntry
-			lLawspecfield15x0857 := lEntry851.fEpoch
-			lLawspecfield15x1858 := lEntry851.fTransactionalId
-			lValue856 = &lsfProducerEntry{lLawspecfield15x0857, lLawspecfield15x1858, &lsfTxnState_NoTxn{}}
-			var lValue859 lsfTxnState
-			lLawspecfield16x2860 := lEntry851.fTxn
-			lValue859 = lLawspecfield16x2860
-			return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_219(lPid847, lValue856, lsfLawtwinKafkaModelFinishTxn_188(lPid847, lCommit849, lValue859, lB850))}
+			var lValue1057 *lsfProducerEntry
+			lReplacement1058 := &lsfTxnState_NoTxn{}
+			lLawspecfieldepoch1059 := lEntry1052.fEpoch
+			lLawspecfieldtransactionalid1060 := lEntry1052.fTransactionalId
+			lValue1057 = &lsfProducerEntry{lLawspecfieldepoch1059, lLawspecfieldtransactionalid1060, lReplacement1058}
+			var lValue1061 lsfTxnState
+			lLawspecfieldtxn1062 := lEntry1052.fTxn
+			lValue1061 = lLawspecfieldtxn1062
+			return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_4ef907a5(lPid1048, lValue1057, lsfLawtwinKafkaModelFinishTxn_7545803e(lPid1048, lCommit1050, lValue1061, lB1051))}
 		default:
 			panic("unreachable branch reached")
 	}
 }
 
-// lsfLawtwinKafkaModelExpectedSequence_185 is lawtwin.kafka::lawtwinKafkaModelExpectedSequence.
-func lsfLawtwinKafkaModelExpectedSequence_185(lEpoch861 int16, lMs862 *lsfList[*lsfBatchMeta]) int32 {
-	if lMs862 == nil {
+// lsfLawtwinKafkaModelExpectedSequence_83e363c8 is lawtwin.kafka::lawtwinKafkaModelExpectedSequence.
+func lsfLawtwinKafkaModelExpectedSequence_83e363c8(lEpoch1063 int16, lMs1064 *lsfList[*lsfBatchMeta]) int32 {
+	if lMs1064 == nil {
 		return int32(0)
 	} else {
-		lM863 := lMs862.head
-		var lValue864 int16
-		lLawspecfield9x0865 := lM863.fBatchEpoch
-		lValue864 = lLawspecfield9x0865
-		if (lValue864 == lEpoch861) {
-			var lValue866 int32
-			lLawspecfield11x2867 := lM863.fLastSequence
-			lValue866 = lLawspecfield11x2867
-			return lsfSaturatingInt32_9(lsfSmall(int64(lValue866)).Add(lsfSmall(int64(1))))
+		lM1065 := lMs1064.head
+		var lValue1066 int16
+		lLawspecfieldbatchepoch1067 := lM1065.fBatchEpoch
+		lValue1066 = lLawspecfieldbatchepoch1067
+		if (lValue1066 == lEpoch1063) {
+			var lValue1068 int32
+			lLawspecfieldlastsequence1069 := lM1065.fLastSequence
+			lValue1068 = lLawspecfieldlastsequence1069
+			return lsfSaturatingInt32_9e8d3b43(lsfSmall(int64(lValue1068)).Add(lsfSmall(int64(1))))
 		} else {
 			return int32(0)
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelFetch_186 is lawtwin.kafka::lawtwinKafkaModelFetch.
-func lsfLawtwinKafkaModelFetch_186(lTp868 *lsfTopicPartition, lFrom869 int64, lMaxrecords870 int32, lIsolation871 lsfIsolationLevel, lB872 *lsfBrokerState) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
-	if !(lsfLawtwinKafkaModelKnownPartition_195(lTp868, lB872)) {
+// lsfLawtwinKafkaModelFetch_29936450 is lawtwin.kafka::lawtwinKafkaModelFetch.
+func lsfLawtwinKafkaModelFetch_29936450(lTp1070 *lsfTopicPartition, lFrom1071 int64, lMaxrecords1072 int32, lIsolation1073 lsfIsolationLevel, lB1074 *lsfBrokerState) *lsfPair[*lsfFetchResult, *lsfBrokerState] {
+	if !(lsfLawtwinKafkaModelKnownPartition_71d3099f(lTp1070, lB1074)) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 	} else {
-		lL873 := lsfLawtwinKafkaModelLogOf_200(lTp868, lB872)
-		lHw874 := lsfLawtwinKafkaModelHighWatermark_191(lL873)
-		lLso875 := lsfLawtwinKafkaModelLastStableOffset_197(lL873)
-		if ((lFrom869 < int64(0)) || (lFrom869 > lHw874)) {
+		lL1075 := lsfLawtwinKafkaModelLogOf_b86b131a(lTp1070, lB1074)
+		lHw1076 := lsfLawtwinKafkaModelHighWatermark_da6ed677(lL1075)
+		lLso1077 := lsfLawtwinKafkaModelLastStableOffset_e8497029(lL1075)
+		if ((lFrom1071 < int64(0)) || (lFrom1071 > lHw1076)) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_OffsetOutOfRange)})
 		} else {
-			var lValue876 bool
-			switch lIsolation871 {
+			var lValue1078 bool
+			switch lIsolation1073 {
 				case lsfIsolationLevel_ReadUncommitted:
-					lValue876 = false
+					lValue1078 = false
 				case lsfIsolationLevel_ReadCommitted:
-					lValue876 = true
+					lValue1078 = true
 				default:
 					panic("unreachable branch reached")
 			}
-			lCommittedonly877 := lValue876
-			var lValue878 int64
-			if lCommittedonly877 {
-				lValue878 = lLso875
+			lCommittedonly1079 := lValue1078
+			var lValue1080 int64
+			if lCommittedonly1079 {
+				lValue1080 = lLso1077
 			} else {
-				lValue878 = lHw874
+				lValue1080 = lHw1076
 			}
-			lLimit879 := lValue878
-			var lValue880 *lsfList[lsfLogEntry]
-			lLawspecfield37x0881 := lL873.fEntries
-			lValue880 = lLawspecfield37x0881
-			var lValue882 *lsfList[*lsfAbortedTxn]
-			lLawspecfield38x3883 := lL873.fAbortedTxns
-			lValue882 = lLawspecfield38x3883
-			lAll884 := lsfLawtwinKafkaModelReadable_220(lValue880, lFrom869, lLimit879, lCommittedonly877, lValue882, (*lsfList[*lsfFetchedRecord])(nil))
-			lTaken885 := lsfSliceList(lAll884, int64(0), int64(lMaxrecords870))
-			return &lsfPair[*lsfFetchResult, *lsfBrokerState]{&lsfFetchResult{lTaken885, lsfLawtwinKafkaModelNextFetchOffset_208(lFrom869, lLimit879, lTaken885, lAll884), lHw874, lLso875}, lB872}
+			lLimit1081 := lValue1080
+			var lValue1082 *lsfList[lsfLogEntry]
+			lLawspecfieldentries1083 := lL1075.fEntries
+			lValue1082 = lLawspecfieldentries1083
+			var lValue1084 *lsfList[*lsfAbortedTxn]
+			lLawspecfieldabortedtxns1085 := lL1075.fAbortedTxns
+			lValue1084 = lLawspecfieldabortedtxns1085
+			lAll1086 := lsfLawtwinKafkaModelReadable_adec3284(lValue1082, lFrom1071, lLimit1081, lCommittedonly1079, lValue1084, (*lsfList[*lsfFetchedRecord])(nil))
+			lTaken1087 := lsfSliceList(lAll1086, int64(0), int64(lMaxrecords1072))
+			return &lsfPair[*lsfFetchResult, *lsfBrokerState]{&lsfFetchResult{lTaken1087, lsfLawtwinKafkaModelNextFetchOffset_28fd5a97(lFrom1071, lLimit1081, lTaken1087, lAll1086), lHw1076, lLso1077}, lB1074}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelFindDuplicate_187 is lawtwin.kafka::lawtwinKafkaModelFindDuplicate.
-func lsfLawtwinKafkaModelFindDuplicate_187(lEpoch886 int16, lFirst887 int32, lLast888 int32, lMs889 *lsfList[*lsfBatchMeta]) lsfMaybe[int64] {
+// lsfLawtwinKafkaModelFindDuplicate_3335aea4 is lawtwin.kafka::lawtwinKafkaModelFindDuplicate.
+func lsfLawtwinKafkaModelFindDuplicate_3335aea4(lEpoch1088 int16, lFirst1089 int32, lLast1090 int32, lMs1091 *lsfList[*lsfBatchMeta]) lsfMaybe[int64] {
 	for {
-		if lMs889 == nil {
+		if lMs1091 == nil {
 			return lsfNothing[int64]()
 		} else {
-			lM890 := lMs889.head
-			lRest891 := lMs889.tail
-			var lValue892 int16
-			lLawspecfield13x0893 := lM890.fBatchEpoch
-			lValue892 = lLawspecfield13x0893
-			var lLogic896 bool
-			if (lValue892 == lEpoch886) {
-				var lValue894 int32
-				lLawspecfield14x1895 := lM890.fFirstSequence
-				lValue894 = lLawspecfield14x1895
-				lLogic896 = (lValue894 == lFirst887)
-			} else { lLogic896 = false }
-			var lLogic899 bool
-			if lLogic896 {
-				var lValue897 int32
-				lLawspecfield15x2898 := lM890.fLastSequence
-				lValue897 = lLawspecfield15x2898
-				lLogic899 = (lValue897 == lLast888)
-			} else { lLogic899 = false }
-			if lLogic899 {
-				var lValue900 int64
-				lLawspecfield18x3901 := lM890.fBatchOffset
-				lValue900 = lLawspecfield18x3901
-				return lsfJust[int64](lValue900)
+			lM1092 := lMs1091.head
+			lRest1093 := lMs1091.tail
+			var lValue1094 int16
+			lLawspecfieldbatchepoch1095 := lM1092.fBatchEpoch
+			lValue1094 = lLawspecfieldbatchepoch1095
+			var lLogic1098 bool
+			if (lValue1094 == lEpoch1088) {
+				var lValue1096 int32
+				lLawspecfieldfirstsequence1097 := lM1092.fFirstSequence
+				lValue1096 = lLawspecfieldfirstsequence1097
+				lLogic1098 = (lValue1096 == lFirst1089)
+			} else { lLogic1098 = false }
+			var lLogic1101 bool
+			if lLogic1098 {
+				var lValue1099 int32
+				lLawspecfieldlastsequence1100 := lM1092.fLastSequence
+				lValue1099 = lLawspecfieldlastsequence1100
+				lLogic1101 = (lValue1099 == lLast1090)
+			} else { lLogic1101 = false }
+			if lLogic1101 {
+				var lValue1102 int64
+				lLawspecfieldbatchoffset1103 := lM1092.fBatchOffset
+				lValue1102 = lLawspecfieldbatchoffset1103
+				return lsfJust[int64](lValue1102)
 			} else {
-				lNext902 := lRest891
-				lMs889 = lNext902
+				lNext1104 := lRest1093
+				lMs1091 = lNext1104
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelFinishTxn_188 is lawtwin.kafka::lawtwinKafkaModelFinishTxn.
-func lsfLawtwinKafkaModelFinishTxn_188(lPid903 int64, lCommit904 bool, lTxn905 lsfTxnState, lB906 *lsfBrokerState) *lsfBrokerState {
-	switch lVariant907 := lTxn905.(type) {
+// lsfLawtwinKafkaModelFinishTxn_7545803e is lawtwin.kafka::lawtwinKafkaModelFinishTxn.
+func lsfLawtwinKafkaModelFinishTxn_7545803e(lPid1105 int64, lCommit1106 bool, lTxn1107 lsfTxnState, lB1108 *lsfBrokerState) *lsfBrokerState {
+	switch lVariant1109 := lTxn1107.(type) {
 		case *lsfTxnState_NoTxn:
-			return lB906
+			return lB1108
 		case *lsfTxnState_Ongoing:
-			lPs908 := lVariant907.fTxnPartitions
-			lOs909 := lVariant907.fTxnOffsets
-			lMarked910 := lsfLawtwinKafkaModelWriteMarkers_235(lPid903, lCommit904, lPs908, lB906)
-			if lCommit904 {
-				return lsfLawtwinKafkaModelApplyOffsets_169(lsfLawtwinKafkaModelReversePending_225(lOs909, (*lsfList[*lsfPendingOffset])(nil)), lMarked910)
+			lPs1110 := lVariant1109.fTxnPartitions
+			lOs1111 := lVariant1109.fTxnOffsets
+			lMarked1112 := lsfLawtwinKafkaModelWriteMarkers_c507f08e(lPid1105, lCommit1106, lPs1110, lB1108)
+			if lCommit1106 {
+				return lsfLawtwinKafkaModelApplyOffsets_c0f73b56(lsfLawtwinKafkaModelReversePending_51ca5898(lOs1111, (*lsfList[*lsfPendingOffset])(nil)), lMarked1112)
 			} else {
-				return lMarked910
+				return lMarked1112
 			}
 		default:
 			panic("unreachable branch reached")
 	}
 }
 
-// lsfLawtwinKafkaModelGroupOf_189 is lawtwin.kafka::lawtwinKafkaModelGroupOf.
-func lsfLawtwinKafkaModelGroupOf_189(lG911 string, lB912 *lsfBrokerState) *lsfGroup {
-	var lValue913 *lsfMap[string, *lsfGroup]
-	lLawspecfield20x5914 := lB912.fGroups
-	lValue913 = lLawspecfield20x5914
-	lMatched915 := lsfLookup(lValue913, lG911, lsfCmp_437d0abf423f)
-	if lMatched915.ok {
-		lGroup916 := lMatched915.v
-		return lGroup916
+// lsfLawtwinKafkaModelGroupOf_abe7cb22 is lawtwin.kafka::lawtwinKafkaModelGroupOf.
+func lsfLawtwinKafkaModelGroupOf_abe7cb22(lG1113 string, lB1114 *lsfBrokerState) *lsfGroup {
+	var lValue1115 *lsfMap[string, *lsfGroup]
+	lLawspecfieldgroups1116 := lB1114.fGroups
+	lValue1115 = lLawspecfieldgroups1116
+	lMatched1117 := lsfLookup(lValue1115, lG1113, lsfCmp_437d0abf423f)
+	if lMatched1117.ok {
+		lGroup1118 := lMatched1117.v
+		return lGroup1118
 	} else {
-		return lsfLawtwinKafkaModelEmptyGroup_182(lsfUnit{})
+		return lsfLawtwinKafkaModelEmptyGroup_2fc4809b(lsfUnit{})
 	}
 }
 
-// lsfLawtwinKafkaModelHeartbeat_190 is lawtwin.kafka::lawtwinKafkaModelHeartbeat.
-func lsfLawtwinKafkaModelHeartbeat_190(lG917 string, lMember918 string, lGeneration919 int32, lB920 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	_ = lsfLawtwinKafkaModelCheckMember_173(lG917, lMember918, lGeneration919, lB920)
-	return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lB920}
+// lsfLawtwinKafkaModelHeartbeat_0f08a54d is lawtwin.kafka::lawtwinKafkaModelHeartbeat.
+func lsfLawtwinKafkaModelHeartbeat_0f08a54d(lG1119 string, lMember1120 string, lGeneration1121 int32, lB1122 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	_ = lsfLawtwinKafkaModelCheckMember_f218b850(lG1119, lMember1120, lGeneration1121, lB1122)
+	return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lB1122}
 }
 
-// lsfLawtwinKafkaModelHighWatermark_191 is lawtwin.kafka::lawtwinKafkaModelHighWatermark.
-func lsfLawtwinKafkaModelHighWatermark_191(lL921 *lsfPartitionLog) int64 {
-	lLawspecfield0x1922 := lL921.fLogEndOffset
-	return lLawspecfield0x1922
+// lsfLawtwinKafkaModelHighWatermark_da6ed677 is lawtwin.kafka::lawtwinKafkaModelHighWatermark.
+func lsfLawtwinKafkaModelHighWatermark_da6ed677(lL1123 *lsfPartitionLog) int64 {
+	lLawspecfieldlogendoffset1124 := lL1123.fLogEndOffset
+	return lLawspecfieldlogendoffset1124
 }
 
-// lsfLawtwinKafkaModelInitProducerId_192 is lawtwin.kafka::lawtwinKafkaModelInitProducerId.
-func lsfLawtwinKafkaModelInitProducerId_192(lTxid923 lsfMaybe[string], lB924 *lsfBrokerState) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
-	if lTxid923.ok {
-		lId925 := lTxid923.v
-		if ((lId925) == ("")) {
+// lsfLawtwinKafkaModelInitProducerId_cedb7e1b is lawtwin.kafka::lawtwinKafkaModelInitProducerId.
+func lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lTxid1125 lsfMaybe[string], lB1126 *lsfBrokerState) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
+	if lTxid1125.ok {
+		lId1127 := lTxid1125.v
+		if ((lId1127) == ("")) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidRequest)})
 		} else {
-			var lValue926 *lsfMap[string, int64]
-			lLawspecfield74x3927 := lB924.fTransactionalIds
-			lValue926 = lLawspecfield74x3927
-			lMatched928 := lsfLookup(lValue926, lId925, lsfCmp_437d0abf423f)
-			if lMatched928.ok {
-				lPid929 := lMatched928.v
-				var lValue930 *lsfMap[int64, *lsfProducerEntry]
-				lLawspecfield98x2931 := lB924.fProducers
-				lValue930 = lLawspecfield98x2931
-				lMatched932 := lsfLookup(lValue930, lPid929, lsfCmp_44a08172da10)
-				if lMatched932.ok {
-					lEntry933 := lMatched932.v
-					var lValue934 lsfTxnState
-					lLawspecfield106x2935 := lEntry933.fTxn
-					lValue934 = lLawspecfield106x2935
-					lCleared936 := lsfLawtwinKafkaModelFinishTxn_188(lPid929, false, lValue934, lB924)
-					var lValue937 int16
-					lLawspecfield110x0938 := lEntry933.fEpoch
-					lValue937 = lLawspecfield110x0938
-					if (int64(lValue937) < int64(32767)) {
-						var lValue939 int16
-						lLawspecfield116x0940 := lEntry933.fEpoch
-						lValue939 = lLawspecfield116x0940
-						lBumped941 := lsfSaturatingInt16_8(lsfSmall(int64(lValue939)).Add(lsfSmall(int64(1))))
-						var lValue942 *lsfProducerEntry
-						var lValue943 *lsfProducerEntry
-						lLawspecfield123x1944 := lEntry933.fTransactionalId
-						lLawspecfield123x2945 := lEntry933.fTxn
-						lValue943 = &lsfProducerEntry{lBumped941, lLawspecfield123x1944, lLawspecfield123x2945}
-						lMatched946 := lValue943
-						lLawspecfield122x0947 := lMatched946.fEpoch
-						lLawspecfield122x1948 := lMatched946.fTransactionalId
-						lValue942 = &lsfProducerEntry{lLawspecfield122x0947, lLawspecfield122x1948, &lsfTxnState_NoTxn{}}
-						return &lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState]{&lsfProducerIdAndEpoch{lPid929, lBumped941}, lsfLawtwinKafkaModelPutProducer_219(lPid929, lValue942, lCleared936)}
+			var lValue1128 *lsfMap[string, int64]
+			lLawspecfieldtransactionalids1129 := lB1126.fTransactionalIds
+			lValue1128 = lLawspecfieldtransactionalids1129
+			lMatched1130 := lsfLookup(lValue1128, lId1127, lsfCmp_437d0abf423f)
+			if lMatched1130.ok {
+				lPid1131 := lMatched1130.v
+				var lValue1132 *lsfMap[int64, *lsfProducerEntry]
+				lLawspecfieldproducers1133 := lB1126.fProducers
+				lValue1132 = lLawspecfieldproducers1133
+				lMatched1134 := lsfLookup(lValue1132, lPid1131, lsfCmp_44a08172da10)
+				if lMatched1134.ok {
+					lEntry1135 := lMatched1134.v
+					var lValue1136 lsfTxnState
+					lLawspecfieldtxn1137 := lEntry1135.fTxn
+					lValue1136 = lLawspecfieldtxn1137
+					lCleared1138 := lsfLawtwinKafkaModelFinishTxn_7545803e(lPid1131, false, lValue1136, lB1126)
+					var lValue1139 int16
+					lLawspecfieldepoch1140 := lEntry1135.fEpoch
+					lValue1139 = lLawspecfieldepoch1140
+					if (int64(lValue1139) < int64(32767)) {
+						var lValue1141 int16
+						lLawspecfieldepoch1142 := lEntry1135.fEpoch
+						lValue1141 = lLawspecfieldepoch1142
+						lBumped1143 := lsfSaturatingInt16_770015a8(lsfSmall(int64(lValue1141)).Add(lsfSmall(int64(1))))
+						var lValue1144 *lsfProducerEntry
+						lReplacement1145 := &lsfTxnState_NoTxn{}
+						var lValue1146 *lsfProducerEntry
+						lReplacement1147 := lBumped1143
+						lLawspecfieldtransactionalid1148 := lEntry1135.fTransactionalId
+						lLawspecfieldtxn1149 := lEntry1135.fTxn
+						lValue1146 = &lsfProducerEntry{lReplacement1147, lLawspecfieldtransactionalid1148, lLawspecfieldtxn1149}
+						lMatched1150 := lValue1146
+						lLawspecfieldepoch1151 := lMatched1150.fEpoch
+						lLawspecfieldtransactionalid1152 := lMatched1150.fTransactionalId
+						lValue1144 = &lsfProducerEntry{lLawspecfieldepoch1151, lLawspecfieldtransactionalid1152, lReplacement1145}
+						return &lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState]{&lsfProducerIdAndEpoch{lPid1131, lBumped1143}, lsfLawtwinKafkaModelPutProducer_4ef907a5(lPid1131, lValue1144, lCleared1138)}
 					} else {
-						return lsfLawtwinKafkaModelNewProducer_207(lTxid923, lCleared936)
+						return lsfLawtwinKafkaModelNewProducer_89b0852d(lTxid1125, lCleared1138)
 					}
 				} else {
-					return lsfLawtwinKafkaModelNewProducer_207(lTxid923, lB924)
+					return lsfLawtwinKafkaModelNewProducer_89b0852d(lTxid1125, lB1126)
 				}
 			} else {
-				return lsfLawtwinKafkaModelNewProducer_207(lTxid923, lB924)
+				return lsfLawtwinKafkaModelNewProducer_89b0852d(lTxid1125, lB1126)
 			}
 		}
 	} else {
-		return lsfLawtwinKafkaModelNewProducer_207(lsfNothing[string](), lB924)
+		return lsfLawtwinKafkaModelNewProducer_89b0852d(lsfNothing[string](), lB1126)
 	}
 }
 
-// lsfLawtwinKafkaModelIsAborted_193 is lawtwin.kafka::lawtwinKafkaModelIsAborted.
-func lsfLawtwinKafkaModelIsAborted_193(lWriter949 int64, lOffset950 int64, lAborted951 *lsfList[*lsfAbortedTxn]) bool {
-	if lAborted951 == nil {
+// lsfLawtwinKafkaModelIsAborted_b12645e5 is lawtwin.kafka::lawtwinKafkaModelIsAborted.
+func lsfLawtwinKafkaModelIsAborted_b12645e5(lWriter1153 int64, lOffset1154 int64, lAborted1155 *lsfList[*lsfAbortedTxn]) bool {
+	if lAborted1155 == nil {
 		return false
 	} else {
-		lA952 := lAborted951.head
-		lRest953 := lAborted951.tail
-		var lValue954 int64
-		lLawspecfield6x0955 := lA952.fAbortedWriter
-		lValue954 = lLawspecfield6x0955
-		var lLogic958 bool
-		if (lValue954 == lWriter949) {
-			var lValue956 int64
-			lLawspecfield7x1957 := lA952.fFirstOffset
-			lValue956 = lLawspecfield7x1957
-			lLogic958 = (lOffset950 >= lValue956)
-		} else { lLogic958 = false }
-		var lLogic961 bool
-		if lLogic958 {
-			var lValue959 int64
-			lLawspecfield8x2960 := lA952.fLastOffset
-			lValue959 = lLawspecfield8x2960
-			lLogic961 = (lOffset950 <= lValue959)
-		} else { lLogic961 = false }
-		return (lLogic961 || lsfLawtwinKafkaModelIsAborted_193(lWriter949, lOffset950, lRest953))
+		lA1156 := lAborted1155.head
+		lRest1157 := lAborted1155.tail
+		var lValue1158 int64
+		lLawspecfieldabortedwriter1159 := lA1156.fAbortedWriter
+		lValue1158 = lLawspecfieldabortedwriter1159
+		var lLogic1162 bool
+		if (lValue1158 == lWriter1153) {
+			var lValue1160 int64
+			lLawspecfieldfirstoffset1161 := lA1156.fFirstOffset
+			lValue1160 = lLawspecfieldfirstoffset1161
+			lLogic1162 = (lOffset1154 >= lValue1160)
+		} else { lLogic1162 = false }
+		var lLogic1165 bool
+		if lLogic1162 {
+			var lValue1163 int64
+			lLawspecfieldlastoffset1164 := lA1156.fLastOffset
+			lValue1163 = lLawspecfieldlastoffset1164
+			lLogic1165 = (lOffset1154 <= lValue1163)
+		} else { lLogic1165 = false }
+		return (lLogic1165 || lsfLawtwinKafkaModelIsAborted_b12645e5(lWriter1153, lOffset1154, lRest1157))
 	}
 }
 
-// lsfLawtwinKafkaModelJoinGroup_194 is lawtwin.kafka::lawtwinKafkaModelJoinGroup.
-func lsfLawtwinKafkaModelJoinGroup_194(lG962 string, lMember963 string, lTopics964 *lsfList[string], lB965 *lsfBrokerState) *lsfPair[int32, *lsfBrokerState] {
-	if ((lG962) == ("")) {
+// lsfLawtwinKafkaModelJoinGroup_9a1e92f5 is lawtwin.kafka::lawtwinKafkaModelJoinGroup.
+func lsfLawtwinKafkaModelJoinGroup_9a1e92f5(lG1166 string, lMember1167 string, lTopics1168 *lsfList[string], lB1169 *lsfBrokerState) *lsfPair[int32, *lsfBrokerState] {
+	if ((lG1166) == ("")) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidGroupId)})
 	} else {
-		if ((lMember963) == ("")) {
+		if ((lMember1167) == ("")) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownMemberId)})
 		} else {
-			lGroup966 := lsfLawtwinKafkaModelGroupOf_189(lG962, lB965)
-			var lValue967 *lsfList[string]
-			lMatched968 := lsfSetOf(lTopics964, lsfCmp_437d0abf423f)
-			lItems969 := lsfSetItems(lMatched968)
-			lValue967 = lItems969
-			lWanted970 := lValue967
-			var lValue971 *lsfMap[string, *lsfList[string]]
-			lLawspecfield114x1972 := lGroup966.fSubscriptions
-			lValue971 = lLawspecfield114x1972
-			lMatched973 := lsfLookup(lValue971, lMember963, lsfCmp_437d0abf423f)
-			if lMatched973.ok {
-				lExisting974 := lMatched973.v
-				if (lsfEq_8ec0351dc657(lExisting974, lWanted970)) {
-					var lValue975 int32
-					lLawspecfield129x0976 := lGroup966.fGroupGeneration
-					lValue975 = lLawspecfield129x0976
-					return &lsfPair[int32, *lsfBrokerState]{lValue975, lB965}
+			lGroup1170 := lsfLawtwinKafkaModelGroupOf_abe7cb22(lG1166, lB1169)
+			var lValue1171 *lsfList[string]
+			lMatched1172 := lsfSetOf(lTopics1168, lsfCmp_437d0abf423f)
+			lItems1173 := lsfSetItems(lMatched1172)
+			lValue1171 = lItems1173
+			lWanted1174 := lValue1171
+			var lValue1175 *lsfMap[string, *lsfList[string]]
+			lLawspecfieldsubscriptions1176 := lGroup1170.fSubscriptions
+			lValue1175 = lLawspecfieldsubscriptions1176
+			lMatched1177 := lsfLookup(lValue1175, lMember1167, lsfCmp_437d0abf423f)
+			if lMatched1177.ok {
+				lExisting1178 := lMatched1177.v
+				if (lsfEq_8ec0351dc657(lExisting1178, lWanted1174)) {
+					var lValue1179 int32
+					lLawspecfieldgroupgeneration1180 := lGroup1170.fGroupGeneration
+					lValue1179 = lLawspecfieldgroupgeneration1180
+					return &lsfPair[int32, *lsfBrokerState]{lValue1179, lB1169}
 				} else {
-					var lValue977 *lsfGroup
-					var lValue978 *lsfMap[string, *lsfList[string]]
-					lLawspecfield163x1979 := lGroup966.fSubscriptions
-					lValue978 = lLawspecfield163x1979
-					lLawspecupdate144980 := lsfPut(lValue978, lMember963, lWanted970, lsfCmp_437d0abf423f)
-					lLawspecfield144x0981 := lGroup966.fGroupGeneration
-					lLawspecfield144x2982 := lGroup966.fAssignment
-					lValue977 = &lsfGroup{lLawspecfield144x0981, lLawspecupdate144980, lLawspecfield144x2982}
-					lNext983 := lsfLawtwinKafkaModelRebalance_221(lValue977, lB965)
-					var lValue984 int32
-					lLawspecfield172x0985 := lNext983.fGroupGeneration
-					lValue984 = lLawspecfield172x0985
-					return &lsfPair[int32, *lsfBrokerState]{lValue984, lsfLawtwinKafkaModelPutGroup_217(lG962, lNext983, lB965)}
+					var lValue1181 *lsfGroup
+					var lValue1182 *lsfMap[string, *lsfList[string]]
+					lLawspecfieldsubscriptions1183 := lGroup1170.fSubscriptions
+					lValue1182 = lLawspecfieldsubscriptions1183
+					lReplacement1184 := lsfPut(lValue1182, lMember1167, lWanted1174, lsfCmp_437d0abf423f)
+					lLawspecfieldgroupgeneration1185 := lGroup1170.fGroupGeneration
+					lLawspecfieldassignment1186 := lGroup1170.fAssignment
+					lValue1181 = &lsfGroup{lLawspecfieldgroupgeneration1185, lReplacement1184, lLawspecfieldassignment1186}
+					lNext1187 := lsfLawtwinKafkaModelRebalance_c9984d55(lValue1181, lB1169)
+					var lValue1188 int32
+					lLawspecfieldgroupgeneration1189 := lNext1187.fGroupGeneration
+					lValue1188 = lLawspecfieldgroupgeneration1189
+					return &lsfPair[int32, *lsfBrokerState]{lValue1188, lsfLawtwinKafkaModelPutGroup_f45eaad0(lG1166, lNext1187, lB1169)}
 				}
 			} else {
-				var lValue986 *lsfGroup
-				var lValue987 *lsfMap[string, *lsfList[string]]
-				lLawspecfield206x1988 := lGroup966.fSubscriptions
-				lValue987 = lLawspecfield206x1988
-				lLawspecupdate187989 := lsfPut(lValue987, lMember963, lWanted970, lsfCmp_437d0abf423f)
-				lLawspecfield187x0990 := lGroup966.fGroupGeneration
-				lLawspecfield187x2991 := lGroup966.fAssignment
-				lValue986 = &lsfGroup{lLawspecfield187x0990, lLawspecupdate187989, lLawspecfield187x2991}
-				lNext992 := lsfLawtwinKafkaModelRebalance_221(lValue986, lB965)
-				var lValue993 int32
-				lLawspecfield215x0994 := lNext992.fGroupGeneration
-				lValue993 = lLawspecfield215x0994
-				return &lsfPair[int32, *lsfBrokerState]{lValue993, lsfLawtwinKafkaModelPutGroup_217(lG962, lNext992, lB965)}
+				var lValue1190 *lsfGroup
+				var lValue1191 *lsfMap[string, *lsfList[string]]
+				lLawspecfieldsubscriptions1192 := lGroup1170.fSubscriptions
+				lValue1191 = lLawspecfieldsubscriptions1192
+				lReplacement1193 := lsfPut(lValue1191, lMember1167, lWanted1174, lsfCmp_437d0abf423f)
+				lLawspecfieldgroupgeneration1194 := lGroup1170.fGroupGeneration
+				lLawspecfieldassignment1195 := lGroup1170.fAssignment
+				lValue1190 = &lsfGroup{lLawspecfieldgroupgeneration1194, lReplacement1193, lLawspecfieldassignment1195}
+				lNext1196 := lsfLawtwinKafkaModelRebalance_c9984d55(lValue1190, lB1169)
+				var lValue1197 int32
+				lLawspecfieldgroupgeneration1198 := lNext1196.fGroupGeneration
+				lValue1197 = lLawspecfieldgroupgeneration1198
+				return &lsfPair[int32, *lsfBrokerState]{lValue1197, lsfLawtwinKafkaModelPutGroup_f45eaad0(lG1166, lNext1196, lB1169)}
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelKnownPartition_195 is lawtwin.kafka::lawtwinKafkaModelKnownPartition.
-func lsfLawtwinKafkaModelKnownPartition_195(lTp995 *lsfTopicPartition, lB996 *lsfBrokerState) bool {
-	var lValue997 string
-	lLawspecfield4x0998 := lTp995.fTopic
-	lValue997 = lLawspecfield4x0998
-	lMatched999 := lsfLawtwinKafkaModelPartitionCountOf_212(lValue997, lB996)
-	if lMatched999.ok {
-		lN1000 := lMatched999.v
-		var lValue1001 int32
-		lLawspecfield7x11002 := lTp995.fPartition
-		lValue1001 = lLawspecfield7x11002
-		var lLogic1005 bool
-		if (int64(lValue1001) >= int64(0)) {
-			var lValue1003 int32
-			lLawspecfield8x11004 := lTp995.fPartition
-			lValue1003 = lLawspecfield8x11004
-			lLogic1005 = (lValue1003 < lN1000)
-		} else { lLogic1005 = false }
-		return lLogic1005
+// lsfLawtwinKafkaModelKnownPartition_71d3099f is lawtwin.kafka::lawtwinKafkaModelKnownPartition.
+func lsfLawtwinKafkaModelKnownPartition_71d3099f(lTp1199 *lsfTopicPartition, lB1200 *lsfBrokerState) bool {
+	var lValue1201 string
+	lLawspecfieldtopic1202 := lTp1199.fTopic
+	lValue1201 = lLawspecfieldtopic1202
+	lMatched1203 := lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lValue1201, lB1200)
+	if lMatched1203.ok {
+		lN1204 := lMatched1203.v
+		var lValue1205 int32
+		lLawspecfieldpartition1206 := lTp1199.fPartition
+		lValue1205 = lLawspecfieldpartition1206
+		var lLogic1209 bool
+		if (int64(lValue1205) >= int64(0)) {
+			var lValue1207 int32
+			lLawspecfieldpartition1208 := lTp1199.fPartition
+			lValue1207 = lLawspecfieldpartition1208
+			lLogic1209 = (lValue1207 < lN1204)
+		} else { lLogic1209 = false }
+		return lLogic1209
 	} else {
 		return false
 	}
 }
 
-// lsfLawtwinKafkaModelLastOffsetOf_196 is lawtwin.kafka::lawtwinKafkaModelLastOffsetOf.
-func lsfLawtwinKafkaModelLastOffsetOf_196(lRs1006 *lsfList[*lsfFetchedRecord], lOtherwise1007 int64) int64 {
+// lsfLawtwinKafkaModelLastOffsetOf_544a605b is lawtwin.kafka::lawtwinKafkaModelLastOffsetOf.
+func lsfLawtwinKafkaModelLastOffsetOf_544a605b(lRs1210 *lsfList[*lsfFetchedRecord], lOtherwise1211 int64) int64 {
 	for {
-		if lRs1006 == nil {
-			return lOtherwise1007
+		if lRs1210 == nil {
+			return lOtherwise1211
 		} else {
-			lH1008 := lRs1006.head
-			lT1009 := lRs1006.tail
-			lNext1010 := lT1009
-			var lValue1011 int64
-			lLawspecfield6x01012 := lH1008.fOffset
-			lValue1011 = lLawspecfield6x01012
-			lNext1013 := lValue1011
-			lRs1006 = lNext1010
-			lOtherwise1007 = lNext1013
+			lH1212 := lRs1210.head
+			lT1213 := lRs1210.tail
+			lNext1214 := lT1213
+			var lValue1215 int64
+			lLawspecfieldoffset1216 := lH1212.fOffset
+			lValue1215 = lLawspecfieldoffset1216
+			lNext1217 := lValue1215
+			lRs1210 = lNext1214
+			lOtherwise1211 = lNext1217
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelLastStableOffset_197 is lawtwin.kafka::lawtwinKafkaModelLastStableOffset.
-func lsfLawtwinKafkaModelLastStableOffset_197(lL1014 *lsfPartitionLog) int64 {
-	var lValue1015 *lsfMap[int64, int64]
-	lLawspecfield16x21016 := lL1014.fOpenTxns
-	lValue1015 = lLawspecfield16x21016
-	var lValue1017 int64
-	lLawspecfield17x11018 := lL1014.fLogEndOffset
-	lValue1017 = lLawspecfield17x11018
-	return lsfLawtwinKafkaModelMinOf_206(lsfToList(lValue1015, func(_ int64, v int64) int64 { return v }), lValue1017)
+// lsfLawtwinKafkaModelLastStableOffset_e8497029 is lawtwin.kafka::lawtwinKafkaModelLastStableOffset.
+func lsfLawtwinKafkaModelLastStableOffset_e8497029(lL1218 *lsfPartitionLog) int64 {
+	var lValue1219 *lsfMap[int64, int64]
+	lLawspecfieldopentxns1220 := lL1218.fOpenTxns
+	lValue1219 = lLawspecfieldopentxns1220
+	var lValue1221 int64
+	lLawspecfieldlogendoffset1222 := lL1218.fLogEndOffset
+	lValue1221 = lLawspecfieldlogendoffset1222
+	return lsfLawtwinKafkaModelMinOf_c4e891de(lsfToList(lValue1219, func(_ int64, v int64) int64 { return v }), lValue1221)
 }
 
-// lsfLawtwinKafkaModelLeaveGroup_198 is lawtwin.kafka::lawtwinKafkaModelLeaveGroup.
-func lsfLawtwinKafkaModelLeaveGroup_198(lG1019 string, lMember1020 string, lB1021 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	lGroup1022 := lsfLawtwinKafkaModelGroupOf_189(lG1019, lB1021)
-	var lValue1023 *lsfMap[string, *lsfList[string]]
-	lLawspecfield39x11024 := lGroup1022.fSubscriptions
-	lValue1023 = lLawspecfield39x11024
-	lMatched1025 := lsfLookup(lValue1023, lMember1020, lsfCmp_437d0abf423f)
-	if lMatched1025.ok {
-		var lValue1026 *lsfGroup
-		var lValue1027 *lsfMap[string, *lsfList[string]]
-		lLawspecfield82x11028 := lGroup1022.fSubscriptions
-		lValue1027 = lLawspecfield82x11028
-		lLawspecupdate671029 := lsfDelete(lValue1027, lMember1020, lsfCmp_437d0abf423f)
-		lLawspecfield67x01030 := lGroup1022.fGroupGeneration
-		lLawspecfield67x21031 := lGroup1022.fAssignment
-		lValue1026 = &lsfGroup{lLawspecfield67x01030, lLawspecupdate671029, lLawspecfield67x21031}
-		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutGroup_217(lG1019, lsfLawtwinKafkaModelRebalance_221(lValue1026, lB1021), lB1021)}
+// lsfLawtwinKafkaModelLeaveGroup_5e5a3f69 is lawtwin.kafka::lawtwinKafkaModelLeaveGroup.
+func lsfLawtwinKafkaModelLeaveGroup_5e5a3f69(lG1223 string, lMember1224 string, lB1225 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	lGroup1226 := lsfLawtwinKafkaModelGroupOf_abe7cb22(lG1223, lB1225)
+	var lValue1227 *lsfMap[string, *lsfList[string]]
+	lLawspecfieldsubscriptions1228 := lGroup1226.fSubscriptions
+	lValue1227 = lLawspecfieldsubscriptions1228
+	lMatched1229 := lsfLookup(lValue1227, lMember1224, lsfCmp_437d0abf423f)
+	if lMatched1229.ok {
+		var lValue1230 *lsfGroup
+		var lValue1231 *lsfMap[string, *lsfList[string]]
+		lLawspecfieldsubscriptions1232 := lGroup1226.fSubscriptions
+		lValue1231 = lLawspecfieldsubscriptions1232
+		lReplacement1233 := lsfDelete(lValue1231, lMember1224, lsfCmp_437d0abf423f)
+		lLawspecfieldgroupgeneration1234 := lGroup1226.fGroupGeneration
+		lLawspecfieldassignment1235 := lGroup1226.fAssignment
+		lValue1230 = &lsfGroup{lLawspecfieldgroupgeneration1234, lReplacement1233, lLawspecfieldassignment1235}
+		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutGroup_f45eaad0(lG1223, lsfLawtwinKafkaModelRebalance_c9984d55(lValue1230, lB1225), lB1225)}
 	} else {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownMemberId)})
 	}
 }
 
-// lsfLawtwinKafkaModelListOffsets_199 is lawtwin.kafka::lawtwinKafkaModelListOffsets.
-func lsfLawtwinKafkaModelListOffsets_199(lTp1032 *lsfTopicPartition, lSpec1033 lsfOffsetSpec, lIsolation1034 lsfIsolationLevel, lB1035 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
-	if !(lsfLawtwinKafkaModelKnownPartition_195(lTp1032, lB1035)) {
+// lsfLawtwinKafkaModelListOffsets_9c6c9426 is lawtwin.kafka::lawtwinKafkaModelListOffsets.
+func lsfLawtwinKafkaModelListOffsets_9c6c9426(lTp1236 *lsfTopicPartition, lSpec1237 lsfOffsetSpec, lIsolation1238 lsfIsolationLevel, lB1239 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
+	if !(lsfLawtwinKafkaModelKnownPartition_71d3099f(lTp1236, lB1239)) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 	} else {
-		lL1036 := lsfLawtwinKafkaModelLogOf_200(lTp1032, lB1035)
-		switch lSpec1033 {
+		lL1240 := lsfLawtwinKafkaModelLogOf_b86b131a(lTp1236, lB1239)
+		switch lSpec1237 {
 			case lsfOffsetSpec_Earliest:
-				return &lsfPair[int64, *lsfBrokerState]{int64(0), lB1035}
+				return &lsfPair[int64, *lsfBrokerState]{int64(0), lB1239}
 			case lsfOffsetSpec_Latest:
-				switch lIsolation1034 {
+				switch lIsolation1238 {
 					case lsfIsolationLevel_ReadUncommitted:
-						return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelHighWatermark_191(lL1036), lB1035}
+						return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelHighWatermark_da6ed677(lL1240), lB1239}
 					case lsfIsolationLevel_ReadCommitted:
-						return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelLastStableOffset_197(lL1036), lB1035}
+						return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelLastStableOffset_e8497029(lL1240), lB1239}
 					default:
 						panic("unreachable branch reached")
 				}
@@ -3035,354 +3721,354 @@ func lsfLawtwinKafkaModelListOffsets_199(lTp1032 *lsfTopicPartition, lSpec1033 l
 	}
 }
 
-// lsfLawtwinKafkaModelLogOf_200 is lawtwin.kafka::lawtwinKafkaModelLogOf.
-func lsfLawtwinKafkaModelLogOf_200(lTp1037 *lsfTopicPartition, lB1038 *lsfBrokerState) *lsfPartitionLog {
-	var lValue1039 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]
-	lLawspecfield20x11040 := lB1038.fLogs
-	lValue1039 = lLawspecfield20x11040
-	lMatched1041 := lsfLookup(lValue1039, lTp1037, lsfCmp_57a515e0e489)
-	if lMatched1041.ok {
-		lL1042 := lMatched1041.v
-		return lL1042
+// lsfLawtwinKafkaModelLogOf_b86b131a is lawtwin.kafka::lawtwinKafkaModelLogOf.
+func lsfLawtwinKafkaModelLogOf_b86b131a(lTp1241 *lsfTopicPartition, lB1242 *lsfBrokerState) *lsfPartitionLog {
+	var lValue1243 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]
+	lLawspecfieldlogs1244 := lB1242.fLogs
+	lValue1243 = lLawspecfieldlogs1244
+	lMatched1245 := lsfLookup(lValue1243, lTp1241, lsfCmp_57a515e0e489)
+	if lMatched1245.ok {
+		lL1246 := lMatched1245.v
+		return lL1246
 	} else {
-		return lsfLawtwinKafkaModelEmptyLog_183(lsfUnit{})
+		return lsfLawtwinKafkaModelEmptyLog_a7825ed0(lsfUnit{})
 	}
 }
 
-// lsfLawtwinKafkaModelMax64_201 is lawtwin.kafka::lawtwinKafkaModelMax64.
-func lsfLawtwinKafkaModelMax64_201(lA1043 int64, lB1044 int64) int64 {
-	if (lA1043 >= lB1044) {
-		return lA1043
+// lsfLawtwinKafkaModelMax64_98542b8b is lawtwin.kafka::lawtwinKafkaModelMax64.
+func lsfLawtwinKafkaModelMax64_98542b8b(lA1247 int64, lB1248 int64) int64 {
+	if (lA1247 >= lB1248) {
+		return lA1247
 	} else {
-		return lB1044
+		return lB1248
 	}
 }
 
-// lsfLawtwinKafkaModelMaxPartitions_202 is lawtwin.kafka::lawtwinKafkaModelMaxPartitions.
-func lsfLawtwinKafkaModelMaxPartitions_202(lU1045 lsfUnit) int32 {
+// lsfLawtwinKafkaModelMaxPartitions_6be37992 is lawtwin.kafka::lawtwinKafkaModelMaxPartitions.
+func lsfLawtwinKafkaModelMaxPartitions_6be37992(lU1249 lsfUnit) int32 {
 	return int32(1024)
 }
 
-// lsfLawtwinKafkaModelMemberViews_203 is lawtwin.kafka::lawtwinKafkaModelMemberViews.
-func lsfLawtwinKafkaModelMemberViews_203(lA1046 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfMemberAssignment] {
-	if lA1046 == nil {
+// lsfLawtwinKafkaModelMemberViews_a87b1b1a is lawtwin.kafka::lawtwinKafkaModelMemberViews.
+func lsfLawtwinKafkaModelMemberViews_a87b1b1a(lA1250 *lsfList[*lsfEntry[string, *lsfList[*lsfTopicPartition]]]) *lsfList[*lsfMemberAssignment] {
+	if lA1250 == nil {
 		return (*lsfList[*lsfMemberAssignment])(nil)
 	} else {
-		lE1047 := lA1046.head
-		lRest1048 := lA1046.tail
-		var lValue1049 string
-		lLawspecfield28x01050 := lE1047.fKey
-		lValue1049 = lLawspecfield28x01050
-		var lValue1051 *lsfList[*lsfTopicPartition]
-		lLawspecfield31x11052 := lE1047.fValue
-		lValue1051 = lLawspecfield31x11052
-		return lsfCons[*lsfMemberAssignment](&lsfMemberAssignment{lValue1049, lValue1051}, lsfLawtwinKafkaModelMemberViews_203(lRest1048))
+		lE1251 := lA1250.head
+		lRest1252 := lA1250.tail
+		var lValue1253 string
+		lLawspecfieldkey1254 := lE1251.fKey
+		lValue1253 = lLawspecfieldkey1254
+		var lValue1255 *lsfList[*lsfTopicPartition]
+		lLawspecfieldvalue1256 := lE1251.fValue
+		lValue1255 = lLawspecfieldvalue1256
+		return lsfCons[*lsfMemberAssignment](&lsfMemberAssignment{lValue1253, lValue1255}, lsfLawtwinKafkaModelMemberViews_a87b1b1a(lRest1252))
 	}
 }
 
-// lsfLawtwinKafkaModelMetadata_204 is lawtwin.kafka::lawtwinKafkaModelMetadata.
-func lsfLawtwinKafkaModelMetadata_204(lName1053 string, lB1054 *lsfBrokerState) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
-	return &lsfPair[lsfMaybe[int32], *lsfBrokerState]{lsfLawtwinKafkaModelPartitionCountOf_212(lName1053, lB1054), lB1054}
+// lsfLawtwinKafkaModelMetadata_97bb5c4c is lawtwin.kafka::lawtwinKafkaModelMetadata.
+func lsfLawtwinKafkaModelMetadata_97bb5c4c(lName1257 string, lB1258 *lsfBrokerState) *lsfPair[lsfMaybe[int32], *lsfBrokerState] {
+	return &lsfPair[lsfMaybe[int32], *lsfBrokerState]{lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lName1257, lB1258), lB1258}
 }
 
-// lsfLawtwinKafkaModelMin64_205 is lawtwin.kafka::lawtwinKafkaModelMin64.
-func lsfLawtwinKafkaModelMin64_205(lA1055 int64, lB1056 int64) int64 {
-	if (lA1055 <= lB1056) {
-		return lA1055
+// lsfLawtwinKafkaModelMin64_b47ce987 is lawtwin.kafka::lawtwinKafkaModelMin64.
+func lsfLawtwinKafkaModelMin64_b47ce987(lA1259 int64, lB1260 int64) int64 {
+	if (lA1259 <= lB1260) {
+		return lA1259
 	} else {
-		return lB1056
+		return lB1260
 	}
 }
 
-// lsfLawtwinKafkaModelMinOf_206 is lawtwin.kafka::lawtwinKafkaModelMinOf.
-func lsfLawtwinKafkaModelMinOf_206(lXs1057 *lsfList[int64], lM1058 int64) int64 {
+// lsfLawtwinKafkaModelMinOf_c4e891de is lawtwin.kafka::lawtwinKafkaModelMinOf.
+func lsfLawtwinKafkaModelMinOf_c4e891de(lXs1261 *lsfList[int64], lM1262 int64) int64 {
 	for {
-		if lXs1057 == nil {
-			return lM1058
+		if lXs1261 == nil {
+			return lM1262
 		} else {
-			lH1059 := lXs1057.head
-			lT1060 := lXs1057.tail
-			lNext1061 := lT1060
-			lNext1062 := lsfLawtwinKafkaModelMin64_205(lH1059, lM1058)
-			lXs1057 = lNext1061
-			lM1058 = lNext1062
+			lH1263 := lXs1261.head
+			lT1264 := lXs1261.tail
+			lNext1265 := lT1264
+			lNext1266 := lsfLawtwinKafkaModelMin64_b47ce987(lH1263, lM1262)
+			lXs1261 = lNext1265
+			lM1262 = lNext1266
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelNewProducer_207 is lawtwin.kafka::lawtwinKafkaModelNewProducer.
-func lsfLawtwinKafkaModelNewProducer_207(lTxid1063 lsfMaybe[string], lB1064 *lsfBrokerState) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
-	var lValue1065 int64
-	lLawspecfield20x41066 := lB1064.fNextProducerId
-	lValue1065 = lLawspecfield20x41066
-	lPid1067 := lValue1065
-	var lValue1068 *lsfBrokerState
-	lLawspecupdate381069 := lsfSaturatingInt64_10(lsfSmall(lPid1067).Add(lsfSmall(int64(1))))
-	var lValue1070 *lsfBrokerState
-	var lValue1071 *lsfMap[int64, *lsfProducerEntry]
-	lLawspecfield68x21072 := lB1064.fProducers
-	lValue1071 = lLawspecfield68x21072
-	lLawspecupdate491073 := lsfPut(lValue1071, lPid1067, &lsfProducerEntry{int16(0), lTxid1063, &lsfTxnState_NoTxn{}}, lsfCmp_44a08172da10)
-	lLawspecfield49x01074 := lB1064.fTopics
-	lLawspecfield49x11075 := lB1064.fLogs
-	lLawspecfield49x31076 := lB1064.fTransactionalIds
-	lLawspecfield49x41077 := lB1064.fNextProducerId
-	lLawspecfield49x51078 := lB1064.fGroups
-	lLawspecfield49x61079 := lB1064.fCommitted
-	lValue1070 = &lsfBrokerState{lLawspecfield49x01074, lLawspecfield49x11075, lLawspecupdate491073, lLawspecfield49x31076, lLawspecfield49x41077, lLawspecfield49x51078, lLawspecfield49x61079}
-	lMatched1080 := lValue1070
-	lLawspecfield38x01081 := lMatched1080.fTopics
-	lLawspecfield38x11082 := lMatched1080.fLogs
-	lLawspecfield38x21083 := lMatched1080.fProducers
-	lLawspecfield38x31084 := lMatched1080.fTransactionalIds
-	lLawspecfield38x51085 := lMatched1080.fGroups
-	lLawspecfield38x61086 := lMatched1080.fCommitted
-	lValue1068 = &lsfBrokerState{lLawspecfield38x01081, lLawspecfield38x11082, lLawspecfield38x21083, lLawspecfield38x31084, lLawspecupdate381069, lLawspecfield38x51085, lLawspecfield38x61086}
-	lWithentry1087 := lValue1068
-	var lValue1088 *lsfBrokerState
-	if lTxid1063.ok {
-		lId1089 := lTxid1063.v
-		var lValue1090 *lsfMap[string, int64]
-		lLawspecfield113x31091 := lWithentry1087.fTransactionalIds
-		lValue1090 = lLawspecfield113x31091
-		lLawspecupdate941092 := lsfPut(lValue1090, lId1089, lPid1067, lsfCmp_437d0abf423f)
-		lLawspecfield94x01093 := lWithentry1087.fTopics
-		lLawspecfield94x11094 := lWithentry1087.fLogs
-		lLawspecfield94x21095 := lWithentry1087.fProducers
-		lLawspecfield94x41096 := lWithentry1087.fNextProducerId
-		lLawspecfield94x51097 := lWithentry1087.fGroups
-		lLawspecfield94x61098 := lWithentry1087.fCommitted
-		lValue1088 = &lsfBrokerState{lLawspecfield94x01093, lLawspecfield94x11094, lLawspecfield94x21095, lLawspecupdate941092, lLawspecfield94x41096, lLawspecfield94x51097, lLawspecfield94x61098}
+// lsfLawtwinKafkaModelNewProducer_89b0852d is lawtwin.kafka::lawtwinKafkaModelNewProducer.
+func lsfLawtwinKafkaModelNewProducer_89b0852d(lTxid1267 lsfMaybe[string], lB1268 *lsfBrokerState) *lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState] {
+	var lValue1269 int64
+	lLawspecfieldnextproducerid1270 := lB1268.fNextProducerId
+	lValue1269 = lLawspecfieldnextproducerid1270
+	lPid1271 := lValue1269
+	var lValue1272 *lsfBrokerState
+	lReplacement1273 := lsfSaturatingInt64_5bce4ed8(lsfSmall(lPid1271).Add(lsfSmall(int64(1))))
+	var lValue1274 *lsfBrokerState
+	var lValue1275 *lsfMap[int64, *lsfProducerEntry]
+	lLawspecfieldproducers1276 := lB1268.fProducers
+	lValue1275 = lLawspecfieldproducers1276
+	lReplacement1277 := lsfPut(lValue1275, lPid1271, &lsfProducerEntry{int16(0), lTxid1267, &lsfTxnState_NoTxn{}}, lsfCmp_44a08172da10)
+	lLawspecfieldtopics1278 := lB1268.fTopics
+	lLawspecfieldlogs1279 := lB1268.fLogs
+	lLawspecfieldtransactionalids1280 := lB1268.fTransactionalIds
+	lLawspecfieldnextproducerid1281 := lB1268.fNextProducerId
+	lLawspecfieldgroups1282 := lB1268.fGroups
+	lLawspecfieldcommitted1283 := lB1268.fCommitted
+	lValue1274 = &lsfBrokerState{lLawspecfieldtopics1278, lLawspecfieldlogs1279, lReplacement1277, lLawspecfieldtransactionalids1280, lLawspecfieldnextproducerid1281, lLawspecfieldgroups1282, lLawspecfieldcommitted1283}
+	lMatched1284 := lValue1274
+	lLawspecfieldtopics1285 := lMatched1284.fTopics
+	lLawspecfieldlogs1286 := lMatched1284.fLogs
+	lLawspecfieldproducers1287 := lMatched1284.fProducers
+	lLawspecfieldtransactionalids1288 := lMatched1284.fTransactionalIds
+	lLawspecfieldgroups1289 := lMatched1284.fGroups
+	lLawspecfieldcommitted1290 := lMatched1284.fCommitted
+	lValue1272 = &lsfBrokerState{lLawspecfieldtopics1285, lLawspecfieldlogs1286, lLawspecfieldproducers1287, lLawspecfieldtransactionalids1288, lReplacement1273, lLawspecfieldgroups1289, lLawspecfieldcommitted1290}
+	lWithentry1291 := lValue1272
+	var lValue1292 *lsfBrokerState
+	if lTxid1267.ok {
+		lId1293 := lTxid1267.v
+		var lValue1294 *lsfMap[string, int64]
+		lLawspecfieldtransactionalids1295 := lWithentry1291.fTransactionalIds
+		lValue1294 = lLawspecfieldtransactionalids1295
+		lReplacement1296 := lsfPut(lValue1294, lId1293, lPid1271, lsfCmp_437d0abf423f)
+		lLawspecfieldtopics1297 := lWithentry1291.fTopics
+		lLawspecfieldlogs1298 := lWithentry1291.fLogs
+		lLawspecfieldproducers1299 := lWithentry1291.fProducers
+		lLawspecfieldnextproducerid1300 := lWithentry1291.fNextProducerId
+		lLawspecfieldgroups1301 := lWithentry1291.fGroups
+		lLawspecfieldcommitted1302 := lWithentry1291.fCommitted
+		lValue1292 = &lsfBrokerState{lLawspecfieldtopics1297, lLawspecfieldlogs1298, lLawspecfieldproducers1299, lReplacement1296, lLawspecfieldnextproducerid1300, lLawspecfieldgroups1301, lLawspecfieldcommitted1302}
 	} else {
-		lValue1088 = lWithentry1087
+		lValue1292 = lWithentry1291
 	}
-	lMapped1099 := lValue1088
-	return &lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState]{&lsfProducerIdAndEpoch{lPid1067, int16(0)}, lMapped1099}
+	lMapped1303 := lValue1292
+	return &lsfPair[*lsfProducerIdAndEpoch, *lsfBrokerState]{&lsfProducerIdAndEpoch{lPid1271, int16(0)}, lMapped1303}
 }
 
-// lsfLawtwinKafkaModelNextFetchOffset_208 is lawtwin.kafka::lawtwinKafkaModelNextFetchOffset.
-func lsfLawtwinKafkaModelNextFetchOffset_208(lFrom1100 int64, lLimit1101 int64, lTaken1102 *lsfList[*lsfFetchedRecord], lAll1103 *lsfList[*lsfFetchedRecord]) int64 {
-	if (int64(lTaken1102.length()) < int64(lAll1103.length())) {
-		if lTaken1102 == nil {
-			return lFrom1100
+// lsfLawtwinKafkaModelNextFetchOffset_28fd5a97 is lawtwin.kafka::lawtwinKafkaModelNextFetchOffset.
+func lsfLawtwinKafkaModelNextFetchOffset_28fd5a97(lFrom1304 int64, lLimit1305 int64, lTaken1306 *lsfList[*lsfFetchedRecord], lAll1307 *lsfList[*lsfFetchedRecord]) int64 {
+	if (int64(lTaken1306.length()) < int64(lAll1307.length())) {
+		if lTaken1306 == nil {
+			return lFrom1304
 		} else {
-			return lsfSaturatingInt64_10(lsfSmall(lsfLawtwinKafkaModelLastOffsetOf_196(lTaken1102, lFrom1100)).Add(lsfSmall(int64(1))))
+			return lsfSaturatingInt64_5bce4ed8(lsfSmall(lsfLawtwinKafkaModelLastOffsetOf_544a605b(lTaken1306, lFrom1304)).Add(lsfSmall(int64(1))))
 		}
 	} else {
-		return lsfLawtwinKafkaModelMax64_201(lFrom1100, lLimit1101)
+		return lsfLawtwinKafkaModelMax64_98542b8b(lFrom1304, lLimit1305)
 	}
 }
 
-// lsfLawtwinKafkaModelOffsetCommit_209 is lawtwin.kafka::lawtwinKafkaModelOffsetCommit.
-func lsfLawtwinKafkaModelOffsetCommit_209(lG1104 string, lMember1105 string, lGeneration1106 int32, lOffsets1107 *lsfList[*lsfOffsetEntry], lB1108 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	if ((lG1104) == ("")) {
+// lsfLawtwinKafkaModelOffsetCommit_01d91ef0 is lawtwin.kafka::lawtwinKafkaModelOffsetCommit.
+func lsfLawtwinKafkaModelOffsetCommit_01d91ef0(lG1308 string, lMember1309 string, lGeneration1310 int32, lOffsets1311 *lsfList[*lsfOffsetEntry], lB1312 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	if ((lG1308) == ("")) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidGroupId)})
 	} else {
-		if !(lsfLawtwinKafkaModelAllKnown_166(lsfLawtwinKafkaModelOffsetPartitions_211(lOffsets1107), lB1108)) {
+		if !(lsfLawtwinKafkaModelAllKnown_12a378f8(lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lOffsets1311), lB1312)) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 		} else {
-			lGroup1109 := lsfLawtwinKafkaModelGroupOf_189(lG1104, lB1108)
-			if (((lMember1105) == ("")) && (int64(lGeneration1106) == int64(-1))) {
-				var lValue1110 bool
-				var lValue1111 *lsfList[*lsfEntry[string, *lsfList[string]]]
-				var lValue1112 *lsfMap[string, *lsfList[string]]
-				lLawspecfield35x11113 := lGroup1109.fSubscriptions
-				lValue1112 = lLawspecfield35x11113
-				lMatched1114 := lValue1112
-				lItems1115 := lsfToList(lMatched1114, lsfEntryOf[string, *lsfList[string]])
-				lValue1111 = lItems1115
-				lMatched1116 := lValue1111
-				if lMatched1116 == nil {
-					lValue1110 = true
+			lGroup1313 := lsfLawtwinKafkaModelGroupOf_abe7cb22(lG1308, lB1312)
+			if (((lMember1309) == ("")) && (int64(lGeneration1310) == int64(-1))) {
+				var lValue1314 bool
+				var lValue1315 *lsfList[*lsfEntry[string, *lsfList[string]]]
+				var lValue1316 *lsfMap[string, *lsfList[string]]
+				lLawspecfieldsubscriptions1317 := lGroup1313.fSubscriptions
+				lValue1316 = lLawspecfieldsubscriptions1317
+				lMatched1318 := lValue1316
+				lItems1319 := lsfToList(lMatched1318, lsfEntryOf[string, *lsfList[string]])
+				lValue1315 = lItems1319
+				lMatched1320 := lValue1315
+				if lMatched1320 == nil {
+					lValue1314 = true
 				} else {
-					lValue1110 = false
+					lValue1314 = false
 				}
-				if lValue1110 {
-					return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelCommitAll_175(lG1104, lOffsets1107, lB1108)}
+				if lValue1314 {
+					return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelCommitAll_4ae78738(lG1308, lOffsets1311, lB1312)}
 				} else {
 					panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_IllegalGeneration)})
 				}
 			} else {
-				_ = lsfLawtwinKafkaModelCheckMember_173(lG1104, lMember1105, lGeneration1106, lB1108)
-				return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelCommitAll_175(lG1104, lOffsets1107, lB1108)}
+				_ = lsfLawtwinKafkaModelCheckMember_f218b850(lG1308, lMember1309, lGeneration1310, lB1312)
+				return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelCommitAll_4ae78738(lG1308, lOffsets1311, lB1312)}
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelOffsetFetch_210 is lawtwin.kafka::lawtwinKafkaModelOffsetFetch.
-func lsfLawtwinKafkaModelOffsetFetch_210(lG1117 string, lTp1118 *lsfTopicPartition, lB1119 *lsfBrokerState) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
-	var lValue1120 *lsfMap[*lsfGroupPartition, int64]
-	lLawspecfield20x61121 := lB1119.fCommitted
-	lValue1120 = lLawspecfield20x61121
-	return &lsfPair[lsfMaybe[int64], *lsfBrokerState]{lsfLookup(lValue1120, &lsfGroupPartition{lG1117, lTp1118}, lsfCmp_213d3554d90b), lB1119}
+// lsfLawtwinKafkaModelOffsetFetch_f56dbfcd is lawtwin.kafka::lawtwinKafkaModelOffsetFetch.
+func lsfLawtwinKafkaModelOffsetFetch_f56dbfcd(lG1321 string, lTp1322 *lsfTopicPartition, lB1323 *lsfBrokerState) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
+	var lValue1324 *lsfMap[*lsfGroupPartition, int64]
+	lLawspecfieldcommitted1325 := lB1323.fCommitted
+	lValue1324 = lLawspecfieldcommitted1325
+	return &lsfPair[lsfMaybe[int64], *lsfBrokerState]{lsfLookup(lValue1324, &lsfGroupPartition{lG1321, lTp1322}, lsfCmp_213d3554d90b), lB1323}
 }
 
-// lsfLawtwinKafkaModelOffsetPartitions_211 is lawtwin.kafka::lawtwinKafkaModelOffsetPartitions.
-func lsfLawtwinKafkaModelOffsetPartitions_211(lOffsets1122 *lsfList[*lsfOffsetEntry]) *lsfList[*lsfTopicPartition] {
-	if lOffsets1122 == nil {
+// lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd is lawtwin.kafka::lawtwinKafkaModelOffsetPartitions.
+func lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lOffsets1326 *lsfList[*lsfOffsetEntry]) *lsfList[*lsfTopicPartition] {
+	if lOffsets1326 == nil {
 		return (*lsfList[*lsfTopicPartition])(nil)
 	} else {
-		lO1123 := lOffsets1122.head
-		lRest1124 := lOffsets1122.tail
-		var lValue1125 *lsfTopicPartition
-		lLawspecfield10x01126 := lO1123.fTopicPartition
-		lValue1125 = lLawspecfield10x01126
-		return lsfCons[*lsfTopicPartition](lValue1125, lsfLawtwinKafkaModelOffsetPartitions_211(lRest1124))
+		lO1327 := lOffsets1326.head
+		lRest1328 := lOffsets1326.tail
+		var lValue1329 *lsfTopicPartition
+		lLawspecfieldtopicpartition1330 := lO1327.fTopicPartition
+		lValue1329 = lLawspecfieldtopicpartition1330
+		return lsfCons[*lsfTopicPartition](lValue1329, lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lRest1328))
 	}
 }
 
-// lsfLawtwinKafkaModelPartitionCountOf_212 is lawtwin.kafka::lawtwinKafkaModelPartitionCountOf.
-func lsfLawtwinKafkaModelPartitionCountOf_212(lTopic1127 string, lB1128 *lsfBrokerState) lsfMaybe[int32] {
-	var lValue1129 *lsfMap[string, int32]
-	lLawspecfield12x01130 := lB1128.fTopics
-	lValue1129 = lLawspecfield12x01130
-	return lsfLookup(lValue1129, lTopic1127, lsfCmp_437d0abf423f)
+// lsfLawtwinKafkaModelPartitionCountOf_ff180c35 is lawtwin.kafka::lawtwinKafkaModelPartitionCountOf.
+func lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lTopic1331 string, lB1332 *lsfBrokerState) lsfMaybe[int32] {
+	var lValue1333 *lsfMap[string, int32]
+	lLawspecfieldtopics1334 := lB1332.fTopics
+	lValue1333 = lLawspecfieldtopics1334
+	return lsfLookup(lValue1333, lTopic1331, lsfCmp_437d0abf423f)
 }
 
-// lsfLawtwinKafkaModelPartitionsBelow_213 is lawtwin.kafka::lawtwinKafkaModelPartitionsBelow.
-func lsfLawtwinKafkaModelPartitionsBelow_213(lN1131 int32) *lsfList[int32] {
-	return lsfRange(int32(0), lN1131)
+// lsfLawtwinKafkaModelPartitionsBelow_19525eca is lawtwin.kafka::lawtwinKafkaModelPartitionsBelow.
+func lsfLawtwinKafkaModelPartitionsBelow_19525eca(lN1335 int32) *lsfList[int32] {
+	return lsfRange(int32(0), lN1335)
 }
 
-// lsfLawtwinKafkaModelPendingFor_214 is lawtwin.kafka::lawtwinKafkaModelPendingFor.
-func lsfLawtwinKafkaModelPendingFor_214(lGroup1132 string, lOffsets1133 *lsfList[*lsfOffsetEntry], lAcc1134 *lsfList[*lsfPendingOffset]) *lsfList[*lsfPendingOffset] {
+// lsfLawtwinKafkaModelPendingFor_50512591 is lawtwin.kafka::lawtwinKafkaModelPendingFor.
+func lsfLawtwinKafkaModelPendingFor_50512591(lGroup1336 string, lOffsets1337 *lsfList[*lsfOffsetEntry], lAcc1338 *lsfList[*lsfPendingOffset]) *lsfList[*lsfPendingOffset] {
 	for {
-		if lOffsets1133 == nil {
-			return lAcc1134
+		if lOffsets1337 == nil {
+			return lAcc1338
 		} else {
-			lO1135 := lOffsets1133.head
-			lRest1136 := lOffsets1133.tail
-			lNext1137 := lRest1136
-			lNext1138 := lsfCons[*lsfPendingOffset](&lsfPendingOffset{lGroup1132, lO1135}, lAcc1134)
-			lOffsets1133 = lNext1137
-			lAcc1134 = lNext1138
+			lO1339 := lOffsets1337.head
+			lRest1340 := lOffsets1337.tail
+			lNext1341 := lRest1340
+			lNext1342 := lsfCons[*lsfPendingOffset](&lsfPendingOffset{lGroup1336, lO1339}, lAcc1338)
+			lOffsets1337 = lNext1341
+			lAcc1338 = lNext1342
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelProduce_215 is lawtwin.kafka::lawtwinKafkaModelProduce.
-func lsfLawtwinKafkaModelProduce_215(lTp1139 *lsfTopicPartition, lTag1140 lsfMaybe[*lsfProducerTag], lRs1141 *lsfList[*lsfRecord], lB1142 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
-	if !(lsfLawtwinKafkaModelKnownPartition_195(lTp1139, lB1142)) {
+// lsfLawtwinKafkaModelProduce_834568df is lawtwin.kafka::lawtwinKafkaModelProduce.
+func lsfLawtwinKafkaModelProduce_834568df(lTp1343 *lsfTopicPartition, lTag1344 lsfMaybe[*lsfProducerTag], lRs1345 *lsfList[*lsfRecord], lB1346 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
+	if !(lsfLawtwinKafkaModelKnownPartition_71d3099f(lTp1343, lB1346)) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_UnknownTopicOrPartition)})
 	} else {
-		var lValue1143 bool
-		if lRs1141 == nil {
-			lValue1143 = true
+		var lValue1347 bool
+		if lRs1345 == nil {
+			lValue1347 = true
 		} else {
-			lValue1143 = false
+			lValue1347 = false
 		}
-		if (lValue1143 || (int64(lRs1141.length()) > int64(100000))) {
+		if (lValue1347 || (int64(lRs1345.length()) > int64(100000))) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidRecord)})
 		} else {
-			lL1144 := lsfLawtwinKafkaModelLogOf_200(lTp1139, lB1142)
-			if lTag1140.ok {
-				lT1145 := lTag1140.v
-				return lsfLawtwinKafkaModelProduceTagged_216(lTp1139, lT1145, lRs1141, lL1144, lB1142)
+			lL1348 := lsfLawtwinKafkaModelLogOf_b86b131a(lTp1343, lB1346)
+			if lTag1344.ok {
+				lT1349 := lTag1344.v
+				return lsfLawtwinKafkaModelProduceTagged_86f854e7(lTp1343, lT1349, lRs1345, lL1348, lB1346)
 			} else {
-				return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelHighWatermark_191(lL1144), lsfLawtwinKafkaModelPutLog_218(lTp1139, lsfLawtwinKafkaModelAppendBatch_167(lRs1141, int64(-1), false, lL1144), lB1142)}
+				return &lsfPair[int64, *lsfBrokerState]{lsfLawtwinKafkaModelHighWatermark_da6ed677(lL1348), lsfLawtwinKafkaModelPutLog_cb3cbf5e(lTp1343, lsfLawtwinKafkaModelAppendBatch_8797ae9f(lRs1345, int64(-1), false, lL1348), lB1346)}
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelProduceTagged_216 is lawtwin.kafka::lawtwinKafkaModelProduceTagged.
-func lsfLawtwinKafkaModelProduceTagged_216(lTp1146 *lsfTopicPartition, lT1147 *lsfProducerTag, lRs1148 *lsfList[*lsfRecord], lL1149 *lsfPartitionLog, lB1150 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
-	var lValue1151 int64
-	lLawspecfield60x01152 := lT1147.fProducerId
-	lValue1151 = lLawspecfield60x01152
-	var lValue1153 *lsfMap[int64, *lsfProducerEntry]
-	lLawspecfield61x21154 := lB1150.fProducers
-	lValue1153 = lLawspecfield61x21154
-	lMatched1155 := lsfLookup(lValue1153, lValue1151, lsfCmp_44a08172da10)
-	if lMatched1155.ok {
-		lEntry1156 := lMatched1155.v
-		var lValue1157 int16
-		lLawspecfield86x11158 := lT1147.fProducerEpoch
-		lValue1157 = lLawspecfield86x11158
-		var lValue1159 int16
-		lLawspecfield87x01160 := lEntry1156.fEpoch
-		lValue1159 = lLawspecfield87x01160
-		if (lValue1157 != lValue1159) {
+// lsfLawtwinKafkaModelProduceTagged_86f854e7 is lawtwin.kafka::lawtwinKafkaModelProduceTagged.
+func lsfLawtwinKafkaModelProduceTagged_86f854e7(lTp1350 *lsfTopicPartition, lT1351 *lsfProducerTag, lRs1352 *lsfList[*lsfRecord], lL1353 *lsfPartitionLog, lB1354 *lsfBrokerState) *lsfPair[int64, *lsfBrokerState] {
+	var lValue1355 int64
+	lLawspecfieldproducerid1356 := lT1351.fProducerId
+	lValue1355 = lLawspecfieldproducerid1356
+	var lValue1357 *lsfMap[int64, *lsfProducerEntry]
+	lLawspecfieldproducers1358 := lB1354.fProducers
+	lValue1357 = lLawspecfieldproducers1358
+	lMatched1359 := lsfLookup(lValue1357, lValue1355, lsfCmp_44a08172da10)
+	if lMatched1359.ok {
+		lEntry1360 := lMatched1359.v
+		var lValue1361 int16
+		lLawspecfieldproducerepoch1362 := lT1351.fProducerEpoch
+		lValue1361 = lLawspecfieldproducerepoch1362
+		var lValue1363 int16
+		lLawspecfieldepoch1364 := lEntry1360.fEpoch
+		lValue1363 = lLawspecfieldepoch1364
+		if (lValue1361 != lValue1363) {
 			panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidProducerEpoch)})
 		} else {
-			var lValue1161 bool
-			var lValue1162 lsfMaybe[string]
-			lLawspecfield112x11163 := lEntry1156.fTransactionalId
-			lValue1162 = lLawspecfield112x11163
-			lMatched1164 := lValue1162
-			if lMatched1164.ok {
-				lValue1161 = true
+			var lValue1365 bool
+			var lValue1366 lsfMaybe[string]
+			lLawspecfieldtransactionalid1367 := lEntry1360.fTransactionalId
+			lValue1366 = lLawspecfieldtransactionalid1367
+			lMatched1368 := lValue1366
+			if lMatched1368.ok {
+				lValue1365 = true
 			} else {
-				lValue1161 = false
+				lValue1365 = false
 			}
-			lTransactional1165 := lValue1161
-			var lLogic1168 bool
-			if lTransactional1165 {
-				var lValue1166 lsfTxnState
-				lLawspecfield133x21167 := lEntry1156.fTxn
-				lValue1166 = lLawspecfield133x21167
-				lLogic1168 = !(lsfLawtwinKafkaModelTxnHasPartition_230(lTp1146, lValue1166))
-			} else { lLogic1168 = false }
-			if lLogic1168 {
+			lTransactional1369 := lValue1365
+			var lLogic1372 bool
+			if lTransactional1369 {
+				var lValue1370 lsfTxnState
+				lLawspecfieldtxn1371 := lEntry1360.fTxn
+				lValue1370 = lLawspecfieldtxn1371
+				lLogic1372 = !(lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0(lTp1350, lValue1370))
+			} else { lLogic1372 = false }
+			if lLogic1372 {
 				panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidTxnState)})
 			} else {
-				var lValue1169 int32
-				lLawspecfield151x21170 := lT1147.fBaseSequence
-				lValue1169 = lLawspecfield151x21170
-				lLast1171 := lsfSaturatingInt32_9(lsfSmall(int64(lValue1169)).Add(lsfSmall(int64(lRs1148.length()))).Sub(lsfSmall(int64(1))))
-				var lValue1172 *lsfList[*lsfBatchMeta]
-				var lValue1173 int64
-				lLawspecfield188x01174 := lT1147.fProducerId
-				lValue1173 = lLawspecfield188x01174
-				var lValue1175 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
-				lLawspecfield189x41176 := lL1149.fBatches
-				lValue1175 = lLawspecfield189x41176
-				lMatched1177 := lsfLookup(lValue1175, lValue1173, lsfCmp_44a08172da10)
-				if lMatched1177.ok {
-					lMs1178 := lMatched1177.v
-					lValue1172 = lMs1178
+				var lValue1373 int32
+				lLawspecfieldbasesequence1374 := lT1351.fBaseSequence
+				lValue1373 = lLawspecfieldbasesequence1374
+				lLast1375 := lsfSaturatingInt32_9e8d3b43(lsfSmall(int64(lValue1373)).Add(lsfSmall(int64(lRs1352.length()))).Sub(lsfSmall(int64(1))))
+				var lValue1376 *lsfList[*lsfBatchMeta]
+				var lValue1377 int64
+				lLawspecfieldproducerid1378 := lT1351.fProducerId
+				lValue1377 = lLawspecfieldproducerid1378
+				var lValue1379 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
+				lLawspecfieldbatches1380 := lL1353.fBatches
+				lValue1379 = lLawspecfieldbatches1380
+				lMatched1381 := lsfLookup(lValue1379, lValue1377, lsfCmp_44a08172da10)
+				if lMatched1381.ok {
+					lMs1382 := lMatched1381.v
+					lValue1376 = lMs1382
 				} else {
-					lValue1172 = (*lsfList[*lsfBatchMeta])(nil)
+					lValue1376 = (*lsfList[*lsfBatchMeta])(nil)
 				}
-				lRecent1179 := lValue1172
-				var lValue1180 int16
-				lLawspecfield207x11181 := lT1147.fProducerEpoch
-				lValue1180 = lLawspecfield207x11181
-				var lValue1182 int32
-				lLawspecfield208x21183 := lT1147.fBaseSequence
-				lValue1182 = lLawspecfield208x21183
-				lMatched1184 := lsfLawtwinKafkaModelFindDuplicate_187(lValue1180, lValue1182, lLast1171, lRecent1179)
-				if lMatched1184.ok {
-					lOffset1185 := lMatched1184.v
-					return &lsfPair[int64, *lsfBrokerState]{lOffset1185, lB1150}
+				lRecent1383 := lValue1376
+				var lValue1384 int16
+				lLawspecfieldproducerepoch1385 := lT1351.fProducerEpoch
+				lValue1384 = lLawspecfieldproducerepoch1385
+				var lValue1386 int32
+				lLawspecfieldbasesequence1387 := lT1351.fBaseSequence
+				lValue1386 = lLawspecfieldbasesequence1387
+				lMatched1388 := lsfLawtwinKafkaModelFindDuplicate_3335aea4(lValue1384, lValue1386, lLast1375, lRecent1383)
+				if lMatched1388.ok {
+					lOffset1389 := lMatched1388.v
+					return &lsfPair[int64, *lsfBrokerState]{lOffset1389, lB1354}
 				} else {
-					var lValue1186 int32
-					lLawspecfield218x21187 := lT1147.fBaseSequence
-					lValue1186 = lLawspecfield218x21187
-					var lValue1188 int16
-					lLawspecfield219x11189 := lT1147.fProducerEpoch
-					lValue1188 = lLawspecfield219x11189
-					if (lValue1186 != lsfLawtwinKafkaModelExpectedSequence_185(lValue1188, lRecent1179)) {
+					var lValue1390 int32
+					lLawspecfieldbasesequence1391 := lT1351.fBaseSequence
+					lValue1390 = lLawspecfieldbasesequence1391
+					var lValue1392 int16
+					lLawspecfieldproducerepoch1393 := lT1351.fProducerEpoch
+					lValue1392 = lLawspecfieldproducerepoch1393
+					if (lValue1390 != lsfLawtwinKafkaModelExpectedSequence_83e363c8(lValue1392, lRecent1383)) {
 						panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_OutOfOrderSequenceNumber)})
 					} else {
-						lBase1190 := lsfLawtwinKafkaModelHighWatermark_191(lL1149)
-						var lValue1191 int64
-						lLawspecfield225x01192 := lT1147.fProducerId
-						lValue1191 = lLawspecfield225x01192
-						var lValue1193 int16
-						lLawspecfield226x11194 := lT1147.fProducerEpoch
-						lValue1193 = lLawspecfield226x11194
-						var lValue1195 int32
-						lLawspecfield227x21196 := lT1147.fBaseSequence
-						lValue1195 = lLawspecfield227x21196
-						var lValue1197 int64
-						lLawspecfield228x01198 := lT1147.fProducerId
-						lValue1197 = lLawspecfield228x01198
-						lL21199 := lsfLawtwinKafkaModelRememberBatch_224(lValue1191, &lsfBatchMeta{lValue1193, lValue1195, lLast1171, lBase1190}, lsfLawtwinKafkaModelAppendBatch_167(lRs1148, lValue1197, lTransactional1165, lL1149))
-						return &lsfPair[int64, *lsfBrokerState]{lBase1190, lsfLawtwinKafkaModelPutLog_218(lTp1146, lL21199, lB1150)}
+						lBase1394 := lsfLawtwinKafkaModelHighWatermark_da6ed677(lL1353)
+						var lValue1395 int64
+						lLawspecfieldproducerid1396 := lT1351.fProducerId
+						lValue1395 = lLawspecfieldproducerid1396
+						var lValue1397 int16
+						lLawspecfieldproducerepoch1398 := lT1351.fProducerEpoch
+						lValue1397 = lLawspecfieldproducerepoch1398
+						var lValue1399 int32
+						lLawspecfieldbasesequence1400 := lT1351.fBaseSequence
+						lValue1399 = lLawspecfieldbasesequence1400
+						var lValue1401 int64
+						lLawspecfieldproducerid1402 := lT1351.fProducerId
+						lValue1401 = lLawspecfieldproducerid1402
+						lL21403 := lsfLawtwinKafkaModelRememberBatch_33fa600f(lValue1395, &lsfBatchMeta{lValue1397, lValue1399, lLast1375, lBase1394}, lsfLawtwinKafkaModelAppendBatch_8797ae9f(lRs1352, lValue1401, lTransactional1369, lL1353))
+						return &lsfPair[int64, *lsfBrokerState]{lBase1394, lsfLawtwinKafkaModelPutLog_cb3cbf5e(lTp1350, lL21403, lB1354)}
 					}
 				}
 			}
@@ -3392,93 +4078,93 @@ func lsfLawtwinKafkaModelProduceTagged_216(lTp1146 *lsfTopicPartition, lT1147 *l
 	}
 }
 
-// lsfLawtwinKafkaModelPutGroup_217 is lawtwin.kafka::lawtwinKafkaModelPutGroup.
-func lsfLawtwinKafkaModelPutGroup_217(lG1200 string, lGroup1201 *lsfGroup, lB1202 *lsfBrokerState) *lsfBrokerState {
-	var lValue1203 *lsfMap[string, *lsfGroup]
-	lLawspecfield21x51204 := lB1202.fGroups
-	lValue1203 = lLawspecfield21x51204
-	lLawspecupdate21205 := lsfPut(lValue1203, lG1200, lGroup1201, lsfCmp_437d0abf423f)
-	lLawspecfield2x01206 := lB1202.fTopics
-	lLawspecfield2x11207 := lB1202.fLogs
-	lLawspecfield2x21208 := lB1202.fProducers
-	lLawspecfield2x31209 := lB1202.fTransactionalIds
-	lLawspecfield2x41210 := lB1202.fNextProducerId
-	lLawspecfield2x61211 := lB1202.fCommitted
-	return &lsfBrokerState{lLawspecfield2x01206, lLawspecfield2x11207, lLawspecfield2x21208, lLawspecfield2x31209, lLawspecfield2x41210, lLawspecupdate21205, lLawspecfield2x61211}
+// lsfLawtwinKafkaModelPutGroup_f45eaad0 is lawtwin.kafka::lawtwinKafkaModelPutGroup.
+func lsfLawtwinKafkaModelPutGroup_f45eaad0(lG1404 string, lGroup1405 *lsfGroup, lB1406 *lsfBrokerState) *lsfBrokerState {
+	var lValue1407 *lsfMap[string, *lsfGroup]
+	lLawspecfieldgroups1408 := lB1406.fGroups
+	lValue1407 = lLawspecfieldgroups1408
+	lReplacement1409 := lsfPut(lValue1407, lG1404, lGroup1405, lsfCmp_437d0abf423f)
+	lLawspecfieldtopics1410 := lB1406.fTopics
+	lLawspecfieldlogs1411 := lB1406.fLogs
+	lLawspecfieldproducers1412 := lB1406.fProducers
+	lLawspecfieldtransactionalids1413 := lB1406.fTransactionalIds
+	lLawspecfieldnextproducerid1414 := lB1406.fNextProducerId
+	lLawspecfieldcommitted1415 := lB1406.fCommitted
+	return &lsfBrokerState{lLawspecfieldtopics1410, lLawspecfieldlogs1411, lLawspecfieldproducers1412, lLawspecfieldtransactionalids1413, lLawspecfieldnextproducerid1414, lReplacement1409, lLawspecfieldcommitted1415}
 }
 
-// lsfLawtwinKafkaModelPutLog_218 is lawtwin.kafka::lawtwinKafkaModelPutLog.
-func lsfLawtwinKafkaModelPutLog_218(lTp1212 *lsfTopicPartition, lL1213 *lsfPartitionLog, lB1214 *lsfBrokerState) *lsfBrokerState {
-	var lValue1215 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]
-	lLawspecfield21x11216 := lB1214.fLogs
-	lValue1215 = lLawspecfield21x11216
-	lLawspecupdate21217 := lsfPut(lValue1215, lTp1212, lL1213, lsfCmp_57a515e0e489)
-	lLawspecfield2x01218 := lB1214.fTopics
-	lLawspecfield2x21219 := lB1214.fProducers
-	lLawspecfield2x31220 := lB1214.fTransactionalIds
-	lLawspecfield2x41221 := lB1214.fNextProducerId
-	lLawspecfield2x51222 := lB1214.fGroups
-	lLawspecfield2x61223 := lB1214.fCommitted
-	return &lsfBrokerState{lLawspecfield2x01218, lLawspecupdate21217, lLawspecfield2x21219, lLawspecfield2x31220, lLawspecfield2x41221, lLawspecfield2x51222, lLawspecfield2x61223}
+// lsfLawtwinKafkaModelPutLog_cb3cbf5e is lawtwin.kafka::lawtwinKafkaModelPutLog.
+func lsfLawtwinKafkaModelPutLog_cb3cbf5e(lTp1416 *lsfTopicPartition, lL1417 *lsfPartitionLog, lB1418 *lsfBrokerState) *lsfBrokerState {
+	var lValue1419 *lsfMap[*lsfTopicPartition, *lsfPartitionLog]
+	lLawspecfieldlogs1420 := lB1418.fLogs
+	lValue1419 = lLawspecfieldlogs1420
+	lReplacement1421 := lsfPut(lValue1419, lTp1416, lL1417, lsfCmp_57a515e0e489)
+	lLawspecfieldtopics1422 := lB1418.fTopics
+	lLawspecfieldproducers1423 := lB1418.fProducers
+	lLawspecfieldtransactionalids1424 := lB1418.fTransactionalIds
+	lLawspecfieldnextproducerid1425 := lB1418.fNextProducerId
+	lLawspecfieldgroups1426 := lB1418.fGroups
+	lLawspecfieldcommitted1427 := lB1418.fCommitted
+	return &lsfBrokerState{lLawspecfieldtopics1422, lReplacement1421, lLawspecfieldproducers1423, lLawspecfieldtransactionalids1424, lLawspecfieldnextproducerid1425, lLawspecfieldgroups1426, lLawspecfieldcommitted1427}
 }
 
-// lsfLawtwinKafkaModelPutProducer_219 is lawtwin.kafka::lawtwinKafkaModelPutProducer.
-func lsfLawtwinKafkaModelPutProducer_219(lPid1224 int64, lEntry1225 *lsfProducerEntry, lB1226 *lsfBrokerState) *lsfBrokerState {
-	var lValue1227 *lsfMap[int64, *lsfProducerEntry]
-	lLawspecfield21x21228 := lB1226.fProducers
-	lValue1227 = lLawspecfield21x21228
-	lLawspecupdate21229 := lsfPut(lValue1227, lPid1224, lEntry1225, lsfCmp_44a08172da10)
-	lLawspecfield2x01230 := lB1226.fTopics
-	lLawspecfield2x11231 := lB1226.fLogs
-	lLawspecfield2x31232 := lB1226.fTransactionalIds
-	lLawspecfield2x41233 := lB1226.fNextProducerId
-	lLawspecfield2x51234 := lB1226.fGroups
-	lLawspecfield2x61235 := lB1226.fCommitted
-	return &lsfBrokerState{lLawspecfield2x01230, lLawspecfield2x11231, lLawspecupdate21229, lLawspecfield2x31232, lLawspecfield2x41233, lLawspecfield2x51234, lLawspecfield2x61235}
+// lsfLawtwinKafkaModelPutProducer_4ef907a5 is lawtwin.kafka::lawtwinKafkaModelPutProducer.
+func lsfLawtwinKafkaModelPutProducer_4ef907a5(lPid1428 int64, lEntry1429 *lsfProducerEntry, lB1430 *lsfBrokerState) *lsfBrokerState {
+	var lValue1431 *lsfMap[int64, *lsfProducerEntry]
+	lLawspecfieldproducers1432 := lB1430.fProducers
+	lValue1431 = lLawspecfieldproducers1432
+	lReplacement1433 := lsfPut(lValue1431, lPid1428, lEntry1429, lsfCmp_44a08172da10)
+	lLawspecfieldtopics1434 := lB1430.fTopics
+	lLawspecfieldlogs1435 := lB1430.fLogs
+	lLawspecfieldtransactionalids1436 := lB1430.fTransactionalIds
+	lLawspecfieldnextproducerid1437 := lB1430.fNextProducerId
+	lLawspecfieldgroups1438 := lB1430.fGroups
+	lLawspecfieldcommitted1439 := lB1430.fCommitted
+	return &lsfBrokerState{lLawspecfieldtopics1434, lLawspecfieldlogs1435, lReplacement1433, lLawspecfieldtransactionalids1436, lLawspecfieldnextproducerid1437, lLawspecfieldgroups1438, lLawspecfieldcommitted1439}
 }
 
-// lsfLawtwinKafkaModelReadable_220 is lawtwin.kafka::lawtwinKafkaModelReadable.
-func lsfLawtwinKafkaModelReadable_220(lEs1236 *lsfList[lsfLogEntry], lFrom1237 int64, lLimit1238 int64, lCommittedonly1239 bool, lAborted1240 *lsfList[*lsfAbortedTxn], lAcc1241 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfFetchedRecord] {
+// lsfLawtwinKafkaModelReadable_adec3284 is lawtwin.kafka::lawtwinKafkaModelReadable.
+func lsfLawtwinKafkaModelReadable_adec3284(lEs1440 *lsfList[lsfLogEntry], lFrom1441 int64, lLimit1442 int64, lCommittedonly1443 bool, lAborted1444 *lsfList[*lsfAbortedTxn], lAcc1445 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfFetchedRecord] {
 	for {
-		if lEs1236 == nil {
-			return lAcc1241
+		if lEs1440 == nil {
+			return lAcc1445
 		} else {
-			lE1242 := lEs1236.head
-			lRest1243 := lEs1236.tail
-			switch lVariant1244 := lE1242.(type) {
+			lE1446 := lEs1440.head
+			lRest1447 := lEs1440.tail
+			switch lVariant1448 := lE1446.(type) {
 				case *lsfLogEntry_DataEntry:
-					lO1245 := lVariant1244.fEntryOffset
-					lR1246 := lVariant1244.fEntryRecord
-					lW1247 := lVariant1244.fWriter
-					lTx1248 := lVariant1244.fTransactional
-					if (lO1245 < lFrom1237) {
-						return lAcc1241
+					lO1449 := lVariant1448.fEntryOffset
+					lR1450 := lVariant1448.fEntryRecord
+					lW1451 := lVariant1448.fWriter
+					lTx1452 := lVariant1448.fTransactional
+					if (lO1449 < lFrom1441) {
+						return lAcc1445
 					} else {
-						if (lO1245 >= lLimit1238) {
-							lNext1249 := lRest1243
-							lEs1236 = lNext1249
+						if (lO1449 >= lLimit1442) {
+							lNext1453 := lRest1447
+							lEs1440 = lNext1453
 							continue
 						} else {
-							if ((lCommittedonly1239 && lTx1248) && lsfLawtwinKafkaModelIsAborted_193(lW1247, lO1245, lAborted1240)) {
-								lNext1250 := lRest1243
-								lEs1236 = lNext1250
+							if ((lCommittedonly1443 && lTx1452) && lsfLawtwinKafkaModelIsAborted_b12645e5(lW1451, lO1449, lAborted1444)) {
+								lNext1454 := lRest1447
+								lEs1440 = lNext1454
 								continue
 							} else {
-								lNext1251 := lRest1243
-								lNext1252 := lsfCons[*lsfFetchedRecord](&lsfFetchedRecord{lO1245, lR1246}, lAcc1241)
-								lEs1236 = lNext1251
-								lAcc1241 = lNext1252
+								lNext1455 := lRest1447
+								lNext1456 := lsfCons[*lsfFetchedRecord](&lsfFetchedRecord{lO1449, lR1450}, lAcc1445)
+								lEs1440 = lNext1455
+								lAcc1445 = lNext1456
 								continue
 							}
 						}
 					}
 				case *lsfLogEntry_ControlEntry:
-					lO1253 := lVariant1244.fMarkerOffset
-					if (lO1253 < lFrom1237) {
-						return lAcc1241
+					lO1457 := lVariant1448.fMarkerOffset
+					if (lO1457 < lFrom1441) {
+						return lAcc1445
 					} else {
-						lNext1254 := lRest1243
-						lEs1236 = lNext1254
+						lNext1458 := lRest1447
+						lEs1440 = lNext1458
 						continue
 					}
 				default:
@@ -3488,438 +4174,441 @@ func lsfLawtwinKafkaModelReadable_220(lEs1236 *lsfList[lsfLogEntry], lFrom1237 i
 	}
 }
 
-// lsfLawtwinKafkaModelRebalance_221 is lawtwin.kafka::lawtwinKafkaModelRebalance.
-func lsfLawtwinKafkaModelRebalance_221(lGroup1255 *lsfGroup, lB1256 *lsfBrokerState) *lsfGroup {
-	var lValue1257 *lsfMap[string, *lsfList[string]]
-	lLawspecfield5x11258 := lGroup1255.fSubscriptions
-	lValue1257 = lLawspecfield5x11258
-	lLawspecupdate31259 := lsfLawtwinKafkaModelComputeAssignment_176(lValue1257, lB1256)
-	var lValue1260 *lsfGroup
-	var lValue1261 int32
-	lLawspecfield12x01262 := lGroup1255.fGroupGeneration
-	lValue1261 = lLawspecfield12x01262
-	lLawspecupdate81263 := lsfSaturatingInt32_9(lsfSmall(int64(lValue1261)).Add(lsfSmall(int64(1))))
-	lLawspecfield8x11264 := lGroup1255.fSubscriptions
-	lLawspecfield8x21265 := lGroup1255.fAssignment
-	lValue1260 = &lsfGroup{lLawspecupdate81263, lLawspecfield8x11264, lLawspecfield8x21265}
-	lMatched1266 := lValue1260
-	lLawspecfield3x01267 := lMatched1266.fGroupGeneration
-	lLawspecfield3x11268 := lMatched1266.fSubscriptions
-	return &lsfGroup{lLawspecfield3x01267, lLawspecfield3x11268, lLawspecupdate31259}
+// lsfLawtwinKafkaModelRebalance_c9984d55 is lawtwin.kafka::lawtwinKafkaModelRebalance.
+func lsfLawtwinKafkaModelRebalance_c9984d55(lGroup1459 *lsfGroup, lB1460 *lsfBrokerState) *lsfGroup {
+	var lValue1461 *lsfMap[string, *lsfList[string]]
+	lLawspecfieldsubscriptions1462 := lGroup1459.fSubscriptions
+	lValue1461 = lLawspecfieldsubscriptions1462
+	lReplacement1463 := lsfLawtwinKafkaModelComputeAssignment_07bd1943(lValue1461, lB1460)
+	var lValue1464 *lsfGroup
+	var lValue1465 int32
+	lLawspecfieldgroupgeneration1466 := lGroup1459.fGroupGeneration
+	lValue1465 = lLawspecfieldgroupgeneration1466
+	lReplacement1467 := lsfSaturatingInt32_9e8d3b43(lsfSmall(int64(lValue1465)).Add(lsfSmall(int64(1))))
+	lLawspecfieldsubscriptions1468 := lGroup1459.fSubscriptions
+	lLawspecfieldassignment1469 := lGroup1459.fAssignment
+	lValue1464 = &lsfGroup{lReplacement1467, lLawspecfieldsubscriptions1468, lLawspecfieldassignment1469}
+	lMatched1470 := lValue1464
+	lLawspecfieldgroupgeneration1471 := lMatched1470.fGroupGeneration
+	lLawspecfieldsubscriptions1472 := lMatched1470.fSubscriptions
+	return &lsfGroup{lLawspecfieldgroupgeneration1471, lLawspecfieldsubscriptions1472, lReplacement1463}
 }
 
-// lsfLawtwinKafkaModelRebalanceGroups_222 is lawtwin.kafka::lawtwinKafkaModelRebalanceGroups.
-func lsfLawtwinKafkaModelRebalanceGroups_222(lTopic1269 string, lGs1270 *lsfList[*lsfEntry[string, *lsfGroup]], lB1271 *lsfBrokerState, lAcc1272 *lsfMap[string, *lsfGroup]) *lsfMap[string, *lsfGroup] {
+// lsfLawtwinKafkaModelRebalanceGroups_ad90673b is lawtwin.kafka::lawtwinKafkaModelRebalanceGroups.
+func lsfLawtwinKafkaModelRebalanceGroups_ad90673b(lTopic1473 string, lGs1474 *lsfList[*lsfEntry[string, *lsfGroup]], lB1475 *lsfBrokerState, lAcc1476 *lsfMap[string, *lsfGroup]) *lsfMap[string, *lsfGroup] {
 	for {
-		if lGs1270 == nil {
-			return lAcc1272
+		if lGs1474 == nil {
+			return lAcc1476
 		} else {
-			lE1273 := lGs1270.head
-			lRest1274 := lGs1270.tail
-			lNext1275 := lRest1274
-			var lValue1276 string
-			lLawspecfield98x01277 := lE1273.fKey
-			lValue1276 = lLawspecfield98x01277
-			var lValue1278 *lsfGroup
-			var lValue1279 *lsfGroup
-			lLawspecfield111x11280 := lE1273.fValue
-			lValue1279 = lLawspecfield111x11280
-			if lsfLawtwinKafkaModelSubscribesTo_228(lTopic1269, lValue1279) {
-				var lValue1281 *lsfGroup
-				lLawspecfield122x11282 := lE1273.fValue
-				lValue1281 = lLawspecfield122x11282
-				lValue1278 = lsfLawtwinKafkaModelRebalance_221(lValue1281, lB1271)
+			lE1477 := lGs1474.head
+			lRest1478 := lGs1474.tail
+			lNext1479 := lRest1478
+			var lValue1480 string
+			lLawspecfieldkey1481 := lE1477.fKey
+			lValue1480 = lLawspecfieldkey1481
+			var lValue1482 *lsfGroup
+			var lValue1483 *lsfGroup
+			lLawspecfieldvalue1484 := lE1477.fValue
+			lValue1483 = lLawspecfieldvalue1484
+			if lsfLawtwinKafkaModelSubscribesTo_c3c674c3(lTopic1473, lValue1483) {
+				var lValue1485 *lsfGroup
+				lLawspecfieldvalue1486 := lE1477.fValue
+				lValue1485 = lLawspecfieldvalue1486
+				lValue1482 = lsfLawtwinKafkaModelRebalance_c9984d55(lValue1485, lB1475)
 			} else {
-				lLawspecfield125x11283 := lE1273.fValue
-				lValue1278 = lLawspecfield125x11283
+				lLawspecfieldvalue1487 := lE1477.fValue
+				lValue1482 = lLawspecfieldvalue1487
 			}
-			lNext1284 := lsfPut(lAcc1272, lValue1276, lValue1278, lsfCmp_437d0abf423f)
-			lGs1270 = lNext1275
-			lAcc1272 = lNext1284
+			lNext1488 := lsfPut(lAcc1476, lValue1480, lValue1482, lsfCmp_437d0abf423f)
+			lGs1474 = lNext1479
+			lAcc1476 = lNext1488
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelRebalanceTopic_223 is lawtwin.kafka::lawtwinKafkaModelRebalanceTopic.
-func lsfLawtwinKafkaModelRebalanceTopic_223(lTopic1285 string, lB1286 *lsfBrokerState) *lsfBrokerState {
-	var lValue1287 *lsfMap[string, *lsfGroup]
-	lLawspecfield25x51288 := lB1286.fGroups
-	lValue1287 = lLawspecfield25x51288
-	var lValue1289 *lsfMap[string, *lsfGroup]
-	lLawspecfield26x51290 := lB1286.fGroups
-	lValue1289 = lLawspecfield26x51290
-	lLawspecupdate21291 := lsfLawtwinKafkaModelRebalanceGroups_222(lTopic1285, lsfToList(lValue1287, lsfEntryOf[string, *lsfGroup]), lB1286, lValue1289)
-	lLawspecfield2x01292 := lB1286.fTopics
-	lLawspecfield2x11293 := lB1286.fLogs
-	lLawspecfield2x21294 := lB1286.fProducers
-	lLawspecfield2x31295 := lB1286.fTransactionalIds
-	lLawspecfield2x41296 := lB1286.fNextProducerId
-	lLawspecfield2x61297 := lB1286.fCommitted
-	return &lsfBrokerState{lLawspecfield2x01292, lLawspecfield2x11293, lLawspecfield2x21294, lLawspecfield2x31295, lLawspecfield2x41296, lLawspecupdate21291, lLawspecfield2x61297}
+// lsfLawtwinKafkaModelRebalanceTopic_823cd68b is lawtwin.kafka::lawtwinKafkaModelRebalanceTopic.
+func lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lTopic1489 string, lB1490 *lsfBrokerState) *lsfBrokerState {
+	var lValue1491 *lsfMap[string, *lsfGroup]
+	lLawspecfieldgroups1492 := lB1490.fGroups
+	lValue1491 = lLawspecfieldgroups1492
+	var lValue1493 *lsfMap[string, *lsfGroup]
+	lLawspecfieldgroups1494 := lB1490.fGroups
+	lValue1493 = lLawspecfieldgroups1494
+	lReplacement1495 := lsfLawtwinKafkaModelRebalanceGroups_ad90673b(lTopic1489, lsfToList(lValue1491, lsfEntryOf[string, *lsfGroup]), lB1490, lValue1493)
+	lLawspecfieldtopics1496 := lB1490.fTopics
+	lLawspecfieldlogs1497 := lB1490.fLogs
+	lLawspecfieldproducers1498 := lB1490.fProducers
+	lLawspecfieldtransactionalids1499 := lB1490.fTransactionalIds
+	lLawspecfieldnextproducerid1500 := lB1490.fNextProducerId
+	lLawspecfieldcommitted1501 := lB1490.fCommitted
+	return &lsfBrokerState{lLawspecfieldtopics1496, lLawspecfieldlogs1497, lLawspecfieldproducers1498, lLawspecfieldtransactionalids1499, lLawspecfieldnextproducerid1500, lReplacement1495, lLawspecfieldcommitted1501}
 }
 
-// lsfLawtwinKafkaModelRememberBatch_224 is lawtwin.kafka::lawtwinKafkaModelRememberBatch.
-func lsfLawtwinKafkaModelRememberBatch_224(lWriter1298 int64, lMeta1299 *lsfBatchMeta, lL1300 *lsfPartitionLog) *lsfPartitionLog {
-	var lValue1301 *lsfList[*lsfBatchMeta]
-	var lValue1302 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
-	lLawspecfield40x41303 := lL1300.fBatches
-	lValue1302 = lLawspecfield40x41303
-	lMatched1304 := lsfLookup(lValue1302, lWriter1298, lsfCmp_44a08172da10)
-	if lMatched1304.ok {
-		lMs1305 := lMatched1304.v
-		lValue1301 = lMs1305
+// lsfLawtwinKafkaModelRememberBatch_33fa600f is lawtwin.kafka::lawtwinKafkaModelRememberBatch.
+func lsfLawtwinKafkaModelRememberBatch_33fa600f(lWriter1502 int64, lMeta1503 *lsfBatchMeta, lL1504 *lsfPartitionLog) *lsfPartitionLog {
+	var lValue1505 *lsfList[*lsfBatchMeta]
+	var lValue1506 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
+	lLawspecfieldbatches1507 := lL1504.fBatches
+	lValue1506 = lLawspecfieldbatches1507
+	lMatched1508 := lsfLookup(lValue1506, lWriter1502, lsfCmp_44a08172da10)
+	if lMatched1508.ok {
+		lMs1509 := lMatched1508.v
+		lValue1505 = lMs1509
 	} else {
-		lValue1301 = (*lsfList[*lsfBatchMeta])(nil)
+		lValue1505 = (*lsfList[*lsfBatchMeta])(nil)
 	}
-	lPrevious1306 := lValue1301
-	var lValue1307 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
-	lLawspecfield79x41308 := lL1300.fBatches
-	lValue1307 = lLawspecfield79x41308
-	lLawspecupdate511309 := lsfPut(lValue1307, lWriter1298, lsfSliceList(lsfCons[*lsfBatchMeta](lMeta1299, lPrevious1306), int64(0), int64(5)), lsfCmp_44a08172da10)
-	lLawspecfield51x01310 := lL1300.fEntries
-	lLawspecfield51x11311 := lL1300.fLogEndOffset
-	lLawspecfield51x21312 := lL1300.fOpenTxns
-	lLawspecfield51x31313 := lL1300.fAbortedTxns
-	return &lsfPartitionLog{lLawspecfield51x01310, lLawspecfield51x11311, lLawspecfield51x21312, lLawspecfield51x31313, lLawspecupdate511309}
+	lPrevious1510 := lValue1505
+	var lValue1511 *lsfMap[int64, *lsfList[*lsfBatchMeta]]
+	lLawspecfieldbatches1512 := lL1504.fBatches
+	lValue1511 = lLawspecfieldbatches1512
+	lReplacement1513 := lsfPut(lValue1511, lWriter1502, lsfSliceList(lsfCons[*lsfBatchMeta](lMeta1503, lPrevious1510), int64(0), int64(5)), lsfCmp_44a08172da10)
+	lLawspecfieldentries1514 := lL1504.fEntries
+	lLawspecfieldlogendoffset1515 := lL1504.fLogEndOffset
+	lLawspecfieldopentxns1516 := lL1504.fOpenTxns
+	lLawspecfieldabortedtxns1517 := lL1504.fAbortedTxns
+	return &lsfPartitionLog{lLawspecfieldentries1514, lLawspecfieldlogendoffset1515, lLawspecfieldopentxns1516, lLawspecfieldabortedtxns1517, lReplacement1513}
 }
 
-// lsfLawtwinKafkaModelReversePending_225 is lawtwin.kafka::lawtwinKafkaModelReversePending.
-func lsfLawtwinKafkaModelReversePending_225(lOs1314 *lsfList[*lsfPendingOffset], lAcc1315 *lsfList[*lsfPendingOffset]) *lsfList[*lsfPendingOffset] {
+// lsfLawtwinKafkaModelReversePending_51ca5898 is lawtwin.kafka::lawtwinKafkaModelReversePending.
+func lsfLawtwinKafkaModelReversePending_51ca5898(lOs1518 *lsfList[*lsfPendingOffset], lAcc1519 *lsfList[*lsfPendingOffset]) *lsfList[*lsfPendingOffset] {
 	for {
-		if lOs1314 == nil {
-			return lAcc1315
+		if lOs1518 == nil {
+			return lAcc1519
 		} else {
-			lH1316 := lOs1314.head
-			lT1317 := lOs1314.tail
-			lNext1318 := lT1317
-			lNext1319 := lsfCons[*lsfPendingOffset](lH1316, lAcc1315)
-			lOs1314 = lNext1318
-			lAcc1315 = lNext1319
+			lH1520 := lOs1518.head
+			lT1521 := lOs1518.tail
+			lNext1522 := lT1521
+			lNext1523 := lsfCons[*lsfPendingOffset](lH1520, lAcc1519)
+			lOs1518 = lNext1522
+			lAcc1519 = lNext1523
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelSubscribedTopics_226 is lawtwin.kafka::lawtwinKafkaModelSubscribedTopics.
-func lsfLawtwinKafkaModelSubscribedTopics_226(lSubs1320 *lsfList[*lsfEntry[string, *lsfList[string]]], lAcc1321 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
+// lsfLawtwinKafkaModelSubscribedTopics_c1d720b5 is lawtwin.kafka::lawtwinKafkaModelSubscribedTopics.
+func lsfLawtwinKafkaModelSubscribedTopics_c1d720b5(lSubs1524 *lsfList[*lsfEntry[string, *lsfList[string]]], lAcc1525 *lsfMap[string, lsfUnit]) *lsfMap[string, lsfUnit] {
 	for {
-		if lSubs1320 == nil {
-			return lAcc1321
+		if lSubs1524 == nil {
+			return lAcc1525
 		} else {
-			lE1322 := lSubs1320.head
-			lRest1323 := lSubs1320.tail
-			lNext1324 := lRest1323
-			var lValue1325 *lsfList[string]
-			lLawspecfield42x11326 := lE1322.fValue
-			lValue1325 = lLawspecfield42x11326
-			lNext1327 := lsfSetUnion(lAcc1321, lsfSetOf(lValue1325, lsfCmp_437d0abf423f), lsfCmp_437d0abf423f)
-			lSubs1320 = lNext1324
-			lAcc1321 = lNext1327
+			lE1526 := lSubs1524.head
+			lRest1527 := lSubs1524.tail
+			lNext1528 := lRest1527
+			var lValue1529 *lsfList[string]
+			lLawspecfieldvalue1530 := lE1526.fValue
+			lValue1529 = lLawspecfieldvalue1530
+			lNext1531 := lsfSetUnion(lAcc1525, lsfSetOf(lValue1529, lsfCmp_437d0abf423f), lsfCmp_437d0abf423f)
+			lSubs1524 = lNext1528
+			lAcc1525 = lNext1531
 			continue
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelSubscribersOf_227 is lawtwin.kafka::lawtwinKafkaModelSubscribersOf.
-func lsfLawtwinKafkaModelSubscribersOf_227(lTopic1328 string, lSubs1329 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[string] {
+// lsfLawtwinKafkaModelSubscribersOf_e9347318 is lawtwin.kafka::lawtwinKafkaModelSubscribersOf.
+func lsfLawtwinKafkaModelSubscribersOf_e9347318(lTopic1532 string, lSubs1533 *lsfList[*lsfEntry[string, *lsfList[string]]]) *lsfList[string] {
 	for {
-		if lSubs1329 == nil {
+		if lSubs1533 == nil {
 			return (*lsfList[string])(nil)
 		} else {
-			lE1330 := lSubs1329.head
-			lRest1331 := lSubs1329.tail
-			var lValue1332 *lsfList[string]
-			lLawspecfield27x11333 := lE1330.fValue
-			lValue1332 = lLawspecfield27x11333
-			lAll1334 := true
-			for lCell1335 := lValue1332; lCell1335 != nil; lCell1335 = lCell1335.tail {
-				lItem1336 := lCell1335.head
-				if !(!((lItem1336) == (lTopic1328))) { lAll1334 = false; break }
+			lE1534 := lSubs1533.head
+			lRest1535 := lSubs1533.tail
+			var lValue1536 *lsfList[string]
+			lLawspecfieldvalue1537 := lE1534.fValue
+			lValue1536 = lLawspecfieldvalue1537
+			lAll1538 := true
+			for lCell1539 := lValue1536; lCell1539 != nil; lCell1539 = lCell1539.tail {
+				lItem1540 := lCell1539.head
+				if !(!((lItem1540) == (lTopic1532))) { lAll1538 = false; break }
 			}
-			if !(lAll1334) {
-				var lValue1337 string
-				lLawspecfield34x01338 := lE1330.fKey
-				lValue1337 = lLawspecfield34x01338
-				return lsfCons[string](lValue1337, lsfLawtwinKafkaModelSubscribersOf_227(lTopic1328, lRest1331))
+			if !(lAll1538) {
+				var lValue1541 string
+				lLawspecfieldkey1542 := lE1534.fKey
+				lValue1541 = lLawspecfieldkey1542
+				return lsfCons[string](lValue1541, lsfLawtwinKafkaModelSubscribersOf_e9347318(lTopic1532, lRest1535))
 			} else {
-				lNext1339 := lRest1331
-				lSubs1329 = lNext1339
+				lNext1543 := lRest1535
+				lSubs1533 = lNext1543
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelSubscribesTo_228 is lawtwin.kafka::lawtwinKafkaModelSubscribesTo.
-func lsfLawtwinKafkaModelSubscribesTo_228(lTopic1340 string, lGroup1341 *lsfGroup) bool {
-	var lValue1342 bool
-	var lValue1343 *lsfMap[string, *lsfList[string]]
-	lLawspecfield16x11344 := lGroup1341.fSubscriptions
-	lValue1343 = lLawspecfield16x11344
-	lMatched1345 := lsfLawtwinKafkaModelSubscribersOf_227(lTopic1340, lsfToList(lValue1343, lsfEntryOf[string, *lsfList[string]]))
-	if lMatched1345 == nil {
-		lValue1342 = true
+// lsfLawtwinKafkaModelSubscribesTo_c3c674c3 is lawtwin.kafka::lawtwinKafkaModelSubscribesTo.
+func lsfLawtwinKafkaModelSubscribesTo_c3c674c3(lTopic1544 string, lGroup1545 *lsfGroup) bool {
+	var lValue1546 bool
+	var lValue1547 *lsfMap[string, *lsfList[string]]
+	lLawspecfieldsubscriptions1548 := lGroup1545.fSubscriptions
+	lValue1547 = lLawspecfieldsubscriptions1548
+	lMatched1549 := lsfLawtwinKafkaModelSubscribersOf_e9347318(lTopic1544, lsfToList(lValue1547, lsfEntryOf[string, *lsfList[string]]))
+	if lMatched1549 == nil {
+		lValue1546 = true
 	} else {
-		lValue1342 = false
+		lValue1546 = false
 	}
-	return !(lValue1342)
+	return !(lValue1546)
 }
 
-// lsfLawtwinKafkaModelSyncGroup_229 is lawtwin.kafka::lawtwinKafkaModelSyncGroup.
-func lsfLawtwinKafkaModelSyncGroup_229(lG1346 string, lMember1347 string, lGeneration1348 int32, lB1349 *lsfBrokerState) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
-	lGroup1350 := lsfLawtwinKafkaModelCheckMember_173(lG1346, lMember1347, lGeneration1348, lB1349)
-	var lValue1351 *lsfMap[string, *lsfList[*lsfTopicPartition]]
-	lLawspecfield36x21352 := lGroup1350.fAssignment
-	lValue1351 = lLawspecfield36x21352
-	lMatched1353 := lsfLookup(lValue1351, lMember1347, lsfCmp_437d0abf423f)
-	if lMatched1353.ok {
-		lTps1354 := lMatched1353.v
-		return &lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]{lTps1354, lB1349}
+// lsfLawtwinKafkaModelSyncGroup_b3d01c80 is lawtwin.kafka::lawtwinKafkaModelSyncGroup.
+func lsfLawtwinKafkaModelSyncGroup_b3d01c80(lG1550 string, lMember1551 string, lGeneration1552 int32, lB1553 *lsfBrokerState) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
+	lGroup1554 := lsfLawtwinKafkaModelCheckMember_f218b850(lG1550, lMember1551, lGeneration1552, lB1553)
+	var lValue1555 *lsfMap[string, *lsfList[*lsfTopicPartition]]
+	lLawspecfieldassignment1556 := lGroup1554.fAssignment
+	lValue1555 = lLawspecfieldassignment1556
+	lMatched1557 := lsfLookup(lValue1555, lMember1551, lsfCmp_437d0abf423f)
+	if lMatched1557.ok {
+		lTps1558 := lMatched1557.v
+		return &lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]{lTps1558, lB1553}
 	} else {
-		return &lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]{(*lsfList[*lsfTopicPartition])(nil), lB1349}
+		return &lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]{(*lsfList[*lsfTopicPartition])(nil), lB1553}
 	}
 }
 
-// lsfLawtwinKafkaModelTxnHasPartition_230 is lawtwin.kafka::lawtwinKafkaModelTxnHasPartition.
-func lsfLawtwinKafkaModelTxnHasPartition_230(lTp1355 *lsfTopicPartition, lTxn1356 lsfTxnState) bool {
-	switch lVariant1357 := lTxn1356.(type) {
+// lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0 is lawtwin.kafka::lawtwinKafkaModelTxnHasPartition.
+func lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0(lTp1559 *lsfTopicPartition, lTxn1560 lsfTxnState) bool {
+	switch lVariant1561 := lTxn1560.(type) {
 		case *lsfTxnState_NoTxn:
 			return false
 		case *lsfTxnState_Ongoing:
-			lPs1358 := lVariant1357.fTxnPartitions
-			lAll1359 := true
-			for lCell1360 := lPs1358; lCell1360 != nil; lCell1360 = lCell1360.tail {
-				lItem1361 := lCell1360.head
-				if !(!(lsfEq_57a515e0e489(lItem1361, lTp1355))) { lAll1359 = false; break }
+			lPs1562 := lVariant1561.fTxnPartitions
+			lAll1563 := true
+			for lCell1564 := lPs1562; lCell1564 != nil; lCell1564 = lCell1564.tail {
+				lItem1565 := lCell1564.head
+				if !(!(lsfEq_57a515e0e489(lItem1565, lTp1559))) { lAll1563 = false; break }
 			}
-			return !(lAll1359)
+			return !(lAll1563)
 		default:
 			panic("unreachable branch reached")
 	}
 }
 
-// lsfLawtwinKafkaModelTxnOffsetCommit_231 is lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit.
-func lsfLawtwinKafkaModelTxnOffsetCommit_231(lTxid1362 string, lPid1363 int64, lEpoch1364 int16, lGroup1365 string, lOffsets1366 *lsfList[*lsfOffsetEntry], lB1367 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
-	if ((lGroup1365) == ("")) {
+// lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb is lawtwin.kafka::lawtwinKafkaModelTxnOffsetCommit.
+func lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lTxid1566 string, lPid1567 int64, lEpoch1568 int16, lGroup1569 string, lOffsets1570 *lsfList[*lsfOffsetEntry], lB1571 *lsfBrokerState) *lsfPair[lsfUnit, *lsfBrokerState] {
+	if ((lGroup1569) == ("")) {
 		panic(&LawSpecFailure{Ability: "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", Value: lsfTo_26c7dcf285c5(lsfKafkaError_InvalidGroupId)})
 	} else {
-		lEntry1368 := lsfLawtwinKafkaModelCheckTxnProducer_174(lTxid1362, lPid1363, lEpoch1364, lB1367)
-		var lValue1369 lsfTxnState
-		var lValue1370 lsfTxnState
-		lLawspecfield16x21371 := lEntry1368.fTxn
-		lValue1370 = lLawspecfield16x21371
-		lMatched1372 := lValue1370
-		switch lVariant1373 := lMatched1372.(type) {
+		lEntry1572 := lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lTxid1566, lPid1567, lEpoch1568, lB1571)
+		var lValue1573 lsfTxnState
+		var lValue1574 lsfTxnState
+		lLawspecfieldtxn1575 := lEntry1572.fTxn
+		lValue1574 = lLawspecfieldtxn1575
+		lMatched1576 := lValue1574
+		switch lVariant1577 := lMatched1576.(type) {
 			case *lsfTxnState_NoTxn:
-				lValue1369 = &lsfTxnState_Ongoing{(*lsfList[*lsfTopicPartition])(nil), lsfLawtwinKafkaModelPendingFor_214(lGroup1365, lOffsets1366, (*lsfList[*lsfPendingOffset])(nil))}
+				lValue1573 = &lsfTxnState_Ongoing{(*lsfList[*lsfTopicPartition])(nil), lsfLawtwinKafkaModelPendingFor_50512591(lGroup1569, lOffsets1570, (*lsfList[*lsfPendingOffset])(nil))}
 			case *lsfTxnState_Ongoing:
-				lPs1374 := lVariant1373.fTxnPartitions
-				lOs1375 := lVariant1373.fTxnOffsets
-				lValue1369 = &lsfTxnState_Ongoing{lPs1374, lsfLawtwinKafkaModelPendingFor_214(lGroup1365, lOffsets1366, lOs1375)}
+				lPs1578 := lVariant1577.fTxnPartitions
+				lOs1579 := lVariant1577.fTxnOffsets
+				lValue1573 = &lsfTxnState_Ongoing{lPs1578, lsfLawtwinKafkaModelPendingFor_50512591(lGroup1569, lOffsets1570, lOs1579)}
 			default:
 				panic("unreachable branch reached")
 		}
-		lNext1376 := lValue1369
-		var lValue1377 *lsfProducerEntry
-		lLawspecfield22x01378 := lEntry1368.fEpoch
-		lLawspecfield22x11379 := lEntry1368.fTransactionalId
-		lValue1377 = &lsfProducerEntry{lLawspecfield22x01378, lLawspecfield22x11379, lNext1376}
-		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_219(lPid1363, lValue1377, lB1367)}
+		lNext1580 := lValue1573
+		var lValue1581 *lsfProducerEntry
+		lReplacement1582 := lNext1580
+		lLawspecfieldepoch1583 := lEntry1572.fEpoch
+		lLawspecfieldtransactionalid1584 := lEntry1572.fTransactionalId
+		lValue1581 = &lsfProducerEntry{lLawspecfieldepoch1583, lLawspecfieldtransactionalid1584, lReplacement1582}
+		return &lsfPair[lsfUnit, *lsfBrokerState]{lsfUnit{}, lsfLawtwinKafkaModelPutProducer_4ef907a5(lPid1567, lValue1581, lB1571)}
 	}
 }
 
-// lsfLawtwinKafkaModelUnionPartitions_232 is lawtwin.kafka::lawtwinKafkaModelUnionPartitions.
-func lsfLawtwinKafkaModelUnionPartitions_232(lXs1380 *lsfList[*lsfTopicPartition], lYs1381 *lsfList[*lsfTopicPartition]) *lsfList[*lsfTopicPartition] {
+// lsfLawtwinKafkaModelUnionPartitions_c791d224 is lawtwin.kafka::lawtwinKafkaModelUnionPartitions.
+func lsfLawtwinKafkaModelUnionPartitions_c791d224(lXs1585 *lsfList[*lsfTopicPartition], lYs1586 *lsfList[*lsfTopicPartition]) *lsfList[*lsfTopicPartition] {
 	for {
-		if lXs1380 == nil {
-			return lYs1381
+		if lXs1585 == nil {
+			return lYs1586
 		} else {
-			lH1382 := lXs1380.head
-			lT1383 := lXs1380.tail
-			lAll1384 := true
-			for lCell1385 := lYs1381; lCell1385 != nil; lCell1385 = lCell1385.tail {
-				lItem1386 := lCell1385.head
-				if !(!(lsfEq_57a515e0e489(lItem1386, lH1382))) { lAll1384 = false; break }
+			lH1587 := lXs1585.head
+			lT1588 := lXs1585.tail
+			lAll1589 := true
+			for lCell1590 := lYs1586; lCell1590 != nil; lCell1590 = lCell1590.tail {
+				lItem1591 := lCell1590.head
+				if !(!(lsfEq_57a515e0e489(lItem1591, lH1587))) { lAll1589 = false; break }
 			}
-			if !(lAll1384) {
-				lNext1387 := lT1383
-				lXs1380 = lNext1387
+			if !(lAll1589) {
+				lNext1592 := lT1588
+				lXs1585 = lNext1592
 				continue
 			} else {
-				lNext1388 := lT1383
-				lNext1389 := lsfCons[*lsfTopicPartition](lH1382, lYs1381)
-				lXs1380 = lNext1388
-				lYs1381 = lNext1389
+				lNext1593 := lT1588
+				lNext1594 := lsfCons[*lsfTopicPartition](lH1587, lYs1586)
+				lXs1585 = lNext1593
+				lYs1586 = lNext1594
 				continue
 			}
 		}
 	}
 }
 
-// lsfLawtwinKafkaModelValidTopicName_233 is lawtwin.kafka::lawtwinKafkaModelValidTopicName.
-func lsfLawtwinKafkaModelValidTopicName_233(lName1390 string) bool {
-	lN1391 := lsfSmall(lsfTextLength(lName1390))
-	return (((((lsfCmpInt(lN1391, lsfSmall(int64(1))) >= 0) && (lsfCmpInt(lN1391, lsfSmall(int64(249))) <= 0)) && !((lName1390) == ("."))) && !((lName1390) == (".."))) && lsfRegexMatches("[a-zA-Z0-9._-]+", lName1390))
+// lsfLawtwinKafkaModelValidTopicName_39dd4596 is lawtwin.kafka::lawtwinKafkaModelValidTopicName.
+func lsfLawtwinKafkaModelValidTopicName_39dd4596(lName1595 string) bool {
+	lN1596 := lsfSmall(lsfTextLength(lName1595))
+	return (((((lsfCmpInt(lN1596, lsfSmall(int64(1))) >= 0) && (lsfCmpInt(lN1596, lsfSmall(int64(249))) <= 0)) && !((lName1595) == ("."))) && !((lName1595) == (".."))) && lsfRegexMatches("[a-zA-Z0-9._-]+", lName1595))
 }
 
-// lsfLawtwinKafkaModelWriteMarker_234 is lawtwin.kafka::lawtwinKafkaModelWriteMarker.
-func lsfLawtwinKafkaModelWriteMarker_234(lPid1392 int64, lCommit1393 bool, lL1394 *lsfPartitionLog) *lsfPartitionLog {
-	var lValue1395 *lsfList[*lsfAbortedTxn]
-	if lCommit1393 {
-		lLawspecfield28x31396 := lL1394.fAbortedTxns
-		lValue1395 = lLawspecfield28x31396
+// lsfLawtwinKafkaModelWriteMarker_8dc995f8 is lawtwin.kafka::lawtwinKafkaModelWriteMarker.
+func lsfLawtwinKafkaModelWriteMarker_8dc995f8(lPid1597 int64, lCommit1598 bool, lL1599 *lsfPartitionLog) *lsfPartitionLog {
+	var lValue1600 *lsfList[*lsfAbortedTxn]
+	if lCommit1598 {
+		lLawspecfieldabortedtxns1601 := lL1599.fAbortedTxns
+		lValue1600 = lLawspecfieldabortedtxns1601
 	} else {
-		var lValue1397 *lsfMap[int64, int64]
-		lLawspecfield46x21398 := lL1394.fOpenTxns
-		lValue1397 = lLawspecfield46x21398
-		lMatched1399 := lsfLookup(lValue1397, lPid1392, lsfCmp_44a08172da10)
-		if lMatched1399.ok {
-			lFirst1400 := lMatched1399.v
-			var lValue1401 int64
-			lLawspecfield54x11402 := lL1394.fLogEndOffset
-			lValue1401 = lLawspecfield54x11402
-			var lValue1403 *lsfList[*lsfAbortedTxn]
-			lLawspecfield55x31404 := lL1394.fAbortedTxns
-			lValue1403 = lLawspecfield55x31404
-			lValue1395 = lsfCons[*lsfAbortedTxn](&lsfAbortedTxn{lPid1392, lFirst1400, lValue1401}, lValue1403)
+		var lValue1602 *lsfMap[int64, int64]
+		lLawspecfieldopentxns1603 := lL1599.fOpenTxns
+		lValue1602 = lLawspecfieldopentxns1603
+		lMatched1604 := lsfLookup(lValue1602, lPid1597, lsfCmp_44a08172da10)
+		if lMatched1604.ok {
+			lFirst1605 := lMatched1604.v
+			var lValue1606 int64
+			lLawspecfieldlogendoffset1607 := lL1599.fLogEndOffset
+			lValue1606 = lLawspecfieldlogendoffset1607
+			var lValue1608 *lsfList[*lsfAbortedTxn]
+			lLawspecfieldabortedtxns1609 := lL1599.fAbortedTxns
+			lValue1608 = lLawspecfieldabortedtxns1609
+			lValue1600 = lsfCons[*lsfAbortedTxn](&lsfAbortedTxn{lPid1597, lFirst1605, lValue1606}, lValue1608)
 		} else {
-			lLawspecfield51x31405 := lL1394.fAbortedTxns
-			lValue1395 = lLawspecfield51x31405
+			lLawspecfieldabortedtxns1610 := lL1599.fAbortedTxns
+			lValue1600 = lLawspecfieldabortedtxns1610
 		}
 	}
-	lAborted1406 := lValue1395
-	var lValue1407 *lsfPartitionLog
-	var lValue1408 *lsfMap[int64, int64]
-	lLawspecfield99x21409 := lL1394.fOpenTxns
-	lValue1408 = lLawspecfield99x21409
-	lLawspecupdate821410 := lsfDelete(lValue1408, lPid1392, lsfCmp_44a08172da10)
-	var lValue1411 *lsfPartitionLog
-	var lValue1412 int64
-	lLawspecfield113x11413 := lL1394.fLogEndOffset
-	lValue1412 = lLawspecfield113x11413
-	lLawspecupdate1081414 := lsfSaturatingInt64_10(lsfSmall(lValue1412).Add(lsfSmall(int64(1))))
-	var lValue1415 *lsfPartitionLog
-	lLawspecfield117x11416 := lL1394.fLogEndOffset
-	lLawspecfield117x21417 := lL1394.fOpenTxns
-	lLawspecfield117x31418 := lL1394.fAbortedTxns
-	lLawspecfield117x41419 := lL1394.fBatches
-	var lValue1420 int64
-	lLawspecfield123x11421 := lL1394.fLogEndOffset
-	lValue1420 = lLawspecfield123x11421
-	var lValue1422 *lsfList[lsfLogEntry]
-	lLawspecfield124x01423 := lL1394.fEntries
-	lValue1422 = lLawspecfield124x01423
-	lValue1415 = &lsfPartitionLog{lsfCons[lsfLogEntry](&lsfLogEntry_ControlEntry{lValue1420, lPid1392, lCommit1393}, lValue1422), lLawspecfield117x11416, lLawspecfield117x21417, lLawspecfield117x31418, lLawspecfield117x41419}
-	lMatched1424 := lValue1415
-	lLawspecfield108x01425 := lMatched1424.fEntries
-	lLawspecfield108x21426 := lMatched1424.fOpenTxns
-	lLawspecfield108x31427 := lMatched1424.fAbortedTxns
-	lLawspecfield108x41428 := lMatched1424.fBatches
-	lValue1411 = &lsfPartitionLog{lLawspecfield108x01425, lLawspecupdate1081414, lLawspecfield108x21426, lLawspecfield108x31427, lLawspecfield108x41428}
-	lMatched1429 := lValue1411
-	lLawspecfield82x01430 := lMatched1429.fEntries
-	lLawspecfield82x11431 := lMatched1429.fLogEndOffset
-	lLawspecfield82x31432 := lMatched1429.fAbortedTxns
-	lLawspecfield82x41433 := lMatched1429.fBatches
-	lValue1407 = &lsfPartitionLog{lLawspecfield82x01430, lLawspecfield82x11431, lLawspecupdate821410, lLawspecfield82x31432, lLawspecfield82x41433}
-	lMatched1434 := lValue1407
-	lLawspecfield69x01435 := lMatched1434.fEntries
-	lLawspecfield69x11436 := lMatched1434.fLogEndOffset
-	lLawspecfield69x21437 := lMatched1434.fOpenTxns
-	lLawspecfield69x41438 := lMatched1434.fBatches
-	return &lsfPartitionLog{lLawspecfield69x01435, lLawspecfield69x11436, lLawspecfield69x21437, lAborted1406, lLawspecfield69x41438}
+	lAborted1611 := lValue1600
+	lReplacement1612 := lAborted1611
+	var lValue1613 *lsfPartitionLog
+	var lValue1614 *lsfMap[int64, int64]
+	lLawspecfieldopentxns1615 := lL1599.fOpenTxns
+	lValue1614 = lLawspecfieldopentxns1615
+	lReplacement1616 := lsfDelete(lValue1614, lPid1597, lsfCmp_44a08172da10)
+	var lValue1617 *lsfPartitionLog
+	var lValue1618 int64
+	lLawspecfieldlogendoffset1619 := lL1599.fLogEndOffset
+	lValue1618 = lLawspecfieldlogendoffset1619
+	lReplacement1620 := lsfSaturatingInt64_5bce4ed8(lsfSmall(lValue1618).Add(lsfSmall(int64(1))))
+	var lValue1621 *lsfPartitionLog
+	var lValue1622 int64
+	lLawspecfieldlogendoffset1623 := lL1599.fLogEndOffset
+	lValue1622 = lLawspecfieldlogendoffset1623
+	var lValue1624 *lsfList[lsfLogEntry]
+	lLawspecfieldentries1625 := lL1599.fEntries
+	lValue1624 = lLawspecfieldentries1625
+	lReplacement1626 := lsfCons[lsfLogEntry](&lsfLogEntry_ControlEntry{lValue1622, lPid1597, lCommit1598}, lValue1624)
+	lLawspecfieldlogendoffset1627 := lL1599.fLogEndOffset
+	lLawspecfieldopentxns1628 := lL1599.fOpenTxns
+	lLawspecfieldabortedtxns1629 := lL1599.fAbortedTxns
+	lLawspecfieldbatches1630 := lL1599.fBatches
+	lValue1621 = &lsfPartitionLog{lReplacement1626, lLawspecfieldlogendoffset1627, lLawspecfieldopentxns1628, lLawspecfieldabortedtxns1629, lLawspecfieldbatches1630}
+	lMatched1631 := lValue1621
+	lLawspecfieldentries1632 := lMatched1631.fEntries
+	lLawspecfieldopentxns1633 := lMatched1631.fOpenTxns
+	lLawspecfieldabortedtxns1634 := lMatched1631.fAbortedTxns
+	lLawspecfieldbatches1635 := lMatched1631.fBatches
+	lValue1617 = &lsfPartitionLog{lLawspecfieldentries1632, lReplacement1620, lLawspecfieldopentxns1633, lLawspecfieldabortedtxns1634, lLawspecfieldbatches1635}
+	lMatched1636 := lValue1617
+	lLawspecfieldentries1637 := lMatched1636.fEntries
+	lLawspecfieldlogendoffset1638 := lMatched1636.fLogEndOffset
+	lLawspecfieldabortedtxns1639 := lMatched1636.fAbortedTxns
+	lLawspecfieldbatches1640 := lMatched1636.fBatches
+	lValue1613 = &lsfPartitionLog{lLawspecfieldentries1637, lLawspecfieldlogendoffset1638, lReplacement1616, lLawspecfieldabortedtxns1639, lLawspecfieldbatches1640}
+	lMatched1641 := lValue1613
+	lLawspecfieldentries1642 := lMatched1641.fEntries
+	lLawspecfieldlogendoffset1643 := lMatched1641.fLogEndOffset
+	lLawspecfieldopentxns1644 := lMatched1641.fOpenTxns
+	lLawspecfieldbatches1645 := lMatched1641.fBatches
+	return &lsfPartitionLog{lLawspecfieldentries1642, lLawspecfieldlogendoffset1643, lLawspecfieldopentxns1644, lReplacement1612, lLawspecfieldbatches1645}
 }
 
-// lsfLawtwinKafkaModelWriteMarkers_235 is lawtwin.kafka::lawtwinKafkaModelWriteMarkers.
-func lsfLawtwinKafkaModelWriteMarkers_235(lPid1439 int64, lCommit1440 bool, lTps1441 *lsfList[*lsfTopicPartition], lB1442 *lsfBrokerState) *lsfBrokerState {
+// lsfLawtwinKafkaModelWriteMarkers_c507f08e is lawtwin.kafka::lawtwinKafkaModelWriteMarkers.
+func lsfLawtwinKafkaModelWriteMarkers_c507f08e(lPid1646 int64, lCommit1647 bool, lTps1648 *lsfList[*lsfTopicPartition], lB1649 *lsfBrokerState) *lsfBrokerState {
 	for {
-		if lTps1441 == nil {
-			return lB1442
+		if lTps1648 == nil {
+			return lB1649
 		} else {
-			lTp1443 := lTps1441.head
-			lRest1444 := lTps1441.tail
-			lNext1445 := lRest1444
-			lNext1446 := lsfLawtwinKafkaModelPutLog_218(lTp1443, lsfLawtwinKafkaModelWriteMarker_234(lPid1439, lCommit1440, lsfLawtwinKafkaModelLogOf_200(lTp1443, lB1442)), lB1442)
-			lTps1441 = lNext1445
-			lB1442 = lNext1446
+			lTp1650 := lTps1648.head
+			lRest1651 := lTps1648.tail
+			lNext1652 := lRest1651
+			lNext1653 := lsfLawtwinKafkaModelPutLog_cb3cbf5e(lTp1650, lsfLawtwinKafkaModelWriteMarker_8dc995f8(lPid1646, lCommit1647, lsfLawtwinKafkaModelLogOf_b86b131a(lTp1650, lB1649)), lB1649)
+			lTps1648 = lNext1652
+			lB1649 = lNext1653
 			continue
 		}
 	}
 }
 
-// lsfMemberIds_236 is lawtwin.kafka::memberIds.
-func lsfMemberIds_236(lMs1447 *lsfList[string]) *lsfList[string] {
-	lMatched1448 := lsfDelete(lsfSetOf(lMs1447, lsfCmp_437d0abf423f), "", lsfCmp_437d0abf423f)
-	lItems1449 := lsfSetItems(lMatched1448)
-	return lItems1449
+// lsfMemberIds_1e3fa12d is lawtwin.kafka::memberIds.
+func lsfMemberIds_1e3fa12d(lMs1654 *lsfList[string]) *lsfList[string] {
+	lMatched1655 := lsfDelete(lsfSetOf(lMs1654, lsfCmp_437d0abf423f), "", lsfCmp_437d0abf423f)
+	lItems1656 := lsfSetItems(lMatched1655)
+	return lItems1656
 }
 
-// lsfMissingFrom_237 is lawtwin.kafka::missingFrom.
-func lsfMissingFrom_237(lTps1450 *lsfList[*lsfTopicPartition], lHave1451 *lsfList[*lsfTopicPartition]) *lsfList[*lsfTopicPartition] {
+// lsfMissingFrom_37856ee4 is lawtwin.kafka::missingFrom.
+func lsfMissingFrom_37856ee4(lTps1657 *lsfList[*lsfTopicPartition], lHave1658 *lsfList[*lsfTopicPartition]) *lsfList[*lsfTopicPartition] {
 	for {
-		if lTps1450 == nil {
+		if lTps1657 == nil {
 			return (*lsfList[*lsfTopicPartition])(nil)
 		} else {
-			lTp1452 := lTps1450.head
-			lRest1453 := lTps1450.tail
-			lAll1454 := true
-			for lCell1455 := lHave1451; lCell1455 != nil; lCell1455 = lCell1455.tail {
-				lItem1456 := lCell1455.head
-				if !(!(lsfEq_57a515e0e489(lItem1456, lTp1452))) { lAll1454 = false; break }
+			lTp1659 := lTps1657.head
+			lRest1660 := lTps1657.tail
+			lAll1661 := true
+			for lCell1662 := lHave1658; lCell1662 != nil; lCell1662 = lCell1662.tail {
+				lItem1663 := lCell1662.head
+				if !(!(lsfEq_57a515e0e489(lItem1663, lTp1659))) { lAll1661 = false; break }
 			}
-			if !(lAll1454) {
-				lNext1457 := lRest1453
-				lTps1450 = lNext1457
+			if !(lAll1661) {
+				lNext1664 := lRest1660
+				lTps1657 = lNext1664
 				continue
 			} else {
-				return lsfCons[*lsfTopicPartition](lTp1452, lsfMissingFrom_237(lRest1453, lHave1451))
+				return lsfCons[*lsfTopicPartition](lTp1659, lsfMissingFrom_37856ee4(lRest1660, lHave1658))
 			}
 		}
 	}
 }
 
-// lsfMul32_238 is lawtwin.kafka::mul32.
-func lsfMul32_238(lA1458 uint32, lB1459 uint32) uint32 {
-	return lsfWrappingUInt32_21(lsfSmall(int64(lA1458)).Mul(lsfSmall(int64(lB1459))))
+// lsfMul32_b8774c72 is lawtwin.kafka::mul32.
+func lsfMul32_b8774c72(lA1665 uint32, lB1666 uint32) uint32 {
+	return lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lA1665)).Mul(lsfSmall(int64(lB1666))))
 }
 
-// lsfMurmur2_239 is lawtwin.kafka::murmur2.
-func lsfMurmur2_239(lKey1460 string) uint32 {
-	lH1461 := lsfMurmurChunks_240(lsfOctets(lKey1460), lsfXor32_260(uint32(2538058380), lsfWrappingUInt32_21(lsfSmall(int64(len(lKey1460))))))
-	lH11462 := lsfMul32_238(lsfXor32_260(lH1461, lsfWrappingUInt32_21(lsfSmall(int64(lH1461)).Quot(lsfSmall(int64(8192))))), lsfMurmurM_241(lsfUnit{}))
-	return lsfXor32_260(lH11462, lsfWrappingUInt32_21(lsfSmall(int64(lH11462)).Quot(lsfSmall(int64(32768)))))
+// lsfMurmur2_d0ccf769 is lawtwin.kafka::murmur2.
+func lsfMurmur2_d0ccf769(lKey1667 string) uint32 {
+	lH1668 := lsfMurmurChunks_9898bba5(lsfOctets(lKey1667), lsfXor32_0ea970f5(uint32(2538058380), lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(len(lKey1667))))))
+	lH11669 := lsfMul32_b8774c72(lsfXor32_0ea970f5(lH1668, lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lH1668)).Quot(lsfSmall(int64(8192))))), lsfMurmurM_48968914(lsfUnit{}))
+	return lsfXor32_0ea970f5(lH11669, lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lH11669)).Quot(lsfSmall(int64(32768)))))
 }
 
-// lsfMurmurChunks_240 is lawtwin.kafka::murmurChunks.
-func lsfMurmurChunks_240(lOctets1463 *lsfList[uint8], lH1464 uint32) uint32 {
+// lsfMurmurChunks_9898bba5 is lawtwin.kafka::murmurChunks.
+func lsfMurmurChunks_9898bba5(lOctets1670 *lsfList[uint8], lH1671 uint32) uint32 {
 	for {
-		if lOctets1463 == nil {
-			return lH1464
+		if lOctets1670 == nil {
+			return lH1671
 		} else {
-			lB01465 := lOctets1463.head
-			lRest11466 := lOctets1463.tail
-			if lRest11466 == nil {
-				return lsfMul32_238(lsfXor32_260(lH1464, uint32(lB01465)), lsfMurmurM_241(lsfUnit{}))
+			lB01672 := lOctets1670.head
+			lRest11673 := lOctets1670.tail
+			if lRest11673 == nil {
+				return lsfMul32_b8774c72(lsfXor32_0ea970f5(lH1671, uint32(lB01672)), lsfMurmurM_48968914(lsfUnit{}))
 			} else {
-				lB11467 := lRest11466.head
-				lRest21468 := lRest11466.tail
-				if lRest21468 == nil {
-					return lsfMul32_238(lsfXor32_260(lsfXor32_260(lH1464, lsfWrappingUInt32_21(lsfSmall(int64(lB11467)).Mul(lsfSmall(int64(256))))), uint32(lB01465)), lsfMurmurM_241(lsfUnit{}))
+				lB11674 := lRest11673.head
+				lRest21675 := lRest11673.tail
+				if lRest21675 == nil {
+					return lsfMul32_b8774c72(lsfXor32_0ea970f5(lsfXor32_0ea970f5(lH1671, lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lB11674)).Mul(lsfSmall(int64(256))))), uint32(lB01672)), lsfMurmurM_48968914(lsfUnit{}))
 				} else {
-					lB21469 := lRest21468.head
-					lRest31470 := lRest21468.tail
-					if lRest31470 == nil {
-						return lsfMul32_238(lsfXor32_260(lsfXor32_260(lsfXor32_260(lH1464, lsfWrappingUInt32_21(lsfSmall(int64(lB21469)).Mul(lsfSmall(int64(65536))))), lsfWrappingUInt32_21(lsfSmall(int64(lB11467)).Mul(lsfSmall(int64(256))))), uint32(lB01465)), lsfMurmurM_241(lsfUnit{}))
+					lB21676 := lRest21675.head
+					lRest31677 := lRest21675.tail
+					if lRest31677 == nil {
+						return lsfMul32_b8774c72(lsfXor32_0ea970f5(lsfXor32_0ea970f5(lsfXor32_0ea970f5(lH1671, lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lB21676)).Mul(lsfSmall(int64(65536))))), lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lB11674)).Mul(lsfSmall(int64(256))))), uint32(lB01672)), lsfMurmurM_48968914(lsfUnit{}))
 					} else {
-						lB31471 := lRest31470.head
-						lRest41472 := lRest31470.tail
-						lK01473 := lsfMul32_238(lsfWrappingUInt32_21(lsfSmall(int64(lB01465)).Add(lsfSmall(int64(lB11467)).Mul(lsfSmall(int64(256)))).Add(lsfSmall(int64(lB21469)).Mul(lsfSmall(int64(65536)))).Add(lsfSmall(int64(lB31471)).Mul(lsfSmall(int64(16777216))))), lsfMurmurM_241(lsfUnit{}))
-						lK11474 := lsfMul32_238(lsfXor32_260(lK01473, lsfWrappingUInt32_21(lsfSmall(int64(lK01473)).Quot(lsfSmall(int64(16777216))))), lsfMurmurM_241(lsfUnit{}))
-						lNext1475 := lRest41472
-						lNext1476 := lsfXor32_260(lsfMul32_238(lH1464, lsfMurmurM_241(lsfUnit{})), lK11474)
-						lOctets1463 = lNext1475
-						lH1464 = lNext1476
+						lB31678 := lRest31677.head
+						lRest41679 := lRest31677.tail
+						lK01680 := lsfMul32_b8774c72(lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lB01672)).Add(lsfSmall(int64(lB11674)).Mul(lsfSmall(int64(256)))).Add(lsfSmall(int64(lB21676)).Mul(lsfSmall(int64(65536)))).Add(lsfSmall(int64(lB31678)).Mul(lsfSmall(int64(16777216))))), lsfMurmurM_48968914(lsfUnit{}))
+						lK11681 := lsfMul32_b8774c72(lsfXor32_0ea970f5(lK01680, lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lK01680)).Quot(lsfSmall(int64(16777216))))), lsfMurmurM_48968914(lsfUnit{}))
+						lNext1682 := lRest41679
+						lNext1683 := lsfXor32_0ea970f5(lsfMul32_b8774c72(lH1671, lsfMurmurM_48968914(lsfUnit{})), lK11681)
+						lOctets1670 = lNext1682
+						lH1671 = lNext1683
 						continue
 					}
 				}
@@ -3928,17 +4617,17 @@ func lsfMurmurChunks_240(lOctets1463 *lsfList[uint8], lH1464 uint32) uint32 {
 	}
 }
 
-// lsfMurmurM_241 is lawtwin.kafka::murmurM.
-func lsfMurmurM_241(lU1477 lsfUnit) uint32 {
+// lsfMurmurM_48968914 is lawtwin.kafka::murmurM.
+func lsfMurmurM_48968914(lU1684 lsfUnit) uint32 {
 	return uint32(1540483477)
 }
 
-// lsfMurmurPartitionerChoosePartition_242 is lawtwin.kafka::murmurPartitionerChoosePartition.
-func lsfMurmurPartitionerChoosePartition_242(lKey1478 lsfMaybe[string], lN1479 int32) int32 {
-	if lKey1478.ok {
-		lK1480 := lKey1478.v
-		if (int64(lN1479) >= int64(1)) {
-			return int32(lsfNarrowInt(lsfSmall(int64(lsfToPositive_255(lsfMurmur2_239(lK1480)))).Rem(lsfSmall(int64(lN1479))), -2147483648, 2147483647, "Int32"))
+// lsfMurmurPartitionerChoosePartition_5048c35d is lawtwin.kafka::murmurPartitionerChoosePartition.
+func lsfMurmurPartitionerChoosePartition_5048c35d(lKey1685 lsfMaybe[string], lN1686 int32) int32 {
+	if lKey1685.ok {
+		lK1687 := lKey1685.v
+		if (int64(lN1686) >= int64(1)) {
+			return int32(lsfNarrowInt(lsfSmall(int64(lsfToPositive_fc7029c7(lsfMurmur2_d0ccf769(lK1687)))).Rem(lsfSmall(int64(lN1686))), -2147483648, 2147483647, "Int32"))
 		} else {
 			return int32(0)
 		}
@@ -3947,325 +4636,2455 @@ func lsfMurmurPartitionerChoosePartition_242(lKey1478 lsfMaybe[string], lN1479 i
 	}
 }
 
-// lsfOwnedOf_243 is lawtwin.kafka::ownedOf.
-func lsfOwnedOf_243(lT1481 string, lMs1482 *lsfList[*lsfMemberAssignment]) *lsfList[int32] {
-	if lMs1482 == nil {
+// lsfOwnedOf_0d7fb3ae is lawtwin.kafka::ownedOf.
+func lsfOwnedOf_0d7fb3ae(lT1688 string, lMs1689 *lsfList[*lsfMemberAssignment]) *lsfList[int32] {
+	if lMs1689 == nil {
 		return (*lsfList[int32])(nil)
 	} else {
-		lM1483 := lMs1482.head
-		lRest1484 := lMs1482.tail
-		var lValue1485 *lsfList[*lsfTopicPartition]
-		lLawspecfield6x11486 := lM1483.fAssigned
-		lValue1485 = lLawspecfield6x11486
-		return lsfAppend(lsfPartitionsOfTopic_244(lT1481, lValue1485), lsfOwnedOf_243(lT1481, lRest1484))
+		lM1690 := lMs1689.head
+		lRest1691 := lMs1689.tail
+		var lValue1692 *lsfList[*lsfTopicPartition]
+		lLawspecfieldassigned1693 := lM1690.fAssigned
+		lValue1692 = lLawspecfieldassigned1693
+		return lsfAppend(lsfPartitionsOfTopic_194a4a6c(lT1688, lValue1692), lsfOwnedOf_0d7fb3ae(lT1688, lRest1691))
 	}
 }
 
-// lsfPartitionsOfTopic_244 is lawtwin.kafka::partitionsOfTopic.
-func lsfPartitionsOfTopic_244(lT1487 string, lTps1488 *lsfList[*lsfTopicPartition]) *lsfList[int32] {
+// lsfPartitionOf_343af5ef is lawtwin.kafka::partitionOf.
+func lsfPartitionOf_343af5ef(symbols map[string]*LawSpecSymbol, lTopic1694 string, lChoice1695 lsfPartitionChoice, lR1696 *lsfRecord) lsfEither[lsfKafkaError, *lsfTopicPartition] {
+	lPerformed1697 := lsfFrom_e0f8ce0ed062(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[string](schema, bits, "Text")
+		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int32](schema, bits, "Int32"), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).MetadataRequest(codec0.toNative(lsfTo_437d0abf423f(lTopic1694))))
+	}())
+	lMatched1698 := lPerformed1697
+	if lMatched1698.ok {
+		lN1699 := lMatched1698.v
+		switch lVariant1700 := lChoice1695.(type) {
+			case *lsfPartitionChoice_ToPartition:
+				lP1701 := lVariant1700.fChosen
+				if ((int64(lP1701) >= int64(0)) && (lP1701 < lN1699)) {
+					return lsfRight[lsfKafkaError, *lsfTopicPartition](&lsfTopicPartition{lTopic1694, lP1701})
+				} else {
+					return lsfLeft[lsfKafkaError, *lsfTopicPartition](lsfKafkaError_UnknownTopicOrPartition)
+				}
+			case *lsfPartitionChoice_ByKey:
+				var lValue1702 lsfMaybe[string]
+				lLawspecfieldkey1703 := lR1696.fKey
+				lValue1702 = lLawspecfieldkey1703
+				lPerformed1704 := lsfFrom_b862204e9be7(func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
+					codec1 := lsScalarCodec[int32](schema, bits, "Int32")
+					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Partitioner").(Partitioner).ChoosePartition(codec0.toNative(lsfTo_b276e66efd09(lValue1702)), codec1.toNative(lsfTo_b862204e9be7(lN1699))))
+				}())
+				return lsfRight[lsfKafkaError, *lsfTopicPartition](&lsfTopicPartition{lTopic1694, lPerformed1704})
+			default:
+				panic("unreachable branch reached")
+		}
+	} else {
+		return lsfLeft[lsfKafkaError, *lsfTopicPartition](lsfKafkaError_UnknownTopicOrPartition)
+	}
+}
+
+// lsfPartitionsOfTopic_194a4a6c is lawtwin.kafka::partitionsOfTopic.
+func lsfPartitionsOfTopic_194a4a6c(lT1705 string, lTps1706 *lsfList[*lsfTopicPartition]) *lsfList[int32] {
 	for {
-		if lTps1488 == nil {
+		if lTps1706 == nil {
 			return (*lsfList[int32])(nil)
 		} else {
-			lTp1489 := lTps1488.head
-			lRest1490 := lTps1488.tail
-			var lValue1491 string
-			lLawspecfield9x01492 := lTp1489.fTopic
-			lValue1491 = lLawspecfield9x01492
-			if ((lValue1491) == (lT1487)) {
-				var lValue1493 int32
-				lLawspecfield12x11494 := lTp1489.fPartition
-				lValue1493 = lLawspecfield12x11494
-				return lsfCons[int32](lValue1493, lsfPartitionsOfTopic_244(lT1487, lRest1490))
+			lTp1707 := lTps1706.head
+			lRest1708 := lTps1706.tail
+			var lValue1709 string
+			lLawspecfieldtopic1710 := lTp1707.fTopic
+			lValue1709 = lLawspecfieldtopic1710
+			if ((lValue1709) == (lT1705)) {
+				var lValue1711 int32
+				lLawspecfieldpartition1712 := lTp1707.fPartition
+				lValue1711 = lLawspecfieldpartition1712
+				return lsfCons[int32](lValue1711, lsfPartitionsOfTopic_194a4a6c(lT1705, lRest1708))
 			} else {
-				lNext1495 := lRest1490
-				lTps1488 = lNext1495
+				lNext1713 := lRest1708
+				lTps1706 = lNext1713
 				continue
 			}
 		}
 	}
 }
 
-// lsfPositionsToCommit_245 is lawtwin.kafka::positionsToCommit.
-func lsfPositionsToCommit_245(lTps1496 *lsfList[*lsfTopicPartition], lPositions1497 *lsfMap[*lsfTopicPartition, int64]) *lsfList[*lsfOffsetEntry] {
+// lsfPollPartitions_9d6feda1 is lawtwin.kafka::pollPartitions.
+func lsfPollPartitions_9d6feda1(symbols map[string]*LawSpecSymbol, lTps1714 *lsfList[*lsfTopicPartition], lN1715 int32, lC1716 *lsfConsumerState, lAcc1717 *lsfList[*lsfConsumerRecord]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
 	for {
-		if lTps1496 == nil {
+		if lTps1714 == nil {
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]{lsfRight[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lAcc1717), lC1716}
+		} else {
+			lTp1718 := lTps1714.head
+			lRest1719 := lTps1714.tail
+			lP1720 := lsfConsumerPosition_4da411a3(symbols, lTp1718, lC1716)
+			var lValue1721 lsfEither[lsfKafkaError, *lsfFetchResult]
+			var lAttempted1722 lsfEither[lsfKafkaError, *lsfFetchResult]
+			func() {
+				defer func() {
+					if problem := recover(); problem != nil {
+						if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+							lAttempted1722 = lsfLeft[lsfKafkaError, *lsfFetchResult](lsfFrom_26c7dcf285c5(failure.Value))
+							return
+						}
+						panic(problem)
+					}
+				}()
+				var lValue1723 int64
+				lLawspecfieldfirst1724 := lP1720.fFirst
+				lValue1723 = lLawspecfieldfirst1724
+				var lValue1725 lsfIsolationLevel
+				lLawspecfieldisolation1726 := lC1716.fIsolation
+				lValue1725 = lLawspecfieldisolation1726
+				lPerformed1727 := lsfFrom_d2a1db54643f(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+				}, func() LawSpecValue {
+					return func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+						codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+						codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+						resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfTo_57a515e0e489(lTp1718)), codec1.toNative(lsfTo_44a08172da10(lValue1723)), codec2.toNative(lsfTo_b862204e9be7(lN1715)), codec3.toNative(lsfTo_a519f593a6ed(lValue1725))))
+					}()
+				}))
+				lAttempted1722 = lsfRight[lsfKafkaError, *lsfFetchResult](lPerformed1727)
+			}()
+			lMatched1728 := lAttempted1722
+			if !lMatched1728.right {
+				lLawspecfailure1729 := lMatched1728.l
+				lValue1721 = lsfLeft[lsfKafkaError, *lsfFetchResult](lLawspecfailure1729)
+			} else {
+				lLawspecvalue1730 := lMatched1728.r
+				lValue1721 = lsfRight[lsfKafkaError, *lsfFetchResult](lLawspecvalue1730)
+			}
+			lMatched1731 := lValue1721
+			if !lMatched1731.right {
+				lE1732 := lMatched1731.l
+				var lValue1733 *lsfConsumerState
+				lLawspecfieldsecond1734 := lP1720.fSecond
+				lValue1733 = lLawspecfieldsecond1734
+				return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]{lsfLeft[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lE1732), lValue1733}
+			} else {
+				lFr1735 := lMatched1731.r
+				lNext1736 := lRest1719
+				var lValue1737 int64
+				lLawspecfieldnextoffset1738 := lFr1735.fNextOffset
+				lValue1737 = lLawspecfieldnextoffset1738
+				var lValue1739 *lsfConsumerState
+				lLawspecfieldsecond1740 := lP1720.fSecond
+				lValue1739 = lLawspecfieldsecond1740
+				lNext1741 := lsfWithPosition_867e6b19(lTp1718, lValue1737, lValue1739)
+				var lValue1742 *lsfList[*lsfFetchedRecord]
+				lLawspecfieldrecords1743 := lFr1735.fRecords
+				lValue1742 = lLawspecfieldrecords1743
+				lNext1744 := lsfAppend(lAcc1717, lsfConsumerRecords_9d810f29(lTp1718, lValue1742))
+				lTps1714 = lNext1736
+				lC1716 = lNext1741
+				lAcc1717 = lNext1744
+				continue
+			}
+		}
+	}
+}
+
+// lsfPositionsToCommit_67969440 is lawtwin.kafka::positionsToCommit.
+func lsfPositionsToCommit_67969440(lTps1745 *lsfList[*lsfTopicPartition], lPositions1746 *lsfMap[*lsfTopicPartition, int64]) *lsfList[*lsfOffsetEntry] {
+	for {
+		if lTps1745 == nil {
 			return (*lsfList[*lsfOffsetEntry])(nil)
 		} else {
-			lTp1498 := lTps1496.head
-			lRest1499 := lTps1496.tail
-			lMatched1500 := lsfLookup(lPositions1497, lTp1498, lsfCmp_57a515e0e489)
-			if lMatched1500.ok {
-				lO1501 := lMatched1500.v
-				return lsfCons[*lsfOffsetEntry](&lsfOffsetEntry{lTp1498, lO1501}, lsfPositionsToCommit_245(lRest1499, lPositions1497))
+			lTp1747 := lTps1745.head
+			lRest1748 := lTps1745.tail
+			lMatched1749 := lsfLookup(lPositions1746, lTp1747, lsfCmp_57a515e0e489)
+			if lMatched1749.ok {
+				lO1750 := lMatched1749.v
+				return lsfCons[*lsfOffsetEntry](&lsfOffsetEntry{lTp1747, lO1750}, lsfPositionsToCommit_67969440(lRest1748, lPositions1746))
 			} else {
-				lNext1502 := lRest1499
-				lTps1496 = lNext1502
+				lNext1751 := lRest1748
+				lTps1745 = lNext1751
 				continue
 			}
 		}
 	}
 }
 
-// lsfProducerFlush_246 is lawtwin.kafka::producerFlush.
-func lsfProducerFlush_246(lSt1503 *lsfProducerState) *lsfPair[lsfUnit, *lsfProducerState] {
-	return &lsfPair[lsfUnit, *lsfProducerState]{lsfUnit{}, lSt1503}
+// lsfProducerFlush_f30611db is lawtwin.kafka::producerFlush.
+func lsfProducerFlush_f30611db(lSt1752 *lsfProducerState) *lsfPair[lsfUnit, *lsfProducerState] {
+	return &lsfPair[lsfUnit, *lsfProducerState]{lsfUnit{}, lSt1752}
 }
 
-// lsfReceivedOffsets_247 is lawtwin.kafka::receivedOffsets.
-func lsfReceivedOffsets_247(lRs1504 *lsfList[*lsfConsumerRecord]) *lsfList[int64] {
-	if lRs1504 == nil {
-		return (*lsfList[int64])(nil)
+// lsfProducerIdempotent_c8ab8a13 is lawtwin.kafka::producerIdempotent.
+func lsfProducerIdempotent_c8ab8a13(symbols map[string]*LawSpecSymbol, lSt1753 *lsfProducerState) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState] {
+	var lValue1754 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted1755 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted1755 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed1756 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfNothing[string]()))))
+			}()
+		}))
+		lAttempted1755 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed1756)
+	}()
+	lMatched1757 := lAttempted1755
+	if !lMatched1757.right {
+		lLawspecfailure1758 := lMatched1757.l
+		lValue1754 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure1758)
 	} else {
-		lR1505 := lRs1504.head
-		lRest1506 := lRs1504.tail
-		var lValue1507 int64
-		lLawspecfield10x11508 := lR1505.fReceivedAt
-		lValue1507 = lLawspecfield10x11508
-		return lsfCons[int64](lValue1507, lsfReceivedOffsets_247(lRest1506))
+		lLawspecvalue1759 := lMatched1757.r
+		lValue1754 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue1759)
+	}
+	lMatched1760 := lValue1754
+	if !lMatched1760.right {
+		lE1761 := lMatched1760.l
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]{lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lE1761), lSt1753}
+	} else {
+		lPe1762 := lMatched1760.r
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]{lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPe1762), &lsfProducerState{lsfJust[*lsfProducerIdAndEpoch](lPe1762), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489), lsfNothing[*lsfLastSend]()}}
 	}
 }
 
-// lsfReceivedRecords_248 is lawtwin.kafka::receivedRecords.
-func lsfReceivedRecords_248(lRs1509 *lsfList[*lsfConsumerRecord]) *lsfList[*lsfRecord] {
-	if lRs1509 == nil {
-		return (*lsfList[*lsfRecord])(nil)
-	} else {
-		lR1510 := lRs1509.head
-		lRest1511 := lRs1509.tail
-		var lValue1512 *lsfRecord
-		lLawspecfield10x21513 := lR1510.fReceived
-		lValue1512 = lLawspecfield10x21513
-		return lsfCons[*lsfRecord](lValue1512, lsfReceivedRecords_248(lRest1511))
-	}
-}
-
-// lsfRecordsOf_249 is lawtwin.kafka::recordsOf.
-func lsfRecordsOf_249(lRs1514 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfRecord] {
-	if lRs1514 == nil {
-		return (*lsfList[*lsfRecord])(nil)
-	} else {
-		lR1515 := lRs1514.head
-		lRest1516 := lRs1514.tail
-		var lValue1517 *lsfRecord
-		lLawspecfield10x11518 := lR1515.fEntry
-		lValue1517 = lLawspecfield10x11518
-		return lsfCons[*lsfRecord](lValue1517, lsfRecordsOf_249(lRest1516))
-	}
-}
-
-// lsfSamePartition_250 is lawtwin.kafka::samePartition.
-func lsfSamePartition_250(lA1519 lsfEither[lsfKafkaError, *lsfRecordMetadata], lB1520 lsfEither[lsfKafkaError, *lsfRecordMetadata]) bool {
-	if !lA1519.right {
-		return false
-	} else {
-		lX1521 := lA1519.r
-		if !lB1520.right {
-			return false
+// lsfProducerRetry_aaf3a88a is lawtwin.kafka::producerRetry.
+func lsfProducerRetry_aaf3a88a(symbols map[string]*LawSpecSymbol, lSt1763 *lsfProducerState) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	var lValue1764 lsfMaybe[*lsfLastSend]
+	lLawspecfieldlastsend1765 := lSt1763.fLastSend
+	lValue1764 = lLawspecfieldlastsend1765
+	lMatched1766 := lValue1764
+	if lMatched1766.ok {
+		lL1767 := lMatched1766.v
+		var lValue1768 lsfEither[lsfKafkaError, int64]
+		var lAttempted1769 lsfEither[lsfKafkaError, int64]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted1769 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue1770 *lsfTopicPartition
+			lLawspecfieldlastpartition1771 := lL1767.fLastPartition
+			lValue1770 = lLawspecfieldlastpartition1771
+			var lValue1772 lsfMaybe[*lsfProducerTag]
+			lLawspecfieldlasttag1773 := lL1767.fLastTag
+			lValue1772 = lLawspecfieldlasttag1773
+			var lValue1774 *lsfList[*lsfRecord]
+			lLawspecfieldlastrecords1775 := lL1767.fLastRecords
+			lValue1774 = lLawspecfieldlastrecords1775
+			lPerformed1776 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lValue1770)), codec1.toNative(lsfTo_c818bd20f406(lValue1772)), codec2.toNative(lsfTo_e3583a5b5bdc(lValue1774))))
+				}()
+			}))
+			lAttempted1769 = lsfRight[lsfKafkaError, int64](lPerformed1776)
+		}()
+		lMatched1777 := lAttempted1769
+		if !lMatched1777.right {
+			lLawspecfailure1778 := lMatched1777.l
+			lValue1768 = lsfLeft[lsfKafkaError, int64](lLawspecfailure1778)
 		} else {
-			lY1522 := lB1520.r
-			var lValue1523 *lsfTopicPartition
-			lLawspecfield28x01524 := lX1521.fSentTo
-			lValue1523 = lLawspecfield28x01524
-			var lValue1525 *lsfTopicPartition
-			lLawspecfield29x01526 := lY1522.fSentTo
-			lValue1525 = lLawspecfield29x01526
-			return (lsfEq_57a515e0e489(lValue1523, lValue1525))
+			lLawspecvalue1779 := lMatched1777.r
+			lValue1768 = lsfRight[lsfKafkaError, int64](lLawspecvalue1779)
+		}
+		lMatched1780 := lValue1768
+		if !lMatched1780.right {
+			lE1781 := lMatched1780.l
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE1781), lSt1763}
+		} else {
+			lOffset1782 := lMatched1780.r
+			var lValue1783 *lsfTopicPartition
+			lLawspecfieldlastpartition1784 := lL1767.fLastPartition
+			lValue1783 = lLawspecfieldlastpartition1784
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfRight[lsfKafkaError, *lsfRecordMetadata](&lsfRecordMetadata{lValue1783, lOffset1782}), lSt1763}
+		}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lsfKafkaError_IllegalState), lSt1763}
+	}
+}
+
+// lsfProducerSend_9064c6b5 is lawtwin.kafka::producerSend.
+func lsfProducerSend_9064c6b5(symbols map[string]*LawSpecSymbol, lPr1785 *lsfProducerRecord, lSt1786 *lsfProducerState) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	var lValue1787 string
+	lLawspecfielddestination1788 := lPr1785.fDestination
+	lValue1787 = lLawspecfielddestination1788
+	var lValue1789 lsfPartitionChoice
+	lLawspecfieldchoice1790 := lPr1785.fChoice
+	lValue1789 = lLawspecfieldchoice1790
+	var lValue1791 *lsfRecord
+	lLawspecfieldpayload1792 := lPr1785.fPayload
+	lValue1791 = lLawspecfieldpayload1792
+	lMatched1793 := lsfPartitionOf_343af5ef(symbols, lValue1787, lValue1789, lValue1791)
+	if !lMatched1793.right {
+		lE1794 := lMatched1793.l
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE1794), lSt1786}
+	} else {
+		lTp1795 := lMatched1793.r
+		var lValue1796 *lsfMap[*lsfTopicPartition, int32]
+		lLawspecfieldsequences1797 := lSt1786.fSequences
+		lValue1796 = lLawspecfieldsequences1797
+		lSequence1798 := lsfSequenceFor_9d79724c(lTp1795, lValue1796)
+		var lValue1799 lsfMaybe[*lsfProducerIdAndEpoch]
+		lLawspecfieldidentity1800 := lSt1786.fIdentity
+		lValue1799 = lLawspecfieldidentity1800
+		lTag1801 := lsfTagFor_a88d3846(lValue1799, lSequence1798)
+		var lValue1802 lsfEither[lsfKafkaError, int64]
+		var lAttempted1803 lsfEither[lsfKafkaError, int64]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted1803 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue1804 *lsfRecord
+			lLawspecfieldpayload1805 := lPr1785.fPayload
+			lValue1804 = lLawspecfieldpayload1805
+			lPerformed1806 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp1795)), codec1.toNative(lsfTo_c818bd20f406(lTag1801)), codec2.toNative(lsfTo_e3583a5b5bdc(lsfCons[*lsfRecord](lValue1804, (*lsfList[*lsfRecord])(nil))))))
+				}()
+			}))
+			lAttempted1803 = lsfRight[lsfKafkaError, int64](lPerformed1806)
+		}()
+		lMatched1807 := lAttempted1803
+		if !lMatched1807.right {
+			lLawspecfailure1808 := lMatched1807.l
+			lValue1802 = lsfLeft[lsfKafkaError, int64](lLawspecfailure1808)
+		} else {
+			lLawspecvalue1809 := lMatched1807.r
+			lValue1802 = lsfRight[lsfKafkaError, int64](lLawspecvalue1809)
+		}
+		lMatched1810 := lValue1802
+		if !lMatched1810.right {
+			lE1811 := lMatched1810.l
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE1811), lSt1786}
+		} else {
+			lOffset1812 := lMatched1810.r
+			var lValue1813 *lsfProducerState
+			var lValue1814 *lsfRecord
+			lLawspecfieldpayload1815 := lPr1785.fPayload
+			lValue1814 = lLawspecfieldpayload1815
+			lReplacement1816 := lsfJust[*lsfLastSend](&lsfLastSend{lTp1795, lTag1801, lsfCons[*lsfRecord](lValue1814, (*lsfList[*lsfRecord])(nil))})
+			var lValue1817 *lsfProducerState
+			var lValue1818 *lsfMap[*lsfTopicPartition, int32]
+			lLawspecfieldsequences1819 := lSt1786.fSequences
+			lValue1818 = lLawspecfieldsequences1819
+			lReplacement1820 := lsfPut(lValue1818, lTp1795, lsfSaturatingInt32_9e8d3b43(lsfSmall(int64(lSequence1798)).Add(lsfSmall(int64(1)))), lsfCmp_57a515e0e489)
+			lLawspecfieldidentity1821 := lSt1786.fIdentity
+			lLawspecfieldlastsend1822 := lSt1786.fLastSend
+			lValue1817 = &lsfProducerState{lLawspecfieldidentity1821, lReplacement1820, lLawspecfieldlastsend1822}
+			lMatched1823 := lValue1817
+			lLawspecfieldidentity1824 := lMatched1823.fIdentity
+			lLawspecfieldsequences1825 := lMatched1823.fSequences
+			lValue1813 = &lsfProducerState{lLawspecfieldidentity1824, lLawspecfieldsequences1825, lReplacement1816}
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfRight[lsfKafkaError, *lsfRecordMetadata](&lsfRecordMetadata{lTp1795, lOffset1812}), lValue1813}
 		}
 	}
 }
 
-// lsfSequenceFor_251 is lawtwin.kafka::sequenceFor.
-func lsfSequenceFor_251(lTp1527 *lsfTopicPartition, lSequences1528 *lsfMap[*lsfTopicPartition, int32]) int32 {
-	lMatched1529 := lsfLookup(lSequences1528, lTp1527, lsfCmp_57a515e0e489)
-	if lMatched1529.ok {
-		lN1530 := lMatched1529.v
-		return lN1530
+// lsfReadFrom_f028a48d is lawtwin.kafka::readFrom.
+func lsfReadFrom_f028a48d(symbols map[string]*LawSpecSymbol, lTp1826 *lsfTopicPartition, lOffset1827 int64, lIsolation1828 lsfIsolationLevel) *lsfList[*lsfRecord] {
+	var lValue1829 lsfEither[lsfKafkaError, *lsfFetchResult]
+	var lAttempted1830 lsfEither[lsfKafkaError, *lsfFetchResult]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted1830 = lsfLeft[lsfKafkaError, *lsfFetchResult](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed1831 := lsfFrom_d2a1db54643f(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+				codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+				codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+				resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfTo_57a515e0e489(lTp1826)), codec1.toNative(lsfTo_44a08172da10(lOffset1827)), codec2.toNative(lsfTo_b862204e9be7(int32(1000))), codec3.toNative(lsfTo_a519f593a6ed(lIsolation1828))))
+			}()
+		}))
+		lAttempted1830 = lsfRight[lsfKafkaError, *lsfFetchResult](lPerformed1831)
+	}()
+	lMatched1832 := lAttempted1830
+	if !lMatched1832.right {
+		lLawspecfailure1833 := lMatched1832.l
+		lValue1829 = lsfLeft[lsfKafkaError, *lsfFetchResult](lLawspecfailure1833)
+	} else {
+		lLawspecvalue1834 := lMatched1832.r
+		lValue1829 = lsfRight[lsfKafkaError, *lsfFetchResult](lLawspecvalue1834)
+	}
+	lMatched1835 := lValue1829
+	if !lMatched1835.right {
+		return (*lsfList[*lsfRecord])(nil)
+	} else {
+		lFr1836 := lMatched1835.r
+		var lValue1837 *lsfList[*lsfFetchedRecord]
+		lLawspecfieldrecords1838 := lFr1836.fRecords
+		lValue1837 = lLawspecfieldrecords1838
+		return lsfRecordsOf_a7b339ef(lValue1837)
+	}
+}
+
+// lsfReadInOrder_ba595483 is lawtwin.kafka::readInOrder.
+func lsfReadInOrder_ba595483(symbols map[string]*LawSpecSymbol, lA1839 lsfEither[lsfKafkaError, *lsfRecordMetadata], lB1840 lsfEither[lsfKafkaError, *lsfRecordMetadata], lFirst1841 *lsfRecord, lSecond1842 *lsfRecord) bool {
+	if !lA1839.right {
+		return false
+	} else {
+		lX1843 := lA1839.r
+		if !lB1840.right {
+			return false
+		} else {
+			lY1844 := lB1840.r
+			var lValue1845 *lsfTopicPartition
+			lLawspecfieldsentto1846 := lX1843.fSentTo
+			lValue1845 = lLawspecfieldsentto1846
+			lTp1847 := lValue1845
+			var lValue1848 *lsfTopicPartition
+			lLawspecfieldsentto1849 := lY1844.fSentTo
+			lValue1848 = lLawspecfieldsentto1849
+			var lLogic1856 bool
+			if (lsfEq_57a515e0e489(lValue1848, lTp1847)) {
+				var lValue1852 int64
+				lLawspecfieldsentat1853 := lY1844.fSentAt
+				lValue1852 = lLawspecfieldsentat1853
+				var lValue1854 int64
+				lLawspecfieldsentat1855 := lX1843.fSentAt
+				lValue1854 = lLawspecfieldsentat1855
+				lLogic1856 = (lsfCmpInt(lsfSmall(lValue1852), lsfSmall(lValue1854).Add(lsfSmall(int64(1)))) == 0)
+			} else { lLogic1856 = false }
+			var lLogic1874 bool
+			if lLogic1856 {
+				var lValue1857 bool
+				lPerformed1858 := lsfFrom_b120ceed78cb(func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Assign(codec0.toNative(lsfTo_3250492fe9ac(lsfCons[*lsfTopicPartition](lTp1847, (*lsfList[*lsfTopicPartition])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}())
+				_ = lPerformed1858
+				var lValue1859 bool
+				var lValue1860 int64
+				lLawspecfieldsentat1861 := lX1843.fSentAt
+				lValue1860 = lLawspecfieldsentat1861
+				lPerformed1862 := lsfFrom_6c1d71d067da(func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Seek(codec0.toNative(lsfTo_57a515e0e489(lTp1847)), codec1.toNative(lsfTo_44a08172da10(lValue1860))))
+				}())
+				lMatched1863 := lPerformed1862
+				if !lMatched1863.right {
+					lValue1859 = false
+				} else {
+					lValue1859 = true
+				}
+				var lLogic1873 bool
+				if lValue1859 {
+					var lValue1864 bool
+					lPerformed1865 := lsfFrom_88281415992f(func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+						resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfTo_b862204e9be7(int32(2)))))
+					}())
+					lMatched1866 := lPerformed1865
+					if !lMatched1866.right {
+						lValue1864 = false
+					} else {
+						lRs1867 := lMatched1866.r
+						var lLogic1872 bool
+						if (lsfEq_e3583a5b5bdc(lsfReceivedRecords_c3c84323(lRs1867), lsfCons[*lsfRecord](lFirst1841, lsfCons[*lsfRecord](lSecond1842, (*lsfList[*lsfRecord])(nil))))) {
+							var lValue1868 int64
+							lLawspecfieldsentat1869 := lX1843.fSentAt
+							lValue1868 = lLawspecfieldsentat1869
+							var lValue1870 int64
+							lLawspecfieldsentat1871 := lY1844.fSentAt
+							lValue1870 = lLawspecfieldsentat1871
+							lLogic1872 = (lsfEq_75994955e886(lsfReceivedOffsets_6c3a7a20(lRs1867), lsfCons[int64](lValue1868, lsfCons[int64](lValue1870, (*lsfList[int64])(nil)))))
+						} else { lLogic1872 = false }
+						lValue1864 = lLogic1872
+					}
+					lLogic1873 = lValue1864
+				} else { lLogic1873 = false }
+				lValue1857 = lLogic1873
+				lLogic1874 = lValue1857
+			} else { lLogic1874 = false }
+			return lLogic1874
+		}
+	}
+}
+
+// lsfReceivedOffsets_6c3a7a20 is lawtwin.kafka::receivedOffsets.
+func lsfReceivedOffsets_6c3a7a20(lRs1875 *lsfList[*lsfConsumerRecord]) *lsfList[int64] {
+	if lRs1875 == nil {
+		return (*lsfList[int64])(nil)
+	} else {
+		lR1876 := lRs1875.head
+		lRest1877 := lRs1875.tail
+		var lValue1878 int64
+		lLawspecfieldreceivedat1879 := lR1876.fReceivedAt
+		lValue1878 = lLawspecfieldreceivedat1879
+		return lsfCons[int64](lValue1878, lsfReceivedOffsets_6c3a7a20(lRest1877))
+	}
+}
+
+// lsfReceivedRecords_c3c84323 is lawtwin.kafka::receivedRecords.
+func lsfReceivedRecords_c3c84323(lRs1880 *lsfList[*lsfConsumerRecord]) *lsfList[*lsfRecord] {
+	if lRs1880 == nil {
+		return (*lsfList[*lsfRecord])(nil)
+	} else {
+		lR1881 := lRs1880.head
+		lRest1882 := lRs1880.tail
+		var lValue1883 *lsfRecord
+		lLawspecfieldreceived1884 := lR1881.fReceived
+		lValue1883 = lLawspecfieldreceived1884
+		return lsfCons[*lsfRecord](lValue1883, lsfReceivedRecords_c3c84323(lRest1882))
+	}
+}
+
+// lsfRecordsOf_a7b339ef is lawtwin.kafka::recordsOf.
+func lsfRecordsOf_a7b339ef(lRs1885 *lsfList[*lsfFetchedRecord]) *lsfList[*lsfRecord] {
+	if lRs1885 == nil {
+		return (*lsfList[*lsfRecord])(nil)
+	} else {
+		lR1886 := lRs1885.head
+		lRest1887 := lRs1885.tail
+		var lValue1888 *lsfRecord
+		lLawspecfieldentry1889 := lR1886.fEntry
+		lValue1888 = lLawspecfieldentry1889
+		return lsfCons[*lsfRecord](lValue1888, lsfRecordsOf_a7b339ef(lRest1887))
+	}
+}
+
+// lsfResumesAtCommitted_13d41b73 is lawtwin.kafka::resumesAtCommitted.
+func lsfResumesAtCommitted_13d41b73(symbols map[string]*LawSpecSymbol, lT1890 string, lG1891 string, lM1892 string, lN1893 int32) bool {
+	lTp1894 := &lsfTopicPartition{lT1890, int32(0)}
+	lPerformed1895 := lsfFrom_479a8e1cd590(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[string](schema, bits, "Text")
+		codec1 := lsScalarCodec[string](schema, bits, "Text")
+		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(lsfTo_437d0abf423f(lG1891)), codec1.toNative(lsfTo_437d0abf423f(lM1892)), codec2.toNative(lsfTo_8ec0351dc657(lsfCons[string](lT1890, (*lsfList[string])(nil))))))
+	}())
+	lJoined1896 := lPerformed1895
+	lPerformed1897 := lsfFrom_88281415992f(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfTo_b862204e9be7(lN1893))))
+	}())
+	lPolled1898 := lPerformed1897
+	lPerformed1899 := lsfFrom_6c1d71d067da(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommitSync())
+	}())
+	lCommitted1900 := lPerformed1899
+	lPerformed1901 := lsfFrom_b120ceed78cb(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+		return func() LawSpecValue {
+			lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Close()
+			return resultCodec.fromNative(LawSpecUnit{})
+		}()
+	}())
+	_ = lPerformed1901
+	lPerformed1902 := lsfFrom_479a8e1cd590(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[string](schema, bits, "Text")
+		codec1 := lsScalarCodec[string](schema, bits, "Text")
+		codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(lsfTo_437d0abf423f(lG1891)), codec1.toNative(lsfTo_437d0abf423f(lM1892)), codec2.toNative(lsfTo_8ec0351dc657(lsfCons[string](lT1890, (*lsfList[string])(nil))))))
+	}())
+	lRejoined1903 := lPerformed1902
+	lPerformed1904 := lsfFrom_aff9cc782806(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Position(codec0.toNative(lsfTo_57a515e0e489(lTp1894))))
+	}())
+	lResumed1905 := lPerformed1904
+	lPerformed1906 := lsfFrom_c09136e29464(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommittedOffset(codec0.toNative(lsfTo_57a515e0e489(lTp1894))))
+	}())
+	lAfter1907 := lPerformed1906
+	lPerformed1908 := lsfFrom_88281415992f(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[int32](schema, bits, "Int32")
+		resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsfTo_b862204e9be7(int32(100)))))
+	}())
+	lAgain1909 := lPerformed1908
+	var lValue1910 bool
+	if !lJoined1896.right {
+		lValue1910 = false
+	} else {
+		lValue1910 = true
+	}
+	var lLogic1912 bool
+	if lValue1910 {
+		var lValue1911 bool
+		if !lPolled1898.right {
+			lValue1911 = false
+		} else {
+			lValue1911 = true
+		}
+		lLogic1912 = lValue1911
+	} else { lLogic1912 = false }
+	var lLogic1914 bool
+	if lLogic1912 {
+		var lValue1913 bool
+		if !lCommitted1900.right {
+			lValue1913 = false
+		} else {
+			lValue1913 = true
+		}
+		lLogic1914 = lValue1913
+	} else { lLogic1914 = false }
+	var lLogic1916 bool
+	if lLogic1914 {
+		var lValue1915 bool
+		if !lRejoined1903.right {
+			lValue1915 = false
+		} else {
+			lValue1915 = true
+		}
+		lLogic1916 = lValue1915
+	} else { lLogic1916 = false }
+	var lLogic1922 bool
+	if lLogic1916 {
+		var lValue1917 bool
+		if lAfter1907.ok {
+			lC1918 := lAfter1907.v
+			var lLogic1921 bool
+			if (lsfEq_aff9cc782806(lResumed1905, lsfRight[lsfKafkaError, int64](lC1918))) {
+				var lValue1919 bool
+				if !lAgain1909.right {
+					lValue1919 = false
+				} else {
+					lRs1920 := lAgain1909.r
+					lValue1919 = lsfAllAtLeast_3df55027(lC1918, lsfReceivedOffsets_6c3a7a20(lRs1920))
+				}
+				lLogic1921 = lValue1919
+			} else { lLogic1921 = false }
+			lValue1917 = lLogic1921
+		} else {
+			lValue1917 = false
+		}
+		lLogic1922 = lValue1917
+	} else { lLogic1922 = false }
+	return lLogic1922
+}
+
+// lsfSamePartition_cee4f2dc is lawtwin.kafka::samePartition.
+func lsfSamePartition_cee4f2dc(lA1923 lsfEither[lsfKafkaError, *lsfRecordMetadata], lB1924 lsfEither[lsfKafkaError, *lsfRecordMetadata]) bool {
+	if !lA1923.right {
+		return false
+	} else {
+		lX1925 := lA1923.r
+		if !lB1924.right {
+			return false
+		} else {
+			lY1926 := lB1924.r
+			var lValue1927 *lsfTopicPartition
+			lLawspecfieldsentto1928 := lX1925.fSentTo
+			lValue1927 = lLawspecfieldsentto1928
+			var lValue1929 *lsfTopicPartition
+			lLawspecfieldsentto1930 := lY1926.fSentTo
+			lValue1929 = lLawspecfieldsentto1930
+			return (lsfEq_57a515e0e489(lValue1927, lValue1929))
+		}
+	}
+}
+
+// lsfSequenceFor_9d79724c is lawtwin.kafka::sequenceFor.
+func lsfSequenceFor_9d79724c(lTp1931 *lsfTopicPartition, lSequences1932 *lsfMap[*lsfTopicPartition, int32]) int32 {
+	lMatched1933 := lsfLookup(lSequences1932, lTp1931, lsfCmp_57a515e0e489)
+	if lMatched1933.ok {
+		lN1934 := lMatched1933.v
+		return lN1934
 	} else {
 		return int32(0)
 	}
 }
 
-// lsfSmallBatch_252 is lawtwin.kafka::smallBatch.
-func lsfSmallBatch_252(lBatch1531 *lsfList[*lsfRecord]) bool {
-	return ((int64(lBatch1531.length()) >= int64(1)) && (int64(lBatch1531.length()) <= int64(100)))
+// lsfSmallBatch_dc4ae7bb is lawtwin.kafka::smallBatch.
+func lsfSmallBatch_dc4ae7bb(lBatch1935 *lsfList[*lsfRecord]) bool {
+	return ((int64(lBatch1935.length()) >= int64(1)) && (int64(lBatch1935.length()) <= int64(100)))
 }
 
-// lsfTagFor_253 is lawtwin.kafka::tagFor.
-func lsfTagFor_253(lIdentity1532 lsfMaybe[*lsfProducerIdAndEpoch], lSequence1533 int32) lsfMaybe[*lsfProducerTag] {
-	if lIdentity1532.ok {
-		lPe1534 := lIdentity1532.v
-		return lsfJust[*lsfProducerTag](lsfTagOf_254(lPe1534, lSequence1533))
+// lsfStableBelowHigh_60981bc4 is lawtwin.kafka::stableBelowHigh.
+func lsfStableBelowHigh_60981bc4(symbols map[string]*LawSpecSymbol, lT1936 string, lTxid1937 string, lBatch1938 *lsfList[*lsfRecord]) bool {
+	lTp1939 := &lsfTopicPartition{lT1936, int32(0)}
+	var lValue1940 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted1941 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted1941 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed1942 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid1937)))))
+			}()
+		}))
+		lAttempted1941 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed1942)
+	}()
+	lMatched1943 := lAttempted1941
+	if !lMatched1943.right {
+		lLawspecfailure1944 := lMatched1943.l
+		lValue1940 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure1944)
+	} else {
+		lLawspecvalue1945 := lMatched1943.r
+		lValue1940 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue1945)
+	}
+	lMatched1946 := lValue1940
+	if !lMatched1946.right {
+		return false
+	} else {
+		lPe1947 := lMatched1946.r
+		var lValue1948 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted1949 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted1949 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue1950 int64
+			lLawspecfieldproducerid1951 := lPe1947.fProducerId
+			lValue1950 = lLawspecfieldproducerid1951
+			var lValue1952 int16
+			lLawspecfieldproducerepoch1953 := lPe1947.fProducerEpoch
+			lValue1952 = lLawspecfieldproducerepoch1953
+			lPerformed1954 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid1937)), codec1.toNative(lsfTo_44a08172da10(lValue1950)), codec2.toNative(lsfTo_07dabd732290(lValue1952)), codec3.toNative(lsfTo_3250492fe9ac(lsfCons[*lsfTopicPartition](lTp1939, (*lsfList[*lsfTopicPartition])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted1949 = lsfRight[lsfKafkaError, lsfUnit](lPerformed1954)
+		}()
+		lMatched1955 := lAttempted1949
+		if !lMatched1955.right {
+			lLawspecfailure1956 := lMatched1955.l
+			lValue1948 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure1956)
+		} else {
+			lLawspecvalue1957 := lMatched1955.r
+			lValue1948 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue1957)
+		}
+		lAdded1958 := lValue1948
+		var lValue1959 lsfEither[lsfKafkaError, int64]
+		var lAttempted1960 lsfEither[lsfKafkaError, int64]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted1960 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed1961 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp1939)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lPe1947, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch1938))))
+				}()
+			}))
+			lAttempted1960 = lsfRight[lsfKafkaError, int64](lPerformed1961)
+		}()
+		lMatched1962 := lAttempted1960
+		if !lMatched1962.right {
+			lLawspecfailure1963 := lMatched1962.l
+			lValue1959 = lsfLeft[lsfKafkaError, int64](lLawspecfailure1963)
+		} else {
+			lLawspecvalue1964 := lMatched1962.r
+			lValue1959 = lsfRight[lsfKafkaError, int64](lLawspecvalue1964)
+		}
+		lWritten1965 := lValue1959
+		var lValue1966 lsfEither[lsfKafkaError, *lsfFetchResult]
+		var lAttempted1967 lsfEither[lsfKafkaError, *lsfFetchResult]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted1967 = lsfLeft[lsfKafkaError, *lsfFetchResult](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed1968 := lsfFrom_d2a1db54643f(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
+					codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
+					resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(lsfTo_57a515e0e489(lTp1939)), codec1.toNative(lsfTo_44a08172da10(int64(0))), codec2.toNative(lsfTo_b862204e9be7(int32(1000))), codec3.toNative(lsfTo_a519f593a6ed(lsfIsolationLevel_ReadUncommitted))))
+				}()
+			}))
+			lAttempted1967 = lsfRight[lsfKafkaError, *lsfFetchResult](lPerformed1968)
+		}()
+		lMatched1969 := lAttempted1967
+		if !lMatched1969.right {
+			lLawspecfailure1970 := lMatched1969.l
+			lValue1966 = lsfLeft[lsfKafkaError, *lsfFetchResult](lLawspecfailure1970)
+		} else {
+			lLawspecvalue1971 := lMatched1969.r
+			lValue1966 = lsfRight[lsfKafkaError, *lsfFetchResult](lLawspecvalue1971)
+		}
+		lMatched1972 := lValue1966
+		if !lMatched1972.right {
+			return false
+		} else {
+			lFr1973 := lMatched1972.r
+			var lValue1974 bool
+			if !lAdded1958.right {
+				lValue1974 = false
+			} else {
+				lValue1974 = true
+			}
+			var lLogic1976 bool
+			if lValue1974 {
+				var lValue1975 bool
+				if !lWritten1965.right {
+					lValue1975 = false
+				} else {
+					lValue1975 = true
+				}
+				lLogic1976 = lValue1975
+			} else { lLogic1976 = false }
+			var lLogic1981 bool
+			if lLogic1976 {
+				var lValue1977 int64
+				lLawspecfieldlaststableoffset1978 := lFr1973.fLastStableOffset
+				lValue1977 = lLawspecfieldlaststableoffset1978
+				var lValue1979 int64
+				lLawspecfieldhighwatermark1980 := lFr1973.fHighWatermark
+				lValue1979 = lLawspecfieldhighwatermark1980
+				lLogic1981 = (lValue1977 <= lValue1979)
+			} else { lLogic1981 = false }
+			var lLogic1986 bool
+			if lLogic1981 {
+				var lValue1982 bool
+				if !lWritten1965.right {
+					lValue1982 = false
+				} else {
+					lBase1983 := lWritten1965.r
+					var lValue1984 int64
+					lLawspecfieldlaststableoffset1985 := lFr1973.fLastStableOffset
+					lValue1984 = lLawspecfieldlaststableoffset1985
+					lValue1982 = (lValue1984 <= lBase1983)
+				}
+				lLogic1986 = lValue1982
+			} else { lLogic1986 = false }
+			return lLogic1986
+		}
+	}
+}
+
+// lsfTagFor_a88d3846 is lawtwin.kafka::tagFor.
+func lsfTagFor_a88d3846(lIdentity1987 lsfMaybe[*lsfProducerIdAndEpoch], lSequence1988 int32) lsfMaybe[*lsfProducerTag] {
+	if lIdentity1987.ok {
+		lPe1989 := lIdentity1987.v
+		return lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lPe1989, lSequence1988))
 	} else {
 		return lsfNothing[*lsfProducerTag]()
 	}
 }
 
-// lsfTagOf_254 is lawtwin.kafka::tagOf.
-func lsfTagOf_254(lPe1535 *lsfProducerIdAndEpoch, lSequence1536 int32) *lsfProducerTag {
-	var lValue1537 int64
-	lLawspecfield0x01538 := lPe1535.fProducerId
-	lValue1537 = lLawspecfield0x01538
-	var lValue1539 int16
-	lLawspecfield1x11540 := lPe1535.fProducerEpoch
-	lValue1539 = lLawspecfield1x11540
-	return &lsfProducerTag{lValue1537, lValue1539, lSequence1536}
+// lsfTagOf_39235de7 is lawtwin.kafka::tagOf.
+func lsfTagOf_39235de7(lPe1990 *lsfProducerIdAndEpoch, lSequence1991 int32) *lsfProducerTag {
+	var lValue1992 int64
+	lLawspecfieldproducerid1993 := lPe1990.fProducerId
+	lValue1992 = lLawspecfieldproducerid1993
+	var lValue1994 int16
+	lLawspecfieldproducerepoch1995 := lPe1990.fProducerEpoch
+	lValue1994 = lLawspecfieldproducerepoch1995
+	return &lsfProducerTag{lValue1992, lValue1994, lSequence1991}
 }
 
-// lsfToPositive_255 is lawtwin.kafka::toPositive.
-func lsfToPositive_255(lH1541 uint32) uint32 {
-	return lsfWrappingUInt32_21(lsfSmall(int64(lH1541)).Rem(lsfSmall(int64(2147483648))))
+// lsfToPositive_fc7029c7 is lawtwin.kafka::toPositive.
+func lsfToPositive_fc7029c7(lH1996 uint32) uint32 {
+	return lsfWrappingUInt32_1ef3ce20(lsfSmall(int64(lH1996)).Rem(lsfSmall(int64(2147483648))))
 }
 
-// lsfTransactionsBegin_256 is lawtwin.kafka::transactionsBegin.
-func lsfTransactionsBegin_256(lSt1542 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
-	var lValue1543 lsfMaybe[*lsfProducerIdAndEpoch]
-	lLawspecfield28x11544 := lSt1542.fProducer
-	lValue1543 = lLawspecfield28x11544
-	lMatched1545 := lValue1543
-	if lMatched1545.ok {
-		var lValue1546 bool
-		lLawspecfield49x31547 := lSt1542.fInTransaction
-		lValue1546 = lLawspecfield49x31547
-		if lValue1546 {
-			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt1542}
-		} else {
-			var lValue1548 *lsfTransactionState
-			var lValue1549 *lsfTransactionState
-			var lValue1550 *lsfTransactionState
-			lLawspecfield72x01551 := lSt1542.fTransactionalId
-			lLawspecfield72x11552 := lSt1542.fProducer
-			lLawspecfield72x21553 := lSt1542.fTxnSequences
-			lLawspecfield72x41554 := lSt1542.fAdded
-			lLawspecfield72x51555 := lSt1542.fOffsetsSent
-			lValue1550 = &lsfTransactionState{lLawspecfield72x01551, lLawspecfield72x11552, lLawspecfield72x21553, true, lLawspecfield72x41554, lLawspecfield72x51555}
-			lMatched1556 := lValue1550
-			lLawspecfield71x01557 := lMatched1556.fTransactionalId
-			lLawspecfield71x11558 := lMatched1556.fProducer
-			lLawspecfield71x21559 := lMatched1556.fTxnSequences
-			lLawspecfield71x31560 := lMatched1556.fInTransaction
-			lLawspecfield71x51561 := lMatched1556.fOffsetsSent
-			lValue1549 = &lsfTransactionState{lLawspecfield71x01557, lLawspecfield71x11558, lLawspecfield71x21559, lLawspecfield71x31560, (*lsfList[*lsfTopicPartition])(nil), lLawspecfield71x51561}
-			lMatched1562 := lValue1549
-			lLawspecfield70x01563 := lMatched1562.fTransactionalId
-			lLawspecfield70x11564 := lMatched1562.fProducer
-			lLawspecfield70x21565 := lMatched1562.fTxnSequences
-			lLawspecfield70x31566 := lMatched1562.fInTransaction
-			lLawspecfield70x41567 := lMatched1562.fAdded
-			lValue1548 = &lsfTransactionState{lLawspecfield70x01563, lLawspecfield70x11564, lLawspecfield70x21565, lLawspecfield70x31566, lLawspecfield70x41567, false}
-			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue1548}
-		}
+// lsfTransactionThenRead_81bf7b1b is lawtwin.kafka::transactionThenRead.
+func lsfTransactionThenRead_81bf7b1b(symbols map[string]*LawSpecSymbol, lT1997 string, lTxid1998 string, lBatch1999 *lsfList[*lsfRecord], lCommit2000 bool) bool {
+	lTp2001 := &lsfTopicPartition{lT1997, int32(0)}
+	var lValue2002 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted2003 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted2003 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed2004 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid1998)))))
+			}()
+		}))
+		lAttempted2003 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2004)
+	}()
+	lMatched2005 := lAttempted2003
+	if !lMatched2005.right {
+		lLawspecfailure2006 := lMatched2005.l
+		lValue2002 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure2006)
 	} else {
-		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt1542}
+		lLawspecvalue2007 := lMatched2005.r
+		lValue2002 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue2007)
+	}
+	lMatched2008 := lValue2002
+	if !lMatched2008.right {
+		return false
+	} else {
+		lPe2009 := lMatched2008.r
+		var lValue2010 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2011 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2011 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2012 int64
+			lLawspecfieldproducerid2013 := lPe2009.fProducerId
+			lValue2012 = lLawspecfieldproducerid2013
+			var lValue2014 int16
+			lLawspecfieldproducerepoch2015 := lPe2009.fProducerEpoch
+			lValue2014 = lLawspecfieldproducerepoch2015
+			lPerformed2016 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid1998)), codec1.toNative(lsfTo_44a08172da10(lValue2012)), codec2.toNative(lsfTo_07dabd732290(lValue2014)), codec3.toNative(lsfTo_3250492fe9ac(lsfCons[*lsfTopicPartition](lTp2001, (*lsfList[*lsfTopicPartition])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2011 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2016)
+		}()
+		lMatched2017 := lAttempted2011
+		if !lMatched2017.right {
+			lLawspecfailure2018 := lMatched2017.l
+			lValue2010 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2018)
+		} else {
+			lLawspecvalue2019 := lMatched2017.r
+			lValue2010 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2019)
+		}
+		lMatched2020 := lValue2010
+		if !lMatched2020.right {
+			return false
+		} else {
+			var lValue2021 lsfEither[lsfKafkaError, int64]
+			var lAttempted2022 lsfEither[lsfKafkaError, int64]
+			func() {
+				defer func() {
+					if problem := recover(); problem != nil {
+						if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+							lAttempted2022 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+							return
+						}
+						panic(problem)
+					}
+				}()
+				lPerformed2023 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+				}, func() LawSpecValue {
+					return func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2001)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lPe2009, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lBatch1999))))
+					}()
+				}))
+				lAttempted2022 = lsfRight[lsfKafkaError, int64](lPerformed2023)
+			}()
+			lMatched2024 := lAttempted2022
+			if !lMatched2024.right {
+				lLawspecfailure2025 := lMatched2024.l
+				lValue2021 = lsfLeft[lsfKafkaError, int64](lLawspecfailure2025)
+			} else {
+				lLawspecvalue2026 := lMatched2024.r
+				lValue2021 = lsfRight[lsfKafkaError, int64](lLawspecvalue2026)
+			}
+			lMatched2027 := lValue2021
+			if !lMatched2027.right {
+				return false
+			} else {
+				lBase2028 := lMatched2027.r
+				lHiddenwhileopen2029 := (lsfEq_e3583a5b5bdc(lsfCommittedFrom_a524f37d(symbols, lTp2001, lBase2028), (*lsfList[*lsfRecord])(nil)))
+				lSeenuncommitted2030 := (lsfEq_e3583a5b5bdc(lsfUncommittedFrom_8a57847d(symbols, lTp2001, lBase2028), lBatch1999))
+				var lValue2031 lsfEither[lsfKafkaError, lsfUnit]
+				var lAttempted2032 lsfEither[lsfKafkaError, lsfUnit]
+				func() {
+					defer func() {
+						if problem := recover(); problem != nil {
+							if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+								lAttempted2032 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+								return
+							}
+							panic(problem)
+						}
+					}()
+					var lValue2033 int64
+					lLawspecfieldproducerid2034 := lPe2009.fProducerId
+					lValue2033 = lLawspecfieldproducerid2034
+					var lValue2035 int16
+					lLawspecfieldproducerepoch2036 := lPe2009.fProducerEpoch
+					lValue2035 = lLawspecfieldproducerepoch2036
+					lPerformed2037 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+					}, func() LawSpecValue {
+						return func() LawSpecValue {
+							schema := _lawSpecDefinitionSchema
+							bits := 64
+							_, _ = schema, bits
+							codec0 := lsScalarCodec[string](schema, bits, "Text")
+							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+							codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+							return func() LawSpecValue {
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid1998)), codec1.toNative(lsfTo_44a08172da10(lValue2033)), codec2.toNative(lsfTo_07dabd732290(lValue2035)), codec3.toNative(lsfTo_d267428fb2ca(lCommit2000)))
+								return resultCodec.fromNative(LawSpecUnit{})
+							}()
+						}()
+					}))
+					lAttempted2032 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2037)
+				}()
+				lMatched2038 := lAttempted2032
+				if !lMatched2038.right {
+					lLawspecfailure2039 := lMatched2038.l
+					lValue2031 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2039)
+				} else {
+					lLawspecvalue2040 := lMatched2038.r
+					lValue2031 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2040)
+				}
+				lMatched2041 := lValue2031
+				if !lMatched2041.right {
+					return false
+				} else {
+					var lLogic2043 bool
+					if ((lHiddenwhileopen2029 && lSeenuncommitted2030) && (lsfEq_e3583a5b5bdc(lsfUncommittedFrom_8a57847d(symbols, lTp2001, lBase2028), lBatch1999))) {
+						var lValue2042 bool
+						if lCommit2000 {
+							lValue2042 = (lsfEq_e3583a5b5bdc(lsfCommittedFrom_a524f37d(symbols, lTp2001, lBase2028), lBatch1999))
+						} else {
+							lValue2042 = (lsfEq_e3583a5b5bdc(lsfCommittedFrom_a524f37d(symbols, lTp2001, lBase2028), (*lsfList[*lsfRecord])(nil)))
+						}
+						lLogic2043 = lValue2042
+					} else { lLogic2043 = false }
+					return lLogic2043
+				}
+			}
+		}
 	}
 }
 
-// lsfViewOf_257 is lawtwin.kafka::viewOf.
-func lsfViewOf_257(lM1568 string, lView1569 *lsfGroupView) *lsfList[*lsfTopicPartition] {
-	var lValue1570 *lsfList[*lsfMemberAssignment]
-	lLawspecfield0x11571 := lView1569.fMembers
-	lValue1570 = lLawspecfield0x11571
-	return lsfAssignmentIn_26(lM1568, lValue1570)
+// lsfTransactionalOffsets_80320406 is lawtwin.kafka::transactionalOffsets.
+func lsfTransactionalOffsets_80320406(symbols map[string]*LawSpecSymbol, lT2044 string, lTxid2045 string, lG2046 string, lOffset2047 int64) bool {
+	lTp2048 := &lsfTopicPartition{lT2044, int32(0)}
+	lPerformed2049 := lsfFrom_c09136e29464(func() LawSpecValue {
+		schema := _lawSpecDefinitionSchema
+		bits := 64
+		_, _ = schema, bits
+		codec0 := lsScalarCodec[string](schema, bits, "Text")
+		codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+		resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+		return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lG2046)), codec1.toNative(lsfTo_57a515e0e489(lTp2048))))
+	}())
+	lBefore2050 := lPerformed2049
+	var lValue2051 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted2052 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted2052 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed2053 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2045)))))
+			}()
+		}))
+		lAttempted2052 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2053)
+	}()
+	lMatched2054 := lAttempted2052
+	if !lMatched2054.right {
+		lLawspecfailure2055 := lMatched2054.l
+		lValue2051 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure2055)
+	} else {
+		lLawspecvalue2056 := lMatched2054.r
+		lValue2051 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue2056)
+	}
+	lMatched2057 := lValue2051
+	if !lMatched2057.right {
+		return false
+	} else {
+		lPe2058 := lMatched2057.r
+		var lValue2059 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2060 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2060 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2061 int64
+			lLawspecfieldproducerid2062 := lPe2058.fProducerId
+			lValue2061 = lLawspecfieldproducerid2062
+			var lValue2063 int16
+			lLawspecfieldproducerepoch2064 := lPe2058.fProducerEpoch
+			lValue2063 = lLawspecfieldproducerepoch2064
+			lPerformed2065 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsScalarCodec[string](schema, bits, "Text")
+					codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2045)), codec1.toNative(lsfTo_44a08172da10(lValue2061)), codec2.toNative(lsfTo_07dabd732290(lValue2063)), codec3.toNative(lsfTo_437d0abf423f(lG2046)), codec4.toNative(lsfTo_582052f40a9c(lsfCons[*lsfOffsetEntry](&lsfOffsetEntry{lTp2048, lOffset2047}, (*lsfList[*lsfOffsetEntry])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2060 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2065)
+		}()
+		lMatched2066 := lAttempted2060
+		if !lMatched2066.right {
+			lLawspecfailure2067 := lMatched2066.l
+			lValue2059 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2067)
+		} else {
+			lLawspecvalue2068 := lMatched2066.r
+			lValue2059 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2068)
+		}
+		lSent2069 := lValue2059
+		var lValue2070 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2071 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2071 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2072 int64
+			lLawspecfieldproducerid2073 := lPe2058.fProducerId
+			lValue2072 = lLawspecfieldproducerid2073
+			var lValue2074 int16
+			lLawspecfieldproducerepoch2075 := lPe2058.fProducerEpoch
+			lValue2074 = lLawspecfieldproducerepoch2075
+			lPerformed2076 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2045)), codec1.toNative(lsfTo_44a08172da10(lValue2072)), codec2.toNative(lsfTo_07dabd732290(lValue2074)), codec3.toNative(lsfTo_d267428fb2ca(false)))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2071 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2076)
+		}()
+		lMatched2077 := lAttempted2071
+		if !lMatched2077.right {
+			lLawspecfailure2078 := lMatched2077.l
+			lValue2070 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2078)
+		} else {
+			lLawspecvalue2079 := lMatched2077.r
+			lValue2070 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2079)
+		}
+		lAborted2080 := lValue2070
+		lPerformed2081 := lsfFrom_c09136e29464(func() LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			codec0 := lsScalarCodec[string](schema, bits, "Text")
+			codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+			resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lG2046)), codec1.toNative(lsfTo_57a515e0e489(lTp2048))))
+		}())
+		lAfterabort2082 := lPerformed2081
+		var lValue2083 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2084 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2084 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2085 int64
+			lLawspecfieldproducerid2086 := lPe2058.fProducerId
+			lValue2085 = lLawspecfieldproducerid2086
+			var lValue2087 int16
+			lLawspecfieldproducerepoch2088 := lPe2058.fProducerEpoch
+			lValue2087 = lLawspecfieldproducerepoch2088
+			lPerformed2089 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsScalarCodec[string](schema, bits, "Text")
+					codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2045)), codec1.toNative(lsfTo_44a08172da10(lValue2085)), codec2.toNative(lsfTo_07dabd732290(lValue2087)), codec3.toNative(lsfTo_437d0abf423f(lG2046)), codec4.toNative(lsfTo_582052f40a9c(lsfCons[*lsfOffsetEntry](&lsfOffsetEntry{lTp2048, lOffset2047}, (*lsfList[*lsfOffsetEntry])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2084 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2089)
+		}()
+		lMatched2090 := lAttempted2084
+		if !lMatched2090.right {
+			lLawspecfailure2091 := lMatched2090.l
+			lValue2083 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2091)
+		} else {
+			lLawspecvalue2092 := lMatched2090.r
+			lValue2083 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2092)
+		}
+		lResent2093 := lValue2083
+		var lValue2094 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2095 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2095 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2096 int64
+			lLawspecfieldproducerid2097 := lPe2058.fProducerId
+			lValue2096 = lLawspecfieldproducerid2097
+			var lValue2098 int16
+			lLawspecfieldproducerepoch2099 := lPe2058.fProducerEpoch
+			lValue2098 = lLawspecfieldproducerepoch2099
+			lPerformed2100 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2045)), codec1.toNative(lsfTo_44a08172da10(lValue2096)), codec2.toNative(lsfTo_07dabd732290(lValue2098)), codec3.toNative(lsfTo_d267428fb2ca(true)))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2095 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2100)
+		}()
+		lMatched2101 := lAttempted2095
+		if !lMatched2101.right {
+			lLawspecfailure2102 := lMatched2101.l
+			lValue2094 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2102)
+		} else {
+			lLawspecvalue2103 := lMatched2101.r
+			lValue2094 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2103)
+		}
+		lCommitted2104 := lValue2094
+		var lValue2105 bool
+		if !lSent2069.right {
+			lValue2105 = false
+		} else {
+			lValue2105 = true
+		}
+		var lLogic2107 bool
+		if lValue2105 {
+			var lValue2106 bool
+			if !lAborted2080.right {
+				lValue2106 = false
+			} else {
+				lValue2106 = true
+			}
+			lLogic2107 = lValue2106
+		} else { lLogic2107 = false }
+		var lLogic2109 bool
+		if (lLogic2107 && (lsfEq_c09136e29464(lAfterabort2082, lBefore2050))) {
+			var lValue2108 bool
+			if !lResent2093.right {
+				lValue2108 = false
+			} else {
+				lValue2108 = true
+			}
+			lLogic2109 = lValue2108
+		} else { lLogic2109 = false }
+		var lLogic2111 bool
+		if lLogic2109 {
+			var lValue2110 bool
+			if !lCommitted2104.right {
+				lValue2110 = false
+			} else {
+				lValue2110 = true
+			}
+			lLogic2111 = lValue2110
+		} else { lLogic2111 = false }
+		var lLogic2113 bool
+		if lLogic2111 {
+			lPerformed2112 := lsfFrom_c09136e29464(func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsScalarCodec[string](schema, bits, "Text")
+				codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(lsfTo_437d0abf423f(lG2046)), codec1.toNative(lsfTo_57a515e0e489(lTp2048))))
+			}())
+			lLogic2113 = (lsfEq_c09136e29464(lPerformed2112, lsfJust[int64](lOffset2047)))
+		} else { lLogic2113 = false }
+		return lLogic2113
+	}
 }
 
-// lsfWithAssignment_258 is lawtwin.kafka::withAssignment.
-func lsfWithAssignment_258(lG1572 lsfMaybe[string], lM1573 string, lGen1574 int32, lTopics1575 *lsfList[string], lTps1576 *lsfList[*lsfTopicPartition], lC1577 *lsfConsumerState) *lsfConsumerState {
-	var lValue1578 *lsfMap[*lsfTopicPartition, int64]
-	lLawspecfield11x51579 := lC1577.fPositions
-	lValue1578 = lLawspecfield11x51579
-	lLawspecupdate21580 := lsfKeepPositions_67(lTps1576, lValue1578, lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int64]])(nil), lsfCmp_57a515e0e489))
-	var lValue1581 *lsfConsumerState
-	var lValue1582 *lsfConsumerState
-	var lValue1583 *lsfConsumerState
-	var lValue1584 *lsfConsumerState
-	var lValue1585 *lsfConsumerState
-	lLawspecfield24x11586 := lC1577.fMember
-	lLawspecfield24x21587 := lC1577.fGeneration
-	lLawspecfield24x31588 := lC1577.fSubscription
-	lLawspecfield24x41589 := lC1577.fAssigned
-	lLawspecfield24x51590 := lC1577.fPositions
-	lLawspecfield24x61591 := lC1577.fIsolation
-	lValue1585 = &lsfConsumerState{lG1572, lLawspecfield24x11586, lLawspecfield24x21587, lLawspecfield24x31588, lLawspecfield24x41589, lLawspecfield24x51590, lLawspecfield24x61591}
-	lMatched1592 := lValue1585
-	lLawspecfield23x01593 := lMatched1592.fGroup
-	lLawspecfield23x21594 := lMatched1592.fGeneration
-	lLawspecfield23x31595 := lMatched1592.fSubscription
-	lLawspecfield23x41596 := lMatched1592.fAssigned
-	lLawspecfield23x51597 := lMatched1592.fPositions
-	lLawspecfield23x61598 := lMatched1592.fIsolation
-	lValue1584 = &lsfConsumerState{lLawspecfield23x01593, lM1573, lLawspecfield23x21594, lLawspecfield23x31595, lLawspecfield23x41596, lLawspecfield23x51597, lLawspecfield23x61598}
-	lMatched1599 := lValue1584
-	lLawspecfield22x01600 := lMatched1599.fGroup
-	lLawspecfield22x11601 := lMatched1599.fMember
-	lLawspecfield22x31602 := lMatched1599.fSubscription
-	lLawspecfield22x41603 := lMatched1599.fAssigned
-	lLawspecfield22x51604 := lMatched1599.fPositions
-	lLawspecfield22x61605 := lMatched1599.fIsolation
-	lValue1583 = &lsfConsumerState{lLawspecfield22x01600, lLawspecfield22x11601, lGen1574, lLawspecfield22x31602, lLawspecfield22x41603, lLawspecfield22x51604, lLawspecfield22x61605}
-	lMatched1606 := lValue1583
-	lLawspecfield21x01607 := lMatched1606.fGroup
-	lLawspecfield21x11608 := lMatched1606.fMember
-	lLawspecfield21x21609 := lMatched1606.fGeneration
-	lLawspecfield21x41610 := lMatched1606.fAssigned
-	lLawspecfield21x51611 := lMatched1606.fPositions
-	lLawspecfield21x61612 := lMatched1606.fIsolation
-	lValue1582 = &lsfConsumerState{lLawspecfield21x01607, lLawspecfield21x11608, lLawspecfield21x21609, lTopics1575, lLawspecfield21x41610, lLawspecfield21x51611, lLawspecfield21x61612}
-	lMatched1613 := lValue1582
-	lLawspecfield20x01614 := lMatched1613.fGroup
-	lLawspecfield20x11615 := lMatched1613.fMember
-	lLawspecfield20x21616 := lMatched1613.fGeneration
-	lLawspecfield20x31617 := lMatched1613.fSubscription
-	lLawspecfield20x51618 := lMatched1613.fPositions
-	lLawspecfield20x61619 := lMatched1613.fIsolation
-	lValue1581 = &lsfConsumerState{lLawspecfield20x01614, lLawspecfield20x11615, lLawspecfield20x21616, lLawspecfield20x31617, lTps1576, lLawspecfield20x51618, lLawspecfield20x61619}
-	lMatched1620 := lValue1581
-	lLawspecfield2x01621 := lMatched1620.fGroup
-	lLawspecfield2x11622 := lMatched1620.fMember
-	lLawspecfield2x21623 := lMatched1620.fGeneration
-	lLawspecfield2x31624 := lMatched1620.fSubscription
-	lLawspecfield2x41625 := lMatched1620.fAssigned
-	lLawspecfield2x61626 := lMatched1620.fIsolation
-	return &lsfConsumerState{lLawspecfield2x01621, lLawspecfield2x11622, lLawspecfield2x21623, lLawspecfield2x31624, lLawspecfield2x41625, lLawspecupdate21580, lLawspecfield2x61626}
+// lsfTransactionsAbort_256496fb is lawtwin.kafka::transactionsAbort.
+func lsfTransactionsAbort_256496fb(symbols map[string]*LawSpecSymbol, lSt2114 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsEnd_fe18afb7(symbols, false, lSt2114)
 }
 
-// lsfWithPosition_259 is lawtwin.kafka::withPosition.
-func lsfWithPosition_259(lTp1627 *lsfTopicPartition, lOffset1628 int64, lC1629 *lsfConsumerState) *lsfConsumerState {
-	var lValue1630 *lsfMap[*lsfTopicPartition, int64]
-	lLawspecfield21x51631 := lC1629.fPositions
-	lValue1630 = lLawspecfield21x51631
-	lLawspecupdate21632 := lsfPut(lValue1630, lTp1627, lOffset1628, lsfCmp_57a515e0e489)
-	lLawspecfield2x01633 := lC1629.fGroup
-	lLawspecfield2x11634 := lC1629.fMember
-	lLawspecfield2x21635 := lC1629.fGeneration
-	lLawspecfield2x31636 := lC1629.fSubscription
-	lLawspecfield2x41637 := lC1629.fAssigned
-	lLawspecfield2x61638 := lC1629.fIsolation
-	return &lsfConsumerState{lLawspecfield2x01633, lLawspecfield2x11634, lLawspecfield2x21635, lLawspecfield2x31636, lLawspecfield2x41637, lLawspecupdate21632, lLawspecfield2x61638}
+// lsfTransactionsAdd_1f41c92e is lawtwin.kafka::transactionsAdd.
+func lsfTransactionsAdd_1f41c92e(symbols map[string]*LawSpecSymbol, lTps2115 *lsfList[*lsfTopicPartition], lSt2116 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	var lValue2117 lsfMaybe[*lsfProducerIdAndEpoch]
+	lLawspecfieldproducer2118 := lSt2116.fProducer
+	lValue2117 = lLawspecfieldproducer2118
+	lMatched2119 := lValue2117
+	if lMatched2119.ok {
+		lId2120 := lMatched2119.v
+		var lValue2121 bool
+		lLawspecfieldintransaction2122 := lSt2116.fInTransaction
+		lValue2121 = lLawspecfieldintransaction2122
+		if !(lValue2121) {
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2116}
+		} else {
+			var lValue2123 *lsfList[*lsfTopicPartition]
+			lLawspecfieldadded2124 := lSt2116.fAdded
+			lValue2123 = lLawspecfieldadded2124
+			lMissing2125 := lsfMissingFrom_37856ee4(lTps2115, lValue2123)
+			var lValue2126 bool
+			if lMissing2125 == nil {
+				lValue2126 = true
+			} else {
+				lValue2126 = false
+			}
+			if lValue2126 {
+				return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lSt2116}
+			} else {
+				var lValue2127 lsfEither[lsfKafkaError, lsfUnit]
+				var lAttempted2128 lsfEither[lsfKafkaError, lsfUnit]
+				func() {
+					defer func() {
+						if problem := recover(); problem != nil {
+							if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+								lAttempted2128 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+								return
+							}
+							panic(problem)
+						}
+					}()
+					var lValue2129 string
+					lLawspecfieldtransactionalid2130 := lSt2116.fTransactionalId
+					lValue2129 = lLawspecfieldtransactionalid2130
+					var lValue2131 int64
+					lLawspecfieldproducerid2132 := lId2120.fProducerId
+					lValue2131 = lLawspecfieldproducerid2132
+					var lValue2133 int16
+					lLawspecfieldproducerepoch2134 := lId2120.fProducerEpoch
+					lValue2133 = lLawspecfieldproducerepoch2134
+					lPerformed2135 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+					}, func() LawSpecValue {
+						return func() LawSpecValue {
+							schema := _lawSpecDefinitionSchema
+							bits := 64
+							_, _ = schema, bits
+							codec0 := lsScalarCodec[string](schema, bits, "Text")
+							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+							codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+							return func() LawSpecValue {
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lValue2129)), codec1.toNative(lsfTo_44a08172da10(lValue2131)), codec2.toNative(lsfTo_07dabd732290(lValue2133)), codec3.toNative(lsfTo_3250492fe9ac(lMissing2125)))
+								return resultCodec.fromNative(LawSpecUnit{})
+							}()
+						}()
+					}))
+					lAttempted2128 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2135)
+				}()
+				lMatched2136 := lAttempted2128
+				if !lMatched2136.right {
+					lLawspecfailure2137 := lMatched2136.l
+					lValue2127 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2137)
+				} else {
+					lLawspecvalue2138 := lMatched2136.r
+					lValue2127 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2138)
+				}
+				lMatched2139 := lValue2127
+				if !lMatched2139.right {
+					lE2140 := lMatched2139.l
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lE2140), lSt2116}
+				} else {
+					var lValue2141 *lsfTransactionState
+					var lValue2142 *lsfList[*lsfTopicPartition]
+					lLawspecfieldadded2143 := lSt2116.fAdded
+					lValue2142 = lLawspecfieldadded2143
+					lReplacement2144 := lsfAppend(lMissing2125, lValue2142)
+					lLawspecfieldtransactionalid2145 := lSt2116.fTransactionalId
+					lLawspecfieldproducer2146 := lSt2116.fProducer
+					lLawspecfieldtxnsequences2147 := lSt2116.fTxnSequences
+					lLawspecfieldintransaction2148 := lSt2116.fInTransaction
+					lLawspecfieldoffsetssent2149 := lSt2116.fOffsetsSent
+					lValue2141 = &lsfTransactionState{lLawspecfieldtransactionalid2145, lLawspecfieldproducer2146, lLawspecfieldtxnsequences2147, lLawspecfieldintransaction2148, lReplacement2144, lLawspecfieldoffsetssent2149}
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue2141}
+				}
+			}
+		}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2116}
+	}
 }
 
-// lsfXor32_260 is lawtwin.kafka::xor32.
-func lsfXor32_260(lA1639 uint32, lB1640 uint32) uint32 {
-	return lsfWrappingUInt32_21(lsfXorBits_261(lsfSmall(int64(lA1639)), lsfSmall(int64(lB1640)), lsfSmall(2147483648)))
+// lsfTransactionsBegin_5d267b99 is lawtwin.kafka::transactionsBegin.
+func lsfTransactionsBegin_5d267b99(lSt2150 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	var lValue2151 lsfMaybe[*lsfProducerIdAndEpoch]
+	lLawspecfieldproducer2152 := lSt2150.fProducer
+	lValue2151 = lLawspecfieldproducer2152
+	lMatched2153 := lValue2151
+	if lMatched2153.ok {
+		var lValue2154 bool
+		lLawspecfieldintransaction2155 := lSt2150.fInTransaction
+		lValue2154 = lLawspecfieldintransaction2155
+		if lValue2154 {
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2150}
+		} else {
+			var lValue2156 *lsfTransactionState
+			lReplacement2157 := false
+			var lValue2158 *lsfTransactionState
+			lReplacement2159 := (*lsfList[*lsfTopicPartition])(nil)
+			var lValue2160 *lsfTransactionState
+			lReplacement2161 := true
+			lLawspecfieldtransactionalid2162 := lSt2150.fTransactionalId
+			lLawspecfieldproducer2163 := lSt2150.fProducer
+			lLawspecfieldtxnsequences2164 := lSt2150.fTxnSequences
+			lLawspecfieldadded2165 := lSt2150.fAdded
+			lLawspecfieldoffsetssent2166 := lSt2150.fOffsetsSent
+			lValue2160 = &lsfTransactionState{lLawspecfieldtransactionalid2162, lLawspecfieldproducer2163, lLawspecfieldtxnsequences2164, lReplacement2161, lLawspecfieldadded2165, lLawspecfieldoffsetssent2166}
+			lMatched2167 := lValue2160
+			lLawspecfieldtransactionalid2168 := lMatched2167.fTransactionalId
+			lLawspecfieldproducer2169 := lMatched2167.fProducer
+			lLawspecfieldtxnsequences2170 := lMatched2167.fTxnSequences
+			lLawspecfieldintransaction2171 := lMatched2167.fInTransaction
+			lLawspecfieldoffsetssent2172 := lMatched2167.fOffsetsSent
+			lValue2158 = &lsfTransactionState{lLawspecfieldtransactionalid2168, lLawspecfieldproducer2169, lLawspecfieldtxnsequences2170, lLawspecfieldintransaction2171, lReplacement2159, lLawspecfieldoffsetssent2172}
+			lMatched2173 := lValue2158
+			lLawspecfieldtransactionalid2174 := lMatched2173.fTransactionalId
+			lLawspecfieldproducer2175 := lMatched2173.fProducer
+			lLawspecfieldtxnsequences2176 := lMatched2173.fTxnSequences
+			lLawspecfieldintransaction2177 := lMatched2173.fInTransaction
+			lLawspecfieldadded2178 := lMatched2173.fAdded
+			lValue2156 = &lsfTransactionState{lLawspecfieldtransactionalid2174, lLawspecfieldproducer2175, lLawspecfieldtxnsequences2176, lLawspecfieldintransaction2177, lLawspecfieldadded2178, lReplacement2157}
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue2156}
+		}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2150}
+	}
 }
 
-// lsfXorBits_261 is lawtwin.kafka::xorBits.
-func lsfXorBits_261(lA1641 lsfInt, lB1642 lsfInt, lBit1643 lsfInt) lsfInt {
-	if (((lsfCmpInt(lBit1643, lsfSmall(int64(0))) <= 0) || (lsfCmpInt(lA1641, lsfSmall(int64(0))) < 0)) || (lsfCmpInt(lB1642, lsfSmall(int64(0))) < 0)) {
+// lsfTransactionsCommit_afadd0fa is lawtwin.kafka::transactionsCommit.
+func lsfTransactionsCommit_afadd0fa(symbols map[string]*LawSpecSymbol, lSt2179 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	return lsfTransactionsEnd_fe18afb7(symbols, true, lSt2179)
+}
+
+// lsfTransactionsEnd_fe18afb7 is lawtwin.kafka::transactionsEnd.
+func lsfTransactionsEnd_fe18afb7(symbols map[string]*LawSpecSymbol, lCommit2180 bool, lSt2181 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	var lValue2182 lsfMaybe[*lsfProducerIdAndEpoch]
+	lLawspecfieldproducer2183 := lSt2181.fProducer
+	lValue2182 = lLawspecfieldproducer2183
+	lMatched2184 := lValue2182
+	if lMatched2184.ok {
+		lId2185 := lMatched2184.v
+		var lValue2186 bool
+		lLawspecfieldintransaction2187 := lSt2181.fInTransaction
+		lValue2186 = lLawspecfieldintransaction2187
+		if !(lValue2186) {
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2181}
+		} else {
+			var lValue2188 bool
+			var lValue2189 *lsfList[*lsfTopicPartition]
+			lLawspecfieldadded2190 := lSt2181.fAdded
+			lValue2189 = lLawspecfieldadded2190
+			lMatched2191 := lValue2189
+			if lMatched2191 == nil {
+				lValue2188 = true
+			} else {
+				lValue2188 = false
+			}
+			var lLogic2194 bool
+			if lValue2188 {
+				var lValue2192 bool
+				lLawspecfieldoffsetssent2193 := lSt2181.fOffsetsSent
+				lValue2192 = lLawspecfieldoffsetssent2193
+				lLogic2194 = !(lValue2192)
+			} else { lLogic2194 = false }
+			if lLogic2194 {
+				var lValue2195 *lsfTransactionState
+				lReplacement2196 := false
+				var lValue2197 *lsfTransactionState
+				lReplacement2198 := (*lsfList[*lsfTopicPartition])(nil)
+				var lValue2199 *lsfTransactionState
+				lReplacement2200 := false
+				lLawspecfieldtransactionalid2201 := lSt2181.fTransactionalId
+				lLawspecfieldproducer2202 := lSt2181.fProducer
+				lLawspecfieldtxnsequences2203 := lSt2181.fTxnSequences
+				lLawspecfieldadded2204 := lSt2181.fAdded
+				lLawspecfieldoffsetssent2205 := lSt2181.fOffsetsSent
+				lValue2199 = &lsfTransactionState{lLawspecfieldtransactionalid2201, lLawspecfieldproducer2202, lLawspecfieldtxnsequences2203, lReplacement2200, lLawspecfieldadded2204, lLawspecfieldoffsetssent2205}
+				lMatched2206 := lValue2199
+				lLawspecfieldtransactionalid2207 := lMatched2206.fTransactionalId
+				lLawspecfieldproducer2208 := lMatched2206.fProducer
+				lLawspecfieldtxnsequences2209 := lMatched2206.fTxnSequences
+				lLawspecfieldintransaction2210 := lMatched2206.fInTransaction
+				lLawspecfieldoffsetssent2211 := lMatched2206.fOffsetsSent
+				lValue2197 = &lsfTransactionState{lLawspecfieldtransactionalid2207, lLawspecfieldproducer2208, lLawspecfieldtxnsequences2209, lLawspecfieldintransaction2210, lReplacement2198, lLawspecfieldoffsetssent2211}
+				lMatched2212 := lValue2197
+				lLawspecfieldtransactionalid2213 := lMatched2212.fTransactionalId
+				lLawspecfieldproducer2214 := lMatched2212.fProducer
+				lLawspecfieldtxnsequences2215 := lMatched2212.fTxnSequences
+				lLawspecfieldintransaction2216 := lMatched2212.fInTransaction
+				lLawspecfieldadded2217 := lMatched2212.fAdded
+				lValue2195 = &lsfTransactionState{lLawspecfieldtransactionalid2213, lLawspecfieldproducer2214, lLawspecfieldtxnsequences2215, lLawspecfieldintransaction2216, lLawspecfieldadded2217, lReplacement2196}
+				return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue2195}
+			} else {
+				var lValue2218 lsfEither[lsfKafkaError, lsfUnit]
+				var lAttempted2219 lsfEither[lsfKafkaError, lsfUnit]
+				func() {
+					defer func() {
+						if problem := recover(); problem != nil {
+							if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+								lAttempted2219 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+								return
+							}
+							panic(problem)
+						}
+					}()
+					var lValue2220 string
+					lLawspecfieldtransactionalid2221 := lSt2181.fTransactionalId
+					lValue2220 = lLawspecfieldtransactionalid2221
+					var lValue2222 int64
+					lLawspecfieldproducerid2223 := lId2185.fProducerId
+					lValue2222 = lLawspecfieldproducerid2223
+					var lValue2224 int16
+					lLawspecfieldproducerepoch2225 := lId2185.fProducerEpoch
+					lValue2224 = lLawspecfieldproducerepoch2225
+					lPerformed2226 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+					}, func() LawSpecValue {
+						return func() LawSpecValue {
+							schema := _lawSpecDefinitionSchema
+							bits := 64
+							_, _ = schema, bits
+							codec0 := lsScalarCodec[string](schema, bits, "Text")
+							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+							codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+							return func() LawSpecValue {
+								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lValue2220)), codec1.toNative(lsfTo_44a08172da10(lValue2222)), codec2.toNative(lsfTo_07dabd732290(lValue2224)), codec3.toNative(lsfTo_d267428fb2ca(lCommit2180)))
+								return resultCodec.fromNative(LawSpecUnit{})
+							}()
+						}()
+					}))
+					lAttempted2219 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2226)
+				}()
+				lMatched2227 := lAttempted2219
+				if !lMatched2227.right {
+					lLawspecfailure2228 := lMatched2227.l
+					lValue2218 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2228)
+				} else {
+					lLawspecvalue2229 := lMatched2227.r
+					lValue2218 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2229)
+				}
+				lMatched2230 := lValue2218
+				if !lMatched2230.right {
+					lE2231 := lMatched2230.l
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lE2231), lSt2181}
+				} else {
+					var lValue2232 *lsfTransactionState
+					lReplacement2233 := false
+					var lValue2234 *lsfTransactionState
+					lReplacement2235 := (*lsfList[*lsfTopicPartition])(nil)
+					var lValue2236 *lsfTransactionState
+					lReplacement2237 := false
+					lLawspecfieldtransactionalid2238 := lSt2181.fTransactionalId
+					lLawspecfieldproducer2239 := lSt2181.fProducer
+					lLawspecfieldtxnsequences2240 := lSt2181.fTxnSequences
+					lLawspecfieldadded2241 := lSt2181.fAdded
+					lLawspecfieldoffsetssent2242 := lSt2181.fOffsetsSent
+					lValue2236 = &lsfTransactionState{lLawspecfieldtransactionalid2238, lLawspecfieldproducer2239, lLawspecfieldtxnsequences2240, lReplacement2237, lLawspecfieldadded2241, lLawspecfieldoffsetssent2242}
+					lMatched2243 := lValue2236
+					lLawspecfieldtransactionalid2244 := lMatched2243.fTransactionalId
+					lLawspecfieldproducer2245 := lMatched2243.fProducer
+					lLawspecfieldtxnsequences2246 := lMatched2243.fTxnSequences
+					lLawspecfieldintransaction2247 := lMatched2243.fInTransaction
+					lLawspecfieldoffsetssent2248 := lMatched2243.fOffsetsSent
+					lValue2234 = &lsfTransactionState{lLawspecfieldtransactionalid2244, lLawspecfieldproducer2245, lLawspecfieldtxnsequences2246, lLawspecfieldintransaction2247, lReplacement2235, lLawspecfieldoffsetssent2248}
+					lMatched2249 := lValue2234
+					lLawspecfieldtransactionalid2250 := lMatched2249.fTransactionalId
+					lLawspecfieldproducer2251 := lMatched2249.fProducer
+					lLawspecfieldtxnsequences2252 := lMatched2249.fTxnSequences
+					lLawspecfieldintransaction2253 := lMatched2249.fInTransaction
+					lLawspecfieldadded2254 := lMatched2249.fAdded
+					lValue2232 = &lsfTransactionState{lLawspecfieldtransactionalid2250, lLawspecfieldproducer2251, lLawspecfieldtxnsequences2252, lLawspecfieldintransaction2253, lLawspecfieldadded2254, lReplacement2233}
+					return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue2232}
+				}
+			}
+		}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2181}
+	}
+}
+
+// lsfTransactionsInit_d69a08bc is lawtwin.kafka::transactionsInit.
+func lsfTransactionsInit_d69a08bc(symbols map[string]*LawSpecSymbol, lTxid2255 string, lSt2256 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
+	var lValue2257 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted2258 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted2258 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed2259 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2255)))))
+			}()
+		}))
+		lAttempted2258 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2259)
+	}()
+	lMatched2260 := lAttempted2258
+	if !lMatched2260.right {
+		lLawspecfailure2261 := lMatched2260.l
+		lValue2257 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure2261)
+	} else {
+		lLawspecvalue2262 := lMatched2260.r
+		lValue2257 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue2262)
+	}
+	lMatched2263 := lValue2257
+	if !lMatched2263.right {
+		lE2264 := lMatched2263.l
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]{lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lE2264), lSt2256}
+	} else {
+		lPe2265 := lMatched2263.r
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]{lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPe2265), &lsfTransactionState{lTxid2255, lsfJust[*lsfProducerIdAndEpoch](lPe2265), lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int32]])(nil), lsfCmp_57a515e0e489), false, (*lsfList[*lsfTopicPartition])(nil), false}}
+	}
+}
+
+// lsfTransactionsOffsets_b33ea106 is lawtwin.kafka::transactionsOffsets.
+func lsfTransactionsOffsets_b33ea106(symbols map[string]*LawSpecSymbol, lG2266 string, lOffsets2267 *lsfList[*lsfOffsetEntry], lSt2268 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
+	var lValue2269 lsfMaybe[*lsfProducerIdAndEpoch]
+	lLawspecfieldproducer2270 := lSt2268.fProducer
+	lValue2269 = lLawspecfieldproducer2270
+	lMatched2271 := lValue2269
+	if lMatched2271.ok {
+		lId2272 := lMatched2271.v
+		var lValue2273 bool
+		lLawspecfieldintransaction2274 := lSt2268.fInTransaction
+		lValue2273 = lLawspecfieldintransaction2274
+		if !(lValue2273) {
+			return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2268}
+		} else {
+			var lValue2275 lsfEither[lsfKafkaError, lsfUnit]
+			var lAttempted2276 lsfEither[lsfKafkaError, lsfUnit]
+			func() {
+				defer func() {
+					if problem := recover(); problem != nil {
+						if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+							lAttempted2276 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+							return
+						}
+						panic(problem)
+					}
+				}()
+				var lValue2277 string
+				lLawspecfieldtransactionalid2278 := lSt2268.fTransactionalId
+				lValue2277 = lLawspecfieldtransactionalid2278
+				var lValue2279 int64
+				lLawspecfieldproducerid2280 := lId2272.fProducerId
+				lValue2279 = lLawspecfieldproducerid2280
+				var lValue2281 int16
+				lLawspecfieldproducerepoch2282 := lId2272.fProducerEpoch
+				lValue2281 = lLawspecfieldproducerepoch2282
+				lPerformed2283 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+				}, func() LawSpecValue {
+					return func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lsScalarCodec[string](schema, bits, "Text")
+						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+						codec3 := lsScalarCodec[string](schema, bits, "Text")
+						codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
+						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+						return func() LawSpecValue {
+							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(lsfTo_437d0abf423f(lValue2277)), codec1.toNative(lsfTo_44a08172da10(lValue2279)), codec2.toNative(lsfTo_07dabd732290(lValue2281)), codec3.toNative(lsfTo_437d0abf423f(lG2266)), codec4.toNative(lsfTo_582052f40a9c(lOffsets2267)))
+							return resultCodec.fromNative(LawSpecUnit{})
+						}()
+					}()
+				}))
+				lAttempted2276 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2283)
+			}()
+			lMatched2284 := lAttempted2276
+			if !lMatched2284.right {
+				lLawspecfailure2285 := lMatched2284.l
+				lValue2275 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2285)
+			} else {
+				lLawspecvalue2286 := lMatched2284.r
+				lValue2275 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2286)
+			}
+			lMatched2287 := lValue2275
+			if !lMatched2287.right {
+				lE2288 := lMatched2287.l
+				return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lE2288), lSt2268}
+			} else {
+				var lValue2289 *lsfTransactionState
+				lReplacement2290 := true
+				lLawspecfieldtransactionalid2291 := lSt2268.fTransactionalId
+				lLawspecfieldproducer2292 := lSt2268.fProducer
+				lLawspecfieldtxnsequences2293 := lSt2268.fTxnSequences
+				lLawspecfieldintransaction2294 := lSt2268.fInTransaction
+				lLawspecfieldadded2295 := lSt2268.fAdded
+				lValue2289 = &lsfTransactionState{lLawspecfieldtransactionalid2291, lLawspecfieldproducer2292, lLawspecfieldtxnsequences2293, lLawspecfieldintransaction2294, lLawspecfieldadded2295, lReplacement2290}
+				return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfRight[lsfKafkaError, lsfUnit](lsfUnit{}), lValue2289}
+			}
+		}
+	} else {
+		return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfLeft[lsfKafkaError, lsfUnit](lsfKafkaError_IllegalState), lSt2268}
+	}
+}
+
+// lsfTransactionsSend_558d813c is lawtwin.kafka::transactionsSend.
+func lsfTransactionsSend_558d813c(symbols map[string]*LawSpecSymbol, lPr2296 *lsfProducerRecord, lSt2297 *lsfTransactionState) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
+	var lValue2298 string
+	lLawspecfielddestination2299 := lPr2296.fDestination
+	lValue2298 = lLawspecfielddestination2299
+	var lValue2300 lsfPartitionChoice
+	lLawspecfieldchoice2301 := lPr2296.fChoice
+	lValue2300 = lLawspecfieldchoice2301
+	var lValue2302 *lsfRecord
+	lLawspecfieldpayload2303 := lPr2296.fPayload
+	lValue2302 = lLawspecfieldpayload2303
+	lMatched2304 := lsfPartitionOf_343af5ef(symbols, lValue2298, lValue2300, lValue2302)
+	if !lMatched2304.right {
+		lE2305 := lMatched2304.l
+		return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE2305), lSt2297}
+	} else {
+		lTp2306 := lMatched2304.r
+		lA2307 := lsfTransactionsAdd_1f41c92e(symbols, lsfCons[*lsfTopicPartition](lTp2306, (*lsfList[*lsfTopicPartition])(nil)), lSt2297)
+		var lValue2308 lsfEither[lsfKafkaError, lsfUnit]
+		lLawspecfieldfirst2309 := lA2307.fFirst
+		lValue2308 = lLawspecfieldfirst2309
+		lMatched2310 := lValue2308
+		if !lMatched2310.right {
+			lE2311 := lMatched2310.l
+			var lValue2312 *lsfTransactionState
+			lLawspecfieldsecond2313 := lA2307.fSecond
+			lValue2312 = lLawspecfieldsecond2313
+			return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE2311), lValue2312}
+		} else {
+			var lValue2314 *lsfMap[*lsfTopicPartition, int32]
+			var lValue2315 *lsfTransactionState
+			lLawspecfieldsecond2316 := lA2307.fSecond
+			lValue2315 = lLawspecfieldsecond2316
+			lMatched2317 := lValue2315
+			lLawspecfieldtxnsequences2318 := lMatched2317.fTxnSequences
+			lValue2314 = lLawspecfieldtxnsequences2318
+			lSequence2319 := lsfSequenceFor_9d79724c(lTp2306, lValue2314)
+			var lValue2320 lsfEither[lsfKafkaError, int64]
+			var lAttempted2321 lsfEither[lsfKafkaError, int64]
+			func() {
+				defer func() {
+					if problem := recover(); problem != nil {
+						if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+							lAttempted2321 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+							return
+						}
+						panic(problem)
+					}
+				}()
+				var lValue2322 lsfMaybe[*lsfProducerIdAndEpoch]
+				var lValue2323 *lsfTransactionState
+				lLawspecfieldsecond2324 := lA2307.fSecond
+				lValue2323 = lLawspecfieldsecond2324
+				lMatched2325 := lValue2323
+				lLawspecfieldproducer2326 := lMatched2325.fProducer
+				lValue2322 = lLawspecfieldproducer2326
+				var lValue2327 *lsfRecord
+				lLawspecfieldpayload2328 := lPr2296.fPayload
+				lValue2327 = lLawspecfieldpayload2328
+				lPerformed2329 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+				}, func() LawSpecValue {
+					return func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2306)), codec1.toNative(lsfTo_c818bd20f406(lsfTagFor_a88d3846(lValue2322, lSequence2319))), codec2.toNative(lsfTo_e3583a5b5bdc(lsfCons[*lsfRecord](lValue2327, (*lsfList[*lsfRecord])(nil))))))
+					}()
+				}))
+				lAttempted2321 = lsfRight[lsfKafkaError, int64](lPerformed2329)
+			}()
+			lMatched2330 := lAttempted2321
+			if !lMatched2330.right {
+				lLawspecfailure2331 := lMatched2330.l
+				lValue2320 = lsfLeft[lsfKafkaError, int64](lLawspecfailure2331)
+			} else {
+				lLawspecvalue2332 := lMatched2330.r
+				lValue2320 = lsfRight[lsfKafkaError, int64](lLawspecvalue2332)
+			}
+			lMatched2333 := lValue2320
+			if !lMatched2333.right {
+				lE2334 := lMatched2333.l
+				var lValue2335 *lsfTransactionState
+				lLawspecfieldsecond2336 := lA2307.fSecond
+				lValue2335 = lLawspecfieldsecond2336
+				return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfLeft[lsfKafkaError, *lsfRecordMetadata](lE2334), lValue2335}
+			} else {
+				lOffset2337 := lMatched2333.r
+				var lValue2338 *lsfTransactionState
+				var lValue2339 *lsfMap[*lsfTopicPartition, int32]
+				var lValue2340 *lsfTransactionState
+				lLawspecfieldsecond2341 := lA2307.fSecond
+				lValue2340 = lLawspecfieldsecond2341
+				lMatched2342 := lValue2340
+				lLawspecfieldtxnsequences2343 := lMatched2342.fTxnSequences
+				lValue2339 = lLawspecfieldtxnsequences2343
+				lReplacement2344 := lsfPut(lValue2339, lTp2306, lsfSaturatingInt32_9e8d3b43(lsfSmall(int64(lSequence2319)).Add(lsfSmall(int64(1)))), lsfCmp_57a515e0e489)
+				var lValue2345 *lsfTransactionState
+				lLawspecfieldsecond2346 := lA2307.fSecond
+				lValue2345 = lLawspecfieldsecond2346
+				lMatched2347 := lValue2345
+				lLawspecfieldtransactionalid2348 := lMatched2347.fTransactionalId
+				lLawspecfieldproducer2349 := lMatched2347.fProducer
+				lLawspecfieldintransaction2350 := lMatched2347.fInTransaction
+				lLawspecfieldadded2351 := lMatched2347.fAdded
+				lLawspecfieldoffsetssent2352 := lMatched2347.fOffsetsSent
+				lValue2338 = &lsfTransactionState{lLawspecfieldtransactionalid2348, lLawspecfieldproducer2349, lReplacement2344, lLawspecfieldintransaction2350, lLawspecfieldadded2351, lLawspecfieldoffsetssent2352}
+				return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfRight[lsfKafkaError, *lsfRecordMetadata](&lsfRecordMetadata{lTp2306, lOffset2337}), lValue2338}
+			}
+		}
+	}
+}
+
+// lsfUncommittedFrom_8a57847d is lawtwin.kafka::uncommittedFrom.
+func lsfUncommittedFrom_8a57847d(symbols map[string]*LawSpecSymbol, lTp2353 *lsfTopicPartition, lOffset2354 int64) *lsfList[*lsfRecord] {
+	return lsfReadFrom_f028a48d(symbols, lTp2353, lOffset2354, lsfIsolationLevel_ReadUncommitted)
+}
+
+// lsfViewOf_6e11c6f7 is lawtwin.kafka::viewOf.
+func lsfViewOf_6e11c6f7(lM2355 string, lView2356 *lsfGroupView) *lsfList[*lsfTopicPartition] {
+	var lValue2357 *lsfList[*lsfMemberAssignment]
+	lLawspecfieldmembers2358 := lView2356.fMembers
+	lValue2357 = lLawspecfieldmembers2358
+	return lsfAssignmentIn_4b795225(lM2355, lValue2357)
+}
+
+// lsfWithAssignment_7d6291b1 is lawtwin.kafka::withAssignment.
+func lsfWithAssignment_7d6291b1(lG2359 lsfMaybe[string], lM2360 string, lGen2361 int32, lTopics2362 *lsfList[string], lTps2363 *lsfList[*lsfTopicPartition], lC2364 *lsfConsumerState) *lsfConsumerState {
+	var lValue2365 *lsfMap[*lsfTopicPartition, int64]
+	lLawspecfieldpositions2366 := lC2364.fPositions
+	lValue2365 = lLawspecfieldpositions2366
+	lReplacement2367 := lsfKeepPositions_f10bd26f(lTps2363, lValue2365, lsfKeyValOf((*lsfList[*lsfEntry[*lsfTopicPartition, int64]])(nil), lsfCmp_57a515e0e489))
+	var lValue2368 *lsfConsumerState
+	lReplacement2369 := lTps2363
+	var lValue2370 *lsfConsumerState
+	lReplacement2371 := lTopics2362
+	var lValue2372 *lsfConsumerState
+	lReplacement2373 := lGen2361
+	var lValue2374 *lsfConsumerState
+	lReplacement2375 := lM2360
+	var lValue2376 *lsfConsumerState
+	lReplacement2377 := lG2359
+	lLawspecfieldmember2378 := lC2364.fMember
+	lLawspecfieldgeneration2379 := lC2364.fGeneration
+	lLawspecfieldsubscription2380 := lC2364.fSubscription
+	lLawspecfieldassigned2381 := lC2364.fAssigned
+	lLawspecfieldpositions2382 := lC2364.fPositions
+	lLawspecfieldisolation2383 := lC2364.fIsolation
+	lValue2376 = &lsfConsumerState{lReplacement2377, lLawspecfieldmember2378, lLawspecfieldgeneration2379, lLawspecfieldsubscription2380, lLawspecfieldassigned2381, lLawspecfieldpositions2382, lLawspecfieldisolation2383}
+	lMatched2384 := lValue2376
+	lLawspecfieldgroup2385 := lMatched2384.fGroup
+	lLawspecfieldgeneration2386 := lMatched2384.fGeneration
+	lLawspecfieldsubscription2387 := lMatched2384.fSubscription
+	lLawspecfieldassigned2388 := lMatched2384.fAssigned
+	lLawspecfieldpositions2389 := lMatched2384.fPositions
+	lLawspecfieldisolation2390 := lMatched2384.fIsolation
+	lValue2374 = &lsfConsumerState{lLawspecfieldgroup2385, lReplacement2375, lLawspecfieldgeneration2386, lLawspecfieldsubscription2387, lLawspecfieldassigned2388, lLawspecfieldpositions2389, lLawspecfieldisolation2390}
+	lMatched2391 := lValue2374
+	lLawspecfieldgroup2392 := lMatched2391.fGroup
+	lLawspecfieldmember2393 := lMatched2391.fMember
+	lLawspecfieldsubscription2394 := lMatched2391.fSubscription
+	lLawspecfieldassigned2395 := lMatched2391.fAssigned
+	lLawspecfieldpositions2396 := lMatched2391.fPositions
+	lLawspecfieldisolation2397 := lMatched2391.fIsolation
+	lValue2372 = &lsfConsumerState{lLawspecfieldgroup2392, lLawspecfieldmember2393, lReplacement2373, lLawspecfieldsubscription2394, lLawspecfieldassigned2395, lLawspecfieldpositions2396, lLawspecfieldisolation2397}
+	lMatched2398 := lValue2372
+	lLawspecfieldgroup2399 := lMatched2398.fGroup
+	lLawspecfieldmember2400 := lMatched2398.fMember
+	lLawspecfieldgeneration2401 := lMatched2398.fGeneration
+	lLawspecfieldassigned2402 := lMatched2398.fAssigned
+	lLawspecfieldpositions2403 := lMatched2398.fPositions
+	lLawspecfieldisolation2404 := lMatched2398.fIsolation
+	lValue2370 = &lsfConsumerState{lLawspecfieldgroup2399, lLawspecfieldmember2400, lLawspecfieldgeneration2401, lReplacement2371, lLawspecfieldassigned2402, lLawspecfieldpositions2403, lLawspecfieldisolation2404}
+	lMatched2405 := lValue2370
+	lLawspecfieldgroup2406 := lMatched2405.fGroup
+	lLawspecfieldmember2407 := lMatched2405.fMember
+	lLawspecfieldgeneration2408 := lMatched2405.fGeneration
+	lLawspecfieldsubscription2409 := lMatched2405.fSubscription
+	lLawspecfieldpositions2410 := lMatched2405.fPositions
+	lLawspecfieldisolation2411 := lMatched2405.fIsolation
+	lValue2368 = &lsfConsumerState{lLawspecfieldgroup2406, lLawspecfieldmember2407, lLawspecfieldgeneration2408, lLawspecfieldsubscription2409, lReplacement2369, lLawspecfieldpositions2410, lLawspecfieldisolation2411}
+	lMatched2412 := lValue2368
+	lLawspecfieldgroup2413 := lMatched2412.fGroup
+	lLawspecfieldmember2414 := lMatched2412.fMember
+	lLawspecfieldgeneration2415 := lMatched2412.fGeneration
+	lLawspecfieldsubscription2416 := lMatched2412.fSubscription
+	lLawspecfieldassigned2417 := lMatched2412.fAssigned
+	lLawspecfieldisolation2418 := lMatched2412.fIsolation
+	return &lsfConsumerState{lLawspecfieldgroup2413, lLawspecfieldmember2414, lLawspecfieldgeneration2415, lLawspecfieldsubscription2416, lLawspecfieldassigned2417, lReplacement2367, lLawspecfieldisolation2418}
+}
+
+// lsfWithPosition_867e6b19 is lawtwin.kafka::withPosition.
+func lsfWithPosition_867e6b19(lTp2419 *lsfTopicPartition, lOffset2420 int64, lC2421 *lsfConsumerState) *lsfConsumerState {
+	var lValue2422 *lsfMap[*lsfTopicPartition, int64]
+	lLawspecfieldpositions2423 := lC2421.fPositions
+	lValue2422 = lLawspecfieldpositions2423
+	lReplacement2424 := lsfPut(lValue2422, lTp2419, lOffset2420, lsfCmp_57a515e0e489)
+	lLawspecfieldgroup2425 := lC2421.fGroup
+	lLawspecfieldmember2426 := lC2421.fMember
+	lLawspecfieldgeneration2427 := lC2421.fGeneration
+	lLawspecfieldsubscription2428 := lC2421.fSubscription
+	lLawspecfieldassigned2429 := lC2421.fAssigned
+	lLawspecfieldisolation2430 := lC2421.fIsolation
+	return &lsfConsumerState{lLawspecfieldgroup2425, lLawspecfieldmember2426, lLawspecfieldgeneration2427, lLawspecfieldsubscription2428, lLawspecfieldassigned2429, lReplacement2424, lLawspecfieldisolation2430}
+}
+
+// lsfWriteAborted_8e3a61e4 is lawtwin.kafka::writeAborted.
+func lsfWriteAborted_8e3a61e4(symbols map[string]*LawSpecSymbol, lTp2431 *lsfTopicPartition, lTxid2432 string, lR2433 *lsfRecord) lsfMaybe[int64] {
+	var lValue2434 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	var lAttempted2435 lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]
+	func() {
+		defer func() {
+			if problem := recover(); problem != nil {
+				if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+					lAttempted2435 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(failure.Value))
+					return
+				}
+				panic(problem)
+			}
+		}()
+		lPerformed2436 := lsfFrom_6a5ea41697b3(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+			schema := _lawSpecDefinitionSchema
+			bits := 64
+			_, _ = schema, bits
+			return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+		}, func() LawSpecValue {
+			return func() LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
+				resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
+				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(lsfTo_01d86fc44f8c(lsfJust[string](lTxid2432)))))
+			}()
+		}))
+		lAttempted2435 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lPerformed2436)
+	}()
+	lMatched2437 := lAttempted2435
+	if !lMatched2437.right {
+		lLawspecfailure2438 := lMatched2437.l
+		lValue2434 = lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecfailure2438)
+	} else {
+		lLawspecvalue2439 := lMatched2437.r
+		lValue2434 = lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lLawspecvalue2439)
+	}
+	lMatched2440 := lValue2434
+	if !lMatched2440.right {
+		return lsfNothing[int64]()
+	} else {
+		lPe2441 := lMatched2440.r
+		var lValue2442 lsfEither[lsfKafkaError, lsfUnit]
+		var lAttempted2443 lsfEither[lsfKafkaError, lsfUnit]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2443 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			var lValue2444 int64
+			lLawspecfieldproducerid2445 := lPe2441.fProducerId
+			lValue2444 = lLawspecfieldproducerid2445
+			var lValue2446 int16
+			lLawspecfieldproducerepoch2447 := lPe2441.fProducerEpoch
+			lValue2446 = lLawspecfieldproducerepoch2447
+			lPerformed2448 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lsScalarCodec[string](schema, bits, "Text")
+					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+					codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+					codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+					return func() LawSpecValue {
+						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2432)), codec1.toNative(lsfTo_44a08172da10(lValue2444)), codec2.toNative(lsfTo_07dabd732290(lValue2446)), codec3.toNative(lsfTo_3250492fe9ac(lsfCons[*lsfTopicPartition](lTp2431, (*lsfList[*lsfTopicPartition])(nil)))))
+						return resultCodec.fromNative(LawSpecUnit{})
+					}()
+				}()
+			}))
+			lAttempted2443 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2448)
+		}()
+		lMatched2449 := lAttempted2443
+		if !lMatched2449.right {
+			lLawspecfailure2450 := lMatched2449.l
+			lValue2442 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2450)
+		} else {
+			lLawspecvalue2451 := lMatched2449.r
+			lValue2442 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2451)
+		}
+		_ = lValue2442
+		var lValue2452 lsfEither[lsfKafkaError, int64]
+		var lAttempted2453 lsfEither[lsfKafkaError, int64]
+		func() {
+			defer func() {
+				if problem := recover(); problem != nil {
+					if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+						lAttempted2453 = lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(failure.Value))
+						return
+					}
+					panic(problem)
+				}
+			}()
+			lPerformed2454 := lsfFrom_44a08172da10(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+			}, func() LawSpecValue {
+				return func() LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
+					codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
+					codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
+					resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
+					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(lsfTo_57a515e0e489(lTp2431)), codec1.toNative(lsfTo_c818bd20f406(lsfJust[*lsfProducerTag](lsfTagOf_39235de7(lPe2441, int32(0))))), codec2.toNative(lsfTo_e3583a5b5bdc(lsfCons[*lsfRecord](lR2433, (*lsfList[*lsfRecord])(nil))))))
+				}()
+			}))
+			lAttempted2453 = lsfRight[lsfKafkaError, int64](lPerformed2454)
+		}()
+		lMatched2455 := lAttempted2453
+		if !lMatched2455.right {
+			lLawspecfailure2456 := lMatched2455.l
+			lValue2452 = lsfLeft[lsfKafkaError, int64](lLawspecfailure2456)
+		} else {
+			lLawspecvalue2457 := lMatched2455.r
+			lValue2452 = lsfRight[lsfKafkaError, int64](lLawspecvalue2457)
+		}
+		lMatched2458 := lValue2452
+		if !lMatched2458.right {
+			return lsfNothing[int64]()
+		} else {
+			lO2459 := lMatched2458.r
+			var lValue2460 lsfEither[lsfKafkaError, lsfUnit]
+			var lAttempted2461 lsfEither[lsfKafkaError, lsfUnit]
+			func() {
+				defer func() {
+					if problem := recover(); problem != nil {
+						if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+							lAttempted2461 = lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(failure.Value))
+							return
+						}
+						panic(problem)
+					}
+				}()
+				var lValue2462 int64
+				lLawspecfieldproducerid2463 := lPe2441.fProducerId
+				lValue2462 = lLawspecfieldproducerid2463
+				var lValue2464 int16
+				lLawspecfieldproducerepoch2465 := lPe2441.fProducerEpoch
+				lValue2464 = lLawspecfieldproducerepoch2465
+				lPerformed2466 := lsfFrom_b120ceed78cb(lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
+					schema := _lawSpecDefinitionSchema
+					bits := 64
+					_, _ = schema, bits
+					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
+				}, func() LawSpecValue {
+					return func() LawSpecValue {
+						schema := _lawSpecDefinitionSchema
+						bits := 64
+						_, _ = schema, bits
+						codec0 := lsScalarCodec[string](schema, bits, "Text")
+						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
+						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
+						codec3 := lsScalarCodec[bool](schema, bits, "Bool")
+						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
+						return func() LawSpecValue {
+							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(lsfTo_437d0abf423f(lTxid2432)), codec1.toNative(lsfTo_44a08172da10(lValue2462)), codec2.toNative(lsfTo_07dabd732290(lValue2464)), codec3.toNative(lsfTo_d267428fb2ca(false)))
+							return resultCodec.fromNative(LawSpecUnit{})
+						}()
+					}()
+				}))
+				lAttempted2461 = lsfRight[lsfKafkaError, lsfUnit](lPerformed2466)
+			}()
+			lMatched2467 := lAttempted2461
+			if !lMatched2467.right {
+				lLawspecfailure2468 := lMatched2467.l
+				lValue2460 = lsfLeft[lsfKafkaError, lsfUnit](lLawspecfailure2468)
+			} else {
+				lLawspecvalue2469 := lMatched2467.r
+				lValue2460 = lsfRight[lsfKafkaError, lsfUnit](lLawspecvalue2469)
+			}
+			lMatched2470 := lValue2460
+			if !lMatched2470.right {
+				return lsfNothing[int64]()
+			} else {
+				return lsfJust[int64](lO2459)
+			}
+		}
+	}
+}
+
+// lsfXor32_0ea970f5 is lawtwin.kafka::xor32.
+func lsfXor32_0ea970f5(lA2471 uint32, lB2472 uint32) uint32 {
+	return lsfWrappingUInt32_1ef3ce20(lsfXorBits_ea1fb8e2(lsfSmall(int64(lA2471)), lsfSmall(int64(lB2472)), lsfSmall(2147483648)))
+}
+
+// lsfXorBits_ea1fb8e2 is lawtwin.kafka::xorBits.
+func lsfXorBits_ea1fb8e2(lA2473 lsfInt, lB2474 lsfInt, lBit2475 lsfInt) lsfInt {
+	if (((lsfCmpInt(lBit2475, lsfSmall(int64(0))) <= 0) || (lsfCmpInt(lA2473, lsfSmall(int64(0))) < 0)) || (lsfCmpInt(lB2474, lsfSmall(int64(0))) < 0)) {
 		return lsfSmall(0)
 	} else {
-		var lValue1644 lsfInt
-		if (lsfCmpInt(lA1641.Quot(lBit1643), lB1642.Quot(lBit1643)) != 0) {
-			lValue1644 = lBit1643
+		var lValue2476 lsfInt
+		if (lsfCmpInt(lA2473.Quot(lBit2475), lB2474.Quot(lBit2475)) != 0) {
+			lValue2476 = lBit2475
 		} else {
-			lValue1644 = lsfSmall(0)
+			lValue2476 = lsfSmall(0)
 		}
-		return lValue1644.Add(lsfXorBits_261(lA1641.Rem(lBit1643), lB1642.Rem(lBit1643), lBit1643.Quot(lsfSmall(int64(2)))))
+		return lValue2476.Add(lsfXorBits_ea1fb8e2(lA2473.Rem(lBit2475), lB2474.Rem(lBit2475), lBit2475.Quot(lsfSmall(int64(2)))))
 	}
 }
 
-// lsfKeepBoundedArithmetic_263 is contracttest.kafka::keepBoundedArithmetic.
-func lsfKeepBoundedArithmetic_263(lN1645 int64) int64 {
-	return lsfSaturatingInt64_10(lsfSmall(lN1645).Add(lsfSmall(int64(1))))
+// lsfKeepBoundedArithmetic_3e45e1f6 is contracttest.kafka::keepBoundedArithmetic.
+func lsfKeepBoundedArithmetic_3e45e1f6(lN2477 int64) int64 {
+	return lsfSaturatingInt64_5bce4ed8(lsfSmall(lN2477).Add(lsfSmall(int64(1))))
 }
 
 func lsfCmp_b862204e9be7(a, b int32) int {
@@ -4292,12 +7111,32 @@ func lsfCmp_57a515e0e489(a, b *lsfTopicPartition) int {
 	return 0
 }
 
+func lsfEq_aff9cc782806(a, b lsfEither[lsfKafkaError, int64]) bool {
+	return a.right == b.right && ((!a.right && lsfEq_26c7dcf285c5(a.l, b.l)) || (a.right && lsfEq_44a08172da10(a.r, b.r)))
+}
+
+func lsfEq_75994955e886(a, b *lsfList[int64]) bool {
+	return lsfEqList(a, b, lsfEq_44a08172da10)
+}
+
 func lsfEq_8ec0351dc657(a, b *lsfList[string]) bool {
 	return lsfEqList(a, b, lsfEq_437d0abf423f)
 }
 
+func lsfEq_e3583a5b5bdc(a, b *lsfList[*lsfRecord]) bool {
+	return lsfEqList(a, b, lsfEq_be206fb00188)
+}
+
+func lsfEq_c09136e29464(a, b lsfMaybe[int64]) bool {
+	return a.ok == b.ok && (!a.ok || lsfEq_44a08172da10(a.v, b.v))
+}
+
 func lsfEq_cd87ee93b56a(a, b *lsfMap[int32, lsfUnit]) bool {
 	return lsfEqMap(a, b, lsfEq_b862204e9be7, lsfEqUnit)
+}
+
+func lsfEq_26c7dcf285c5(a, b lsfKafkaError) bool {
+	return a == b
 }
 
 func lsfEq_57a515e0e489(a, b *lsfTopicPartition) bool {
@@ -4317,6 +7156,36 @@ func lsfFrom_aff9cc782806(v LawSpecValue) lsfEither[lsfKafkaError, int64] {
 	tag, fields := lsfData(v)
 	if tag == "Either::Right" { return lsfRight[lsfKafkaError, int64](lsfFrom_44a08172da10(fields[0])) }
 	return lsfLeft[lsfKafkaError, int64](lsfFrom_26c7dcf285c5(fields[0]))
+}
+
+func lsfFrom_479a8e1cd590(v LawSpecValue) lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]] {
+	tag, fields := lsfData(v)
+	if tag == "Either::Right" { return lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lsfFrom_3250492fe9ac(fields[0])) }
+	return lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lsfFrom_26c7dcf285c5(fields[0]))
+}
+
+func lsfFrom_88281415992f(v LawSpecValue) lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]] {
+	tag, fields := lsfData(v)
+	if tag == "Either::Right" { return lsfRight[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lsfFrom_9aa0842592c4(fields[0])) }
+	return lsfLeft[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lsfFrom_26c7dcf285c5(fields[0]))
+}
+
+func lsfFrom_6c1d71d067da(v LawSpecValue) lsfEither[lsfKafkaError, lsfUnit] {
+	tag, fields := lsfData(v)
+	if tag == "Either::Right" { return lsfRight[lsfKafkaError, lsfUnit](lsfFrom_b120ceed78cb(fields[0])) }
+	return lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(fields[0]))
+}
+
+func lsfFrom_b201d5315681(v LawSpecValue) lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch] {
+	tag, fields := lsfData(v)
+	if tag == "Either::Right" { return lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_6a5ea41697b3(fields[0])) }
+	return lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFrom_26c7dcf285c5(fields[0]))
+}
+
+func lsfFrom_dc76e14987c2(v LawSpecValue) lsfEither[lsfKafkaError, *lsfTopicPartition] {
+	tag, fields := lsfData(v)
+	if tag == "Either::Right" { return lsfRight[lsfKafkaError, *lsfTopicPartition](lsfFrom_57a515e0e489(fields[0])) }
+	return lsfLeft[lsfKafkaError, *lsfTopicPartition](lsfFrom_26c7dcf285c5(fields[0]))
 }
 
 func lsfFrom_f9a3e61df1f3(v LawSpecValue) lsfEither[lsfKafkaError, *lsfRecordMetadata] {
@@ -4731,6 +7600,30 @@ func lsfFrom_fc454f30e5b2(v LawSpecValue) *lsfMap[*lsfTopicPartition, *lsfPartit
 	return out
 }
 
+func lsfFrom_af15eded3eac(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]{lsfFrom_aff9cc782806(fields[0]), lsfFrom_7de2ae0da384(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_aec30ebe57ba(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfFrom_479a8e1cd590(fields[0]), lsfFrom_7de2ae0da384(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_8ac5ed3c86fa(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]{lsfFrom_88281415992f(fields[0]), lsfFrom_7de2ae0da384(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
 func lsfFrom_34d15aaae84b(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
 	tag, fields := lsfData(v)
 	switch tag {
@@ -4743,6 +7636,38 @@ func lsfFrom_b92c1d290bc6(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, lsfU
 	tag, fields := lsfData(v)
 	switch tag {
 		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfFrom_6c1d71d067da(fields[0]), lsfFrom_74b3f2831172(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_53df4ee1a893(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]{lsfFrom_b201d5315681(fields[0]), lsfFrom_5e5d2c3fa1a7(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_b49ec6c68859(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]{lsfFrom_b201d5315681(fields[0]), lsfFrom_74b3f2831172(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_dc41353054a0(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfFrom_f9a3e61df1f3(fields[0]), lsfFrom_5e5d2c3fa1a7(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_d87cfe1fbff5(v LawSpecValue) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfFrom_f9a3e61df1f3(fields[0]), lsfFrom_74b3f2831172(fields[1])}
 	}
 	panic("expected Pair, found " + tag)
 }
@@ -4771,6 +7696,14 @@ func lsfFrom_3dd22eccd85c(v LawSpecValue) *lsfPair[int64, *lsfBrokerState] {
 	panic("expected Pair, found " + tag)
 }
 
+func lsfFrom_3bb39d28b6fe(v LawSpecValue) *lsfPair[int64, *lsfConsumerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[int64, *lsfConsumerState]{lsfFrom_44a08172da10(fields[0]), lsfFrom_7de2ae0da384(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
 func lsfFrom_23e94f6e1895(v LawSpecValue) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
 	tag, fields := lsfData(v)
 	switch tag {
@@ -4791,6 +7724,14 @@ func lsfFrom_38ff65c06c92(v LawSpecValue) *lsfPair[lsfMaybe[int64], *lsfBrokerSt
 	tag, fields := lsfData(v)
 	switch tag {
 		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfMaybe[int64], *lsfBrokerState]{lsfFrom_c09136e29464(fields[0]), lsfFrom_49de88d0a810(fields[1])}
+	}
+	panic("expected Pair, found " + tag)
+}
+
+func lsfFrom_172cc75a9602(v LawSpecValue) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawspec.collections::type::Pair::Pair": return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lsfFrom_c09136e29464(fields[0]), lsfFrom_7de2ae0da384(fields[1])}
 	}
 	panic("expected Pair, found " + tag)
 }
@@ -4920,6 +7861,30 @@ func lsfFrom_a519f593a6ed(v LawSpecValue) lsfIsolationLevel {
 	panic("expected IsolationLevel, found " + tag)
 }
 
+func lsfFrom_26c7dcf285c5(v LawSpecValue) lsfKafkaError {
+	tag, _ := lsfData(v)
+	switch tag {
+		case "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition": return lsfKafkaError_UnknownTopicOrPartition
+		case "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists": return lsfKafkaError_TopicAlreadyExists
+		case "lawtwin.kafka.model::type::KafkaError::InvalidTopic": return lsfKafkaError_InvalidTopic
+		case "lawtwin.kafka.model::type::KafkaError::InvalidPartitions": return lsfKafkaError_InvalidPartitions
+		case "lawtwin.kafka.model::type::KafkaError::InvalidRecord": return lsfKafkaError_InvalidRecord
+		case "lawtwin.kafka.model::type::KafkaError::InvalidRequest": return lsfKafkaError_InvalidRequest
+		case "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange": return lsfKafkaError_OffsetOutOfRange
+		case "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber": return lsfKafkaError_OutOfOrderSequenceNumber
+		case "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch": return lsfKafkaError_InvalidProducerEpoch
+		case "lawtwin.kafka.model::type::KafkaError::ProducerFenced": return lsfKafkaError_ProducerFenced
+		case "lawtwin.kafka.model::type::KafkaError::UnknownProducerId": return lsfKafkaError_UnknownProducerId
+		case "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping": return lsfKafkaError_InvalidProducerIdMapping
+		case "lawtwin.kafka.model::type::KafkaError::InvalidTxnState": return lsfKafkaError_InvalidTxnState
+		case "lawtwin.kafka.model::type::KafkaError::InvalidGroupId": return lsfKafkaError_InvalidGroupId
+		case "lawtwin.kafka.model::type::KafkaError::UnknownMemberId": return lsfKafkaError_UnknownMemberId
+		case "lawtwin.kafka.model::type::KafkaError::IllegalGeneration": return lsfKafkaError_IllegalGeneration
+		case "lawtwin.kafka.model::type::KafkaError::IllegalState": return lsfKafkaError_IllegalState
+	}
+	panic("expected KafkaError, found " + tag)
+}
+
 func lsfFrom_c55be5a8a1f1(v LawSpecValue) lsfOffsetSpec {
 	tag, _ := lsfData(v)
 	switch tag {
@@ -4961,6 +7926,14 @@ func lsfFrom_fcd7b841fa1b(v LawSpecValue) *lsfProducerTag {
 	panic("expected ProducerTag, found " + tag)
 }
 
+func lsfFrom_be206fb00188(v LawSpecValue) *lsfRecord {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawtwin.kafka.model::type::Record::Record": return &lsfRecord{lsfFrom_b276e66efd09(fields[0]), lsfFrom_b276e66efd09(fields[1]), lsfFrom_0ccaa6764e43(fields[2])}
+	}
+	panic("expected Record, found " + tag)
+}
+
 func lsfFrom_57a515e0e489(v LawSpecValue) *lsfTopicPartition {
 	tag, fields := lsfData(v)
 	switch tag {
@@ -4984,6 +7957,23 @@ func lsfFrom_7de2ae0da384(v LawSpecValue) *lsfConsumerState {
 		case "lawtwin.kafka::type::ConsumerState::ConsumerState": return &lsfConsumerState{lsfFrom_01d86fc44f8c(fields[0]), lsfFrom_437d0abf423f(fields[1]), lsfFrom_b862204e9be7(fields[2]), lsfFrom_8ec0351dc657(fields[3]), lsfFrom_3250492fe9ac(fields[4]), lsfFrom_d1208e18a243(fields[5]), lsfFrom_a519f593a6ed(fields[6])}
 	}
 	panic("expected ConsumerState, found " + tag)
+}
+
+func lsfFrom_3c79f555f54b(v LawSpecValue) lsfPartitionChoice {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawtwin.kafka::type::PartitionChoice::ToPartition": return &lsfPartitionChoice_ToPartition{lsfFrom_b862204e9be7(fields[0])}
+		case "lawtwin.kafka::type::PartitionChoice::ByKey": return &lsfPartitionChoice_ByKey{}
+	}
+	panic("expected PartitionChoice, found " + tag)
+}
+
+func lsfFrom_b2152710dfac(v LawSpecValue) *lsfProducerRecord {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawtwin.kafka::type::ProducerRecord::ProducerRecord": return &lsfProducerRecord{lsfFrom_437d0abf423f(fields[0]), lsfFrom_3c79f555f54b(fields[1]), lsfFrom_be206fb00188(fields[2])}
+	}
+	panic("expected ProducerRecord, found " + tag)
 }
 
 func lsfFrom_5e5d2c3fa1a7(v LawSpecValue) *lsfProducerState {
@@ -5014,6 +8004,36 @@ func lsfFromnative_aff9cc782806(n LawSpecEither[KafkaError, int64]) lsfEither[ls
 	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, int64](lsfFromnative_44a08172da10(r)) }
 	l, _ := n.Left()
 	return lsfLeft[lsfKafkaError, int64](lsfFromnative_26c7dcf285c5(l))
+}
+
+func lsfFromnative_479a8e1cd590(n LawSpecEither[KafkaError, []TopicPartition]) lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]] {
+	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, *lsfList[*lsfTopicPartition]](lsfFromnative_3250492fe9ac(r)) }
+	l, _ := n.Left()
+	return lsfLeft[lsfKafkaError, *lsfList[*lsfTopicPartition]](lsfFromnative_26c7dcf285c5(l))
+}
+
+func lsfFromnative_88281415992f(n LawSpecEither[KafkaError, []ConsumerRecord]) lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]] {
+	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lsfFromnative_9aa0842592c4(r)) }
+	l, _ := n.Left()
+	return lsfLeft[lsfKafkaError, *lsfList[*lsfConsumerRecord]](lsfFromnative_26c7dcf285c5(l))
+}
+
+func lsfFromnative_6c1d71d067da(n LawSpecEither[KafkaError, LawSpecUnit]) lsfEither[lsfKafkaError, lsfUnit] {
+	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, lsfUnit](lsfFromnative_b120ceed78cb(r)) }
+	l, _ := n.Left()
+	return lsfLeft[lsfKafkaError, lsfUnit](lsfFromnative_26c7dcf285c5(l))
+}
+
+func lsfFromnative_b201d5315681(n LawSpecEither[KafkaError, ProducerIdAndEpoch]) lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch] {
+	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFromnative_6a5ea41697b3(r)) }
+	l, _ := n.Left()
+	return lsfLeft[lsfKafkaError, *lsfProducerIdAndEpoch](lsfFromnative_26c7dcf285c5(l))
+}
+
+func lsfFromnative_dc76e14987c2(n LawSpecEither[KafkaError, TopicPartition]) lsfEither[lsfKafkaError, *lsfTopicPartition] {
+	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, *lsfTopicPartition](lsfFromnative_57a515e0e489(r)) }
+	l, _ := n.Left()
+	return lsfLeft[lsfKafkaError, *lsfTopicPartition](lsfFromnative_26c7dcf285c5(l))
 }
 
 func lsfFromnative_f9a3e61df1f3(n LawSpecEither[KafkaError, RecordMetadata]) lsfEither[lsfKafkaError, *lsfRecordMetadata] {
@@ -5384,12 +8404,40 @@ func lsfFromnative_fc454f30e5b2(n []Entry[TopicPartition, PartitionLog]) *lsfMap
 	return out
 }
 
+func lsfFromnative_af15eded3eac(n Pair[LawSpecEither[KafkaError, int64], ConsumerState]) *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState] {
+	return &lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]{lsfFromnative_aff9cc782806(n.First), lsfFromnative_7de2ae0da384(n.Second)}
+}
+
+func lsfFromnative_aec30ebe57ba(n Pair[LawSpecEither[KafkaError, []TopicPartition], ConsumerState]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]{lsfFromnative_479a8e1cd590(n.First), lsfFromnative_7de2ae0da384(n.Second)}
+}
+
+func lsfFromnative_8ac5ed3c86fa(n Pair[LawSpecEither[KafkaError, []ConsumerRecord], ConsumerState]) *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]{lsfFromnative_88281415992f(n.First), lsfFromnative_7de2ae0da384(n.Second)}
+}
+
 func lsfFromnative_34d15aaae84b(n Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState] {
 	return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]{lsfFromnative_6c1d71d067da(n.First), lsfFromnative_7de2ae0da384(n.Second)}
 }
 
 func lsfFromnative_b92c1d290bc6(n Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState]) *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState] {
 	return &lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]{lsfFromnative_6c1d71d067da(n.First), lsfFromnative_74b3f2831172(n.Second)}
+}
+
+func lsfFromnative_53df4ee1a893(n Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], ProducerState]) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]{lsfFromnative_b201d5315681(n.First), lsfFromnative_5e5d2c3fa1a7(n.Second)}
+}
+
+func lsfFromnative_b49ec6c68859(n Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], TransactionState]) *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]{lsfFromnative_b201d5315681(n.First), lsfFromnative_74b3f2831172(n.Second)}
+}
+
+func lsfFromnative_dc41353054a0(n Pair[LawSpecEither[KafkaError, RecordMetadata], ProducerState]) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]{lsfFromnative_f9a3e61df1f3(n.First), lsfFromnative_5e5d2c3fa1a7(n.Second)}
+}
+
+func lsfFromnative_d87cfe1fbff5(n Pair[LawSpecEither[KafkaError, RecordMetadata], TransactionState]) *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState] {
+	return &lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]{lsfFromnative_f9a3e61df1f3(n.First), lsfFromnative_74b3f2831172(n.Second)}
 }
 
 func lsfFromnative_ab8cd6a31aaf(n Pair[int32, BrokerState]) *lsfPair[int32, *lsfBrokerState] {
@@ -5404,6 +8452,10 @@ func lsfFromnative_3dd22eccd85c(n Pair[int64, BrokerState]) *lsfPair[int64, *lsf
 	return &lsfPair[int64, *lsfBrokerState]{lsfFromnative_44a08172da10(n.First), lsfFromnative_49de88d0a810(n.Second)}
 }
 
+func lsfFromnative_3bb39d28b6fe(n Pair[int64, ConsumerState]) *lsfPair[int64, *lsfConsumerState] {
+	return &lsfPair[int64, *lsfConsumerState]{lsfFromnative_44a08172da10(n.First), lsfFromnative_7de2ae0da384(n.Second)}
+}
+
 func lsfFromnative_23e94f6e1895(n Pair[[]TopicPartition, BrokerState]) *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState] {
 	return &lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]{lsfFromnative_3250492fe9ac(n.First), lsfFromnative_49de88d0a810(n.Second)}
 }
@@ -5414,6 +8466,10 @@ func lsfFromnative_9fa363f31106(n Pair[LawSpecMaybe[int32], BrokerState]) *lsfPa
 
 func lsfFromnative_38ff65c06c92(n Pair[LawSpecMaybe[int64], BrokerState]) *lsfPair[lsfMaybe[int64], *lsfBrokerState] {
 	return &lsfPair[lsfMaybe[int64], *lsfBrokerState]{lsfFromnative_c09136e29464(n.First), lsfFromnative_49de88d0a810(n.Second)}
+}
+
+func lsfFromnative_172cc75a9602(n Pair[LawSpecMaybe[int64], ConsumerState]) *lsfPair[lsfMaybe[int64], *lsfConsumerState] {
+	return &lsfPair[lsfMaybe[int64], *lsfConsumerState]{lsfFromnative_c09136e29464(n.First), lsfFromnative_7de2ae0da384(n.Second)}
 }
 
 func lsfFromnative_5d20fb53d3a6(n Pair[LawSpecMaybe[ProducerIdAndEpoch], ProducerState]) *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState] {
@@ -5512,6 +8568,10 @@ func lsfFromnative_fcd7b841fa1b(n ProducerTag) *lsfProducerTag {
 	return &lsfProducerTag{lsfFromnative_44a08172da10(n.ProducerId), lsfFromnative_07dabd732290(n.ProducerEpoch), lsfFromnative_b862204e9be7(n.BaseSequence)}
 }
 
+func lsfFromnative_be206fb00188(n Record) *lsfRecord {
+	return &lsfRecord{lsfFromnative_b276e66efd09(n.Key), lsfFromnative_b276e66efd09(n.Value), lsfFromnative_0ccaa6764e43(n.Headers)}
+}
+
 func lsfFromnative_57a515e0e489(n TopicPartition) *lsfTopicPartition {
 	return &lsfTopicPartition{lsfFromnative_437d0abf423f(n.Topic), lsfFromnative_b862204e9be7(n.Partition)}
 }
@@ -5526,6 +8586,18 @@ func lsfFromnative_a198a150c390(n TxnState) lsfTxnState {
 
 func lsfFromnative_7de2ae0da384(n ConsumerState) *lsfConsumerState {
 	return &lsfConsumerState{lsfFromnative_01d86fc44f8c(n.Group), lsfFromnative_437d0abf423f(n.Member), lsfFromnative_b862204e9be7(n.Generation), lsfFromnative_8ec0351dc657(n.Subscription), lsfFromnative_3250492fe9ac(n.Assigned), lsfFromnative_d1208e18a243(n.Positions), lsfFromnative_a519f593a6ed(n.Isolation)}
+}
+
+func lsfFromnative_3c79f555f54b(n PartitionChoice) lsfPartitionChoice {
+	switch y := n.(type) {
+		case PartitionChoiceToPartition: return &lsfPartitionChoice_ToPartition{lsfFromnative_b862204e9be7(y.Chosen)}
+		case PartitionChoiceByKey: return &lsfPartitionChoice_ByKey{}
+	}
+	panic("unreachable branch reached")
+}
+
+func lsfFromnative_b2152710dfac(n ProducerRecord) *lsfProducerRecord {
+	return &lsfProducerRecord{lsfFromnative_437d0abf423f(n.Destination), lsfFromnative_3c79f555f54b(n.Choice), lsfFromnative_be206fb00188(n.Payload)}
 }
 
 func lsfFromnative_5e5d2c3fa1a7(n ProducerState) *lsfProducerState {
@@ -5547,6 +8619,31 @@ func lsfTo_9e68ae7ce0b7(x string) LawSpecValue {
 func lsfTo_aff9cc782806(x lsfEither[lsfKafkaError, int64]) LawSpecValue {
 	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either::Right", lsfTo_44a08172da10(x.r)) }
 	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Int64)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+}
+
+func lsfTo_479a8e1cd590(x lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]]) LawSpecValue {
+	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka.model::type::TopicPartition)", "Either::Right", lsfTo_3250492fe9ac(x.r)) }
+	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka.model::type::TopicPartition)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+}
+
+func lsfTo_88281415992f(x lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]]) LawSpecValue {
+	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka::type::ConsumerRecord)", "Either::Right", lsfTo_9aa0842592c4(x.r)) }
+	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka::type::ConsumerRecord)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+}
+
+func lsfTo_6c1d71d067da(x lsfEither[lsfKafkaError, lsfUnit]) LawSpecValue {
+	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either::Right", lsfTo_b120ceed78cb(x.r)) }
+	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+}
+
+func lsfTo_b201d5315681(x lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]) LawSpecValue {
+	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)", "Either::Right", lsfTo_6a5ea41697b3(x.r)) }
+	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+}
+
+func lsfTo_dc76e14987c2(x lsfEither[lsfKafkaError, *lsfTopicPartition]) LawSpecValue {
+	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::TopicPartition)", "Either::Right", lsfTo_57a515e0e489(x.r)) }
+	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::TopicPartition)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
 }
 
 func lsfTo_f9a3e61df1f3(x lsfEither[lsfKafkaError, *lsfRecordMetadata]) LawSpecValue {
@@ -5916,12 +9013,40 @@ func lsfTo_fc454f30e5b2(x *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) LawSpec
 	return lsfDataValue("lawspec.collections::type::KeyVal (lawtwin.kafka.model::type::TopicPartition) (lawtwin.kafka.model::type::PartitionLog)", "lawspec.collections::type::KeyVal::KeyValEntries", LawSpecValue{"List lawspec.collections::type::Entry (lawtwin.kafka.model::type::TopicPartition) (lawtwin.kafka.model::type::PartitionLog)", entries})
 }
 
+func lsfTo_af15eded3eac(x *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (Int64)) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_aff9cc782806(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
+}
+
+func lsfTo_aec30ebe57ba(x *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka.model::type::TopicPartition)) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_479a8e1cd590(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
+}
+
+func lsfTo_8ac5ed3c86fa(x *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (List lawtwin.kafka::type::ConsumerRecord)) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_88281415992f(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
+}
+
 func lsfTo_34d15aaae84b(x *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]) LawSpecValue {
 	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (Unit)) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_6c1d71d067da(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
 }
 
 func lsfTo_b92c1d290bc6(x *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]) LawSpecValue {
 	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (Unit)) (lawtwin.kafka::type::TransactionState)", "lawspec.collections::type::Pair::Pair", lsfTo_6c1d71d067da(x.fFirst), lsfTo_74b3f2831172(x.fSecond))
+}
+
+func lsfTo_53df4ee1a893(x *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)) (lawtwin.kafka::type::ProducerState)", "lawspec.collections::type::Pair::Pair", lsfTo_b201d5315681(x.fFirst), lsfTo_5e5d2c3fa1a7(x.fSecond))
+}
+
+func lsfTo_b49ec6c68859(x *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka.model::type::ProducerIdAndEpoch)) (lawtwin.kafka::type::TransactionState)", "lawspec.collections::type::Pair::Pair", lsfTo_b201d5315681(x.fFirst), lsfTo_74b3f2831172(x.fSecond))
+}
+
+func lsfTo_dc41353054a0(x *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)) (lawtwin.kafka::type::ProducerState)", "lawspec.collections::type::Pair::Pair", lsfTo_f9a3e61df1f3(x.fFirst), lsfTo_5e5d2c3fa1a7(x.fSecond))
+}
+
+func lsfTo_d87cfe1fbff5(x *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Either (lawtwin.kafka.model::type::KafkaError) (lawtwin.kafka::type::RecordMetadata)) (lawtwin.kafka::type::TransactionState)", "lawspec.collections::type::Pair::Pair", lsfTo_f9a3e61df1f3(x.fFirst), lsfTo_74b3f2831172(x.fSecond))
 }
 
 func lsfTo_ab8cd6a31aaf(x *lsfPair[int32, *lsfBrokerState]) LawSpecValue {
@@ -5936,6 +9061,10 @@ func lsfTo_3dd22eccd85c(x *lsfPair[int64, *lsfBrokerState]) LawSpecValue {
 	return lsfDataValue("lawspec.collections::type::Pair (Int64) (lawtwin.kafka.model::type::BrokerState)", "lawspec.collections::type::Pair::Pair", lsfTo_44a08172da10(x.fFirst), lsfTo_49de88d0a810(x.fSecond))
 }
 
+func lsfTo_3bb39d28b6fe(x *lsfPair[int64, *lsfConsumerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Int64) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_44a08172da10(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
+}
+
 func lsfTo_23e94f6e1895(x *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]) LawSpecValue {
 	return lsfDataValue("lawspec.collections::type::Pair (List lawtwin.kafka.model::type::TopicPartition) (lawtwin.kafka.model::type::BrokerState)", "lawspec.collections::type::Pair::Pair", lsfTo_3250492fe9ac(x.fFirst), lsfTo_49de88d0a810(x.fSecond))
 }
@@ -5946,6 +9075,10 @@ func lsfTo_9fa363f31106(x *lsfPair[lsfMaybe[int32], *lsfBrokerState]) LawSpecVal
 
 func lsfTo_38ff65c06c92(x *lsfPair[lsfMaybe[int64], *lsfBrokerState]) LawSpecValue {
 	return lsfDataValue("lawspec.collections::type::Pair (Maybe Int64) (lawtwin.kafka.model::type::BrokerState)", "lawspec.collections::type::Pair::Pair", lsfTo_c09136e29464(x.fFirst), lsfTo_49de88d0a810(x.fSecond))
+}
+
+func lsfTo_172cc75a9602(x *lsfPair[lsfMaybe[int64], *lsfConsumerState]) LawSpecValue {
+	return lsfDataValue("lawspec.collections::type::Pair (Maybe Int64) (lawtwin.kafka::type::ConsumerState)", "lawspec.collections::type::Pair::Pair", lsfTo_c09136e29464(x.fFirst), lsfTo_7de2ae0da384(x.fSecond))
 }
 
 func lsfTo_5d20fb53d3a6(x *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState]) LawSpecValue {
@@ -6067,6 +9200,10 @@ func lsfTo_fcd7b841fa1b(x *lsfProducerTag) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka.model::type::ProducerTag", "lawtwin.kafka.model::type::ProducerTag::ProducerTag", lsfTo_44a08172da10(x.fProducerId), lsfTo_07dabd732290(x.fProducerEpoch), lsfTo_b862204e9be7(x.fBaseSequence))
 }
 
+func lsfTo_be206fb00188(x *lsfRecord) LawSpecValue {
+	return lsfDataValue("lawtwin.kafka.model::type::Record", "lawtwin.kafka.model::type::Record::Record", lsfTo_b276e66efd09(x.fKey), lsfTo_b276e66efd09(x.fValue), lsfTo_0ccaa6764e43(x.fHeaders))
+}
+
 func lsfTo_57a515e0e489(x *lsfTopicPartition) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka.model::type::TopicPartition", "lawtwin.kafka.model::type::TopicPartition::TopicPartition", lsfTo_437d0abf423f(x.fTopic), lsfTo_b862204e9be7(x.fPartition))
 }
@@ -6081,6 +9218,18 @@ func lsfTo_a198a150c390(x lsfTxnState) LawSpecValue {
 
 func lsfTo_7de2ae0da384(x *lsfConsumerState) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka::type::ConsumerState", "lawtwin.kafka::type::ConsumerState::ConsumerState", lsfTo_01d86fc44f8c(x.fGroup), lsfTo_437d0abf423f(x.fMember), lsfTo_b862204e9be7(x.fGeneration), lsfTo_8ec0351dc657(x.fSubscription), lsfTo_3250492fe9ac(x.fAssigned), lsfTo_d1208e18a243(x.fPositions), lsfTo_a519f593a6ed(x.fIsolation))
+}
+
+func lsfTo_3c79f555f54b(x lsfPartitionChoice) LawSpecValue {
+	switch y := x.(type) {
+		case *lsfPartitionChoice_ToPartition: return lsfDataValue("lawtwin.kafka::type::PartitionChoice", "lawtwin.kafka::type::PartitionChoice::ToPartition", lsfTo_b862204e9be7(y.fChosen))
+		case *lsfPartitionChoice_ByKey: return lsfDataValue("lawtwin.kafka::type::PartitionChoice", "lawtwin.kafka::type::PartitionChoice::ByKey")
+	}
+	panic("unreachable branch reached")
+}
+
+func lsfTo_b2152710dfac(x *lsfProducerRecord) LawSpecValue {
+	return lsfDataValue("lawtwin.kafka::type::ProducerRecord", "lawtwin.kafka::type::ProducerRecord::ProducerRecord", lsfTo_437d0abf423f(x.fDestination), lsfTo_3c79f555f54b(x.fChoice), lsfTo_be206fb00188(x.fPayload))
 }
 
 func lsfTo_5e5d2c3fa1a7(x *lsfProducerState) LawSpecValue {
@@ -6102,6 +9251,31 @@ func lsfTonative_9e68ae7ce0b7(x string) []byte {
 func lsfTonative_aff9cc782806(x lsfEither[lsfKafkaError, int64]) LawSpecEither[KafkaError, int64] {
 	if x.right { return LawSpecRight[KafkaError, int64](lsfTonative_44a08172da10(x.r)) }
 	return LawSpecLeft[KafkaError, int64](lsfTonative_26c7dcf285c5(x.l))
+}
+
+func lsfTonative_479a8e1cd590(x lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]]) LawSpecEither[KafkaError, []TopicPartition] {
+	if x.right { return LawSpecRight[KafkaError, []TopicPartition](lsfTonative_3250492fe9ac(x.r)) }
+	return LawSpecLeft[KafkaError, []TopicPartition](lsfTonative_26c7dcf285c5(x.l))
+}
+
+func lsfTonative_88281415992f(x lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]]) LawSpecEither[KafkaError, []ConsumerRecord] {
+	if x.right { return LawSpecRight[KafkaError, []ConsumerRecord](lsfTonative_9aa0842592c4(x.r)) }
+	return LawSpecLeft[KafkaError, []ConsumerRecord](lsfTonative_26c7dcf285c5(x.l))
+}
+
+func lsfTonative_6c1d71d067da(x lsfEither[lsfKafkaError, lsfUnit]) LawSpecEither[KafkaError, LawSpecUnit] {
+	if x.right { return LawSpecRight[KafkaError, LawSpecUnit](lsfTonative_b120ceed78cb(x.r)) }
+	return LawSpecLeft[KafkaError, LawSpecUnit](lsfTonative_26c7dcf285c5(x.l))
+}
+
+func lsfTonative_b201d5315681(x lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch]) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
+	if x.right { return LawSpecRight[KafkaError, ProducerIdAndEpoch](lsfTonative_6a5ea41697b3(x.r)) }
+	return LawSpecLeft[KafkaError, ProducerIdAndEpoch](lsfTonative_26c7dcf285c5(x.l))
+}
+
+func lsfTonative_dc76e14987c2(x lsfEither[lsfKafkaError, *lsfTopicPartition]) LawSpecEither[KafkaError, TopicPartition] {
+	if x.right { return LawSpecRight[KafkaError, TopicPartition](lsfTonative_57a515e0e489(x.r)) }
+	return LawSpecLeft[KafkaError, TopicPartition](lsfTonative_26c7dcf285c5(x.l))
 }
 
 func lsfTonative_f9a3e61df1f3(x lsfEither[lsfKafkaError, *lsfRecordMetadata]) LawSpecEither[KafkaError, RecordMetadata] {
@@ -6471,12 +9645,40 @@ func lsfTonative_fc454f30e5b2(x *lsfMap[*lsfTopicPartition, *lsfPartitionLog]) [
 	return out
 }
 
+func lsfTonative_af15eded3eac(x *lsfPair[lsfEither[lsfKafkaError, int64], *lsfConsumerState]) Pair[LawSpecEither[KafkaError, int64], ConsumerState] {
+	return Pair[LawSpecEither[KafkaError, int64], ConsumerState]{lsfTonative_aff9cc782806(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
+}
+
+func lsfTonative_aec30ebe57ba(x *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfTopicPartition]], *lsfConsumerState]) Pair[LawSpecEither[KafkaError, []TopicPartition], ConsumerState] {
+	return Pair[LawSpecEither[KafkaError, []TopicPartition], ConsumerState]{lsfTonative_479a8e1cd590(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
+}
+
+func lsfTonative_8ac5ed3c86fa(x *lsfPair[lsfEither[lsfKafkaError, *lsfList[*lsfConsumerRecord]], *lsfConsumerState]) Pair[LawSpecEither[KafkaError, []ConsumerRecord], ConsumerState] {
+	return Pair[LawSpecEither[KafkaError, []ConsumerRecord], ConsumerState]{lsfTonative_88281415992f(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
+}
+
 func lsfTonative_34d15aaae84b(x *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfConsumerState]) Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState] {
 	return Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState]{lsfTonative_6c1d71d067da(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
 }
 
 func lsfTonative_b92c1d290bc6(x *lsfPair[lsfEither[lsfKafkaError, lsfUnit], *lsfTransactionState]) Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
 	return Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState]{lsfTonative_6c1d71d067da(x.fFirst), lsfTonative_74b3f2831172(x.fSecond)}
+}
+
+func lsfTonative_53df4ee1a893(x *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfProducerState]) Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], ProducerState] {
+	return Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], ProducerState]{lsfTonative_b201d5315681(x.fFirst), lsfTonative_5e5d2c3fa1a7(x.fSecond)}
+}
+
+func lsfTonative_b49ec6c68859(x *lsfPair[lsfEither[lsfKafkaError, *lsfProducerIdAndEpoch], *lsfTransactionState]) Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], TransactionState] {
+	return Pair[LawSpecEither[KafkaError, ProducerIdAndEpoch], TransactionState]{lsfTonative_b201d5315681(x.fFirst), lsfTonative_74b3f2831172(x.fSecond)}
+}
+
+func lsfTonative_dc41353054a0(x *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfProducerState]) Pair[LawSpecEither[KafkaError, RecordMetadata], ProducerState] {
+	return Pair[LawSpecEither[KafkaError, RecordMetadata], ProducerState]{lsfTonative_f9a3e61df1f3(x.fFirst), lsfTonative_5e5d2c3fa1a7(x.fSecond)}
+}
+
+func lsfTonative_d87cfe1fbff5(x *lsfPair[lsfEither[lsfKafkaError, *lsfRecordMetadata], *lsfTransactionState]) Pair[LawSpecEither[KafkaError, RecordMetadata], TransactionState] {
+	return Pair[LawSpecEither[KafkaError, RecordMetadata], TransactionState]{lsfTonative_f9a3e61df1f3(x.fFirst), lsfTonative_74b3f2831172(x.fSecond)}
 }
 
 func lsfTonative_ab8cd6a31aaf(x *lsfPair[int32, *lsfBrokerState]) Pair[int32, BrokerState] {
@@ -6491,6 +9693,10 @@ func lsfTonative_3dd22eccd85c(x *lsfPair[int64, *lsfBrokerState]) Pair[int64, Br
 	return Pair[int64, BrokerState]{lsfTonative_44a08172da10(x.fFirst), lsfTonative_49de88d0a810(x.fSecond)}
 }
 
+func lsfTonative_3bb39d28b6fe(x *lsfPair[int64, *lsfConsumerState]) Pair[int64, ConsumerState] {
+	return Pair[int64, ConsumerState]{lsfTonative_44a08172da10(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
+}
+
 func lsfTonative_23e94f6e1895(x *lsfPair[*lsfList[*lsfTopicPartition], *lsfBrokerState]) Pair[[]TopicPartition, BrokerState] {
 	return Pair[[]TopicPartition, BrokerState]{lsfTonative_3250492fe9ac(x.fFirst), lsfTonative_49de88d0a810(x.fSecond)}
 }
@@ -6501,6 +9707,10 @@ func lsfTonative_9fa363f31106(x *lsfPair[lsfMaybe[int32], *lsfBrokerState]) Pair
 
 func lsfTonative_38ff65c06c92(x *lsfPair[lsfMaybe[int64], *lsfBrokerState]) Pair[LawSpecMaybe[int64], BrokerState] {
 	return Pair[LawSpecMaybe[int64], BrokerState]{lsfTonative_c09136e29464(x.fFirst), lsfTonative_49de88d0a810(x.fSecond)}
+}
+
+func lsfTonative_172cc75a9602(x *lsfPair[lsfMaybe[int64], *lsfConsumerState]) Pair[LawSpecMaybe[int64], ConsumerState] {
+	return Pair[LawSpecMaybe[int64], ConsumerState]{lsfTonative_c09136e29464(x.fFirst), lsfTonative_7de2ae0da384(x.fSecond)}
 }
 
 func lsfTonative_5d20fb53d3a6(x *lsfPair[lsfMaybe[*lsfProducerIdAndEpoch], *lsfProducerState]) Pair[LawSpecMaybe[ProducerIdAndEpoch], ProducerState] {
@@ -6599,6 +9809,10 @@ func lsfTonative_fcd7b841fa1b(x *lsfProducerTag) ProducerTag {
 	return ProducerTag{lsfTonative_44a08172da10(x.fProducerId), lsfTonative_07dabd732290(x.fProducerEpoch), lsfTonative_b862204e9be7(x.fBaseSequence)}
 }
 
+func lsfTonative_be206fb00188(x *lsfRecord) Record {
+	return Record{lsfTonative_b276e66efd09(x.fKey), lsfTonative_b276e66efd09(x.fValue), lsfTonative_0ccaa6764e43(x.fHeaders)}
+}
+
 func lsfTonative_57a515e0e489(x *lsfTopicPartition) TopicPartition {
 	return TopicPartition{lsfTonative_437d0abf423f(x.fTopic), lsfTonative_b862204e9be7(x.fPartition)}
 }
@@ -6615,6 +9829,18 @@ func lsfTonative_7de2ae0da384(x *lsfConsumerState) ConsumerState {
 	return ConsumerState{lsfTonative_01d86fc44f8c(x.fGroup), lsfTonative_437d0abf423f(x.fMember), lsfTonative_b862204e9be7(x.fGeneration), lsfTonative_8ec0351dc657(x.fSubscription), lsfTonative_3250492fe9ac(x.fAssigned), lsfTonative_d1208e18a243(x.fPositions), lsfTonative_a519f593a6ed(x.fIsolation)}
 }
 
+func lsfTonative_3c79f555f54b(x lsfPartitionChoice) PartitionChoice {
+	switch y := x.(type) {
+		case *lsfPartitionChoice_ToPartition: return PartitionChoiceToPartition{lsfTonative_b862204e9be7(y.fChosen)}
+		case *lsfPartitionChoice_ByKey: return PartitionChoiceByKey{}
+	}
+	panic("unreachable branch reached")
+}
+
+func lsfTonative_b2152710dfac(x *lsfProducerRecord) ProducerRecord {
+	return ProducerRecord{lsfTonative_437d0abf423f(x.fDestination), lsfTonative_3c79f555f54b(x.fChoice), lsfTonative_be206fb00188(x.fPayload)}
+}
+
 func lsfTonative_5e5d2c3fa1a7(x *lsfProducerState) ProducerState {
 	return ProducerState{lsfTonative_99552686984c(x.fIdentity), lsfTonative_0f394bf4652c(x.fSequences), lsfTonative_07ad1a220d10(x.fLastSend)}
 }
@@ -6627,14 +9853,24 @@ func lsfEq_b862204e9be7(a, b int32) bool {
 	return a == b
 }
 
+func lsfEq_44a08172da10(a, b int64) bool {
+	return a == b
+}
+
 func lsfEq_437d0abf423f(a, b string) bool {
 	return a == b
 }
 
-func lsfFrom_6c1d71d067da(v LawSpecValue) lsfEither[lsfKafkaError, lsfUnit] {
-	tag, fields := lsfData(v)
-	if tag == "Either::Right" { return lsfRight[lsfKafkaError, lsfUnit](lsfFrom_b120ceed78cb(fields[0])) }
-	return lsfLeft[lsfKafkaError, lsfUnit](lsfFrom_26c7dcf285c5(fields[0]))
+func lsfEq_be206fb00188(a, b *lsfRecord) bool {
+	if a == b { return true }
+	return true && lsfEq_b276e66efd09(a.fKey, b.fKey) && lsfEq_b276e66efd09(a.fValue, b.fValue) && lsfEq_0ccaa6764e43(a.fHeaders, b.fHeaders)
+}
+
+func lsfFrom_0ccaa6764e43(v LawSpecValue) *lsfList[*lsfHeader] {
+	items := v.Data.([]LawSpecValue)
+	var out *lsfList[*lsfHeader]
+	for i := len(items) - 1; i >= 0; i-- { out = lsfCons(lsfFrom_272a99a01eca(items[i]), out) }
+	return out
 }
 
 func lsfFrom_07ad1a220d10(v LawSpecValue) lsfMaybe[*lsfLastSend] {
@@ -6755,30 +9991,6 @@ func lsfFrom_4aa5635bf6b1(v LawSpecValue) *lsfFetchedRecord {
 	panic("expected FetchedRecord, found " + tag)
 }
 
-func lsfFrom_26c7dcf285c5(v LawSpecValue) lsfKafkaError {
-	tag, _ := lsfData(v)
-	switch tag {
-		case "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition": return lsfKafkaError_UnknownTopicOrPartition
-		case "lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists": return lsfKafkaError_TopicAlreadyExists
-		case "lawtwin.kafka.model::type::KafkaError::InvalidTopic": return lsfKafkaError_InvalidTopic
-		case "lawtwin.kafka.model::type::KafkaError::InvalidPartitions": return lsfKafkaError_InvalidPartitions
-		case "lawtwin.kafka.model::type::KafkaError::InvalidRecord": return lsfKafkaError_InvalidRecord
-		case "lawtwin.kafka.model::type::KafkaError::InvalidRequest": return lsfKafkaError_InvalidRequest
-		case "lawtwin.kafka.model::type::KafkaError::OffsetOutOfRange": return lsfKafkaError_OffsetOutOfRange
-		case "lawtwin.kafka.model::type::KafkaError::OutOfOrderSequenceNumber": return lsfKafkaError_OutOfOrderSequenceNumber
-		case "lawtwin.kafka.model::type::KafkaError::InvalidProducerEpoch": return lsfKafkaError_InvalidProducerEpoch
-		case "lawtwin.kafka.model::type::KafkaError::ProducerFenced": return lsfKafkaError_ProducerFenced
-		case "lawtwin.kafka.model::type::KafkaError::UnknownProducerId": return lsfKafkaError_UnknownProducerId
-		case "lawtwin.kafka.model::type::KafkaError::InvalidProducerIdMapping": return lsfKafkaError_InvalidProducerIdMapping
-		case "lawtwin.kafka.model::type::KafkaError::InvalidTxnState": return lsfKafkaError_InvalidTxnState
-		case "lawtwin.kafka.model::type::KafkaError::InvalidGroupId": return lsfKafkaError_InvalidGroupId
-		case "lawtwin.kafka.model::type::KafkaError::UnknownMemberId": return lsfKafkaError_UnknownMemberId
-		case "lawtwin.kafka.model::type::KafkaError::IllegalGeneration": return lsfKafkaError_IllegalGeneration
-		case "lawtwin.kafka.model::type::KafkaError::IllegalState": return lsfKafkaError_IllegalState
-	}
-	panic("expected KafkaError, found " + tag)
-}
-
 func lsfFrom_0bdc036bd39a(v LawSpecValue) lsfLogEntry {
 	tag, fields := lsfData(v)
 	switch tag {
@@ -6812,14 +10024,6 @@ func lsfFrom_ace9168272ce(v LawSpecValue) *lsfPendingOffset {
 	panic("expected PendingOffset, found " + tag)
 }
 
-func lsfFrom_be206fb00188(v LawSpecValue) *lsfRecord {
-	tag, fields := lsfData(v)
-	switch tag {
-		case "lawtwin.kafka.model::type::Record::Record": return &lsfRecord{lsfFrom_b276e66efd09(fields[0]), lsfFrom_b276e66efd09(fields[1]), lsfFrom_0ccaa6764e43(fields[2])}
-	}
-	panic("expected Record, found " + tag)
-}
-
 func lsfFrom_8d310d12ecd3(v LawSpecValue) *lsfConsumerRecord {
 	tag, fields := lsfData(v)
 	switch tag {
@@ -6836,10 +10040,10 @@ func lsfFrom_374b72e4cd48(v LawSpecValue) *lsfRecordMetadata {
 	panic("expected RecordMetadata, found " + tag)
 }
 
-func lsfFromnative_6c1d71d067da(n LawSpecEither[KafkaError, LawSpecUnit]) lsfEither[lsfKafkaError, lsfUnit] {
-	if r, ok := n.Right(); ok { return lsfRight[lsfKafkaError, lsfUnit](lsfFromnative_b120ceed78cb(r)) }
-	l, _ := n.Left()
-	return lsfLeft[lsfKafkaError, lsfUnit](lsfFromnative_26c7dcf285c5(l))
+func lsfFromnative_0ccaa6764e43(n []Header) *lsfList[*lsfHeader] {
+	var out *lsfList[*lsfHeader]
+	for i := len(n) - 1; i >= 0; i-- { out = lsfCons(lsfFromnative_272a99a01eca(n[i]), out) }
+	return out
 }
 
 func lsfFromnative_07ad1a220d10(n LawSpecMaybe[LastSend]) lsfMaybe[*lsfLastSend] {
@@ -6946,10 +10150,6 @@ func lsfFromnative_ace9168272ce(n PendingOffset) *lsfPendingOffset {
 	return &lsfPendingOffset{lsfFromnative_437d0abf423f(n.PendingGroup), lsfFromnative_05bc2b61d601(n.PendingEntry)}
 }
 
-func lsfFromnative_be206fb00188(n Record) *lsfRecord {
-	return &lsfRecord{lsfFromnative_b276e66efd09(n.Key), lsfFromnative_b276e66efd09(n.Value), lsfFromnative_0ccaa6764e43(n.Headers)}
-}
-
 func lsfFromnative_8d310d12ecd3(n ConsumerRecord) *lsfConsumerRecord {
 	return &lsfConsumerRecord{lsfFromnative_57a515e0e489(n.ReceivedFrom), lsfFromnative_44a08172da10(n.ReceivedAt), lsfFromnative_be206fb00188(n.Received)}
 }
@@ -6958,9 +10158,10 @@ func lsfFromnative_374b72e4cd48(n RecordMetadata) *lsfRecordMetadata {
 	return &lsfRecordMetadata{lsfFromnative_57a515e0e489(n.SentTo), lsfFromnative_44a08172da10(n.SentAt)}
 }
 
-func lsfTo_6c1d71d067da(x lsfEither[lsfKafkaError, lsfUnit]) LawSpecValue {
-	if x.right { return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either::Right", lsfTo_b120ceed78cb(x.r)) }
-	return lsfDataValue("Either (lawtwin.kafka.model::type::KafkaError) (Unit)", "Either::Left", lsfTo_26c7dcf285c5(x.l))
+func lsfTo_0ccaa6764e43(x *lsfList[*lsfHeader]) LawSpecValue {
+	items := make([]LawSpecValue, 0, x.length())
+	for c := x; c != nil; c = c.tail { items = append(items, lsfTo_272a99a01eca(c.head)) }
+	return LawSpecValue{"List lawtwin.kafka.model::type::Header", items}
 }
 
 func lsfTo_07ad1a220d10(x lsfMaybe[*lsfLastSend]) LawSpecValue {
@@ -7044,10 +10245,6 @@ func lsfTo_ace9168272ce(x *lsfPendingOffset) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka.model::type::PendingOffset", "lawtwin.kafka.model::type::PendingOffset::PendingOffset", lsfTo_437d0abf423f(x.fPendingGroup), lsfTo_05bc2b61d601(x.fPendingEntry))
 }
 
-func lsfTo_be206fb00188(x *lsfRecord) LawSpecValue {
-	return lsfDataValue("lawtwin.kafka.model::type::Record", "lawtwin.kafka.model::type::Record::Record", lsfTo_b276e66efd09(x.fKey), lsfTo_b276e66efd09(x.fValue), lsfTo_0ccaa6764e43(x.fHeaders))
-}
-
 func lsfTo_8d310d12ecd3(x *lsfConsumerRecord) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka::type::ConsumerRecord", "lawtwin.kafka::type::ConsumerRecord::ConsumerRecord", lsfTo_57a515e0e489(x.fReceivedFrom), lsfTo_44a08172da10(x.fReceivedAt), lsfTo_be206fb00188(x.fReceived))
 }
@@ -7056,9 +10253,10 @@ func lsfTo_374b72e4cd48(x *lsfRecordMetadata) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka::type::RecordMetadata", "lawtwin.kafka::type::RecordMetadata::RecordMetadata", lsfTo_57a515e0e489(x.fSentTo), lsfTo_44a08172da10(x.fSentAt))
 }
 
-func lsfTonative_6c1d71d067da(x lsfEither[lsfKafkaError, lsfUnit]) LawSpecEither[KafkaError, LawSpecUnit] {
-	if x.right { return LawSpecRight[KafkaError, LawSpecUnit](lsfTonative_b120ceed78cb(x.r)) }
-	return LawSpecLeft[KafkaError, LawSpecUnit](lsfTonative_26c7dcf285c5(x.l))
+func lsfTonative_0ccaa6764e43(x *lsfList[*lsfHeader]) []Header {
+	out := make([]Header, 0, x.length())
+	for c := x; c != nil; c = c.tail { out = append(out, lsfTonative_272a99a01eca(c.head)) }
+	return out
 }
 
 func lsfTonative_07ad1a220d10(x lsfMaybe[*lsfLastSend]) LawSpecMaybe[LastSend] {
@@ -7165,10 +10363,6 @@ func lsfTonative_ace9168272ce(x *lsfPendingOffset) PendingOffset {
 	return PendingOffset{lsfTonative_437d0abf423f(x.fPendingGroup), lsfTonative_05bc2b61d601(x.fPendingEntry)}
 }
 
-func lsfTonative_be206fb00188(x *lsfRecord) Record {
-	return Record{lsfTonative_b276e66efd09(x.fKey), lsfTonative_b276e66efd09(x.fValue), lsfTonative_0ccaa6764e43(x.fHeaders)}
-}
-
 func lsfTonative_8d310d12ecd3(x *lsfConsumerRecord) ConsumerRecord {
 	return ConsumerRecord{lsfTonative_57a515e0e489(x.fReceivedFrom), lsfTonative_44a08172da10(x.fReceivedAt), lsfTonative_be206fb00188(x.fReceived)}
 }
@@ -7177,49 +10371,12 @@ func lsfTonative_374b72e4cd48(x *lsfRecordMetadata) RecordMetadata {
 	return RecordMetadata{lsfTonative_57a515e0e489(x.fSentTo), lsfTonative_44a08172da10(x.fSentAt)}
 }
 
-func lsfFrom_0ccaa6764e43(v LawSpecValue) *lsfList[*lsfHeader] {
-	items := v.Data.([]LawSpecValue)
-	var out *lsfList[*lsfHeader]
-	for i := len(items) - 1; i >= 0; i-- { out = lsfCons(lsfFrom_272a99a01eca(items[i]), out) }
-	return out
+func lsfEq_0ccaa6764e43(a, b *lsfList[*lsfHeader]) bool {
+	return lsfEqList(a, b, lsfEq_272a99a01eca)
 }
 
-func lsfFrom_72b0d17d95d9(v LawSpecValue) *lsfLastSend {
-	tag, fields := lsfData(v)
-	switch tag {
-		case "lawtwin.kafka::type::LastSend::LastSend": return &lsfLastSend{lsfFrom_57a515e0e489(fields[0]), lsfFrom_c818bd20f406(fields[1]), lsfFrom_e3583a5b5bdc(fields[2])}
-	}
-	panic("expected LastSend, found " + tag)
-}
-
-func lsfFromnative_0ccaa6764e43(n []Header) *lsfList[*lsfHeader] {
-	var out *lsfList[*lsfHeader]
-	for i := len(n) - 1; i >= 0; i-- { out = lsfCons(lsfFromnative_272a99a01eca(n[i]), out) }
-	return out
-}
-
-func lsfFromnative_72b0d17d95d9(n LastSend) *lsfLastSend {
-	return &lsfLastSend{lsfFromnative_57a515e0e489(n.LastPartition), lsfFromnative_c818bd20f406(n.LastTag), lsfFromnative_e3583a5b5bdc(n.LastRecords)}
-}
-
-func lsfTo_0ccaa6764e43(x *lsfList[*lsfHeader]) LawSpecValue {
-	items := make([]LawSpecValue, 0, x.length())
-	for c := x; c != nil; c = c.tail { items = append(items, lsfTo_272a99a01eca(c.head)) }
-	return LawSpecValue{"List lawtwin.kafka.model::type::Header", items}
-}
-
-func lsfTo_72b0d17d95d9(x *lsfLastSend) LawSpecValue {
-	return lsfDataValue("lawtwin.kafka::type::LastSend", "lawtwin.kafka::type::LastSend::LastSend", lsfTo_57a515e0e489(x.fLastPartition), lsfTo_c818bd20f406(x.fLastTag), lsfTo_e3583a5b5bdc(x.fLastRecords))
-}
-
-func lsfTonative_0ccaa6764e43(x *lsfList[*lsfHeader]) []Header {
-	out := make([]Header, 0, x.length())
-	for c := x; c != nil; c = c.tail { out = append(out, lsfTonative_272a99a01eca(c.head)) }
-	return out
-}
-
-func lsfTonative_72b0d17d95d9(x *lsfLastSend) LastSend {
-	return LastSend{lsfTonative_57a515e0e489(x.fLastPartition), lsfTonative_c818bd20f406(x.fLastTag), lsfTonative_e3583a5b5bdc(x.fLastRecords)}
+func lsfEq_b276e66efd09(a, b lsfMaybe[string]) bool {
+	return a.ok == b.ok && (!a.ok || lsfEq_9e68ae7ce0b7(a.v, b.v))
 }
 
 func lsfFrom_272a99a01eca(v LawSpecValue) *lsfHeader {
@@ -7230,14 +10387,43 @@ func lsfFrom_272a99a01eca(v LawSpecValue) *lsfHeader {
 	panic("expected Header, found " + tag)
 }
 
+func lsfFrom_72b0d17d95d9(v LawSpecValue) *lsfLastSend {
+	tag, fields := lsfData(v)
+	switch tag {
+		case "lawtwin.kafka::type::LastSend::LastSend": return &lsfLastSend{lsfFrom_57a515e0e489(fields[0]), lsfFrom_c818bd20f406(fields[1]), lsfFrom_e3583a5b5bdc(fields[2])}
+	}
+	panic("expected LastSend, found " + tag)
+}
+
 func lsfFromnative_272a99a01eca(n Header) *lsfHeader {
 	return &lsfHeader{lsfFromnative_437d0abf423f(n.Name), lsfFromnative_b276e66efd09(n.Content)}
+}
+
+func lsfFromnative_72b0d17d95d9(n LastSend) *lsfLastSend {
+	return &lsfLastSend{lsfFromnative_57a515e0e489(n.LastPartition), lsfFromnative_c818bd20f406(n.LastTag), lsfFromnative_e3583a5b5bdc(n.LastRecords)}
 }
 
 func lsfTo_272a99a01eca(x *lsfHeader) LawSpecValue {
 	return lsfDataValue("lawtwin.kafka.model::type::Header", "lawtwin.kafka.model::type::Header::Header", lsfTo_437d0abf423f(x.fName), lsfTo_b276e66efd09(x.fContent))
 }
 
+func lsfTo_72b0d17d95d9(x *lsfLastSend) LawSpecValue {
+	return lsfDataValue("lawtwin.kafka::type::LastSend", "lawtwin.kafka::type::LastSend::LastSend", lsfTo_57a515e0e489(x.fLastPartition), lsfTo_c818bd20f406(x.fLastTag), lsfTo_e3583a5b5bdc(x.fLastRecords))
+}
+
 func lsfTonative_272a99a01eca(x *lsfHeader) Header {
 	return Header{lsfTonative_437d0abf423f(x.fName), lsfTonative_b276e66efd09(x.fContent)}
+}
+
+func lsfTonative_72b0d17d95d9(x *lsfLastSend) LastSend {
+	return LastSend{lsfTonative_57a515e0e489(x.fLastPartition), lsfTonative_c818bd20f406(x.fLastTag), lsfTonative_e3583a5b5bdc(x.fLastRecords)}
+}
+
+func lsfEq_9e68ae7ce0b7(a, b string) bool {
+	return a == b
+}
+
+func lsfEq_272a99a01eca(a, b *lsfHeader) bool {
+	if a == b { return true }
+	return true && a.fName == b.fName && lsfEq_b276e66efd09(a.fContent, b.fContent)
 }

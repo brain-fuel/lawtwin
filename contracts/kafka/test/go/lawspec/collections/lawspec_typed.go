@@ -337,8 +337,8 @@ func lsfOrderingOf(c int) lsfOrdering {
 	return lsfOrdering_Greater
 }
 
-// lsfBoundedInt16_0 is lawspec.collections::boundedInt16.
-func lsfBoundedInt16_0(lValue0 lsfInt) lsfMaybe[int16] {
+// lsfBoundedInt16_cdb4a79e is lawspec.collections::boundedInt16.
+func lsfBoundedInt16_cdb4a79e(lValue0 lsfInt) lsfMaybe[int16] {
 	if ((lsfCmpInt(lValue0, lsfSmall(int64(-32768))) >= 0) && (lsfCmpInt(lValue0, lsfSmall(int64(32767))) <= 0)) {
 		return lsfJust[int16](int16(lsfNarrowInt(lValue0, -32768, 32767, "Int16")))
 	} else {
@@ -346,8 +346,8 @@ func lsfBoundedInt16_0(lValue0 lsfInt) lsfMaybe[int16] {
 	}
 }
 
-// lsfBoundedInt32_1 is lawspec.collections::boundedInt32.
-func lsfBoundedInt32_1(lValue1 lsfInt) lsfMaybe[int32] {
+// lsfBoundedInt32_b3381d93 is lawspec.collections::boundedInt32.
+func lsfBoundedInt32_b3381d93(lValue1 lsfInt) lsfMaybe[int32] {
 	if ((lsfCmpInt(lValue1, lsfSmall(int64(-2147483648))) >= 0) && (lsfCmpInt(lValue1, lsfSmall(int64(2147483647))) <= 0)) {
 		return lsfJust[int32](int32(lsfNarrowInt(lValue1, -2147483648, 2147483647, "Int32")))
 	} else {
@@ -355,8 +355,8 @@ func lsfBoundedInt32_1(lValue1 lsfInt) lsfMaybe[int32] {
 	}
 }
 
-// lsfBoundedInt64_2 is lawspec.collections::boundedInt64.
-func lsfBoundedInt64_2(lValue2 lsfInt) lsfMaybe[int64] {
+// lsfBoundedInt64_13153a18 is lawspec.collections::boundedInt64.
+func lsfBoundedInt64_13153a18(lValue2 lsfInt) lsfMaybe[int64] {
 	if ((lsfCmpInt(lValue2, lsfSmall(-9223372036854775808)) >= 0) && (lsfCmpInt(lValue2, lsfSmall(9223372036854775807)) <= 0)) {
 		return lsfJust[int64](int64(lsfNarrowInt(lValue2, -1 << 63, 9223372036854775807, "Int64")))
 	} else {
@@ -364,8 +364,8 @@ func lsfBoundedInt64_2(lValue2 lsfInt) lsfMaybe[int64] {
 	}
 }
 
-// lsfBoundedInt8_3 is lawspec.collections::boundedInt8.
-func lsfBoundedInt8_3(lValue3 lsfInt) lsfMaybe[int8] {
+// lsfBoundedInt8_9822648b is lawspec.collections::boundedInt8.
+func lsfBoundedInt8_9822648b(lValue3 lsfInt) lsfMaybe[int8] {
 	if ((lsfCmpInt(lValue3, lsfSmall(int64(-128))) >= 0) && (lsfCmpInt(lValue3, lsfSmall(int64(127))) <= 0)) {
 		return lsfJust[int8](int8(lsfNarrowInt(lValue3, -128, 127, "Int8")))
 	} else {
@@ -373,8 +373,8 @@ func lsfBoundedInt8_3(lValue3 lsfInt) lsfMaybe[int8] {
 	}
 }
 
-// lsfBoundedUInt16_4 is lawspec.collections::boundedUInt16.
-func lsfBoundedUInt16_4(lValue4 lsfInt) lsfMaybe[uint16] {
+// lsfBoundedUInt16_fab24aa3 is lawspec.collections::boundedUInt16.
+func lsfBoundedUInt16_fab24aa3(lValue4 lsfInt) lsfMaybe[uint16] {
 	if ((lsfCmpInt(lValue4, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue4, lsfSmall(int64(65535))) <= 0)) {
 		return lsfJust[uint16](uint16(lsfNarrowInt(lValue4, 0, 65535, "UInt16")))
 	} else {
@@ -382,8 +382,8 @@ func lsfBoundedUInt16_4(lValue4 lsfInt) lsfMaybe[uint16] {
 	}
 }
 
-// lsfBoundedUInt32_5 is lawspec.collections::boundedUInt32.
-func lsfBoundedUInt32_5(lValue5 lsfInt) lsfMaybe[uint32] {
+// lsfBoundedUInt32_f7521c17 is lawspec.collections::boundedUInt32.
+func lsfBoundedUInt32_f7521c17(lValue5 lsfInt) lsfMaybe[uint32] {
 	if ((lsfCmpInt(lValue5, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue5, lsfSmall(int64(4294967295))) <= 0)) {
 		return lsfJust[uint32](uint32(lsfNarrowInt(lValue5, 0, 4294967295, "UInt32")))
 	} else {
@@ -391,8 +391,8 @@ func lsfBoundedUInt32_5(lValue5 lsfInt) lsfMaybe[uint32] {
 	}
 }
 
-// lsfBoundedUInt64_6 is lawspec.collections::boundedUInt64.
-func lsfBoundedUInt64_6(lValue6 lsfInt) lsfMaybe[uint64] {
+// lsfBoundedUInt64_ca410424 is lawspec.collections::boundedUInt64.
+func lsfBoundedUInt64_ca410424(lValue6 lsfInt) lsfMaybe[uint64] {
 	if ((lsfCmpInt(lValue6, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue6, lsfFromBig(lsInt("18446744073709551615"))) <= 0)) {
 		return lsfJust[uint64](lsfNarrowUint64(lValue6))
 	} else {
@@ -400,8 +400,8 @@ func lsfBoundedUInt64_6(lValue6 lsfInt) lsfMaybe[uint64] {
 	}
 }
 
-// lsfBoundedUInt8_7 is lawspec.collections::boundedUInt8.
-func lsfBoundedUInt8_7(lValue7 lsfInt) lsfMaybe[uint8] {
+// lsfBoundedUInt8_8ce0c76e is lawspec.collections::boundedUInt8.
+func lsfBoundedUInt8_8ce0c76e(lValue7 lsfInt) lsfMaybe[uint8] {
 	if ((lsfCmpInt(lValue7, lsfSmall(int64(0))) >= 0) && (lsfCmpInt(lValue7, lsfSmall(int64(255))) <= 0)) {
 		return lsfJust[uint8](uint8(lsfNarrowInt(lValue7, 0, 255, "UInt8")))
 	} else {
@@ -409,8 +409,8 @@ func lsfBoundedUInt8_7(lValue7 lsfInt) lsfMaybe[uint8] {
 	}
 }
 
-// lsfSaturatingInt16_8 is lawspec.collections::saturatingInt16.
-func lsfSaturatingInt16_8(lValue8 lsfInt) int16 {
+// lsfSaturatingInt16_770015a8 is lawspec.collections::saturatingInt16.
+func lsfSaturatingInt16_770015a8(lValue8 lsfInt) int16 {
 	if (lsfCmpInt(lValue8, lsfSmall(int64(32767))) > 0) {
 		return int16(lsfNarrow(int64(32767), -32768, 32767, "Int16"))
 	} else {
@@ -422,8 +422,8 @@ func lsfSaturatingInt16_8(lValue8 lsfInt) int16 {
 	}
 }
 
-// lsfSaturatingInt32_9 is lawspec.collections::saturatingInt32.
-func lsfSaturatingInt32_9(lValue9 lsfInt) int32 {
+// lsfSaturatingInt32_9e8d3b43 is lawspec.collections::saturatingInt32.
+func lsfSaturatingInt32_9e8d3b43(lValue9 lsfInt) int32 {
 	if (lsfCmpInt(lValue9, lsfSmall(int64(2147483647))) > 0) {
 		return int32(lsfNarrow(int64(2147483647), -2147483648, 2147483647, "Int32"))
 	} else {
@@ -435,8 +435,8 @@ func lsfSaturatingInt32_9(lValue9 lsfInt) int32 {
 	}
 }
 
-// lsfSaturatingInt64_10 is lawspec.collections::saturatingInt64.
-func lsfSaturatingInt64_10(lValue10 lsfInt) int64 {
+// lsfSaturatingInt64_5bce4ed8 is lawspec.collections::saturatingInt64.
+func lsfSaturatingInt64_5bce4ed8(lValue10 lsfInt) int64 {
 	if (lsfCmpInt(lValue10, lsfSmall(9223372036854775807)) > 0) {
 		return int64(lsfNarrowInt(lsfSmall(9223372036854775807), -1 << 63, 9223372036854775807, "Int64"))
 	} else {
@@ -448,8 +448,8 @@ func lsfSaturatingInt64_10(lValue10 lsfInt) int64 {
 	}
 }
 
-// lsfSaturatingInt8_11 is lawspec.collections::saturatingInt8.
-func lsfSaturatingInt8_11(lValue11 lsfInt) int8 {
+// lsfSaturatingInt8_54855fd8 is lawspec.collections::saturatingInt8.
+func lsfSaturatingInt8_54855fd8(lValue11 lsfInt) int8 {
 	if (lsfCmpInt(lValue11, lsfSmall(int64(127))) > 0) {
 		return int8(lsfNarrow(int64(127), -128, 127, "Int8"))
 	} else {
@@ -461,8 +461,8 @@ func lsfSaturatingInt8_11(lValue11 lsfInt) int8 {
 	}
 }
 
-// lsfSaturatingUInt16_12 is lawspec.collections::saturatingUInt16.
-func lsfSaturatingUInt16_12(lValue12 lsfInt) uint16 {
+// lsfSaturatingUInt16_c4c11e3b is lawspec.collections::saturatingUInt16.
+func lsfSaturatingUInt16_c4c11e3b(lValue12 lsfInt) uint16 {
 	if (lsfCmpInt(lValue12, lsfSmall(int64(65535))) > 0) {
 		return uint16(lsfNarrow(int64(65535), 0, 65535, "UInt16"))
 	} else {
@@ -474,8 +474,8 @@ func lsfSaturatingUInt16_12(lValue12 lsfInt) uint16 {
 	}
 }
 
-// lsfSaturatingUInt32_13 is lawspec.collections::saturatingUInt32.
-func lsfSaturatingUInt32_13(lValue13 lsfInt) uint32 {
+// lsfSaturatingUInt32_6d025357 is lawspec.collections::saturatingUInt32.
+func lsfSaturatingUInt32_6d025357(lValue13 lsfInt) uint32 {
 	if (lsfCmpInt(lValue13, lsfSmall(int64(4294967295))) > 0) {
 		return uint32(lsfNarrow(int64(4294967295), 0, 4294967295, "UInt32"))
 	} else {
@@ -487,8 +487,8 @@ func lsfSaturatingUInt32_13(lValue13 lsfInt) uint32 {
 	}
 }
 
-// lsfSaturatingUInt64_14 is lawspec.collections::saturatingUInt64.
-func lsfSaturatingUInt64_14(lValue14 lsfInt) uint64 {
+// lsfSaturatingUInt64_dce984c8 is lawspec.collections::saturatingUInt64.
+func lsfSaturatingUInt64_dce984c8(lValue14 lsfInt) uint64 {
 	if (lsfCmpInt(lValue14, lsfFromBig(lsInt("18446744073709551615"))) > 0) {
 		return lsfNarrowUint64(lsfFromBig(lsInt("18446744073709551615")))
 	} else {
@@ -500,8 +500,8 @@ func lsfSaturatingUInt64_14(lValue14 lsfInt) uint64 {
 	}
 }
 
-// lsfSaturatingUInt8_15 is lawspec.collections::saturatingUInt8.
-func lsfSaturatingUInt8_15(lValue15 lsfInt) uint8 {
+// lsfSaturatingUInt8_cf40d611 is lawspec.collections::saturatingUInt8.
+func lsfSaturatingUInt8_cf40d611(lValue15 lsfInt) uint8 {
 	if (lsfCmpInt(lValue15, lsfSmall(int64(255))) > 0) {
 		return uint8(lsfNarrow(int64(255), 0, 255, "UInt8"))
 	} else {
@@ -513,8 +513,8 @@ func lsfSaturatingUInt8_15(lValue15 lsfInt) uint8 {
 	}
 }
 
-// lsfWrappingInt16_16 is lawspec.collections::wrappingInt16.
-func lsfWrappingInt16_16(lValue16 lsfInt) int16 {
+// lsfWrappingInt16_989a4ce2 is lawspec.collections::wrappingInt16.
+func lsfWrappingInt16_989a4ce2(lValue16 lsfInt) int16 {
 	lR17 := lValue16.Sub(lsfSmall(int64(-32768))).Rem(lsfSmall(int64(32767)).Sub(lsfSmall(int64(-32768))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR17, lsfSmall(int64(0))) < 0) {
 		return int16(lsfNarrowInt(lR17.Add(lsfSmall(int64(32767)).Sub(lsfSmall(int64(-32768))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-32768))), -32768, 32767, "Int16"))
@@ -523,8 +523,8 @@ func lsfWrappingInt16_16(lValue16 lsfInt) int16 {
 	}
 }
 
-// lsfWrappingInt32_17 is lawspec.collections::wrappingInt32.
-func lsfWrappingInt32_17(lValue18 lsfInt) int32 {
+// lsfWrappingInt32_e1b5a7b2 is lawspec.collections::wrappingInt32.
+func lsfWrappingInt32_e1b5a7b2(lValue18 lsfInt) int32 {
 	lR19 := lValue18.Sub(lsfSmall(int64(-2147483648))).Rem(lsfSmall(int64(2147483647)).Sub(lsfSmall(int64(-2147483648))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR19, lsfSmall(int64(0))) < 0) {
 		return int32(lsfNarrowInt(lR19.Add(lsfSmall(int64(2147483647)).Sub(lsfSmall(int64(-2147483648))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-2147483648))), -2147483648, 2147483647, "Int32"))
@@ -533,8 +533,8 @@ func lsfWrappingInt32_17(lValue18 lsfInt) int32 {
 	}
 }
 
-// lsfWrappingInt64_18 is lawspec.collections::wrappingInt64.
-func lsfWrappingInt64_18(lValue20 lsfInt) int64 {
+// lsfWrappingInt64_698b955a is lawspec.collections::wrappingInt64.
+func lsfWrappingInt64_698b955a(lValue20 lsfInt) int64 {
 	lR21 := lValue20.Sub(lsfSmall(-9223372036854775808)).Rem(lsfSmall(9223372036854775807).Sub(lsfSmall(-9223372036854775808)).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR21, lsfSmall(int64(0))) < 0) {
 		return int64(lsfNarrowInt(lR21.Add(lsfSmall(9223372036854775807).Sub(lsfSmall(-9223372036854775808)).Add(lsfSmall(int64(1)))).Add(lsfSmall(-9223372036854775808)), -1 << 63, 9223372036854775807, "Int64"))
@@ -543,8 +543,8 @@ func lsfWrappingInt64_18(lValue20 lsfInt) int64 {
 	}
 }
 
-// lsfWrappingInt8_19 is lawspec.collections::wrappingInt8.
-func lsfWrappingInt8_19(lValue22 lsfInt) int8 {
+// lsfWrappingInt8_728a92af is lawspec.collections::wrappingInt8.
+func lsfWrappingInt8_728a92af(lValue22 lsfInt) int8 {
 	lR23 := lValue22.Sub(lsfSmall(int64(-128))).Rem(lsfSmall(int64(127)).Sub(lsfSmall(int64(-128))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR23, lsfSmall(int64(0))) < 0) {
 		return int8(lsfNarrowInt(lR23.Add(lsfSmall(int64(127)).Sub(lsfSmall(int64(-128))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(-128))), -128, 127, "Int8"))
@@ -553,8 +553,8 @@ func lsfWrappingInt8_19(lValue22 lsfInt) int8 {
 	}
 }
 
-// lsfWrappingUInt16_20 is lawspec.collections::wrappingUInt16.
-func lsfWrappingUInt16_20(lValue24 lsfInt) uint16 {
+// lsfWrappingUInt16_e5742dd2 is lawspec.collections::wrappingUInt16.
+func lsfWrappingUInt16_e5742dd2(lValue24 lsfInt) uint16 {
 	lR25 := lValue24.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(65535)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR25, lsfSmall(int64(0))) < 0) {
 		return uint16(lsfNarrowInt(lR25.Add(lsfSmall(int64(65535)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 65535, "UInt16"))
@@ -563,8 +563,8 @@ func lsfWrappingUInt16_20(lValue24 lsfInt) uint16 {
 	}
 }
 
-// lsfWrappingUInt32_21 is lawspec.collections::wrappingUInt32.
-func lsfWrappingUInt32_21(lValue26 lsfInt) uint32 {
+// lsfWrappingUInt32_1ef3ce20 is lawspec.collections::wrappingUInt32.
+func lsfWrappingUInt32_1ef3ce20(lValue26 lsfInt) uint32 {
 	lR27 := lValue26.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(4294967295)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR27, lsfSmall(int64(0))) < 0) {
 		return uint32(lsfNarrowInt(lR27.Add(lsfSmall(int64(4294967295)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 4294967295, "UInt32"))
@@ -573,8 +573,8 @@ func lsfWrappingUInt32_21(lValue26 lsfInt) uint32 {
 	}
 }
 
-// lsfWrappingUInt64_22 is lawspec.collections::wrappingUInt64.
-func lsfWrappingUInt64_22(lValue28 lsfInt) uint64 {
+// lsfWrappingUInt64_362f8288 is lawspec.collections::wrappingUInt64.
+func lsfWrappingUInt64_362f8288(lValue28 lsfInt) uint64 {
 	lR29 := lValue28.Sub(lsfSmall(int64(0))).Rem(lsfFromBig(lsInt("18446744073709551615")).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR29, lsfSmall(int64(0))) < 0) {
 		return lsfNarrowUint64(lR29.Add(lsfFromBig(lsInt("18446744073709551615")).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))))
@@ -583,8 +583,8 @@ func lsfWrappingUInt64_22(lValue28 lsfInt) uint64 {
 	}
 }
 
-// lsfWrappingUInt8_23 is lawspec.collections::wrappingUInt8.
-func lsfWrappingUInt8_23(lValue30 lsfInt) uint8 {
+// lsfWrappingUInt8_6ce2e7d2 is lawspec.collections::wrappingUInt8.
+func lsfWrappingUInt8_6ce2e7d2(lValue30 lsfInt) uint8 {
 	lR31 := lValue30.Sub(lsfSmall(int64(0))).Rem(lsfSmall(int64(255)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1))))
 	if (lsfCmpInt(lR31, lsfSmall(int64(0))) < 0) {
 		return uint8(lsfNarrowInt(lR31.Add(lsfSmall(int64(255)).Sub(lsfSmall(int64(0))).Add(lsfSmall(int64(1)))).Add(lsfSmall(int64(0))), 0, 255, "UInt8"))

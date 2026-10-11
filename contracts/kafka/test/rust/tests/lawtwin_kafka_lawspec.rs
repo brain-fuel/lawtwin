@@ -5840,9 +5840,9 @@ fn run_8() -> ls::Result<()> {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
-// (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
+// _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+// (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
+// _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -6449,72 +6449,72 @@ fn law_9(
                                 "__1__new) And match (attempt (addPartitionsToT",
                                 "xnRequest (_input1) (match (_match1__1__old) {",
                                 " lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                                "::ProducerIdAndEpoch _match3__0__lawspecField1",
-                                "91x0 _match3__0__lawspecField191x1 -> _match3_",
-                                "_0__lawspecField191x0 }) (match (_match1__1__o",
-                                "ld) { lawtwin.kafka.model::type::ProducerIdAnd",
-                                "Epoch::ProducerIdAndEpoch _match3__0__lawspecF",
-                                "ield192x0 _match3__0__lawspecField192x1 -> _ma",
-                                "tch3__0__lawspecField192x1 }) (List::Cons(_let",
-                                "0__tp, List::Nil())))) { Either::Left _match3_",
-                                "_0__lawspecFailure -> match (_match3__0__lawsp",
-                                "ecFailure) { lawtwin.kafka.model::type::KafkaE",
-                                "rror::ProducerFenced  -> true; lawtwin.kafka.m",
-                                "odel::type::KafkaError::UnknownTopicOrPartitio",
-                                "n  -> false; lawtwin.kafka.model::type::KafkaE",
-                                "rror::TopicAlreadyExists  -> false; lawtwin.ka",
-                                "fka.model::type::KafkaError::InvalidTopic  -> ",
-                                "false; lawtwin.kafka.model::type::KafkaError::",
-                                "InvalidPartitions  -> false; lawtwin.kafka.mod",
-                                "el::type::KafkaError::InvalidRecord  -> false;",
-                                " lawtwin.kafka.model::type::KafkaError::Invali",
-                                "dRequest  -> false; lawtwin.kafka.model::type:",
-                                ":KafkaError::OffsetOutOfRange  -> false; lawtw",
-                                "in.kafka.model::type::KafkaError::OutOfOrderSe",
-                                "quenceNumber  -> false; lawtwin.kafka.model::t",
-                                "ype::KafkaError::InvalidProducerEpoch  -> fals",
-                                "e; lawtwin.kafka.model::type::KafkaError::Unkn",
-                                "ownProducerId  -> false; lawtwin.kafka.model::",
-                                "type::KafkaError::InvalidProducerIdMapping  ->",
+                                "::ProducerIdAndEpoch _matchfield0__producerId ",
+                                "_matchfield1__producerEpoch -> _matchfield0__p",
+                                "roducerId }) (match (_match1__1__old) { lawtwi",
+                                "n.kafka.model::type::ProducerIdAndEpoch::Produ",
+                                "cerIdAndEpoch _matchfield2__producerId _matchf",
+                                "ield3__producerEpoch -> _matchfield3__producer",
+                                "Epoch }) (List::Cons(_let0__tp, List::Nil())))",
+                                ") { Either::Left _match3__0__lawspecFailure ->",
+                                " match (_match3__0__lawspecFailure) { lawtwin.",
+                                "kafka.model::type::KafkaError::ProducerFenced ",
+                                " -> true; lawtwin.kafka.model::type::KafkaErro",
+                                "r::UnknownTopicOrPartition  -> false; lawtwin.",
+                                "kafka.model::type::KafkaError::TopicAlreadyExi",
+                                "sts  -> false; lawtwin.kafka.model::type::Kafk",
+                                "aError::InvalidTopic  -> false; lawtwin.kafka.",
+                                "model::type::KafkaError::InvalidPartitions  ->",
                                 " false; lawtwin.kafka.model::type::KafkaError:",
-                                ":InvalidTxnState  -> false; lawtwin.kafka.mode",
-                                "l::type::KafkaError::InvalidGroupId  -> false;",
-                                " lawtwin.kafka.model::type::KafkaError::Unknow",
-                                "nMemberId  -> false; lawtwin.kafka.model::type",
-                                "::KafkaError::IllegalGeneration  -> false; law",
-                                "twin.kafka.model::type::KafkaError::IllegalSta",
-                                "te  -> false }; Either::Right _match3__1__laws",
-                                "pecResult -> false }) And match (attempt (prod",
-                                "uceRequest (_let0__tp) (Maybe::Just(tagOf (_ma",
-                                "tch1__1__old) (0))) (_input2))) { Either::Left",
-                                " _match3__0__lawspecFailure -> match (_match3_",
-                                "_0__lawspecFailure) { lawtwin.kafka.model::typ",
-                                "e::KafkaError::InvalidProducerEpoch  -> true; ",
-                                "lawtwin.kafka.model::type::KafkaError::Unknown",
-                                "TopicOrPartition  -> false; lawtwin.kafka.mode",
-                                "l::type::KafkaError::TopicAlreadyExists  -> fa",
-                                "lse; lawtwin.kafka.model::type::KafkaError::In",
-                                "validTopic  -> false; lawtwin.kafka.model::typ",
-                                "e::KafkaError::InvalidPartitions  -> false; la",
-                                "wtwin.kafka.model::type::KafkaError::InvalidRe",
-                                "cord  -> false; lawtwin.kafka.model::type::Kaf",
-                                "kaError::InvalidRequest  -> false; lawtwin.kaf",
-                                "ka.model::type::KafkaError::OffsetOutOfRange  ",
-                                "-> false; lawtwin.kafka.model::type::KafkaErro",
-                                "r::OutOfOrderSequenceNumber  -> false; lawtwin",
-                                ".kafka.model::type::KafkaError::ProducerFenced",
-                                "  -> false; lawtwin.kafka.model::type::KafkaEr",
-                                "ror::UnknownProducerId  -> false; lawtwin.kafk",
-                                "a.model::type::KafkaError::InvalidProducerIdMa",
-                                "pping  -> false; lawtwin.kafka.model::type::Ka",
-                                "fkaError::InvalidTxnState  -> false; lawtwin.k",
-                                "afka.model::type::KafkaError::InvalidGroupId  ",
-                                "-> false; lawtwin.kafka.model::type::KafkaErro",
-                                "r::UnknownMemberId  -> false; lawtwin.kafka.mo",
-                                "del::type::KafkaError::IllegalGeneration  -> f",
-                                "alse; lawtwin.kafka.model::type::KafkaError::I",
-                                "llegalState  -> false }; Either::Right _match3",
-                                "__1__lawspecResult -> false }) } } = true",
+                                ":InvalidRecord  -> false; lawtwin.kafka.model:",
+                                ":type::KafkaError::InvalidRequest  -> false; l",
+                                "awtwin.kafka.model::type::KafkaError::OffsetOu",
+                                "tOfRange  -> false; lawtwin.kafka.model::type:",
+                                ":KafkaError::OutOfOrderSequenceNumber  -> fals",
+                                "e; lawtwin.kafka.model::type::KafkaError::Inva",
+                                "lidProducerEpoch  -> false; lawtwin.kafka.mode",
+                                "l::type::KafkaError::UnknownProducerId  -> fal",
+                                "se; lawtwin.kafka.model::type::KafkaError::Inv",
+                                "alidProducerIdMapping  -> false; lawtwin.kafka",
+                                ".model::type::KafkaError::InvalidTxnState  -> ",
+                                "false; lawtwin.kafka.model::type::KafkaError::",
+                                "InvalidGroupId  -> false; lawtwin.kafka.model:",
+                                ":type::KafkaError::UnknownMemberId  -> false; ",
+                                "lawtwin.kafka.model::type::KafkaError::Illegal",
+                                "Generation  -> false; lawtwin.kafka.model::typ",
+                                "e::KafkaError::IllegalState  -> false }; Eithe",
+                                "r::Right _match3__1__lawspecResult -> false })",
+                                " And match (attempt (produceRequest (_let0__tp",
+                                ") (Maybe::Just(tagOf (_match1__1__old) (0))) (",
+                                "_input2))) { Either::Left _match3__0__lawspecF",
+                                "ailure -> match (_match3__0__lawspecFailure) {",
+                                " lawtwin.kafka.model::type::KafkaError::Invali",
+                                "dProducerEpoch  -> true; lawtwin.kafka.model::",
+                                "type::KafkaError::UnknownTopicOrPartition  -> ",
+                                "false; lawtwin.kafka.model::type::KafkaError::",
+                                "TopicAlreadyExists  -> false; lawtwin.kafka.mo",
+                                "del::type::KafkaError::InvalidTopic  -> false;",
+                                " lawtwin.kafka.model::type::KafkaError::Invali",
+                                "dPartitions  -> false; lawtwin.kafka.model::ty",
+                                "pe::KafkaError::InvalidRecord  -> false; lawtw",
+                                "in.kafka.model::type::KafkaError::InvalidReque",
+                                "st  -> false; lawtwin.kafka.model::type::Kafka",
+                                "Error::OffsetOutOfRange  -> false; lawtwin.kaf",
+                                "ka.model::type::KafkaError::OutOfOrderSequence",
+                                "Number  -> false; lawtwin.kafka.model::type::K",
+                                "afkaError::ProducerFenced  -> false; lawtwin.k",
+                                "afka.model::type::KafkaError::UnknownProducerI",
+                                "d  -> false; lawtwin.kafka.model::type::KafkaE",
+                                "rror::InvalidProducerIdMapping  -> false; lawt",
+                                "win.kafka.model::type::KafkaError::InvalidTxnS",
+                                "tate  -> false; lawtwin.kafka.model::type::Kaf",
+                                "kaError::InvalidGroupId  -> false; lawtwin.kaf",
+                                "ka.model::type::KafkaError::UnknownMemberId  -",
+                                "> false; lawtwin.kafka.model::type::KafkaError",
+                                "::IllegalGeneration  -> false; lawtwin.kafka.m",
+                                "odel::type::KafkaError::IllegalState  -> false",
+                                " }; Either::Right _match3__1__lawspecResult ->",
+                                " false }) } } = true",
                             ),
                             left,
                             right,
@@ -7019,9 +7019,9 @@ fn run_9() -> ls::Result<()> {
 // Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
 // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
 // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
-// (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-// _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
+// _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+// (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
+// _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
 // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
 // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -7601,72 +7601,72 @@ fn law_10(
                             "2__1__new) And match (attempt (addPartitionsTo",
                             "TxnRequest (_input1) (match (_match1__1__old) ",
                             "{ lawtwin.kafka.model::type::ProducerIdAndEpoc",
-                            "h::ProducerIdAndEpoch _match3__0__lawspecField",
-                            "191x0 _match3__0__lawspecField191x1 -> _match3",
-                            "__0__lawspecField191x0 }) (match (_match1__1__",
-                            "old) { lawtwin.kafka.model::type::ProducerIdAn",
-                            "dEpoch::ProducerIdAndEpoch _match3__0__lawspec",
-                            "Field192x0 _match3__0__lawspecField192x1 -> _m",
-                            "atch3__0__lawspecField192x1 }) (List::Cons(_le",
-                            "t0__tp, List::Nil())))) { Either::Left _match3",
-                            "__0__lawspecFailure -> match (_match3__0__laws",
-                            "pecFailure) { lawtwin.kafka.model::type::Kafka",
-                            "Error::ProducerFenced  -> true; lawtwin.kafka.",
-                            "model::type::KafkaError::UnknownTopicOrPartiti",
-                            "on  -> false; lawtwin.kafka.model::type::Kafka",
-                            "Error::TopicAlreadyExists  -> false; lawtwin.k",
-                            "afka.model::type::KafkaError::InvalidTopic  ->",
-                            " false; lawtwin.kafka.model::type::KafkaError:",
-                            ":InvalidPartitions  -> false; lawtwin.kafka.mo",
-                            "del::type::KafkaError::InvalidRecord  -> false",
-                            "; lawtwin.kafka.model::type::KafkaError::Inval",
-                            "idRequest  -> false; lawtwin.kafka.model::type",
-                            "::KafkaError::OffsetOutOfRange  -> false; lawt",
-                            "win.kafka.model::type::KafkaError::OutOfOrderS",
-                            "equenceNumber  -> false; lawtwin.kafka.model::",
-                            "type::KafkaError::InvalidProducerEpoch  -> fal",
-                            "se; lawtwin.kafka.model::type::KafkaError::Unk",
-                            "nownProducerId  -> false; lawtwin.kafka.model:",
-                            ":type::KafkaError::InvalidProducerIdMapping  -",
+                            "h::ProducerIdAndEpoch _matchfield0__producerId",
+                            " _matchfield1__producerEpoch -> _matchfield0__",
+                            "producerId }) (match (_match1__1__old) { lawtw",
+                            "in.kafka.model::type::ProducerIdAndEpoch::Prod",
+                            "ucerIdAndEpoch _matchfield2__producerId _match",
+                            "field3__producerEpoch -> _matchfield3__produce",
+                            "rEpoch }) (List::Cons(_let0__tp, List::Nil()))",
+                            ")) { Either::Left _match3__0__lawspecFailure -",
+                            "> match (_match3__0__lawspecFailure) { lawtwin",
+                            ".kafka.model::type::KafkaError::ProducerFenced",
+                            "  -> true; lawtwin.kafka.model::type::KafkaErr",
+                            "or::UnknownTopicOrPartition  -> false; lawtwin",
+                            ".kafka.model::type::KafkaError::TopicAlreadyEx",
+                            "ists  -> false; lawtwin.kafka.model::type::Kaf",
+                            "kaError::InvalidTopic  -> false; lawtwin.kafka",
+                            ".model::type::KafkaError::InvalidPartitions  -",
                             "> false; lawtwin.kafka.model::type::KafkaError",
-                            "::InvalidTxnState  -> false; lawtwin.kafka.mod",
-                            "el::type::KafkaError::InvalidGroupId  -> false",
-                            "; lawtwin.kafka.model::type::KafkaError::Unkno",
-                            "wnMemberId  -> false; lawtwin.kafka.model::typ",
-                            "e::KafkaError::IllegalGeneration  -> false; la",
-                            "wtwin.kafka.model::type::KafkaError::IllegalSt",
-                            "ate  -> false }; Either::Right _match3__1__law",
-                            "specResult -> false }) And match (attempt (pro",
-                            "duceRequest (_let0__tp) (Maybe::Just(tagOf (_m",
-                            "atch1__1__old) (0))) (_input2))) { Either::Lef",
-                            "t _match3__0__lawspecFailure -> match (_match3",
-                            "__0__lawspecFailure) { lawtwin.kafka.model::ty",
-                            "pe::KafkaError::InvalidProducerEpoch  -> true;",
-                            " lawtwin.kafka.model::type::KafkaError::Unknow",
-                            "nTopicOrPartition  -> false; lawtwin.kafka.mod",
-                            "el::type::KafkaError::TopicAlreadyExists  -> f",
-                            "alse; lawtwin.kafka.model::type::KafkaError::I",
-                            "nvalidTopic  -> false; lawtwin.kafka.model::ty",
-                            "pe::KafkaError::InvalidPartitions  -> false; l",
-                            "awtwin.kafka.model::type::KafkaError::InvalidR",
-                            "ecord  -> false; lawtwin.kafka.model::type::Ka",
-                            "fkaError::InvalidRequest  -> false; lawtwin.ka",
-                            "fka.model::type::KafkaError::OffsetOutOfRange ",
-                            " -> false; lawtwin.kafka.model::type::KafkaErr",
-                            "or::OutOfOrderSequenceNumber  -> false; lawtwi",
-                            "n.kafka.model::type::KafkaError::ProducerFence",
-                            "d  -> false; lawtwin.kafka.model::type::KafkaE",
-                            "rror::UnknownProducerId  -> false; lawtwin.kaf",
-                            "ka.model::type::KafkaError::InvalidProducerIdM",
-                            "apping  -> false; lawtwin.kafka.model::type::K",
-                            "afkaError::InvalidTxnState  -> false; lawtwin.",
-                            "kafka.model::type::KafkaError::InvalidGroupId ",
-                            " -> false; lawtwin.kafka.model::type::KafkaErr",
-                            "or::UnknownMemberId  -> false; lawtwin.kafka.m",
-                            "odel::type::KafkaError::IllegalGeneration  -> ",
-                            "false; lawtwin.kafka.model::type::KafkaError::",
-                            "IllegalState  -> false }; Either::Right _match",
-                            "3__1__lawspecResult -> false }) } } = true",
+                            "::InvalidRecord  -> false; lawtwin.kafka.model",
+                            "::type::KafkaError::InvalidRequest  -> false; ",
+                            "lawtwin.kafka.model::type::KafkaError::OffsetO",
+                            "utOfRange  -> false; lawtwin.kafka.model::type",
+                            "::KafkaError::OutOfOrderSequenceNumber  -> fal",
+                            "se; lawtwin.kafka.model::type::KafkaError::Inv",
+                            "alidProducerEpoch  -> false; lawtwin.kafka.mod",
+                            "el::type::KafkaError::UnknownProducerId  -> fa",
+                            "lse; lawtwin.kafka.model::type::KafkaError::In",
+                            "validProducerIdMapping  -> false; lawtwin.kafk",
+                            "a.model::type::KafkaError::InvalidTxnState  ->",
+                            " false; lawtwin.kafka.model::type::KafkaError:",
+                            ":InvalidGroupId  -> false; lawtwin.kafka.model",
+                            "::type::KafkaError::UnknownMemberId  -> false;",
+                            " lawtwin.kafka.model::type::KafkaError::Illega",
+                            "lGeneration  -> false; lawtwin.kafka.model::ty",
+                            "pe::KafkaError::IllegalState  -> false }; Eith",
+                            "er::Right _match3__1__lawspecResult -> false }",
+                            ") And match (attempt (produceRequest (_let0__t",
+                            "p) (Maybe::Just(tagOf (_match1__1__old) (0))) ",
+                            "(_input2))) { Either::Left _match3__0__lawspec",
+                            "Failure -> match (_match3__0__lawspecFailure) ",
+                            "{ lawtwin.kafka.model::type::KafkaError::Inval",
+                            "idProducerEpoch  -> true; lawtwin.kafka.model:",
+                            ":type::KafkaError::UnknownTopicOrPartition  ->",
+                            " false; lawtwin.kafka.model::type::KafkaError:",
+                            ":TopicAlreadyExists  -> false; lawtwin.kafka.m",
+                            "odel::type::KafkaError::InvalidTopic  -> false",
+                            "; lawtwin.kafka.model::type::KafkaError::Inval",
+                            "idPartitions  -> false; lawtwin.kafka.model::t",
+                            "ype::KafkaError::InvalidRecord  -> false; lawt",
+                            "win.kafka.model::type::KafkaError::InvalidRequ",
+                            "est  -> false; lawtwin.kafka.model::type::Kafk",
+                            "aError::OffsetOutOfRange  -> false; lawtwin.ka",
+                            "fka.model::type::KafkaError::OutOfOrderSequenc",
+                            "eNumber  -> false; lawtwin.kafka.model::type::",
+                            "KafkaError::ProducerFenced  -> false; lawtwin.",
+                            "kafka.model::type::KafkaError::UnknownProducer",
+                            "Id  -> false; lawtwin.kafka.model::type::Kafka",
+                            "Error::InvalidProducerIdMapping  -> false; law",
+                            "twin.kafka.model::type::KafkaError::InvalidTxn",
+                            "State  -> false; lawtwin.kafka.model::type::Ka",
+                            "fkaError::InvalidGroupId  -> false; lawtwin.ka",
+                            "fka.model::type::KafkaError::UnknownMemberId  ",
+                            "-> false; lawtwin.kafka.model::type::KafkaErro",
+                            "r::IllegalGeneration  -> false; lawtwin.kafka.",
+                            "model::type::KafkaError::IllegalState  -> fals",
+                            "e }; Either::Right _match3__1__lawspecResult -",
+                            "> false }) } } = true",
                         ),
                         left,
                         right,
@@ -22526,8 +22526,8 @@ fn run_37() -> ls::Result<()> {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) } } = true
 fn law_38(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let input_0 = lawspec_schema::schema()?.validate_with_context(
         input_0,
@@ -22695,9 +22695,8 @@ fn law_38(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                                 "0__e -> false; Either::Right _match2__1__lates",
                                 "t -> (_match2__1__latest > match (_match0__1__",
                                 "md) { lawtwin.kafka::type::RecordMetadata::Rec",
-                                "ordMetadata _match3__0__lawspecField55x0 _matc",
-                                "h3__0__lawspecField55x1 -> _match3__0__lawspec",
-                                "Field55x1 }) } } = true",
+                                "ordMetadata _matchfield0__sentTo _matchfield1_",
+                                "_sentAt -> _matchfield1__sentAt }) } } = true",
                             ),
                             left,
                             right,
@@ -30190,8 +30189,8 @@ fn search_case_48(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
-// _match0__1__gen)) } } = true
+// _matchfield0__generation _matchfield1__members -> _matchfield0__generation } == _match0__1__gen))
+// } } = true
 fn law_49(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -30406,10 +30405,10 @@ fn law_49(
                                 "_match1__1__tps -> ((viewOf (_input3) (describ",
                                 "eGroup (_input2)) == _match1__1__tps) And (mat",
                                 "ch (describeGroup (_input2)) { lawtwin.kafka.m",
-                                "odel::type::GroupView::GroupView _match2__0__l",
-                                "awspecField55x0 _match2__0__lawspecField55x1 -",
-                                "> _match2__0__lawspecField55x0 } == _match0__1",
-                                "__gen)) } } = true",
+                                "odel::type::GroupView::GroupView _matchfield0_",
+                                "_generation _matchfield1__members -> _matchfie",
+                                "ld0__generation } == _match0__1__gen)) } } = t",
+                                "rue",
                             ),
                             left,
                             right,
@@ -30784,8 +30783,8 @@ fn search_case_49(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
 // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
 // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
-// _match0__1__gen)) } } = true
+// _matchfield0__generation _matchfield1__members -> _matchfield0__generation } == _match0__1__gen))
+// } } = true
 fn law_50(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -30990,10 +30989,10 @@ fn law_50(
                             " _match1__1__tps -> ((viewOf (_input3) (descri",
                             "beGroup (_input2)) == _match1__1__tps) And (ma",
                             "tch (describeGroup (_input2)) { lawtwin.kafka.",
-                            "model::type::GroupView::GroupView _match2__0__",
-                            "lawspecField55x0 _match2__0__lawspecField55x1 ",
-                            "-> _match2__0__lawspecField55x0 } == _match0__",
-                            "1__gen)) } } = true",
+                            "model::type::GroupView::GroupView _matchfield0",
+                            "__generation _matchfield1__members -> _matchfi",
+                            "eld0__generation } == _match0__1__gen)) } } = ",
+                            "true",
                         ),
                         left,
                         right,
@@ -34750,9 +34749,9 @@ fn search_case_54(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
-// _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
-// Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+// _matchfield0__generation _matchfield1__members -> _matchfield0__generation } > _match0__1__gen))
+// And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
+// _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
 // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -35108,39 +35107,38 @@ fn law_55(
                                 "e; Either::Right _match1__1__railwayValue1 -> ",
                                 "true } And (match (describeGroup (_input1)) { ",
                                 "lawtwin.kafka.model::type::GroupView::GroupVie",
-                                "w _match1__0__lawspecField101x0 _match1__0__la",
-                                "wspecField101x1 -> _match1__0__lawspecField101",
-                                "x0 } > _match0__1__gen)) And match (attempt (h",
-                                "eartbeat (_input1) (_input2) (_match0__1__gen)",
-                                ")) { Either::Left _match1__0__lawspecFailure -",
-                                "> match (_match1__0__lawspecFailure) { lawtwin",
-                                ".kafka.model::type::KafkaError::UnknownMemberI",
-                                "d  -> true; lawtwin.kafka.model::type::KafkaEr",
-                                "ror::UnknownTopicOrPartition  -> false; lawtwi",
-                                "n.kafka.model::type::KafkaError::TopicAlreadyE",
-                                "xists  -> false; lawtwin.kafka.model::type::Ka",
-                                "fkaError::InvalidTopic  -> false; lawtwin.kafk",
-                                "a.model::type::KafkaError::InvalidPartitions  ",
+                                "w _matchfield0__generation _matchfield1__membe",
+                                "rs -> _matchfield0__generation } > _match0__1_",
+                                "_gen)) And match (attempt (heartbeat (_input1)",
+                                " (_input2) (_match0__1__gen))) { Either::Left ",
+                                "_match1__0__lawspecFailure -> match (_match1__",
+                                "0__lawspecFailure) { lawtwin.kafka.model::type",
+                                "::KafkaError::UnknownMemberId  -> true; lawtwi",
+                                "n.kafka.model::type::KafkaError::UnknownTopicO",
+                                "rPartition  -> false; lawtwin.kafka.model::typ",
+                                "e::KafkaError::TopicAlreadyExists  -> false; l",
+                                "awtwin.kafka.model::type::KafkaError::InvalidT",
+                                "opic  -> false; lawtwin.kafka.model::type::Kaf",
+                                "kaError::InvalidPartitions  -> false; lawtwin.",
+                                "kafka.model::type::KafkaError::InvalidRecord  ",
                                 "-> false; lawtwin.kafka.model::type::KafkaErro",
-                                "r::InvalidRecord  -> false; lawtwin.kafka.mode",
-                                "l::type::KafkaError::InvalidRequest  -> false;",
-                                " lawtwin.kafka.model::type::KafkaError::Offset",
-                                "OutOfRange  -> false; lawtwin.kafka.model::typ",
-                                "e::KafkaError::OutOfOrderSequenceNumber  -> fa",
-                                "lse; lawtwin.kafka.model::type::KafkaError::In",
-                                "validProducerEpoch  -> false; lawtwin.kafka.mo",
-                                "del::type::KafkaError::ProducerFenced  -> fals",
-                                "e; lawtwin.kafka.model::type::KafkaError::Unkn",
-                                "ownProducerId  -> false; lawtwin.kafka.model::",
-                                "type::KafkaError::InvalidProducerIdMapping  ->",
-                                " false; lawtwin.kafka.model::type::KafkaError:",
-                                ":InvalidTxnState  -> false; lawtwin.kafka.mode",
-                                "l::type::KafkaError::InvalidGroupId  -> false;",
-                                " lawtwin.kafka.model::type::KafkaError::Illega",
-                                "lGeneration  -> false; lawtwin.kafka.model::ty",
-                                "pe::KafkaError::IllegalState  -> false }; Eith",
-                                "er::Right _match1__1__lawspecResult -> false }",
-                                ") } = true",
+                                "r::InvalidRequest  -> false; lawtwin.kafka.mod",
+                                "el::type::KafkaError::OffsetOutOfRange  -> fal",
+                                "se; lawtwin.kafka.model::type::KafkaError::Out",
+                                "OfOrderSequenceNumber  -> false; lawtwin.kafka",
+                                ".model::type::KafkaError::InvalidProducerEpoch",
+                                "  -> false; lawtwin.kafka.model::type::KafkaEr",
+                                "ror::ProducerFenced  -> false; lawtwin.kafka.m",
+                                "odel::type::KafkaError::UnknownProducerId  -> ",
+                                "false; lawtwin.kafka.model::type::KafkaError::",
+                                "InvalidProducerIdMapping  -> false; lawtwin.ka",
+                                "fka.model::type::KafkaError::InvalidTxnState  ",
+                                "-> false; lawtwin.kafka.model::type::KafkaErro",
+                                "r::InvalidGroupId  -> false; lawtwin.kafka.mod",
+                                "el::type::KafkaError::IllegalGeneration  -> fa",
+                                "lse; lawtwin.kafka.model::type::KafkaError::Il",
+                                "legalState  -> false }; Either::Right _match1_",
+                                "_1__lawspecResult -> false }) } = true",
                             ),
                             left,
                             right,
@@ -35474,9 +35472,9 @@ fn search_case_55(values: &[ls::Value]) -> ls::Result<Option<f64>> {
 // -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1) (_input2))) {
 // Either::Left _match1__0__railwayError0 -> false; Either::Right _match1__1__railwayValue1 -> true
 // } And (match (describeGroup (_input1)) { lawtwin.kafka.model::type::GroupView::GroupView
-// _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } >
-// _match0__1__gen)) And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) {
-// Either::Left _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+// _matchfield0__generation _matchfield1__members -> _matchfield0__generation } > _match0__1__gen))
+// And match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
+// _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
 // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
 // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -35825,39 +35823,38 @@ fn law_56(
                             "se; Either::Right _match1__1__railwayValue1 ->",
                             " true } And (match (describeGroup (_input1)) {",
                             " lawtwin.kafka.model::type::GroupView::GroupVi",
-                            "ew _match1__0__lawspecField101x0 _match1__0__l",
-                            "awspecField101x1 -> _match1__0__lawspecField10",
-                            "1x0 } > _match0__1__gen)) And match (attempt (",
-                            "heartbeat (_input1) (_input2) (_match0__1__gen",
-                            "))) { Either::Left _match1__0__lawspecFailure ",
-                            "-> match (_match1__0__lawspecFailure) { lawtwi",
-                            "n.kafka.model::type::KafkaError::UnknownMember",
-                            "Id  -> true; lawtwin.kafka.model::type::KafkaE",
-                            "rror::UnknownTopicOrPartition  -> false; lawtw",
-                            "in.kafka.model::type::KafkaError::TopicAlready",
-                            "Exists  -> false; lawtwin.kafka.model::type::K",
-                            "afkaError::InvalidTopic  -> false; lawtwin.kaf",
-                            "ka.model::type::KafkaError::InvalidPartitions ",
+                            "ew _matchfield0__generation _matchfield1__memb",
+                            "ers -> _matchfield0__generation } > _match0__1",
+                            "__gen)) And match (attempt (heartbeat (_input1",
+                            ") (_input2) (_match0__1__gen))) { Either::Left",
+                            " _match1__0__lawspecFailure -> match (_match1_",
+                            "_0__lawspecFailure) { lawtwin.kafka.model::typ",
+                            "e::KafkaError::UnknownMemberId  -> true; lawtw",
+                            "in.kafka.model::type::KafkaError::UnknownTopic",
+                            "OrPartition  -> false; lawtwin.kafka.model::ty",
+                            "pe::KafkaError::TopicAlreadyExists  -> false; ",
+                            "lawtwin.kafka.model::type::KafkaError::Invalid",
+                            "Topic  -> false; lawtwin.kafka.model::type::Ka",
+                            "fkaError::InvalidPartitions  -> false; lawtwin",
+                            ".kafka.model::type::KafkaError::InvalidRecord ",
                             " -> false; lawtwin.kafka.model::type::KafkaErr",
-                            "or::InvalidRecord  -> false; lawtwin.kafka.mod",
-                            "el::type::KafkaError::InvalidRequest  -> false",
-                            "; lawtwin.kafka.model::type::KafkaError::Offse",
-                            "tOutOfRange  -> false; lawtwin.kafka.model::ty",
-                            "pe::KafkaError::OutOfOrderSequenceNumber  -> f",
+                            "or::InvalidRequest  -> false; lawtwin.kafka.mo",
+                            "del::type::KafkaError::OffsetOutOfRange  -> fa",
+                            "lse; lawtwin.kafka.model::type::KafkaError::Ou",
+                            "tOfOrderSequenceNumber  -> false; lawtwin.kafk",
+                            "a.model::type::KafkaError::InvalidProducerEpoc",
+                            "h  -> false; lawtwin.kafka.model::type::KafkaE",
+                            "rror::ProducerFenced  -> false; lawtwin.kafka.",
+                            "model::type::KafkaError::UnknownProducerId  ->",
+                            " false; lawtwin.kafka.model::type::KafkaError:",
+                            ":InvalidProducerIdMapping  -> false; lawtwin.k",
+                            "afka.model::type::KafkaError::InvalidTxnState ",
+                            " -> false; lawtwin.kafka.model::type::KafkaErr",
+                            "or::InvalidGroupId  -> false; lawtwin.kafka.mo",
+                            "del::type::KafkaError::IllegalGeneration  -> f",
                             "alse; lawtwin.kafka.model::type::KafkaError::I",
-                            "nvalidProducerEpoch  -> false; lawtwin.kafka.m",
-                            "odel::type::KafkaError::ProducerFenced  -> fal",
-                            "se; lawtwin.kafka.model::type::KafkaError::Unk",
-                            "nownProducerId  -> false; lawtwin.kafka.model:",
-                            ":type::KafkaError::InvalidProducerIdMapping  -",
-                            "> false; lawtwin.kafka.model::type::KafkaError",
-                            "::InvalidTxnState  -> false; lawtwin.kafka.mod",
-                            "el::type::KafkaError::InvalidGroupId  -> false",
-                            "; lawtwin.kafka.model::type::KafkaError::Illeg",
-                            "alGeneration  -> false; lawtwin.kafka.model::t",
-                            "ype::KafkaError::IllegalState  -> false }; Eit",
-                            "her::Right _match1__1__lawspecResult -> false ",
-                            "}) } = true",
+                            "llegalState  -> false }; Either::Right _match1",
+                            "__1__lawspecResult -> false }) } = true",
                         ),
                         left,
                         right,
@@ -38312,8 +38309,8 @@ fn run_59() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) == List::Nil())) }) = true
 fn law_60(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -38544,9 +38541,9 @@ fn law_60(
                                 "== Either::Right(unitValue)) And (committedFro",
                                 "m (_let0__tp) (match (_match1__1__md) { lawtwi",
                                 "n.kafka::type::RecordMetadata::RecordMetadata ",
-                                "_match2__0__lawspecField162x0 _match2__0__laws",
-                                "pecField162x1 -> _match2__0__lawspecField162x1",
-                                " }) == List::Nil())) }) = true",
+                                "_matchfield0__sentTo _matchfield1__sentAt -> _",
+                                "matchfield1__sentAt }) == List::Nil())) }) = t",
+                                "rue",
                             ),
                             left,
                             right,
@@ -39294,12 +39291,11 @@ fn run_60() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-// (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-// (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
-// == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And
+// (committedFrom (_let0__tp) (match (_match1__1__md) {
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt ->
+// _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 fn law_61(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -39656,16 +39652,15 @@ fn law_61(
                                 "_railwayValue3 -> true } And (committedFrom (_",
                                 "let0__tp) (match (_match1__1__md) { lawtwin.ka",
                                 "fka::type::RecordMetadata::RecordMetadata _mat",
-                                "ch2__0__lawspecField219x0 _match2__0__lawspecF",
-                                "ield219x1 -> _match2__0__lawspecField219x1 }) ",
-                                "== List::Nil())) And (commitTransaction == Eit",
-                                "her::Right(unitValue))) And (committedFrom (_l",
-                                "et0__tp) (match (_match1__1__md) { lawtwin.kaf",
-                                "ka::type::RecordMetadata::RecordMetadata _matc",
-                                "h2__0__lawspecField232x0 _match2__0__lawspecFi",
-                                "eld232x1 -> _match2__0__lawspecField232x1 }) =",
-                                "= List::Cons(_input2, List::Cons(_input3, List",
-                                "::Nil())))) }) = true",
+                                "chfield0__sentTo _matchfield1__sentAt -> _matc",
+                                "hfield1__sentAt }) == List::Nil())) And (commi",
+                                "tTransaction == Either::Right(unitValue))) And",
+                                " (committedFrom (_let0__tp) (match (_match1__1",
+                                "__md) { lawtwin.kafka::type::RecordMetadata::R",
+                                "ecordMetadata _matchfield2__sentTo _matchfield",
+                                "3__sentAt -> _matchfield3__sentAt }) == List::",
+                                "Cons(_input2, List::Cons(_input3, List::Nil())",
+                                "))) }) = true",
                             ),
                             left,
                             right,
@@ -43158,8 +43153,8 @@ fn run_64() -> ls::Result<()> {
 // (lawtwin.kafka.model::type::OffsetSpec::Latest())
 // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e ->
 // false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-// _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) } } = true
 fn law_65(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::Result<()> {
     let shared_cluster = std::sync::Arc::new(lawspec_abilities::lawtwin_kafka::Cluster::new(ctx));
     let installing = vec![
@@ -43318,9 +43313,9 @@ fn law_65(ctx: &mut ls::Context, input_0: ls::Value, input_1: ls::Value) -> ls::
                             "2__0__e -> false; Either::Right _match2__1__la",
                             "test -> (_match2__1__latest > match (_match0__",
                             "1__md) { lawtwin.kafka::type::RecordMetadata::",
-                            "RecordMetadata _match3__0__lawspecField55x0 _m",
-                            "atch3__0__lawspecField55x1 -> _match3__0__laws",
-                            "pecField55x1 }) } } = true",
+                            "RecordMetadata _matchfield0__sentTo _matchfiel",
+                            "d1__sentAt -> _matchfield1__sentAt }) } } = tr",
+                            "ue",
                         ),
                         left,
                         right,
@@ -50480,8 +50475,8 @@ fn run_74() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e ->
 // false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-// _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) == List::Nil())) }) = true
 fn law_75(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -50705,9 +50700,9 @@ fn law_75(
                             "on == Either::Right(unitValue)) And (committed",
                             "From (_let0__tp) (match (_match1__1__md) { law",
                             "twin.kafka::type::RecordMetadata::RecordMetada",
-                            "ta _match2__0__lawspecField162x0 _match2__0__l",
-                            "awspecField162x1 -> _match2__0__lawspecField16",
-                            "2x1 }) == List::Nil())) }) = true",
+                            "ta _matchfield0__sentTo _matchfield1__sentAt -",
+                            "> _matchfield1__sentAt }) == List::Nil())) }) ",
+                            "= true",
                         ),
                         left,
                         right,
@@ -51440,12 +51435,11 @@ fn run_75() -> ls::Result<()> {
 // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
 // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
 // (committedFrom (_let0__tp) (match (_match1__1__md) {
-// lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-// _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-// (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-// (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-// _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
-// == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt ->
+// _matchfield1__sentAt }) == List::Nil())) And (commitTransaction == Either::Right(unitValue))) And
+// (committedFrom (_let0__tp) (match (_match1__1__md) {
+// lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt ->
+// _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 fn law_76(
     ctx: &mut ls::Context,
     input_0: ls::Value,
@@ -51790,16 +51784,15 @@ fn law_76(
                             "_1__railwayValue3 -> true } And (committedFrom",
                             " (_let0__tp) (match (_match1__1__md) { lawtwin",
                             ".kafka::type::RecordMetadata::RecordMetadata _",
-                            "match2__0__lawspecField219x0 _match2__0__lawsp",
-                            "ecField219x1 -> _match2__0__lawspecField219x1 ",
-                            "}) == List::Nil())) And (commitTransaction == ",
-                            "Either::Right(unitValue))) And (committedFrom ",
-                            "(_let0__tp) (match (_match1__1__md) { lawtwin.",
-                            "kafka::type::RecordMetadata::RecordMetadata _m",
-                            "atch2__0__lawspecField232x0 _match2__0__lawspe",
-                            "cField232x1 -> _match2__0__lawspecField232x1 }",
-                            ") == List::Cons(_input2, List::Cons(_input3, L",
-                            "ist::Nil())))) }) = true",
+                            "matchfield0__sentTo _matchfield1__sentAt -> _m",
+                            "atchfield1__sentAt }) == List::Nil())) And (co",
+                            "mmitTransaction == Either::Right(unitValue))) ",
+                            "And (committedFrom (_let0__tp) (match (_match1",
+                            "__1__md) { lawtwin.kafka::type::RecordMetadata",
+                            "::RecordMetadata _matchfield2__sentTo _matchfi",
+                            "eld3__sentAt -> _matchfield3__sentAt }) == Lis",
+                            "t::Cons(_input2, List::Cons(_input3, List::Nil",
+                            "())))) }) = true",
                         ),
                         left,
                         right,

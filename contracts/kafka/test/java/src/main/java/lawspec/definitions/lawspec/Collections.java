@@ -11,22 +11,22 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short> boundedInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.boundedInt16_cdb4a79e(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> boundedInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_b3381d93(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> boundedInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_13153a18(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Byte> boundedInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.boundedInt8_9822648b(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -52,12 +52,12 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Integer> boundedUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.boundedUInt16_fab24aa3(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Long> boundedUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.boundedUInt32_f7521c17(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.math.BigInteger> boundedUInt64(
@@ -79,7 +79,7 @@ public final class Collections {
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<java.lang.Short> boundedUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.boundedUInt8_8ce0c76e(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Maybe<lawspec.runtime.LawSpecRuntime.Value>
@@ -126,22 +126,22 @@ public final class Collections {
 
   public static java.lang.Short saturatingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_770015a8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Integer saturatingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_9e8d3b43(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long saturatingInt64(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_5bce4ed8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Byte saturatingInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.saturatingInt8_54855fd8(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value saturatingIntSize(
@@ -163,12 +163,12 @@ public final class Collections {
 
   public static java.lang.Integer saturatingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.saturatingUInt16_c4c11e3b(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long saturatingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.saturatingUInt32_6d025357(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.math.BigInteger saturatingUInt64(
@@ -189,7 +189,7 @@ public final class Collections {
 
   public static java.lang.Short saturatingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.saturatingUInt8_cf40d611(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value saturatingUIntPtr(
@@ -228,20 +228,20 @@ public final class Collections {
 
   public static java.lang.Short wrappingInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_989a4ce2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Integer wrappingInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_e1b5a7b2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long wrappingInt64(Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_698b955a(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Byte wrappingInt8(Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.wrappingInt8_728a92af(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value wrappingIntSize(
@@ -263,12 +263,12 @@ public final class Collections {
 
   public static java.lang.Integer wrappingUInt16(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.wrappingUInt16_e5742dd2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.lang.Long wrappingUInt32(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.wrappingUInt32_1ef3ce20(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static java.math.BigInteger wrappingUInt64(
@@ -289,7 +289,7 @@ public final class Collections {
 
   public static java.lang.Short wrappingUInt8(
       Map<String, Object> symbols, java.lang.Number value0) {
-    return lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)));
+    return lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.wrappingUInt8_6ce2e7d2(lawspec.runtime.LawSpecTyped.fromNative56(value0)));
   }
 
   public static lawspec.runtime.LawSpecRuntime.Value wrappingUIntPtr(

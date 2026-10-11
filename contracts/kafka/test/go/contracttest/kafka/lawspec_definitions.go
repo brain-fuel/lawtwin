@@ -15,7 +15,7 @@ func (lawSpecDefinitions) ClusterAddPartitionsToTxnRequest(
 	value3 int16,
 	value4 []TopicPartition,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterAddPartitionsToTxnRequest_27(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_3250492fe9ac(value4)))
+	return lsfTonative_1686d2c89016(lsfClusterAddPartitionsToTxnRequest_026ba83d(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_3250492fe9ac(value4)))
 }
 
 func (lawSpecDefinitions) ClusterCommitOffsets(
@@ -26,7 +26,7 @@ func (lawSpecDefinitions) ClusterCommitOffsets(
 	value3 int32,
 	value4 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCommitOffsets_28(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_582052f40a9c(value4)))
+	return lsfTonative_1686d2c89016(lsfClusterCommitOffsets_d3b39e4c(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_582052f40a9c(value4)))
 }
 
 func (lawSpecDefinitions) ClusterCreatePartitions(
@@ -35,7 +35,7 @@ func (lawSpecDefinitions) ClusterCreatePartitions(
 	value1 string,
 	value2 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCreatePartitions_29(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterCreatePartitions_0f2bdce3(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
 }
 
 func (lawSpecDefinitions) ClusterCreatePartitionsRequest(
@@ -44,7 +44,7 @@ func (lawSpecDefinitions) ClusterCreatePartitionsRequest(
 	value1 string,
 	value2 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCreatePartitions_29(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterCreatePartitions_0f2bdce3(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
 }
 
 func (lawSpecDefinitions) ClusterCreateTopic(
@@ -53,7 +53,7 @@ func (lawSpecDefinitions) ClusterCreateTopic(
 	value1 string,
 	value2 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCreateTopic_30(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterCreateTopic_25a8c8e9(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
 }
 
 func (lawSpecDefinitions) ClusterCreateTopicsRequest(
@@ -62,7 +62,7 @@ func (lawSpecDefinitions) ClusterCreateTopicsRequest(
 	value1 string,
 	value2 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCreateTopic_30(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterCreateTopic_25a8c8e9(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2)))
 }
 
 func (lawSpecDefinitions) ClusterDescribeGroup(
@@ -70,7 +70,7 @@ func (lawSpecDefinitions) ClusterDescribeGroup(
 	value0 BrokerState,
 	value1 string,
 ) Pair[GroupView, BrokerState] {
-	return lsfTonative_63f9a172d3e8(lsfClusterDescribeGroup_31(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
+	return lsfTonative_63f9a172d3e8(lsfClusterDescribeGroup_c1f8efd4(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
 }
 
 func (lawSpecDefinitions) ClusterDescribeGroupRequest(
@@ -78,7 +78,7 @@ func (lawSpecDefinitions) ClusterDescribeGroupRequest(
 	value0 BrokerState,
 	value1 string,
 ) Pair[GroupView, BrokerState] {
-	return lsfTonative_63f9a172d3e8(lsfClusterDescribeGroup_31(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
+	return lsfTonative_63f9a172d3e8(lsfClusterDescribeGroup_c1f8efd4(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
 }
 
 func (lawSpecDefinitions) ClusterEndTxnRequest(
@@ -89,7 +89,7 @@ func (lawSpecDefinitions) ClusterEndTxnRequest(
 	value3 int16,
 	value4 bool,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterEndTxnRequest_32(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_d267428fb2ca(value4)))
+	return lsfTonative_1686d2c89016(lsfClusterEndTxnRequest_e8879acb(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_d267428fb2ca(value4)))
 }
 
 func (lawSpecDefinitions) ClusterFetchOffset(
@@ -98,7 +98,7 @@ func (lawSpecDefinitions) ClusterFetchOffset(
 	value1 string,
 	value2 TopicPartition,
 ) Pair[LawSpecMaybe[int64], BrokerState] {
-	return lsfTonative_38ff65c06c92(lsfClusterFetchOffset_33(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_57a515e0e489(value2)))
+	return lsfTonative_38ff65c06c92(lsfClusterFetchOffset_53ffef89(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_57a515e0e489(value2)))
 }
 
 func (lawSpecDefinitions) ClusterFetchRequest(
@@ -109,7 +109,7 @@ func (lawSpecDefinitions) ClusterFetchRequest(
 	value3 int32,
 	value4 IsolationLevel,
 ) Pair[FetchResult, BrokerState] {
-	return lsfTonative_41f56b34d22a(lsfClusterFetchRequest_34(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_a519f593a6ed(value4)))
+	return lsfTonative_41f56b34d22a(lsfClusterFetchRequest_53f6507d(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_a519f593a6ed(value4)))
 }
 
 func (lawSpecDefinitions) ClusterHeartbeat(
@@ -119,7 +119,7 @@ func (lawSpecDefinitions) ClusterHeartbeat(
 	value2 string,
 	value3 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterHeartbeat_35(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
+	return lsfTonative_1686d2c89016(lsfClusterHeartbeat_3af82cc2(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
 }
 
 func (lawSpecDefinitions) ClusterHeartbeatRequest(
@@ -129,7 +129,7 @@ func (lawSpecDefinitions) ClusterHeartbeatRequest(
 	value2 string,
 	value3 int32,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterHeartbeat_35(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
+	return lsfTonative_1686d2c89016(lsfClusterHeartbeat_3af82cc2(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
 }
 
 func (lawSpecDefinitions) ClusterInitProducerIdRequest(
@@ -137,7 +137,7 @@ func (lawSpecDefinitions) ClusterInitProducerIdRequest(
 	value0 BrokerState,
 	value1 LawSpecMaybe[string],
 ) Pair[ProducerIdAndEpoch, BrokerState] {
-	return lsfTonative_95d3f4123329(lsfClusterInitProducerIdRequest_36(lsfFromnative_49de88d0a810(value0), lsfFromnative_01d86fc44f8c(value1)))
+	return lsfTonative_95d3f4123329(lsfClusterInitProducerIdRequest_f11b7e7d(lsfFromnative_49de88d0a810(value0), lsfFromnative_01d86fc44f8c(value1)))
 }
 
 func (lawSpecDefinitions) ClusterJoinGroup(
@@ -147,7 +147,7 @@ func (lawSpecDefinitions) ClusterJoinGroup(
 	value2 string,
 	value3 []string,
 ) Pair[int32, BrokerState] {
-	return lsfTonative_ab8cd6a31aaf(lsfClusterJoinGroup_37(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_8ec0351dc657(value3)))
+	return lsfTonative_ab8cd6a31aaf(lsfClusterJoinGroup_2f7f09cb(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_8ec0351dc657(value3)))
 }
 
 func (lawSpecDefinitions) ClusterJoinGroupRequest(
@@ -157,7 +157,7 @@ func (lawSpecDefinitions) ClusterJoinGroupRequest(
 	value2 string,
 	value3 []string,
 ) Pair[int32, BrokerState] {
-	return lsfTonative_ab8cd6a31aaf(lsfClusterJoinGroup_37(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_8ec0351dc657(value3)))
+	return lsfTonative_ab8cd6a31aaf(lsfClusterJoinGroup_2f7f09cb(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_8ec0351dc657(value3)))
 }
 
 func (lawSpecDefinitions) ClusterLeaveGroup(
@@ -166,7 +166,7 @@ func (lawSpecDefinitions) ClusterLeaveGroup(
 	value1 string,
 	value2 string,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterLeaveGroup_38(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterLeaveGroup_cd94c353(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2)))
 }
 
 func (lawSpecDefinitions) ClusterLeaveGroupRequest(
@@ -175,7 +175,7 @@ func (lawSpecDefinitions) ClusterLeaveGroupRequest(
 	value1 string,
 	value2 string,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterLeaveGroup_38(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2)))
+	return lsfTonative_1686d2c89016(lsfClusterLeaveGroup_cd94c353(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2)))
 }
 
 func (lawSpecDefinitions) ClusterListOffsets(
@@ -185,7 +185,7 @@ func (lawSpecDefinitions) ClusterListOffsets(
 	value2 OffsetSpec,
 	value3 IsolationLevel,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfClusterListOffsets_39(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c55be5a8a1f1(value2), lsfFromnative_a519f593a6ed(value3)))
+	return lsfTonative_3dd22eccd85c(lsfClusterListOffsets_1dede442(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c55be5a8a1f1(value2), lsfFromnative_a519f593a6ed(value3)))
 }
 
 func (lawSpecDefinitions) ClusterListOffsetsRequest(
@@ -195,7 +195,7 @@ func (lawSpecDefinitions) ClusterListOffsetsRequest(
 	value2 OffsetSpec,
 	value3 IsolationLevel,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfClusterListOffsets_39(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c55be5a8a1f1(value2), lsfFromnative_a519f593a6ed(value3)))
+	return lsfTonative_3dd22eccd85c(lsfClusterListOffsets_1dede442(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c55be5a8a1f1(value2), lsfFromnative_a519f593a6ed(value3)))
 }
 
 func (lawSpecDefinitions) ClusterMetadataRequest(
@@ -203,7 +203,7 @@ func (lawSpecDefinitions) ClusterMetadataRequest(
 	value0 BrokerState,
 	value1 string,
 ) Pair[LawSpecMaybe[int32], BrokerState] {
-	return lsfTonative_9fa363f31106(lsfClusterMetadataRequest_40(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
+	return lsfTonative_9fa363f31106(lsfClusterMetadataRequest_3507727c(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
 }
 
 func (lawSpecDefinitions) ClusterOffsetCommitRequest(
@@ -214,7 +214,7 @@ func (lawSpecDefinitions) ClusterOffsetCommitRequest(
 	value3 int32,
 	value4 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterCommitOffsets_28(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_582052f40a9c(value4)))
+	return lsfTonative_1686d2c89016(lsfClusterCommitOffsets_d3b39e4c(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3), lsfFromnative_582052f40a9c(value4)))
 }
 
 func (lawSpecDefinitions) ClusterOffsetFetchRequest(
@@ -223,7 +223,7 @@ func (lawSpecDefinitions) ClusterOffsetFetchRequest(
 	value1 string,
 	value2 TopicPartition,
 ) Pair[LawSpecMaybe[int64], BrokerState] {
-	return lsfTonative_38ff65c06c92(lsfClusterFetchOffset_33(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_57a515e0e489(value2)))
+	return lsfTonative_38ff65c06c92(lsfClusterFetchOffset_53ffef89(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_57a515e0e489(value2)))
 }
 
 func (lawSpecDefinitions) ClusterPartitionsFor(
@@ -231,7 +231,7 @@ func (lawSpecDefinitions) ClusterPartitionsFor(
 	value0 BrokerState,
 	value1 string,
 ) Pair[LawSpecMaybe[int32], BrokerState] {
-	return lsfTonative_9fa363f31106(lsfClusterMetadataRequest_40(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
+	return lsfTonative_9fa363f31106(lsfClusterMetadataRequest_3507727c(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1)))
 }
 
 func (lawSpecDefinitions) ClusterProduceRequest(
@@ -241,14 +241,14 @@ func (lawSpecDefinitions) ClusterProduceRequest(
 	value2 LawSpecMaybe[ProducerTag],
 	value3 []Record,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfClusterProduceRequest_41(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c818bd20f406(value2), lsfFromnative_e3583a5b5bdc(value3)))
+	return lsfTonative_3dd22eccd85c(lsfClusterProduceRequest_619c7f1f(lsfFromnative_49de88d0a810(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_c818bd20f406(value2), lsfFromnative_e3583a5b5bdc(value3)))
 }
 
 func (lawSpecDefinitions) ClusterStart(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfClusterStart_42(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_49de88d0a810(lsfClusterStart_659e952a(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) ClusterSyncGroup(
@@ -258,7 +258,7 @@ func (lawSpecDefinitions) ClusterSyncGroup(
 	value2 string,
 	value3 int32,
 ) Pair[[]TopicPartition, BrokerState] {
-	return lsfTonative_23e94f6e1895(lsfClusterSyncGroup_43(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
+	return lsfTonative_23e94f6e1895(lsfClusterSyncGroup_fa44a945(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
 }
 
 func (lawSpecDefinitions) ClusterSyncGroupRequest(
@@ -268,7 +268,7 @@ func (lawSpecDefinitions) ClusterSyncGroupRequest(
 	value2 string,
 	value3 int32,
 ) Pair[[]TopicPartition, BrokerState] {
-	return lsfTonative_23e94f6e1895(lsfClusterSyncGroup_43(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
+	return lsfTonative_23e94f6e1895(lsfClusterSyncGroup_fa44a945(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_437d0abf423f(value2), lsfFromnative_b862204e9be7(value3)))
 }
 
 func (lawSpecDefinitions) ClusterTxnOffsetCommitRequest(
@@ -280,7 +280,7 @@ func (lawSpecDefinitions) ClusterTxnOffsetCommitRequest(
 	value4 string,
 	value5 []OffsetEntry,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfClusterTxnOffsetCommitRequest_44(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_437d0abf423f(value4), lsfFromnative_582052f40a9c(value5)))
+	return lsfTonative_1686d2c89016(lsfClusterTxnOffsetCommitRequest_08ba35de(lsfFromnative_49de88d0a810(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_07dabd732290(value3), lsfFromnative_437d0abf423f(value4), lsfFromnative_582052f40a9c(value5)))
 }
 
 func (lawSpecDefinitions) KafkaConsumerAssign(
@@ -288,7 +288,7 @@ func (lawSpecDefinitions) KafkaConsumerAssign(
 	value0 ConsumerState,
 	value1 []TopicPartition,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfTonative_170f42653652(lsfKafkaConsumerAssign_58(lsfFromnative_7de2ae0da384(value0), lsfFromnative_3250492fe9ac(value1)))
+	return lsfTonative_170f42653652(lsfKafkaConsumerAssign_6414ad54(lsfFromnative_7de2ae0da384(value0), lsfFromnative_3250492fe9ac(value1)))
 }
 
 func (lawSpecDefinitions) KafkaConsumerClose(
@@ -391,7 +391,7 @@ func (lawSpecDefinitions) KafkaConsumerSeek(
 	value1 TopicPartition,
 	value2 int64,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState] {
-	return lsfTonative_34d15aaae84b(lsfKafkaConsumerSeek_59(lsfFromnative_7de2ae0da384(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_44a08172da10(value2)))
+	return lsfTonative_34d15aaae84b(lsfKafkaConsumerSeek_5fe046a7(lsfFromnative_7de2ae0da384(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_44a08172da10(value2)))
 }
 
 func (lawSpecDefinitions) KafkaConsumerSetIsolationLevel(
@@ -399,14 +399,14 @@ func (lawSpecDefinitions) KafkaConsumerSetIsolationLevel(
 	value0 ConsumerState,
 	value1 IsolationLevel,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfTonative_170f42653652(lsfKafkaConsumerSetIsolationLevel_60(lsfFromnative_7de2ae0da384(value0), lsfFromnative_a519f593a6ed(value1)))
+	return lsfTonative_170f42653652(lsfKafkaConsumerSetIsolationLevel_bc2459d3(lsfFromnative_7de2ae0da384(value0), lsfFromnative_a519f593a6ed(value1)))
 }
 
 func (lawSpecDefinitions) KafkaConsumerStart(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) ConsumerState {
-	return lsfTonative_7de2ae0da384(lsfKafkaConsumerStart_61(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_7de2ae0da384(lsfKafkaConsumerStart_9e580acc(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) KafkaConsumerSubscribe(
@@ -456,14 +456,14 @@ func (lawSpecDefinitions) KafkaProducerFlush(
 	symbols map[string]*LawSpecSymbol,
 	value0 ProducerState,
 ) Pair[LawSpecUnit, ProducerState] {
-	return lsfTonative_9a576143471f(lsfKafkaProducerFlush_62(lsfFromnative_5e5d2c3fa1a7(value0)))
+	return lsfTonative_9a576143471f(lsfKafkaProducerFlush_584e906f(lsfFromnative_5e5d2c3fa1a7(value0)))
 }
 
 func (lawSpecDefinitions) KafkaProducerProducerIdentity(
 	symbols map[string]*LawSpecSymbol,
 	value0 ProducerState,
 ) Pair[LawSpecMaybe[ProducerIdAndEpoch], ProducerState] {
-	return lsfTonative_5d20fb53d3a6(lsfKafkaProducerProducerIdentity_63(lsfFromnative_5e5d2c3fa1a7(value0)))
+	return lsfTonative_5d20fb53d3a6(lsfKafkaProducerProducerIdentity_a0ee547d(lsfFromnative_5e5d2c3fa1a7(value0)))
 }
 
 func (lawSpecDefinitions) KafkaProducerRetryLastSend(
@@ -508,7 +508,7 @@ func (lawSpecDefinitions) KafkaProducerStart(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) ProducerState {
-	return lsfTonative_5e5d2c3fa1a7(lsfKafkaProducerStart_64(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_5e5d2c3fa1a7(lsfKafkaProducerStart_58ddcfc8(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) KafkaTransactionsAbortTransaction(
@@ -552,7 +552,7 @@ func (lawSpecDefinitions) KafkaTransactionsBeginTransaction(
 	symbols map[string]*LawSpecSymbol,
 	value0 TransactionState,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
-	return lsfTonative_b92c1d290bc6(lsfKafkaTransactionsBeginTransaction_65(lsfFromnative_74b3f2831172(value0)))
+	return lsfTonative_b92c1d290bc6(lsfKafkaTransactionsBeginTransaction_3c1e648e(lsfFromnative_74b3f2831172(value0)))
 }
 
 func (lawSpecDefinitions) KafkaTransactionsCommitTransaction(
@@ -640,42 +640,42 @@ func (lawSpecDefinitions) KafkaTransactionsStart(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) TransactionState {
-	return lsfTonative_74b3f2831172(lsfKafkaTransactionsStart_66(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_74b3f2831172(lsfKafkaTransactionsStart_68a77cf3(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) KeepBoundedArithmetic(
 	symbols map[string]*LawSpecSymbol,
 	value0 int64,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfKeepBoundedArithmetic_263(lsfFromnative_44a08172da10(value0)))
+	return lsfTonative_44a08172da10(lsfKeepBoundedArithmetic_3e45e1f6(lsfFromnative_44a08172da10(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int16] {
-	return lsfTonative_8458421ef461(lsfBoundedInt16_0(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_8458421ef461(lsfBoundedInt16_cdb4a79e(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfBoundedInt32_1(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_e0f8ce0ed062(lsfBoundedInt32_b3381d93(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfBoundedInt64_2(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_c09136e29464(lsfBoundedInt64_13153a18(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int8] {
-	return lsfTonative_322842b70901(lsfBoundedInt8_3(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_322842b70901(lsfBoundedInt8_9822648b(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedIntSize(
@@ -697,28 +697,28 @@ func (lawSpecDefinitions) LawspecCollectionsBoundedUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint16] {
-	return lsfTonative_a765ca1ff0da(lsfBoundedUInt16_4(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_a765ca1ff0da(lsfBoundedUInt16_fab24aa3(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint32] {
-	return lsfTonative_770fd683e40e(lsfBoundedUInt32_5(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_770fd683e40e(lsfBoundedUInt32_f7521c17(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint64] {
-	return lsfTonative_a2258feb4d57(lsfBoundedUInt64_6(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_a2258feb4d57(lsfBoundedUInt64_ca410424(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint8] {
-	return lsfTonative_2a3b378408f8(lsfBoundedUInt8_7(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_2a3b378408f8(lsfBoundedUInt8_8ce0c76e(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsBoundedUIntPtr(
@@ -755,28 +755,28 @@ func (lawSpecDefinitions) LawspecCollectionsSaturatingInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int16 {
-	return lsfTonative_07dabd732290(lsfSaturatingInt16_8(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_07dabd732290(lsfSaturatingInt16_770015a8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfSaturatingInt32_9(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_b862204e9be7(lsfSaturatingInt32_9e8d3b43(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfSaturatingInt64_10(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_44a08172da10(lsfSaturatingInt64_5bce4ed8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int8 {
-	return lsfTonative_9d2bd68f647a(lsfSaturatingInt8_11(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_9d2bd68f647a(lsfSaturatingInt8_54855fd8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingIntSize(
@@ -798,28 +798,28 @@ func (lawSpecDefinitions) LawspecCollectionsSaturatingUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint16 {
-	return lsfTonative_7c7a5790413b(lsfSaturatingUInt16_12(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_7c7a5790413b(lsfSaturatingUInt16_c4c11e3b(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfSaturatingUInt32_13(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_bd9653153f3b(lsfSaturatingUInt32_6d025357(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint64 {
-	return lsfTonative_65439cc7c2ff(lsfSaturatingUInt64_14(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_65439cc7c2ff(lsfSaturatingUInt64_dce984c8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint8 {
-	return lsfTonative_d048b68cd5b1(lsfSaturatingUInt8_15(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_d048b68cd5b1(lsfSaturatingUInt8_cf40d611(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsSaturatingUIntPtr(
@@ -856,28 +856,28 @@ func (lawSpecDefinitions) LawspecCollectionsWrappingInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int16 {
-	return lsfTonative_07dabd732290(lsfWrappingInt16_16(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_07dabd732290(lsfWrappingInt16_989a4ce2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfWrappingInt32_17(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_b862204e9be7(lsfWrappingInt32_e1b5a7b2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfWrappingInt64_18(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_44a08172da10(lsfWrappingInt64_698b955a(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int8 {
-	return lsfTonative_9d2bd68f647a(lsfWrappingInt8_19(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_9d2bd68f647a(lsfWrappingInt8_728a92af(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingIntSize(
@@ -899,28 +899,28 @@ func (lawSpecDefinitions) LawspecCollectionsWrappingUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint16 {
-	return lsfTonative_7c7a5790413b(lsfWrappingUInt16_20(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_7c7a5790413b(lsfWrappingUInt16_e5742dd2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfWrappingUInt32_21(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_bd9653153f3b(lsfWrappingUInt32_1ef3ce20(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint64 {
-	return lsfTonative_65439cc7c2ff(lsfWrappingUInt64_22(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_65439cc7c2ff(lsfWrappingUInt64_362f8288(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint8 {
-	return lsfTonative_d048b68cd5b1(lsfWrappingUInt8_23(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_d048b68cd5b1(lsfWrappingUInt8_6ce2e7d2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) LawspecCollectionsWrappingUIntPtr(
@@ -958,7 +958,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDeleteItems_62318b0a9a
 	value0 string,
 	value1 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValDeleteItems_68(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
+	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValDeleteItems_5df79bd1(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed8864c5(
@@ -966,7 +966,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDeleteItems_ad1c27c4ed
 	value0 int64,
 	value1 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValDeleteItems_69(lsfFromnative_44a08172da10(value0), lsfFromnative_651fa9ab9d5d(value1)))
+	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValDeleteItems_6394b670(lsfFromnative_44a08172da10(value0), lsfFromnative_651fa9ab9d5d(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea025(
@@ -974,7 +974,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDelete_95f14dd183eea02
 	value0 int64,
 	value1 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValDelete_70(lsfFromnative_44a08172da10(value0), lsfFromnative_a5ff70cdb58a(value1)))
+	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValDelete_daac10f4(lsfFromnative_44a08172da10(value0), lsfFromnative_a5ff70cdb58a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc91(
@@ -982,28 +982,28 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValDelete_d7a338e61b94bc9
 	value0 string,
 	value1 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValDelete_71(lsfFromnative_437d0abf423f(value0), lsfFromnative_573c5ecbb13e(value1)))
+	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValDelete_9159aa73(lsfFromnative_437d0abf423f(value0), lsfFromnative_573c5ecbb13e(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValEntries_668241931cc153f4(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValEntries_72(lsfFromnative_76ca967c9ea5(value0)))
+	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValEntries_a865cc3f(lsfFromnative_76ca967c9ea5(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValEntries_6ea9a99b05e74c(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValEntries_73(lsfFromnative_ead2bdf5b1de(value0)))
+	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValEntries_d490695f(lsfFromnative_ead2bdf5b1de(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValEntries_df543c4156f9821a(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValEntries_74(lsfFromnative_573c5ecbb13e(value0)))
+	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValEntries_90fdb0cf(lsfFromnative_573c5ecbb13e(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_18760777c36ef587(
@@ -1011,7 +1011,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_18760777c36e
 	value0 []Entry[int64, int64],
 	value1 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValFromItems_75(lsfFromnative_651fa9ab9d5d(value0), lsfFromnative_651fa9ab9d5d(value1)))
+	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValFromItems_b1d7a6fe(lsfFromnative_651fa9ab9d5d(value0), lsfFromnative_651fa9ab9d5d(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_201f93149738fc4f(
@@ -1019,7 +1019,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_201f93149738
 	value0 []Entry[string, int64],
 	value1 []Entry[string, int64],
 ) []Entry[string, int64] {
-	return lsfTonative_cbf1e2cd3904(lsfLawspecCollectionsKeyValFromItems_76(lsfFromnative_cbf1e2cd3904(value0), lsfFromnative_cbf1e2cd3904(value1)))
+	return lsfTonative_cbf1e2cd3904(lsfLawspecCollectionsKeyValFromItems_06f4d2c6(lsfFromnative_cbf1e2cd3904(value0), lsfFromnative_cbf1e2cd3904(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_224702891e6ebfba(
@@ -1027,7 +1027,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_224702891e6e
 	value0 []Entry[string, int32],
 	value1 []Entry[string, int32],
 ) []Entry[string, int32] {
-	return lsfTonative_d6220414446c(lsfLawspecCollectionsKeyValFromItems_77(lsfFromnative_d6220414446c(value0), lsfFromnative_d6220414446c(value1)))
+	return lsfTonative_d6220414446c(lsfLawspecCollectionsKeyValFromItems_a82586cc(lsfFromnative_d6220414446c(value0), lsfFromnative_d6220414446c(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_28070fe12955af99(
@@ -1035,7 +1035,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_28070fe12955
 	value0 []Entry[int64, ProducerEntry],
 	value1 []Entry[int64, ProducerEntry],
 ) []Entry[int64, ProducerEntry] {
-	return lsfTonative_ce1429c06596(lsfLawspecCollectionsKeyValFromItems_78(lsfFromnative_ce1429c06596(value0), lsfFromnative_ce1429c06596(value1)))
+	return lsfTonative_ce1429c06596(lsfLawspecCollectionsKeyValFromItems_cbeefea2(lsfFromnative_ce1429c06596(value0), lsfFromnative_ce1429c06596(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3ef9ac(
@@ -1043,7 +1043,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_30e2507dcc3e
 	value0 []Entry[string, Group],
 	value1 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValFromItems_79(lsfFromnative_c95dd21cde1e(value0), lsfFromnative_c95dd21cde1e(value1)))
+	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValFromItems_32478a30(lsfFromnative_c95dd21cde1e(value0), lsfFromnative_c95dd21cde1e(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a2b9e(
@@ -1051,7 +1051,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_4bb0a47f584a
 	value0 []Entry[GroupPartition, int64],
 	value1 []Entry[GroupPartition, int64],
 ) []Entry[GroupPartition, int64] {
-	return lsfTonative_9dcdbe0431a1(lsfLawspecCollectionsKeyValFromItems_80(lsfFromnative_9dcdbe0431a1(value0), lsfFromnative_9dcdbe0431a1(value1)))
+	return lsfTonative_9dcdbe0431a1(lsfLawspecCollectionsKeyValFromItems_3a24ccf2(lsfFromnative_9dcdbe0431a1(value0), lsfFromnative_9dcdbe0431a1(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0457e(
@@ -1059,7 +1059,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_656b3e1b81a0
 	value0 []Entry[TopicPartition, int64],
 	value1 []Entry[TopicPartition, int64],
 ) []Entry[TopicPartition, int64] {
-	return lsfTonative_287be4ef437a(lsfLawspecCollectionsKeyValFromItems_81(lsfFromnative_287be4ef437a(value0), lsfFromnative_287be4ef437a(value1)))
+	return lsfTonative_287be4ef437a(lsfLawspecCollectionsKeyValFromItems_1e161219(lsfFromnative_287be4ef437a(value0), lsfFromnative_287be4ef437a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e5fe3(
@@ -1067,7 +1067,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_85bb2eea042e
 	value0 []Entry[string, []string],
 	value1 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValFromItems_82(lsfFromnative_ef13ae4d9e38(value0), lsfFromnative_ef13ae4d9e38(value1)))
+	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValFromItems_92b072e4(lsfFromnative_ef13ae4d9e38(value0), lsfFromnative_ef13ae4d9e38(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1eb10(
@@ -1075,7 +1075,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_cbe112dc9dd1
 	value0 []Entry[TopicPartition, PartitionLog],
 	value1 []Entry[TopicPartition, PartitionLog],
 ) []Entry[TopicPartition, PartitionLog] {
-	return lsfTonative_b79b4546a6ee(lsfLawspecCollectionsKeyValFromItems_83(lsfFromnative_b79b4546a6ee(value0), lsfFromnative_b79b4546a6ee(value1)))
+	return lsfTonative_b79b4546a6ee(lsfLawspecCollectionsKeyValFromItems_d863ec47(lsfFromnative_b79b4546a6ee(value0), lsfFromnative_b79b4546a6ee(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b63484ff8(
@@ -1083,7 +1083,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_dd3ea08b6348
 	value0 []Entry[int64, []BatchMeta],
 	value1 []Entry[int64, []BatchMeta],
 ) []Entry[int64, []BatchMeta] {
-	return lsfTonative_59c4d82f6c9d(lsfLawspecCollectionsKeyValFromItems_84(lsfFromnative_59c4d82f6c9d(value0), lsfFromnative_59c4d82f6c9d(value1)))
+	return lsfTonative_59c4d82f6c9d(lsfLawspecCollectionsKeyValFromItems_4e4ef1c4(lsfFromnative_59c4d82f6c9d(value0), lsfFromnative_59c4d82f6c9d(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a20a26(
@@ -1091,7 +1091,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_ead6d6bde1a2
 	value0 []Entry[string, []TopicPartition],
 	value1 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValFromItems_85(lsfFromnative_b3fb2926095a(value0), lsfFromnative_b3fb2926095a(value1)))
+	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValFromItems_6be3ca15(lsfFromnative_b3fb2926095a(value0), lsfFromnative_b3fb2926095a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd14e9(
@@ -1099,21 +1099,21 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValFromItems_faa46e63cbcd
 	value0 []Entry[TopicPartition, int32],
 	value1 []Entry[TopicPartition, int32],
 ) []Entry[TopicPartition, int32] {
-	return lsfTonative_7f12735183c0(lsfLawspecCollectionsKeyValFromItems_86(lsfFromnative_7f12735183c0(value0), lsfFromnative_7f12735183c0(value1)))
+	return lsfTonative_7f12735183c0(lsfLawspecCollectionsKeyValFromItems_c033ba9e(lsfFromnative_7f12735183c0(value0), lsfFromnative_7f12735183c0(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValKeysItems_e233e49033adca72(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []string],
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsKeyValKeysItems_87(lsfFromnative_ef13ae4d9e38(value0)))
+	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsKeyValKeysItems_e033276a(lsfFromnative_ef13ae4d9e38(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValKeys_c7c332043746df98(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []string],
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsKeyValKeys_88(lsfFromnative_573c5ecbb13e(value0)))
+	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsKeyValKeys_34e9a8ae(lsfFromnative_573c5ecbb13e(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b4e992f(
@@ -1121,7 +1121,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_136cc6772b
 	value0 int64,
 	value1 []Entry[int64, []BatchMeta],
 ) LawSpecMaybe[[]BatchMeta] {
-	return lsfTonative_c38be08c05a1(lsfLawspecCollectionsKeyValLookupItems_89(lsfFromnative_44a08172da10(value0), lsfFromnative_59c4d82f6c9d(value1)))
+	return lsfTonative_c38be08c05a1(lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lsfFromnative_44a08172da10(value0), lsfFromnative_59c4d82f6c9d(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf3c8f0b(
@@ -1129,7 +1129,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_1eb69f0fdf
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_90(lsfFromnative_57a515e0e489(value0), lsfFromnative_287be4ef437a(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_154c41d9(lsfFromnative_57a515e0e489(value0), lsfFromnative_287be4ef437a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_5756b26180726581(
@@ -1137,7 +1137,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_5756b26180
 	value0 string,
 	value1 []Entry[string, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_91(lsfFromnative_437d0abf423f(value0), lsfFromnative_cbf1e2cd3904(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lsfFromnative_437d0abf423f(value0), lsfFromnative_cbf1e2cd3904(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_69280184901ea585(
@@ -1145,7 +1145,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_6928018490
 	value0 string,
 	value1 []Entry[string, []string],
 ) LawSpecMaybe[[]string] {
-	return lsfTonative_3d64fc085f92(lsfLawspecCollectionsKeyValLookupItems_92(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
+	return lsfTonative_3d64fc085f92(lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_82603a5935440f75(
@@ -1153,7 +1153,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_82603a5935
 	value0 string,
 	value1 []Entry[string, []TopicPartition],
 ) LawSpecMaybe[[]TopicPartition] {
-	return lsfTonative_50708784f072(lsfLawspecCollectionsKeyValLookupItems_93(lsfFromnative_437d0abf423f(value0), lsfFromnative_b3fb2926095a(value1)))
+	return lsfTonative_50708784f072(lsfLawspecCollectionsKeyValLookupItems_a13d293f(lsfFromnative_437d0abf423f(value0), lsfFromnative_b3fb2926095a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bfc42ee5(
@@ -1161,7 +1161,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_8c8e1453bf
 	value0 int64,
 	value1 []Entry[int64, ProducerEntry],
 ) LawSpecMaybe[ProducerEntry] {
-	return lsfTonative_bf624bc7affb(lsfLawspecCollectionsKeyValLookupItems_94(lsfFromnative_44a08172da10(value0), lsfFromnative_ce1429c06596(value1)))
+	return lsfTonative_bf624bc7affb(lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lsfFromnative_44a08172da10(value0), lsfFromnative_ce1429c06596(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_9428a088248757a3(
@@ -1169,7 +1169,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_9428a08824
 	value0 string,
 	value1 []Entry[string, int32],
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_95(lsfFromnative_437d0abf423f(value0), lsfFromnative_d6220414446c(value1)))
+	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lsfFromnative_437d0abf423f(value0), lsfFromnative_d6220414446c(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09d3f4b3(
@@ -1177,7 +1177,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_b5b730fd09
 	value0 GroupPartition,
 	value1 []Entry[GroupPartition, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_96(lsfFromnative_213d3554d90b(value0), lsfFromnative_9dcdbe0431a1(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_634e3159(lsfFromnative_213d3554d90b(value0), lsfFromnative_9dcdbe0431a1(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaac376dd(
@@ -1185,7 +1185,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_d4fb9ceeaa
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, int32],
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_97(lsfFromnative_57a515e0e489(value0), lsfFromnative_7f12735183c0(value1)))
+	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lsfFromnative_57a515e0e489(value0), lsfFromnative_7f12735183c0(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f41725375(
@@ -1193,7 +1193,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_ecc6f3f417
 	value0 int64,
 	value1 []Entry[int64, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_98(lsfFromnative_44a08172da10(value0), lsfFromnative_651fa9ab9d5d(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lsfFromnative_44a08172da10(value0), lsfFromnative_651fa9ab9d5d(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96abfdf11(
@@ -1201,7 +1201,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_ee46f4f96a
 	value0 string,
 	value1 []Entry[string, Group],
 ) LawSpecMaybe[Group] {
-	return lsfTonative_96af144ed884(lsfLawspecCollectionsKeyValLookupItems_99(lsfFromnative_437d0abf423f(value0), lsfFromnative_c95dd21cde1e(value1)))
+	return lsfTonative_96af144ed884(lsfLawspecCollectionsKeyValLookupItems_3c718024(lsfFromnative_437d0abf423f(value0), lsfFromnative_c95dd21cde1e(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cffbd6eb(
@@ -1209,7 +1209,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookupItems_f23b5066cf
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, PartitionLog],
 ) LawSpecMaybe[PartitionLog] {
-	return lsfTonative_aba61dc13579(lsfLawspecCollectionsKeyValLookupItems_100(lsfFromnative_57a515e0e489(value0), lsfFromnative_b79b4546a6ee(value1)))
+	return lsfTonative_aba61dc13579(lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lsfFromnative_57a515e0e489(value0), lsfFromnative_b79b4546a6ee(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_61e51068439aa457(
@@ -1217,7 +1217,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_61e51068439aa45
 	value0 string,
 	value1 []Entry[string, []string],
 ) LawSpecMaybe[[]string] {
-	return lsfTonative_3d64fc085f92(lsfLawspecCollectionsKeyValLookup_101(lsfFromnative_437d0abf423f(value0), lsfFromnative_573c5ecbb13e(value1)))
+	return lsfTonative_3d64fc085f92(lsfLawspecCollectionsKeyValLookup_a9059595(lsfFromnative_437d0abf423f(value0), lsfFromnative_573c5ecbb13e(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a5(
@@ -1225,7 +1225,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_65f44f3855baf0a
 	value0 int64,
 	value1 []Entry[int64, []BatchMeta],
 ) LawSpecMaybe[[]BatchMeta] {
-	return lsfTonative_c38be08c05a1(lsfLawspecCollectionsKeyValLookup_102(lsfFromnative_44a08172da10(value0), lsfFromnative_12e472f38b58(value1)))
+	return lsfTonative_c38be08c05a1(lsfLawspecCollectionsKeyValLookup_b2bbd077(lsfFromnative_44a08172da10(value0), lsfFromnative_12e472f38b58(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd255941(
@@ -1233,7 +1233,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_7acdaa8dcd25594
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, PartitionLog],
 ) LawSpecMaybe[PartitionLog] {
-	return lsfTonative_aba61dc13579(lsfLawspecCollectionsKeyValLookup_103(lsfFromnative_57a515e0e489(value0), lsfFromnative_fc454f30e5b2(value1)))
+	return lsfTonative_aba61dc13579(lsfLawspecCollectionsKeyValLookup_8a481efc(lsfFromnative_57a515e0e489(value0), lsfFromnative_fc454f30e5b2(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e9(
@@ -1241,7 +1241,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_7e86ea7b8af5f7e
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, int32],
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_104(lsfFromnative_57a515e0e489(value0), lsfFromnative_0f394bf4652c(value1)))
+	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_8e671f4d(lsfFromnative_57a515e0e489(value0), lsfFromnative_0f394bf4652c(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef1(
@@ -1249,7 +1249,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_a6a374938d1c1ef
 	value0 int64,
 	value1 []Entry[int64, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_105(lsfFromnative_44a08172da10(value0), lsfFromnative_a5ff70cdb58a(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_65e9c66c(lsfFromnative_44a08172da10(value0), lsfFromnative_a5ff70cdb58a(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f5(
@@ -1257,7 +1257,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_be6dfdcf4e9ae9f
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_106(lsfFromnative_57a515e0e489(value0), lsfFromnative_d1208e18a243(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_a6e9da81(lsfFromnative_57a515e0e489(value0), lsfFromnative_d1208e18a243(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84b(
@@ -1265,7 +1265,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_d32eccc04e0ce84
 	value0 string,
 	value1 []Entry[string, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_107(lsfFromnative_437d0abf423f(value0), lsfFromnative_291d2550e97c(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_24612a0e(lsfFromnative_437d0abf423f(value0), lsfFromnative_291d2550e97c(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f5(
@@ -1273,7 +1273,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_d45d335232ddb9f
 	value0 GroupPartition,
 	value1 []Entry[GroupPartition, int64],
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_108(lsfFromnative_213d3554d90b(value0), lsfFromnative_316bf0786e9b(value1)))
+	return lsfTonative_c09136e29464(lsfLawspecCollectionsKeyValLookup_cd13c56f(lsfFromnative_213d3554d90b(value0), lsfFromnative_316bf0786e9b(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_e75784f293b348fb(
@@ -1281,7 +1281,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_e75784f293b348f
 	value0 int64,
 	value1 []Entry[int64, ProducerEntry],
 ) LawSpecMaybe[ProducerEntry] {
-	return lsfTonative_bf624bc7affb(lsfLawspecCollectionsKeyValLookup_109(lsfFromnative_44a08172da10(value0), lsfFromnative_5fff5f48ddb1(value1)))
+	return lsfTonative_bf624bc7affb(lsfLawspecCollectionsKeyValLookup_6946d404(lsfFromnative_44a08172da10(value0), lsfFromnative_5fff5f48ddb1(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c07(
@@ -1289,7 +1289,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_ed82ee3bc3ed7c0
 	value0 string,
 	value1 []Entry[string, int32],
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_110(lsfFromnative_437d0abf423f(value0), lsfFromnative_bb40e13b6158(value1)))
+	return lsfTonative_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_7f47bbb6(lsfFromnative_437d0abf423f(value0), lsfFromnative_bb40e13b6158(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2eb(
@@ -1297,7 +1297,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_f0a5427404f6c2e
 	value0 string,
 	value1 []Entry[string, []TopicPartition],
 ) LawSpecMaybe[[]TopicPartition] {
-	return lsfTonative_50708784f072(lsfLawspecCollectionsKeyValLookup_111(lsfFromnative_437d0abf423f(value0), lsfFromnative_ead2bdf5b1de(value1)))
+	return lsfTonative_50708784f072(lsfLawspecCollectionsKeyValLookup_ce7e98b5(lsfFromnative_437d0abf423f(value0), lsfFromnative_ead2bdf5b1de(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594f(
@@ -1305,91 +1305,91 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValLookup_f1a9f8275360594
 	value0 string,
 	value1 []Entry[string, Group],
 ) LawSpecMaybe[Group] {
-	return lsfTonative_96af144ed884(lsfLawspecCollectionsKeyValLookup_112(lsfFromnative_437d0abf423f(value0), lsfFromnative_76ca967c9ea5(value1)))
+	return lsfTonative_96af144ed884(lsfLawspecCollectionsKeyValLookup_0bbb87c8(lsfFromnative_437d0abf423f(value0), lsfFromnative_76ca967c9ea5(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_2bb044c13a34edfc(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawspecCollectionsKeyValOf_113(lsfFromnative_b3fb2926095a(value0)))
+	return lsfTonative_ead2bdf5b1de(lsfLawspecCollectionsKeyValOf_b3b63ee9(lsfFromnative_b3fb2926095a(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_5ce58c09d80ccd54(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_76ca967c9ea5(lsfLawspecCollectionsKeyValOf_114(lsfFromnative_c95dd21cde1e(value0)))
+	return lsfTonative_76ca967c9ea5(lsfLawspecCollectionsKeyValOf_315c22fb(lsfFromnative_c95dd21cde1e(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_610caa8fbb581a02(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[TopicPartition, int32],
 ) []Entry[TopicPartition, int32] {
-	return lsfTonative_0f394bf4652c(lsfLawspecCollectionsKeyValOf_115(lsfFromnative_7f12735183c0(value0)))
+	return lsfTonative_0f394bf4652c(lsfLawspecCollectionsKeyValOf_8d386a7a(lsfFromnative_7f12735183c0(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_a0c1d9feb5051d04(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[TopicPartition, PartitionLog],
 ) []Entry[TopicPartition, PartitionLog] {
-	return lsfTonative_fc454f30e5b2(lsfLawspecCollectionsKeyValOf_116(lsfFromnative_b79b4546a6ee(value0)))
+	return lsfTonative_fc454f30e5b2(lsfLawspecCollectionsKeyValOf_66dd9a82(lsfFromnative_b79b4546a6ee(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_a4eebf20bfcd02b4(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[int64, []BatchMeta],
 ) []Entry[int64, []BatchMeta] {
-	return lsfTonative_12e472f38b58(lsfLawspecCollectionsKeyValOf_117(lsfFromnative_59c4d82f6c9d(value0)))
+	return lsfTonative_12e472f38b58(lsfLawspecCollectionsKeyValOf_3adee7cf(lsfFromnative_59c4d82f6c9d(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_bd30e4f0b318724c(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[TopicPartition, int64],
 ) []Entry[TopicPartition, int64] {
-	return lsfTonative_d1208e18a243(lsfLawspecCollectionsKeyValOf_118(lsfFromnative_287be4ef437a(value0)))
+	return lsfTonative_d1208e18a243(lsfLawspecCollectionsKeyValOf_a1009097(lsfFromnative_287be4ef437a(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_c9f1a347a852b1c2(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, int64],
 ) []Entry[string, int64] {
-	return lsfTonative_291d2550e97c(lsfLawspecCollectionsKeyValOf_119(lsfFromnative_cbf1e2cd3904(value0)))
+	return lsfTonative_291d2550e97c(lsfLawspecCollectionsKeyValOf_eeff9798(lsfFromnative_cbf1e2cd3904(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_ca750953e04bcf02(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValOf_120(lsfFromnative_ef13ae4d9e38(value0)))
+	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValOf_afdc1c77(lsfFromnative_ef13ae4d9e38(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_dbc2234a1277c15e(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, int32],
 ) []Entry[string, int32] {
-	return lsfTonative_bb40e13b6158(lsfLawspecCollectionsKeyValOf_121(lsfFromnative_d6220414446c(value0)))
+	return lsfTonative_bb40e13b6158(lsfLawspecCollectionsKeyValOf_924ce6dd(lsfFromnative_d6220414446c(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_e2ff2d4e29c6936a(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[int64, ProducerEntry],
 ) []Entry[int64, ProducerEntry] {
-	return lsfTonative_5fff5f48ddb1(lsfLawspecCollectionsKeyValOf_122(lsfFromnative_ce1429c06596(value0)))
+	return lsfTonative_5fff5f48ddb1(lsfLawspecCollectionsKeyValOf_66da004b(lsfFromnative_ce1429c06596(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_e41901007f8d5eea(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValOf_123(lsfFromnative_651fa9ab9d5d(value0)))
+	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValOf_b2ceee25(lsfFromnative_651fa9ab9d5d(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValOf_ec3a06fbbd989d48(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[GroupPartition, int64],
 ) []Entry[GroupPartition, int64] {
-	return lsfTonative_316bf0786e9b(lsfLawspecCollectionsKeyValOf_124(lsfFromnative_9dcdbe0431a1(value0)))
+	return lsfTonative_316bf0786e9b(lsfLawspecCollectionsKeyValOf_14405d63(lsfFromnative_9dcdbe0431a1(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea7655c(
@@ -1398,7 +1398,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_1a60d73f2ea76
 	value1 int64,
 	value2 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValPutItems_125(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_651fa9ab9d5d(value2)))
+	return lsfTonative_651fa9ab9d5d(lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_651fa9ab9d5d(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b0136e2(
@@ -1407,7 +1407,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_1d4fcedc9b013
 	value1 ProducerEntry,
 	value2 []Entry[int64, ProducerEntry],
 ) []Entry[int64, ProducerEntry] {
-	return lsfTonative_ce1429c06596(lsfLawspecCollectionsKeyValPutItems_126(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_ce1429c06596(value2)))
+	return lsfTonative_ce1429c06596(lsfLawspecCollectionsKeyValPutItems_97a64264(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_ce1429c06596(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1ad9(
@@ -1416,7 +1416,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_2a3018cf45ad1
 	value1 []BatchMeta,
 	value2 []Entry[int64, []BatchMeta],
 ) []Entry[int64, []BatchMeta] {
-	return lsfTonative_59c4d82f6c9d(lsfLawspecCollectionsKeyValPutItems_127(lsfFromnative_44a08172da10(value0), lsfFromnative_789f82e1207e(value1), lsfFromnative_59c4d82f6c9d(value2)))
+	return lsfTonative_59c4d82f6c9d(lsfLawspecCollectionsKeyValPutItems_054f1ef1(lsfFromnative_44a08172da10(value0), lsfFromnative_789f82e1207e(value1), lsfFromnative_59c4d82f6c9d(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7f53(
@@ -1425,7 +1425,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_4b9848f70e8b7
 	value1 int32,
 	value2 []Entry[string, int32],
 ) []Entry[string, int32] {
-	return lsfTonative_d6220414446c(lsfLawspecCollectionsKeyValPutItems_128(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_d6220414446c(value2)))
+	return lsfTonative_d6220414446c(lsfLawspecCollectionsKeyValPutItems_8d4f5385(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_d6220414446c(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546e58(
@@ -1434,7 +1434,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_4c71dc98d5546
 	value1 int64,
 	value2 []Entry[string, int64],
 ) []Entry[string, int64] {
-	return lsfTonative_cbf1e2cd3904(lsfLawspecCollectionsKeyValPutItems_129(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_cbf1e2cd3904(value2)))
+	return lsfTonative_cbf1e2cd3904(lsfLawspecCollectionsKeyValPutItems_5d998955(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_cbf1e2cd3904(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_565019ca06de701f(
@@ -1443,7 +1443,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_565019ca06de7
 	value1 []TopicPartition,
 	value2 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValPutItems_130(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1), lsfFromnative_b3fb2926095a(value2)))
+	return lsfTonative_b3fb2926095a(lsfLawspecCollectionsKeyValPutItems_80dc1939(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1), lsfFromnative_b3fb2926095a(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_854f1183117f06f5(
@@ -1452,7 +1452,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_854f1183117f0
 	value1 int64,
 	value2 []Entry[GroupPartition, int64],
 ) []Entry[GroupPartition, int64] {
-	return lsfTonative_9dcdbe0431a1(lsfLawspecCollectionsKeyValPutItems_131(lsfFromnative_213d3554d90b(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_9dcdbe0431a1(value2)))
+	return lsfTonative_9dcdbe0431a1(lsfLawspecCollectionsKeyValPutItems_28cf0caf(lsfFromnative_213d3554d90b(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_9dcdbe0431a1(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332ea1(
@@ -1461,7 +1461,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_9bdf97a44332e
 	value1 Group,
 	value2 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValPutItems_132(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_c95dd21cde1e(value2)))
+	return lsfTonative_c95dd21cde1e(lsfLawspecCollectionsKeyValPutItems_883fe52d(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_c95dd21cde1e(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36750(
@@ -1470,7 +1470,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_a229945e8cb36
 	value1 int32,
 	value2 []Entry[TopicPartition, int32],
 ) []Entry[TopicPartition, int32] {
-	return lsfTonative_7f12735183c0(lsfLawspecCollectionsKeyValPutItems_133(lsfFromnative_57a515e0e489(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_7f12735183c0(value2)))
+	return lsfTonative_7f12735183c0(lsfLawspecCollectionsKeyValPutItems_3f0139cf(lsfFromnative_57a515e0e489(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_7f12735183c0(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214c4(
@@ -1479,7 +1479,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_aacdaaddac214
 	value1 []string,
 	value2 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValPutItems_134(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1), lsfFromnative_ef13ae4d9e38(value2)))
+	return lsfTonative_ef13ae4d9e38(lsfLawspecCollectionsKeyValPutItems_c4168a80(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1), lsfFromnative_ef13ae4d9e38(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb98d(
@@ -1488,7 +1488,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_b8b82d61b25bb
 	value1 int64,
 	value2 []Entry[TopicPartition, int64],
 ) []Entry[TopicPartition, int64] {
-	return lsfTonative_287be4ef437a(lsfLawspecCollectionsKeyValPutItems_135(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_287be4ef437a(value2)))
+	return lsfTonative_287be4ef437a(lsfLawspecCollectionsKeyValPutItems_4266176b(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_287be4ef437a(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88cae9b(
@@ -1497,7 +1497,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPutItems_ee57bfced88ca
 	value1 PartitionLog,
 	value2 []Entry[TopicPartition, PartitionLog],
 ) []Entry[TopicPartition, PartitionLog] {
-	return lsfTonative_b79b4546a6ee(lsfLawspecCollectionsKeyValPutItems_136(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_b79b4546a6ee(value2)))
+	return lsfTonative_b79b4546a6ee(lsfLawspecCollectionsKeyValPutItems_523d104d(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_b79b4546a6ee(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058(
@@ -1506,7 +1506,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_1e5631cf1010f058(
 	value1 int32,
 	value2 []Entry[TopicPartition, int32],
 ) []Entry[TopicPartition, int32] {
-	return lsfTonative_0f394bf4652c(lsfLawspecCollectionsKeyValPut_137(lsfFromnative_57a515e0e489(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_0f394bf4652c(value2)))
+	return lsfTonative_0f394bf4652c(lsfLawspecCollectionsKeyValPut_cabf14cc(lsfFromnative_57a515e0e489(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_0f394bf4652c(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
@@ -1515,7 +1515,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_64ef6963a054fec9(
 	value1 Group,
 	value2 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_76ca967c9ea5(lsfLawspecCollectionsKeyValPut_138(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_76ca967c9ea5(value2)))
+	return lsfTonative_76ca967c9ea5(lsfLawspecCollectionsKeyValPut_ce8624cf(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_76ca967c9ea5(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
@@ -1524,7 +1524,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_6a32d437b06cf1fb(
 	value1 PartitionLog,
 	value2 []Entry[TopicPartition, PartitionLog],
 ) []Entry[TopicPartition, PartitionLog] {
-	return lsfTonative_fc454f30e5b2(lsfLawspecCollectionsKeyValPut_139(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_fc454f30e5b2(value2)))
+	return lsfTonative_fc454f30e5b2(lsfLawspecCollectionsKeyValPut_5ab157dd(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_fc454f30e5b2(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
@@ -1533,7 +1533,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_84321765782615b9(
 	value1 []BatchMeta,
 	value2 []Entry[int64, []BatchMeta],
 ) []Entry[int64, []BatchMeta] {
-	return lsfTonative_12e472f38b58(lsfLawspecCollectionsKeyValPut_140(lsfFromnative_44a08172da10(value0), lsfFromnative_789f82e1207e(value1), lsfFromnative_12e472f38b58(value2)))
+	return lsfTonative_12e472f38b58(lsfLawspecCollectionsKeyValPut_c59d14e0(lsfFromnative_44a08172da10(value0), lsfFromnative_789f82e1207e(value1), lsfFromnative_12e472f38b58(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1(
@@ -1542,7 +1542,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_9e5f815c293ac9e1(
 	value1 int64,
 	value2 []Entry[TopicPartition, int64],
 ) []Entry[TopicPartition, int64] {
-	return lsfTonative_d1208e18a243(lsfLawspecCollectionsKeyValPut_141(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_d1208e18a243(value2)))
+	return lsfTonative_d1208e18a243(lsfLawspecCollectionsKeyValPut_01a600ed(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_d1208e18a243(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
@@ -1551,7 +1551,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_a0581d6dd36c2e58(
 	value1 int64,
 	value2 []Entry[string, int64],
 ) []Entry[string, int64] {
-	return lsfTonative_291d2550e97c(lsfLawspecCollectionsKeyValPut_142(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_291d2550e97c(value2)))
+	return lsfTonative_291d2550e97c(lsfLawspecCollectionsKeyValPut_3034b895(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_291d2550e97c(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
@@ -1560,7 +1560,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_a2a3515700f0a6f(
 	value1 int32,
 	value2 []Entry[string, int32],
 ) []Entry[string, int32] {
-	return lsfTonative_bb40e13b6158(lsfLawspecCollectionsKeyValPut_143(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_bb40e13b6158(value2)))
+	return lsfTonative_bb40e13b6158(lsfLawspecCollectionsKeyValPut_a8f49e3e(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_bb40e13b6158(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
@@ -1569,7 +1569,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_cab6769a52b0163d(
 	value1 int64,
 	value2 []Entry[GroupPartition, int64],
 ) []Entry[GroupPartition, int64] {
-	return lsfTonative_316bf0786e9b(lsfLawspecCollectionsKeyValPut_144(lsfFromnative_213d3554d90b(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_316bf0786e9b(value2)))
+	return lsfTonative_316bf0786e9b(lsfLawspecCollectionsKeyValPut_9fc3570a(lsfFromnative_213d3554d90b(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_316bf0786e9b(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
@@ -1578,7 +1578,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d00f0719b7ec97ee(
 	value1 ProducerEntry,
 	value2 []Entry[int64, ProducerEntry],
 ) []Entry[int64, ProducerEntry] {
-	return lsfTonative_5fff5f48ddb1(lsfLawspecCollectionsKeyValPut_145(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_5fff5f48ddb1(value2)))
+	return lsfTonative_5fff5f48ddb1(lsfLawspecCollectionsKeyValPut_87e622e8(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_5fff5f48ddb1(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
@@ -1587,7 +1587,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d378e301aa895004(
 	value1 []string,
 	value2 []Entry[string, []string],
 ) []Entry[string, []string] {
-	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValPut_146(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1), lsfFromnative_573c5ecbb13e(value2)))
+	return lsfTonative_573c5ecbb13e(lsfLawspecCollectionsKeyValPut_3b439cbe(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1), lsfFromnative_573c5ecbb13e(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
@@ -1596,7 +1596,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_d4f4392b8878a23c(
 	value1 int64,
 	value2 []Entry[int64, int64],
 ) []Entry[int64, int64] {
-	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValPut_147(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_a5ff70cdb58a(value2)))
+	return lsfTonative_a5ff70cdb58a(lsfLawspecCollectionsKeyValPut_5cd34b74(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_a5ff70cdb58a(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
@@ -1605,21 +1605,21 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValPut_ee3ccd7601ddf107(
 	value1 []TopicPartition,
 	value2 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawspecCollectionsKeyValPut_148(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1), lsfFromnative_ead2bdf5b1de(value2)))
+	return lsfTonative_ead2bdf5b1de(lsfLawspecCollectionsKeyValPut_efc6b866(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1), lsfFromnative_ead2bdf5b1de(value2)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValValuesItems_6f7cc84ccef252ae(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[int64, int64],
 ) []int64 {
-	return lsfTonative_75994955e886(lsfLawspecCollectionsKeyValValuesItems_149(lsfFromnative_651fa9ab9d5d(value0)))
+	return lsfTonative_75994955e886(lsfLawspecCollectionsKeyValValuesItems_40ef8eee(lsfFromnative_651fa9ab9d5d(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsKeyValValues_152cb3cfa5a69daa(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[int64, int64],
 ) []int64 {
-	return lsfTonative_75994955e886(lsfLawspecCollectionsKeyValValues_150(lsfFromnative_a5ff70cdb58a(value0)))
+	return lsfTonative_75994955e886(lsfLawspecCollectionsKeyValValues_33bc036c(lsfFromnative_a5ff70cdb58a(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetFromItems_25b2070f526ff089(
@@ -1627,7 +1627,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetFromItems_25b2070f526ff08
 	value0 []string,
 	value1 []string,
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetFromItems_152(lsfFromnative_8ec0351dc657(value0), lsfFromnative_8ec0351dc657(value1)))
+	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetFromItems_b46ce3bb(lsfFromnative_8ec0351dc657(value0), lsfFromnative_8ec0351dc657(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87c(
@@ -1635,7 +1635,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetFromItems_ffc9b33e7d19d87
 	value0 []int32,
 	value1 []int32,
 ) []int32 {
-	return lsfTonative_508e8cda1c80(lsfLawspecCollectionsSetFromItems_153(lsfFromnative_508e8cda1c80(value0), lsfFromnative_508e8cda1c80(value1)))
+	return lsfTonative_508e8cda1c80(lsfLawspecCollectionsSetFromItems_357dd072(lsfFromnative_508e8cda1c80(value0), lsfFromnative_508e8cda1c80(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9977(
@@ -1643,7 +1643,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetInsertItems_a3dc35e775ac9
 	value0 string,
 	value1 []string,
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetInsertItems_154(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1)))
+	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetInsertItems_fd8b28ec(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d966(
@@ -1651,21 +1651,21 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetInsertItems_fee347ca5af6d
 	value0 int32,
 	value1 []int32,
 ) []int32 {
-	return lsfTonative_508e8cda1c80(lsfLawspecCollectionsSetInsertItems_156(lsfFromnative_b862204e9be7(value0), lsfFromnative_508e8cda1c80(value1)))
+	return lsfTonative_508e8cda1c80(lsfLawspecCollectionsSetInsertItems_708d991b(lsfFromnative_b862204e9be7(value0), lsfFromnative_508e8cda1c80(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetOf_83f32212ffd7f646(
 	symbols map[string]*LawSpecSymbol,
 	value0 []string,
 ) []string {
-	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetOf_159(lsfFromnative_8ec0351dc657(value0)))
+	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetOf_381c9692(lsfFromnative_8ec0351dc657(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetOf_9446af497e0eb47e(
 	symbols map[string]*LawSpecSymbol,
 	value0 []int32,
 ) []int32 {
-	return lsfTonative_cd87ee93b56a(lsfLawspecCollectionsSetOf_160(lsfFromnative_508e8cda1c80(value0)))
+	return lsfTonative_cd87ee93b56a(lsfLawspecCollectionsSetOf_04775bf4(lsfFromnative_508e8cda1c80(value0)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9977(
@@ -1673,7 +1673,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetRemoveItems_a3dc35e775ac9
 	value0 string,
 	value1 []string,
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetRemoveItems_162(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1)))
+	return lsfTonative_8ec0351dc657(lsfLawspecCollectionsSetRemoveItems_64279e04(lsfFromnative_437d0abf423f(value0), lsfFromnative_8ec0351dc657(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
@@ -1681,7 +1681,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetRemove_1fda0e8e73969c67(
 	value0 string,
 	value1 []string,
 ) []string {
-	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetRemove_163(lsfFromnative_437d0abf423f(value0), lsfFromnative_0ee125dab044(value1)))
+	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetRemove_7ffea813(lsfFromnative_437d0abf423f(value0), lsfFromnative_0ee125dab044(value1)))
 }
 
 func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
@@ -1689,7 +1689,7 @@ func (lawSpecDefinitions) Lawspec_lawspecCollectionsSetUnion_f2139edefc699bed(
 	value0 []string,
 	value1 []string,
 ) []string {
-	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetUnion_164(lsfFromnative_0ee125dab044(value0), lsfFromnative_0ee125dab044(value1)))
+	return lsfTonative_0ee125dab044(lsfLawspecCollectionsSetUnion_604ff278(lsfFromnative_0ee125dab044(value0), lsfFromnative_0ee125dab044(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaAllAtLeast(
@@ -1697,7 +1697,7 @@ func (lawSpecDefinitions) LawtwinKafkaAllAtLeast(
 	value0 int64,
 	value1 []int64,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfAllAtLeast_25(lsfFromnative_44a08172da10(value0), lsfFromnative_75994955e886(value1)))
+	return lsfTonative_d267428fb2ca(lsfAllAtLeast_3df55027(lsfFromnative_44a08172da10(value0), lsfFromnative_75994955e886(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaAssignmentIn(
@@ -1705,7 +1705,7 @@ func (lawSpecDefinitions) LawtwinKafkaAssignmentIn(
 	value0 string,
 	value1 []MemberAssignment,
 ) []TopicPartition {
-	return lsfTonative_3250492fe9ac(lsfAssignmentIn_26(lsfFromnative_437d0abf423f(value0), lsfFromnative_4d7586f102e6(value1)))
+	return lsfTonative_3250492fe9ac(lsfAssignmentIn_4b795225(lsfFromnative_437d0abf423f(value0), lsfFromnative_4d7586f102e6(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaCommittedFrom(
@@ -1733,7 +1733,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerAssign(
 	value0 []TopicPartition,
 	value1 ConsumerState,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfTonative_170f42653652(lsfConsumerAssign_45(lsfFromnative_3250492fe9ac(value0), lsfFromnative_7de2ae0da384(value1)))
+	return lsfTonative_170f42653652(lsfConsumerAssign_793a07ba(lsfFromnative_3250492fe9ac(value0), lsfFromnative_7de2ae0da384(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaConsumerClose(
@@ -1795,7 +1795,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerIsolation(
 	value0 IsolationLevel,
 	value1 ConsumerState,
 ) Pair[LawSpecUnit, ConsumerState] {
-	return lsfTonative_170f42653652(lsfConsumerIsolation_46(lsfFromnative_a519f593a6ed(value0), lsfFromnative_7de2ae0da384(value1)))
+	return lsfTonative_170f42653652(lsfConsumerIsolation_2aacd289(lsfFromnative_a519f593a6ed(value0), lsfFromnative_7de2ae0da384(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaConsumerJoin(
@@ -1889,7 +1889,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerRecords(
 	value0 TopicPartition,
 	value1 []FetchedRecord,
 ) []ConsumerRecord {
-	return lsfTonative_9aa0842592c4(lsfConsumerRecords_47(lsfFromnative_57a515e0e489(value0), lsfFromnative_ed14fca60ee3(value1)))
+	return lsfTonative_9aa0842592c4(lsfConsumerRecords_9d810f29(lsfFromnative_57a515e0e489(value0), lsfFromnative_ed14fca60ee3(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaConsumerRefresh(
@@ -1915,7 +1915,7 @@ func (lawSpecDefinitions) LawtwinKafkaConsumerSeek(
 	value1 int64,
 	value2 ConsumerState,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], ConsumerState] {
-	return lsfTonative_34d15aaae84b(lsfConsumerSeek_48(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_7de2ae0da384(value2)))
+	return lsfTonative_34d15aaae84b(lsfConsumerSeek_975a7017(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_7de2ae0da384(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaCoversOnce(
@@ -1924,7 +1924,7 @@ func (lawSpecDefinitions) LawtwinKafkaCoversOnce(
 	value1 int32,
 	value2 GroupView,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfCoversOnce_49(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_9b6e0477a826(value2)))
+	return lsfTonative_d267428fb2ca(lsfCoversOnce_231e9ee6(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_9b6e0477a826(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaCreated(
@@ -1952,7 +1952,7 @@ func (lawSpecDefinitions) LawtwinKafkaFencedBy(
 	value0 ProducerIdAndEpoch,
 	value1 ProducerIdAndEpoch,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfFencedBy_50(lsfFromnative_6a5ea41697b3(value0), lsfFromnative_6a5ea41697b3(value1)))
+	return lsfTonative_d267428fb2ca(lsfFencedBy_c383bb89(lsfFromnative_6a5ea41697b3(value0), lsfFromnative_6a5ea41697b3(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaFollowsBatch(
@@ -1961,7 +1961,7 @@ func (lawSpecDefinitions) LawtwinKafkaFollowsBatch(
 	value1 []Record,
 	value2 LawSpecEither[KafkaError, int64],
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfFollowsBatch_51(lsfFromnative_aff9cc782806(value0), lsfFromnative_e3583a5b5bdc(value1), lsfFromnative_aff9cc782806(value2)))
+	return lsfTonative_d267428fb2ca(lsfFollowsBatch_00cf360a(lsfFromnative_aff9cc782806(value0), lsfFromnative_e3583a5b5bdc(value1), lsfFromnative_aff9cc782806(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaFollowsOne(
@@ -1969,42 +1969,42 @@ func (lawSpecDefinitions) LawtwinKafkaFollowsOne(
 	value0 LawSpecEither[KafkaError, RecordMetadata],
 	value1 LawSpecEither[KafkaError, int64],
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfFollowsOne_52(lsfFromnative_f9a3e61df1f3(value0), lsfFromnative_aff9cc782806(value1)))
+	return lsfTonative_d267428fb2ca(lsfFollowsOne_4f3a93e2(lsfFromnative_f9a3e61df1f3(value0), lsfFromnative_aff9cc782806(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaFreshConsumer(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) ConsumerState {
-	return lsfTonative_7de2ae0da384(lsfFreshConsumer_53(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_7de2ae0da384(lsfFreshConsumer_c2da4184(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaFreshProducer(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) ProducerState {
-	return lsfTonative_5e5d2c3fa1a7(lsfFreshProducer_54(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_5e5d2c3fa1a7(lsfFreshProducer_deea7b00(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaFreshTransactions(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) TransactionState {
-	return lsfTonative_74b3f2831172(lsfFreshTransactions_55(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_74b3f2831172(lsfFreshTransactions_533fb432(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaIdentityOf(
 	symbols map[string]*LawSpecSymbol,
 	value0 ProducerState,
 ) Pair[LawSpecMaybe[ProducerIdAndEpoch], ProducerState] {
-	return lsfTonative_5d20fb53d3a6(lsfIdentityOf_56(lsfFromnative_5e5d2c3fa1a7(value0)))
+	return lsfTonative_5d20fb53d3a6(lsfIdentityOf_96976095(lsfFromnative_5e5d2c3fa1a7(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaIncreasing(
 	symbols map[string]*LawSpecSymbol,
 	value0 []int64,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfIncreasing_57(lsfFromnative_75994955e886(value0)))
+	return lsfTonative_d267428fb2ca(lsfIncreasing_d02ccce0(lsfFromnative_75994955e886(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaJoinAll(
@@ -2059,14 +2059,14 @@ func (lawSpecDefinitions) LawtwinKafkaKeepPositions(
 	value1 []Entry[TopicPartition, int64],
 	value2 []Entry[TopicPartition, int64],
 ) []Entry[TopicPartition, int64] {
-	return lsfTonative_d1208e18a243(lsfKeepPositions_67(lsfFromnative_3250492fe9ac(value0), lsfFromnative_d1208e18a243(value1), lsfFromnative_d1208e18a243(value2)))
+	return lsfTonative_d1208e18a243(lsfKeepPositions_f10bd26f(lsfFromnative_3250492fe9ac(value0), lsfFromnative_d1208e18a243(value1), lsfFromnative_d1208e18a243(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMemberIds(
 	symbols map[string]*LawSpecSymbol,
 	value0 []string,
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfMemberIds_236(lsfFromnative_8ec0351dc657(value0)))
+	return lsfTonative_8ec0351dc657(lsfMemberIds_1e3fa12d(lsfFromnative_8ec0351dc657(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMissingFrom(
@@ -2074,7 +2074,7 @@ func (lawSpecDefinitions) LawtwinKafkaMissingFrom(
 	value0 []TopicPartition,
 	value1 []TopicPartition,
 ) []TopicPartition {
-	return lsfTonative_3250492fe9ac(lsfMissingFrom_237(lsfFromnative_3250492fe9ac(value0), lsfFromnative_3250492fe9ac(value1)))
+	return lsfTonative_3250492fe9ac(lsfMissingFrom_37856ee4(lsfFromnative_3250492fe9ac(value0), lsfFromnative_3250492fe9ac(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAddPartitionsToTxn(
@@ -2085,7 +2085,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAddPartitionsToTxn(
 	value3 []TopicPartition,
 	value4 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelAddPartitionsToTxn_165(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_3250492fe9ac(value3), lsfFromnative_49de88d0a810(value4)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_3250492fe9ac(value3), lsfFromnative_49de88d0a810(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAllKnown(
@@ -2093,7 +2093,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAllKnown(
 	value0 []TopicPartition,
 	value1 BrokerState,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelAllKnown_166(lsfFromnative_3250492fe9ac(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelAllKnown_12a378f8(lsfFromnative_3250492fe9ac(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAppendBatch(
@@ -2103,7 +2103,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAppendBatch(
 	value2 bool,
 	value3 PartitionLog,
 ) PartitionLog {
-	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelAppendBatch_167(lsfFromnative_e3583a5b5bdc(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_d267428fb2ca(value2), lsfFromnative_17b5cd6f2c74(value3)))
+	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelAppendBatch_8797ae9f(lsfFromnative_e3583a5b5bdc(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_d267428fb2ca(value2), lsfFromnative_17b5cd6f2c74(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAppendRecords(
@@ -2114,7 +2114,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAppendRecords(
 	value3 bool,
 	value4 []LogEntry,
 ) Pair[int64, []LogEntry] {
-	return lsfTonative_686946ac9a54(lsfLawtwinKafkaModelAppendRecords_168(lsfFromnative_e3583a5b5bdc(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_09a45efed198(value4)))
+	return lsfTonative_686946ac9a54(lsfLawtwinKafkaModelAppendRecords_f5613738(lsfFromnative_e3583a5b5bdc(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_09a45efed198(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelApplyOffsets(
@@ -2122,7 +2122,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelApplyOffsets(
 	value0 []PendingOffset,
 	value1 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelApplyOffsets_169(lsfFromnative_8af9a375600a(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelApplyOffsets_c0f73b56(lsfFromnative_8af9a375600a(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAssignPartitions(
@@ -2133,7 +2133,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAssignPartitions(
 	value3 []string,
 	value4 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignPartitions_170(lsfFromnative_437d0abf423f(value0), lsfFromnative_508e8cda1c80(value1), lsfFromnative_8ec0351dc657(value2), lsfFromnative_8ec0351dc657(value3), lsfFromnative_ead2bdf5b1de(value4)))
+	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignPartitions_598afda2(lsfFromnative_437d0abf423f(value0), lsfFromnative_508e8cda1c80(value1), lsfFromnative_8ec0351dc657(value2), lsfFromnative_8ec0351dc657(value3), lsfFromnative_ead2bdf5b1de(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAssignTo(
@@ -2142,7 +2142,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAssignTo(
 	value1 TopicPartition,
 	value2 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTo_171(lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_ead2bdf5b1de(value2)))
+	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTo_98dab4ee(lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_ead2bdf5b1de(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelAssignTopics(
@@ -2152,7 +2152,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelAssignTopics(
 	value2 BrokerState,
 	value3 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTopics_172(lsfFromnative_8ec0351dc657(value0), lsfFromnative_ef13ae4d9e38(value1), lsfFromnative_49de88d0a810(value2), lsfFromnative_ead2bdf5b1de(value3)))
+	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTopics_0d94256d(lsfFromnative_8ec0351dc657(value0), lsfFromnative_ef13ae4d9e38(value1), lsfFromnative_49de88d0a810(value2), lsfFromnative_ead2bdf5b1de(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelCheckMember(
@@ -2162,7 +2162,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelCheckMember(
 	value2 int32,
 	value3 BrokerState,
 ) Group {
-	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelCheckMember_173(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelCheckMember_f218b850(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelCheckTxnProducer(
@@ -2172,7 +2172,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelCheckTxnProducer(
 	value2 int16,
 	value3 BrokerState,
 ) ProducerEntry {
-	return lsfTonative_b74501b1952d(lsfLawtwinKafkaModelCheckTxnProducer_174(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_b74501b1952d(lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelCommitAll(
@@ -2181,7 +2181,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelCommitAll(
 	value1 []OffsetEntry,
 	value2 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelCommitAll_175(lsfFromnative_437d0abf423f(value0), lsfFromnative_582052f40a9c(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelCommitAll_4ae78738(lsfFromnative_437d0abf423f(value0), lsfFromnative_582052f40a9c(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelComputeAssignment(
@@ -2189,7 +2189,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelComputeAssignment(
 	value0 []Entry[string, []string],
 	value1 BrokerState,
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelComputeAssignment_176(lsfFromnative_573c5ecbb13e(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelComputeAssignment_07bd1943(lsfFromnative_573c5ecbb13e(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelCreatePartitions(
@@ -2198,7 +2198,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelCreatePartitions(
 	value1 int32,
 	value2 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelCreatePartitions_177(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelCreatePartitions_8c9ce76b(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelCreateTopic(
@@ -2207,7 +2207,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelCreateTopic(
 	value1 int32,
 	value2 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelCreateTopic_178(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelCreateTopic_0d831a39(lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelDescribeGroup(
@@ -2215,7 +2215,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelDescribeGroup(
 	value0 string,
 	value1 BrokerState,
 ) Pair[GroupView, BrokerState] {
-	return lsfTonative_63f9a172d3e8(lsfLawtwinKafkaModelDescribeGroup_179(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_63f9a172d3e8(lsfLawtwinKafkaModelDescribeGroup_bf8df8f8(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelEmptyAssignments(
@@ -2223,28 +2223,28 @@ func (lawSpecDefinitions) LawtwinKafkaModelEmptyAssignments(
 	value0 []string,
 	value1 []Entry[string, []TopicPartition],
 ) []Entry[string, []TopicPartition] {
-	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelEmptyAssignments_180(lsfFromnative_8ec0351dc657(value0), lsfFromnative_ead2bdf5b1de(value1)))
+	return lsfTonative_ead2bdf5b1de(lsfLawtwinKafkaModelEmptyAssignments_91b44e0d(lsfFromnative_8ec0351dc657(value0), lsfFromnative_ead2bdf5b1de(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelEmptyBroker(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelEmptyBroker_181(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelEmptyBroker_d5fd8237(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelEmptyGroup(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) Group {
-	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelEmptyGroup_182(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelEmptyGroup_2fc4809b(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelEmptyLog(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) PartitionLog {
-	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelEmptyLog_183(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelEmptyLog_a7825ed0(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelEndTxn(
@@ -2255,7 +2255,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelEndTxn(
 	value3 bool,
 	value4 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelEndTxn_184(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_49de88d0a810(value4)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelEndTxn_b2637a52(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_49de88d0a810(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelExpectedSequence(
@@ -2263,7 +2263,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelExpectedSequence(
 	value0 int16,
 	value1 []BatchMeta,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfLawtwinKafkaModelExpectedSequence_185(lsfFromnative_07dabd732290(value0), lsfFromnative_789f82e1207e(value1)))
+	return lsfTonative_b862204e9be7(lsfLawtwinKafkaModelExpectedSequence_83e363c8(lsfFromnative_07dabd732290(value0), lsfFromnative_789f82e1207e(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelFetch(
@@ -2274,7 +2274,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelFetch(
 	value3 IsolationLevel,
 	value4 BrokerState,
 ) Pair[FetchResult, BrokerState] {
-	return lsfTonative_41f56b34d22a(lsfLawtwinKafkaModelFetch_186(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_a519f593a6ed(value3), lsfFromnative_49de88d0a810(value4)))
+	return lsfTonative_41f56b34d22a(lsfLawtwinKafkaModelFetch_29936450(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_a519f593a6ed(value3), lsfFromnative_49de88d0a810(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelFindDuplicate(
@@ -2284,7 +2284,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelFindDuplicate(
 	value2 int32,
 	value3 []BatchMeta,
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfLawtwinKafkaModelFindDuplicate_187(lsfFromnative_07dabd732290(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_789f82e1207e(value3)))
+	return lsfTonative_c09136e29464(lsfLawtwinKafkaModelFindDuplicate_3335aea4(lsfFromnative_07dabd732290(value0), lsfFromnative_b862204e9be7(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_789f82e1207e(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelFinishTxn(
@@ -2294,7 +2294,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelFinishTxn(
 	value2 TxnState,
 	value3 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelFinishTxn_188(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_a198a150c390(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelFinishTxn_7545803e(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_a198a150c390(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelGroupOf(
@@ -2302,7 +2302,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelGroupOf(
 	value0 string,
 	value1 BrokerState,
 ) Group {
-	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelGroupOf_189(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelGroupOf_abe7cb22(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelHeartbeat(
@@ -2312,14 +2312,14 @@ func (lawSpecDefinitions) LawtwinKafkaModelHeartbeat(
 	value2 int32,
 	value3 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelHeartbeat_190(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelHeartbeat_0f08a54d(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelHighWatermark(
 	symbols map[string]*LawSpecSymbol,
 	value0 PartitionLog,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelHighWatermark_191(lsfFromnative_17b5cd6f2c74(value0)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelHighWatermark_da6ed677(lsfFromnative_17b5cd6f2c74(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelInitProducerId(
@@ -2327,7 +2327,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelInitProducerId(
 	value0 LawSpecMaybe[string],
 	value1 BrokerState,
 ) Pair[ProducerIdAndEpoch, BrokerState] {
-	return lsfTonative_95d3f4123329(lsfLawtwinKafkaModelInitProducerId_192(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_95d3f4123329(lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelIsAborted(
@@ -2336,7 +2336,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelIsAborted(
 	value1 int64,
 	value2 []AbortedTxn,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelIsAborted_193(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_06583b2ebf3b(value2)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelIsAborted_b12645e5(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_06583b2ebf3b(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelJoinGroup(
@@ -2346,7 +2346,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelJoinGroup(
 	value2 []string,
 	value3 BrokerState,
 ) Pair[int32, BrokerState] {
-	return lsfTonative_ab8cd6a31aaf(lsfLawtwinKafkaModelJoinGroup_194(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_ab8cd6a31aaf(lsfLawtwinKafkaModelJoinGroup_9a1e92f5(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelKnownPartition(
@@ -2354,7 +2354,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelKnownPartition(
 	value0 TopicPartition,
 	value1 BrokerState,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelKnownPartition_195(lsfFromnative_57a515e0e489(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelKnownPartition_71d3099f(lsfFromnative_57a515e0e489(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelLastOffsetOf(
@@ -2362,14 +2362,14 @@ func (lawSpecDefinitions) LawtwinKafkaModelLastOffsetOf(
 	value0 []FetchedRecord,
 	value1 int64,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelLastOffsetOf_196(lsfFromnative_ed14fca60ee3(value0), lsfFromnative_44a08172da10(value1)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelLastOffsetOf_544a605b(lsfFromnative_ed14fca60ee3(value0), lsfFromnative_44a08172da10(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelLastStableOffset(
 	symbols map[string]*LawSpecSymbol,
 	value0 PartitionLog,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelLastStableOffset_197(lsfFromnative_17b5cd6f2c74(value0)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelLastStableOffset_e8497029(lsfFromnative_17b5cd6f2c74(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelLeaveGroup(
@@ -2378,7 +2378,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelLeaveGroup(
 	value1 string,
 	value2 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelLeaveGroup_198(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelLeaveGroup_5e5a3f69(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelListOffsets(
@@ -2388,7 +2388,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelListOffsets(
 	value2 IsolationLevel,
 	value3 BrokerState,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelListOffsets_199(lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelListOffsets_9c6c9426(lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelLogOf(
@@ -2396,7 +2396,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelLogOf(
 	value0 TopicPartition,
 	value1 BrokerState,
 ) PartitionLog {
-	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelLogOf_200(lsfFromnative_57a515e0e489(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelLogOf_b86b131a(lsfFromnative_57a515e0e489(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMax64(
@@ -2404,21 +2404,21 @@ func (lawSpecDefinitions) LawtwinKafkaModelMax64(
 	value0 int64,
 	value1 int64,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMax64_201(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMax64_98542b8b(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMaxPartitions(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfLawtwinKafkaModelMaxPartitions_202(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_b862204e9be7(lsfLawtwinKafkaModelMaxPartitions_6be37992(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMemberViews(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Entry[string, []TopicPartition],
 ) []MemberAssignment {
-	return lsfTonative_4d7586f102e6(lsfLawtwinKafkaModelMemberViews_203(lsfFromnative_b3fb2926095a(value0)))
+	return lsfTonative_4d7586f102e6(lsfLawtwinKafkaModelMemberViews_a87b1b1a(lsfFromnative_b3fb2926095a(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMetadata(
@@ -2426,7 +2426,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelMetadata(
 	value0 string,
 	value1 BrokerState,
 ) Pair[LawSpecMaybe[int32], BrokerState] {
-	return lsfTonative_9fa363f31106(lsfLawtwinKafkaModelMetadata_204(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_9fa363f31106(lsfLawtwinKafkaModelMetadata_97bb5c4c(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMin64(
@@ -2434,7 +2434,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelMin64(
 	value0 int64,
 	value1 int64,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMin64_205(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMin64_b47ce987(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelMinOf(
@@ -2442,7 +2442,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelMinOf(
 	value0 []int64,
 	value1 int64,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMinOf_206(lsfFromnative_75994955e886(value0), lsfFromnative_44a08172da10(value1)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelMinOf_c4e891de(lsfFromnative_75994955e886(value0), lsfFromnative_44a08172da10(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelNewProducer(
@@ -2450,7 +2450,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelNewProducer(
 	value0 LawSpecMaybe[string],
 	value1 BrokerState,
 ) Pair[ProducerIdAndEpoch, BrokerState] {
-	return lsfTonative_95d3f4123329(lsfLawtwinKafkaModelNewProducer_207(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_95d3f4123329(lsfLawtwinKafkaModelNewProducer_89b0852d(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelNextFetchOffset(
@@ -2460,7 +2460,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelNextFetchOffset(
 	value2 []FetchedRecord,
 	value3 []FetchedRecord,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelNextFetchOffset_208(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_ed14fca60ee3(value2), lsfFromnative_ed14fca60ee3(value3)))
+	return lsfTonative_44a08172da10(lsfLawtwinKafkaModelNextFetchOffset_28fd5a97(lsfFromnative_44a08172da10(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_ed14fca60ee3(value2), lsfFromnative_ed14fca60ee3(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelOffsetCommit(
@@ -2471,7 +2471,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelOffsetCommit(
 	value3 []OffsetEntry,
 	value4 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelOffsetCommit_209(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3), lsfFromnative_49de88d0a810(value4)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelOffsetCommit_01d91ef0(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3), lsfFromnative_49de88d0a810(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelOffsetFetch(
@@ -2480,14 +2480,14 @@ func (lawSpecDefinitions) LawtwinKafkaModelOffsetFetch(
 	value1 TopicPartition,
 	value2 BrokerState,
 ) Pair[LawSpecMaybe[int64], BrokerState] {
-	return lsfTonative_38ff65c06c92(lsfLawtwinKafkaModelOffsetFetch_210(lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_38ff65c06c92(lsfLawtwinKafkaModelOffsetFetch_f56dbfcd(lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelOffsetPartitions(
 	symbols map[string]*LawSpecSymbol,
 	value0 []OffsetEntry,
 ) []TopicPartition {
-	return lsfTonative_3250492fe9ac(lsfLawtwinKafkaModelOffsetPartitions_211(lsfFromnative_582052f40a9c(value0)))
+	return lsfTonative_3250492fe9ac(lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lsfFromnative_582052f40a9c(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPartitionCountOf(
@@ -2495,14 +2495,14 @@ func (lawSpecDefinitions) LawtwinKafkaModelPartitionCountOf(
 	value0 string,
 	value1 BrokerState,
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfLawtwinKafkaModelPartitionCountOf_212(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_e0f8ce0ed062(lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPartitionsBelow(
 	symbols map[string]*LawSpecSymbol,
 	value0 int32,
 ) []int32 {
-	return lsfTonative_508e8cda1c80(lsfLawtwinKafkaModelPartitionsBelow_213(lsfFromnative_b862204e9be7(value0)))
+	return lsfTonative_508e8cda1c80(lsfLawtwinKafkaModelPartitionsBelow_19525eca(lsfFromnative_b862204e9be7(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPendingFor(
@@ -2511,7 +2511,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelPendingFor(
 	value1 []OffsetEntry,
 	value2 []PendingOffset,
 ) []PendingOffset {
-	return lsfTonative_8af9a375600a(lsfLawtwinKafkaModelPendingFor_214(lsfFromnative_437d0abf423f(value0), lsfFromnative_582052f40a9c(value1), lsfFromnative_8af9a375600a(value2)))
+	return lsfTonative_8af9a375600a(lsfLawtwinKafkaModelPendingFor_50512591(lsfFromnative_437d0abf423f(value0), lsfFromnative_582052f40a9c(value1), lsfFromnative_8af9a375600a(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelProduce(
@@ -2521,7 +2521,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelProduce(
 	value2 []Record,
 	value3 BrokerState,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelProduce_215(lsfFromnative_57a515e0e489(value0), lsfFromnative_c818bd20f406(value1), lsfFromnative_e3583a5b5bdc(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelProduce_834568df(lsfFromnative_57a515e0e489(value0), lsfFromnative_c818bd20f406(value1), lsfFromnative_e3583a5b5bdc(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelProduceTagged(
@@ -2532,7 +2532,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelProduceTagged(
 	value3 PartitionLog,
 	value4 BrokerState,
 ) Pair[int64, BrokerState] {
-	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelProduceTagged_216(lsfFromnative_57a515e0e489(value0), lsfFromnative_fcd7b841fa1b(value1), lsfFromnative_e3583a5b5bdc(value2), lsfFromnative_17b5cd6f2c74(value3), lsfFromnative_49de88d0a810(value4)))
+	return lsfTonative_3dd22eccd85c(lsfLawtwinKafkaModelProduceTagged_86f854e7(lsfFromnative_57a515e0e489(value0), lsfFromnative_fcd7b841fa1b(value1), lsfFromnative_e3583a5b5bdc(value2), lsfFromnative_17b5cd6f2c74(value3), lsfFromnative_49de88d0a810(value4)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPutGroup(
@@ -2541,7 +2541,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelPutGroup(
 	value1 Group,
 	value2 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutGroup_217(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutGroup_f45eaad0(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPutLog(
@@ -2550,7 +2550,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelPutLog(
 	value1 PartitionLog,
 	value2 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutLog_218(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutLog_cb3cbf5e(lsfFromnative_57a515e0e489(value0), lsfFromnative_17b5cd6f2c74(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelPutProducer(
@@ -2559,7 +2559,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelPutProducer(
 	value1 ProducerEntry,
 	value2 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutProducer_219(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_49de88d0a810(value2)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelPutProducer_4ef907a5(lsfFromnative_44a08172da10(value0), lsfFromnative_b74501b1952d(value1), lsfFromnative_49de88d0a810(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelReadable(
@@ -2571,7 +2571,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelReadable(
 	value4 []AbortedTxn,
 	value5 []FetchedRecord,
 ) []FetchedRecord {
-	return lsfTonative_ed14fca60ee3(lsfLawtwinKafkaModelReadable_220(lsfFromnative_09a45efed198(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_06583b2ebf3b(value4), lsfFromnative_ed14fca60ee3(value5)))
+	return lsfTonative_ed14fca60ee3(lsfLawtwinKafkaModelReadable_adec3284(lsfFromnative_09a45efed198(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_44a08172da10(value2), lsfFromnative_d267428fb2ca(value3), lsfFromnative_06583b2ebf3b(value4), lsfFromnative_ed14fca60ee3(value5)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelRebalance(
@@ -2579,7 +2579,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelRebalance(
 	value0 Group,
 	value1 BrokerState,
 ) Group {
-	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelRebalance_221(lsfFromnative_121c32c2e75a(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_121c32c2e75a(lsfLawtwinKafkaModelRebalance_c9984d55(lsfFromnative_121c32c2e75a(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelRebalanceGroups(
@@ -2589,7 +2589,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelRebalanceGroups(
 	value2 BrokerState,
 	value3 []Entry[string, Group],
 ) []Entry[string, Group] {
-	return lsfTonative_76ca967c9ea5(lsfLawtwinKafkaModelRebalanceGroups_222(lsfFromnative_437d0abf423f(value0), lsfFromnative_c95dd21cde1e(value1), lsfFromnative_49de88d0a810(value2), lsfFromnative_76ca967c9ea5(value3)))
+	return lsfTonative_76ca967c9ea5(lsfLawtwinKafkaModelRebalanceGroups_ad90673b(lsfFromnative_437d0abf423f(value0), lsfFromnative_c95dd21cde1e(value1), lsfFromnative_49de88d0a810(value2), lsfFromnative_76ca967c9ea5(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelRebalanceTopic(
@@ -2597,7 +2597,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelRebalanceTopic(
 	value0 string,
 	value1 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelRebalanceTopic_223(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lsfFromnative_437d0abf423f(value0), lsfFromnative_49de88d0a810(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelRememberBatch(
@@ -2606,7 +2606,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelRememberBatch(
 	value1 BatchMeta,
 	value2 PartitionLog,
 ) PartitionLog {
-	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelRememberBatch_224(lsfFromnative_44a08172da10(value0), lsfFromnative_a358ea2021fe(value1), lsfFromnative_17b5cd6f2c74(value2)))
+	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelRememberBatch_33fa600f(lsfFromnative_44a08172da10(value0), lsfFromnative_a358ea2021fe(value1), lsfFromnative_17b5cd6f2c74(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelReversePending(
@@ -2614,7 +2614,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelReversePending(
 	value0 []PendingOffset,
 	value1 []PendingOffset,
 ) []PendingOffset {
-	return lsfTonative_8af9a375600a(lsfLawtwinKafkaModelReversePending_225(lsfFromnative_8af9a375600a(value0), lsfFromnative_8af9a375600a(value1)))
+	return lsfTonative_8af9a375600a(lsfLawtwinKafkaModelReversePending_51ca5898(lsfFromnative_8af9a375600a(value0), lsfFromnative_8af9a375600a(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelSubscribedTopics(
@@ -2622,7 +2622,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelSubscribedTopics(
 	value0 []Entry[string, []string],
 	value1 []string,
 ) []string {
-	return lsfTonative_0ee125dab044(lsfLawtwinKafkaModelSubscribedTopics_226(lsfFromnative_ef13ae4d9e38(value0), lsfFromnative_0ee125dab044(value1)))
+	return lsfTonative_0ee125dab044(lsfLawtwinKafkaModelSubscribedTopics_c1d720b5(lsfFromnative_ef13ae4d9e38(value0), lsfFromnative_0ee125dab044(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelSubscribersOf(
@@ -2630,7 +2630,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelSubscribersOf(
 	value0 string,
 	value1 []Entry[string, []string],
 ) []string {
-	return lsfTonative_8ec0351dc657(lsfLawtwinKafkaModelSubscribersOf_227(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
+	return lsfTonative_8ec0351dc657(lsfLawtwinKafkaModelSubscribersOf_e9347318(lsfFromnative_437d0abf423f(value0), lsfFromnative_ef13ae4d9e38(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelSubscribesTo(
@@ -2638,7 +2638,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelSubscribesTo(
 	value0 string,
 	value1 Group,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelSubscribesTo_228(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelSubscribesTo_c3c674c3(lsfFromnative_437d0abf423f(value0), lsfFromnative_121c32c2e75a(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelSyncGroup(
@@ -2648,7 +2648,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelSyncGroup(
 	value2 int32,
 	value3 BrokerState,
 ) Pair[[]TopicPartition, BrokerState] {
-	return lsfTonative_23e94f6e1895(lsfLawtwinKafkaModelSyncGroup_229(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_23e94f6e1895(lsfLawtwinKafkaModelSyncGroup_b3d01c80(lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelTxnHasPartition(
@@ -2656,7 +2656,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelTxnHasPartition(
 	value0 TopicPartition,
 	value1 TxnState,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelTxnHasPartition_230(lsfFromnative_57a515e0e489(value0), lsfFromnative_a198a150c390(value1)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0(lsfFromnative_57a515e0e489(value0), lsfFromnative_a198a150c390(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelTxnOffsetCommit(
@@ -2668,7 +2668,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelTxnOffsetCommit(
 	value4 []OffsetEntry,
 	value5 BrokerState,
 ) Pair[LawSpecUnit, BrokerState] {
-	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelTxnOffsetCommit_231(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_437d0abf423f(value3), lsfFromnative_582052f40a9c(value4), lsfFromnative_49de88d0a810(value5)))
+	return lsfTonative_1686d2c89016(lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_437d0abf423f(value3), lsfFromnative_582052f40a9c(value4), lsfFromnative_49de88d0a810(value5)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelUnionPartitions(
@@ -2676,14 +2676,14 @@ func (lawSpecDefinitions) LawtwinKafkaModelUnionPartitions(
 	value0 []TopicPartition,
 	value1 []TopicPartition,
 ) []TopicPartition {
-	return lsfTonative_3250492fe9ac(lsfLawtwinKafkaModelUnionPartitions_232(lsfFromnative_3250492fe9ac(value0), lsfFromnative_3250492fe9ac(value1)))
+	return lsfTonative_3250492fe9ac(lsfLawtwinKafkaModelUnionPartitions_c791d224(lsfFromnative_3250492fe9ac(value0), lsfFromnative_3250492fe9ac(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelValidTopicName(
 	symbols map[string]*LawSpecSymbol,
 	value0 string,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelValidTopicName_233(lsfFromnative_437d0abf423f(value0)))
+	return lsfTonative_d267428fb2ca(lsfLawtwinKafkaModelValidTopicName_39dd4596(lsfFromnative_437d0abf423f(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelWriteMarker(
@@ -2692,7 +2692,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelWriteMarker(
 	value1 bool,
 	value2 PartitionLog,
 ) PartitionLog {
-	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelWriteMarker_234(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_17b5cd6f2c74(value2)))
+	return lsfTonative_17b5cd6f2c74(lsfLawtwinKafkaModelWriteMarker_8dc995f8(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_17b5cd6f2c74(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaModelWriteMarkers(
@@ -2702,7 +2702,7 @@ func (lawSpecDefinitions) LawtwinKafkaModelWriteMarkers(
 	value2 []TopicPartition,
 	value3 BrokerState,
 ) BrokerState {
-	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelWriteMarkers_235(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_3250492fe9ac(value2), lsfFromnative_49de88d0a810(value3)))
+	return lsfTonative_49de88d0a810(lsfLawtwinKafkaModelWriteMarkers_c507f08e(lsfFromnative_44a08172da10(value0), lsfFromnative_d267428fb2ca(value1), lsfFromnative_3250492fe9ac(value2), lsfFromnative_49de88d0a810(value3)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMul32(
@@ -2710,14 +2710,14 @@ func (lawSpecDefinitions) LawtwinKafkaMul32(
 	value0 uint32,
 	value1 uint32,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfMul32_238(lsfFromnative_bd9653153f3b(value0), lsfFromnative_bd9653153f3b(value1)))
+	return lsfTonative_bd9653153f3b(lsfMul32_b8774c72(lsfFromnative_bd9653153f3b(value0), lsfFromnative_bd9653153f3b(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMurmur2(
 	symbols map[string]*LawSpecSymbol,
 	value0 []byte,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfMurmur2_239(lsfFromnative_9e68ae7ce0b7(value0)))
+	return lsfTonative_bd9653153f3b(lsfMurmur2_d0ccf769(lsfFromnative_9e68ae7ce0b7(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMurmurChunks(
@@ -2725,14 +2725,14 @@ func (lawSpecDefinitions) LawtwinKafkaMurmurChunks(
 	value0 []uint8,
 	value1 uint32,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfMurmurChunks_240(lsfFromnative_652994edeaff(value0), lsfFromnative_bd9653153f3b(value1)))
+	return lsfTonative_bd9653153f3b(lsfMurmurChunks_9898bba5(lsfFromnative_652994edeaff(value0), lsfFromnative_bd9653153f3b(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaMurmurM(
 	symbols map[string]*LawSpecSymbol,
 	value0 LawSpecUnit,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfMurmurM_241(lsfFromnative_b120ceed78cb(value0)))
+	return lsfTonative_bd9653153f3b(lsfMurmurM_48968914(lsfFromnative_b120ceed78cb(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaOwnedOf(
@@ -2740,7 +2740,7 @@ func (lawSpecDefinitions) LawtwinKafkaOwnedOf(
 	value0 string,
 	value1 []MemberAssignment,
 ) []int32 {
-	return lsfTonative_508e8cda1c80(lsfOwnedOf_243(lsfFromnative_437d0abf423f(value0), lsfFromnative_4d7586f102e6(value1)))
+	return lsfTonative_508e8cda1c80(lsfOwnedOf_0d7fb3ae(lsfFromnative_437d0abf423f(value0), lsfFromnative_4d7586f102e6(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaPartitionOf(
@@ -2772,7 +2772,7 @@ func (lawSpecDefinitions) LawtwinKafkaPartitionsOfTopic(
 	value0 string,
 	value1 []TopicPartition,
 ) []int32 {
-	return lsfTonative_508e8cda1c80(lsfPartitionsOfTopic_244(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1)))
+	return lsfTonative_508e8cda1c80(lsfPartitionsOfTopic_194a4a6c(lsfFromnative_437d0abf423f(value0), lsfFromnative_3250492fe9ac(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaPollPartitions(
@@ -2806,14 +2806,14 @@ func (lawSpecDefinitions) LawtwinKafkaPositionsToCommit(
 	value0 []TopicPartition,
 	value1 []Entry[TopicPartition, int64],
 ) []OffsetEntry {
-	return lsfTonative_582052f40a9c(lsfPositionsToCommit_245(lsfFromnative_3250492fe9ac(value0), lsfFromnative_d1208e18a243(value1)))
+	return lsfTonative_582052f40a9c(lsfPositionsToCommit_67969440(lsfFromnative_3250492fe9ac(value0), lsfFromnative_d1208e18a243(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaProducerFlush(
 	symbols map[string]*LawSpecSymbol,
 	value0 ProducerState,
 ) Pair[LawSpecUnit, ProducerState] {
-	return lsfTonative_9a576143471f(lsfProducerFlush_246(lsfFromnative_5e5d2c3fa1a7(value0)))
+	return lsfTonative_9a576143471f(lsfProducerFlush_f30611db(lsfFromnative_5e5d2c3fa1a7(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaProducerIdempotent(
@@ -2924,21 +2924,21 @@ func (lawSpecDefinitions) LawtwinKafkaReceivedOffsets(
 	symbols map[string]*LawSpecSymbol,
 	value0 []ConsumerRecord,
 ) []int64 {
-	return lsfTonative_75994955e886(lsfReceivedOffsets_247(lsfFromnative_9aa0842592c4(value0)))
+	return lsfTonative_75994955e886(lsfReceivedOffsets_6c3a7a20(lsfFromnative_9aa0842592c4(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaReceivedRecords(
 	symbols map[string]*LawSpecSymbol,
 	value0 []ConsumerRecord,
 ) []Record {
-	return lsfTonative_e3583a5b5bdc(lsfReceivedRecords_248(lsfFromnative_9aa0842592c4(value0)))
+	return lsfTonative_e3583a5b5bdc(lsfReceivedRecords_c3c84323(lsfFromnative_9aa0842592c4(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaRecordsOf(
 	symbols map[string]*LawSpecSymbol,
 	value0 []FetchedRecord,
 ) []Record {
-	return lsfTonative_e3583a5b5bdc(lsfRecordsOf_249(lsfFromnative_ed14fca60ee3(value0)))
+	return lsfTonative_e3583a5b5bdc(lsfRecordsOf_a7b339ef(lsfFromnative_ed14fca60ee3(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaResumesAtCommitted(
@@ -2972,7 +2972,7 @@ func (lawSpecDefinitions) LawtwinKafkaSamePartition(
 	value0 LawSpecEither[KafkaError, RecordMetadata],
 	value1 LawSpecEither[KafkaError, RecordMetadata],
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfSamePartition_250(lsfFromnative_f9a3e61df1f3(value0), lsfFromnative_f9a3e61df1f3(value1)))
+	return lsfTonative_d267428fb2ca(lsfSamePartition_cee4f2dc(lsfFromnative_f9a3e61df1f3(value0), lsfFromnative_f9a3e61df1f3(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaSequenceFor(
@@ -2980,14 +2980,14 @@ func (lawSpecDefinitions) LawtwinKafkaSequenceFor(
 	value0 TopicPartition,
 	value1 []Entry[TopicPartition, int32],
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfSequenceFor_251(lsfFromnative_57a515e0e489(value0), lsfFromnative_0f394bf4652c(value1)))
+	return lsfTonative_b862204e9be7(lsfSequenceFor_9d79724c(lsfFromnative_57a515e0e489(value0), lsfFromnative_0f394bf4652c(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaSmallBatch(
 	symbols map[string]*LawSpecSymbol,
 	value0 []Record,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfSmallBatch_252(lsfFromnative_e3583a5b5bdc(value0)))
+	return lsfTonative_d267428fb2ca(lsfSmallBatch_dc4ae7bb(lsfFromnative_e3583a5b5bdc(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaStableBelowHigh(
@@ -3018,7 +3018,7 @@ func (lawSpecDefinitions) LawtwinKafkaTagFor(
 	value0 LawSpecMaybe[ProducerIdAndEpoch],
 	value1 int32,
 ) LawSpecMaybe[ProducerTag] {
-	return lsfTonative_c818bd20f406(lsfTagFor_253(lsfFromnative_99552686984c(value0), lsfFromnative_b862204e9be7(value1)))
+	return lsfTonative_c818bd20f406(lsfTagFor_a88d3846(lsfFromnative_99552686984c(value0), lsfFromnative_b862204e9be7(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaTagOf(
@@ -3026,14 +3026,14 @@ func (lawSpecDefinitions) LawtwinKafkaTagOf(
 	value0 ProducerIdAndEpoch,
 	value1 int32,
 ) ProducerTag {
-	return lsfTonative_fcd7b841fa1b(lsfTagOf_254(lsfFromnative_6a5ea41697b3(value0), lsfFromnative_b862204e9be7(value1)))
+	return lsfTonative_fcd7b841fa1b(lsfTagOf_39235de7(lsfFromnative_6a5ea41697b3(value0), lsfFromnative_b862204e9be7(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaToPositive(
 	symbols map[string]*LawSpecSymbol,
 	value0 uint32,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfToPositive_255(lsfFromnative_bd9653153f3b(value0)))
+	return lsfTonative_bd9653153f3b(lsfToPositive_fc7029c7(lsfFromnative_bd9653153f3b(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaTransactionThenRead(
@@ -3129,7 +3129,7 @@ func (lawSpecDefinitions) LawtwinKafkaTransactionsBegin(
 	symbols map[string]*LawSpecSymbol,
 	value0 TransactionState,
 ) Pair[LawSpecEither[KafkaError, LawSpecUnit], TransactionState] {
-	return lsfTonative_b92c1d290bc6(lsfTransactionsBegin_256(lsfFromnative_74b3f2831172(value0)))
+	return lsfTonative_b92c1d290bc6(lsfTransactionsBegin_5d267b99(lsfFromnative_74b3f2831172(value0)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaTransactionsCommit(
@@ -3258,7 +3258,7 @@ func (lawSpecDefinitions) LawtwinKafkaViewOf(
 	value0 string,
 	value1 GroupView,
 ) []TopicPartition {
-	return lsfTonative_3250492fe9ac(lsfViewOf_257(lsfFromnative_437d0abf423f(value0), lsfFromnative_9b6e0477a826(value1)))
+	return lsfTonative_3250492fe9ac(lsfViewOf_6e11c6f7(lsfFromnative_437d0abf423f(value0), lsfFromnative_9b6e0477a826(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaWithAssignment(
@@ -3270,7 +3270,7 @@ func (lawSpecDefinitions) LawtwinKafkaWithAssignment(
 	value4 []TopicPartition,
 	value5 ConsumerState,
 ) ConsumerState {
-	return lsfTonative_7de2ae0da384(lsfWithAssignment_258(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_8ec0351dc657(value3), lsfFromnative_3250492fe9ac(value4), lsfFromnative_7de2ae0da384(value5)))
+	return lsfTonative_7de2ae0da384(lsfWithAssignment_7d6291b1(lsfFromnative_01d86fc44f8c(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_8ec0351dc657(value3), lsfFromnative_3250492fe9ac(value4), lsfFromnative_7de2ae0da384(value5)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaWithPosition(
@@ -3279,7 +3279,7 @@ func (lawSpecDefinitions) LawtwinKafkaWithPosition(
 	value1 int64,
 	value2 ConsumerState,
 ) ConsumerState {
-	return lsfTonative_7de2ae0da384(lsfWithPosition_259(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_7de2ae0da384(value2)))
+	return lsfTonative_7de2ae0da384(lsfWithPosition_867e6b19(lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_7de2ae0da384(value2)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaWriteAborted(
@@ -3310,7 +3310,7 @@ func (lawSpecDefinitions) LawtwinKafkaXor32(
 	value0 uint32,
 	value1 uint32,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfXor32_260(lsfFromnative_bd9653153f3b(value0), lsfFromnative_bd9653153f3b(value1)))
+	return lsfTonative_bd9653153f3b(lsfXor32_0ea970f5(lsfFromnative_bd9653153f3b(value0), lsfFromnative_bd9653153f3b(value1)))
 }
 
 func (lawSpecDefinitions) LawtwinKafkaXorBits(
@@ -3319,7 +3319,7 @@ func (lawSpecDefinitions) LawtwinKafkaXorBits(
 	value1 *LawSpecBigInt,
 	value2 *LawSpecBigInt,
 ) *LawSpecBigInt {
-	return lsfTonative_7b619c124b0c(lsfXorBits_261(lsfFromnative_7b619c124b0c(value0), lsfFromnative_7b619c124b0c(value1), lsfFromnative_7b619c124b0c(value2)))
+	return lsfTonative_7b619c124b0c(lsfXorBits_ea1fb8e2(lsfFromnative_7b619c124b0c(value0), lsfFromnative_7b619c124b0c(value1), lsfFromnative_7b619c124b0c(value2)))
 }
 
 func (lawSpecDefinitions) MurmurPartitionerChoosePartition(
@@ -3327,7 +3327,7 @@ func (lawSpecDefinitions) MurmurPartitionerChoosePartition(
 	value0 LawSpecMaybe[[]byte],
 	value1 int32,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfMurmurPartitionerChoosePartition_242(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1)))
+	return lsfTonative_b862204e9be7(lsfMurmurPartitionerChoosePartition_5048c35d(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1)))
 }
 
 func lawSpecEvaluate542(
@@ -3338,7 +3338,7 @@ func lawSpecEvaluate542(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterAddPartitionsToTxnRequest_27(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_3250492fe9ac(value4)))
+	return lsfTo_1686d2c89016(lsfClusterAddPartitionsToTxnRequest_026ba83d(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_3250492fe9ac(value4)))
 }
 
 func lawSpecEvaluate543(
@@ -3349,7 +3349,7 @@ func lawSpecEvaluate543(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCommitOffsets_28(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3), lsfFrom_582052f40a9c(value4)))
+	return lsfTo_1686d2c89016(lsfClusterCommitOffsets_d3b39e4c(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3), lsfFrom_582052f40a9c(value4)))
 }
 
 func lawSpecEvaluate544(
@@ -3358,7 +3358,7 @@ func lawSpecEvaluate544(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCreatePartitions_29(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
+	return lsfTo_1686d2c89016(lsfClusterCreatePartitions_0f2bdce3(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
 }
 
 func lawSpecEvaluate545(
@@ -3367,7 +3367,7 @@ func lawSpecEvaluate545(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCreatePartitions_29(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
+	return lsfTo_1686d2c89016(lsfClusterCreatePartitions_0f2bdce3(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
 }
 
 func lawSpecEvaluate546(
@@ -3376,7 +3376,7 @@ func lawSpecEvaluate546(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCreateTopic_30(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
+	return lsfTo_1686d2c89016(lsfClusterCreateTopic_25a8c8e9(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
 }
 
 func lawSpecEvaluate547(
@@ -3385,7 +3385,7 @@ func lawSpecEvaluate547(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCreateTopic_30(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
+	return lsfTo_1686d2c89016(lsfClusterCreateTopic_25a8c8e9(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2)))
 }
 
 func lawSpecEvaluate548(
@@ -3393,7 +3393,7 @@ func lawSpecEvaluate548(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_63f9a172d3e8(lsfClusterDescribeGroup_31(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
+	return lsfTo_63f9a172d3e8(lsfClusterDescribeGroup_c1f8efd4(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
 }
 
 func lawSpecEvaluate549(
@@ -3401,7 +3401,7 @@ func lawSpecEvaluate549(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_63f9a172d3e8(lsfClusterDescribeGroup_31(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
+	return lsfTo_63f9a172d3e8(lsfClusterDescribeGroup_c1f8efd4(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
 }
 
 func lawSpecEvaluate550(
@@ -3412,7 +3412,7 @@ func lawSpecEvaluate550(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterEndTxnRequest_32(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_d267428fb2ca(value4)))
+	return lsfTo_1686d2c89016(lsfClusterEndTxnRequest_e8879acb(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_d267428fb2ca(value4)))
 }
 
 func lawSpecEvaluate551(
@@ -3421,7 +3421,7 @@ func lawSpecEvaluate551(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_38ff65c06c92(lsfClusterFetchOffset_33(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_57a515e0e489(value2)))
+	return lsfTo_38ff65c06c92(lsfClusterFetchOffset_53ffef89(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_57a515e0e489(value2)))
 }
 
 func lawSpecEvaluate552(
@@ -3432,7 +3432,7 @@ func lawSpecEvaluate552(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_41f56b34d22a(lsfClusterFetchRequest_34(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_44a08172da10(value2), lsfFrom_b862204e9be7(value3), lsfFrom_a519f593a6ed(value4)))
+	return lsfTo_41f56b34d22a(lsfClusterFetchRequest_53f6507d(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_44a08172da10(value2), lsfFrom_b862204e9be7(value3), lsfFrom_a519f593a6ed(value4)))
 }
 
 func lawSpecEvaluate553(
@@ -3442,7 +3442,7 @@ func lawSpecEvaluate553(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterHeartbeat_35(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
+	return lsfTo_1686d2c89016(lsfClusterHeartbeat_3af82cc2(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
 func lawSpecEvaluate554(
@@ -3452,7 +3452,7 @@ func lawSpecEvaluate554(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterHeartbeat_35(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
+	return lsfTo_1686d2c89016(lsfClusterHeartbeat_3af82cc2(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
 func lawSpecEvaluate555(
@@ -3460,7 +3460,7 @@ func lawSpecEvaluate555(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_95d3f4123329(lsfClusterInitProducerIdRequest_36(lsfFrom_49de88d0a810(value0), lsfFrom_01d86fc44f8c(value1)))
+	return lsfTo_95d3f4123329(lsfClusterInitProducerIdRequest_f11b7e7d(lsfFrom_49de88d0a810(value0), lsfFrom_01d86fc44f8c(value1)))
 }
 
 func lawSpecEvaluate556(
@@ -3470,7 +3470,7 @@ func lawSpecEvaluate556(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ab8cd6a31aaf(lsfClusterJoinGroup_37(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_8ec0351dc657(value3)))
+	return lsfTo_ab8cd6a31aaf(lsfClusterJoinGroup_2f7f09cb(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_8ec0351dc657(value3)))
 }
 
 func lawSpecEvaluate557(
@@ -3480,7 +3480,7 @@ func lawSpecEvaluate557(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ab8cd6a31aaf(lsfClusterJoinGroup_37(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_8ec0351dc657(value3)))
+	return lsfTo_ab8cd6a31aaf(lsfClusterJoinGroup_2f7f09cb(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_8ec0351dc657(value3)))
 }
 
 func lawSpecEvaluate558(
@@ -3489,7 +3489,7 @@ func lawSpecEvaluate558(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterLeaveGroup_38(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2)))
+	return lsfTo_1686d2c89016(lsfClusterLeaveGroup_cd94c353(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2)))
 }
 
 func lawSpecEvaluate559(
@@ -3498,7 +3498,7 @@ func lawSpecEvaluate559(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterLeaveGroup_38(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2)))
+	return lsfTo_1686d2c89016(lsfClusterLeaveGroup_cd94c353(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2)))
 }
 
 func lawSpecEvaluate560(
@@ -3508,7 +3508,7 @@ func lawSpecEvaluate560(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfClusterListOffsets_39(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c55be5a8a1f1(value2), lsfFrom_a519f593a6ed(value3)))
+	return lsfTo_3dd22eccd85c(lsfClusterListOffsets_1dede442(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c55be5a8a1f1(value2), lsfFrom_a519f593a6ed(value3)))
 }
 
 func lawSpecEvaluate561(
@@ -3518,7 +3518,7 @@ func lawSpecEvaluate561(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfClusterListOffsets_39(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c55be5a8a1f1(value2), lsfFrom_a519f593a6ed(value3)))
+	return lsfTo_3dd22eccd85c(lsfClusterListOffsets_1dede442(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c55be5a8a1f1(value2), lsfFrom_a519f593a6ed(value3)))
 }
 
 func lawSpecEvaluate562(
@@ -3526,7 +3526,7 @@ func lawSpecEvaluate562(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9fa363f31106(lsfClusterMetadataRequest_40(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
+	return lsfTo_9fa363f31106(lsfClusterMetadataRequest_3507727c(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
 }
 
 func lawSpecEvaluate563(
@@ -3537,7 +3537,7 @@ func lawSpecEvaluate563(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterCommitOffsets_28(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3), lsfFrom_582052f40a9c(value4)))
+	return lsfTo_1686d2c89016(lsfClusterCommitOffsets_d3b39e4c(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3), lsfFrom_582052f40a9c(value4)))
 }
 
 func lawSpecEvaluate564(
@@ -3546,7 +3546,7 @@ func lawSpecEvaluate564(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_38ff65c06c92(lsfClusterFetchOffset_33(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_57a515e0e489(value2)))
+	return lsfTo_38ff65c06c92(lsfClusterFetchOffset_53ffef89(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_57a515e0e489(value2)))
 }
 
 func lawSpecEvaluate565(
@@ -3554,7 +3554,7 @@ func lawSpecEvaluate565(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9fa363f31106(lsfClusterMetadataRequest_40(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
+	return lsfTo_9fa363f31106(lsfClusterMetadataRequest_3507727c(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1)))
 }
 
 func lawSpecEvaluate566(
@@ -3564,11 +3564,11 @@ func lawSpecEvaluate566(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfClusterProduceRequest_41(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c818bd20f406(value2), lsfFrom_e3583a5b5bdc(value3)))
+	return lsfTo_3dd22eccd85c(lsfClusterProduceRequest_619c7f1f(lsfFrom_49de88d0a810(value0), lsfFrom_57a515e0e489(value1), lsfFrom_c818bd20f406(value2), lsfFrom_e3583a5b5bdc(value3)))
 }
 
 func lawSpecEvaluate567(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfClusterStart_42(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_49de88d0a810(lsfClusterStart_659e952a(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate568(
@@ -3578,7 +3578,7 @@ func lawSpecEvaluate568(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_23e94f6e1895(lsfClusterSyncGroup_43(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
+	return lsfTo_23e94f6e1895(lsfClusterSyncGroup_fa44a945(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
 func lawSpecEvaluate569(
@@ -3588,7 +3588,7 @@ func lawSpecEvaluate569(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_23e94f6e1895(lsfClusterSyncGroup_43(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
+	return lsfTo_23e94f6e1895(lsfClusterSyncGroup_fa44a945(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
 func lawSpecEvaluate570(
@@ -3600,7 +3600,7 @@ func lawSpecEvaluate570(
 	value4 LawSpecValue,
 	value5 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfClusterTxnOffsetCommitRequest_44(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_437d0abf423f(value4), lsfFrom_582052f40a9c(value5)))
+	return lsfTo_1686d2c89016(lsfClusterTxnOffsetCommitRequest_08ba35de(lsfFrom_49de88d0a810(value0), lsfFrom_437d0abf423f(value1), lsfFrom_44a08172da10(value2), lsfFrom_07dabd732290(value3), lsfFrom_437d0abf423f(value4), lsfFrom_582052f40a9c(value5)))
 }
 
 func lawSpecEvaluate571(
@@ -3608,21 +3608,15 @@ func lawSpecEvaluate571(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_170f42653652(lsfKafkaConsumerAssign_58(lsfFrom_7de2ae0da384(value0), lsfFrom_3250492fe9ac(value1)))
+	return lsfTo_170f42653652(lsfKafkaConsumerAssign_6414ad54(lsfFrom_7de2ae0da384(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
 func lawSpecEvaluate572(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerClose", func() LawSpecValue {
-		result := lawSpecEvaluate725(symbols, value0)
-		return result
-	})
+	return lsfTo_170f42653652(lsfKafkaConsumerClose_ece19793(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
 func lawSpecEvaluate573(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerCommitSync", func() LawSpecValue {
-		result := lawSpecEvaluate726(symbols, value0)
-		return result
-	})
+	return lsfTo_34d15aaae84b(lsfKafkaConsumerCommitSync_d47684fe(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
 func lawSpecEvaluate574(
@@ -3630,10 +3624,7 @@ func lawSpecEvaluate574(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerCommittedOffset", func() LawSpecValue {
-		result := lawSpecEvaluate727(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_172cc75a9602(lsfKafkaConsumerCommittedOffset_c045e1a8(symbols, lsfFrom_7de2ae0da384(value0), lsfFrom_57a515e0e489(value1)))
 }
 
 func lawSpecEvaluate575(
@@ -3641,10 +3632,7 @@ func lawSpecEvaluate575(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerPoll", func() LawSpecValue {
-		result := lawSpecEvaluate730(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_8ac5ed3c86fa(lsfKafkaConsumerPoll_591504e0(symbols, lsfFrom_7de2ae0da384(value0), lsfFrom_b862204e9be7(value1)))
 }
 
 func lawSpecEvaluate576(
@@ -3652,10 +3640,7 @@ func lawSpecEvaluate576(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerPosition", func() LawSpecValue {
-		result := lawSpecEvaluate732(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_af15eded3eac(lsfKafkaConsumerPosition_7784665f(symbols, lsfFrom_7de2ae0da384(value0), lsfFrom_57a515e0e489(value1)))
 }
 
 func lawSpecEvaluate577(
@@ -3664,7 +3649,7 @@ func lawSpecEvaluate577(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_34d15aaae84b(lsfKafkaConsumerSeek_59(lsfFrom_7de2ae0da384(value0), lsfFrom_57a515e0e489(value1), lsfFrom_44a08172da10(value2)))
+	return lsfTo_34d15aaae84b(lsfKafkaConsumerSeek_5fe046a7(lsfFrom_7de2ae0da384(value0), lsfFrom_57a515e0e489(value1), lsfFrom_44a08172da10(value2)))
 }
 
 func lawSpecEvaluate578(
@@ -3672,11 +3657,11 @@ func lawSpecEvaluate578(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_170f42653652(lsfKafkaConsumerSetIsolationLevel_60(lsfFrom_7de2ae0da384(value0), lsfFrom_a519f593a6ed(value1)))
+	return lsfTo_170f42653652(lsfKafkaConsumerSetIsolationLevel_bc2459d3(lsfFrom_7de2ae0da384(value0), lsfFrom_a519f593a6ed(value1)))
 }
 
 func lawSpecEvaluate579(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7de2ae0da384(lsfKafkaConsumerStart_61(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_7de2ae0da384(lsfKafkaConsumerStart_9e580acc(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate580(
@@ -3686,32 +3671,23 @@ func lawSpecEvaluate580(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaConsumerSubscribe", func() LawSpecValue {
-		result := lawSpecEvaluate729(symbols, value1, value2, value3, value0)
-		return result
-	})
+	return lsfTo_aec30ebe57ba(lsfKafkaConsumerSubscribe_ce34eaf5(symbols, lsfFrom_7de2ae0da384(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_8ec0351dc657(value3)))
 }
 
 func lawSpecEvaluate581(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaProducerEnableIdempotence", func() LawSpecValue {
-		result := lawSpecEvaluate832(symbols, value0)
-		return result
-	})
+	return lsfTo_53df4ee1a893(lsfKafkaProducerEnableIdempotence_a79d2db8(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate582(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9a576143471f(lsfKafkaProducerFlush_62(lsfFrom_5e5d2c3fa1a7(value0)))
+	return lsfTo_9a576143471f(lsfKafkaProducerFlush_584e906f(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate583(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_5d20fb53d3a6(lsfKafkaProducerProducerIdentity_63(lsfFrom_5e5d2c3fa1a7(value0)))
+	return lsfTo_5d20fb53d3a6(lsfKafkaProducerProducerIdentity_a0ee547d(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate584(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaProducerRetryLastSend", func() LawSpecValue {
-		result := lawSpecEvaluate833(symbols, value0)
-		return result
-	})
+	return lsfTo_dc41353054a0(lsfKafkaProducerRetryLastSend_9cbd6c72(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate585(
@@ -3719,21 +3695,15 @@ func lawSpecEvaluate585(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaProducerSend", func() LawSpecValue {
-		result := lawSpecEvaluate834(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_dc41353054a0(lsfKafkaProducerSend_a4612365(symbols, lsfFrom_5e5d2c3fa1a7(value0), lsfFrom_b2152710dfac(value1)))
 }
 
 func lawSpecEvaluate586(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_5e5d2c3fa1a7(lsfKafkaProducerStart_64(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_5e5d2c3fa1a7(lsfKafkaProducerStart_58ddcfc8(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate587(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsAbortTransaction", func() LawSpecValue {
-		result := lawSpecEvaluate850(symbols, value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsAbortTransaction_a2a1e35e(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate588(
@@ -3741,21 +3711,15 @@ func lawSpecEvaluate588(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsAddPartitionsToTransaction", func() LawSpecValue {
-		result := lawSpecEvaluate851(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols, lsfFrom_74b3f2831172(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
 func lawSpecEvaluate589(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsBeginTransaction_65(lsfFrom_74b3f2831172(value0)))
+	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsBeginTransaction_3c1e648e(lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate590(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsCommitTransaction", func() LawSpecValue {
-		result := lawSpecEvaluate853(symbols, value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsCommitTransaction_e0a5e067(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate591(
@@ -3763,10 +3727,7 @@ func lawSpecEvaluate591(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsInitTransactions", func() LawSpecValue {
-		result := lawSpecEvaluate855(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_b49ec6c68859(lsfKafkaTransactionsInitTransactions_96f85461(symbols, lsfFrom_74b3f2831172(value0), lsfFrom_437d0abf423f(value1)))
 }
 
 func lawSpecEvaluate592(
@@ -3774,10 +3735,7 @@ func lawSpecEvaluate592(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsSendInTransaction", func() LawSpecValue {
-		result := lawSpecEvaluate857(symbols, value1, value0)
-		return result
-	})
+	return lsfTo_d87cfe1fbff5(lsfKafkaTransactionsSendInTransaction_09c804c7(symbols, lsfFrom_74b3f2831172(value0), lsfFrom_b2152710dfac(value1)))
 }
 
 func lawSpecEvaluate593(
@@ -3786,34 +3744,31 @@ func lawSpecEvaluate593(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::kafkaTransactionsSendOffsetsToTransaction", func() LawSpecValue {
-		result := lawSpecEvaluate856(symbols, value1, value2, value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfKafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols, lsfFrom_74b3f2831172(value0), lsfFrom_437d0abf423f(value1), lsfFrom_582052f40a9c(value2)))
 }
 
 func lawSpecEvaluate594(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_74b3f2831172(lsfKafkaTransactionsStart_66(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_74b3f2831172(lsfKafkaTransactionsStart_68a77cf3(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate595(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfKeepBoundedArithmetic_263(lsfFrom_44a08172da10(value0)))
+	return lsfTo_44a08172da10(lsfKeepBoundedArithmetic_3e45e1f6(lsfFrom_44a08172da10(value0)))
 }
 
 func lawSpecEvaluate596(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_8458421ef461(lsfBoundedInt16_0(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_8458421ef461(lsfBoundedInt16_cdb4a79e(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate597(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfBoundedInt32_1(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_e0f8ce0ed062(lsfBoundedInt32_b3381d93(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate598(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_c09136e29464(lsfBoundedInt64_2(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_c09136e29464(lsfBoundedInt64_13153a18(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate599(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_322842b70901(lsfBoundedInt8_3(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_322842b70901(lsfBoundedInt8_9822648b(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate600(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3824,19 +3779,19 @@ func lawSpecEvaluate600(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate601(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_a765ca1ff0da(lsfBoundedUInt16_4(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_a765ca1ff0da(lsfBoundedUInt16_fab24aa3(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate602(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_770fd683e40e(lsfBoundedUInt32_5(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_770fd683e40e(lsfBoundedUInt32_f7521c17(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate603(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_a2258feb4d57(lsfBoundedUInt64_6(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_a2258feb4d57(lsfBoundedUInt64_ca410424(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate604(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_2a3b378408f8(lsfBoundedUInt8_7(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_2a3b378408f8(lsfBoundedUInt8_8ce0c76e(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate605(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3854,19 +3809,19 @@ func lawSpecEvaluate606(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate607(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_07dabd732290(lsfSaturatingInt16_8(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_07dabd732290(lsfSaturatingInt16_770015a8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate608(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfSaturatingInt32_9(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_b862204e9be7(lsfSaturatingInt32_9e8d3b43(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate609(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfSaturatingInt64_10(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_44a08172da10(lsfSaturatingInt64_5bce4ed8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate610(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9d2bd68f647a(lsfSaturatingInt8_11(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_9d2bd68f647a(lsfSaturatingInt8_54855fd8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate611(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3877,19 +3832,19 @@ func lawSpecEvaluate611(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate612(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7c7a5790413b(lsfSaturatingUInt16_12(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_7c7a5790413b(lsfSaturatingUInt16_c4c11e3b(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate613(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfSaturatingUInt32_13(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_bd9653153f3b(lsfSaturatingUInt32_6d025357(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate614(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_65439cc7c2ff(lsfSaturatingUInt64_14(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_65439cc7c2ff(lsfSaturatingUInt64_dce984c8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate615(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d048b68cd5b1(lsfSaturatingUInt8_15(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_d048b68cd5b1(lsfSaturatingUInt8_cf40d611(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate616(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3907,19 +3862,19 @@ func lawSpecEvaluate617(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate618(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_07dabd732290(lsfWrappingInt16_16(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_07dabd732290(lsfWrappingInt16_989a4ce2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate619(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfWrappingInt32_17(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_b862204e9be7(lsfWrappingInt32_e1b5a7b2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate620(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfWrappingInt64_18(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_44a08172da10(lsfWrappingInt64_698b955a(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate621(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9d2bd68f647a(lsfWrappingInt8_19(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_9d2bd68f647a(lsfWrappingInt8_728a92af(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate622(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3934,19 +3889,19 @@ func lawSpecEvaluate622(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) 
 }
 
 func lawSpecEvaluate623(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7c7a5790413b(lsfWrappingUInt16_20(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_7c7a5790413b(lsfWrappingUInt16_e5742dd2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate624(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfWrappingUInt32_21(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_bd9653153f3b(lsfWrappingUInt32_1ef3ce20(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate625(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_65439cc7c2ff(lsfWrappingUInt64_22(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_65439cc7c2ff(lsfWrappingUInt64_362f8288(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate626(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d048b68cd5b1(lsfWrappingUInt8_23(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_d048b68cd5b1(lsfWrappingUInt8_6ce2e7d2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate627(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -3976,7 +3931,7 @@ func lawSpecEvaluate629(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValDeleteItems_68(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
+	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValDeleteItems_5df79bd1(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
 func lawSpecEvaluate630(
@@ -3984,7 +3939,7 @@ func lawSpecEvaluate630(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValDeleteItems_69(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
+	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValDeleteItems_6394b670(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
 func lawSpecEvaluate631(
@@ -3992,7 +3947,7 @@ func lawSpecEvaluate631(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValDelete_70(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
+	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValDelete_daac10f4(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
 }
 
 func lawSpecEvaluate632(
@@ -4000,19 +3955,19 @@ func lawSpecEvaluate632(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValDelete_71(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
+	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValDelete_9159aa73(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
 }
 
 func lawSpecEvaluate633(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValEntries_72(lsfFrom_76ca967c9ea5(value0)))
+	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValEntries_a865cc3f(lsfFrom_76ca967c9ea5(value0)))
 }
 
 func lawSpecEvaluate634(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValEntries_73(lsfFrom_ead2bdf5b1de(value0)))
+	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValEntries_d490695f(lsfFrom_ead2bdf5b1de(value0)))
 }
 
 func lawSpecEvaluate635(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValEntries_74(lsfFrom_573c5ecbb13e(value0)))
+	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValEntries_90fdb0cf(lsfFrom_573c5ecbb13e(value0)))
 }
 
 func lawSpecEvaluate636(
@@ -4020,7 +3975,7 @@ func lawSpecEvaluate636(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValFromItems_75(lsfFrom_651fa9ab9d5d(value0), lsfFrom_651fa9ab9d5d(value1)))
+	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValFromItems_b1d7a6fe(lsfFrom_651fa9ab9d5d(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
 func lawSpecEvaluate637(
@@ -4028,7 +3983,7 @@ func lawSpecEvaluate637(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValFromItems_76(lsfFrom_cbf1e2cd3904(value0), lsfFrom_cbf1e2cd3904(value1)))
+	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValFromItems_06f4d2c6(lsfFrom_cbf1e2cd3904(value0), lsfFrom_cbf1e2cd3904(value1)))
 }
 
 func lawSpecEvaluate638(
@@ -4036,7 +3991,7 @@ func lawSpecEvaluate638(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValFromItems_77(lsfFrom_d6220414446c(value0), lsfFrom_d6220414446c(value1)))
+	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValFromItems_a82586cc(lsfFrom_d6220414446c(value0), lsfFrom_d6220414446c(value1)))
 }
 
 func lawSpecEvaluate639(
@@ -4044,7 +3999,7 @@ func lawSpecEvaluate639(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValFromItems_78(lsfFrom_ce1429c06596(value0), lsfFrom_ce1429c06596(value1)))
+	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValFromItems_cbeefea2(lsfFrom_ce1429c06596(value0), lsfFrom_ce1429c06596(value1)))
 }
 
 func lawSpecEvaluate640(
@@ -4052,7 +4007,7 @@ func lawSpecEvaluate640(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValFromItems_79(lsfFrom_c95dd21cde1e(value0), lsfFrom_c95dd21cde1e(value1)))
+	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValFromItems_32478a30(lsfFrom_c95dd21cde1e(value0), lsfFrom_c95dd21cde1e(value1)))
 }
 
 func lawSpecEvaluate641(
@@ -4060,7 +4015,7 @@ func lawSpecEvaluate641(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValFromItems_80(lsfFrom_9dcdbe0431a1(value0), lsfFrom_9dcdbe0431a1(value1)))
+	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValFromItems_3a24ccf2(lsfFrom_9dcdbe0431a1(value0), lsfFrom_9dcdbe0431a1(value1)))
 }
 
 func lawSpecEvaluate642(
@@ -4068,7 +4023,7 @@ func lawSpecEvaluate642(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValFromItems_81(lsfFrom_287be4ef437a(value0), lsfFrom_287be4ef437a(value1)))
+	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValFromItems_1e161219(lsfFrom_287be4ef437a(value0), lsfFrom_287be4ef437a(value1)))
 }
 
 func lawSpecEvaluate643(
@@ -4076,7 +4031,7 @@ func lawSpecEvaluate643(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValFromItems_82(lsfFrom_ef13ae4d9e38(value0), lsfFrom_ef13ae4d9e38(value1)))
+	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValFromItems_92b072e4(lsfFrom_ef13ae4d9e38(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
 func lawSpecEvaluate644(
@@ -4084,7 +4039,7 @@ func lawSpecEvaluate644(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValFromItems_83(lsfFrom_b79b4546a6ee(value0), lsfFrom_b79b4546a6ee(value1)))
+	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValFromItems_d863ec47(lsfFrom_b79b4546a6ee(value0), lsfFrom_b79b4546a6ee(value1)))
 }
 
 func lawSpecEvaluate645(
@@ -4092,7 +4047,7 @@ func lawSpecEvaluate645(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValFromItems_84(lsfFrom_59c4d82f6c9d(value0), lsfFrom_59c4d82f6c9d(value1)))
+	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValFromItems_4e4ef1c4(lsfFrom_59c4d82f6c9d(value0), lsfFrom_59c4d82f6c9d(value1)))
 }
 
 func lawSpecEvaluate646(
@@ -4100,7 +4055,7 @@ func lawSpecEvaluate646(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValFromItems_85(lsfFrom_b3fb2926095a(value0), lsfFrom_b3fb2926095a(value1)))
+	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValFromItems_6be3ca15(lsfFrom_b3fb2926095a(value0), lsfFrom_b3fb2926095a(value1)))
 }
 
 func lawSpecEvaluate647(
@@ -4108,15 +4063,15 @@ func lawSpecEvaluate647(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValFromItems_86(lsfFrom_7f12735183c0(value0), lsfFrom_7f12735183c0(value1)))
+	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValFromItems_c033ba9e(lsfFrom_7f12735183c0(value0), lsfFrom_7f12735183c0(value1)))
 }
 
 func lawSpecEvaluate648(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeysItems_87(lsfFrom_ef13ae4d9e38(value0)))
+	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeysItems_e033276a(lsfFrom_ef13ae4d9e38(value0)))
 }
 
 func lawSpecEvaluate649(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeys_88(lsfFrom_573c5ecbb13e(value0)))
+	return lsfTo_8ec0351dc657(lsfLawspecCollectionsKeyValKeys_34e9a8ae(lsfFrom_573c5ecbb13e(value0)))
 }
 
 func lawSpecEvaluate650(
@@ -4124,7 +4079,7 @@ func lawSpecEvaluate650(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookupItems_89(lsfFrom_44a08172da10(value0), lsfFrom_59c4d82f6c9d(value1)))
+	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookupItems_b9936fbc(lsfFrom_44a08172da10(value0), lsfFrom_59c4d82f6c9d(value1)))
 }
 
 func lawSpecEvaluate651(
@@ -4132,7 +4087,7 @@ func lawSpecEvaluate651(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_90(lsfFrom_57a515e0e489(value0), lsfFrom_287be4ef437a(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_154c41d9(lsfFrom_57a515e0e489(value0), lsfFrom_287be4ef437a(value1)))
 }
 
 func lawSpecEvaluate652(
@@ -4140,7 +4095,7 @@ func lawSpecEvaluate652(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_91(lsfFrom_437d0abf423f(value0), lsfFrom_cbf1e2cd3904(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ebcd945a(lsfFrom_437d0abf423f(value0), lsfFrom_cbf1e2cd3904(value1)))
 }
 
 func lawSpecEvaluate653(
@@ -4148,7 +4103,7 @@ func lawSpecEvaluate653(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookupItems_92(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
+	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookupItems_71a2ad87(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
 func lawSpecEvaluate654(
@@ -4156,7 +4111,7 @@ func lawSpecEvaluate654(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookupItems_93(lsfFrom_437d0abf423f(value0), lsfFrom_b3fb2926095a(value1)))
+	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookupItems_a13d293f(lsfFrom_437d0abf423f(value0), lsfFrom_b3fb2926095a(value1)))
 }
 
 func lawSpecEvaluate655(
@@ -4164,7 +4119,7 @@ func lawSpecEvaluate655(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookupItems_94(lsfFrom_44a08172da10(value0), lsfFrom_ce1429c06596(value1)))
+	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookupItems_9c1371ef(lsfFrom_44a08172da10(value0), lsfFrom_ce1429c06596(value1)))
 }
 
 func lawSpecEvaluate656(
@@ -4172,7 +4127,7 @@ func lawSpecEvaluate656(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_95(lsfFrom_437d0abf423f(value0), lsfFrom_d6220414446c(value1)))
+	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_4e6d941b(lsfFrom_437d0abf423f(value0), lsfFrom_d6220414446c(value1)))
 }
 
 func lawSpecEvaluate657(
@@ -4180,7 +4135,7 @@ func lawSpecEvaluate657(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_96(lsfFrom_213d3554d90b(value0), lsfFrom_9dcdbe0431a1(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_634e3159(lsfFrom_213d3554d90b(value0), lsfFrom_9dcdbe0431a1(value1)))
 }
 
 func lawSpecEvaluate658(
@@ -4188,7 +4143,7 @@ func lawSpecEvaluate658(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_97(lsfFrom_57a515e0e489(value0), lsfFrom_7f12735183c0(value1)))
+	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookupItems_eaf6916f(lsfFrom_57a515e0e489(value0), lsfFrom_7f12735183c0(value1)))
 }
 
 func lawSpecEvaluate659(
@@ -4196,7 +4151,7 @@ func lawSpecEvaluate659(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_98(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookupItems_ae57d2cd(lsfFrom_44a08172da10(value0), lsfFrom_651fa9ab9d5d(value1)))
 }
 
 func lawSpecEvaluate660(
@@ -4204,7 +4159,7 @@ func lawSpecEvaluate660(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookupItems_99(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1)))
+	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookupItems_3c718024(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1)))
 }
 
 func lawSpecEvaluate661(
@@ -4212,7 +4167,7 @@ func lawSpecEvaluate661(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookupItems_100(lsfFrom_57a515e0e489(value0), lsfFrom_b79b4546a6ee(value1)))
+	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookupItems_8d0d5317(lsfFrom_57a515e0e489(value0), lsfFrom_b79b4546a6ee(value1)))
 }
 
 func lawSpecEvaluate662(
@@ -4220,7 +4175,7 @@ func lawSpecEvaluate662(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookup_101(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
+	return lsfTo_3d64fc085f92(lsfLawspecCollectionsKeyValLookup_a9059595(lsfFrom_437d0abf423f(value0), lsfFrom_573c5ecbb13e(value1)))
 }
 
 func lawSpecEvaluate663(
@@ -4228,7 +4183,7 @@ func lawSpecEvaluate663(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookup_102(lsfFrom_44a08172da10(value0), lsfFrom_12e472f38b58(value1)))
+	return lsfTo_c38be08c05a1(lsfLawspecCollectionsKeyValLookup_b2bbd077(lsfFrom_44a08172da10(value0), lsfFrom_12e472f38b58(value1)))
 }
 
 func lawSpecEvaluate664(
@@ -4236,7 +4191,7 @@ func lawSpecEvaluate664(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookup_103(lsfFrom_57a515e0e489(value0), lsfFrom_fc454f30e5b2(value1)))
+	return lsfTo_aba61dc13579(lsfLawspecCollectionsKeyValLookup_8a481efc(lsfFrom_57a515e0e489(value0), lsfFrom_fc454f30e5b2(value1)))
 }
 
 func lawSpecEvaluate665(
@@ -4244,7 +4199,7 @@ func lawSpecEvaluate665(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_104(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
+	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_8e671f4d(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
 }
 
 func lawSpecEvaluate666(
@@ -4252,7 +4207,7 @@ func lawSpecEvaluate666(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_105(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_65e9c66c(lsfFrom_44a08172da10(value0), lsfFrom_a5ff70cdb58a(value1)))
 }
 
 func lawSpecEvaluate667(
@@ -4260,7 +4215,7 @@ func lawSpecEvaluate667(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_106(lsfFrom_57a515e0e489(value0), lsfFrom_d1208e18a243(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_a6e9da81(lsfFrom_57a515e0e489(value0), lsfFrom_d1208e18a243(value1)))
 }
 
 func lawSpecEvaluate668(
@@ -4268,7 +4223,7 @@ func lawSpecEvaluate668(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_107(lsfFrom_437d0abf423f(value0), lsfFrom_291d2550e97c(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_24612a0e(lsfFrom_437d0abf423f(value0), lsfFrom_291d2550e97c(value1)))
 }
 
 func lawSpecEvaluate669(
@@ -4276,7 +4231,7 @@ func lawSpecEvaluate669(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_108(lsfFrom_213d3554d90b(value0), lsfFrom_316bf0786e9b(value1)))
+	return lsfTo_c09136e29464(lsfLawspecCollectionsKeyValLookup_cd13c56f(lsfFrom_213d3554d90b(value0), lsfFrom_316bf0786e9b(value1)))
 }
 
 func lawSpecEvaluate670(
@@ -4284,7 +4239,7 @@ func lawSpecEvaluate670(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookup_109(lsfFrom_44a08172da10(value0), lsfFrom_5fff5f48ddb1(value1)))
+	return lsfTo_bf624bc7affb(lsfLawspecCollectionsKeyValLookup_6946d404(lsfFrom_44a08172da10(value0), lsfFrom_5fff5f48ddb1(value1)))
 }
 
 func lawSpecEvaluate671(
@@ -4292,7 +4247,7 @@ func lawSpecEvaluate671(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_110(lsfFrom_437d0abf423f(value0), lsfFrom_bb40e13b6158(value1)))
+	return lsfTo_e0f8ce0ed062(lsfLawspecCollectionsKeyValLookup_7f47bbb6(lsfFrom_437d0abf423f(value0), lsfFrom_bb40e13b6158(value1)))
 }
 
 func lawSpecEvaluate672(
@@ -4300,7 +4255,7 @@ func lawSpecEvaluate672(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookup_111(lsfFrom_437d0abf423f(value0), lsfFrom_ead2bdf5b1de(value1)))
+	return lsfTo_50708784f072(lsfLawspecCollectionsKeyValLookup_ce7e98b5(lsfFrom_437d0abf423f(value0), lsfFrom_ead2bdf5b1de(value1)))
 }
 
 func lawSpecEvaluate673(
@@ -4308,55 +4263,55 @@ func lawSpecEvaluate673(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookup_112(lsfFrom_437d0abf423f(value0), lsfFrom_76ca967c9ea5(value1)))
+	return lsfTo_96af144ed884(lsfLawspecCollectionsKeyValLookup_0bbb87c8(lsfFrom_437d0abf423f(value0), lsfFrom_76ca967c9ea5(value1)))
 }
 
 func lawSpecEvaluate674(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValOf_113(lsfFrom_b3fb2926095a(value0)))
+	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValOf_b3b63ee9(lsfFrom_b3fb2926095a(value0)))
 }
 
 func lawSpecEvaluate675(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValOf_114(lsfFrom_c95dd21cde1e(value0)))
+	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValOf_315c22fb(lsfFrom_c95dd21cde1e(value0)))
 }
 
 func lawSpecEvaluate676(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValOf_115(lsfFrom_7f12735183c0(value0)))
+	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValOf_8d386a7a(lsfFrom_7f12735183c0(value0)))
 }
 
 func lawSpecEvaluate677(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValOf_116(lsfFrom_b79b4546a6ee(value0)))
+	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValOf_66dd9a82(lsfFrom_b79b4546a6ee(value0)))
 }
 
 func lawSpecEvaluate678(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValOf_117(lsfFrom_59c4d82f6c9d(value0)))
+	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValOf_3adee7cf(lsfFrom_59c4d82f6c9d(value0)))
 }
 
 func lawSpecEvaluate679(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValOf_118(lsfFrom_287be4ef437a(value0)))
+	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValOf_a1009097(lsfFrom_287be4ef437a(value0)))
 }
 
 func lawSpecEvaluate680(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValOf_119(lsfFrom_cbf1e2cd3904(value0)))
+	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValOf_eeff9798(lsfFrom_cbf1e2cd3904(value0)))
 }
 
 func lawSpecEvaluate681(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValOf_120(lsfFrom_ef13ae4d9e38(value0)))
+	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValOf_afdc1c77(lsfFrom_ef13ae4d9e38(value0)))
 }
 
 func lawSpecEvaluate682(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValOf_121(lsfFrom_d6220414446c(value0)))
+	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValOf_924ce6dd(lsfFrom_d6220414446c(value0)))
 }
 
 func lawSpecEvaluate683(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValOf_122(lsfFrom_ce1429c06596(value0)))
+	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValOf_66da004b(lsfFrom_ce1429c06596(value0)))
 }
 
 func lawSpecEvaluate684(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValOf_123(lsfFrom_651fa9ab9d5d(value0)))
+	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValOf_b2ceee25(lsfFrom_651fa9ab9d5d(value0)))
 }
 
 func lawSpecEvaluate685(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValOf_124(lsfFrom_9dcdbe0431a1(value0)))
+	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValOf_14405d63(lsfFrom_9dcdbe0431a1(value0)))
 }
 
 func lawSpecEvaluate686(
@@ -4365,7 +4320,7 @@ func lawSpecEvaluate686(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValPutItems_125(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_651fa9ab9d5d(value2)))
+	return lsfTo_651fa9ab9d5d(lsfLawspecCollectionsKeyValPutItems_fb1bb5ca(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_651fa9ab9d5d(value2)))
 }
 
 func lawSpecEvaluate687(
@@ -4374,7 +4329,7 @@ func lawSpecEvaluate687(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValPutItems_126(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_ce1429c06596(value2)))
+	return lsfTo_ce1429c06596(lsfLawspecCollectionsKeyValPutItems_97a64264(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_ce1429c06596(value2)))
 }
 
 func lawSpecEvaluate688(
@@ -4383,7 +4338,7 @@ func lawSpecEvaluate688(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValPutItems_127(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_59c4d82f6c9d(value2)))
+	return lsfTo_59c4d82f6c9d(lsfLawspecCollectionsKeyValPutItems_054f1ef1(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_59c4d82f6c9d(value2)))
 }
 
 func lawSpecEvaluate689(
@@ -4392,7 +4347,7 @@ func lawSpecEvaluate689(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValPutItems_128(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_d6220414446c(value2)))
+	return lsfTo_d6220414446c(lsfLawspecCollectionsKeyValPutItems_8d4f5385(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_d6220414446c(value2)))
 }
 
 func lawSpecEvaluate690(
@@ -4401,7 +4356,7 @@ func lawSpecEvaluate690(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValPutItems_129(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_cbf1e2cd3904(value2)))
+	return lsfTo_cbf1e2cd3904(lsfLawspecCollectionsKeyValPutItems_5d998955(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_cbf1e2cd3904(value2)))
 }
 
 func lawSpecEvaluate691(
@@ -4410,7 +4365,7 @@ func lawSpecEvaluate691(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValPutItems_130(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_b3fb2926095a(value2)))
+	return lsfTo_b3fb2926095a(lsfLawspecCollectionsKeyValPutItems_80dc1939(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_b3fb2926095a(value2)))
 }
 
 func lawSpecEvaluate692(
@@ -4419,7 +4374,7 @@ func lawSpecEvaluate692(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValPutItems_131(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_9dcdbe0431a1(value2)))
+	return lsfTo_9dcdbe0431a1(lsfLawspecCollectionsKeyValPutItems_28cf0caf(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_9dcdbe0431a1(value2)))
 }
 
 func lawSpecEvaluate693(
@@ -4428,7 +4383,7 @@ func lawSpecEvaluate693(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValPutItems_132(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_c95dd21cde1e(value2)))
+	return lsfTo_c95dd21cde1e(lsfLawspecCollectionsKeyValPutItems_883fe52d(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_c95dd21cde1e(value2)))
 }
 
 func lawSpecEvaluate694(
@@ -4437,7 +4392,7 @@ func lawSpecEvaluate694(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValPutItems_133(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_7f12735183c0(value2)))
+	return lsfTo_7f12735183c0(lsfLawspecCollectionsKeyValPutItems_3f0139cf(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_7f12735183c0(value2)))
 }
 
 func lawSpecEvaluate695(
@@ -4446,7 +4401,7 @@ func lawSpecEvaluate695(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValPutItems_134(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_ef13ae4d9e38(value2)))
+	return lsfTo_ef13ae4d9e38(lsfLawspecCollectionsKeyValPutItems_c4168a80(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_ef13ae4d9e38(value2)))
 }
 
 func lawSpecEvaluate696(
@@ -4455,7 +4410,7 @@ func lawSpecEvaluate696(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValPutItems_135(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_287be4ef437a(value2)))
+	return lsfTo_287be4ef437a(lsfLawspecCollectionsKeyValPutItems_4266176b(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_287be4ef437a(value2)))
 }
 
 func lawSpecEvaluate697(
@@ -4464,7 +4419,7 @@ func lawSpecEvaluate697(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValPutItems_136(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_b79b4546a6ee(value2)))
+	return lsfTo_b79b4546a6ee(lsfLawspecCollectionsKeyValPutItems_523d104d(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_b79b4546a6ee(value2)))
 }
 
 func lawSpecEvaluate698(
@@ -4473,7 +4428,7 @@ func lawSpecEvaluate698(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValPut_137(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_0f394bf4652c(value2)))
+	return lsfTo_0f394bf4652c(lsfLawspecCollectionsKeyValPut_cabf14cc(lsfFrom_57a515e0e489(value0), lsfFrom_b862204e9be7(value1), lsfFrom_0f394bf4652c(value2)))
 }
 
 func lawSpecEvaluate699(
@@ -4482,7 +4437,7 @@ func lawSpecEvaluate699(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValPut_138(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_76ca967c9ea5(value2)))
+	return lsfTo_76ca967c9ea5(lsfLawspecCollectionsKeyValPut_ce8624cf(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_76ca967c9ea5(value2)))
 }
 
 func lawSpecEvaluate700(
@@ -4491,7 +4446,7 @@ func lawSpecEvaluate700(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValPut_139(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_fc454f30e5b2(value2)))
+	return lsfTo_fc454f30e5b2(lsfLawspecCollectionsKeyValPut_5ab157dd(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_fc454f30e5b2(value2)))
 }
 
 func lawSpecEvaluate701(
@@ -4500,7 +4455,7 @@ func lawSpecEvaluate701(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValPut_140(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_12e472f38b58(value2)))
+	return lsfTo_12e472f38b58(lsfLawspecCollectionsKeyValPut_c59d14e0(lsfFrom_44a08172da10(value0), lsfFrom_789f82e1207e(value1), lsfFrom_12e472f38b58(value2)))
 }
 
 func lawSpecEvaluate702(
@@ -4509,7 +4464,7 @@ func lawSpecEvaluate702(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValPut_141(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_d1208e18a243(value2)))
+	return lsfTo_d1208e18a243(lsfLawspecCollectionsKeyValPut_01a600ed(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_d1208e18a243(value2)))
 }
 
 func lawSpecEvaluate703(
@@ -4518,7 +4473,7 @@ func lawSpecEvaluate703(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValPut_142(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_291d2550e97c(value2)))
+	return lsfTo_291d2550e97c(lsfLawspecCollectionsKeyValPut_3034b895(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_291d2550e97c(value2)))
 }
 
 func lawSpecEvaluate704(
@@ -4527,7 +4482,7 @@ func lawSpecEvaluate704(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValPut_143(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_bb40e13b6158(value2)))
+	return lsfTo_bb40e13b6158(lsfLawspecCollectionsKeyValPut_a8f49e3e(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_bb40e13b6158(value2)))
 }
 
 func lawSpecEvaluate705(
@@ -4536,7 +4491,7 @@ func lawSpecEvaluate705(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValPut_144(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_316bf0786e9b(value2)))
+	return lsfTo_316bf0786e9b(lsfLawspecCollectionsKeyValPut_9fc3570a(lsfFrom_213d3554d90b(value0), lsfFrom_44a08172da10(value1), lsfFrom_316bf0786e9b(value2)))
 }
 
 func lawSpecEvaluate706(
@@ -4545,7 +4500,7 @@ func lawSpecEvaluate706(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValPut_145(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_5fff5f48ddb1(value2)))
+	return lsfTo_5fff5f48ddb1(lsfLawspecCollectionsKeyValPut_87e622e8(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_5fff5f48ddb1(value2)))
 }
 
 func lawSpecEvaluate707(
@@ -4554,7 +4509,7 @@ func lawSpecEvaluate707(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValPut_146(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_573c5ecbb13e(value2)))
+	return lsfTo_573c5ecbb13e(lsfLawspecCollectionsKeyValPut_3b439cbe(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_573c5ecbb13e(value2)))
 }
 
 func lawSpecEvaluate708(
@@ -4563,7 +4518,7 @@ func lawSpecEvaluate708(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValPut_147(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_a5ff70cdb58a(value2)))
+	return lsfTo_a5ff70cdb58a(lsfLawspecCollectionsKeyValPut_5cd34b74(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_a5ff70cdb58a(value2)))
 }
 
 func lawSpecEvaluate709(
@@ -4572,15 +4527,15 @@ func lawSpecEvaluate709(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValPut_148(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_ead2bdf5b1de(value2)))
+	return lsfTo_ead2bdf5b1de(lsfLawspecCollectionsKeyValPut_efc6b866(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1), lsfFrom_ead2bdf5b1de(value2)))
 }
 
 func lawSpecEvaluate710(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValuesItems_149(lsfFrom_651fa9ab9d5d(value0)))
+	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValuesItems_40ef8eee(lsfFrom_651fa9ab9d5d(value0)))
 }
 
 func lawSpecEvaluate711(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValues_150(lsfFrom_a5ff70cdb58a(value0)))
+	return lsfTo_75994955e886(lsfLawspecCollectionsKeyValValues_33bc036c(lsfFrom_a5ff70cdb58a(value0)))
 }
 
 func lawSpecEvaluate712(
@@ -4588,7 +4543,7 @@ func lawSpecEvaluate712(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetFromItems_152(lsfFrom_8ec0351dc657(value0), lsfFrom_8ec0351dc657(value1)))
+	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetFromItems_b46ce3bb(lsfFrom_8ec0351dc657(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
 func lawSpecEvaluate713(
@@ -4596,7 +4551,7 @@ func lawSpecEvaluate713(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetFromItems_153(lsfFrom_508e8cda1c80(value0), lsfFrom_508e8cda1c80(value1)))
+	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetFromItems_357dd072(lsfFrom_508e8cda1c80(value0), lsfFrom_508e8cda1c80(value1)))
 }
 
 func lawSpecEvaluate714(
@@ -4604,7 +4559,7 @@ func lawSpecEvaluate714(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetInsertItems_154(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
+	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetInsertItems_fd8b28ec(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
 func lawSpecEvaluate715(
@@ -4612,15 +4567,15 @@ func lawSpecEvaluate715(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetInsertItems_156(lsfFrom_b862204e9be7(value0), lsfFrom_508e8cda1c80(value1)))
+	return lsfTo_508e8cda1c80(lsfLawspecCollectionsSetInsertItems_708d991b(lsfFrom_b862204e9be7(value0), lsfFrom_508e8cda1c80(value1)))
 }
 
 func lawSpecEvaluate716(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetOf_159(lsfFrom_8ec0351dc657(value0)))
+	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetOf_381c9692(lsfFrom_8ec0351dc657(value0)))
 }
 
 func lawSpecEvaluate717(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_cd87ee93b56a(lsfLawspecCollectionsSetOf_160(lsfFrom_508e8cda1c80(value0)))
+	return lsfTo_cd87ee93b56a(lsfLawspecCollectionsSetOf_04775bf4(lsfFrom_508e8cda1c80(value0)))
 }
 
 func lawSpecEvaluate718(
@@ -4628,7 +4583,7 @@ func lawSpecEvaluate718(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetRemoveItems_162(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
+	return lsfTo_8ec0351dc657(lsfLawspecCollectionsSetRemoveItems_64279e04(lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1)))
 }
 
 func lawSpecEvaluate719(
@@ -4636,7 +4591,7 @@ func lawSpecEvaluate719(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetRemove_163(lsfFrom_437d0abf423f(value0), lsfFrom_0ee125dab044(value1)))
+	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetRemove_7ffea813(lsfFrom_437d0abf423f(value0), lsfFrom_0ee125dab044(value1)))
 }
 
 func lawSpecEvaluate720(
@@ -4644,7 +4599,7 @@ func lawSpecEvaluate720(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetUnion_164(lsfFrom_0ee125dab044(value0), lsfFrom_0ee125dab044(value1)))
+	return lsfTo_0ee125dab044(lsfLawspecCollectionsSetUnion_604ff278(lsfFrom_0ee125dab044(value0), lsfFrom_0ee125dab044(value1)))
 }
 
 func lawSpecEvaluate721(
@@ -4652,7 +4607,7 @@ func lawSpecEvaluate721(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfAllAtLeast_25(lsfFrom_44a08172da10(value0), lsfFrom_75994955e886(value1)))
+	return lsfTo_d267428fb2ca(lsfAllAtLeast_3df55027(lsfFrom_44a08172da10(value0), lsfFrom_75994955e886(value1)))
 }
 
 func lawSpecEvaluate722(
@@ -4660,7 +4615,7 @@ func lawSpecEvaluate722(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3250492fe9ac(lsfAssignmentIn_26(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
+	return lsfTo_3250492fe9ac(lsfAssignmentIn_4b795225(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
 }
 
 func lawSpecEvaluate723(
@@ -4668,10 +4623,7 @@ func lawSpecEvaluate723(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaCommittedFrom", func() LawSpecValue {
-		result := lawSpecEvaluate835(symbols, value0, value1, _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::IsolationLevel"), "lawtwin.kafka.model::type::IsolationLevel::ReadCommitted", []LawSpecValue{}, 64, symbols))
-		return result
-	})
+	return lsfTo_e3583a5b5bdc(lsfCommittedFrom_a524f37d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate724(
@@ -4679,252 +4631,15 @@ func lawSpecEvaluate724(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_170f42653652(lsfConsumerAssign_45(lsfFrom_3250492fe9ac(value0), lsfFrom_7de2ae0da384(value1)))
+	return lsfTo_170f42653652(lsfConsumerAssign_793a07ba(lsfFrom_3250492fe9ac(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate725(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerClose", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2608 := value0
-			matched2608Fields := matched2608.Data.(lawSpecData)
-			switch matched2608Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value1 := matched2608Fields.fields[0]
-				_ = value1
-				value2 := matched2608Fields.fields[1]
-				_ = value2
-				value3 := matched2608Fields.fields[2]
-				_ = value3
-				value4 := matched2608Fields.fields[3]
-				_ = value4
-				value5 := matched2608Fields.fields[4]
-				_ = value5
-				value6 := matched2608Fields.fields[5]
-				_ = value6
-				value7 := matched2608Fields.fields[6]
-				_ = value7
-				return value1
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Unit"), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64), lawSpecEvaluate741(symbols, lsConvert("Unit", lsAbsent("Unit"), 64))}, 64, symbols)
-		}, func(value8 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue {
-				value18 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[string](schema, bits, "Text")
-							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).LeaveGroupRequest(codec0.toNative(value8), codec1.toNative(func() LawSpecValue {
-									matched2535 := value0
-									matched2535Fields := matched2535.Data.(lawSpecData)
-									switch matched2535Fields.tag {
-									case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-										value9 := matched2535Fields.fields[0]
-										_ = value9
-										value10 := matched2535Fields.fields[1]
-										_ = value10
-										value11 := matched2535Fields.fields[2]
-										_ = value11
-										value12 := matched2535Fields.fields[3]
-										_ = value12
-										value13 := matched2535Fields.fields[4]
-										_ = value13
-										value14 := matched2535Fields.fields[5]
-										_ = value14
-										value15 := matched2535Fields.fields[6]
-										_ = value15
-										return value10
-									default:
-										panic("invalid constructor in match")
-									}
-								}()))
-								return resultCodec.fromNative(LawSpecUnit{})
-							}()
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value16 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value16}, 64, symbols)
-				}, func(value17 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value17}, 64, symbols)
-				})
-				_ = value18
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Unit"), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64), lawSpecEvaluate741(symbols, lsConvert("Unit", lsAbsent("Unit"), 64))}, 64, symbols)
-			}()
-		})
-		return result
-	})
+	return lsfTo_170f42653652(lsfConsumerClose_00c5e7f3(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
 func lawSpecEvaluate726(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerCommit", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2619 := value0
-			matched2619Fields := matched2619.Data.(lawSpecData)
-			switch matched2619Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value1 := matched2619Fields.fields[0]
-				_ = value1
-				value2 := matched2619Fields.fields[1]
-				_ = value2
-				value3 := matched2619Fields.fields[2]
-				_ = value3
-				value4 := matched2619Fields.fields[3]
-				_ = value4
-				value5 := matched2619Fields.fields[4]
-				_ = value5
-				value6 := matched2619Fields.fields[5]
-				_ = value6
-				value7 := matched2619Fields.fields[6]
-				_ = value7
-				return value1
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::InvalidGroupId", []LawSpecValue{}, 64, symbols)}, 64, symbols), value0}, 64, symbols)
-		}, func(value8 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[string](schema, bits, "Text")
-						codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-						codec3 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetCommitRequest(codec0.toNative(value8), codec1.toNative(func() LawSpecValue {
-								matched2546 := value0
-								matched2546Fields := matched2546.Data.(lawSpecData)
-								switch matched2546Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value9 := matched2546Fields.fields[0]
-									_ = value9
-									value10 := matched2546Fields.fields[1]
-									_ = value10
-									value11 := matched2546Fields.fields[2]
-									_ = value11
-									value12 := matched2546Fields.fields[3]
-									_ = value12
-									value13 := matched2546Fields.fields[4]
-									_ = value13
-									value14 := matched2546Fields.fields[5]
-									_ = value14
-									value15 := matched2546Fields.fields[6]
-									_ = value15
-									return value10
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec2.toNative(func() LawSpecValue {
-								matched2548 := value0
-								matched2548Fields := matched2548.Data.(lawSpecData)
-								switch matched2548Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value16 := matched2548Fields.fields[0]
-									_ = value16
-									value17 := matched2548Fields.fields[1]
-									_ = value17
-									value18 := matched2548Fields.fields[2]
-									_ = value18
-									value19 := matched2548Fields.fields[3]
-									_ = value19
-									value20 := matched2548Fields.fields[4]
-									_ = value20
-									value21 := matched2548Fields.fields[5]
-									_ = value21
-									value22 := matched2548Fields.fields[6]
-									_ = value22
-									return value18
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec3.toNative(lawSpecEvaluate830(symbols, func() LawSpecValue {
-								matched2694 := value0
-								matched2694Fields := matched2694.Data.(lawSpecData)
-								switch matched2694Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value23 := matched2694Fields.fields[0]
-									_ = value23
-									value24 := matched2694Fields.fields[1]
-									_ = value24
-									value25 := matched2694Fields.fields[2]
-									_ = value25
-									value26 := matched2694Fields.fields[3]
-									_ = value26
-									value27 := matched2694Fields.fields[4]
-									_ = value27
-									value28 := matched2694Fields.fields[5]
-									_ = value28
-									value29 := matched2694Fields.fields[6]
-									_ = value29
-									return value27
-								default:
-									panic("invalid constructor in match")
-								}
-							}(), func() LawSpecValue {
-								matched2828 := value0
-								matched2828Fields := matched2828.Data.(lawSpecData)
-								switch matched2828Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value30 := matched2828Fields.fields[0]
-									_ = value30
-									value31 := matched2828Fields.fields[1]
-									_ = value31
-									value32 := matched2828Fields.fields[2]
-									_ = value32
-									value33 := matched2828Fields.fields[3]
-									_ = value33
-									value34 := matched2828Fields.fields[4]
-									_ = value34
-									value35 := matched2828Fields.fields[5]
-									_ = value35
-									value36 := matched2828Fields.fields[6]
-									_ = value36
-									return value35
-								default:
-									panic("invalid constructor in match")
-								}
-							}())))
-							return resultCodec.fromNative(LawSpecUnit{})
-						}()
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value37 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value37}, 64, symbols)
-			}, func(value38 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value38}, 64, symbols)
-			}), value0}, 64, symbols)
-		})
-		return result
-	})
+	return lsfTo_34d15aaae84b(lsfConsumerCommit_787f4c15(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
 func lawSpecEvaluate727(
@@ -4932,45 +4647,7 @@ func lawSpecEvaluate727(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerCommitted", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2652 := value1
-			matched2652Fields := matched2652.Data.(lawSpecData)
-			switch matched2652Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value2 := matched2652Fields.fields[0]
-				_ = value2
-				value3 := matched2652Fields.fields[1]
-				_ = value3
-				value4 := matched2652Fields.fields[2]
-				_ = value4
-				value5 := matched2652Fields.fields[3]
-				_ = value5
-				value6 := matched2652Fields.fields[4]
-				_ = value6
-				value7 := matched2652Fields.fields[5]
-				_ = value7
-				value8 := matched2652Fields.fields[6]
-				_ = value8
-				return value2
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Maybe", lsNamed("Int64")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols), value1}, 64, symbols)
-		}, func(value9 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Maybe", lsNamed("Int64")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{func() LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				codec0 := lsScalarCodec[string](schema, bits, "Text")
-				codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-				resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-				return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(value9), codec1.toNative(value0)))
-			}(), value1}, 64, symbols)
-		})
-		return result
-	})
+	return lsfTo_172cc75a9602(lsfConsumerCommitted_06365ac2(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate728(
@@ -4978,7 +4655,7 @@ func lawSpecEvaluate728(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_170f42653652(lsfConsumerIsolation_46(lsfFrom_a519f593a6ed(value0), lsfFrom_7de2ae0da384(value1)))
+	return lsfTo_170f42653652(lsfConsumerIsolation_2aacd289(lsfFrom_a519f593a6ed(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate729(
@@ -4988,70 +4665,7 @@ func lawSpecEvaluate729(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerJoin", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-					resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(value0), codec1.toNative(value1), codec2.toNative(value2)))
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value4 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{value4}, 64, symbols)
-		}, func(value5 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{value5}, 64, symbols)
-		}), func(value6 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Left", []LawSpecValue{value6}, 64, symbols), value3}, 64, symbols)
-		}, func(value7 LawSpecValue) LawSpecValue {
-			return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[string](schema, bits, "Text")
-						codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-						resultCodec := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).SyncGroupRequest(codec0.toNative(value0), codec1.toNative(value1), codec2.toNative(value7)))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value8 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Left", []LawSpecValue{value8}, 64, symbols)
-			}, func(value9 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Right", []LawSpecValue{value9}, 64, symbols)
-			}), func(value10 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Left", []LawSpecValue{value10}, 64, symbols), value3}, 64, symbols)
-			}, func(value11 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition"))), "Either::Right", []LawSpecValue{value11}, 64, symbols), lawSpecEvaluate860(symbols, _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value0}, 64, symbols), value1, value7, value2, value11, value3)}, 64, symbols)
-			})
-		})
-		return result
-	})
+	return lsfTo_aec30ebe57ba(lsfConsumerJoin_198e034e(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_7de2ae0da384(value3)))
 }
 
 func lawSpecEvaluate730(
@@ -5059,93 +4673,7 @@ func lawSpecEvaluate730(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerPoll", func() LawSpecValue {
-		result := func() LawSpecValue {
-			value2 := lawSpecEvaluate734(symbols, value1)
-			_ = value2
-			return lsMatchEither(func() LawSpecValue {
-				matched1850 := value2
-				matched1850Fields := matched1850.Data.(lawSpecData)
-				switch matched1850Fields.tag {
-				case "lawspec.collections::type::Pair::Pair":
-					value3 := matched1850Fields.fields[0]
-					_ = value3
-					value4 := matched1850Fields.fields[1]
-					_ = value4
-					return value3
-				default:
-					panic("invalid constructor in match")
-				}
-			}(), func(value5 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), "Either::Left", []LawSpecValue{value5}, 64, symbols), func() LawSpecValue {
-					matched1694 := value2
-					matched1694Fields := matched1694.Data.(lawSpecData)
-					switch matched1694Fields.tag {
-					case "lawspec.collections::type::Pair::Pair":
-						value6 := matched1694Fields.fields[0]
-						_ = value6
-						value7 := matched1694Fields.fields[1]
-						_ = value7
-						return value7
-					default:
-						panic("invalid constructor in match")
-					}
-				}()}, 64, symbols)
-			}, func(value8 LawSpecValue) LawSpecValue {
-				return lawSpecEvaluate829(symbols, func() LawSpecValue {
-					matched4009 := func() LawSpecValue {
-						matched1596 := value2
-						matched1596Fields := matched1596.Data.(lawSpecData)
-						switch matched1596Fields.tag {
-						case "lawspec.collections::type::Pair::Pair":
-							value9 := matched1596Fields.fields[0]
-							_ = value9
-							value10 := matched1596Fields.fields[1]
-							_ = value10
-							return value10
-						default:
-							panic("invalid constructor in match")
-						}
-					}()
-					matched4009Fields := matched4009.Data.(lawSpecData)
-					switch matched4009Fields.tag {
-					case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-						value11 := matched4009Fields.fields[0]
-						_ = value11
-						value12 := matched4009Fields.fields[1]
-						_ = value12
-						value13 := matched4009Fields.fields[2]
-						_ = value13
-						value14 := matched4009Fields.fields[3]
-						_ = value14
-						value15 := matched4009Fields.fields[4]
-						_ = value15
-						value16 := matched4009Fields.fields[5]
-						_ = value16
-						value17 := matched4009Fields.fields[6]
-						_ = value17
-						return value15
-					default:
-						panic("invalid constructor in match")
-					}
-				}(), value0, func() LawSpecValue {
-					matched1700 := value2
-					matched1700Fields := matched1700.Data.(lawSpecData)
-					switch matched1700Fields.tag {
-					case "lawspec.collections::type::Pair::Pair":
-						value18 := matched1700Fields.fields[0]
-						_ = value18
-						value19 := matched1700Fields.fields[1]
-						_ = value19
-						return value19
-					default:
-						panic("invalid constructor in match")
-					}
-				}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord")), "List::Nil", []LawSpecValue{}, 64, symbols))
-			})
-		}()
-		return result
-	})
+	return lsfTo_8ac5ed3c86fa(lsfConsumerPoll_d12c6262(symbols, lsfFrom_b862204e9be7(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate731(
@@ -5153,80 +4681,7 @@ func lawSpecEvaluate731(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerPosition", func() LawSpecValue {
-		result := lsMatchMaybe(lawSpecEvaluate667(symbols, value0, func() LawSpecValue {
-			matched2848 := value1
-			matched2848Fields := matched2848.Data.(lawSpecData)
-			switch matched2848Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value2 := matched2848Fields.fields[0]
-				_ = value2
-				value3 := matched2848Fields.fields[1]
-				_ = value3
-				value4 := matched2848Fields.fields[2]
-				_ = value4
-				value5 := matched2848Fields.fields[3]
-				_ = value5
-				value6 := matched2848Fields.fields[4]
-				_ = value6
-				value7 := matched2848Fields.fields[5]
-				_ = value7
-				value8 := matched2848Fields.fields[6]
-				_ = value8
-				return value7
-			default:
-				panic("invalid constructor in match")
-			}
-		}()), func() LawSpecValue {
-			return func() LawSpecValue {
-				value19 := lsMatchMaybe(func() LawSpecValue {
-					matched2642 := value1
-					matched2642Fields := matched2642.Data.(lawSpecData)
-					switch matched2642Fields.tag {
-					case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-						value10 := matched2642Fields.fields[0]
-						_ = value10
-						value11 := matched2642Fields.fields[1]
-						_ = value11
-						value12 := matched2642Fields.fields[2]
-						_ = value12
-						value13 := matched2642Fields.fields[3]
-						_ = value13
-						value14 := matched2642Fields.fields[4]
-						_ = value14
-						value15 := matched2642Fields.fields[5]
-						_ = value15
-						value16 := matched2642Fields.fields[6]
-						_ = value16
-						return value10
-					default:
-						panic("invalid constructor in match")
-					}
-				}(), func() LawSpecValue {
-					return lsConvert("Int64", lsInteger("Int64", "0"), 64)
-				}, func(value17 LawSpecValue) LawSpecValue {
-					return lsMatchMaybe(func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-						resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(value17), codec1.toNative(value0)))
-					}(), func() LawSpecValue {
-						return lsConvert("Int64", lsInteger("Int64", "0"), 64)
-					}, func(value18 LawSpecValue) LawSpecValue {
-						return value18
-					})
-				})
-				_ = value19
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Int64"), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{value19, lawSpecEvaluate861(symbols, value0, value19, value1)}, 64, symbols)
-			}()
-		}, func(value9 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Int64"), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{value9, value1}, 64, symbols)
-		})
-		return result
-	})
+	return lsfTo_3bb39d28b6fe(lsfConsumerPosition_4da411a3(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate732(
@@ -5234,65 +4689,7 @@ func lawSpecEvaluate732(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerPositionOf", func() LawSpecValue {
-		result := func() LawSpecValue { if lsTruth(lsBool(!lsTruth(lsAllElements(func() LawSpecValue {
-			matched2735 := value1
-			matched2735Fields := matched2735.Data.(lawSpecData)
-			switch matched2735Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value2 := matched2735Fields.fields[0]
-				_ = value2
-				value3 := matched2735Fields.fields[1]
-				_ = value3
-				value4 := matched2735Fields.fields[2]
-				_ = value4
-				value5 := matched2735Fields.fields[3]
-				_ = value5
-				value6 := matched2735Fields.fields[4]
-				_ = value6
-				value7 := matched2735Fields.fields[5]
-				_ = value7
-				value8 := matched2735Fields.fields[6]
-				_ = value8
-				return value6
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func(value9 LawSpecValue) LawSpecValue {
-			return lsBool(!_lawSpecDefinitionSchema.equal(lsNamed("lawtwin.kafka.model::type::TopicPartition"), value9, value0, 64, symbols))
-		})))) { return func() LawSpecValue {
-			value10 := lawSpecEvaluate731(symbols, value0, value1)
-			_ = value10
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{func() LawSpecValue {
-				matched1451 := value10
-				matched1451Fields := matched1451.Data.(lawSpecData)
-				switch matched1451Fields.tag {
-				case "lawspec.collections::type::Pair::Pair":
-					value11 := matched1451Fields.fields[0]
-					_ = value11
-					value12 := matched1451Fields.fields[1]
-					_ = value12
-					return value11
-				default:
-					panic("invalid constructor in match")
-				}
-			}()}, 64, symbols), func() LawSpecValue {
-				matched1509 := value10
-				matched1509Fields := matched1509.Data.(lawSpecData)
-				switch matched1509Fields.tag {
-				case "lawspec.collections::type::Pair::Pair":
-					value13 := matched1509Fields.fields[0]
-					_ = value13
-					value14 := matched1509Fields.fields[1]
-					_ = value14
-					return value14
-				default:
-					panic("invalid constructor in match")
-				}
-			}()}, 64, symbols)
-		}() }; return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1}, 64, symbols) }()
-		return result
-	})
+	return lsfTo_af15eded3eac(lsfConsumerPositionOf_71a8a523(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_7de2ae0da384(value1)))
 }
 
 func lawSpecEvaluate733(
@@ -5300,213 +4697,11 @@ func lawSpecEvaluate733(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9aa0842592c4(lsfConsumerRecords_47(lsfFrom_57a515e0e489(value0), lsfFrom_ed14fca60ee3(value1)))
+	return lsfTo_9aa0842592c4(lsfConsumerRecords_9d810f29(lsfFrom_57a515e0e489(value0), lsfFrom_ed14fca60ee3(value1)))
 }
 
 func lawSpecEvaluate734(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaConsumerRefresh", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2630 := value0
-			matched2630Fields := matched2630.Data.(lawSpecData)
-			switch matched2630Fields.tag {
-			case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-				value1 := matched2630Fields.fields[0]
-				_ = value1
-				value2 := matched2630Fields.fields[1]
-				_ = value2
-				value3 := matched2630Fields.fields[2]
-				_ = value3
-				value4 := matched2630Fields.fields[3]
-				_ = value4
-				value5 := matched2630Fields.fields[4]
-				_ = value5
-				value6 := matched2630Fields.fields[5]
-				_ = value6
-				value7 := matched2630Fields.fields[6]
-				_ = value7
-				return value1
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), value0}, 64, symbols)
-		}, func(value8 LawSpecValue) LawSpecValue {
-			return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[string](schema, bits, "Text")
-						codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).HeartbeatRequest(codec0.toNative(value8), codec1.toNative(func() LawSpecValue {
-								matched2572 := value0
-								matched2572Fields := matched2572.Data.(lawSpecData)
-								switch matched2572Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value9 := matched2572Fields.fields[0]
-									_ = value9
-									value10 := matched2572Fields.fields[1]
-									_ = value10
-									value11 := matched2572Fields.fields[2]
-									_ = value11
-									value12 := matched2572Fields.fields[3]
-									_ = value12
-									value13 := matched2572Fields.fields[4]
-									_ = value13
-									value14 := matched2572Fields.fields[5]
-									_ = value14
-									value15 := matched2572Fields.fields[6]
-									_ = value15
-									return value10
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec2.toNative(func() LawSpecValue {
-								matched2574 := value0
-								matched2574Fields := matched2574.Data.(lawSpecData)
-								switch matched2574Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value16 := matched2574Fields.fields[0]
-									_ = value16
-									value17 := matched2574Fields.fields[1]
-									_ = value17
-									value18 := matched2574Fields.fields[2]
-									_ = value18
-									value19 := matched2574Fields.fields[3]
-									_ = value19
-									value20 := matched2574Fields.fields[4]
-									_ = value20
-									value21 := matched2574Fields.fields[5]
-									_ = value21
-									value22 := matched2574Fields.fields[6]
-									_ = value22
-									return value18
-								default:
-									panic("invalid constructor in match")
-								}
-							}()))
-							return resultCodec.fromNative(LawSpecUnit{})
-						}()
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value23 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value23}, 64, symbols)
-			}, func(value24 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value24}, 64, symbols)
-			}), func(value26 LawSpecValue) LawSpecValue {
-				return func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("lawtwin.kafka.model::type::KafkaError"), value26, _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalGeneration", []LawSpecValue{}, 64, symbols), 64, symbols))) || lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("lawtwin.kafka.model::type::KafkaError"), value26, _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::UnknownMemberId", []LawSpecValue{}, 64, symbols), 64, symbols))))) { return func() LawSpecValue {
-					value41 := lawSpecEvaluate729(symbols, value8, func() LawSpecValue {
-						matched2572 := value0
-						matched2572Fields := matched2572.Data.(lawSpecData)
-						switch matched2572Fields.tag {
-						case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-							value27 := matched2572Fields.fields[0]
-							_ = value27
-							value28 := matched2572Fields.fields[1]
-							_ = value28
-							value29 := matched2572Fields.fields[2]
-							_ = value29
-							value30 := matched2572Fields.fields[3]
-							_ = value30
-							value31 := matched2572Fields.fields[4]
-							_ = value31
-							value32 := matched2572Fields.fields[5]
-							_ = value32
-							value33 := matched2572Fields.fields[6]
-							_ = value33
-							return value28
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), func() LawSpecValue {
-						matched2644 := value0
-						matched2644Fields := matched2644.Data.(lawSpecData)
-						switch matched2644Fields.tag {
-						case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-							value34 := matched2644Fields.fields[0]
-							_ = value34
-							value35 := matched2644Fields.fields[1]
-							_ = value35
-							value36 := matched2644Fields.fields[2]
-							_ = value36
-							value37 := matched2644Fields.fields[3]
-							_ = value37
-							value38 := matched2644Fields.fields[4]
-							_ = value38
-							value39 := matched2644Fields.fields[5]
-							_ = value39
-							value40 := matched2644Fields.fields[6]
-							_ = value40
-							return value37
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), value0)
-					_ = value41
-					return lsMatchEither(func() LawSpecValue {
-						matched2158 := value41
-						matched2158Fields := matched2158.Data.(lawSpecData)
-						switch matched2158Fields.tag {
-						case "lawspec.collections::type::Pair::Pair":
-							value42 := matched2158Fields.fields[0]
-							_ = value42
-							value43 := matched2158Fields.fields[1]
-							_ = value43
-							return value42
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), func(value44 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value44}, 64, symbols), func() LawSpecValue {
-							matched1856 := value41
-							matched1856Fields := matched1856.Data.(lawSpecData)
-							switch matched1856Fields.tag {
-							case "lawspec.collections::type::Pair::Pair":
-								value45 := matched1856Fields.fields[0]
-								_ = value45
-								value46 := matched1856Fields.fields[1]
-								_ = value46
-								return value46
-							default:
-								panic("invalid constructor in match")
-							}
-						}()}, 64, symbols)
-					}, func(value47 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), func() LawSpecValue {
-							matched1856 := value41
-							matched1856Fields := matched1856.Data.(lawSpecData)
-							switch matched1856Fields.tag {
-							case "lawspec.collections::type::Pair::Pair":
-								value48 := matched1856Fields.fields[0]
-								_ = value48
-								value49 := matched1856Fields.fields[1]
-								_ = value49
-								return value49
-							default:
-								panic("invalid constructor in match")
-							}
-						}()}, 64, symbols)
-					})
-				}() }; return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value26}, 64, symbols), value0}, 64, symbols) }()
-			}, func(value25 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), value0}, 64, symbols)
-			})
-		})
-		return result
-	})
+	return lsfTo_34d15aaae84b(lsfConsumerRefresh_99e956fa(symbols, lsfFrom_7de2ae0da384(value0)))
 }
 
 func lawSpecEvaluate735(
@@ -5515,7 +4710,7 @@ func lawSpecEvaluate735(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_34d15aaae84b(lsfConsumerSeek_48(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
+	return lsfTo_34d15aaae84b(lsfConsumerSeek_975a7017(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
 }
 
 func lawSpecEvaluate736(
@@ -5524,7 +4719,7 @@ func lawSpecEvaluate736(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfCoversOnce_49(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_9b6e0477a826(value2)))
+	return lsfTo_d267428fb2ca(lsfCoversOnce_231e9ee6(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_9b6e0477a826(value2)))
 }
 
 func lawSpecEvaluate737(
@@ -5532,42 +4727,7 @@ func lawSpecEvaluate737(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaCreated", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-					resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-					return func() LawSpecValue {
-						lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).CreateTopicsRequest(codec0.toNative(value0), codec1.toNative(value1))
-						return resultCodec.fromNative(LawSpecUnit{})
-					}()
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value2 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value2}, 64, symbols)
-		}, func(value3 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value3}, 64, symbols)
-		}), func(value4 LawSpecValue) LawSpecValue {
-			return lsConvert("Bool", lsBool(false), 64)
-		}, func(value5 LawSpecValue) LawSpecValue {
-			return lsConvert("Bool", lsBool(true), 64)
-		})
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfCreated_5201db31(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1)))
 }
 
 func lawSpecEvaluate738(
@@ -5575,7 +4735,7 @@ func lawSpecEvaluate738(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfFencedBy_50(lsfFrom_6a5ea41697b3(value0), lsfFrom_6a5ea41697b3(value1)))
+	return lsfTo_d267428fb2ca(lsfFencedBy_c383bb89(lsfFrom_6a5ea41697b3(value0), lsfFrom_6a5ea41697b3(value1)))
 }
 
 func lawSpecEvaluate739(
@@ -5584,7 +4744,7 @@ func lawSpecEvaluate739(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfFollowsBatch_51(lsfFrom_aff9cc782806(value0), lsfFrom_e3583a5b5bdc(value1), lsfFrom_aff9cc782806(value2)))
+	return lsfTo_d267428fb2ca(lsfFollowsBatch_00cf360a(lsfFrom_aff9cc782806(value0), lsfFrom_e3583a5b5bdc(value1), lsfFrom_aff9cc782806(value2)))
 }
 
 func lawSpecEvaluate740(
@@ -5592,27 +4752,27 @@ func lawSpecEvaluate740(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfFollowsOne_52(lsfFrom_f9a3e61df1f3(value0), lsfFrom_aff9cc782806(value1)))
+	return lsfTo_d267428fb2ca(lsfFollowsOne_4f3a93e2(lsfFrom_f9a3e61df1f3(value0), lsfFrom_aff9cc782806(value1)))
 }
 
 func lawSpecEvaluate741(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7de2ae0da384(lsfFreshConsumer_53(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_7de2ae0da384(lsfFreshConsumer_c2da4184(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate742(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_5e5d2c3fa1a7(lsfFreshProducer_54(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_5e5d2c3fa1a7(lsfFreshProducer_deea7b00(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate743(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_74b3f2831172(lsfFreshTransactions_55(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_74b3f2831172(lsfFreshTransactions_533fb432(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate744(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_5d20fb53d3a6(lsfIdentityOf_56(lsfFrom_5e5d2c3fa1a7(value0)))
+	return lsfTo_5d20fb53d3a6(lsfIdentityOf_96976095(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate745(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfIncreasing_57(lsfFrom_75994955e886(value0)))
+	return lsfTo_d267428fb2ca(lsfIncreasing_d02ccce0(lsfFrom_75994955e886(value0)))
 }
 
 func lawSpecEvaluate746(
@@ -5621,51 +4781,7 @@ func lawSpecEvaluate746(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaJoinAll", func() LawSpecValue {
-		result := func() LawSpecValue {
-			matched8165 := value1
-			matched8165Fields := matched8165.Data.([]LawSpecValue)
-			if len(matched8165Fields) == 0 {
-				return lsConvert("Bool", lsBool(true), 64)
-			}
-			value3 := matched8165Fields[0]
-			_ = value3
-			value4 := lsList("List Text", matched8165Fields[1:])
-			_ = value4
-			return lsBool(lsTruth(lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[string](schema, bits, "Text")
-						codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-						resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).JoinGroupRequest(codec0.toNative(value0), codec1.toNative(value3), codec2.toNative(value2)))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value5 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{value5}, 64, symbols)
-			}, func(value6 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{value6}, 64, symbols)
-			}), func(value7 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(false), 64)
-			}, func(value8 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(true), 64)
-			})) && lsTruth(lawSpecEvaluate746(symbols, value0, value4, value2)))
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfJoinAll_67d573a5(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_8ec0351dc657(value2)))
 }
 
 func lawSpecEvaluate747(
@@ -5674,51 +4790,7 @@ func lawSpecEvaluate747(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaJoinEach", func() LawSpecValue {
-		result := func() LawSpecValue {
-			matched8215 := value1
-			matched8215Fields := matched8215.Data.([]LawSpecValue)
-			if len(matched8215Fields) == 0 {
-				return lsConvert("Bool", lsBool(true), 64)
-			}
-			value3 := matched8215Fields[0]
-			_ = value3
-			value4 := lsList("List Text", matched8215Fields[1:])
-			_ = value4
-			return lsBool(lsTruth(lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[string](schema, bits, "Text")
-						codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-						resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::GroupCoordinator").(GroupCoordinator).JoinGroup(codec0.toNative(value0), codec1.toNative(value3), codec2.toNative(value2)))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value5 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Left", []LawSpecValue{value5}, 64, symbols)
-			}, func(value6 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int32")), "Either::Right", []LawSpecValue{value6}, 64, symbols)
-			}), func(value7 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(false), 64)
-			}, func(value8 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(true), 64)
-			})) && lsTruth(lawSpecEvaluate747(symbols, value0, value4, value2)))
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfJoinEach_78c50afb(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_8ec0351dc657(value1), lsfFrom_8ec0351dc657(value2)))
 }
 
 func lawSpecEvaluate748(
@@ -5727,11 +4799,11 @@ func lawSpecEvaluate748(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d1208e18a243(lsfKeepPositions_67(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1), lsfFrom_d1208e18a243(value2)))
+	return lsfTo_d1208e18a243(lsfKeepPositions_f10bd26f(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1), lsfFrom_d1208e18a243(value2)))
 }
 
 func lawSpecEvaluate749(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfMemberIds_236(lsfFrom_8ec0351dc657(value0)))
+	return lsfTo_8ec0351dc657(lsfMemberIds_1e3fa12d(lsfFrom_8ec0351dc657(value0)))
 }
 
 func lawSpecEvaluate750(
@@ -5739,7 +4811,7 @@ func lawSpecEvaluate750(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3250492fe9ac(lsfMissingFrom_237(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
+	return lsfTo_3250492fe9ac(lsfMissingFrom_37856ee4(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
 func lawSpecEvaluate751(
@@ -5750,7 +4822,7 @@ func lawSpecEvaluate751(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelAddPartitionsToTxn_165(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_3250492fe9ac(value3), lsfFrom_49de88d0a810(value4)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelAddPartitionsToTxn_8d367d82(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_3250492fe9ac(value3), lsfFrom_49de88d0a810(value4)))
 }
 
 func lawSpecEvaluate752(
@@ -5758,7 +4830,7 @@ func lawSpecEvaluate752(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelAllKnown_166(lsfFrom_3250492fe9ac(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelAllKnown_12a378f8(lsfFrom_3250492fe9ac(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate753(
@@ -5768,7 +4840,7 @@ func lawSpecEvaluate753(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelAppendBatch_167(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_d267428fb2ca(value2), lsfFrom_17b5cd6f2c74(value3)))
+	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelAppendBatch_8797ae9f(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_d267428fb2ca(value2), lsfFrom_17b5cd6f2c74(value3)))
 }
 
 func lawSpecEvaluate754(
@@ -5779,7 +4851,7 @@ func lawSpecEvaluate754(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_686946ac9a54(lsfLawtwinKafkaModelAppendRecords_168(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_09a45efed198(value4)))
+	return lsfTo_686946ac9a54(lsfLawtwinKafkaModelAppendRecords_f5613738(lsfFrom_e3583a5b5bdc(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_09a45efed198(value4)))
 }
 
 func lawSpecEvaluate755(
@@ -5787,7 +4859,7 @@ func lawSpecEvaluate755(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelApplyOffsets_169(lsfFrom_8af9a375600a(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelApplyOffsets_c0f73b56(lsfFrom_8af9a375600a(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate756(
@@ -5798,7 +4870,7 @@ func lawSpecEvaluate756(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignPartitions_170(lsfFrom_437d0abf423f(value0), lsfFrom_508e8cda1c80(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_ead2bdf5b1de(value4)))
+	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignPartitions_598afda2(lsfFrom_437d0abf423f(value0), lsfFrom_508e8cda1c80(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_ead2bdf5b1de(value4)))
 }
 
 func lawSpecEvaluate757(
@@ -5807,7 +4879,7 @@ func lawSpecEvaluate757(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTo_171(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_ead2bdf5b1de(value2)))
+	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTo_98dab4ee(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_ead2bdf5b1de(value2)))
 }
 
 func lawSpecEvaluate758(
@@ -5817,7 +4889,7 @@ func lawSpecEvaluate758(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTopics_172(lsfFrom_8ec0351dc657(value0), lsfFrom_ef13ae4d9e38(value1), lsfFrom_49de88d0a810(value2), lsfFrom_ead2bdf5b1de(value3)))
+	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelAssignTopics_0d94256d(lsfFrom_8ec0351dc657(value0), lsfFrom_ef13ae4d9e38(value1), lsfFrom_49de88d0a810(value2), lsfFrom_ead2bdf5b1de(value3)))
 }
 
 func lawSpecEvaluate759(
@@ -5827,7 +4899,7 @@ func lawSpecEvaluate759(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelCheckMember_173(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelCheckMember_f218b850(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate760(
@@ -5837,7 +4909,7 @@ func lawSpecEvaluate760(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b74501b1952d(lsfLawtwinKafkaModelCheckTxnProducer_174(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_b74501b1952d(lsfLawtwinKafkaModelCheckTxnProducer_2936d9ae(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate761(
@@ -5846,7 +4918,7 @@ func lawSpecEvaluate761(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelCommitAll_175(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelCommitAll_4ae78738(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate762(
@@ -5854,7 +4926,7 @@ func lawSpecEvaluate762(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelComputeAssignment_176(lsfFrom_573c5ecbb13e(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelComputeAssignment_07bd1943(lsfFrom_573c5ecbb13e(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate763(
@@ -5863,7 +4935,7 @@ func lawSpecEvaluate763(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreatePartitions_177(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreatePartitions_8c9ce76b(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate764(
@@ -5872,7 +4944,7 @@ func lawSpecEvaluate764(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreateTopic_178(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelCreateTopic_0d831a39(lsfFrom_437d0abf423f(value0), lsfFrom_b862204e9be7(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate765(
@@ -5880,7 +4952,7 @@ func lawSpecEvaluate765(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_63f9a172d3e8(lsfLawtwinKafkaModelDescribeGroup_179(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_63f9a172d3e8(lsfLawtwinKafkaModelDescribeGroup_bf8df8f8(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate766(
@@ -5888,19 +4960,19 @@ func lawSpecEvaluate766(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelEmptyAssignments_180(lsfFrom_8ec0351dc657(value0), lsfFrom_ead2bdf5b1de(value1)))
+	return lsfTo_ead2bdf5b1de(lsfLawtwinKafkaModelEmptyAssignments_91b44e0d(lsfFrom_8ec0351dc657(value0), lsfFrom_ead2bdf5b1de(value1)))
 }
 
 func lawSpecEvaluate767(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelEmptyBroker_181(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelEmptyBroker_d5fd8237(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate768(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelEmptyGroup_182(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelEmptyGroup_2fc4809b(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate769(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelEmptyLog_183(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelEmptyLog_a7825ed0(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate770(
@@ -5911,7 +4983,7 @@ func lawSpecEvaluate770(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelEndTxn_184(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_49de88d0a810(value4)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelEndTxn_b2637a52(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_49de88d0a810(value4)))
 }
 
 func lawSpecEvaluate771(
@@ -5919,7 +4991,7 @@ func lawSpecEvaluate771(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelExpectedSequence_185(lsfFrom_07dabd732290(value0), lsfFrom_789f82e1207e(value1)))
+	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelExpectedSequence_83e363c8(lsfFrom_07dabd732290(value0), lsfFrom_789f82e1207e(value1)))
 }
 
 func lawSpecEvaluate772(
@@ -5930,7 +5002,7 @@ func lawSpecEvaluate772(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_41f56b34d22a(lsfLawtwinKafkaModelFetch_186(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_b862204e9be7(value2), lsfFrom_a519f593a6ed(value3), lsfFrom_49de88d0a810(value4)))
+	return lsfTo_41f56b34d22a(lsfLawtwinKafkaModelFetch_29936450(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_b862204e9be7(value2), lsfFrom_a519f593a6ed(value3), lsfFrom_49de88d0a810(value4)))
 }
 
 func lawSpecEvaluate773(
@@ -5940,7 +5012,7 @@ func lawSpecEvaluate773(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c09136e29464(lsfLawtwinKafkaModelFindDuplicate_187(lsfFrom_07dabd732290(value0), lsfFrom_b862204e9be7(value1), lsfFrom_b862204e9be7(value2), lsfFrom_789f82e1207e(value3)))
+	return lsfTo_c09136e29464(lsfLawtwinKafkaModelFindDuplicate_3335aea4(lsfFrom_07dabd732290(value0), lsfFrom_b862204e9be7(value1), lsfFrom_b862204e9be7(value2), lsfFrom_789f82e1207e(value3)))
 }
 
 func lawSpecEvaluate774(
@@ -5950,7 +5022,7 @@ func lawSpecEvaluate774(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelFinishTxn_188(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_a198a150c390(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelFinishTxn_7545803e(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_a198a150c390(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate775(
@@ -5958,7 +5030,7 @@ func lawSpecEvaluate775(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelGroupOf_189(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelGroupOf_abe7cb22(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate776(
@@ -5968,11 +5040,11 @@ func lawSpecEvaluate776(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelHeartbeat_190(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelHeartbeat_0f08a54d(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate777(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelHighWatermark_191(lsfFrom_17b5cd6f2c74(value0)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelHighWatermark_da6ed677(lsfFrom_17b5cd6f2c74(value0)))
 }
 
 func lawSpecEvaluate778(
@@ -5980,7 +5052,7 @@ func lawSpecEvaluate778(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelInitProducerId_192(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelInitProducerId_cedb7e1b(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate779(
@@ -5989,7 +5061,7 @@ func lawSpecEvaluate779(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelIsAborted_193(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_06583b2ebf3b(value2)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelIsAborted_b12645e5(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_06583b2ebf3b(value2)))
 }
 
 func lawSpecEvaluate780(
@@ -5999,7 +5071,7 @@ func lawSpecEvaluate780(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ab8cd6a31aaf(lsfLawtwinKafkaModelJoinGroup_194(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_ab8cd6a31aaf(lsfLawtwinKafkaModelJoinGroup_9a1e92f5(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_8ec0351dc657(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate781(
@@ -6007,7 +5079,7 @@ func lawSpecEvaluate781(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelKnownPartition_195(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelKnownPartition_71d3099f(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate782(
@@ -6015,11 +5087,11 @@ func lawSpecEvaluate782(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastOffsetOf_196(lsfFrom_ed14fca60ee3(value0), lsfFrom_44a08172da10(value1)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastOffsetOf_544a605b(lsfFrom_ed14fca60ee3(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate783(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastStableOffset_197(lsfFrom_17b5cd6f2c74(value0)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelLastStableOffset_e8497029(lsfFrom_17b5cd6f2c74(value0)))
 }
 
 func lawSpecEvaluate784(
@@ -6028,7 +5100,7 @@ func lawSpecEvaluate784(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelLeaveGroup_198(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelLeaveGroup_5e5a3f69(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate785(
@@ -6038,7 +5110,7 @@ func lawSpecEvaluate785(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelListOffsets_199(lsfFrom_57a515e0e489(value0), lsfFrom_c55be5a8a1f1(value1), lsfFrom_a519f593a6ed(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelListOffsets_9c6c9426(lsfFrom_57a515e0e489(value0), lsfFrom_c55be5a8a1f1(value1), lsfFrom_a519f593a6ed(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate786(
@@ -6046,7 +5118,7 @@ func lawSpecEvaluate786(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelLogOf_200(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelLogOf_b86b131a(lsfFrom_57a515e0e489(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate787(
@@ -6054,15 +5126,15 @@ func lawSpecEvaluate787(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMax64_201(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMax64_98542b8b(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate788(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelMaxPartitions_202(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_b862204e9be7(lsfLawtwinKafkaModelMaxPartitions_6be37992(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate789(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_4d7586f102e6(lsfLawtwinKafkaModelMemberViews_203(lsfFrom_b3fb2926095a(value0)))
+	return lsfTo_4d7586f102e6(lsfLawtwinKafkaModelMemberViews_a87b1b1a(lsfFrom_b3fb2926095a(value0)))
 }
 
 func lawSpecEvaluate790(
@@ -6070,7 +5142,7 @@ func lawSpecEvaluate790(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_9fa363f31106(lsfLawtwinKafkaModelMetadata_204(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_9fa363f31106(lsfLawtwinKafkaModelMetadata_97bb5c4c(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate791(
@@ -6078,7 +5150,7 @@ func lawSpecEvaluate791(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMin64_205(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMin64_b47ce987(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate792(
@@ -6086,7 +5158,7 @@ func lawSpecEvaluate792(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMinOf_206(lsfFrom_75994955e886(value0), lsfFrom_44a08172da10(value1)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelMinOf_c4e891de(lsfFrom_75994955e886(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate793(
@@ -6094,7 +5166,7 @@ func lawSpecEvaluate793(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelNewProducer_207(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_95d3f4123329(lsfLawtwinKafkaModelNewProducer_89b0852d(lsfFrom_01d86fc44f8c(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate794(
@@ -6104,7 +5176,7 @@ func lawSpecEvaluate794(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_44a08172da10(lsfLawtwinKafkaModelNextFetchOffset_208(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_ed14fca60ee3(value2), lsfFrom_ed14fca60ee3(value3)))
+	return lsfTo_44a08172da10(lsfLawtwinKafkaModelNextFetchOffset_28fd5a97(lsfFrom_44a08172da10(value0), lsfFrom_44a08172da10(value1), lsfFrom_ed14fca60ee3(value2), lsfFrom_ed14fca60ee3(value3)))
 }
 
 func lawSpecEvaluate795(
@@ -6115,7 +5187,7 @@ func lawSpecEvaluate795(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelOffsetCommit_209(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_582052f40a9c(value3), lsfFrom_49de88d0a810(value4)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelOffsetCommit_01d91ef0(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_582052f40a9c(value3), lsfFrom_49de88d0a810(value4)))
 }
 
 func lawSpecEvaluate796(
@@ -6124,11 +5196,11 @@ func lawSpecEvaluate796(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_38ff65c06c92(lsfLawtwinKafkaModelOffsetFetch_210(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_38ff65c06c92(lsfLawtwinKafkaModelOffsetFetch_f56dbfcd(lsfFrom_437d0abf423f(value0), lsfFrom_57a515e0e489(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate797(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelOffsetPartitions_211(lsfFrom_582052f40a9c(value0)))
+	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelOffsetPartitions_ffb8aecd(lsfFrom_582052f40a9c(value0)))
 }
 
 func lawSpecEvaluate798(
@@ -6136,11 +5208,11 @@ func lawSpecEvaluate798(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfLawtwinKafkaModelPartitionCountOf_212(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_e0f8ce0ed062(lsfLawtwinKafkaModelPartitionCountOf_ff180c35(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate799(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_508e8cda1c80(lsfLawtwinKafkaModelPartitionsBelow_213(lsfFrom_b862204e9be7(value0)))
+	return lsfTo_508e8cda1c80(lsfLawtwinKafkaModelPartitionsBelow_19525eca(lsfFrom_b862204e9be7(value0)))
 }
 
 func lawSpecEvaluate800(
@@ -6149,7 +5221,7 @@ func lawSpecEvaluate800(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelPendingFor_214(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_8af9a375600a(value2)))
+	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelPendingFor_50512591(lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_8af9a375600a(value2)))
 }
 
 func lawSpecEvaluate801(
@@ -6159,7 +5231,7 @@ func lawSpecEvaluate801(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduce_215(lsfFrom_57a515e0e489(value0), lsfFrom_c818bd20f406(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduce_834568df(lsfFrom_57a515e0e489(value0), lsfFrom_c818bd20f406(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate802(
@@ -6170,7 +5242,7 @@ func lawSpecEvaluate802(
 	value3 LawSpecValue,
 	value4 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduceTagged_216(lsfFrom_57a515e0e489(value0), lsfFrom_fcd7b841fa1b(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_17b5cd6f2c74(value3), lsfFrom_49de88d0a810(value4)))
+	return lsfTo_3dd22eccd85c(lsfLawtwinKafkaModelProduceTagged_86f854e7(lsfFrom_57a515e0e489(value0), lsfFrom_fcd7b841fa1b(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_17b5cd6f2c74(value3), lsfFrom_49de88d0a810(value4)))
 }
 
 func lawSpecEvaluate803(
@@ -6179,7 +5251,7 @@ func lawSpecEvaluate803(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutGroup_217(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutGroup_f45eaad0(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate804(
@@ -6188,7 +5260,7 @@ func lawSpecEvaluate804(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutLog_218(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutLog_cb3cbf5e(lsfFrom_57a515e0e489(value0), lsfFrom_17b5cd6f2c74(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate805(
@@ -6197,7 +5269,7 @@ func lawSpecEvaluate805(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutProducer_219(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_49de88d0a810(value2)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelPutProducer_4ef907a5(lsfFrom_44a08172da10(value0), lsfFrom_b74501b1952d(value1), lsfFrom_49de88d0a810(value2)))
 }
 
 func lawSpecEvaluate806(
@@ -6209,7 +5281,7 @@ func lawSpecEvaluate806(
 	value4 LawSpecValue,
 	value5 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_ed14fca60ee3(lsfLawtwinKafkaModelReadable_220(lsfFrom_09a45efed198(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_06583b2ebf3b(value4), lsfFrom_ed14fca60ee3(value5)))
+	return lsfTo_ed14fca60ee3(lsfLawtwinKafkaModelReadable_adec3284(lsfFrom_09a45efed198(value0), lsfFrom_44a08172da10(value1), lsfFrom_44a08172da10(value2), lsfFrom_d267428fb2ca(value3), lsfFrom_06583b2ebf3b(value4), lsfFrom_ed14fca60ee3(value5)))
 }
 
 func lawSpecEvaluate807(
@@ -6217,7 +5289,7 @@ func lawSpecEvaluate807(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelRebalance_221(lsfFrom_121c32c2e75a(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_121c32c2e75a(lsfLawtwinKafkaModelRebalance_c9984d55(lsfFrom_121c32c2e75a(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate808(
@@ -6227,7 +5299,7 @@ func lawSpecEvaluate808(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_76ca967c9ea5(lsfLawtwinKafkaModelRebalanceGroups_222(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1), lsfFrom_49de88d0a810(value2), lsfFrom_76ca967c9ea5(value3)))
+	return lsfTo_76ca967c9ea5(lsfLawtwinKafkaModelRebalanceGroups_ad90673b(lsfFrom_437d0abf423f(value0), lsfFrom_c95dd21cde1e(value1), lsfFrom_49de88d0a810(value2), lsfFrom_76ca967c9ea5(value3)))
 }
 
 func lawSpecEvaluate809(
@@ -6235,7 +5307,7 @@ func lawSpecEvaluate809(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelRebalanceTopic_223(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelRebalanceTopic_823cd68b(lsfFrom_437d0abf423f(value0), lsfFrom_49de88d0a810(value1)))
 }
 
 func lawSpecEvaluate810(
@@ -6244,7 +5316,7 @@ func lawSpecEvaluate810(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelRememberBatch_224(lsfFrom_44a08172da10(value0), lsfFrom_a358ea2021fe(value1), lsfFrom_17b5cd6f2c74(value2)))
+	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelRememberBatch_33fa600f(lsfFrom_44a08172da10(value0), lsfFrom_a358ea2021fe(value1), lsfFrom_17b5cd6f2c74(value2)))
 }
 
 func lawSpecEvaluate811(
@@ -6252,7 +5324,7 @@ func lawSpecEvaluate811(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelReversePending_225(lsfFrom_8af9a375600a(value0), lsfFrom_8af9a375600a(value1)))
+	return lsfTo_8af9a375600a(lsfLawtwinKafkaModelReversePending_51ca5898(lsfFrom_8af9a375600a(value0), lsfFrom_8af9a375600a(value1)))
 }
 
 func lawSpecEvaluate812(
@@ -6260,7 +5332,7 @@ func lawSpecEvaluate812(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_0ee125dab044(lsfLawtwinKafkaModelSubscribedTopics_226(lsfFrom_ef13ae4d9e38(value0), lsfFrom_0ee125dab044(value1)))
+	return lsfTo_0ee125dab044(lsfLawtwinKafkaModelSubscribedTopics_c1d720b5(lsfFrom_ef13ae4d9e38(value0), lsfFrom_0ee125dab044(value1)))
 }
 
 func lawSpecEvaluate813(
@@ -6268,7 +5340,7 @@ func lawSpecEvaluate813(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_8ec0351dc657(lsfLawtwinKafkaModelSubscribersOf_227(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
+	return lsfTo_8ec0351dc657(lsfLawtwinKafkaModelSubscribersOf_e9347318(lsfFrom_437d0abf423f(value0), lsfFrom_ef13ae4d9e38(value1)))
 }
 
 func lawSpecEvaluate814(
@@ -6276,7 +5348,7 @@ func lawSpecEvaluate814(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelSubscribesTo_228(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelSubscribesTo_c3c674c3(lsfFrom_437d0abf423f(value0), lsfFrom_121c32c2e75a(value1)))
 }
 
 func lawSpecEvaluate815(
@@ -6286,7 +5358,7 @@ func lawSpecEvaluate815(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_23e94f6e1895(lsfLawtwinKafkaModelSyncGroup_229(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_23e94f6e1895(lsfLawtwinKafkaModelSyncGroup_b3d01c80(lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate816(
@@ -6294,7 +5366,7 @@ func lawSpecEvaluate816(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelTxnHasPartition_230(lsfFrom_57a515e0e489(value0), lsfFrom_a198a150c390(value1)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelTxnHasPartition_8fa1cfc0(lsfFrom_57a515e0e489(value0), lsfFrom_a198a150c390(value1)))
 }
 
 func lawSpecEvaluate817(
@@ -6306,7 +5378,7 @@ func lawSpecEvaluate817(
 	value4 LawSpecValue,
 	value5 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelTxnOffsetCommit_231(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_437d0abf423f(value3), lsfFrom_582052f40a9c(value4), lsfFrom_49de88d0a810(value5)))
+	return lsfTo_1686d2c89016(lsfLawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lsfFrom_437d0abf423f(value0), lsfFrom_44a08172da10(value1), lsfFrom_07dabd732290(value2), lsfFrom_437d0abf423f(value3), lsfFrom_582052f40a9c(value4), lsfFrom_49de88d0a810(value5)))
 }
 
 func lawSpecEvaluate818(
@@ -6314,11 +5386,11 @@ func lawSpecEvaluate818(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelUnionPartitions_232(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
+	return lsfTo_3250492fe9ac(lsfLawtwinKafkaModelUnionPartitions_c791d224(lsfFrom_3250492fe9ac(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
 func lawSpecEvaluate819(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelValidTopicName_233(lsfFrom_437d0abf423f(value0)))
+	return lsfTo_d267428fb2ca(lsfLawtwinKafkaModelValidTopicName_39dd4596(lsfFrom_437d0abf423f(value0)))
 }
 
 func lawSpecEvaluate820(
@@ -6327,7 +5399,7 @@ func lawSpecEvaluate820(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelWriteMarker_234(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_17b5cd6f2c74(value2)))
+	return lsfTo_17b5cd6f2c74(lsfLawtwinKafkaModelWriteMarker_8dc995f8(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_17b5cd6f2c74(value2)))
 }
 
 func lawSpecEvaluate821(
@@ -6337,7 +5409,7 @@ func lawSpecEvaluate821(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelWriteMarkers_235(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_3250492fe9ac(value2), lsfFrom_49de88d0a810(value3)))
+	return lsfTo_49de88d0a810(lsfLawtwinKafkaModelWriteMarkers_c507f08e(lsfFrom_44a08172da10(value0), lsfFrom_d267428fb2ca(value1), lsfFrom_3250492fe9ac(value2), lsfFrom_49de88d0a810(value3)))
 }
 
 func lawSpecEvaluate822(
@@ -6345,11 +5417,11 @@ func lawSpecEvaluate822(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfMul32_238(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
+	return lsfTo_bd9653153f3b(lsfMul32_b8774c72(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
 func lawSpecEvaluate823(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfMurmur2_239(lsfFrom_9e68ae7ce0b7(value0)))
+	return lsfTo_bd9653153f3b(lsfMurmur2_d0ccf769(lsfFrom_9e68ae7ce0b7(value0)))
 }
 
 func lawSpecEvaluate824(
@@ -6357,11 +5429,11 @@ func lawSpecEvaluate824(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfMurmurChunks_240(lsfFrom_652994edeaff(value0), lsfFrom_bd9653153f3b(value1)))
+	return lsfTo_bd9653153f3b(lsfMurmurChunks_9898bba5(lsfFrom_652994edeaff(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
 func lawSpecEvaluate825(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfMurmurM_241(lsfFrom_b120ceed78cb(value0)))
+	return lsfTo_bd9653153f3b(lsfMurmurM_48968914(lsfFrom_b120ceed78cb(value0)))
 }
 
 func lawSpecEvaluate826(
@@ -6369,7 +5441,7 @@ func lawSpecEvaluate826(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_508e8cda1c80(lsfOwnedOf_243(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
+	return lsfTo_508e8cda1c80(lsfOwnedOf_0d7fb3ae(lsfFrom_437d0abf423f(value0), lsfFrom_4d7586f102e6(value1)))
 }
 
 func lawSpecEvaluate827(
@@ -6378,57 +5450,7 @@ func lawSpecEvaluate827(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaPartitionOf", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			schema := _lawSpecDefinitionSchema
-			bits := 64
-			_, _ = schema, bits
-			codec0 := lsScalarCodec[string](schema, bits, "Text")
-			resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int32](schema, bits, "Int32"), symbols)
-			return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).MetadataRequest(codec0.toNative(value0)))
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::TopicPartition")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", []LawSpecValue{}, 64, symbols)}, 64, symbols)
-		}, func(value3 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue {
-				matched9728 := value1
-				matched9728Fields := matched9728.Data.(lawSpecData)
-				switch matched9728Fields.tag {
-				case "lawtwin.kafka::type::PartitionChoice::ToPartition":
-					value4 := matched9728Fields.fields[0]
-					_ = value4
-					return func() LawSpecValue { if lsTruth(lsBool(lsTruth(lsBinary(">=", value4, lsConvert("Integer", lsInteger("Integer", "0"), 64))) && lsTruth(lsBinary("<", value4, value3)))) { return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::TopicPartition")), "Either::Right", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, value4}, 64, symbols)}, 64, symbols) }; return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::TopicPartition")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition", []LawSpecValue{}, 64, symbols)}, 64, symbols) }()
-				case "lawtwin.kafka::type::PartitionChoice::ByKey":
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::TopicPartition")), "Either::Right", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[[]byte](schema, bits, "Bytes"), symbols)
-						codec1 := lsScalarCodec[int32](schema, bits, "Int32")
-						resultCodec := lsScalarCodec[int32](schema, bits, "Int32")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Partitioner").(Partitioner).ChoosePartition(codec0.toNative(func() LawSpecValue {
-							matched1677 := value2
-							matched1677Fields := matched1677.Data.(lawSpecData)
-							switch matched1677Fields.tag {
-							case "lawtwin.kafka.model::type::Record::Record":
-								value5 := matched1677Fields.fields[0]
-								_ = value5
-								value6 := matched1677Fields.fields[1]
-								_ = value6
-								value7 := matched1677Fields.fields[2]
-								_ = value7
-								return value5
-							default:
-								panic("invalid constructor in match")
-							}
-						}()), codec1.toNative(value3)))
-					}()}, 64, symbols)}, 64, symbols)
-				default:
-					panic("invalid constructor in match")
-				}
-			}()
-		})
-		return result
-	})
+	return lsfTo_dc76e14987c2(lsfPartitionOf_343af5ef(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_3c79f555f54b(value1), lsfFrom_be206fb00188(value2)))
 }
 
 func lawSpecEvaluate828(
@@ -6436,7 +5458,7 @@ func lawSpecEvaluate828(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_508e8cda1c80(lsfPartitionsOfTopic_244(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1)))
+	return lsfTo_508e8cda1c80(lsfPartitionsOfTopic_194a4a6c(lsfFrom_437d0abf423f(value0), lsfFrom_3250492fe9ac(value1)))
 }
 
 func lawSpecEvaluate829(
@@ -6446,152 +5468,7 @@ func lawSpecEvaluate829(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaPollPartitions", func() LawSpecValue {
-		result := func() LawSpecValue {
-			matched26634 := value0
-			matched26634Fields := matched26634.Data.([]LawSpecValue)
-			if len(matched26634Fields) == 0 {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), "Either::Right", []LawSpecValue{value3}, 64, symbols), value2}, 64, symbols)
-			}
-			value4 := matched26634Fields[0]
-			_ = value4
-			value5 := lsList("List lawtwin.kafka.model::type::TopicPartition", matched26634Fields[1:])
-			_ = value5
-			return func() LawSpecValue {
-				value6 := lawSpecEvaluate731(symbols, value4, value2)
-				_ = value6
-				return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-							codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-							resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(value4), codec1.toNative(func() LawSpecValue {
-								matched1432 := value6
-								matched1432Fields := matched1432.Data.(lawSpecData)
-								switch matched1432Fields.tag {
-								case "lawspec.collections::type::Pair::Pair":
-									value7 := matched1432Fields.fields[0]
-									_ = value7
-									value8 := matched1432Fields.fields[1]
-									_ = value8
-									return value7
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec2.toNative(value1), codec3.toNative(func() LawSpecValue {
-								matched2635 := value2
-								matched2635Fields := matched2635.Data.(lawSpecData)
-								switch matched2635Fields.tag {
-								case "lawtwin.kafka::type::ConsumerState::ConsumerState":
-									value9 := matched2635Fields.fields[0]
-									_ = value9
-									value10 := matched2635Fields.fields[1]
-									_ = value10
-									value11 := matched2635Fields.fields[2]
-									_ = value11
-									value12 := matched2635Fields.fields[3]
-									_ = value12
-									value13 := matched2635Fields.fields[4]
-									_ = value13
-									value14 := matched2635Fields.fields[5]
-									_ = value14
-									value15 := matched2635Fields.fields[6]
-									_ = value15
-									return value15
-								default:
-									panic("invalid constructor in match")
-								}
-							}())))
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value16 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{value16}, 64, symbols)
-				}, func(value17 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{value17}, 64, symbols)
-				}), func(value18 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), lsNamed("lawtwin.kafka::type::ConsumerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("List", lsNamed("lawtwin.kafka::type::ConsumerRecord"))), "Either::Left", []LawSpecValue{value18}, 64, symbols), func() LawSpecValue {
-						matched1489 := value6
-						matched1489Fields := matched1489.Data.(lawSpecData)
-						switch matched1489Fields.tag {
-						case "lawspec.collections::type::Pair::Pair":
-							value19 := matched1489Fields.fields[0]
-							_ = value19
-							value20 := matched1489Fields.fields[1]
-							_ = value20
-							return value20
-						default:
-							panic("invalid constructor in match")
-						}
-					}()}, 64, symbols)
-				}, func(value21 LawSpecValue) LawSpecValue {
-					return lawSpecEvaluate829(symbols, value5, value1, lawSpecEvaluate861(symbols, value4, func() LawSpecValue {
-						matched1769 := value21
-						matched1769Fields := matched1769.Data.(lawSpecData)
-						switch matched1769Fields.tag {
-						case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-							value22 := matched1769Fields.fields[0]
-							_ = value22
-							value23 := matched1769Fields.fields[1]
-							_ = value23
-							value24 := matched1769Fields.fields[2]
-							_ = value24
-							value25 := matched1769Fields.fields[3]
-							_ = value25
-							return value23
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), func() LawSpecValue {
-						matched1490 := value6
-						matched1490Fields := matched1490.Data.(lawSpecData)
-						switch matched1490Fields.tag {
-						case "lawspec.collections::type::Pair::Pair":
-							value26 := matched1490Fields.fields[0]
-							_ = value26
-							value27 := matched1490Fields.fields[1]
-							_ = value27
-							return value27
-						default:
-							panic("invalid constructor in match")
-						}
-					}()), lsHelper("append", []LawSpecValue{value3, lawSpecEvaluate733(symbols, value4, func() LawSpecValue {
-						matched1913 := value21
-						matched1913Fields := matched1913.Data.(lawSpecData)
-						switch matched1913Fields.tag {
-						case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-							value28 := matched1913Fields.fields[0]
-							_ = value28
-							value29 := matched1913Fields.fields[1]
-							_ = value29
-							value30 := matched1913Fields.fields[2]
-							_ = value30
-							value31 := matched1913Fields.fields[3]
-							_ = value31
-							return value28
-						default:
-							panic("invalid constructor in match")
-						}
-					}())}, 64))
-				})
-			}()
-		}()
-		return result
-	})
+	return lsfTo_8ac5ed3c86fa(lsfPollPartitions_9d6feda1(symbols, lsfFrom_3250492fe9ac(value0), lsfFrom_b862204e9be7(value1), lsfFrom_7de2ae0da384(value2), lsfFrom_9aa0842592c4(value3)))
 }
 
 func lawSpecEvaluate830(
@@ -6599,162 +5476,19 @@ func lawSpecEvaluate830(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_582052f40a9c(lsfPositionsToCommit_245(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1)))
+	return lsfTo_582052f40a9c(lsfPositionsToCommit_67969440(lsfFrom_3250492fe9ac(value0), lsfFrom_d1208e18a243(value1)))
 }
 
 func lawSpecEvaluate831(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9a576143471f(lsfProducerFlush_246(lsfFrom_5e5d2c3fa1a7(value0)))
+	return lsfTo_9a576143471f(lsfProducerFlush_f30611db(lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate832(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaProducerIdempotent", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-					resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols))))
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value1 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value1}, 64, symbols)
-		}, func(value2 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value2}, 64, symbols)
-		}), func(value3 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value3}, 64, symbols), value0}, 64, symbols)
-		}, func(value4 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value4}, 64, symbols), _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::ProducerState"), "lawtwin.kafka::type::ProducerState::ProducerState", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Maybe::Just", []LawSpecValue{value4}, 64, symbols), lawSpecEvaluate676(symbols, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawspec.collections::type::Entry", lsNamed("lawtwin.kafka.model::type::TopicPartition"), lsNamed("Int32"))), "List::Nil", []LawSpecValue{}, 64, symbols)), _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka::type::LastSend")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)}, 64, symbols)}, 64, symbols)
-		})
-		return result
-	})
+	return lsfTo_53df4ee1a893(lsfProducerIdempotent_c8ab8a13(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate833(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaProducerRetry", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched1886 := value0
-			matched1886Fields := matched1886.Data.(lawSpecData)
-			switch matched1886Fields.tag {
-			case "lawtwin.kafka::type::ProducerState::ProducerState":
-				value1 := matched1886Fields.fields[0]
-				_ = value1
-				value2 := matched1886Fields.fields[1]
-				_ = value2
-				value3 := matched1886Fields.fields[2]
-				_ = value3
-				return value3
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value0}, 64, symbols)
-		}, func(value4 LawSpecValue) LawSpecValue {
-			return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-						codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-						codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-						resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(func() LawSpecValue {
-							matched1725 := value4
-							matched1725Fields := matched1725.Data.(lawSpecData)
-							switch matched1725Fields.tag {
-							case "lawtwin.kafka::type::LastSend::LastSend":
-								value5 := matched1725Fields.fields[0]
-								_ = value5
-								value6 := matched1725Fields.fields[1]
-								_ = value6
-								value7 := matched1725Fields.fields[2]
-								_ = value7
-								return value5
-							default:
-								panic("invalid constructor in match")
-							}
-						}()), codec1.toNative(func() LawSpecValue {
-							matched1793 := value4
-							matched1793Fields := matched1793.Data.(lawSpecData)
-							switch matched1793Fields.tag {
-							case "lawtwin.kafka::type::LastSend::LastSend":
-								value8 := matched1793Fields.fields[0]
-								_ = value8
-								value9 := matched1793Fields.fields[1]
-								_ = value9
-								value10 := matched1793Fields.fields[2]
-								_ = value10
-								return value9
-							default:
-								panic("invalid constructor in match")
-							}
-						}()), codec2.toNative(func() LawSpecValue {
-							matched1781 := value4
-							matched1781Fields := matched1781.Data.(lawSpecData)
-							switch matched1781Fields.tag {
-							case "lawtwin.kafka::type::LastSend::LastSend":
-								value11 := matched1781Fields.fields[0]
-								_ = value11
-								value12 := matched1781Fields.fields[1]
-								_ = value12
-								value13 := matched1781Fields.fields[2]
-								_ = value13
-								return value13
-							default:
-								panic("invalid constructor in match")
-							}
-						}())))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value14 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value14}, 64, symbols)
-			}, func(value15 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value15}, 64, symbols)
-			}), func(value16 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value16}, 64, symbols), value0}, 64, symbols)
-			}, func(value17 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Right", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::RecordMetadata"), "lawtwin.kafka::type::RecordMetadata::RecordMetadata", []LawSpecValue{func() LawSpecValue {
-					matched1725 := value4
-					matched1725Fields := matched1725.Data.(lawSpecData)
-					switch matched1725Fields.tag {
-					case "lawtwin.kafka::type::LastSend::LastSend":
-						value18 := matched1725Fields.fields[0]
-						_ = value18
-						value19 := matched1725Fields.fields[1]
-						_ = value19
-						value20 := matched1725Fields.fields[2]
-						_ = value20
-						return value18
-					default:
-						panic("invalid constructor in match")
-					}
-				}(), value17}, 64, symbols)}, 64, symbols), value0}, 64, symbols)
-			})
-		})
-		return result
-	})
+	return lsfTo_dc41353054a0(lsfProducerRetry_aaf3a88a(symbols, lsfFrom_5e5d2c3fa1a7(value0)))
 }
 
 func lawSpecEvaluate834(
@@ -6762,206 +5496,7 @@ func lawSpecEvaluate834(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaProducerSend", func() LawSpecValue {
-		result := lsMatchEither(lawSpecEvaluate827(symbols, func() LawSpecValue {
-			matched1540 := value0
-			matched1540Fields := matched1540.Data.(lawSpecData)
-			switch matched1540Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value2 := matched1540Fields.fields[0]
-				_ = value2
-				value3 := matched1540Fields.fields[1]
-				_ = value3
-				value4 := matched1540Fields.fields[2]
-				_ = value4
-				return value2
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			matched1604 := value0
-			matched1604Fields := matched1604.Data.(lawSpecData)
-			switch matched1604Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value5 := matched1604Fields.fields[0]
-				_ = value5
-				value6 := matched1604Fields.fields[1]
-				_ = value6
-				value7 := matched1604Fields.fields[2]
-				_ = value7
-				return value6
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			matched1598 := value0
-			matched1598Fields := matched1598.Data.(lawSpecData)
-			switch matched1598Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value8 := matched1598Fields.fields[0]
-				_ = value8
-				value9 := matched1598Fields.fields[1]
-				_ = value9
-				value10 := matched1598Fields.fields[2]
-				_ = value10
-				return value10
-			default:
-				panic("invalid constructor in match")
-			}
-		}()), func(value11 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value11}, 64, symbols), value1}, 64, symbols)
-		}, func(value12 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue {
-				value16 := lawSpecEvaluate842(symbols, value12, func() LawSpecValue {
-					matched2043 := value1
-					matched2043Fields := matched2043.Data.(lawSpecData)
-					switch matched2043Fields.tag {
-					case "lawtwin.kafka::type::ProducerState::ProducerState":
-						value13 := matched2043Fields.fields[0]
-						_ = value13
-						value14 := matched2043Fields.fields[1]
-						_ = value14
-						value15 := matched2043Fields.fields[2]
-						_ = value15
-						return value14
-					default:
-						panic("invalid constructor in match")
-					}
-				}())
-				_ = value16
-				return func() LawSpecValue {
-					value20 := lawSpecEvaluate845(symbols, func() LawSpecValue {
-						matched1919 := value1
-						matched1919Fields := matched1919.Data.(lawSpecData)
-						switch matched1919Fields.tag {
-						case "lawtwin.kafka::type::ProducerState::ProducerState":
-							value17 := matched1919Fields.fields[0]
-							_ = value17
-							value18 := matched1919Fields.fields[1]
-							_ = value18
-							value19 := matched1919Fields.fields[2]
-							_ = value19
-							return value17
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), value16)
-					_ = value20
-					return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-						return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-						}, func() LawSpecValue {
-							return func() LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-								codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-								codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-								resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-								return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(value12), codec1.toNative(value20), codec2.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{func() LawSpecValue {
-									matched1605 := value0
-									matched1605Fields := matched1605.Data.(lawSpecData)
-									switch matched1605Fields.tag {
-									case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-										value21 := matched1605Fields.fields[0]
-										_ = value21
-										value22 := matched1605Fields.fields[1]
-										_ = value22
-										value23 := matched1605Fields.fields[2]
-										_ = value23
-										return value23
-									default:
-										panic("invalid constructor in match")
-									}
-								}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols))))
-							}()
-						})
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-					}), func(value24 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value24}, 64, symbols)
-					}, func(value25 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value25}, 64, symbols)
-					}), func(value26 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value26}, 64, symbols), value1}, 64, symbols)
-					}, func(value27 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::ProducerState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Right", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::RecordMetadata"), "lawtwin.kafka::type::RecordMetadata::RecordMetadata", []LawSpecValue{value12, value27}, 64, symbols)}, 64, symbols), func() LawSpecValue {
-							matched13710 := func() LawSpecValue {
-								value31 := lawSpecEvaluate698(symbols, value12, lawSpecEvaluate608(symbols, lsBinary("+", value16, lsConvert("Integer", lsInteger("Integer", "1"), 64))), func() LawSpecValue {
-									matched2043 := value1
-									matched2043Fields := matched2043.Data.(lawSpecData)
-									switch matched2043Fields.tag {
-									case "lawtwin.kafka::type::ProducerState::ProducerState":
-										value28 := matched2043Fields.fields[0]
-										_ = value28
-										value29 := matched2043Fields.fields[1]
-										_ = value29
-										value30 := matched2043Fields.fields[2]
-										_ = value30
-										return value29
-									default:
-										panic("invalid constructor in match")
-									}
-								}())
-								_ = value31
-								return func() LawSpecValue {
-									matched2862 := value1
-									matched2862Fields := matched2862.Data.(lawSpecData)
-									switch matched2862Fields.tag {
-									case "lawtwin.kafka::type::ProducerState::ProducerState":
-										value32 := matched2862Fields.fields[0]
-										_ = value32
-										value33 := matched2862Fields.fields[1]
-										_ = value33
-										value34 := matched2862Fields.fields[2]
-										_ = value34
-										return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::ProducerState"), "lawtwin.kafka::type::ProducerState::ProducerState", []LawSpecValue{value32, value31, value34}, 64, symbols)
-									default:
-										panic("invalid constructor in match")
-									}
-								}()
-							}()
-							matched13710Fields := matched13710.Data.(lawSpecData)
-							switch matched13710Fields.tag {
-							case "lawtwin.kafka::type::ProducerState::ProducerState":
-								value35 := matched13710Fields.fields[0]
-								_ = value35
-								value36 := matched13710Fields.fields[1]
-								_ = value36
-								value37 := matched13710Fields.fields[2]
-								_ = value37
-								return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::ProducerState"), "lawtwin.kafka::type::ProducerState::ProducerState", []LawSpecValue{value35, value36, _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka::type::LastSend")), "Maybe::Just", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::LastSend"), "lawtwin.kafka::type::LastSend::LastSend", []LawSpecValue{value12, value20, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{func() LawSpecValue {
-									matched1607 := value0
-									matched1607Fields := matched1607.Data.(lawSpecData)
-									switch matched1607Fields.tag {
-									case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-										value38 := matched1607Fields.fields[0]
-										_ = value38
-										value39 := matched1607Fields.fields[1]
-										_ = value39
-										value40 := matched1607Fields.fields[2]
-										_ = value40
-										return value40
-									default:
-										panic("invalid constructor in match")
-									}
-								}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)}, 64, symbols)}, 64, symbols)}, 64, symbols)
-							default:
-								panic("invalid constructor in match")
-							}
-						}()}, 64, symbols)
-					})
-				}()
-			}()
-		})
-		return result
-	})
+	return lsfTo_dc41353054a0(lsfProducerSend_9064c6b5(symbols, lsfFrom_b2152710dfac(value0), lsfFrom_5e5d2c3fa1a7(value1)))
 }
 
 func lawSpecEvaluate835(
@@ -6970,58 +5505,7 @@ func lawSpecEvaluate835(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaReadFrom", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-					codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-					codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-					resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(value0), codec1.toNative(value1), codec2.toNative(lsConvert("Int32", lsInteger("Int32", "1000"), 64)), codec3.toNative(value2)))
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value3 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{value3}, 64, symbols)
-		}, func(value4 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{value4}, 64, symbols)
-		}), func(value5 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)
-		}, func(value6 LawSpecValue) LawSpecValue {
-			return lawSpecEvaluate839(symbols, func() LawSpecValue {
-				matched1853 := value6
-				matched1853Fields := matched1853.Data.(lawSpecData)
-				switch matched1853Fields.tag {
-				case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-					value7 := matched1853Fields.fields[0]
-					_ = value7
-					value8 := matched1853Fields.fields[1]
-					_ = value8
-					value9 := matched1853Fields.fields[2]
-					_ = value9
-					value10 := matched1853Fields.fields[3]
-					_ = value10
-					return value7
-				default:
-					panic("invalid constructor in match")
-				}
-			}())
-		})
-		return result
-	})
+	return lsfTo_e3583a5b5bdc(lsfReadFrom_f028a48d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_a519f593a6ed(value2)))
 }
 
 func lawSpecEvaluate836(
@@ -7031,162 +5515,19 @@ func lawSpecEvaluate836(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaReadInOrder", func() LawSpecValue {
-		result := lsMatchEither(value0, func(value4 LawSpecValue) LawSpecValue {
-			return lsConvert("Bool", lsBool(false), 64)
-		}, func(value5 LawSpecValue) LawSpecValue {
-			return lsMatchEither(value1, func(value6 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(false), 64)
-			}, func(value7 LawSpecValue) LawSpecValue {
-				return func() LawSpecValue {
-					value10 := func() LawSpecValue {
-						matched1409 := value5
-						matched1409Fields := matched1409.Data.(lawSpecData)
-						switch matched1409Fields.tag {
-						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							value8 := matched1409Fields.fields[0]
-							_ = value8
-							value9 := matched1409Fields.fields[1]
-							_ = value9
-							return value8
-						default:
-							panic("invalid constructor in match")
-						}
-					}()
-					_ = value10
-					return lsBool(lsTruth(lsBool(lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("lawtwin.kafka.model::type::TopicPartition"), func() LawSpecValue {
-						matched1409 := value7
-						matched1409Fields := matched1409.Data.(lawSpecData)
-						switch matched1409Fields.tag {
-						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							value11 := matched1409Fields.fields[0]
-							_ = value11
-							value12 := matched1409Fields.fields[1]
-							_ = value12
-							return value11
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), value10, 64, symbols))) && lsTruth(lsBinary("==", func() LawSpecValue {
-						matched1337 := value7
-						matched1337Fields := matched1337.Data.(lawSpecData)
-						switch matched1337Fields.tag {
-						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							value13 := matched1337Fields.fields[0]
-							_ = value13
-							value14 := matched1337Fields.fields[1]
-							_ = value14
-							return value14
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), lsBinary("+", func() LawSpecValue {
-						matched1337 := value5
-						matched1337Fields := matched1337.Data.(lawSpecData)
-						switch matched1337Fields.tag {
-						case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-							value15 := matched1337Fields.fields[0]
-							_ = value15
-							value16 := matched1337Fields.fields[1]
-							_ = value16
-							return value16
-						default:
-							panic("invalid constructor in match")
-						}
-					}(), lsConvert("Integer", lsInteger("Integer", "1"), 64)))))) && lsTruth(func() LawSpecValue {
-						value17 := func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Assign(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Cons", []LawSpecValue{value10, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-								return resultCodec.fromNative(LawSpecUnit{})
-							}()
-						}()
-						_ = value17
-						return lsBool(lsTruth(lsMatchEither(func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Seek(codec0.toNative(value10), codec1.toNative(func() LawSpecValue {
-								matched1342 := value5
-								matched1342Fields := matched1342.Data.(lawSpecData)
-								switch matched1342Fields.tag {
-								case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-									value18 := matched1342Fields.fields[0]
-									_ = value18
-									value19 := matched1342Fields.fields[1]
-									_ = value19
-									return value19
-								default:
-									panic("invalid constructor in match")
-								}
-							}())))
-						}(), func(value20 LawSpecValue) LawSpecValue {
-							return lsConvert("Bool", lsBool(false), 64)
-						}, func(value21 LawSpecValue) LawSpecValue {
-							return lsConvert("Bool", lsBool(true), 64)
-						})) && lsTruth(lsMatchEither(func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsScalarCodec[int32](schema, bits, "Int32")
-							resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsConvert("Int32", lsInteger("Int32", "2"), 64))))
-						}(), func(value22 LawSpecValue) LawSpecValue {
-							return lsConvert("Bool", lsBool(false), 64)
-						}, func(value23 LawSpecValue) LawSpecValue {
-							return lsBool(lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate838(symbols, value23), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{value2, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{value3, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)}, 64, symbols), 64, symbols))) && lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("Int64")), lawSpecEvaluate837(symbols, value23), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Int64")), "List::Cons", []LawSpecValue{func() LawSpecValue {
-								matched1344 := value5
-								matched1344Fields := matched1344.Data.(lawSpecData)
-								switch matched1344Fields.tag {
-								case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-									value24 := matched1344Fields.fields[0]
-									_ = value24
-									value25 := matched1344Fields.fields[1]
-									_ = value25
-									return value25
-								default:
-									panic("invalid constructor in match")
-								}
-							}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Int64")), "List::Cons", []LawSpecValue{func() LawSpecValue {
-								matched1344 := value7
-								matched1344Fields := matched1344.Data.(lawSpecData)
-								switch matched1344Fields.tag {
-								case "lawtwin.kafka::type::RecordMetadata::RecordMetadata":
-									value26 := matched1344Fields.fields[0]
-									_ = value26
-									value27 := matched1344Fields.fields[1]
-									_ = value27
-									return value27
-								default:
-									panic("invalid constructor in match")
-								}
-							}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Int64")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)}, 64, symbols), 64, symbols))))
-						})))
-					}()))
-				}()
-			})
-		})
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfReadInOrder_ba595483(symbols, lsfFrom_f9a3e61df1f3(value0), lsfFrom_f9a3e61df1f3(value1), lsfFrom_be206fb00188(value2), lsfFrom_be206fb00188(value3)))
 }
 
 func lawSpecEvaluate837(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_75994955e886(lsfReceivedOffsets_247(lsfFrom_9aa0842592c4(value0)))
+	return lsfTo_75994955e886(lsfReceivedOffsets_6c3a7a20(lsfFrom_9aa0842592c4(value0)))
 }
 
 func lawSpecEvaluate838(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_e3583a5b5bdc(lsfReceivedRecords_248(lsfFrom_9aa0842592c4(value0)))
+	return lsfTo_e3583a5b5bdc(lsfReceivedRecords_c3c84323(lsfFrom_9aa0842592c4(value0)))
 }
 
 func lawSpecEvaluate839(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_e3583a5b5bdc(lsfRecordsOf_249(lsfFrom_ed14fca60ee3(value0)))
+	return lsfTo_e3583a5b5bdc(lsfRecordsOf_a7b339ef(lsfFrom_ed14fca60ee3(value0)))
 }
 
 func lawSpecEvaluate840(
@@ -7196,153 +5537,7 @@ func lawSpecEvaluate840(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaResumesAtCommitted", func() LawSpecValue {
-		result := func() LawSpecValue {
-			value4 := _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
-			_ = value4
-			return func() LawSpecValue {
-				value5 := func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lsScalarCodec[string](schema, bits, "Text")
-					codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-					resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(value1), codec1.toNative(value2), codec2.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Text")), "List::Cons", []LawSpecValue{value0, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Text")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols))))
-				}()
-				_ = value5
-				return func() LawSpecValue {
-					value6 := func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[int32](schema, bits, "Int32")
-						resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(value3)))
-					}()
-					_ = value6
-					return func() LawSpecValue {
-						value7 := func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommitSync())
-						}()
-						_ = value7
-						return func() LawSpecValue {
-							value8 := func() LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-								return func() LawSpecValue {
-									lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Close()
-									return resultCodec.fromNative(LawSpecUnit{})
-								}()
-							}()
-							_ = value8
-							return func() LawSpecValue {
-								value9 := func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lsScalarCodec[string](schema, bits, "Text")
-									codec1 := lsScalarCodec[string](schema, bits, "Text")
-									codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-									resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
-									return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Subscribe(codec0.toNative(value1), codec1.toNative(value2), codec2.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Text")), "List::Cons", []LawSpecValue{value0, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("Text")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols))))
-								}()
-								_ = value9
-								return func() LawSpecValue {
-									value10 := func() LawSpecValue {
-										schema := _lawSpecDefinitionSchema
-										bits := 64
-										_, _ = schema, bits
-										codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-										resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-										return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Position(codec0.toNative(value4)))
-									}()
-									_ = value10
-									return func() LawSpecValue {
-										value11 := func() LawSpecValue {
-											schema := _lawSpecDefinitionSchema
-											bits := 64
-											_, _ = schema, bits
-											codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-											resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-											return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).CommittedOffset(codec0.toNative(value4)))
-										}()
-										_ = value11
-										return func() LawSpecValue {
-											value12 := func() LawSpecValue {
-												schema := _lawSpecDefinitionSchema
-												bits := 64
-												_, _ = schema, bits
-												codec0 := lsScalarCodec[int32](schema, bits, "Int32")
-												resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-												return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Consumer").(Consumer).Poll(codec0.toNative(lsConvert("Int32", lsInteger("Int32", "100"), 64))))
-											}()
-											_ = value12
-											return lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsMatchEither(value5, func(
-												value13 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(false), 64)
-											}, func(
-												value14 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(true), 64)
-											})) && lsTruth(lsMatchEither(value6, func(
-												value15 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(false), 64)
-											}, func(
-												value16 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(true), 64)
-											})))) && lsTruth(lsMatchEither(value7, func(
-												value17 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(false), 64)
-											}, func(
-												value18 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(true), 64)
-											})))) && lsTruth(lsMatchEither(value9, func(
-												value19 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(false), 64)
-											}, func(
-												value20 LawSpecValue,
-											) LawSpecValue {
-												return lsConvert("Bool", lsBool(true), 64)
-											})))) && lsTruth(lsMatchMaybe(value11, func() LawSpecValue {
-												return lsConvert("Bool", lsBool(false), 64)
-											}, func(
-												value21 LawSpecValue,
-											) LawSpecValue {
-												return lsBool(lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), value10, _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value21}, 64, symbols), 64, symbols))) && lsTruth(lsMatchEither(value12, func(
-													value22 LawSpecValue,
-												) LawSpecValue {
-													return lsConvert("Bool", lsBool(false), 64)
-												}, func(
-													value23 LawSpecValue,
-												) LawSpecValue {
-													return lawSpecEvaluate721(symbols, value21, lawSpecEvaluate837(symbols, value23))
-												})))
-											})))
-										}()
-									}()
-								}()
-							}()
-						}()
-					}()
-				}()
-			}()
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfResumesAtCommitted_13d41b73(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_b862204e9be7(value3)))
 }
 
 func lawSpecEvaluate841(
@@ -7350,7 +5545,7 @@ func lawSpecEvaluate841(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfSamePartition_250(lsfFrom_f9a3e61df1f3(value0), lsfFrom_f9a3e61df1f3(value1)))
+	return lsfTo_d267428fb2ca(lsfSamePartition_cee4f2dc(lsfFrom_f9a3e61df1f3(value0), lsfFrom_f9a3e61df1f3(value1)))
 }
 
 func lawSpecEvaluate842(
@@ -7358,11 +5553,11 @@ func lawSpecEvaluate842(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfSequenceFor_251(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
+	return lsfTo_b862204e9be7(lsfSequenceFor_9d79724c(lsfFrom_57a515e0e489(value0), lsfFrom_0f394bf4652c(value1)))
 }
 
 func lawSpecEvaluate843(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfSmallBatch_252(lsfFrom_e3583a5b5bdc(value0)))
+	return lsfTo_d267428fb2ca(lsfSmallBatch_dc4ae7bb(lsfFrom_e3583a5b5bdc(value0)))
 }
 
 func lawSpecEvaluate844(
@@ -7371,232 +5566,7 @@ func lawSpecEvaluate844(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaStableBelowHigh", func() LawSpecValue {
-		result := func() LawSpecValue {
-			value3 := _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
-			_ = value3
-			return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-						resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value1}, 64, symbols))))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value4 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value4}, 64, symbols)
-			}, func(value5 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value5}, 64, symbols)
-			}), func(value6 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(false), 64)
-			}, func(value7 LawSpecValue) LawSpecValue {
-				return func() LawSpecValue {
-					value14 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-						return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-						}, func() LawSpecValue {
-							return func() LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								codec0 := lsScalarCodec[string](schema, bits, "Text")
-								codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-								codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-								codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-								resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-								return func() LawSpecValue {
-									lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-										matched1353 := value7
-										matched1353Fields := matched1353.Data.(lawSpecData)
-										switch matched1353Fields.tag {
-										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											value8 := matched1353Fields.fields[0]
-											_ = value8
-											value9 := matched1353Fields.fields[1]
-											_ = value9
-											return value8
-										default:
-											panic("invalid constructor in match")
-										}
-									}()), codec2.toNative(func() LawSpecValue {
-										matched1353 := value7
-										matched1353Fields := matched1353.Data.(lawSpecData)
-										switch matched1353Fields.tag {
-										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											value10 := matched1353Fields.fields[0]
-											_ = value10
-											value11 := matched1353Fields.fields[1]
-											_ = value11
-											return value11
-										default:
-											panic("invalid constructor in match")
-										}
-									}()), codec3.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Cons", []LawSpecValue{value3, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-									return resultCodec.fromNative(LawSpecUnit{})
-								}()
-							}()
-						})
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-					}), func(value12 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value12}, 64, symbols)
-					}, func(value13 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value13}, 64, symbols)
-					})
-					_ = value14
-					return func() LawSpecValue {
-						value17 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-							}, func() LawSpecValue {
-								return func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-									codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-									codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-									resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-									return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(value3), codec1.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka.model::type::ProducerTag")), "Maybe::Just", []LawSpecValue{lawSpecEvaluate846(symbols, value7, lsConvert("Int32", lsInteger("Int32", "0"), 64))}, 64, symbols)), codec2.toNative(value2)))
-								}()
-							})
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-						}), func(value15 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value15}, 64, symbols)
-						}, func(value16 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value16}, 64, symbols)
-						})
-						_ = value17
-						return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-							}, func() LawSpecValue {
-								return func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-									codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-									codec2 := lsScalarCodec[int32](schema, bits, "Int32")
-									codec3 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-									resultCodec := lawSpecFetchResultCodec(schema, bits, symbols)
-									return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).FetchRequest(codec0.toNative(value3), codec1.toNative(lsConvert("Int64", lsInteger("Int64", "0"), 64)), codec2.toNative(lsConvert("Int32", lsInteger("Int32", "1000"), 64)), codec3.toNative(_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::IsolationLevel"), "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", []LawSpecValue{}, 64, symbols))))
-								}()
-							})
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-						}), func(value18 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Left", []LawSpecValue{value18}, 64, symbols)
-						}, func(value19 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::FetchResult")), "Either::Right", []LawSpecValue{value19}, 64, symbols)
-						}), func(value20 LawSpecValue) LawSpecValue {
-							return lsConvert("Bool", lsBool(false), 64)
-						}, func(value21 LawSpecValue) LawSpecValue {
-							return lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsMatchEither(value14, func(
-								value22 LawSpecValue,
-							) LawSpecValue {
-								return lsConvert("Bool", lsBool(false), 64)
-							}, func(value23 LawSpecValue) LawSpecValue {
-								return lsConvert("Bool", lsBool(true), 64)
-							})) && lsTruth(lsMatchEither(value17, func(
-								value24 LawSpecValue,
-							) LawSpecValue {
-								return lsConvert("Bool", lsBool(false), 64)
-							}, func(value25 LawSpecValue) LawSpecValue {
-								return lsConvert("Bool", lsBool(true), 64)
-							})))) && lsTruth(lsBinary("<=", func() LawSpecValue {
-								matched1777 := value21
-								matched1777Fields := matched1777.Data.(lawSpecData)
-								switch matched1777Fields.tag {
-								case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-									value26 := matched1777Fields.fields[0]
-									_ = value26
-									value27 := matched1777Fields.fields[1]
-									_ = value27
-									value28 := matched1777Fields.fields[2]
-									_ = value28
-									value29 := matched1777Fields.fields[3]
-									_ = value29
-									return value29
-								default:
-									panic("invalid constructor in match")
-								}
-							}(), func() LawSpecValue {
-								matched1777 := value21
-								matched1777Fields := matched1777.Data.(lawSpecData)
-								switch matched1777Fields.tag {
-								case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-									value30 := matched1777Fields.fields[0]
-									_ = value30
-									value31 := matched1777Fields.fields[1]
-									_ = value31
-									value32 := matched1777Fields.fields[2]
-									_ = value32
-									value33 := matched1777Fields.fields[3]
-									_ = value33
-									return value32
-								default:
-									panic("invalid constructor in match")
-								}
-							}())))) && lsTruth(lsMatchEither(value17, func(
-								value39 LawSpecValue,
-							) LawSpecValue {
-								return lsConvert("Bool", lsBool(false), 64)
-							}, func(value34 LawSpecValue) LawSpecValue {
-								return lsBinary("<=", func() LawSpecValue {
-									matched1777 := value21
-									matched1777Fields := matched1777.Data.(lawSpecData)
-									switch matched1777Fields.tag {
-									case "lawtwin.kafka.model::type::FetchResult::FetchResult":
-										value35 := matched1777Fields.fields[0]
-										_ = value35
-										value36 := matched1777Fields.fields[1]
-										_ = value36
-										value37 := matched1777Fields.fields[2]
-										_ = value37
-										value38 := matched1777Fields.fields[3]
-										_ = value38
-										return value38
-									default:
-										panic("invalid constructor in match")
-									}
-								}(), value34)
-							})))
-						})
-					}()
-				}()
-			})
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfStableBelowHigh_60981bc4(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_e3583a5b5bdc(value2)))
 }
 
 func lawSpecEvaluate845(
@@ -7604,7 +5574,7 @@ func lawSpecEvaluate845(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_c818bd20f406(lsfTagFor_253(lsfFrom_99552686984c(value0), lsfFrom_b862204e9be7(value1)))
+	return lsfTo_c818bd20f406(lsfTagFor_a88d3846(lsfFrom_99552686984c(value0), lsfFrom_b862204e9be7(value1)))
 }
 
 func lawSpecEvaluate846(
@@ -7612,11 +5582,11 @@ func lawSpecEvaluate846(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_fcd7b841fa1b(lsfTagOf_254(lsfFrom_6a5ea41697b3(value0), lsfFrom_b862204e9be7(value1)))
+	return lsfTo_fcd7b841fa1b(lsfTagOf_39235de7(lsfFrom_6a5ea41697b3(value0), lsfFrom_b862204e9be7(value1)))
 }
 
 func lawSpecEvaluate847(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfToPositive_255(lsfFrom_bd9653153f3b(value0)))
+	return lsfTo_bd9653153f3b(lsfToPositive_fc7029c7(lsfFrom_bd9653153f3b(value0)))
 }
 
 func lawSpecEvaluate848(
@@ -7626,208 +5596,7 @@ func lawSpecEvaluate848(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionThenRead", func() LawSpecValue {
-		result := func() LawSpecValue {
-			value4 := _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
-			_ = value4
-			return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-						resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-						return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value1}, 64, symbols))))
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value5 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value5}, 64, symbols)
-			}, func(value6 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value6}, 64, symbols)
-			}), func(value7 LawSpecValue) LawSpecValue {
-				return lsConvert("Bool", lsBool(false), 64)
-			}, func(value8 LawSpecValue) LawSpecValue {
-				return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-									matched1377 := value8
-									matched1377Fields := matched1377.Data.(lawSpecData)
-									switch matched1377Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value9 := matched1377Fields.fields[0]
-										_ = value9
-										value10 := matched1377Fields.fields[1]
-										_ = value10
-										return value9
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec2.toNative(func() LawSpecValue {
-									matched1377 := value8
-									matched1377Fields := matched1377.Data.(lawSpecData)
-									switch matched1377Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value11 := matched1377Fields.fields[0]
-										_ = value11
-										value12 := matched1377Fields.fields[1]
-										_ = value12
-										return value12
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec3.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Cons", []LawSpecValue{value4, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-								return resultCodec.fromNative(LawSpecUnit{})
-							}()
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value13 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value13}, 64, symbols)
-				}, func(value14 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value14}, 64, symbols)
-				}), func(value15 LawSpecValue) LawSpecValue {
-					return lsConvert("Bool", lsBool(false), 64)
-				}, func(value16 LawSpecValue) LawSpecValue {
-					return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-						return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-						}, func() LawSpecValue {
-							return func() LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-								codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-								codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-								resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-								return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(value4), codec1.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka.model::type::ProducerTag")), "Maybe::Just", []LawSpecValue{lawSpecEvaluate846(symbols, value8, lsConvert("Int32", lsInteger("Int32", "0"), 64))}, 64, symbols)), codec2.toNative(value2)))
-							}()
-						})
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-					}), func(value17 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value17}, 64, symbols)
-					}, func(value18 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value18}, 64, symbols)
-					}), func(value19 LawSpecValue) LawSpecValue {
-						return lsConvert("Bool", lsBool(false), 64)
-					}, func(value20 LawSpecValue) LawSpecValue {
-						return func() LawSpecValue {
-							value21 := lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate723(symbols, value4, value20), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols), 64, symbols))
-							_ = value21
-							return func() LawSpecValue {
-								value22 := lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate858(symbols, value4, value20), value2, 64, symbols))
-								_ = value22
-								return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-									return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-										schema := _lawSpecDefinitionSchema
-										bits := 64
-										_, _ = schema, bits
-										return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-									}, func() LawSpecValue {
-										return func() LawSpecValue {
-											schema := _lawSpecDefinitionSchema
-											bits := 64
-											_, _ = schema, bits
-											codec0 := lsScalarCodec[string](schema, bits, "Text")
-											codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-											codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-											codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-											resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-											return func() LawSpecValue {
-												lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-													matched1377 := value8
-													matched1377Fields := matched1377.Data.(lawSpecData)
-													switch matched1377Fields.tag {
-													case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-														value23 := matched1377Fields.fields[0]
-														_ = value23
-														value24 := matched1377Fields.fields[1]
-														_ = value24
-														return value23
-													default:
-														panic("invalid constructor in match")
-													}
-												}()), codec2.toNative(func() LawSpecValue {
-													matched1377 := value8
-													matched1377Fields := matched1377.Data.(lawSpecData)
-													switch matched1377Fields.tag {
-													case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-														value25 := matched1377Fields.fields[0]
-														_ = value25
-														value26 := matched1377Fields.fields[1]
-														_ = value26
-														return value26
-													default:
-														panic("invalid constructor in match")
-													}
-												}()), codec3.toNative(value3))
-												return resultCodec.fromNative(LawSpecUnit{})
-											}()
-										}()
-									})
-								}, func(_value LawSpecValue) LawSpecValue {
-									return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-								}, func(_value LawSpecValue) LawSpecValue {
-									return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-								}), func(
-									value27 LawSpecValue,
-								) LawSpecValue {
-									return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value27}, 64, symbols)
-								}, func(
-									value28 LawSpecValue,
-								) LawSpecValue {
-									return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value28}, 64, symbols)
-								}), func(
-									value29 LawSpecValue,
-								) LawSpecValue {
-									return lsConvert("Bool", lsBool(false), 64)
-								}, func(
-									value30 LawSpecValue,
-								) LawSpecValue {
-									return lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(value21) && lsTruth(value22))) && lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate858(symbols, value4, value20), value2, 64, symbols))))) && lsTruth(func() LawSpecValue { if lsTruth(value3) { return lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate723(symbols, value4, value20), value2, 64, symbols)) }; return lsBool(_lawSpecDefinitionSchema.equal(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), lawSpecEvaluate723(symbols, value4, value20), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols), 64, symbols)) }()))
-								})
-							}()
-						}()
-					})
-				})
-			})
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfTransactionThenRead_81bf7b1b(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_e3583a5b5bdc(value2), lsfFrom_d267428fb2ca(value3)))
 }
 
 func lawSpecEvaluate849(
@@ -7837,365 +5606,11 @@ func lawSpecEvaluate849(
 	value2 LawSpecValue,
 	value3 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionalOffsets", func() LawSpecValue {
-		result := func() LawSpecValue {
-			value4 := _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::TopicPartition"), "lawtwin.kafka.model::type::TopicPartition::TopicPartition", []LawSpecValue{value0, lsConvert("Int32", lsInteger("Int32", "0"), 64)}, 64, symbols)
-			_ = value4
-			return func() LawSpecValue {
-				value5 := func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsScalarCodec[string](schema, bits, "Text")
-					codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-					resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(value2), codec1.toNative(value4)))
-				}()
-				_ = value5
-				return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-							resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value1}, 64, symbols))))
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value6 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value6}, 64, symbols)
-				}, func(value7 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value7}, 64, symbols)
-				}), func(value8 LawSpecValue) LawSpecValue {
-					return lsConvert("Bool", lsBool(false), 64)
-				}, func(value9 LawSpecValue) LawSpecValue {
-					return func() LawSpecValue {
-						value16 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-							}, func() LawSpecValue {
-								return func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lsScalarCodec[string](schema, bits, "Text")
-									codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-									codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-									codec3 := lsScalarCodec[string](schema, bits, "Text")
-									codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-									resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-									return func() LawSpecValue {
-										lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-											matched1383 := value9
-											matched1383Fields := matched1383.Data.(lawSpecData)
-											switch matched1383Fields.tag {
-											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												value10 := matched1383Fields.fields[0]
-												_ = value10
-												value11 := matched1383Fields.fields[1]
-												_ = value11
-												return value10
-											default:
-												panic("invalid constructor in match")
-											}
-										}()), codec2.toNative(func() LawSpecValue {
-											matched1383 := value9
-											matched1383Fields := matched1383.Data.(lawSpecData)
-											switch matched1383Fields.tag {
-											case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-												value12 := matched1383Fields.fields[0]
-												_ = value12
-												value13 := matched1383Fields.fields[1]
-												_ = value13
-												return value13
-											default:
-												panic("invalid constructor in match")
-											}
-										}()), codec3.toNative(value2), codec4.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::OffsetEntry")), "List::Cons", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::OffsetEntry"), "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", []LawSpecValue{value4, value3}, 64, symbols), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::OffsetEntry")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-										return resultCodec.fromNative(LawSpecUnit{})
-									}()
-								}()
-							})
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-						}), func(value14 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value14}, 64, symbols)
-						}, func(value15 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value15}, 64, symbols)
-						})
-						_ = value16
-						return func() LawSpecValue {
-							value23 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-								return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-								}, func() LawSpecValue {
-									return func() LawSpecValue {
-										schema := _lawSpecDefinitionSchema
-										bits := 64
-										_, _ = schema, bits
-										codec0 := lsScalarCodec[string](schema, bits, "Text")
-										codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-										codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-										codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-										resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-										return func() LawSpecValue {
-											lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-												matched1383 := value9
-												matched1383Fields := matched1383.Data.(lawSpecData)
-												switch matched1383Fields.tag {
-												case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-													value17 := matched1383Fields.fields[0]
-													_ = value17
-													value18 := matched1383Fields.fields[1]
-													_ = value18
-													return value17
-												default:
-													panic("invalid constructor in match")
-												}
-											}()), codec2.toNative(func() LawSpecValue {
-												matched1383 := value9
-												matched1383Fields := matched1383.Data.(lawSpecData)
-												switch matched1383Fields.tag {
-												case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-													value19 := matched1383Fields.fields[0]
-													_ = value19
-													value20 := matched1383Fields.fields[1]
-													_ = value20
-													return value20
-												default:
-													panic("invalid constructor in match")
-												}
-											}()), codec3.toNative(lsConvert("Bool", lsBool(false), 64)))
-											return resultCodec.fromNative(LawSpecUnit{})
-										}()
-									}()
-								})
-							}, func(_value LawSpecValue) LawSpecValue {
-								return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-							}, func(_value LawSpecValue) LawSpecValue {
-								return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-							}), func(
-								value21 LawSpecValue,
-							) LawSpecValue {
-								return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value21}, 64, symbols)
-							}, func(value22 LawSpecValue) LawSpecValue {
-								return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value22}, 64, symbols)
-							})
-							_ = value23
-							return func() LawSpecValue {
-								value24 := func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lsScalarCodec[string](schema, bits, "Text")
-									codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-									resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-									return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(value2), codec1.toNative(value4)))
-								}()
-								_ = value24
-								return func() LawSpecValue {
-									value31 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-										return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-											schema := _lawSpecDefinitionSchema
-											bits := 64
-											_, _ = schema, bits
-											return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-										}, func() LawSpecValue {
-											return func() LawSpecValue {
-												schema := _lawSpecDefinitionSchema
-												bits := 64
-												_, _ = schema, bits
-												codec0 := lsScalarCodec[string](schema, bits, "Text")
-												codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-												codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-												codec3 := lsScalarCodec[string](schema, bits, "Text")
-												codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-												resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-												return func() LawSpecValue {
-													lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-														matched1383 := value9
-														matched1383Fields := matched1383.Data.(lawSpecData)
-														switch matched1383Fields.tag {
-														case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-															value25 := matched1383Fields.fields[0]
-															_ = value25
-															value26 := matched1383Fields.fields[1]
-															_ = value26
-															return value25
-														default:
-															panic("invalid constructor in match")
-														}
-													}()), codec2.toNative(func() LawSpecValue {
-														matched1383 := value9
-														matched1383Fields := matched1383.Data.(lawSpecData)
-														switch matched1383Fields.tag {
-														case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-															value27 := matched1383Fields.fields[0]
-															_ = value27
-															value28 := matched1383Fields.fields[1]
-															_ = value28
-															return value28
-														default:
-															panic("invalid constructor in match")
-														}
-													}()), codec3.toNative(value2), codec4.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::OffsetEntry")), "List::Cons", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::OffsetEntry"), "lawtwin.kafka.model::type::OffsetEntry::OffsetEntry", []LawSpecValue{value4, value3}, 64, symbols), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::OffsetEntry")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-													return resultCodec.fromNative(LawSpecUnit{})
-												}()
-											}()
-										})
-									}, func(_value LawSpecValue) LawSpecValue {
-										return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-									}, func(_value LawSpecValue) LawSpecValue {
-										return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-									}), func(
-										value29 LawSpecValue,
-									) LawSpecValue {
-										return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value29}, 64, symbols)
-									}, func(
-										value30 LawSpecValue,
-									) LawSpecValue {
-										return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value30}, 64, symbols)
-									})
-									_ = value31
-									return func() LawSpecValue {
-										value38 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-											return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-												schema := _lawSpecDefinitionSchema
-												bits := 64
-												_, _ = schema, bits
-												return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-											}, func() LawSpecValue {
-												return func() LawSpecValue {
-													schema := _lawSpecDefinitionSchema
-													bits := 64
-													_, _ = schema, bits
-													codec0 := lsScalarCodec[string](schema, bits, "Text")
-													codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-													codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-													codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-													resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-													return func() LawSpecValue {
-														lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-															matched1383 := value9
-															matched1383Fields := matched1383.Data.(lawSpecData)
-															switch matched1383Fields.tag {
-															case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-																value32 := matched1383Fields.fields[0]
-																_ = value32
-																value33 := matched1383Fields.fields[1]
-																_ = value33
-																return value32
-															default:
-																panic("invalid constructor in match")
-															}
-														}()), codec2.toNative(func() LawSpecValue {
-															matched1383 := value9
-															matched1383Fields := matched1383.Data.(lawSpecData)
-															switch matched1383Fields.tag {
-															case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-																value34 := matched1383Fields.fields[0]
-																_ = value34
-																value35 := matched1383Fields.fields[1]
-																_ = value35
-																return value35
-															default:
-																panic("invalid constructor in match")
-															}
-														}()), codec3.toNative(lsConvert("Bool", lsBool(true), 64)))
-														return resultCodec.fromNative(LawSpecUnit{})
-													}()
-												}()
-											})
-										}, func(_value LawSpecValue) LawSpecValue {
-											return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-										}, func(_value LawSpecValue) LawSpecValue {
-											return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-										}), func(
-											value36 LawSpecValue,
-										) LawSpecValue {
-											return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value36}, 64, symbols)
-										}, func(
-											value37 LawSpecValue,
-										) LawSpecValue {
-											return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value37}, 64, symbols)
-										})
-										_ = value38
-										return lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsBool(lsTruth(lsMatchEither(value16, func(
-											value39 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(false), 64)
-										}, func(
-											value40 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(true), 64)
-										})) && lsTruth(lsMatchEither(value23, func(
-											value41 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(false), 64)
-										}, func(
-											value42 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(true), 64)
-										})))) && lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("Maybe", lsNamed("Int64")), value24, value5, 64, symbols))))) && lsTruth(lsMatchEither(value31, func(
-											value43 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(false), 64)
-										}, func(
-											value44 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(true), 64)
-										})))) && lsTruth(lsMatchEither(value38, func(
-											value45 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(false), 64)
-										}, func(
-											value46 LawSpecValue,
-										) LawSpecValue {
-											return lsConvert("Bool", lsBool(true), 64)
-										})))) && lsTruth(lsBool(_lawSpecDefinitionSchema.equal(lsNamed("Maybe", lsNamed("Int64")), func() LawSpecValue {
-											schema := _lawSpecDefinitionSchema
-											bits := 64
-											_, _ = schema, bits
-											codec0 := lsScalarCodec[string](schema, bits, "Text")
-											codec1 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-											resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-											return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).OffsetFetchRequest(codec0.toNative(value2), codec1.toNative(value4)))
-										}(), _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Just", []LawSpecValue{value3}, 64, symbols), 64, symbols))))
-									}()
-								}()
-							}()
-						}()
-					}()
-				})
-			}()
-		}()
-		return result
-	})
+	return lsfTo_d267428fb2ca(lsfTransactionalOffsets_80320406(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_437d0abf423f(value1), lsfFrom_437d0abf423f(value2), lsfFrom_44a08172da10(value3)))
 }
 
 func lawSpecEvaluate850(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsAbort", func() LawSpecValue {
-		result := lawSpecEvaluate854(symbols, lsConvert("Bool", lsBool(false), 64), value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfTransactionsAbort_256496fb(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate851(
@@ -8203,230 +5618,15 @@ func lawSpecEvaluate851(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsAdd", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2504 := value1
-			matched2504Fields := matched2504.Data.(lawSpecData)
-			switch matched2504Fields.tag {
-			case "lawtwin.kafka::type::TransactionState::TransactionState":
-				value2 := matched2504Fields.fields[0]
-				_ = value2
-				value3 := matched2504Fields.fields[1]
-				_ = value3
-				value4 := matched2504Fields.fields[2]
-				_ = value4
-				value5 := matched2504Fields.fields[3]
-				_ = value5
-				value6 := matched2504Fields.fields[4]
-				_ = value6
-				value7 := matched2504Fields.fields[5]
-				_ = value7
-				return value3
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1}, 64, symbols)
-		}, func(value8 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue { if lsTruth(lsBool(!lsTruth(func() LawSpecValue {
-				matched2362 := value1
-				matched2362Fields := matched2362.Data.(lawSpecData)
-				switch matched2362Fields.tag {
-				case "lawtwin.kafka::type::TransactionState::TransactionState":
-					value9 := matched2362Fields.fields[0]
-					_ = value9
-					value10 := matched2362Fields.fields[1]
-					_ = value10
-					value11 := matched2362Fields.fields[2]
-					_ = value11
-					value12 := matched2362Fields.fields[3]
-					_ = value12
-					value13 := matched2362Fields.fields[4]
-					_ = value13
-					value14 := matched2362Fields.fields[5]
-					_ = value14
-					return value12
-				default:
-					panic("invalid constructor in match")
-				}
-			}()))) { return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1}, 64, symbols) }; return func() LawSpecValue {
-				value21 := lawSpecEvaluate750(symbols, value0, func() LawSpecValue {
-					matched2508 := value1
-					matched2508Fields := matched2508.Data.(lawSpecData)
-					switch matched2508Fields.tag {
-					case "lawtwin.kafka::type::TransactionState::TransactionState":
-						value15 := matched2508Fields.fields[0]
-						_ = value15
-						value16 := matched2508Fields.fields[1]
-						_ = value16
-						value17 := matched2508Fields.fields[2]
-						_ = value17
-						value18 := matched2508Fields.fields[3]
-						_ = value18
-						value19 := matched2508Fields.fields[4]
-						_ = value19
-						value20 := matched2508Fields.fields[5]
-						_ = value20
-						return value19
-					default:
-						panic("invalid constructor in match")
-					}
-				}())
-				_ = value21
-				return func() LawSpecValue { if lsTruth(func() LawSpecValue {
-					matched1668 := value21
-					matched1668Fields := matched1668.Data.([]LawSpecValue)
-					if len(matched1668Fields) == 0 {
-						return lsConvert("Bool", lsBool(true), 64)
-					}
-					value22 := matched1668Fields[0]
-					_ = value22
-					value23 := lsList("List lawtwin.kafka.model::type::TopicPartition", matched1668Fields[1:])
-					_ = value23
-					return lsConvert("Bool", lsBool(false), 64)
-				}()) { return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), value1}, 64, symbols) }; return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(func() LawSpecValue {
-									matched2362 := value1
-									matched2362Fields := matched2362.Data.(lawSpecData)
-									switch matched2362Fields.tag {
-									case "lawtwin.kafka::type::TransactionState::TransactionState":
-										value24 := matched2362Fields.fields[0]
-										_ = value24
-										value25 := matched2362Fields.fields[1]
-										_ = value25
-										value26 := matched2362Fields.fields[2]
-										_ = value26
-										value27 := matched2362Fields.fields[3]
-										_ = value27
-										value28 := matched2362Fields.fields[4]
-										_ = value28
-										value29 := matched2362Fields.fields[5]
-										_ = value29
-										return value24
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec1.toNative(func() LawSpecValue {
-									matched1353 := value8
-									matched1353Fields := matched1353.Data.(lawSpecData)
-									switch matched1353Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value30 := matched1353Fields.fields[0]
-										_ = value30
-										value31 := matched1353Fields.fields[1]
-										_ = value31
-										return value30
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec2.toNative(func() LawSpecValue {
-									matched1354 := value8
-									matched1354Fields := matched1354.Data.(lawSpecData)
-									switch matched1354Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value32 := matched1354Fields.fields[0]
-										_ = value32
-										value33 := matched1354Fields.fields[1]
-										_ = value33
-										return value33
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec3.toNative(value21))
-								return resultCodec.fromNative(LawSpecUnit{})
-							}()
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value34 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value34}, 64, symbols)
-				}, func(value35 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value35}, 64, symbols)
-				}), func(value36 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value36}, 64, symbols), value1}, 64, symbols)
-				}, func(value37 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), func() LawSpecValue {
-						value44 := lsHelper("append", []LawSpecValue{value21, func() LawSpecValue {
-							matched2508 := value1
-							matched2508Fields := matched2508.Data.(lawSpecData)
-							switch matched2508Fields.tag {
-							case "lawtwin.kafka::type::TransactionState::TransactionState":
-								value38 := matched2508Fields.fields[0]
-								_ = value38
-								value39 := matched2508Fields.fields[1]
-								_ = value39
-								value40 := matched2508Fields.fields[2]
-								_ = value40
-								value41 := matched2508Fields.fields[3]
-								_ = value41
-								value42 := matched2508Fields.fields[4]
-								_ = value42
-								value43 := matched2508Fields.fields[5]
-								_ = value43
-								return value42
-							default:
-								panic("invalid constructor in match")
-							}
-						}()}, 64)
-						_ = value44
-						return func() LawSpecValue {
-							matched4303 := value1
-							matched4303Fields := matched4303.Data.(lawSpecData)
-							switch matched4303Fields.tag {
-							case "lawtwin.kafka::type::TransactionState::TransactionState":
-								value45 := matched4303Fields.fields[0]
-								_ = value45
-								value46 := matched4303Fields.fields[1]
-								_ = value46
-								value47 := matched4303Fields.fields[2]
-								_ = value47
-								value48 := matched4303Fields.fields[3]
-								_ = value48
-								value49 := matched4303Fields.fields[4]
-								_ = value49
-								value50 := matched4303Fields.fields[5]
-								_ = value50
-								return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value45, value46, value47, value48, value44, value50}, 64, symbols)
-							default:
-								panic("invalid constructor in match")
-							}
-						}()
-					}()}, 64, symbols)
-				}) }()
-			}() }()
-		})
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfTransactionsAdd_1f41c92e(symbols, lsfFrom_3250492fe9ac(value0), lsfFrom_74b3f2831172(value1)))
 }
 
 func lawSpecEvaluate852(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b92c1d290bc6(lsfTransactionsBegin_256(lsfFrom_74b3f2831172(value0)))
+	return lsfTo_b92c1d290bc6(lsfTransactionsBegin_5d267b99(lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate853(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsCommit", func() LawSpecValue {
-		result := lawSpecEvaluate854(symbols, lsConvert("Bool", lsBool(true), 64), value0)
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfTransactionsCommit_afadd0fa(symbols, lsfFrom_74b3f2831172(value0)))
 }
 
 func lawSpecEvaluate854(
@@ -8434,316 +5634,7 @@ func lawSpecEvaluate854(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsEnd", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2504 := value1
-			matched2504Fields := matched2504.Data.(lawSpecData)
-			switch matched2504Fields.tag {
-			case "lawtwin.kafka::type::TransactionState::TransactionState":
-				value2 := matched2504Fields.fields[0]
-				_ = value2
-				value3 := matched2504Fields.fields[1]
-				_ = value3
-				value4 := matched2504Fields.fields[2]
-				_ = value4
-				value5 := matched2504Fields.fields[3]
-				_ = value5
-				value6 := matched2504Fields.fields[4]
-				_ = value6
-				value7 := matched2504Fields.fields[5]
-				_ = value7
-				return value3
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1}, 64, symbols)
-		}, func(value8 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue { if lsTruth(lsBool(!lsTruth(func() LawSpecValue {
-				matched2362 := value1
-				matched2362Fields := matched2362.Data.(lawSpecData)
-				switch matched2362Fields.tag {
-				case "lawtwin.kafka::type::TransactionState::TransactionState":
-					value9 := matched2362Fields.fields[0]
-					_ = value9
-					value10 := matched2362Fields.fields[1]
-					_ = value10
-					value11 := matched2362Fields.fields[2]
-					_ = value11
-					value12 := matched2362Fields.fields[3]
-					_ = value12
-					value13 := matched2362Fields.fields[4]
-					_ = value13
-					value14 := matched2362Fields.fields[5]
-					_ = value14
-					return value12
-				default:
-					panic("invalid constructor in match")
-				}
-			}()))) { return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1}, 64, symbols) }; return func() LawSpecValue { if lsTruth(lsBool(lsTruth(func() LawSpecValue {
-				matched3649 := func() LawSpecValue {
-					matched2508 := value1
-					matched2508Fields := matched2508.Data.(lawSpecData)
-					switch matched2508Fields.tag {
-					case "lawtwin.kafka::type::TransactionState::TransactionState":
-						value15 := matched2508Fields.fields[0]
-						_ = value15
-						value16 := matched2508Fields.fields[1]
-						_ = value16
-						value17 := matched2508Fields.fields[2]
-						_ = value17
-						value18 := matched2508Fields.fields[3]
-						_ = value18
-						value19 := matched2508Fields.fields[4]
-						_ = value19
-						value20 := matched2508Fields.fields[5]
-						_ = value20
-						return value19
-					default:
-						panic("invalid constructor in match")
-					}
-				}()
-				matched3649Fields := matched3649.Data.([]LawSpecValue)
-				if len(matched3649Fields) == 0 {
-					return lsConvert("Bool", lsBool(true), 64)
-				}
-				value21 := matched3649Fields[0]
-				_ = value21
-				value22 := lsList("List lawtwin.kafka.model::type::TopicPartition", matched3649Fields[1:])
-				_ = value22
-				return lsConvert("Bool", lsBool(false), 64)
-			}()) && lsTruth(lsBool(!lsTruth(func() LawSpecValue {
-				matched2362 := value1
-				matched2362Fields := matched2362.Data.(lawSpecData)
-				switch matched2362Fields.tag {
-				case "lawtwin.kafka::type::TransactionState::TransactionState":
-					value23 := matched2362Fields.fields[0]
-					_ = value23
-					value24 := matched2362Fields.fields[1]
-					_ = value24
-					value25 := matched2362Fields.fields[2]
-					_ = value25
-					value26 := matched2362Fields.fields[3]
-					_ = value26
-					value27 := matched2362Fields.fields[4]
-					_ = value27
-					value28 := matched2362Fields.fields[5]
-					_ = value28
-					return value28
-				default:
-					panic("invalid constructor in match")
-				}
-			}()))))) { return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), func() LawSpecValue {
-				matched12349 := func() LawSpecValue {
-					matched8298 := func() LawSpecValue {
-						matched4331 := value1
-						matched4331Fields := matched4331.Data.(lawSpecData)
-						switch matched4331Fields.tag {
-						case "lawtwin.kafka::type::TransactionState::TransactionState":
-							value29 := matched4331Fields.fields[0]
-							_ = value29
-							value30 := matched4331Fields.fields[1]
-							_ = value30
-							value31 := matched4331Fields.fields[2]
-							_ = value31
-							value32 := matched4331Fields.fields[3]
-							_ = value32
-							value33 := matched4331Fields.fields[4]
-							_ = value33
-							value34 := matched4331Fields.fields[5]
-							_ = value34
-							return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value29, value30, value31, lsConvert("Bool", lsBool(false), 64), value33, value34}, 64, symbols)
-						default:
-							panic("invalid constructor in match")
-						}
-					}()
-					matched8298Fields := matched8298.Data.(lawSpecData)
-					switch matched8298Fields.tag {
-					case "lawtwin.kafka::type::TransactionState::TransactionState":
-						value35 := matched8298Fields.fields[0]
-						_ = value35
-						value36 := matched8298Fields.fields[1]
-						_ = value36
-						value37 := matched8298Fields.fields[2]
-						_ = value37
-						value38 := matched8298Fields.fields[3]
-						_ = value38
-						value39 := matched8298Fields.fields[4]
-						_ = value39
-						value40 := matched8298Fields.fields[5]
-						_ = value40
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value35, value36, value37, value38, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols), value40}, 64, symbols)
-					default:
-						panic("invalid constructor in match")
-					}
-				}()
-				matched12349Fields := matched12349.Data.(lawSpecData)
-				switch matched12349Fields.tag {
-				case "lawtwin.kafka::type::TransactionState::TransactionState":
-					value41 := matched12349Fields.fields[0]
-					_ = value41
-					value42 := matched12349Fields.fields[1]
-					_ = value42
-					value43 := matched12349Fields.fields[2]
-					_ = value43
-					value44 := matched12349Fields.fields[3]
-					_ = value44
-					value45 := matched12349Fields.fields[4]
-					_ = value45
-					value46 := matched12349Fields.fields[5]
-					_ = value46
-					return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value41, value42, value43, value44, value45, lsConvert("Bool", lsBool(false), 64)}, 64, symbols)
-				default:
-					panic("invalid constructor in match")
-				}
-			}()}, 64, symbols) }; return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-						codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(func() LawSpecValue {
-								matched2362 := value1
-								matched2362Fields := matched2362.Data.(lawSpecData)
-								switch matched2362Fields.tag {
-								case "lawtwin.kafka::type::TransactionState::TransactionState":
-									value47 := matched2362Fields.fields[0]
-									_ = value47
-									value48 := matched2362Fields.fields[1]
-									_ = value48
-									value49 := matched2362Fields.fields[2]
-									_ = value49
-									value50 := matched2362Fields.fields[3]
-									_ = value50
-									value51 := matched2362Fields.fields[4]
-									_ = value51
-									value52 := matched2362Fields.fields[5]
-									_ = value52
-									return value47
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec1.toNative(func() LawSpecValue {
-								matched1353 := value8
-								matched1353Fields := matched1353.Data.(lawSpecData)
-								switch matched1353Fields.tag {
-								case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-									value53 := matched1353Fields.fields[0]
-									_ = value53
-									value54 := matched1353Fields.fields[1]
-									_ = value54
-									return value53
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec2.toNative(func() LawSpecValue {
-								matched1353 := value8
-								matched1353Fields := matched1353.Data.(lawSpecData)
-								switch matched1353Fields.tag {
-								case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-									value55 := matched1353Fields.fields[0]
-									_ = value55
-									value56 := matched1353Fields.fields[1]
-									_ = value56
-									return value56
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec3.toNative(value0))
-							return resultCodec.fromNative(LawSpecUnit{})
-						}()
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value57 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value57}, 64, symbols)
-			}, func(value58 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value58}, 64, symbols)
-			}), func(value59 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value59}, 64, symbols), value1}, 64, symbols)
-			}, func(value60 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), func() LawSpecValue {
-					matched12343 := func() LawSpecValue {
-						matched8294 := func() LawSpecValue {
-							matched4329 := value1
-							matched4329Fields := matched4329.Data.(lawSpecData)
-							switch matched4329Fields.tag {
-							case "lawtwin.kafka::type::TransactionState::TransactionState":
-								value61 := matched4329Fields.fields[0]
-								_ = value61
-								value62 := matched4329Fields.fields[1]
-								_ = value62
-								value63 := matched4329Fields.fields[2]
-								_ = value63
-								value64 := matched4329Fields.fields[3]
-								_ = value64
-								value65 := matched4329Fields.fields[4]
-								_ = value65
-								value66 := matched4329Fields.fields[5]
-								_ = value66
-								return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value61, value62, value63, lsConvert("Bool", lsBool(false), 64), value65, value66}, 64, symbols)
-							default:
-								panic("invalid constructor in match")
-							}
-						}()
-						matched8294Fields := matched8294.Data.(lawSpecData)
-						switch matched8294Fields.tag {
-						case "lawtwin.kafka::type::TransactionState::TransactionState":
-							value67 := matched8294Fields.fields[0]
-							_ = value67
-							value68 := matched8294Fields.fields[1]
-							_ = value68
-							value69 := matched8294Fields.fields[2]
-							_ = value69
-							value70 := matched8294Fields.fields[3]
-							_ = value70
-							value71 := matched8294Fields.fields[4]
-							_ = value71
-							value72 := matched8294Fields.fields[5]
-							_ = value72
-							return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value67, value68, value69, value70, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols), value72}, 64, symbols)
-						default:
-							panic("invalid constructor in match")
-						}
-					}()
-					matched12343Fields := matched12343.Data.(lawSpecData)
-					switch matched12343Fields.tag {
-					case "lawtwin.kafka::type::TransactionState::TransactionState":
-						value73 := matched12343Fields.fields[0]
-						_ = value73
-						value74 := matched12343Fields.fields[1]
-						_ = value74
-						value75 := matched12343Fields.fields[2]
-						_ = value75
-						value76 := matched12343Fields.fields[3]
-						_ = value76
-						value77 := matched12343Fields.fields[4]
-						_ = value77
-						value78 := matched12343Fields.fields[5]
-						_ = value78
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value73, value74, value75, value76, value77, lsConvert("Bool", lsBool(false), 64)}, 64, symbols)
-					default:
-						panic("invalid constructor in match")
-					}
-				}()}, 64, symbols)
-			}) }() }()
-		})
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfTransactionsEnd_fe18afb7(symbols, lsfFrom_d267428fb2ca(value0), lsfFrom_74b3f2831172(value1)))
 }
 
 func lawSpecEvaluate855(
@@ -8751,38 +5642,7 @@ func lawSpecEvaluate855(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsInit", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-					resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value0}, 64, symbols))))
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value2 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value2}, 64, symbols)
-		}, func(value3 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value3}, 64, symbols)
-		}), func(value4 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value4}, 64, symbols), value1}, 64, symbols)
-		}, func(value5 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value5}, 64, symbols), _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value0, _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Maybe::Just", []LawSpecValue{value5}, 64, symbols), lawSpecEvaluate676(symbols, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawspec.collections::type::Entry", lsNamed("lawtwin.kafka.model::type::TopicPartition"), lsNamed("Int32"))), "List::Nil", []LawSpecValue{}, 64, symbols)), lsConvert("Bool", lsBool(false), 64), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols), lsConvert("Bool", lsBool(false), 64)}, 64, symbols)}, 64, symbols)
-		})
-		return result
-	})
+	return lsfTo_b49ec6c68859(lsfTransactionsInit_d69a08bc(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_74b3f2831172(value1)))
 }
 
 func lawSpecEvaluate856(
@@ -8791,159 +5651,7 @@ func lawSpecEvaluate856(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsOffsets", func() LawSpecValue {
-		result := lsMatchMaybe(func() LawSpecValue {
-			matched2544 := value2
-			matched2544Fields := matched2544.Data.(lawSpecData)
-			switch matched2544Fields.tag {
-			case "lawtwin.kafka::type::TransactionState::TransactionState":
-				value3 := matched2544Fields.fields[0]
-				_ = value3
-				value4 := matched2544Fields.fields[1]
-				_ = value4
-				value5 := matched2544Fields.fields[2]
-				_ = value5
-				value6 := matched2544Fields.fields[3]
-				_ = value6
-				value7 := matched2544Fields.fields[4]
-				_ = value7
-				value8 := matched2544Fields.fields[5]
-				_ = value8
-				return value4
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value2}, 64, symbols)
-		}, func(value9 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue { if lsTruth(lsBool(!lsTruth(func() LawSpecValue {
-				matched2402 := value2
-				matched2402Fields := matched2402.Data.(lawSpecData)
-				switch matched2402Fields.tag {
-				case "lawtwin.kafka::type::TransactionState::TransactionState":
-					value10 := matched2402Fields.fields[0]
-					_ = value10
-					value11 := matched2402Fields.fields[1]
-					_ = value11
-					value12 := matched2402Fields.fields[2]
-					_ = value12
-					value13 := matched2402Fields.fields[3]
-					_ = value13
-					value14 := matched2402Fields.fields[4]
-					_ = value14
-					value15 := matched2402Fields.fields[5]
-					_ = value15
-					return value13
-				default:
-					panic("invalid constructor in match")
-				}
-			}()))) { return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::KafkaError"), "lawtwin.kafka.model::type::KafkaError::IllegalState", []LawSpecValue{}, 64, symbols)}, 64, symbols), value2}, 64, symbols) }; return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-				return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-				}, func() LawSpecValue {
-					return func() LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						codec0 := lsScalarCodec[string](schema, bits, "Text")
-						codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-						codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-						codec3 := lsScalarCodec[string](schema, bits, "Text")
-						codec4 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-						resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-						return func() LawSpecValue {
-							lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).TxnOffsetCommitRequest(codec0.toNative(func() LawSpecValue {
-								matched2402 := value2
-								matched2402Fields := matched2402.Data.(lawSpecData)
-								switch matched2402Fields.tag {
-								case "lawtwin.kafka::type::TransactionState::TransactionState":
-									value16 := matched2402Fields.fields[0]
-									_ = value16
-									value17 := matched2402Fields.fields[1]
-									_ = value17
-									value18 := matched2402Fields.fields[2]
-									_ = value18
-									value19 := matched2402Fields.fields[3]
-									_ = value19
-									value20 := matched2402Fields.fields[4]
-									_ = value20
-									value21 := matched2402Fields.fields[5]
-									_ = value21
-									return value16
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec1.toNative(func() LawSpecValue {
-								matched1377 := value9
-								matched1377Fields := matched1377.Data.(lawSpecData)
-								switch matched1377Fields.tag {
-								case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-									value22 := matched1377Fields.fields[0]
-									_ = value22
-									value23 := matched1377Fields.fields[1]
-									_ = value23
-									return value22
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec2.toNative(func() LawSpecValue {
-								matched1378 := value9
-								matched1378Fields := matched1378.Data.(lawSpecData)
-								switch matched1378Fields.tag {
-								case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-									value24 := matched1378Fields.fields[0]
-									_ = value24
-									value25 := matched1378Fields.fields[1]
-									_ = value25
-									return value25
-								default:
-									panic("invalid constructor in match")
-								}
-							}()), codec3.toNative(value0), codec4.toNative(value1))
-							return resultCodec.fromNative(LawSpecUnit{})
-						}()
-					}()
-				})
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-			}, func(_value LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-			}), func(value26 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value26}, 64, symbols)
-			}, func(value27 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value27}, 64, symbols)
-			}), func(value28 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value28}, 64, symbols), value2}, 64, symbols)
-			}, func(value29 LawSpecValue) LawSpecValue {
-				return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{lsConvert("Unit", lsAbsent("Unit"), 64)}, 64, symbols), func() LawSpecValue {
-					matched4500 := value2
-					matched4500Fields := matched4500.Data.(lawSpecData)
-					switch matched4500Fields.tag {
-					case "lawtwin.kafka::type::TransactionState::TransactionState":
-						value30 := matched4500Fields.fields[0]
-						_ = value30
-						value31 := matched4500Fields.fields[1]
-						_ = value31
-						value32 := matched4500Fields.fields[2]
-						_ = value32
-						value33 := matched4500Fields.fields[3]
-						_ = value33
-						value34 := matched4500Fields.fields[4]
-						_ = value34
-						value35 := matched4500Fields.fields[5]
-						_ = value35
-						return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value30, value31, value32, value33, value34, lsConvert("Bool", lsBool(true), 64)}, 64, symbols)
-					default:
-						panic("invalid constructor in match")
-					}
-				}()}, 64, symbols)
-			}) }()
-		})
-		return result
-	})
+	return lsfTo_b92c1d290bc6(lsfTransactionsOffsets_b33ea106(symbols, lsfFrom_437d0abf423f(value0), lsfFrom_582052f40a9c(value1), lsfFrom_74b3f2831172(value2)))
 }
 
 func lawSpecEvaluate857(
@@ -8951,295 +5659,7 @@ func lawSpecEvaluate857(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaTransactionsSend", func() LawSpecValue {
-		result := lsMatchEither(lawSpecEvaluate827(symbols, func() LawSpecValue {
-			matched1575 := value0
-			matched1575Fields := matched1575.Data.(lawSpecData)
-			switch matched1575Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value2 := matched1575Fields.fields[0]
-				_ = value2
-				value3 := matched1575Fields.fields[1]
-				_ = value3
-				value4 := matched1575Fields.fields[2]
-				_ = value4
-				return value2
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			matched1639 := value0
-			matched1639Fields := matched1639.Data.(lawSpecData)
-			switch matched1639Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value5 := matched1639Fields.fields[0]
-				_ = value5
-				value6 := matched1639Fields.fields[1]
-				_ = value6
-				value7 := matched1639Fields.fields[2]
-				_ = value7
-				return value6
-			default:
-				panic("invalid constructor in match")
-			}
-		}(), func() LawSpecValue {
-			matched1633 := value0
-			matched1633Fields := matched1633.Data.(lawSpecData)
-			switch matched1633Fields.tag {
-			case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-				value8 := matched1633Fields.fields[0]
-				_ = value8
-				value9 := matched1633Fields.fields[1]
-				_ = value9
-				value10 := matched1633Fields.fields[2]
-				_ = value10
-				return value10
-			default:
-				panic("invalid constructor in match")
-			}
-		}()), func(value11 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value11}, 64, symbols), value1}, 64, symbols)
-		}, func(value12 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue {
-				value13 := lawSpecEvaluate851(symbols, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Cons", []LawSpecValue{value12, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols), value1)
-				_ = value13
-				return lsMatchEither(func() LawSpecValue {
-					matched1878 := value13
-					matched1878Fields := matched1878.Data.(lawSpecData)
-					switch matched1878Fields.tag {
-					case "lawspec.collections::type::Pair::Pair":
-						value14 := matched1878Fields.fields[0]
-						_ = value14
-						value15 := matched1878Fields.fields[1]
-						_ = value15
-						return value14
-					default:
-						panic("invalid constructor in match")
-					}
-				}(), func(value16 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value16}, 64, symbols), func() LawSpecValue {
-						matched1727 := value13
-						matched1727Fields := matched1727.Data.(lawSpecData)
-						switch matched1727Fields.tag {
-						case "lawspec.collections::type::Pair::Pair":
-							value17 := matched1727Fields.fields[0]
-							_ = value17
-							value18 := matched1727Fields.fields[1]
-							_ = value18
-							return value18
-						default:
-							panic("invalid constructor in match")
-						}
-					}()}, 64, symbols)
-				}, func(value19 LawSpecValue) LawSpecValue {
-					return func() LawSpecValue {
-						value28 := lawSpecEvaluate842(symbols, value12, func() LawSpecValue {
-							matched3997 := func() LawSpecValue {
-								matched1628 := value13
-								matched1628Fields := matched1628.Data.(lawSpecData)
-								switch matched1628Fields.tag {
-								case "lawspec.collections::type::Pair::Pair":
-									value20 := matched1628Fields.fields[0]
-									_ = value20
-									value21 := matched1628Fields.fields[1]
-									_ = value21
-									return value21
-								default:
-									panic("invalid constructor in match")
-								}
-							}()
-							matched3997Fields := matched3997.Data.(lawSpecData)
-							switch matched3997Fields.tag {
-							case "lawtwin.kafka::type::TransactionState::TransactionState":
-								value22 := matched3997Fields.fields[0]
-								_ = value22
-								value23 := matched3997Fields.fields[1]
-								_ = value23
-								value24 := matched3997Fields.fields[2]
-								_ = value24
-								value25 := matched3997Fields.fields[3]
-								_ = value25
-								value26 := matched3997Fields.fields[4]
-								_ = value26
-								value27 := matched3997Fields.fields[5]
-								_ = value27
-								return value24
-							default:
-								panic("invalid constructor in match")
-							}
-						}())
-						_ = value28
-						return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-							return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-							}, func() LawSpecValue {
-								return func() LawSpecValue {
-									schema := _lawSpecDefinitionSchema
-									bits := 64
-									_, _ = schema, bits
-									codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-									codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-									codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-									resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-									return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(value12), codec1.toNative(lawSpecEvaluate845(symbols, func() LawSpecValue {
-										matched3873 := func() LawSpecValue {
-											matched1628 := value13
-											matched1628Fields := matched1628.Data.(lawSpecData)
-											switch matched1628Fields.tag {
-											case "lawspec.collections::type::Pair::Pair":
-												value29 := matched1628Fields.fields[0]
-												_ = value29
-												value30 := matched1628Fields.fields[1]
-												_ = value30
-												return value30
-											default:
-												panic("invalid constructor in match")
-											}
-										}()
-										matched3873Fields := matched3873.Data.(lawSpecData)
-										switch matched3873Fields.tag {
-										case "lawtwin.kafka::type::TransactionState::TransactionState":
-											value31 := matched3873Fields.fields[0]
-											_ = value31
-											value32 := matched3873Fields.fields[1]
-											_ = value32
-											value33 := matched3873Fields.fields[2]
-											_ = value33
-											value34 := matched3873Fields.fields[3]
-											_ = value34
-											value35 := matched3873Fields.fields[4]
-											_ = value35
-											value36 := matched3873Fields.fields[5]
-											_ = value36
-											return value32
-										default:
-											panic("invalid constructor in match")
-										}
-									}(), value28)), codec2.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{func() LawSpecValue {
-										matched1633 := value0
-										matched1633Fields := matched1633.Data.(lawSpecData)
-										switch matched1633Fields.tag {
-										case "lawtwin.kafka::type::ProducerRecord::ProducerRecord":
-											value37 := matched1633Fields.fields[0]
-											_ = value37
-											value38 := matched1633Fields.fields[1]
-											_ = value38
-											value39 := matched1633Fields.fields[2]
-											_ = value39
-											return value39
-										default:
-											panic("invalid constructor in match")
-										}
-									}(), _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols))))
-								}()
-							})
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-						}, func(_value LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-						}), func(value40 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value40}, 64, symbols)
-						}, func(value41 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value41}, 64, symbols)
-						}), func(value42 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Left", []LawSpecValue{value42}, 64, symbols), func() LawSpecValue {
-								matched1728 := value13
-								matched1728Fields := matched1728.Data.(lawSpecData)
-								switch matched1728Fields.tag {
-								case "lawspec.collections::type::Pair::Pair":
-									value43 := matched1728Fields.fields[0]
-									_ = value43
-									value44 := matched1728Fields.fields[1]
-									_ = value44
-									return value44
-								default:
-									panic("invalid constructor in match")
-								}
-							}()}, 64, symbols)
-						}, func(value45 LawSpecValue) LawSpecValue {
-							return _lawSpecDefinitionSchema.construct(lsNamed("lawspec.collections::type::Pair", lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), lsNamed("lawtwin.kafka::type::TransactionState")), "lawspec.collections::type::Pair::Pair", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka::type::RecordMetadata")), "Either::Right", []LawSpecValue{_lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::RecordMetadata"), "lawtwin.kafka::type::RecordMetadata::RecordMetadata", []LawSpecValue{value12, value45}, 64, symbols)}, 64, symbols), func() LawSpecValue {
-								value54 := lawSpecEvaluate698(symbols, value12, lawSpecEvaluate608(symbols, lsBinary("+", value28, lsConvert("Integer", lsInteger("Integer", "1"), 64))), func() LawSpecValue {
-									matched3998 := func() LawSpecValue {
-										matched1628 := value13
-										matched1628Fields := matched1628.Data.(lawSpecData)
-										switch matched1628Fields.tag {
-										case "lawspec.collections::type::Pair::Pair":
-											value46 := matched1628Fields.fields[0]
-											_ = value46
-											value47 := matched1628Fields.fields[1]
-											_ = value47
-											return value47
-										default:
-											panic("invalid constructor in match")
-										}
-									}()
-									matched3998Fields := matched3998.Data.(lawSpecData)
-									switch matched3998Fields.tag {
-									case "lawtwin.kafka::type::TransactionState::TransactionState":
-										value48 := matched3998Fields.fields[0]
-										_ = value48
-										value49 := matched3998Fields.fields[1]
-										_ = value49
-										value50 := matched3998Fields.fields[2]
-										_ = value50
-										value51 := matched3998Fields.fields[3]
-										_ = value51
-										value52 := matched3998Fields.fields[4]
-										_ = value52
-										value53 := matched3998Fields.fields[5]
-										_ = value53
-										return value50
-									default:
-										panic("invalid constructor in match")
-									}
-								}())
-								_ = value54
-								return func() LawSpecValue {
-									matched5669 := func() LawSpecValue {
-										matched1728 := value13
-										matched1728Fields := matched1728.Data.(lawSpecData)
-										switch matched1728Fields.tag {
-										case "lawspec.collections::type::Pair::Pair":
-											value55 := matched1728Fields.fields[0]
-											_ = value55
-											value56 := matched1728Fields.fields[1]
-											_ = value56
-											return value56
-										default:
-											panic("invalid constructor in match")
-										}
-									}()
-									matched5669Fields := matched5669.Data.(lawSpecData)
-									switch matched5669Fields.tag {
-									case "lawtwin.kafka::type::TransactionState::TransactionState":
-										value57 := matched5669Fields.fields[0]
-										_ = value57
-										value58 := matched5669Fields.fields[1]
-										_ = value58
-										value59 := matched5669Fields.fields[2]
-										_ = value59
-										value60 := matched5669Fields.fields[3]
-										_ = value60
-										value61 := matched5669Fields.fields[4]
-										_ = value61
-										value62 := matched5669Fields.fields[5]
-										_ = value62
-										return _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka::type::TransactionState"), "lawtwin.kafka::type::TransactionState::TransactionState", []LawSpecValue{value57, value58, value54, value60, value61, value62}, 64, symbols)
-									default:
-										panic("invalid constructor in match")
-									}
-								}()
-							}()}, 64, symbols)
-						})
-					}()
-				})
-			}()
-		})
-		return result
-	})
+	return lsfTo_d87cfe1fbff5(lsfTransactionsSend_558d813c(symbols, lsfFrom_b2152710dfac(value0), lsfFrom_74b3f2831172(value1)))
 }
 
 func lawSpecEvaluate858(
@@ -9247,10 +5667,7 @@ func lawSpecEvaluate858(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaUncommittedFrom", func() LawSpecValue {
-		result := lawSpecEvaluate835(symbols, value0, value1, _lawSpecDefinitionSchema.construct(lsNamed("lawtwin.kafka.model::type::IsolationLevel"), "lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted", []LawSpecValue{}, 64, symbols))
-		return result
-	})
+	return lsfTo_e3583a5b5bdc(lsfUncommittedFrom_8a57847d(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1)))
 }
 
 func lawSpecEvaluate859(
@@ -9258,7 +5675,7 @@ func lawSpecEvaluate859(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_3250492fe9ac(lsfViewOf_257(lsfFrom_437d0abf423f(value0), lsfFrom_9b6e0477a826(value1)))
+	return lsfTo_3250492fe9ac(lsfViewOf_6e11c6f7(lsfFrom_437d0abf423f(value0), lsfFrom_9b6e0477a826(value1)))
 }
 
 func lawSpecEvaluate860(
@@ -9270,7 +5687,7 @@ func lawSpecEvaluate860(
 	value4 LawSpecValue,
 	value5 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_7de2ae0da384(lsfWithAssignment_258(lsfFrom_01d86fc44f8c(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_3250492fe9ac(value4), lsfFrom_7de2ae0da384(value5)))
+	return lsfTo_7de2ae0da384(lsfWithAssignment_7d6291b1(lsfFrom_01d86fc44f8c(value0), lsfFrom_437d0abf423f(value1), lsfFrom_b862204e9be7(value2), lsfFrom_8ec0351dc657(value3), lsfFrom_3250492fe9ac(value4), lsfFrom_7de2ae0da384(value5)))
 }
 
 func lawSpecEvaluate861(
@@ -9279,7 +5696,7 @@ func lawSpecEvaluate861(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_7de2ae0da384(lsfWithPosition_259(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
+	return lsfTo_7de2ae0da384(lsfWithPosition_867e6b19(lsfFrom_57a515e0e489(value0), lsfFrom_44a08172da10(value1), lsfFrom_7de2ae0da384(value2)))
 }
 
 func lawSpecEvaluate862(
@@ -9288,188 +5705,7 @@ func lawSpecEvaluate862(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsNativeContext("contracttest.kafka::lawtwinKafkaWriteAborted", func() LawSpecValue {
-		result := lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-			return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-				schema := _lawSpecDefinitionSchema
-				bits := 64
-				_, _ = schema, bits
-				return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-			}, func() LawSpecValue {
-				return func() LawSpecValue {
-					schema := _lawSpecDefinitionSchema
-					bits := 64
-					_, _ = schema, bits
-					codec0 := lsMaybeCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-					resultCodec := lawSpecProducerIdAndEpochCodec(schema, bits, symbols)
-					return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).InitProducerIdRequest(codec0.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Text")), "Maybe::Just", []LawSpecValue{value1}, 64, symbols))))
-				}()
-			})
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-		}, func(_value LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-		}), func(value3 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Left", []LawSpecValue{value3}, 64, symbols)
-		}, func(value4 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("lawtwin.kafka.model::type::ProducerIdAndEpoch")), "Either::Right", []LawSpecValue{value4}, 64, symbols)
-		}), func(value5 LawSpecValue) LawSpecValue {
-			return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)
-		}, func(value6 LawSpecValue) LawSpecValue {
-			return func() LawSpecValue {
-				value13 := lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lsScalarCodec[string](schema, bits, "Text")
-							codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-							codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-							codec3 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-							resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-							return func() LawSpecValue {
-								lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).AddPartitionsToTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-									matched1337 := value6
-									matched1337Fields := matched1337.Data.(lawSpecData)
-									switch matched1337Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value7 := matched1337Fields.fields[0]
-										_ = value7
-										value8 := matched1337Fields.fields[1]
-										_ = value8
-										return value7
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec2.toNative(func() LawSpecValue {
-									matched1337 := value6
-									matched1337Fields := matched1337.Data.(lawSpecData)
-									switch matched1337Fields.tag {
-									case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-										value9 := matched1337Fields.fields[0]
-										_ = value9
-										value10 := matched1337Fields.fields[1]
-										_ = value10
-										return value10
-									default:
-										panic("invalid constructor in match")
-									}
-								}()), codec3.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Cons", []LawSpecValue{value0, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::TopicPartition")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols)))
-								return resultCodec.fromNative(LawSpecUnit{})
-							}()
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value11 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value11}, 64, symbols)
-				}, func(value12 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value12}, 64, symbols)
-				})
-				_ = value13
-				return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-					return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-						schema := _lawSpecDefinitionSchema
-						bits := 64
-						_, _ = schema, bits
-						return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-					}, func() LawSpecValue {
-						return func() LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-							codec1 := lsMaybeCodec(schema, bits, lawSpecProducerTagCodec(schema, bits, symbols), symbols)
-							codec2 := lsListCodec(schema, bits, lawSpecRecordCodec(schema, bits, symbols), symbols)
-							resultCodec := lsScalarCodec[int64](schema, bits, "Int64")
-							return resultCodec.fromNative(lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).ProduceRequest(codec0.toNative(value0), codec1.toNative(_lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("lawtwin.kafka.model::type::ProducerTag")), "Maybe::Just", []LawSpecValue{lawSpecEvaluate846(symbols, value6, lsConvert("Int32", lsInteger("Int32", "0"), 64))}, 64, symbols)), codec2.toNative(_lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Cons", []LawSpecValue{value2, _lawSpecDefinitionSchema.construct(lsNamed("List", lsNamed("lawtwin.kafka.model::type::Record")), "List::Nil", []LawSpecValue{}, 64, symbols)}, 64, symbols))))
-						}()
-					})
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-				}, func(_value LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-				}), func(value14 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Left", []LawSpecValue{value14}, 64, symbols)
-				}, func(value15 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Int64")), "Either::Right", []LawSpecValue{value15}, 64, symbols)
-				}), func(value16 LawSpecValue) LawSpecValue {
-					return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)
-				}, func(value17 LawSpecValue) LawSpecValue {
-					return lsMatchEither(lsMatchEither(lsAttempt("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func() LawSpecValue {
-						return lsNativeFailures("lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)", func(native any) LawSpecValue {
-							schema := _lawSpecDefinitionSchema
-							bits := 64
-							_, _ = schema, bits
-							return lawSpecKafkaErrorCodec(schema, bits, symbols).fromNative(native.(KafkaError))
-						}, func() LawSpecValue {
-							return func() LawSpecValue {
-								schema := _lawSpecDefinitionSchema
-								bits := 64
-								_, _ = schema, bits
-								codec0 := lsScalarCodec[string](schema, bits, "Text")
-								codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-								codec2 := lsScalarCodec[int16](schema, bits, "Int16")
-								codec3 := lsScalarCodec[bool](schema, bits, "Bool")
-								resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-								return func() LawSpecValue {
-									lsHandler(symbols, "lawtwin.kafka::ability::Broker").(Broker).EndTxnRequest(codec0.toNative(value1), codec1.toNative(func() LawSpecValue {
-										matched1337 := value6
-										matched1337Fields := matched1337.Data.(lawSpecData)
-										switch matched1337Fields.tag {
-										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											value18 := matched1337Fields.fields[0]
-											_ = value18
-											value19 := matched1337Fields.fields[1]
-											_ = value19
-											return value18
-										default:
-											panic("invalid constructor in match")
-										}
-									}()), codec2.toNative(func() LawSpecValue {
-										matched1337 := value6
-										matched1337Fields := matched1337.Data.(lawSpecData)
-										switch matched1337Fields.tag {
-										case "lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch":
-											value20 := matched1337Fields.fields[0]
-											_ = value20
-											value21 := matched1337Fields.fields[1]
-											_ = value21
-											return value21
-										default:
-											panic("invalid constructor in match")
-										}
-									}()), codec3.toNative(lsConvert("Bool", lsBool(false), 64)))
-									return resultCodec.fromNative(LawSpecUnit{})
-								}()
-							}()
-						})
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{_value}, 64, symbols)
-					}, func(_value LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{_value}, 64, symbols)
-					}), func(value22 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Left", []LawSpecValue{value22}, 64, symbols)
-					}, func(value23 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Either", lsNamed("lawtwin.kafka.model::type::KafkaError"), lsNamed("Unit")), "Either::Right", []LawSpecValue{value23}, 64, symbols)
-					}), func(value24 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Nothing", []LawSpecValue{}, 64, symbols)
-					}, func(value25 LawSpecValue) LawSpecValue {
-						return _lawSpecDefinitionSchema.construct(lsNamed("Maybe", lsNamed("Int64")), "Maybe::Just", []LawSpecValue{value17}, 64, symbols)
-					})
-				})
-			}()
-		})
-		return result
-	})
+	return lsfTo_c09136e29464(lsfWriteAborted_8e3a61e4(symbols, lsfFrom_57a515e0e489(value0), lsfFrom_437d0abf423f(value1), lsfFrom_be206fb00188(value2)))
 }
 
 func lawSpecEvaluate863(
@@ -9477,7 +5713,7 @@ func lawSpecEvaluate863(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfXor32_260(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
+	return lsfTo_bd9653153f3b(lsfXor32_0ea970f5(lsfFrom_bd9653153f3b(value0), lsfFrom_bd9653153f3b(value1)))
 }
 
 func lawSpecEvaluate864(
@@ -9486,7 +5722,7 @@ func lawSpecEvaluate864(
 	value1 LawSpecValue,
 	value2 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_7b619c124b0c(lsfXorBits_261(lsfFrom_7b619c124b0c(value0), lsfFrom_7b619c124b0c(value1), lsfFrom_7b619c124b0c(value2)))
+	return lsfTo_7b619c124b0c(lsfXorBits_ea1fb8e2(lsfFrom_7b619c124b0c(value0), lsfFrom_7b619c124b0c(value1), lsfFrom_7b619c124b0c(value2)))
 }
 
 func lawSpecEvaluate865(
@@ -9494,5 +5730,5 @@ func lawSpecEvaluate865(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfMurmurPartitionerChoosePartition_242(lsfFrom_b276e66efd09(value0), lsfFrom_b862204e9be7(value1)))
+	return lsfTo_b862204e9be7(lsfMurmurPartitionerChoosePartition_5048c35d(lsfFrom_b276e66efd09(value0), lsfFrom_b862204e9be7(value1)))
 }

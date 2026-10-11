@@ -10,20 +10,21 @@ import lawspec_data as data
 import lawspec_runtime as ls
 import lawspec_schema as _schema
 import lawspec_definition_bodies as _definitions
+import lawspec_typed as _typed
+import threading as _threading
 
 _lawspec_schema = data.make_schema()
 
 
 class Cluster:
-    """The spec handler cluster for Broker, Admin, GroupCoordinator."""
+    """The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed.
+
+    Cluster() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_567(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_6d4551c7(self._symbols)
 
     def createTopicsRequest(
         self,
@@ -31,30 +32,12 @@ class Cluster:
         value1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_547(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_b862204e9be7(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCreateTopic_25a8c8e9(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def createPartitionsRequest(
         self,
@@ -62,54 +45,23 @@ class Cluster:
         value1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_545(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_b862204e9be7(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCreatePartitions_0f2bdce3(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def metadataRequest(
         self,
         value0: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_562(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Maybe", [_schema.Named("Int32")]),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterMetadataRequest_3507727c(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_e0f8ce0ed062(pair[0], symbols)
 
     def produceRequest(
         self,
@@ -118,42 +70,13 @@ class Cluster:
         value2: _builtins.list[data.Record],
     ) -> _builtins.int:
         symbols = self._symbols
-        pair = _definitions.evaluate_566(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [_schema.Named("lawtwin.kafka.model::type::ProducerTag")],
-                ),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [_schema.Named("lawtwin.kafka.model::type::Record")],
-                ),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int64"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        argument1 = _typed.nin_c818bd20f406(value1, symbols)
+        argument2 = _typed.nin_e3583a5b5bdc(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterProduceRequest_619c7f1f(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_44a08172da10(pair[0], symbols)
 
     def fetchRequest(
         self,
@@ -163,42 +86,14 @@ class Cluster:
         value3: data.IsolationLevel,
     ) -> data.FetchResult:
         symbols = self._symbols
-        pair = _definitions.evaluate_552(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.kafka.model::type::FetchResult"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        argument1 = _typed.nin_44a08172da10(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        argument3 = _typed.nin_a519f593a6ed(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterFetchRequest_53f6507d(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_d2a1db54643f(pair[0], symbols)
 
     def listOffsetsRequest(
         self,
@@ -207,60 +102,24 @@ class Cluster:
         value2: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        pair = _definitions.evaluate_561(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int64"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        argument1 = _typed.nin_c55be5a8a1f1(value1, symbols)
+        argument2 = _typed.nin_a519f593a6ed(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterListOffsets_1dede442(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_44a08172da10(pair[0], symbols)
 
     def initProducerIdRequest(
         self,
         value0: _schema.Maybe[_builtins.str],
     ) -> data.ProducerIdAndEpoch:
         symbols = self._symbols
-        pair = _definitions.evaluate_555(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_01d86fc44f8c(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterInitProducerIdRequest_f11b7e7d(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_6a5ea41697b3(pair[0], symbols)
 
     def addPartitionsToTxnRequest(
         self,
@@ -270,49 +129,14 @@ class Cluster:
         value3: _builtins.list[data.TopicPartition],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_542(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int16"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [
-                        _schema.Named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                        ),
-                    ],
-                ),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_44a08172da10(value1, symbols)
+        argument2 = _typed.nin_07dabd732290(value2, symbols)
+        argument3 = _typed.nin_3250492fe9ac(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterAddPartitionsToTxnRequest_026ba83d(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def txnOffsetCommitRequest(
         self,
@@ -323,51 +147,15 @@ class Cluster:
         value4: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_570(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int16"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value3,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
-                ),
-                value4,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_44a08172da10(value1, symbols)
+        argument2 = _typed.nin_07dabd732290(value2, symbols)
+        argument3 = _typed.nin_437d0abf423f(value3, symbols)
+        argument4 = _typed.nin_582052f40a9c(value4, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterTxnOffsetCommitRequest_08ba35de(self._state, argument0, argument1, argument2, argument3, argument4)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def endTxnRequest(
         self,
@@ -377,42 +165,14 @@ class Cluster:
         value3: _builtins.bool,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_550(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int16"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Bool"),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_44a08172da10(value1, symbols)
+        argument2 = _typed.nin_07dabd732290(value2, symbols)
+        argument3 = _typed.nin_d267428fb2ca(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterEndTxnRequest_e8879acb(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def joinGroupRequest(
         self,
@@ -421,36 +181,13 @@ class Cluster:
         value2: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        pair = _definitions.evaluate_557(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("List", [_schema.Named("Text")]),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int32"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_8ec0351dc657(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterJoinGroup_2f7f09cb(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b862204e9be7(pair[0], symbols)
 
     def syncGroupRequest(
         self,
@@ -459,39 +196,13 @@ class Cluster:
         value2: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        pair = _definitions.evaluate_569(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterSyncGroup_fa44a945(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_3250492fe9ac(pair[0], symbols)
 
     def heartbeatRequest(
         self,
@@ -500,36 +211,13 @@ class Cluster:
         value2: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_554(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterHeartbeat_3af82cc2(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def leaveGroupRequest(
         self,
@@ -537,51 +225,20 @@ class Cluster:
         value1: _builtins.str,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_559(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterLeaveGroup_cd94c353(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def describeGroupRequest(self, value0: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        pair = _definitions.evaluate_549(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.kafka.model::type::GroupView"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterDescribeGroup_c1f8efd4(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_9b6e0477a826(pair[0], symbols)
 
     def offsetCommitRequest(
         self,
@@ -591,45 +248,14 @@ class Cluster:
         value3: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_563(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
-                ),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        argument3 = _typed.nin_582052f40a9c(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCommitOffsets_d3b39e4c(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def offsetFetchRequest(
         self,
@@ -637,30 +263,12 @@ class Cluster:
         value1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_564(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_57a515e0e489(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterFetchOffset_53ffef89(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_c09136e29464(pair[0], symbols)
 
     def createTopic(
         self,
@@ -668,30 +276,12 @@ class Cluster:
         value1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_546(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_b862204e9be7(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCreateTopic_25a8c8e9(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def createPartitions(
         self,
@@ -699,54 +289,23 @@ class Cluster:
         value1: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_544(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_b862204e9be7(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCreatePartitions_0f2bdce3(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def partitionsFor(
         self,
         value0: _builtins.str,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_565(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Maybe", [_schema.Named("Int32")]),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterMetadataRequest_3507727c(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_e0f8ce0ed062(pair[0], symbols)
 
     def listOffsets(
         self,
@@ -755,36 +314,13 @@ class Cluster:
         value2: data.IsolationLevel,
     ) -> _builtins.int:
         symbols = self._symbols
-        pair = _definitions.evaluate_560(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::OffsetSpec"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int64"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        argument1 = _typed.nin_c55be5a8a1f1(value1, symbols)
+        argument2 = _typed.nin_a519f593a6ed(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterListOffsets_1dede442(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_44a08172da10(pair[0], symbols)
 
     def joinGroup(
         self,
@@ -793,36 +329,13 @@ class Cluster:
         value2: _builtins.list[_builtins.str],
     ) -> _builtins.int:
         symbols = self._symbols
-        pair = _definitions.evaluate_556(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("List", [_schema.Named("Text")]),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int32"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_8ec0351dc657(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterJoinGroup_2f7f09cb(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b862204e9be7(pair[0], symbols)
 
     def syncGroup(
         self,
@@ -831,39 +344,13 @@ class Cluster:
         value2: _builtins.int,
     ) -> _builtins.list[data.TopicPartition]:
         symbols = self._symbols
-        pair = _definitions.evaluate_568(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.kafka.model::type::TopicPartition")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterSyncGroup_fa44a945(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_3250492fe9ac(pair[0], symbols)
 
     def heartbeat(
         self,
@@ -872,84 +359,30 @@ class Cluster:
         value2: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_553(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterHeartbeat_3af82cc2(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def leaveGroup(self, value0: _builtins.str, value1: _builtins.str) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_558(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterLeaveGroup_cd94c353(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def describeGroup(self, value0: _builtins.str) -> data.GroupView:
         symbols = self._symbols
-        pair = _definitions.evaluate_548(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.kafka.model::type::GroupView"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterDescribeGroup_c1f8efd4(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_9b6e0477a826(pair[0], symbols)
 
     def commitOffsets(
         self,
@@ -959,45 +392,14 @@ class Cluster:
         value3: _builtins.list[data.OffsetEntry],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_543(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
-                ),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_b862204e9be7(value2, symbols)
+        argument3 = _typed.nin_582052f40a9c(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterCommitOffsets_d3b39e4c(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def fetchOffset(
         self,
@@ -1005,34 +407,424 @@ class Cluster:
         value1: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_551(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_57a515e0e489(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_clusterFetchOffset_53ffef89(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_c09136e29464(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_49de88d0a810(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_49de88d0a810(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state
+
+    def try_createTopicsRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """createTopicsRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createTopicsRequest(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_createPartitionsRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """createPartitionsRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createPartitionsRequest(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_produceRequest(
+        self,
+        value0: data.TopicPartition,
+        value1: _schema.Maybe[data.ProducerTag],
+        value2: _builtins.list[data.Record],
+    ) -> _schema.Either[data.KafkaError, _builtins.int]:
+        """produceRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.produceRequest(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_fetchRequest(
+        self,
+        value0: data.TopicPartition,
+        value1: _builtins.int,
+        value2: _builtins.int,
+        value3: data.IsolationLevel,
+    ) -> _schema.Either[data.KafkaError, data.FetchResult]:
+        """fetchRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.fetchRequest(
                 value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
                 value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_listOffsetsRequest(
+        self,
+        value0: data.TopicPartition,
+        value1: data.OffsetSpec,
+        value2: data.IsolationLevel,
+    ) -> _schema.Either[data.KafkaError, _builtins.int]:
+        """listOffsetsRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.listOffsetsRequest(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_initProducerIdRequest(
+        self,
+        value0: _schema.Maybe[_builtins.str],
+    ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
+        """initProducerIdRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.initProducerIdRequest(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_addPartitionsToTxnRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+        value2: _builtins.int,
+        value3: _builtins.list[data.TopicPartition],
+    ) -> _schema.Either[data.KafkaError, None]:
+        """addPartitionsToTxnRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.addPartitionsToTxnRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_txnOffsetCommitRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+        value2: _builtins.int,
+        value3: _builtins.str,
+        value4: _builtins.list[data.OffsetEntry],
+    ) -> _schema.Either[data.KafkaError, None]:
+        """txnOffsetCommitRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.txnOffsetCommitRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+                value4,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_endTxnRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+        value2: _builtins.int,
+        value3: _builtins.bool,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """endTxnRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.endTxnRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_joinGroupRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.list[_builtins.str],
+    ) -> _schema.Either[data.KafkaError, _builtins.int]:
+        """joinGroupRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.joinGroupRequest(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_syncGroupRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
+        """syncGroupRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.syncGroupRequest(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_heartbeatRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """heartbeatRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.heartbeatRequest(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_leaveGroupRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """leaveGroupRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.leaveGroupRequest(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_offsetCommitRequest(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+        value3: _builtins.list[data.OffsetEntry],
+    ) -> _schema.Either[data.KafkaError, None]:
+        """offsetCommitRequest, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.offsetCommitRequest(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_createTopic(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """createTopic, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createTopic(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_createPartitions(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """createPartitions, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createPartitions(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_listOffsets(
+        self,
+        value0: data.TopicPartition,
+        value1: data.OffsetSpec,
+        value2: data.IsolationLevel,
+    ) -> _schema.Either[data.KafkaError, _builtins.int]:
+        """listOffsets, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.listOffsets(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_joinGroup(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.list[_builtins.str],
+    ) -> _schema.Either[data.KafkaError, _builtins.int]:
+        """joinGroup, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.joinGroup(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_syncGroup(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
+        """syncGroup, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.syncGroup(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_heartbeat(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """heartbeat, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.heartbeat(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_leaveGroup(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+    ) -> _schema.Either[data.KafkaError, None]:
+        """leaveGroup, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.leaveGroup(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
+
+    def try_commitOffsets(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+        value3: _builtins.list[data.OffsetEntry],
+    ) -> _schema.Either[data.KafkaError, None]:
+        """commitOffsets, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.commitOffsets(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.kafka.model::type::KafkaError",
+            ), failure.value, 64, self._symbols))
 
 
 class MurmurPartitioner:
-    """The spec handler murmurPartitioner for Partitioner."""
+    """The spec handler murmurPartitioner for Partitioner, with its state typed.
+
+    MurmurPartitioner() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
@@ -1043,182 +835,102 @@ class MurmurPartitioner:
         value1: _builtins.int,
     ) -> _builtins.int:
         symbols = self._symbols
-        result = _definitions.evaluate_865(
-            symbols,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Int32"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_b276e66efd09(value0, symbols)
+        argument1 = _typed.nin_b862204e9be7(value1, symbols)
+        return _typed.nout_b862204e9be7(_typed.Def_murmurPartitionerChoosePartition_5048c35d(argument0, argument1), symbols)
 
 
 class KafkaProducer:
-    """The spec handler kafkaProducer for Producer."""
+    """The spec handler kafkaProducer for Producer, with its state typed.
+
+    KafkaProducer() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_586(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_830a8330(self._symbols)
 
     def send(
         self,
         value0: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        pair = _definitions.evaluate_585(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("lawtwin.kafka::type::RecordMetadata"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_b2152710dfac(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaProducerSend_a4612365(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_f9a3e61df1f3(pair[0], symbols)
 
     def flush(self) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_582(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaProducerFlush_584e906f(self._state)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def enableIdempotence(
         self,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
-        pair = _definitions.evaluate_581(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaProducerEnableIdempotence_a79d2db8(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_b201d5315681(pair[0], symbols)
 
     def retryLastSend(
         self,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        pair = _definitions.evaluate_584(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("lawtwin.kafka::type::RecordMetadata"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaProducerRetryLastSend_9cbd6c72(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_f9a3e61df1f3(pair[0], symbols)
 
     def producerIdentity(self) -> _schema.Maybe[data.ProducerIdAndEpoch]:
         symbols = self._symbols
-        pair = _definitions.evaluate_583(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Maybe",
-                [
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaProducerProducerIdentity_a0ee547d(self._state)
+            self._state = pair[1]
+        return _typed.nout_99552686984c(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_5e5d2c3fa1a7(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_5e5d2c3fa1a7(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state
 
 
 class KafkaConsumer:
-    """The spec handler kafkaConsumer for Consumer."""
+    """The spec handler kafkaConsumer for Consumer, with its state typed.
+
+    KafkaConsumer() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_579(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_b639b863(self._symbols)
 
     def assign(self, value0: _builtins.list[data.TopicPartition]) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_571(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [
-                        _schema.Named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                        ),
-                    ],
-                ),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_3250492fe9ac(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerAssign_6414ad54(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def subscribe(
         self,
@@ -1227,100 +939,31 @@ class KafkaConsumer:
         value2: _builtins.list[_builtins.str],
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.TopicPartition]]:
         symbols = self._symbols
-        pair = _definitions.evaluate_580(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("List", [_schema.Named("Text")]),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named(
-                        "List",
-                        [
-                            _schema.Named(
-                                "lawtwin.kafka.model::type::TopicPartition",
-                            ),
-                        ],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_8ec0351dc657(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerSubscribe_ce34eaf5(symbols, self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_479a8e1cd590(pair[0], symbols)
 
     def poll(
         self,
         value0: _builtins.int,
     ) -> _schema.Either[data.KafkaError, _builtins.list[data.ConsumerRecord]]:
         symbols = self._symbols
-        pair = _definitions.evaluate_575(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int32"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named(
-                        "List",
-                        [_schema.Named("lawtwin.kafka::type::ConsumerRecord")],
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_b862204e9be7(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerPoll_591504e0(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_88281415992f(pair[0], symbols)
 
     def commitSync(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_573(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerCommitSync_d47684fe(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def seek(
         self,
@@ -1328,252 +971,120 @@ class KafkaConsumer:
         value1: _builtins.int,
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_577(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        argument1 = _typed.nin_44a08172da10(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerSeek_5fe046a7(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def position(
         self,
         value0: data.TopicPartition,
     ) -> _schema.Either[data.KafkaError, _builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_576(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Int64"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerPosition_7784665f(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_aff9cc782806(pair[0], symbols)
 
     def committedOffset(
         self,
         value0: data.TopicPartition,
     ) -> _schema.Maybe[_builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_574(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::TopicPartition"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Maybe", [_schema.Named("Int64")]),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_57a515e0e489(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerCommittedOffset_c045e1a8(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_c09136e29464(pair[0], symbols)
 
     def setIsolationLevel(self, value0: data.IsolationLevel) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_578(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka.model::type::IsolationLevel"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_a519f593a6ed(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerSetIsolationLevel_bc2459d3(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def close(self) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_572(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaConsumerClose_ece19793(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_7de2ae0da384(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_7de2ae0da384(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state
 
 
 class KafkaTransactions:
-    """The spec handler kafkaTransactions for Transactions."""
+    """The spec handler kafkaTransactions for Transactions, with its state typed.
+
+    KafkaTransactions() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_594(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_7a059757(self._symbols)
 
     def initTransactions(
         self,
         value0: _builtins.str,
     ) -> _schema.Either[data.KafkaError, data.ProducerIdAndEpoch]:
         symbols = self._symbols
-        pair = _definitions.evaluate_591(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named(
-                        "lawtwin.kafka.model::type::ProducerIdAndEpoch",
-                    ),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsInitTransactions_96f85461(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_b201d5315681(pair[0], symbols)
 
     def beginTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_589(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsBeginTransaction_3c1e648e(self._state)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def addPartitionsToTransaction(
         self,
         value0: _builtins.list[data.TopicPartition],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_588(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [
-                        _schema.Named(
-                            "lawtwin.kafka.model::type::TopicPartition",
-                        ),
-                    ],
-                ),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_3250492fe9ac(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def sendInTransaction(
         self,
         value0: data.ProducerRecord,
     ) -> _schema.Either[data.KafkaError, data.RecordMetadata]:
         symbols = self._symbols
-        pair = _definitions.evaluate_592(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.kafka::type::ProducerRecord"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("lawtwin.kafka::type::RecordMetadata"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_b2152710dfac(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsSendInTransaction_09c804c7(symbols, self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_f9a3e61df1f3(pair[0], symbols)
 
     def sendOffsetsToTransaction(
         self,
@@ -1581,72 +1092,43 @@ class KafkaTransactions:
         value1: _builtins.list[data.OffsetEntry],
     ) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_593(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "List",
-                    [_schema.Named("lawtwin.kafka.model::type::OffsetEntry")],
-                ),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_582052f40a9c(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols, self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def commitTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_590(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsCommitTransaction_e0a5e067(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
 
     def abortTransaction(self) -> _schema.Either[data.KafkaError, ls.Absence]:
         symbols = self._symbols
-        pair = _definitions.evaluate_587(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "Either",
-                [
-                    _schema.Named("lawtwin.kafka.model::type::KafkaError"),
-                    _schema.Named("Unit"),
-                ],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_kafkaTransactionsAbortTransaction_a2a1e35e(symbols, self._state)
+            self._state = pair[1]
+        return _typed.nout_6c1d71d067da(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_74b3f2831172(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_74b3f2831172(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state

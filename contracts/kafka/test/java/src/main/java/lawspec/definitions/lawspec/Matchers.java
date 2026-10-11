@@ -11,6 +11,6 @@ public final class Matchers {
 
   public static java.lang.Boolean matchersMatchesRegex(
       Map<String, Object> symbols, java.lang.String value0, lawspec.data.Regex value1) {
-    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_21(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative103(value1)));
+    return lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_52d1c22e(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative120(value1)));
   }
 }

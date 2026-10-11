@@ -13,5 +13,5 @@ object Matchers {
         symbols: MutableMap<String, Any>,
         value0: kotlin.String,
         value1: lawspec.data.Regex,
-    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_21(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative103(value1)))
+    ): kotlin.Boolean = lawspec.runtime.LawSpecTyped.toNative16(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_52d1c22e(lawspec.runtime.LawSpecTyped.fromNative1(value0), lawspec.runtime.LawSpecTyped.fromNative120(value1)))
 }

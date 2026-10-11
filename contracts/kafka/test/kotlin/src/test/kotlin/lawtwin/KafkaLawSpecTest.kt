@@ -25636,12 +25636,11 @@ class KafkaLawSpecTest : StringSpec({
     // (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new
     // -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
     // (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
-    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0
-    // }) (match (_match1__1__old) {
-    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1
-    // }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield0__producerId
+    // _matchfield1__producerEpoch -> _matchfield0__producerId }) (match (_match1__1__old) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield2__producerId
+    // _matchfield3__producerEpoch -> _matchfield3__producerEpoch }) (List::Cons(_let0__tp,
+    // List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
     // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -25869,84 +25868,25 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField191" +
-                        "x0 _match3__0__lawspecFi" +
-                        "eld191x1 -> _match3__0__" +
-                        "lawspecField191x0 }) (ma" +
-                        "tch (_match1__1__old) { " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::ProducerIdAndEpoch::P" +
-                        "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField192x0 " +
-                        "_match3__0__lawspecField" +
-                        "192x1 -> _match3__0__law" +
-                        "specField192x1 }) (List:" +
-                        ":Cons(_let0__tp, List::N" +
-                        "il())))) { Either::Left " +
-                        "_match3__0__lawspecFailu" +
-                        "re -> match (_match3__0_" +
-                        "_lawspecFailure) { lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::ProducerFenced" +
-                        "  -> true; lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownTopicOrPartitio" +
-                        "n  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::TopicAlreadyExists  " +
-                        "-> false; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":InvalidTopic  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::InvalidP" +
-                        "artitions  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidRecor" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::InvalidRequest  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Off" +
-                        "setOutOfRange  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::OutOfOrd" +
-                        "erSequenceNumber  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Inval" +
-                        "idProducerEpoch  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Unknow" +
-                        "nProducerId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidPro" +
-                        "ducerIdMapping  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "TxnState  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidGroupI" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownMemberId  -> " +
-                        "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Il" +
-                        "legalGeneration  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Illega" +
-                        "lState  -> false }; Eith" +
-                        "er::Right _match3__1__la" +
-                        "wspecResult -> false }) " +
-                        "And match (attempt (prod" +
-                        "uceRequest (_let0__tp) (" +
-                        "Maybe::Just(tagOf (_matc" +
-                        "h1__1__old) (0))) (_inpu" +
-                        "t2))) { Either::Left _ma" +
-                        "tch3__0__lawspecFailure " +
-                        "-> match (_match3__0__la" +
-                        "wspecFailure) { lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::InvalidProducerEp" +
-                        "och  -> true; lawtwin.ka" +
+                        "tchfield0__producerId _m" +
+                        "atchfield1__producerEpoc" +
+                        "h -> _matchfield0__produ" +
+                        "cerId }) (match (_match1" +
+                        "__1__old) { lawtwin.kafk" +
+                        "a.model::type::ProducerI" +
+                        "dAndEpoch::ProducerIdAnd" +
+                        "Epoch _matchfield2__prod" +
+                        "ucerId _matchfield3__pro" +
+                        "ducerEpoch -> _matchfiel" +
+                        "d3__producerEpoch }) (Li" +
+                        "st::Cons(_let0__tp, List" +
+                        "::Nil())))) { Either::Le" +
+                        "ft _match3__0__lawspecFa" +
+                        "ilure -> match (_match3_" +
+                        "_0__lawspecFailure) { la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::ProducerFen" +
+                        "ced  -> true; lawtwin.ka" +
                         "fka.model::type::KafkaEr" +
                         "ror::UnknownTopicOrParti" +
                         "tion  -> false; lawtwin." +
@@ -25970,31 +25910,89 @@ class KafkaLawSpecTest : StringSpec({
                         ":type::KafkaError::OutOf" +
                         "OrderSequenceNumber  -> " +
                         "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Pr" +
-                        "oducerFenced  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::UnknownPr" +
-                        "oducerId  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidProduc" +
-                        "erIdMapping  -> false; l" +
+                        "el::type::KafkaError::In" +
+                        "validProducerEpoch  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Unk" +
+                        "nownProducerId  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "ProducerIdMapping  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Inva" +
+                        "lidTxnState  -> false; l" +
                         "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidTxn" +
-                        "State  -> false; lawtwin" +
-                        ".kafka.model::type::Kafk" +
-                        "aError::InvalidGroupId  " +
+                        "::KafkaError::InvalidGro" +
+                        "upId  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::UnknownMemberId  " +
                         "-> false; lawtwin.kafka." +
                         "model::type::KafkaError:" +
-                        ":UnknownMemberId  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Illeg" +
-                        "alGeneration  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::IllegalSt" +
-                        "ate  -> false }; Either:" +
-                        ":Right _match3__1__lawsp" +
-                        "ecResult -> false }) } }" +
-                        " = true"
+                        ":IllegalGeneration  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Ill" +
+                        "egalState  -> false }; E" +
+                        "ither::Right _match3__1_" +
+                        "_lawspecResult -> false " +
+                        "}) And match (attempt (p" +
+                        "roduceRequest (_let0__tp" +
+                        ") (Maybe::Just(tagOf (_m" +
+                        "atch1__1__old) (0))) (_i" +
+                        "nput2))) { Either::Left " +
+                        "_match3__0__lawspecFailu" +
+                        "re -> match (_match3__0_" +
+                        "_lawspecFailure) { lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidProduce" +
+                        "rEpoch  -> true; lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownTopicOrPa" +
+                        "rtition  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::TopicAlreadyEx" +
+                        "ists  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::InvalidTopic  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::In" +
+                        "validPartitions  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dRecord  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidRequest" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::OffsetOutOfRange  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Ou" +
+                        "tOfOrderSequenceNumber  " +
+                        "-> false; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":ProducerFenced  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Unknow" +
+                        "nProducerId  -> false; l" +
+                        "awtwin.kafka.model::type" +
+                        "::KafkaError::InvalidPro" +
+                        "ducerIdMapping  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "TxnState  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidGroupI" +
+                        "d  -> false; lawtwin.kaf" +
+                        "ka.model::type::KafkaErr" +
+                        "or::UnknownMemberId  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Il" +
+                        "legalGeneration  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Illega" +
+                        "lState  -> false }; Eith" +
+                        "er::Right _match3__1__la" +
+                        "wspecResult -> false }) " +
+                        "} } = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -26373,9 +26371,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField191x0
+                                                                                                            val _matchfield0__producerId = _fields[0]
+                                                                                                            val _matchfield1__producerEpoch = _fields[1]
+                                                                                                            _matchfield0__producerId
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -26414,9 +26412,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField192x1
+                                                                                                            val _matchfield2__producerId = _fields[0]
+                                                                                                            val _matchfield3__producerEpoch = _fields[1]
+                                                                                                            _matchfield3__producerEpoch
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -27463,84 +27461,25 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField191" +
-                        "x0 _match3__0__lawspecFi" +
-                        "eld191x1 -> _match3__0__" +
-                        "lawspecField191x0 }) (ma" +
-                        "tch (_match1__1__old) { " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::ProducerIdAndEpoch::P" +
-                        "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField192x0 " +
-                        "_match3__0__lawspecField" +
-                        "192x1 -> _match3__0__law" +
-                        "specField192x1 }) (List:" +
-                        ":Cons(_let0__tp, List::N" +
-                        "il())))) { Either::Left " +
-                        "_match3__0__lawspecFailu" +
-                        "re -> match (_match3__0_" +
-                        "_lawspecFailure) { lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::ProducerFenced" +
-                        "  -> true; lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownTopicOrPartitio" +
-                        "n  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::TopicAlreadyExists  " +
-                        "-> false; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":InvalidTopic  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::InvalidP" +
-                        "artitions  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidRecor" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::InvalidRequest  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Off" +
-                        "setOutOfRange  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::OutOfOrd" +
-                        "erSequenceNumber  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Inval" +
-                        "idProducerEpoch  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Unknow" +
-                        "nProducerId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidPro" +
-                        "ducerIdMapping  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "TxnState  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidGroupI" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownMemberId  -> " +
-                        "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Il" +
-                        "legalGeneration  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Illega" +
-                        "lState  -> false }; Eith" +
-                        "er::Right _match3__1__la" +
-                        "wspecResult -> false }) " +
-                        "And match (attempt (prod" +
-                        "uceRequest (_let0__tp) (" +
-                        "Maybe::Just(tagOf (_matc" +
-                        "h1__1__old) (0))) (_inpu" +
-                        "t2))) { Either::Left _ma" +
-                        "tch3__0__lawspecFailure " +
-                        "-> match (_match3__0__la" +
-                        "wspecFailure) { lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::InvalidProducerEp" +
-                        "och  -> true; lawtwin.ka" +
+                        "tchfield0__producerId _m" +
+                        "atchfield1__producerEpoc" +
+                        "h -> _matchfield0__produ" +
+                        "cerId }) (match (_match1" +
+                        "__1__old) { lawtwin.kafk" +
+                        "a.model::type::ProducerI" +
+                        "dAndEpoch::ProducerIdAnd" +
+                        "Epoch _matchfield2__prod" +
+                        "ucerId _matchfield3__pro" +
+                        "ducerEpoch -> _matchfiel" +
+                        "d3__producerEpoch }) (Li" +
+                        "st::Cons(_let0__tp, List" +
+                        "::Nil())))) { Either::Le" +
+                        "ft _match3__0__lawspecFa" +
+                        "ilure -> match (_match3_" +
+                        "_0__lawspecFailure) { la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::ProducerFen" +
+                        "ced  -> true; lawtwin.ka" +
                         "fka.model::type::KafkaEr" +
                         "ror::UnknownTopicOrParti" +
                         "tion  -> false; lawtwin." +
@@ -27564,31 +27503,89 @@ class KafkaLawSpecTest : StringSpec({
                         ":type::KafkaError::OutOf" +
                         "OrderSequenceNumber  -> " +
                         "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Pr" +
-                        "oducerFenced  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::UnknownPr" +
-                        "oducerId  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidProduc" +
-                        "erIdMapping  -> false; l" +
+                        "el::type::KafkaError::In" +
+                        "validProducerEpoch  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Unk" +
+                        "nownProducerId  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "ProducerIdMapping  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Inva" +
+                        "lidTxnState  -> false; l" +
                         "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidTxn" +
-                        "State  -> false; lawtwin" +
-                        ".kafka.model::type::Kafk" +
-                        "aError::InvalidGroupId  " +
+                        "::KafkaError::InvalidGro" +
+                        "upId  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::UnknownMemberId  " +
                         "-> false; lawtwin.kafka." +
                         "model::type::KafkaError:" +
-                        ":UnknownMemberId  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Illeg" +
-                        "alGeneration  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::IllegalSt" +
-                        "ate  -> false }; Either:" +
-                        ":Right _match3__1__lawsp" +
-                        "ecResult -> false }) } }" +
-                        " = true"
+                        ":IllegalGeneration  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Ill" +
+                        "egalState  -> false }; E" +
+                        "ither::Right _match3__1_" +
+                        "_lawspecResult -> false " +
+                        "}) And match (attempt (p" +
+                        "roduceRequest (_let0__tp" +
+                        ") (Maybe::Just(tagOf (_m" +
+                        "atch1__1__old) (0))) (_i" +
+                        "nput2))) { Either::Left " +
+                        "_match3__0__lawspecFailu" +
+                        "re -> match (_match3__0_" +
+                        "_lawspecFailure) { lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidProduce" +
+                        "rEpoch  -> true; lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownTopicOrPa" +
+                        "rtition  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::TopicAlreadyEx" +
+                        "ists  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::InvalidTopic  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::In" +
+                        "validPartitions  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dRecord  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidRequest" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::OffsetOutOfRange  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Ou" +
+                        "tOfOrderSequenceNumber  " +
+                        "-> false; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":ProducerFenced  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Unknow" +
+                        "nProducerId  -> false; l" +
+                        "awtwin.kafka.model::type" +
+                        "::KafkaError::InvalidPro" +
+                        "ducerIdMapping  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "TxnState  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidGroupI" +
+                        "d  -> false; lawtwin.kaf" +
+                        "ka.model::type::KafkaErr" +
+                        "or::UnknownMemberId  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Il" +
+                        "legalGeneration  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Illega" +
+                        "lState  -> false }; Eith" +
+                        "er::Right _match3__1__la" +
+                        "wspecResult -> false }) " +
+                        "} } = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -27967,9 +27964,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField191x0
+                                                                                                            val _matchfield0__producerId = _fields[0]
+                                                                                                            val _matchfield1__producerEpoch = _fields[1]
+                                                                                                            _matchfield0__producerId
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -28008,9 +28005,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField192x1
+                                                                                                            val _matchfield2__producerId = _fields[0]
+                                                                                                            val _matchfield3__producerEpoch = _fields[1]
+                                                                                                            _matchfield3__producerEpoch
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -29002,84 +28999,25 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField191" +
-                        "x0 _match3__0__lawspecFi" +
-                        "eld191x1 -> _match3__0__" +
-                        "lawspecField191x0 }) (ma" +
-                        "tch (_match1__1__old) { " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::ProducerIdAndEpoch::P" +
-                        "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField192x0 " +
-                        "_match3__0__lawspecField" +
-                        "192x1 -> _match3__0__law" +
-                        "specField192x1 }) (List:" +
-                        ":Cons(_let0__tp, List::N" +
-                        "il())))) { Either::Left " +
-                        "_match3__0__lawspecFailu" +
-                        "re -> match (_match3__0_" +
-                        "_lawspecFailure) { lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::ProducerFenced" +
-                        "  -> true; lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownTopicOrPartitio" +
-                        "n  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::TopicAlreadyExists  " +
-                        "-> false; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":InvalidTopic  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::InvalidP" +
-                        "artitions  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidRecor" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::InvalidRequest  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Off" +
-                        "setOutOfRange  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::OutOfOrd" +
-                        "erSequenceNumber  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Inval" +
-                        "idProducerEpoch  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Unknow" +
-                        "nProducerId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidPro" +
-                        "ducerIdMapping  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "TxnState  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidGroupI" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownMemberId  -> " +
-                        "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Il" +
-                        "legalGeneration  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Illega" +
-                        "lState  -> false }; Eith" +
-                        "er::Right _match3__1__la" +
-                        "wspecResult -> false }) " +
-                        "And match (attempt (prod" +
-                        "uceRequest (_let0__tp) (" +
-                        "Maybe::Just(tagOf (_matc" +
-                        "h1__1__old) (0))) (_inpu" +
-                        "t2))) { Either::Left _ma" +
-                        "tch3__0__lawspecFailure " +
-                        "-> match (_match3__0__la" +
-                        "wspecFailure) { lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::InvalidProducerEp" +
-                        "och  -> true; lawtwin.ka" +
+                        "tchfield0__producerId _m" +
+                        "atchfield1__producerEpoc" +
+                        "h -> _matchfield0__produ" +
+                        "cerId }) (match (_match1" +
+                        "__1__old) { lawtwin.kafk" +
+                        "a.model::type::ProducerI" +
+                        "dAndEpoch::ProducerIdAnd" +
+                        "Epoch _matchfield2__prod" +
+                        "ucerId _matchfield3__pro" +
+                        "ducerEpoch -> _matchfiel" +
+                        "d3__producerEpoch }) (Li" +
+                        "st::Cons(_let0__tp, List" +
+                        "::Nil())))) { Either::Le" +
+                        "ft _match3__0__lawspecFa" +
+                        "ilure -> match (_match3_" +
+                        "_0__lawspecFailure) { la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::ProducerFen" +
+                        "ced  -> true; lawtwin.ka" +
                         "fka.model::type::KafkaEr" +
                         "ror::UnknownTopicOrParti" +
                         "tion  -> false; lawtwin." +
@@ -29103,31 +29041,89 @@ class KafkaLawSpecTest : StringSpec({
                         ":type::KafkaError::OutOf" +
                         "OrderSequenceNumber  -> " +
                         "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Pr" +
-                        "oducerFenced  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::UnknownPr" +
-                        "oducerId  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidProduc" +
-                        "erIdMapping  -> false; l" +
+                        "el::type::KafkaError::In" +
+                        "validProducerEpoch  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Unk" +
+                        "nownProducerId  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "ProducerIdMapping  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Inva" +
+                        "lidTxnState  -> false; l" +
                         "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidTxn" +
-                        "State  -> false; lawtwin" +
-                        ".kafka.model::type::Kafk" +
-                        "aError::InvalidGroupId  " +
+                        "::KafkaError::InvalidGro" +
+                        "upId  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::UnknownMemberId  " +
                         "-> false; lawtwin.kafka." +
                         "model::type::KafkaError:" +
-                        ":UnknownMemberId  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Illeg" +
-                        "alGeneration  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::IllegalSt" +
-                        "ate  -> false }; Either:" +
-                        ":Right _match3__1__lawsp" +
-                        "ecResult -> false }) } }" +
-                        " = true"
+                        ":IllegalGeneration  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Ill" +
+                        "egalState  -> false }; E" +
+                        "ither::Right _match3__1_" +
+                        "_lawspecResult -> false " +
+                        "}) And match (attempt (p" +
+                        "roduceRequest (_let0__tp" +
+                        ") (Maybe::Just(tagOf (_m" +
+                        "atch1__1__old) (0))) (_i" +
+                        "nput2))) { Either::Left " +
+                        "_match3__0__lawspecFailu" +
+                        "re -> match (_match3__0_" +
+                        "_lawspecFailure) { lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidProduce" +
+                        "rEpoch  -> true; lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownTopicOrPa" +
+                        "rtition  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::TopicAlreadyEx" +
+                        "ists  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::InvalidTopic  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::In" +
+                        "validPartitions  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dRecord  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidRequest" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::OffsetOutOfRange  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Ou" +
+                        "tOfOrderSequenceNumber  " +
+                        "-> false; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":ProducerFenced  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Unknow" +
+                        "nProducerId  -> false; l" +
+                        "awtwin.kafka.model::type" +
+                        "::KafkaError::InvalidPro" +
+                        "ducerIdMapping  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "TxnState  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidGroupI" +
+                        "d  -> false; lawtwin.kaf" +
+                        "ka.model::type::KafkaErr" +
+                        "or::UnknownMemberId  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Il" +
+                        "legalGeneration  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Illega" +
+                        "lState  -> false }; Eith" +
+                        "er::Right _match3__1__la" +
+                        "wspecResult -> false }) " +
+                        "} } = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -29506,9 +29502,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField191x0
+                                                                                                            val _matchfield0__producerId = _fields[0]
+                                                                                                            val _matchfield1__producerEpoch = _fields[1]
+                                                                                                            _matchfield0__producerId
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -29547,9 +29543,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField192x1
+                                                                                                            val _matchfield2__producerId = _fields[0]
+                                                                                                            val _matchfield3__producerEpoch = _fields[1]
+                                                                                                            _matchfield3__producerEpoch
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -30597,84 +30593,25 @@ class KafkaLawSpecTest : StringSpec({
                         " { lawtwin.kafka.model::" +
                         "type::ProducerIdAndEpoch" +
                         "::ProducerIdAndEpoch _ma" +
-                        "tch3__0__lawspecField191" +
-                        "x0 _match3__0__lawspecFi" +
-                        "eld191x1 -> _match3__0__" +
-                        "lawspecField191x0 }) (ma" +
-                        "tch (_match1__1__old) { " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::ProducerIdAndEpoch::P" +
-                        "roducerIdAndEpoch _match" +
-                        "3__0__lawspecField192x0 " +
-                        "_match3__0__lawspecField" +
-                        "192x1 -> _match3__0__law" +
-                        "specField192x1 }) (List:" +
-                        ":Cons(_let0__tp, List::N" +
-                        "il())))) { Either::Left " +
-                        "_match3__0__lawspecFailu" +
-                        "re -> match (_match3__0_" +
-                        "_lawspecFailure) { lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::ProducerFenced" +
-                        "  -> true; lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownTopicOrPartitio" +
-                        "n  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::TopicAlreadyExists  " +
-                        "-> false; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":InvalidTopic  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::InvalidP" +
-                        "artitions  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidRecor" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::InvalidRequest  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Off" +
-                        "setOutOfRange  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::OutOfOrd" +
-                        "erSequenceNumber  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Inval" +
-                        "idProducerEpoch  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Unknow" +
-                        "nProducerId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidPro" +
-                        "ducerIdMapping  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "TxnState  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidGroupI" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownMemberId  -> " +
-                        "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Il" +
-                        "legalGeneration  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Illega" +
-                        "lState  -> false }; Eith" +
-                        "er::Right _match3__1__la" +
-                        "wspecResult -> false }) " +
-                        "And match (attempt (prod" +
-                        "uceRequest (_let0__tp) (" +
-                        "Maybe::Just(tagOf (_matc" +
-                        "h1__1__old) (0))) (_inpu" +
-                        "t2))) { Either::Left _ma" +
-                        "tch3__0__lawspecFailure " +
-                        "-> match (_match3__0__la" +
-                        "wspecFailure) { lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::InvalidProducerEp" +
-                        "och  -> true; lawtwin.ka" +
+                        "tchfield0__producerId _m" +
+                        "atchfield1__producerEpoc" +
+                        "h -> _matchfield0__produ" +
+                        "cerId }) (match (_match1" +
+                        "__1__old) { lawtwin.kafk" +
+                        "a.model::type::ProducerI" +
+                        "dAndEpoch::ProducerIdAnd" +
+                        "Epoch _matchfield2__prod" +
+                        "ucerId _matchfield3__pro" +
+                        "ducerEpoch -> _matchfiel" +
+                        "d3__producerEpoch }) (Li" +
+                        "st::Cons(_let0__tp, List" +
+                        "::Nil())))) { Either::Le" +
+                        "ft _match3__0__lawspecFa" +
+                        "ilure -> match (_match3_" +
+                        "_0__lawspecFailure) { la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::ProducerFen" +
+                        "ced  -> true; lawtwin.ka" +
                         "fka.model::type::KafkaEr" +
                         "ror::UnknownTopicOrParti" +
                         "tion  -> false; lawtwin." +
@@ -30698,31 +30635,89 @@ class KafkaLawSpecTest : StringSpec({
                         ":type::KafkaError::OutOf" +
                         "OrderSequenceNumber  -> " +
                         "false; lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Pr" +
-                        "oducerFenced  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::UnknownPr" +
-                        "oducerId  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidProduc" +
-                        "erIdMapping  -> false; l" +
+                        "el::type::KafkaError::In" +
+                        "validProducerEpoch  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Unk" +
+                        "nownProducerId  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "ProducerIdMapping  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Inva" +
+                        "lidTxnState  -> false; l" +
                         "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidTxn" +
-                        "State  -> false; lawtwin" +
-                        ".kafka.model::type::Kafk" +
-                        "aError::InvalidGroupId  " +
+                        "::KafkaError::InvalidGro" +
+                        "upId  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::UnknownMemberId  " +
                         "-> false; lawtwin.kafka." +
                         "model::type::KafkaError:" +
-                        ":UnknownMemberId  -> fal" +
-                        "se; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Illeg" +
-                        "alGeneration  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::IllegalSt" +
-                        "ate  -> false }; Either:" +
-                        ":Right _match3__1__lawsp" +
-                        "ecResult -> false }) } }" +
-                        " = true"
+                        ":IllegalGeneration  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Ill" +
+                        "egalState  -> false }; E" +
+                        "ither::Right _match3__1_" +
+                        "_lawspecResult -> false " +
+                        "}) And match (attempt (p" +
+                        "roduceRequest (_let0__tp" +
+                        ") (Maybe::Just(tagOf (_m" +
+                        "atch1__1__old) (0))) (_i" +
+                        "nput2))) { Either::Left " +
+                        "_match3__0__lawspecFailu" +
+                        "re -> match (_match3__0_" +
+                        "_lawspecFailure) { lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidProduce" +
+                        "rEpoch  -> true; lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownTopicOrPa" +
+                        "rtition  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::TopicAlreadyEx" +
+                        "ists  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::InvalidTopic  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::In" +
+                        "validPartitions  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dRecord  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidRequest" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::OffsetOutOfRange  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Ou" +
+                        "tOfOrderSequenceNumber  " +
+                        "-> false; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":ProducerFenced  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Unknow" +
+                        "nProducerId  -> false; l" +
+                        "awtwin.kafka.model::type" +
+                        "::KafkaError::InvalidPro" +
+                        "ducerIdMapping  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "TxnState  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidGroupI" +
+                        "d  -> false; lawtwin.kaf" +
+                        "ka.model::type::KafkaErr" +
+                        "or::UnknownMemberId  -> " +
+                        "false; lawtwin.kafka.mod" +
+                        "el::type::KafkaError::Il" +
+                        "legalGeneration  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Illega" +
+                        "lState  -> false }; Eith" +
+                        "er::Right _match3__1__la" +
+                        "wspecResult -> false }) " +
+                        "} } = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -31101,9 +31096,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField191x0
+                                                                                                            val _matchfield0__producerId = _fields[0]
+                                                                                                            val _matchfield1__producerEpoch = _fields[1]
+                                                                                                            _matchfield0__producerId
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -31142,9 +31137,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField192x1
+                                                                                                            val _matchfield2__producerId = _fields[0]
+                                                                                                            val _matchfield3__producerEpoch = _fields[1]
+                                                                                                            _matchfield3__producerEpoch
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -32318,84 +32313,25 @@ class KafkaLawSpecTest : StringSpec({
                             " lawtwin.kafka.model::ty" +
                             "pe::ProducerIdAndEpoch::" +
                             "ProducerIdAndEpoch _matc" +
-                            "h3__0__lawspecField191x0" +
-                            " _match3__0__lawspecFiel" +
-                            "d191x1 -> _match3__0__la" +
-                            "wspecField191x0 }) (matc" +
-                            "h (_match1__1__old) { la" +
-                            "wtwin.kafka.model::type:" +
-                            ":ProducerIdAndEpoch::Pro" +
-                            "ducerIdAndEpoch _match3_" +
-                            "_0__lawspecField192x0 _m" +
-                            "atch3__0__lawspecField19" +
-                            "2x1 -> _match3__0__lawsp" +
-                            "ecField192x1 }) (List::C" +
-                            "ons(_let0__tp, List::Nil" +
-                            "())))) { Either::Left _m" +
-                            "atch3__0__lawspecFailure" +
-                            " -> match (_match3__0__l" +
-                            "awspecFailure) { lawtwin" +
-                            ".kafka.model::type::Kafk" +
-                            "aError::ProducerFenced  " +
-                            "-> true; lawtwin.kafka.m" +
-                            "odel::type::KafkaError::" +
-                            "UnknownTopicOrPartition " +
-                            " -> false; lawtwin.kafka" +
-                            ".model::type::KafkaError" +
-                            "::TopicAlreadyExists  ->" +
-                            " false; lawtwin.kafka.mo" +
-                            "del::type::KafkaError::I" +
-                            "nvalidTopic  -> false; l" +
-                            "awtwin.kafka.model::type" +
-                            "::KafkaError::InvalidPar" +
-                            "titions  -> false; lawtw" +
-                            "in.kafka.model::type::Ka" +
-                            "fkaError::InvalidRecord " +
-                            " -> false; lawtwin.kafka" +
-                            ".model::type::KafkaError" +
-                            "::InvalidRequest  -> fal" +
-                            "se; lawtwin.kafka.model:" +
-                            ":type::KafkaError::Offse" +
-                            "tOutOfRange  -> false; l" +
-                            "awtwin.kafka.model::type" +
-                            "::KafkaError::OutOfOrder" +
-                            "SequenceNumber  -> false" +
-                            "; lawtwin.kafka.model::t" +
-                            "ype::KafkaError::Invalid" +
-                            "ProducerEpoch  -> false;" +
-                            " lawtwin.kafka.model::ty" +
-                            "pe::KafkaError::UnknownP" +
-                            "roducerId  -> false; law" +
-                            "twin.kafka.model::type::" +
-                            "KafkaError::InvalidProdu" +
-                            "cerIdMapping  -> false; " +
-                            "lawtwin.kafka.model::typ" +
-                            "e::KafkaError::InvalidTx" +
-                            "nState  -> false; lawtwi" +
-                            "n.kafka.model::type::Kaf" +
-                            "kaError::InvalidGroupId " +
-                            " -> false; lawtwin.kafka" +
-                            ".model::type::KafkaError" +
-                            "::UnknownMemberId  -> fa" +
-                            "lse; lawtwin.kafka.model" +
-                            "::type::KafkaError::Ille" +
-                            "galGeneration  -> false;" +
-                            " lawtwin.kafka.model::ty" +
-                            "pe::KafkaError::IllegalS" +
-                            "tate  -> false }; Either" +
-                            "::Right _match3__1__laws" +
-                            "pecResult -> false }) An" +
-                            "d match (attempt (produc" +
-                            "eRequest (_let0__tp) (Ma" +
-                            "ybe::Just(tagOf (_match1" +
-                            "__1__old) (0))) (_input2" +
-                            "))) { Either::Left _matc" +
-                            "h3__0__lawspecFailure ->" +
-                            " match (_match3__0__laws" +
-                            "pecFailure) { lawtwin.ka" +
-                            "fka.model::type::KafkaEr" +
-                            "ror::InvalidProducerEpoc" +
-                            "h  -> true; lawtwin.kafk" +
+                            "hfield0__producerId _mat" +
+                            "chfield1__producerEpoch " +
+                            "-> _matchfield0__produce" +
+                            "rId }) (match (_match1__" +
+                            "1__old) { lawtwin.kafka." +
+                            "model::type::ProducerIdA" +
+                            "ndEpoch::ProducerIdAndEp" +
+                            "och _matchfield2__produc" +
+                            "erId _matchfield3__produ" +
+                            "cerEpoch -> _matchfield3" +
+                            "__producerEpoch }) (List" +
+                            "::Cons(_let0__tp, List::" +
+                            "Nil())))) { Either::Left" +
+                            " _match3__0__lawspecFail" +
+                            "ure -> match (_match3__0" +
+                            "__lawspecFailure) { lawt" +
+                            "win.kafka.model::type::K" +
+                            "afkaError::ProducerFence" +
+                            "d  -> true; lawtwin.kafk" +
                             "a.model::type::KafkaErro" +
                             "r::UnknownTopicOrPartiti" +
                             "on  -> false; lawtwin.ka" +
@@ -32419,31 +32355,89 @@ class KafkaLawSpecTest : StringSpec({
                             "ype::KafkaError::OutOfOr" +
                             "derSequenceNumber  -> fa" +
                             "lse; lawtwin.kafka.model" +
-                            "::type::KafkaError::Prod" +
-                            "ucerFenced  -> false; la" +
-                            "wtwin.kafka.model::type:" +
-                            ":KafkaError::UnknownProd" +
-                            "ucerId  -> false; lawtwi" +
-                            "n.kafka.model::type::Kaf" +
-                            "kaError::InvalidProducer" +
-                            "IdMapping  -> false; law" +
+                            "::type::KafkaError::Inva" +
+                            "lidProducerEpoch  -> fal" +
+                            "se; lawtwin.kafka.model:" +
+                            ":type::KafkaError::Unkno" +
+                            "wnProducerId  -> false; " +
+                            "lawtwin.kafka.model::typ" +
+                            "e::KafkaError::InvalidPr" +
+                            "oducerIdMapping  -> fals" +
+                            "e; lawtwin.kafka.model::" +
+                            "type::KafkaError::Invali" +
+                            "dTxnState  -> false; law" +
                             "twin.kafka.model::type::" +
-                            "KafkaError::InvalidTxnSt" +
-                            "ate  -> false; lawtwin.k" +
-                            "afka.model::type::KafkaE" +
-                            "rror::InvalidGroupId  ->" +
+                            "KafkaError::InvalidGroup" +
+                            "Id  -> false; lawtwin.ka" +
+                            "fka.model::type::KafkaEr" +
+                            "ror::UnknownMemberId  ->" +
                             " false; lawtwin.kafka.mo" +
-                            "del::type::KafkaError::U" +
-                            "nknownMemberId  -> false" +
-                            "; lawtwin.kafka.model::t" +
-                            "ype::KafkaError::Illegal" +
-                            "Generation  -> false; la" +
-                            "wtwin.kafka.model::type:" +
-                            ":KafkaError::IllegalStat" +
-                            "e  -> false }; Either::R" +
-                            "ight _match3__1__lawspec" +
-                            "Result -> false }) } } =" +
-                            " true"
+                            "del::type::KafkaError::I" +
+                            "llegalGeneration  -> fal" +
+                            "se; lawtwin.kafka.model:" +
+                            ":type::KafkaError::Illeg" +
+                            "alState  -> false }; Eit" +
+                            "her::Right _match3__1__l" +
+                            "awspecResult -> false })" +
+                            " And match (attempt (pro" +
+                            "duceRequest (_let0__tp) " +
+                            "(Maybe::Just(tagOf (_mat" +
+                            "ch1__1__old) (0))) (_inp" +
+                            "ut2))) { Either::Left _m" +
+                            "atch3__0__lawspecFailure" +
+                            " -> match (_match3__0__l" +
+                            "awspecFailure) { lawtwin" +
+                            ".kafka.model::type::Kafk" +
+                            "aError::InvalidProducerE" +
+                            "poch  -> true; lawtwin.k" +
+                            "afka.model::type::KafkaE" +
+                            "rror::UnknownTopicOrPart" +
+                            "ition  -> false; lawtwin" +
+                            ".kafka.model::type::Kafk" +
+                            "aError::TopicAlreadyExis" +
+                            "ts  -> false; lawtwin.ka" +
+                            "fka.model::type::KafkaEr" +
+                            "ror::InvalidTopic  -> fa" +
+                            "lse; lawtwin.kafka.model" +
+                            "::type::KafkaError::Inva" +
+                            "lidPartitions  -> false;" +
+                            " lawtwin.kafka.model::ty" +
+                            "pe::KafkaError::InvalidR" +
+                            "ecord  -> false; lawtwin" +
+                            ".kafka.model::type::Kafk" +
+                            "aError::InvalidRequest  " +
+                            "-> false; lawtwin.kafka." +
+                            "model::type::KafkaError:" +
+                            ":OffsetOutOfRange  -> fa" +
+                            "lse; lawtwin.kafka.model" +
+                            "::type::KafkaError::OutO" +
+                            "fOrderSequenceNumber  ->" +
+                            " false; lawtwin.kafka.mo" +
+                            "del::type::KafkaError::P" +
+                            "roducerFenced  -> false;" +
+                            " lawtwin.kafka.model::ty" +
+                            "pe::KafkaError::UnknownP" +
+                            "roducerId  -> false; law" +
+                            "twin.kafka.model::type::" +
+                            "KafkaError::InvalidProdu" +
+                            "cerIdMapping  -> false; " +
+                            "lawtwin.kafka.model::typ" +
+                            "e::KafkaError::InvalidTx" +
+                            "nState  -> false; lawtwi" +
+                            "n.kafka.model::type::Kaf" +
+                            "kaError::InvalidGroupId " +
+                            " -> false; lawtwin.kafka" +
+                            ".model::type::KafkaError" +
+                            "::UnknownMemberId  -> fa" +
+                            "lse; lawtwin.kafka.model" +
+                            "::type::KafkaError::Ille" +
+                            "galGeneration  -> false;" +
+                            " lawtwin.kafka.model::ty" +
+                            "pe::KafkaError::IllegalS" +
+                            "tate  -> false }; Either" +
+                            "::Right _match3__1__laws" +
+                            "pecResult -> false }) } " +
+                            "} = true"
                         ),
                         {
                             (LawSpecKotlinCodecs.construct(
@@ -32834,9 +32828,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                                 "e::ProducerIdAndEpoch::P" +
                                                                                                                 "roducerIdAndEpoch"
                                                                                                             ) -> {
-                                                                                                                val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                                val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                                _match3__0__lawspecField191x0
+                                                                                                                val _matchfield0__producerId = _fields[0]
+                                                                                                                val _matchfield1__producerEpoch = _fields[1]
+                                                                                                                _matchfield0__producerId
                                                                                                             }
                                                                                                             else -> {
                                                                                                                 throw IllegalArgumentException(
@@ -32875,9 +32869,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                                 "e::ProducerIdAndEpoch::P" +
                                                                                                                 "roducerIdAndEpoch"
                                                                                                             ) -> {
-                                                                                                                val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                                val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                                _match3__0__lawspecField192x1
+                                                                                                                val _matchfield2__producerId = _fields[0]
+                                                                                                                val _matchfield3__producerEpoch = _fields[1]
+                                                                                                                _matchfield3__producerEpoch
                                                                                                             }
                                                                                                             else -> {
                                                                                                                 throw IllegalArgumentException(
@@ -33748,12 +33742,11 @@ class KafkaLawSpecTest : StringSpec({
     // (Maybe::Just(_input1)))) { Either::Left _match2__0__e -> false; Either::Right _match2__1__new
     // -> ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
     // (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
-    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0
-    // }) (match (_match1__1__old) {
-    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-    // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1
-    // }) (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield0__producerId
+    // _matchfield1__producerEpoch -> _matchfield0__producerId }) (match (_match1__1__old) {
+    // lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch _matchfield2__producerId
+    // _matchfield3__producerEpoch -> _matchfield3__producerEpoch }) (List::Cons(_let0__tp,
+    // List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
     // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -33963,84 +33956,25 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField19" +
-                    "1x0 _match3__0__lawspecF" +
-                    "ield191x1 -> _match3__0_" +
-                    "_lawspecField191x0 }) (m" +
-                    "atch (_match1__1__old) {" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::ProducerIdAndEpoch::" +
-                    "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField192x0" +
-                    " _match3__0__lawspecFiel" +
-                    "d192x1 -> _match3__0__la" +
-                    "wspecField192x1 }) (List" +
-                    "::Cons(_let0__tp, List::" +
-                    "Nil())))) { Either::Left" +
-                    " _match3__0__lawspecFail" +
-                    "ure -> match (_match3__0" +
-                    "__lawspecFailure) { lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::ProducerFence" +
-                    "d  -> true; lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownTopicOrPartiti" +
-                    "on  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::TopicAlreadyExists " +
-                    " -> false; lawtwin.kafka" +
-                    ".model::type::KafkaError" +
-                    "::InvalidTopic  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::Invalid" +
-                    "Partitions  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidReco" +
-                    "rd  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::InvalidRequest  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::Of" +
-                    "fsetOutOfRange  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::OutOfOr" +
-                    "derSequenceNumber  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Inva" +
-                    "lidProducerEpoch  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Unkno" +
-                    "wnProducerId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidPr" +
-                    "oducerIdMapping  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dTxnState  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidGroup" +
-                    "Id  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownMemberId  ->" +
-                    " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::I" +
-                    "llegalGeneration  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Illeg" +
-                    "alState  -> false }; Eit" +
-                    "her::Right _match3__1__l" +
-                    "awspecResult -> false })" +
-                    " And match (attempt (pro" +
-                    "duceRequest (_let0__tp) " +
-                    "(Maybe::Just(tagOf (_mat" +
-                    "ch1__1__old) (0))) (_inp" +
-                    "ut2))) { Either::Left _m" +
-                    "atch3__0__lawspecFailure" +
-                    " -> match (_match3__0__l" +
-                    "awspecFailure) { lawtwin" +
-                    ".kafka.model::type::Kafk" +
-                    "aError::InvalidProducerE" +
-                    "poch  -> true; lawtwin.k" +
+                    "atchfield0__producerId _" +
+                    "matchfield1__producerEpo" +
+                    "ch -> _matchfield0__prod" +
+                    "ucerId }) (match (_match" +
+                    "1__1__old) { lawtwin.kaf" +
+                    "ka.model::type::Producer" +
+                    "IdAndEpoch::ProducerIdAn" +
+                    "dEpoch _matchfield2__pro" +
+                    "ducerId _matchfield3__pr" +
+                    "oducerEpoch -> _matchfie" +
+                    "ld3__producerEpoch }) (L" +
+                    "ist::Cons(_let0__tp, Lis" +
+                    "t::Nil())))) { Either::L" +
+                    "eft _match3__0__lawspecF" +
+                    "ailure -> match (_match3" +
+                    "__0__lawspecFailure) { l" +
+                    "awtwin.kafka.model::type" +
+                    "::KafkaError::ProducerFe" +
+                    "nced  -> true; lawtwin.k" +
                     "afka.model::type::KafkaE" +
                     "rror::UnknownTopicOrPart" +
                     "ition  -> false; lawtwin" +
@@ -34064,31 +33998,89 @@ class KafkaLawSpecTest : StringSpec({
                     "::type::KafkaError::OutO" +
                     "fOrderSequenceNumber  ->" +
                     " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::P" +
-                    "roducerFenced  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::UnknownP" +
-                    "roducerId  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidProdu" +
-                    "cerIdMapping  -> false; " +
+                    "del::type::KafkaError::I" +
+                    "nvalidProducerEpoch  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Un" +
+                    "knownProducerId  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dProducerIdMapping  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Inv" +
+                    "alidTxnState  -> false; " +
                     "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidTx" +
-                    "nState  -> false; lawtwi" +
-                    "n.kafka.model::type::Kaf" +
-                    "kaError::InvalidGroupId " +
+                    "e::KafkaError::InvalidGr" +
+                    "oupId  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::UnknownMemberId " +
                     " -> false; lawtwin.kafka" +
                     ".model::type::KafkaError" +
-                    "::UnknownMemberId  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Ille" +
-                    "galGeneration  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::IllegalS" +
-                    "tate  -> false }; Either" +
-                    "::Right _match3__1__laws" +
-                    "pecResult -> false }) } " +
-                    "} = true"
+                    "::IllegalGeneration  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Il" +
+                    "legalState  -> false }; " +
+                    "Either::Right _match3__1" +
+                    "__lawspecResult -> false" +
+                    " }) And match (attempt (" +
+                    "produceRequest (_let0__t" +
+                    "p) (Maybe::Just(tagOf (_" +
+                    "match1__1__old) (0))) (_" +
+                    "input2))) { Either::Left" +
+                    " _match3__0__lawspecFail" +
+                    "ure -> match (_match3__0" +
+                    "__lawspecFailure) { lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidProduc" +
+                    "erEpoch  -> true; lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownTopicOrP" +
+                    "artition  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::TopicAlreadyE" +
+                    "xists  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::InvalidTopic  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "nvalidPartitions  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idRecord  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidReques" +
+                    "t  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::OffsetOutOfRange  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::O" +
+                    "utOfOrderSequenceNumber " +
+                    " -> false; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::ProducerFenced  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Unkno" +
+                    "wnProducerId  -> false; " +
+                    "lawtwin.kafka.model::typ" +
+                    "e::KafkaError::InvalidPr" +
+                    "oducerIdMapping  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dTxnState  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidGroup" +
+                    "Id  -> false; lawtwin.ka" +
+                    "fka.model::type::KafkaEr" +
+                    "ror::UnknownMemberId  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "llegalGeneration  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Illeg" +
+                    "alState  -> false }; Eit" +
+                    "her::Right _match3__1__l" +
+                    "awspecResult -> false })" +
+                    " } } = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -34461,9 +34453,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField191x0
+                                                                                                        val _matchfield0__producerId = _fields[0]
+                                                                                                        val _matchfield1__producerEpoch = _fields[1]
+                                                                                                        _matchfield0__producerId
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -34502,9 +34494,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField192x1
+                                                                                                        val _matchfield2__producerId = _fields[0]
+                                                                                                        val _matchfield3__producerEpoch = _fields[1]
+                                                                                                        _matchfield3__producerEpoch
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -35512,84 +35504,25 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField19" +
-                    "1x0 _match3__0__lawspecF" +
-                    "ield191x1 -> _match3__0_" +
-                    "_lawspecField191x0 }) (m" +
-                    "atch (_match1__1__old) {" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::ProducerIdAndEpoch::" +
-                    "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField192x0" +
-                    " _match3__0__lawspecFiel" +
-                    "d192x1 -> _match3__0__la" +
-                    "wspecField192x1 }) (List" +
-                    "::Cons(_let0__tp, List::" +
-                    "Nil())))) { Either::Left" +
-                    " _match3__0__lawspecFail" +
-                    "ure -> match (_match3__0" +
-                    "__lawspecFailure) { lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::ProducerFence" +
-                    "d  -> true; lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownTopicOrPartiti" +
-                    "on  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::TopicAlreadyExists " +
-                    " -> false; lawtwin.kafka" +
-                    ".model::type::KafkaError" +
-                    "::InvalidTopic  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::Invalid" +
-                    "Partitions  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidReco" +
-                    "rd  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::InvalidRequest  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::Of" +
-                    "fsetOutOfRange  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::OutOfOr" +
-                    "derSequenceNumber  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Inva" +
-                    "lidProducerEpoch  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Unkno" +
-                    "wnProducerId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidPr" +
-                    "oducerIdMapping  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dTxnState  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidGroup" +
-                    "Id  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownMemberId  ->" +
-                    " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::I" +
-                    "llegalGeneration  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Illeg" +
-                    "alState  -> false }; Eit" +
-                    "her::Right _match3__1__l" +
-                    "awspecResult -> false })" +
-                    " And match (attempt (pro" +
-                    "duceRequest (_let0__tp) " +
-                    "(Maybe::Just(tagOf (_mat" +
-                    "ch1__1__old) (0))) (_inp" +
-                    "ut2))) { Either::Left _m" +
-                    "atch3__0__lawspecFailure" +
-                    " -> match (_match3__0__l" +
-                    "awspecFailure) { lawtwin" +
-                    ".kafka.model::type::Kafk" +
-                    "aError::InvalidProducerE" +
-                    "poch  -> true; lawtwin.k" +
+                    "atchfield0__producerId _" +
+                    "matchfield1__producerEpo" +
+                    "ch -> _matchfield0__prod" +
+                    "ucerId }) (match (_match" +
+                    "1__1__old) { lawtwin.kaf" +
+                    "ka.model::type::Producer" +
+                    "IdAndEpoch::ProducerIdAn" +
+                    "dEpoch _matchfield2__pro" +
+                    "ducerId _matchfield3__pr" +
+                    "oducerEpoch -> _matchfie" +
+                    "ld3__producerEpoch }) (L" +
+                    "ist::Cons(_let0__tp, Lis" +
+                    "t::Nil())))) { Either::L" +
+                    "eft _match3__0__lawspecF" +
+                    "ailure -> match (_match3" +
+                    "__0__lawspecFailure) { l" +
+                    "awtwin.kafka.model::type" +
+                    "::KafkaError::ProducerFe" +
+                    "nced  -> true; lawtwin.k" +
                     "afka.model::type::KafkaE" +
                     "rror::UnknownTopicOrPart" +
                     "ition  -> false; lawtwin" +
@@ -35613,31 +35546,89 @@ class KafkaLawSpecTest : StringSpec({
                     "::type::KafkaError::OutO" +
                     "fOrderSequenceNumber  ->" +
                     " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::P" +
-                    "roducerFenced  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::UnknownP" +
-                    "roducerId  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidProdu" +
-                    "cerIdMapping  -> false; " +
+                    "del::type::KafkaError::I" +
+                    "nvalidProducerEpoch  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Un" +
+                    "knownProducerId  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dProducerIdMapping  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Inv" +
+                    "alidTxnState  -> false; " +
                     "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidTx" +
-                    "nState  -> false; lawtwi" +
-                    "n.kafka.model::type::Kaf" +
-                    "kaError::InvalidGroupId " +
+                    "e::KafkaError::InvalidGr" +
+                    "oupId  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::UnknownMemberId " +
                     " -> false; lawtwin.kafka" +
                     ".model::type::KafkaError" +
-                    "::UnknownMemberId  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Ille" +
-                    "galGeneration  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::IllegalS" +
-                    "tate  -> false }; Either" +
-                    "::Right _match3__1__laws" +
-                    "pecResult -> false }) } " +
-                    "} = true"
+                    "::IllegalGeneration  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Il" +
+                    "legalState  -> false }; " +
+                    "Either::Right _match3__1" +
+                    "__lawspecResult -> false" +
+                    " }) And match (attempt (" +
+                    "produceRequest (_let0__t" +
+                    "p) (Maybe::Just(tagOf (_" +
+                    "match1__1__old) (0))) (_" +
+                    "input2))) { Either::Left" +
+                    " _match3__0__lawspecFail" +
+                    "ure -> match (_match3__0" +
+                    "__lawspecFailure) { lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidProduc" +
+                    "erEpoch  -> true; lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownTopicOrP" +
+                    "artition  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::TopicAlreadyE" +
+                    "xists  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::InvalidTopic  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "nvalidPartitions  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idRecord  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidReques" +
+                    "t  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::OffsetOutOfRange  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::O" +
+                    "utOfOrderSequenceNumber " +
+                    " -> false; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::ProducerFenced  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Unkno" +
+                    "wnProducerId  -> false; " +
+                    "lawtwin.kafka.model::typ" +
+                    "e::KafkaError::InvalidPr" +
+                    "oducerIdMapping  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dTxnState  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidGroup" +
+                    "Id  -> false; lawtwin.ka" +
+                    "fka.model::type::KafkaEr" +
+                    "ror::UnknownMemberId  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "llegalGeneration  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Illeg" +
+                    "alState  -> false }; Eit" +
+                    "her::Right _match3__1__l" +
+                    "awspecResult -> false })" +
+                    " } } = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -36010,9 +36001,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField191x0
+                                                                                                        val _matchfield0__producerId = _fields[0]
+                                                                                                        val _matchfield1__producerEpoch = _fields[1]
+                                                                                                        _matchfield0__producerId
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -36051,9 +36042,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField192x1
+                                                                                                        val _matchfield2__producerId = _fields[0]
+                                                                                                        val _matchfield3__producerEpoch = _fields[1]
+                                                                                                        _matchfield3__producerEpoch
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -37006,84 +36997,25 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField19" +
-                    "1x0 _match3__0__lawspecF" +
-                    "ield191x1 -> _match3__0_" +
-                    "_lawspecField191x0 }) (m" +
-                    "atch (_match1__1__old) {" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::ProducerIdAndEpoch::" +
-                    "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField192x0" +
-                    " _match3__0__lawspecFiel" +
-                    "d192x1 -> _match3__0__la" +
-                    "wspecField192x1 }) (List" +
-                    "::Cons(_let0__tp, List::" +
-                    "Nil())))) { Either::Left" +
-                    " _match3__0__lawspecFail" +
-                    "ure -> match (_match3__0" +
-                    "__lawspecFailure) { lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::ProducerFence" +
-                    "d  -> true; lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownTopicOrPartiti" +
-                    "on  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::TopicAlreadyExists " +
-                    " -> false; lawtwin.kafka" +
-                    ".model::type::KafkaError" +
-                    "::InvalidTopic  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::Invalid" +
-                    "Partitions  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidReco" +
-                    "rd  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::InvalidRequest  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::Of" +
-                    "fsetOutOfRange  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::OutOfOr" +
-                    "derSequenceNumber  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Inva" +
-                    "lidProducerEpoch  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Unkno" +
-                    "wnProducerId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidPr" +
-                    "oducerIdMapping  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dTxnState  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidGroup" +
-                    "Id  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownMemberId  ->" +
-                    " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::I" +
-                    "llegalGeneration  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Illeg" +
-                    "alState  -> false }; Eit" +
-                    "her::Right _match3__1__l" +
-                    "awspecResult -> false })" +
-                    " And match (attempt (pro" +
-                    "duceRequest (_let0__tp) " +
-                    "(Maybe::Just(tagOf (_mat" +
-                    "ch1__1__old) (0))) (_inp" +
-                    "ut2))) { Either::Left _m" +
-                    "atch3__0__lawspecFailure" +
-                    " -> match (_match3__0__l" +
-                    "awspecFailure) { lawtwin" +
-                    ".kafka.model::type::Kafk" +
-                    "aError::InvalidProducerE" +
-                    "poch  -> true; lawtwin.k" +
+                    "atchfield0__producerId _" +
+                    "matchfield1__producerEpo" +
+                    "ch -> _matchfield0__prod" +
+                    "ucerId }) (match (_match" +
+                    "1__1__old) { lawtwin.kaf" +
+                    "ka.model::type::Producer" +
+                    "IdAndEpoch::ProducerIdAn" +
+                    "dEpoch _matchfield2__pro" +
+                    "ducerId _matchfield3__pr" +
+                    "oducerEpoch -> _matchfie" +
+                    "ld3__producerEpoch }) (L" +
+                    "ist::Cons(_let0__tp, Lis" +
+                    "t::Nil())))) { Either::L" +
+                    "eft _match3__0__lawspecF" +
+                    "ailure -> match (_match3" +
+                    "__0__lawspecFailure) { l" +
+                    "awtwin.kafka.model::type" +
+                    "::KafkaError::ProducerFe" +
+                    "nced  -> true; lawtwin.k" +
                     "afka.model::type::KafkaE" +
                     "rror::UnknownTopicOrPart" +
                     "ition  -> false; lawtwin" +
@@ -37107,31 +37039,89 @@ class KafkaLawSpecTest : StringSpec({
                     "::type::KafkaError::OutO" +
                     "fOrderSequenceNumber  ->" +
                     " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::P" +
-                    "roducerFenced  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::UnknownP" +
-                    "roducerId  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidProdu" +
-                    "cerIdMapping  -> false; " +
+                    "del::type::KafkaError::I" +
+                    "nvalidProducerEpoch  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Un" +
+                    "knownProducerId  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dProducerIdMapping  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Inv" +
+                    "alidTxnState  -> false; " +
                     "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidTx" +
-                    "nState  -> false; lawtwi" +
-                    "n.kafka.model::type::Kaf" +
-                    "kaError::InvalidGroupId " +
+                    "e::KafkaError::InvalidGr" +
+                    "oupId  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::UnknownMemberId " +
                     " -> false; lawtwin.kafka" +
                     ".model::type::KafkaError" +
-                    "::UnknownMemberId  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Ille" +
-                    "galGeneration  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::IllegalS" +
-                    "tate  -> false }; Either" +
-                    "::Right _match3__1__laws" +
-                    "pecResult -> false }) } " +
-                    "} = true"
+                    "::IllegalGeneration  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Il" +
+                    "legalState  -> false }; " +
+                    "Either::Right _match3__1" +
+                    "__lawspecResult -> false" +
+                    " }) And match (attempt (" +
+                    "produceRequest (_let0__t" +
+                    "p) (Maybe::Just(tagOf (_" +
+                    "match1__1__old) (0))) (_" +
+                    "input2))) { Either::Left" +
+                    " _match3__0__lawspecFail" +
+                    "ure -> match (_match3__0" +
+                    "__lawspecFailure) { lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidProduc" +
+                    "erEpoch  -> true; lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownTopicOrP" +
+                    "artition  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::TopicAlreadyE" +
+                    "xists  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::InvalidTopic  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "nvalidPartitions  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idRecord  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidReques" +
+                    "t  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::OffsetOutOfRange  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::O" +
+                    "utOfOrderSequenceNumber " +
+                    " -> false; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::ProducerFenced  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Unkno" +
+                    "wnProducerId  -> false; " +
+                    "lawtwin.kafka.model::typ" +
+                    "e::KafkaError::InvalidPr" +
+                    "oducerIdMapping  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dTxnState  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidGroup" +
+                    "Id  -> false; lawtwin.ka" +
+                    "fka.model::type::KafkaEr" +
+                    "ror::UnknownMemberId  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "llegalGeneration  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Illeg" +
+                    "alState  -> false }; Eit" +
+                    "her::Right _match3__1__l" +
+                    "awspecResult -> false })" +
+                    " } } = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -37504,9 +37494,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField191x0
+                                                                                                        val _matchfield0__producerId = _fields[0]
+                                                                                                        val _matchfield1__producerEpoch = _fields[1]
+                                                                                                        _matchfield0__producerId
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -37545,9 +37535,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField192x1
+                                                                                                        val _matchfield2__producerId = _fields[0]
+                                                                                                        val _matchfield3__producerEpoch = _fields[1]
+                                                                                                        _matchfield3__producerEpoch
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -38556,84 +38546,25 @@ class KafkaLawSpecTest : StringSpec({
                     ") { lawtwin.kafka.model:" +
                     ":type::ProducerIdAndEpoc" +
                     "h::ProducerIdAndEpoch _m" +
-                    "atch3__0__lawspecField19" +
-                    "1x0 _match3__0__lawspecF" +
-                    "ield191x1 -> _match3__0_" +
-                    "_lawspecField191x0 }) (m" +
-                    "atch (_match1__1__old) {" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::ProducerIdAndEpoch::" +
-                    "ProducerIdAndEpoch _matc" +
-                    "h3__0__lawspecField192x0" +
-                    " _match3__0__lawspecFiel" +
-                    "d192x1 -> _match3__0__la" +
-                    "wspecField192x1 }) (List" +
-                    "::Cons(_let0__tp, List::" +
-                    "Nil())))) { Either::Left" +
-                    " _match3__0__lawspecFail" +
-                    "ure -> match (_match3__0" +
-                    "__lawspecFailure) { lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::ProducerFence" +
-                    "d  -> true; lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownTopicOrPartiti" +
-                    "on  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::TopicAlreadyExists " +
-                    " -> false; lawtwin.kafka" +
-                    ".model::type::KafkaError" +
-                    "::InvalidTopic  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::Invalid" +
-                    "Partitions  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidReco" +
-                    "rd  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::InvalidRequest  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::Of" +
-                    "fsetOutOfRange  -> false" +
-                    "; lawtwin.kafka.model::t" +
-                    "ype::KafkaError::OutOfOr" +
-                    "derSequenceNumber  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Inva" +
-                    "lidProducerEpoch  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Unkno" +
-                    "wnProducerId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidPr" +
-                    "oducerIdMapping  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dTxnState  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidGroup" +
-                    "Id  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownMemberId  ->" +
-                    " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::I" +
-                    "llegalGeneration  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Illeg" +
-                    "alState  -> false }; Eit" +
-                    "her::Right _match3__1__l" +
-                    "awspecResult -> false })" +
-                    " And match (attempt (pro" +
-                    "duceRequest (_let0__tp) " +
-                    "(Maybe::Just(tagOf (_mat" +
-                    "ch1__1__old) (0))) (_inp" +
-                    "ut2))) { Either::Left _m" +
-                    "atch3__0__lawspecFailure" +
-                    " -> match (_match3__0__l" +
-                    "awspecFailure) { lawtwin" +
-                    ".kafka.model::type::Kafk" +
-                    "aError::InvalidProducerE" +
-                    "poch  -> true; lawtwin.k" +
+                    "atchfield0__producerId _" +
+                    "matchfield1__producerEpo" +
+                    "ch -> _matchfield0__prod" +
+                    "ucerId }) (match (_match" +
+                    "1__1__old) { lawtwin.kaf" +
+                    "ka.model::type::Producer" +
+                    "IdAndEpoch::ProducerIdAn" +
+                    "dEpoch _matchfield2__pro" +
+                    "ducerId _matchfield3__pr" +
+                    "oducerEpoch -> _matchfie" +
+                    "ld3__producerEpoch }) (L" +
+                    "ist::Cons(_let0__tp, Lis" +
+                    "t::Nil())))) { Either::L" +
+                    "eft _match3__0__lawspecF" +
+                    "ailure -> match (_match3" +
+                    "__0__lawspecFailure) { l" +
+                    "awtwin.kafka.model::type" +
+                    "::KafkaError::ProducerFe" +
+                    "nced  -> true; lawtwin.k" +
                     "afka.model::type::KafkaE" +
                     "rror::UnknownTopicOrPart" +
                     "ition  -> false; lawtwin" +
@@ -38657,31 +38588,89 @@ class KafkaLawSpecTest : StringSpec({
                     "::type::KafkaError::OutO" +
                     "fOrderSequenceNumber  ->" +
                     " false; lawtwin.kafka.mo" +
-                    "del::type::KafkaError::P" +
-                    "roducerFenced  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::UnknownP" +
-                    "roducerId  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::InvalidProdu" +
-                    "cerIdMapping  -> false; " +
+                    "del::type::KafkaError::I" +
+                    "nvalidProducerEpoch  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Un" +
+                    "knownProducerId  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dProducerIdMapping  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Inv" +
+                    "alidTxnState  -> false; " +
                     "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidTx" +
-                    "nState  -> false; lawtwi" +
-                    "n.kafka.model::type::Kaf" +
-                    "kaError::InvalidGroupId " +
+                    "e::KafkaError::InvalidGr" +
+                    "oupId  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::UnknownMemberId " +
                     " -> false; lawtwin.kafka" +
                     ".model::type::KafkaError" +
-                    "::UnknownMemberId  -> fa" +
-                    "lse; lawtwin.kafka.model" +
-                    "::type::KafkaError::Ille" +
-                    "galGeneration  -> false;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::IllegalS" +
-                    "tate  -> false }; Either" +
-                    "::Right _match3__1__laws" +
-                    "pecResult -> false }) } " +
-                    "} = true"
+                    "::IllegalGeneration  -> " +
+                    "false; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Il" +
+                    "legalState  -> false }; " +
+                    "Either::Right _match3__1" +
+                    "__lawspecResult -> false" +
+                    " }) And match (attempt (" +
+                    "produceRequest (_let0__t" +
+                    "p) (Maybe::Just(tagOf (_" +
+                    "match1__1__old) (0))) (_" +
+                    "input2))) { Either::Left" +
+                    " _match3__0__lawspecFail" +
+                    "ure -> match (_match3__0" +
+                    "__lawspecFailure) { lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidProduc" +
+                    "erEpoch  -> true; lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownTopicOrP" +
+                    "artition  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::TopicAlreadyE" +
+                    "xists  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::InvalidTopic  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "nvalidPartitions  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idRecord  -> false; lawt" +
+                    "win.kafka.model::type::K" +
+                    "afkaError::InvalidReques" +
+                    "t  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::OffsetOutOfRange  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::O" +
+                    "utOfOrderSequenceNumber " +
+                    " -> false; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::ProducerFenced  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Unkno" +
+                    "wnProducerId  -> false; " +
+                    "lawtwin.kafka.model::typ" +
+                    "e::KafkaError::InvalidPr" +
+                    "oducerIdMapping  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Invali" +
+                    "dTxnState  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidGroup" +
+                    "Id  -> false; lawtwin.ka" +
+                    "fka.model::type::KafkaEr" +
+                    "ror::UnknownMemberId  ->" +
+                    " false; lawtwin.kafka.mo" +
+                    "del::type::KafkaError::I" +
+                    "llegalGeneration  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Illeg" +
+                    "alState  -> false }; Eit" +
+                    "her::Right _match3__1__l" +
+                    "awspecResult -> false })" +
+                    " } } = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -39054,9 +39043,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField191x0
+                                                                                                        val _matchfield0__producerId = _fields[0]
+                                                                                                        val _matchfield1__producerEpoch = _fields[1]
+                                                                                                        _matchfield0__producerId
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -39095,9 +39084,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "e::ProducerIdAndEpoch::P" +
                                                                                                         "roducerIdAndEpoch"
                                                                                                     ) -> {
-                                                                                                        val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                        val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                        _match3__0__lawspecField192x1
+                                                                                                        val _matchfield2__producerId = _fields[0]
+                                                                                                        val _matchfield3__producerEpoch = _fields[1]
+                                                                                                        _matchfield3__producerEpoch
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -40233,84 +40222,25 @@ class KafkaLawSpecTest : StringSpec({
                         "{ lawtwin.kafka.model::t" +
                         "ype::ProducerIdAndEpoch:" +
                         ":ProducerIdAndEpoch _mat" +
-                        "ch3__0__lawspecField191x" +
-                        "0 _match3__0__lawspecFie" +
-                        "ld191x1 -> _match3__0__l" +
-                        "awspecField191x0 }) (mat" +
-                        "ch (_match1__1__old) { l" +
-                        "awtwin.kafka.model::type" +
-                        "::ProducerIdAndEpoch::Pr" +
-                        "oducerIdAndEpoch _match3" +
-                        "__0__lawspecField192x0 _" +
-                        "match3__0__lawspecField1" +
-                        "92x1 -> _match3__0__laws" +
-                        "pecField192x1 }) (List::" +
-                        "Cons(_let0__tp, List::Ni" +
-                        "l())))) { Either::Left _" +
-                        "match3__0__lawspecFailur" +
-                        "e -> match (_match3__0__" +
-                        "lawspecFailure) { lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::ProducerFenced " +
-                        " -> true; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":UnknownTopicOrPartition" +
-                        "  -> false; lawtwin.kafk" +
-                        "a.model::type::KafkaErro" +
-                        "r::TopicAlreadyExists  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "InvalidTopic  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::InvalidPa" +
-                        "rtitions  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::InvalidRecord" +
-                        "  -> false; lawtwin.kafk" +
-                        "a.model::type::KafkaErro" +
-                        "r::InvalidRequest  -> fa" +
-                        "lse; lawtwin.kafka.model" +
-                        "::type::KafkaError::Offs" +
-                        "etOutOfRange  -> false; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::OutOfOrde" +
-                        "rSequenceNumber  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Invali" +
-                        "dProducerEpoch  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Unknown" +
-                        "ProducerId  -> false; la" +
-                        "wtwin.kafka.model::type:" +
-                        ":KafkaError::InvalidProd" +
-                        "ucerIdMapping  -> false;" +
-                        " lawtwin.kafka.model::ty" +
-                        "pe::KafkaError::InvalidT" +
-                        "xnState  -> false; lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::InvalidGroupId" +
-                        "  -> false; lawtwin.kafk" +
-                        "a.model::type::KafkaErro" +
-                        "r::UnknownMemberId  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Ill" +
-                        "egalGeneration  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Illegal" +
-                        "State  -> false }; Eithe" +
-                        "r::Right _match3__1__law" +
-                        "specResult -> false }) A" +
-                        "nd match (attempt (produ" +
-                        "ceRequest (_let0__tp) (M" +
-                        "aybe::Just(tagOf (_match" +
-                        "1__1__old) (0))) (_input" +
-                        "2))) { Either::Left _mat" +
-                        "ch3__0__lawspecFailure -" +
-                        "> match (_match3__0__law" +
-                        "specFailure) { lawtwin.k" +
-                        "afka.model::type::KafkaE" +
-                        "rror::InvalidProducerEpo" +
-                        "ch  -> true; lawtwin.kaf" +
+                        "chfield0__producerId _ma" +
+                        "tchfield1__producerEpoch" +
+                        " -> _matchfield0__produc" +
+                        "erId }) (match (_match1_" +
+                        "_1__old) { lawtwin.kafka" +
+                        ".model::type::ProducerId" +
+                        "AndEpoch::ProducerIdAndE" +
+                        "poch _matchfield2__produ" +
+                        "cerId _matchfield3__prod" +
+                        "ucerEpoch -> _matchfield" +
+                        "3__producerEpoch }) (Lis" +
+                        "t::Cons(_let0__tp, List:" +
+                        ":Nil())))) { Either::Lef" +
+                        "t _match3__0__lawspecFai" +
+                        "lure -> match (_match3__" +
+                        "0__lawspecFailure) { law" +
+                        "twin.kafka.model::type::" +
+                        "KafkaError::ProducerFenc" +
+                        "ed  -> true; lawtwin.kaf" +
                         "ka.model::type::KafkaErr" +
                         "or::UnknownTopicOrPartit" +
                         "ion  -> false; lawtwin.k" +
@@ -40334,31 +40264,89 @@ class KafkaLawSpecTest : StringSpec({
                         "type::KafkaError::OutOfO" +
                         "rderSequenceNumber  -> f" +
                         "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Pro" +
-                        "ducerFenced  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::UnknownPro" +
-                        "ducerId  -> false; lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::InvalidProduce" +
-                        "rIdMapping  -> false; la" +
+                        "l::type::KafkaError::Inv" +
+                        "alidProducerEpoch  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Unkn" +
+                        "ownProducerId  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::InvalidP" +
+                        "roducerIdMapping  -> fal" +
+                        "se; lawtwin.kafka.model:" +
+                        ":type::KafkaError::Inval" +
+                        "idTxnState  -> false; la" +
                         "wtwin.kafka.model::type:" +
-                        ":KafkaError::InvalidTxnS" +
-                        "tate  -> false; lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::InvalidGroupId  -" +
+                        ":KafkaError::InvalidGrou" +
+                        "pId  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::UnknownMemberId  -" +
                         "> false; lawtwin.kafka.m" +
                         "odel::type::KafkaError::" +
-                        "UnknownMemberId  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Illega" +
-                        "lGeneration  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::IllegalSta" +
-                        "te  -> false }; Either::" +
-                        "Right _match3__1__lawspe" +
-                        "cResult -> false }) } } " +
-                        "= true"
+                        "IllegalGeneration  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Ille" +
+                        "galState  -> false }; Ei" +
+                        "ther::Right _match3__1__" +
+                        "lawspecResult -> false }" +
+                        ") And match (attempt (pr" +
+                        "oduceRequest (_let0__tp)" +
+                        " (Maybe::Just(tagOf (_ma" +
+                        "tch1__1__old) (0))) (_in" +
+                        "put2))) { Either::Left _" +
+                        "match3__0__lawspecFailur" +
+                        "e -> match (_match3__0__" +
+                        "lawspecFailure) { lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidProducer" +
+                        "Epoch  -> true; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::UnknownTopicOrPar" +
+                        "tition  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::TopicAlreadyExi" +
+                        "sts  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::InvalidTopic  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Inv" +
+                        "alidPartitions  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Invalid" +
+                        "Record  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidRequest " +
+                        " -> false; lawtwin.kafka" +
+                        ".model::type::KafkaError" +
+                        "::OffsetOutOfRange  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Out" +
+                        "OfOrderSequenceNumber  -" +
+                        "> false; lawtwin.kafka.m" +
+                        "odel::type::KafkaError::" +
+                        "ProducerFenced  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Unknown" +
+                        "ProducerId  -> false; la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::InvalidProd" +
+                        "ucerIdMapping  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::InvalidT" +
+                        "xnState  -> false; lawtw" +
+                        "in.kafka.model::type::Ka" +
+                        "fkaError::InvalidGroupId" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::UnknownMemberId  -> f" +
+                        "alse; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Ill" +
+                        "egalGeneration  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Illegal" +
+                        "State  -> false }; Eithe" +
+                        "r::Right _match3__1__law" +
+                        "specResult -> false }) }" +
+                        " } = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -40737,9 +40725,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField191x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField191x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField191x0
+                                                                                                            val _matchfield0__producerId = _fields[0]
+                                                                                                            val _matchfield1__producerEpoch = _fields[1]
+                                                                                                            _matchfield0__producerId
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -40778,9 +40766,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "e::ProducerIdAndEpoch::P" +
                                                                                                             "roducerIdAndEpoch"
                                                                                                         ) -> {
-                                                                                                            val _match3__0__lawspecField192x0 = _fields[0]
-                                                                                                            val _match3__0__lawspecField192x1 = _fields[1]
-                                                                                                            _match3__0__lawspecField192x1
+                                                                                                            val _matchfield2__producerId = _fields[0]
+                                                                                                            val _matchfield3__producerEpoch = _fields[1]
+                                                                                                            _matchfield3__producerEpoch
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -76742,8 +76730,8 @@ class KafkaLawSpecTest : StringSpec({
     // (lawtwin.kafka.model::type::OffsetSpec::Latest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
     // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-    // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) } } = true
     ("lawProducerAFlushedRecor" + "dIsInTheLogNative_bounda" + "ry0") {
         val symbols = mutableMapOf<String, Any>()
         val _input0 =
@@ -76856,11 +76844,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -77141,9 +77128,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -77378,11 +77365,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -77663,9 +77649,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -77900,11 +77886,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -78185,9 +78170,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -78389,11 +78374,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -78674,9 +78658,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -78915,11 +78899,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -79200,9 +79183,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -79400,11 +79383,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -79685,9 +79667,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -79925,11 +79907,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -80210,9 +80191,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -80410,11 +80391,10 @@ class KafkaLawSpecTest : StringSpec({
                         " > match (_match0__1__md" +
                         ") { lawtwin.kafka::type:" +
                         ":RecordMetadata::RecordM" +
-                        "etadata _match3__0__laws" +
-                        "pecField55x0 _match3__0_" +
-                        "_lawspecField55x1 -> _ma" +
-                        "tch3__0__lawspecField55x" +
-                        "1 }) } } = true"
+                        "etadata _matchfield0__se" +
+                        "ntTo _matchfield1__sentA" +
+                        "t -> _matchfield1__sentA" +
+                        "t }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -80695,9 +80675,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -81020,10 +81000,9 @@ class KafkaLawSpecTest : StringSpec({
                             " match (_match0__1__md) " +
                             "{ lawtwin.kafka::type::R" +
                             "ecordMetadata::RecordMet" +
-                            "adata _match3__0__lawspe" +
-                            "cField55x0 _match3__0__l" +
-                            "awspecField55x1 -> _matc" +
-                            "h3__0__lawspecField55x1 " +
+                            "adata _matchfield0__sent" +
+                            "To _matchfield1__sentAt " +
+                            "-> _matchfield1__sentAt " +
                             "}) } } = true"
                         ),
                         {
@@ -81324,9 +81303,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "ordMetadata::RecordMetad" +
                                                                         "ata"
                                                                     ) -> {
-                                                                        val _match3__0__lawspecField55x0 = _fields[0]
-                                                                        val _match3__0__lawspecField55x1 = _fields[1]
-                                                                        _match3__0__lawspecField55x1
+                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                        _matchfield1__sentAt
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -101327,9 +101306,8 @@ class KafkaLawSpecTest : StringSpec({
     // (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false;
     // Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) ==
     // _match1__1__tps) And (match (describeGroup (_input2)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0
-    // _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } =
-    // true
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation
+    // _matchfield1__members -> _matchfield0__generation } == _match0__1__gen)) } } = true
     val _lawspecInputs49 = listOf("(text)", "(int Int32 1 16)", "(text)", "(text)")
 
     val _lawspecCase49: suspend (List<lawspec.runtime.LawSpecRuntime.Value>) -> Double? = lawspecCase@{ _values ->
@@ -101442,12 +101420,11 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (describeGroup (_in" +
                         "put2)) { lawtwin.kafka.m" +
                         "odel::type::GroupView::G" +
-                        "roupView _match2__0__law" +
-                        "specField55x0 _match2__0" +
-                        "__lawspecField55x1 -> _m" +
-                        "atch2__0__lawspecField55" +
-                        "x0 } == _match0__1__gen)" +
-                        ") } } = true"
+                        "roupView _matchfield0__g" +
+                        "eneration _matchfield1__" +
+                        "members -> _matchfield0_" +
+                        "_generation } == _match0" +
+                        "__1__gen)) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -101826,9 +101803,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                             "lawtwin.kafka.model::typ" +
                                                                             "e::GroupView::GroupView"
                                                                         ) -> {
-                                                                            val _match2__0__lawspecField55x0 = _fields[0]
-                                                                            val _match2__0__lawspecField55x1 = _fields[1]
-                                                                            _match2__0__lawspecField55x0
+                                                                            val _matchfield0__generation = _fields[0]
+                                                                            val _matchfield1__members = _fields[1]
+                                                                            _matchfield0__generation
                                                                         }
                                                                         else -> {
                                                                             throw IllegalArgumentException(
@@ -102405,12 +102382,11 @@ class KafkaLawSpecTest : StringSpec({
                                         "(match (describeGroup (_" +
                                         "input2)) { lawtwin.kafka" +
                                         ".model::type::GroupView:" +
-                                        ":GroupView _match2__0__l" +
-                                        "awspecField55x0 _match2_" +
-                                        "_0__lawspecField55x1 -> " +
-                                        "_match2__0__lawspecField" +
-                                        "55x0 } == _match0__1__ge" +
-                                        "n)) } } = true"
+                                        ":GroupView _matchfield0_" +
+                                        "_generation _matchfield1" +
+                                        "__members -> _matchfield" +
+                                        "0__generation } == _matc" +
+                                        "h0__1__gen)) } } = true"
                                     ),
                                     {
                                         LawSpecKotlinCodecs.match(
@@ -102823,9 +102799,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "lawtwin.kafka.model::typ" +
                                                                                             "e::GroupView::GroupView"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField55x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField55x1 = _fields[1]
-                                                                                            _match2__0__lawspecField55x0
+                                                                                            val _matchfield0__generation = _fields[0]
+                                                                                            val _matchfield1__members = _fields[1]
+                                                                                            _matchfield0__generation
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -102929,9 +102905,8 @@ class KafkaLawSpecTest : StringSpec({
     // (syncGroup (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false;
     // Either::Right _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) ==
     // _match1__1__tps) And (match (describeGroup (_input2)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match2__0__lawspecField55x0
-    // _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } == _match0__1__gen)) } } =
-    // true
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation
+    // _matchfield1__members -> _matchfield0__generation } == _match0__1__gen)) } } = true
     val _lawspecInputs50 = listOf("(text)", "(int Int32 1 16)", "(text)", "(text)")
 
     val _lawspecCase50: suspend (List<lawspec.runtime.LawSpecRuntime.Value>) -> Double? = lawspecCase@{ _values ->
@@ -103019,12 +102994,11 @@ class KafkaLawSpecTest : StringSpec({
                     "match (describeGroup (_i" +
                     "nput2)) { lawtwin.kafka." +
                     "model::type::GroupView::" +
-                    "GroupView _match2__0__la" +
-                    "wspecField55x0 _match2__" +
-                    "0__lawspecField55x1 -> _" +
-                    "match2__0__lawspecField5" +
-                    "5x0 } == _match0__1__gen" +
-                    ")) } } = true"
+                    "GroupView _matchfield0__" +
+                    "generation _matchfield1_" +
+                    "_members -> _matchfield0" +
+                    "__generation } == _match" +
+                    "0__1__gen)) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -103395,9 +103369,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match2__0__lawspecField55x0 = _fields[0]
-                                                                        val _match2__0__lawspecField55x1 = _fields[1]
-                                                                        _match2__0__lawspecField55x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -103931,12 +103905,11 @@ class KafkaLawSpecTest : StringSpec({
                                     " (match (describeGroup (" +
                                     "_input2)) { lawtwin.kafk" +
                                     "a.model::type::GroupView" +
-                                    "::GroupView _match2__0__" +
-                                    "lawspecField55x0 _match2" +
-                                    "__0__lawspecField55x1 ->" +
-                                    " _match2__0__lawspecFiel" +
-                                    "d55x0 } == _match0__1__g" +
-                                    "en)) } } = true"
+                                    "::GroupView _matchfield0" +
+                                    "__generation _matchfield" +
+                                    "1__members -> _matchfiel" +
+                                    "d0__generation } == _mat" +
+                                    "ch0__1__gen)) } } = true"
                                 ),
                                 {
                                     LawSpecKotlinCodecs.match(
@@ -104341,9 +104314,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "lawtwin.kafka.model::typ" +
                                                                                         "e::GroupView::GroupView"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField55x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField55x1 = _fields[1]
-                                                                                        _match2__0__lawspecField55x0
+                                                                                        val _matchfield0__generation = _fields[0]
+                                                                                        val _matchfield1__members = _fields[1]
+                                                                                        _matchfield0__generation
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -116434,10 +116407,10 @@ class KafkaLawSpecTest : StringSpec({
     // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup
     // (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
     // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
-    // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And
-    // match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-    // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation
+    // _matchfield1__members -> _matchfield0__generation } > _match0__1__gen)) And match (attempt
+    // (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure
+    // -> match (_match1__0__lawspecFailure) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -116542,68 +116515,68 @@ class KafkaLawSpecTest : StringSpec({
                         "(describeGroup (_input1)" +
                         ") { lawtwin.kafka.model:" +
                         ":type::GroupView::GroupV" +
-                        "iew _match1__0__lawspecF" +
-                        "ield101x0 _match1__0__la" +
-                        "wspecField101x1 -> _matc" +
-                        "h1__0__lawspecField101x0" +
-                        " } > _match0__1__gen)) A" +
-                        "nd match (attempt (heart" +
-                        "beat (_input1) (_input2)" +
-                        " (_match0__1__gen))) { E" +
-                        "ither::Left _match1__0__" +
-                        "lawspecFailure -> match " +
-                        "(_match1__0__lawspecFail" +
-                        "ure) { lawtwin.kafka.mod" +
-                        "el::type::KafkaError::Un" +
-                        "knownMemberId  -> true; " +
-                        "lawtwin.kafka.model::typ" +
-                        "e::KafkaError::UnknownTo" +
-                        "picOrPartition  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::TopicAl" +
-                        "readyExists  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::InvalidTop" +
-                        "ic  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::InvalidPartitions  " +
-                        "-> false; lawtwin.kafka." +
-                        "model::type::KafkaError:" +
-                        ":InvalidRecord  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "Request  -> false; lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::OffsetOutOfRan" +
-                        "ge  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::OutOfOrderSequenceN" +
-                        "umber  -> false; lawtwin" +
-                        ".kafka.model::type::Kafk" +
-                        "aError::InvalidProducerE" +
-                        "poch  -> false; lawtwin." +
-                        "kafka.model::type::Kafka" +
-                        "Error::ProducerFenced  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "UnknownProducerId  -> fa" +
+                        "iew _matchfield0__genera" +
+                        "tion _matchfield1__membe" +
+                        "rs -> _matchfield0__gene" +
+                        "ration } > _match0__1__g" +
+                        "en)) And match (attempt " +
+                        "(heartbeat (_input1) (_i" +
+                        "nput2) (_match0__1__gen)" +
+                        ")) { Either::Left _match" +
+                        "1__0__lawspecFailure -> " +
+                        "match (_match1__0__lawsp" +
+                        "ecFailure) { lawtwin.kaf" +
+                        "ka.model::type::KafkaErr" +
+                        "or::UnknownMemberId  -> " +
+                        "true; lawtwin.kafka.mode" +
+                        "l::type::KafkaError::Unk" +
+                        "nownTopicOrPartition  ->" +
+                        " false; lawtwin.kafka.mo" +
+                        "del::type::KafkaError::T" +
+                        "opicAlreadyExists  -> fa" +
                         "lse; lawtwin.kafka.model" +
                         "::type::KafkaError::Inva" +
-                        "lidProducerIdMapping  ->" +
+                        "lidTopic  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidPartit" +
+                        "ions  -> false; lawtwin." +
+                        "kafka.model::type::Kafka" +
+                        "Error::InvalidRecord  ->" +
                         " false; lawtwin.kafka.mo" +
                         "del::type::KafkaError::I" +
-                        "nvalidTxnState  -> false" +
-                        "; lawtwin.kafka.model::t" +
-                        "ype::KafkaError::Invalid" +
-                        "GroupId  -> false; lawtw" +
-                        "in.kafka.model::type::Ka" +
-                        "fkaError::IllegalGenerat" +
-                        "ion  -> false; lawtwin.k" +
+                        "nvalidRequest  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::OffsetOu" +
+                        "tOfRange  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::OutOfOrderSeq" +
+                        "uenceNumber  -> false; l" +
+                        "awtwin.kafka.model::type" +
+                        "::KafkaError::InvalidPro" +
+                        "ducerEpoch  -> false; la" +
+                        "wtwin.kafka.model::type:" +
+                        ":KafkaError::ProducerFen" +
+                        "ced  -> false; lawtwin.k" +
                         "afka.model::type::KafkaE" +
-                        "rror::IllegalState  -> f" +
-                        "alse }; Either::Right _m" +
-                        "atch1__1__lawspecResult " +
-                        "-> false }) } = true"
+                        "rror::UnknownProducerId " +
+                        " -> false; lawtwin.kafka" +
+                        ".model::type::KafkaError" +
+                        "::InvalidProducerIdMappi" +
+                        "ng  -> false; lawtwin.ka" +
+                        "fka.model::type::KafkaEr" +
+                        "ror::InvalidTxnState  ->" +
+                        " false; lawtwin.kafka.mo" +
+                        "del::type::KafkaError::I" +
+                        "nvalidGroupId  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::IllegalG" +
+                        "eneration  -> false; law" +
+                        "twin.kafka.model::type::" +
+                        "KafkaError::IllegalState" +
+                        "  -> false }; Either::Ri" +
+                        "ght _match1__1__lawspecR" +
+                        "esult -> false }) } = tr" +
+                        "ue"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -116931,9 +116904,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                        _match1__0__lawspecField101x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -117455,68 +117428,68 @@ class KafkaLawSpecTest : StringSpec({
                         "tch (describeGroup (_inp" +
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
-                        "oupView _match1__0__laws" +
-                        "pecField101x0 _match1__0" +
-                        "__lawspecField101x1 -> _" +
-                        "match1__0__lawspecField1" +
-                        "01x0 } > _match0__1__gen" +
-                        ")) And match (attempt (h" +
-                        "eartbeat (_input1) (_inp" +
-                        "ut2) (_match0__1__gen)))" +
-                        " { Either::Left _match1_" +
-                        "_0__lawspecFailure -> ma" +
-                        "tch (_match1__0__lawspec" +
-                        "Failure) { lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownMemberId  -> tr" +
-                        "ue; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Unkno" +
-                        "wnTopicOrPartition  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Top" +
-                        "icAlreadyExists  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Invali" +
-                        "dTopic  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::InvalidPartitio" +
-                        "ns  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::InvalidRecord  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidRequest  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::OffsetOutO" +
-                        "fRange  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::OutOfOrderSeque" +
-                        "nceNumber  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidProdu" +
-                        "cerEpoch  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::ProducerFence" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownProducerId  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "InvalidProducerIdMapping" +
+                        "oupView _matchfield0__ge" +
+                        "neration _matchfield1__m" +
+                        "embers -> _matchfield0__" +
+                        "generation } > _match0__" +
+                        "1__gen)) And match (atte" +
+                        "mpt (heartbeat (_input1)" +
+                        " (_input2) (_match0__1__" +
+                        "gen))) { Either::Left _m" +
+                        "atch1__0__lawspecFailure" +
+                        " -> match (_match1__0__l" +
+                        "awspecFailure) { lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownMemberId " +
+                        " -> true; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":UnknownTopicOrPartition" +
                         "  -> false; lawtwin.kafk" +
                         "a.model::type::KafkaErro" +
-                        "r::InvalidTxnState  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidGroupId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::IllegalGen" +
-                        "eration  -> false; lawtw" +
+                        "r::TopicAlreadyExists  -" +
+                        "> false; lawtwin.kafka.m" +
+                        "odel::type::KafkaError::" +
+                        "InvalidTopic  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::InvalidPa" +
+                        "rtitions  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidRecord" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidRequest  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Offs" +
+                        "etOutOfRange  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::OutOfOrde" +
+                        "rSequenceNumber  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dProducerEpoch  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Produce" +
+                        "rFenced  -> false; lawtw" +
                         "in.kafka.model::type::Ka" +
-                        "fkaError::IllegalState  " +
-                        "-> false }; Either::Righ" +
-                        "t _match1__1__lawspecRes" +
-                        "ult -> false }) } = true"
+                        "fkaError::UnknownProduce" +
+                        "rId  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::InvalidProducerIdM" +
+                        "apping  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidTxnState" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidGroupId  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Ille" +
+                        "galGeneration  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::IllegalS" +
+                        "tate  -> false }; Either" +
+                        "::Right _match1__1__laws" +
+                        "pecResult -> false }) } " +
+                        "= true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -117844,9 +117817,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                        _match1__0__lawspecField101x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -118368,68 +118341,68 @@ class KafkaLawSpecTest : StringSpec({
                         "tch (describeGroup (_inp" +
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
-                        "oupView _match1__0__laws" +
-                        "pecField101x0 _match1__0" +
-                        "__lawspecField101x1 -> _" +
-                        "match1__0__lawspecField1" +
-                        "01x0 } > _match0__1__gen" +
-                        ")) And match (attempt (h" +
-                        "eartbeat (_input1) (_inp" +
-                        "ut2) (_match0__1__gen)))" +
-                        " { Either::Left _match1_" +
-                        "_0__lawspecFailure -> ma" +
-                        "tch (_match1__0__lawspec" +
-                        "Failure) { lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownMemberId  -> tr" +
-                        "ue; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Unkno" +
-                        "wnTopicOrPartition  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Top" +
-                        "icAlreadyExists  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Invali" +
-                        "dTopic  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::InvalidPartitio" +
-                        "ns  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::InvalidRecord  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidRequest  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::OffsetOutO" +
-                        "fRange  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::OutOfOrderSeque" +
-                        "nceNumber  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidProdu" +
-                        "cerEpoch  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::ProducerFence" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownProducerId  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "InvalidProducerIdMapping" +
+                        "oupView _matchfield0__ge" +
+                        "neration _matchfield1__m" +
+                        "embers -> _matchfield0__" +
+                        "generation } > _match0__" +
+                        "1__gen)) And match (atte" +
+                        "mpt (heartbeat (_input1)" +
+                        " (_input2) (_match0__1__" +
+                        "gen))) { Either::Left _m" +
+                        "atch1__0__lawspecFailure" +
+                        " -> match (_match1__0__l" +
+                        "awspecFailure) { lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownMemberId " +
+                        " -> true; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":UnknownTopicOrPartition" +
                         "  -> false; lawtwin.kafk" +
                         "a.model::type::KafkaErro" +
-                        "r::InvalidTxnState  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidGroupId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::IllegalGen" +
-                        "eration  -> false; lawtw" +
+                        "r::TopicAlreadyExists  -" +
+                        "> false; lawtwin.kafka.m" +
+                        "odel::type::KafkaError::" +
+                        "InvalidTopic  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::InvalidPa" +
+                        "rtitions  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidRecord" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidRequest  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Offs" +
+                        "etOutOfRange  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::OutOfOrde" +
+                        "rSequenceNumber  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dProducerEpoch  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Produce" +
+                        "rFenced  -> false; lawtw" +
                         "in.kafka.model::type::Ka" +
-                        "fkaError::IllegalState  " +
-                        "-> false }; Either::Righ" +
-                        "t _match1__1__lawspecRes" +
-                        "ult -> false }) } = true"
+                        "fkaError::UnknownProduce" +
+                        "rId  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::InvalidProducerIdM" +
+                        "apping  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidTxnState" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidGroupId  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Ille" +
+                        "galGeneration  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::IllegalS" +
+                        "tate  -> false }; Either" +
+                        "::Right _match1__1__laws" +
+                        "pecResult -> false }) } " +
+                        "= true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -118757,9 +118730,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                        _match1__0__lawspecField101x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -119279,68 +119252,68 @@ class KafkaLawSpecTest : StringSpec({
                         "tch (describeGroup (_inp" +
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
-                        "oupView _match1__0__laws" +
-                        "pecField101x0 _match1__0" +
-                        "__lawspecField101x1 -> _" +
-                        "match1__0__lawspecField1" +
-                        "01x0 } > _match0__1__gen" +
-                        ")) And match (attempt (h" +
-                        "eartbeat (_input1) (_inp" +
-                        "ut2) (_match0__1__gen)))" +
-                        " { Either::Left _match1_" +
-                        "_0__lawspecFailure -> ma" +
-                        "tch (_match1__0__lawspec" +
-                        "Failure) { lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownMemberId  -> tr" +
-                        "ue; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Unkno" +
-                        "wnTopicOrPartition  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Top" +
-                        "icAlreadyExists  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Invali" +
-                        "dTopic  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::InvalidPartitio" +
-                        "ns  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::InvalidRecord  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidRequest  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::OffsetOutO" +
-                        "fRange  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::OutOfOrderSeque" +
-                        "nceNumber  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidProdu" +
-                        "cerEpoch  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::ProducerFence" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownProducerId  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "InvalidProducerIdMapping" +
+                        "oupView _matchfield0__ge" +
+                        "neration _matchfield1__m" +
+                        "embers -> _matchfield0__" +
+                        "generation } > _match0__" +
+                        "1__gen)) And match (atte" +
+                        "mpt (heartbeat (_input1)" +
+                        " (_input2) (_match0__1__" +
+                        "gen))) { Either::Left _m" +
+                        "atch1__0__lawspecFailure" +
+                        " -> match (_match1__0__l" +
+                        "awspecFailure) { lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownMemberId " +
+                        " -> true; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":UnknownTopicOrPartition" +
                         "  -> false; lawtwin.kafk" +
                         "a.model::type::KafkaErro" +
-                        "r::InvalidTxnState  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidGroupId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::IllegalGen" +
-                        "eration  -> false; lawtw" +
+                        "r::TopicAlreadyExists  -" +
+                        "> false; lawtwin.kafka.m" +
+                        "odel::type::KafkaError::" +
+                        "InvalidTopic  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::InvalidPa" +
+                        "rtitions  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidRecord" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidRequest  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Offs" +
+                        "etOutOfRange  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::OutOfOrde" +
+                        "rSequenceNumber  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dProducerEpoch  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Produce" +
+                        "rFenced  -> false; lawtw" +
                         "in.kafka.model::type::Ka" +
-                        "fkaError::IllegalState  " +
-                        "-> false }; Either::Righ" +
-                        "t _match1__1__lawspecRes" +
-                        "ult -> false }) } = true"
+                        "fkaError::UnknownProduce" +
+                        "rId  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::InvalidProducerIdM" +
+                        "apping  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidTxnState" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidGroupId  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Ille" +
+                        "galGeneration  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::IllegalS" +
+                        "tate  -> false }; Either" +
+                        "::Right _match1__1__laws" +
+                        "pecResult -> false }) } " +
+                        "= true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -119668,9 +119641,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                        _match1__0__lawspecField101x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -120190,68 +120163,68 @@ class KafkaLawSpecTest : StringSpec({
                         "tch (describeGroup (_inp" +
                         "ut1)) { lawtwin.kafka.mo" +
                         "del::type::GroupView::Gr" +
-                        "oupView _match1__0__laws" +
-                        "pecField101x0 _match1__0" +
-                        "__lawspecField101x1 -> _" +
-                        "match1__0__lawspecField1" +
-                        "01x0 } > _match0__1__gen" +
-                        ")) And match (attempt (h" +
-                        "eartbeat (_input1) (_inp" +
-                        "ut2) (_match0__1__gen)))" +
-                        " { Either::Left _match1_" +
-                        "_0__lawspecFailure -> ma" +
-                        "tch (_match1__0__lawspec" +
-                        "Failure) { lawtwin.kafka" +
-                        ".model::type::KafkaError" +
-                        "::UnknownMemberId  -> tr" +
-                        "ue; lawtwin.kafka.model:" +
-                        ":type::KafkaError::Unkno" +
-                        "wnTopicOrPartition  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Top" +
-                        "icAlreadyExists  -> fals" +
-                        "e; lawtwin.kafka.model::" +
-                        "type::KafkaError::Invali" +
-                        "dTopic  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::InvalidPartitio" +
-                        "ns  -> false; lawtwin.ka" +
-                        "fka.model::type::KafkaEr" +
-                        "ror::InvalidRecord  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidRequest  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::OffsetOutO" +
-                        "fRange  -> false; lawtwi" +
-                        "n.kafka.model::type::Kaf" +
-                        "kaError::OutOfOrderSeque" +
-                        "nceNumber  -> false; law" +
-                        "twin.kafka.model::type::" +
-                        "KafkaError::InvalidProdu" +
-                        "cerEpoch  -> false; lawt" +
-                        "win.kafka.model::type::K" +
-                        "afkaError::ProducerFence" +
-                        "d  -> false; lawtwin.kaf" +
-                        "ka.model::type::KafkaErr" +
-                        "or::UnknownProducerId  -" +
-                        "> false; lawtwin.kafka.m" +
-                        "odel::type::KafkaError::" +
-                        "InvalidProducerIdMapping" +
+                        "oupView _matchfield0__ge" +
+                        "neration _matchfield1__m" +
+                        "embers -> _matchfield0__" +
+                        "generation } > _match0__" +
+                        "1__gen)) And match (atte" +
+                        "mpt (heartbeat (_input1)" +
+                        " (_input2) (_match0__1__" +
+                        "gen))) { Either::Left _m" +
+                        "atch1__0__lawspecFailure" +
+                        " -> match (_match1__0__l" +
+                        "awspecFailure) { lawtwin" +
+                        ".kafka.model::type::Kafk" +
+                        "aError::UnknownMemberId " +
+                        " -> true; lawtwin.kafka." +
+                        "model::type::KafkaError:" +
+                        ":UnknownTopicOrPartition" +
                         "  -> false; lawtwin.kafk" +
                         "a.model::type::KafkaErro" +
-                        "r::InvalidTxnState  -> f" +
-                        "alse; lawtwin.kafka.mode" +
-                        "l::type::KafkaError::Inv" +
-                        "alidGroupId  -> false; l" +
-                        "awtwin.kafka.model::type" +
-                        "::KafkaError::IllegalGen" +
-                        "eration  -> false; lawtw" +
+                        "r::TopicAlreadyExists  -" +
+                        "> false; lawtwin.kafka.m" +
+                        "odel::type::KafkaError::" +
+                        "InvalidTopic  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::InvalidPa" +
+                        "rtitions  -> false; lawt" +
+                        "win.kafka.model::type::K" +
+                        "afkaError::InvalidRecord" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidRequest  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Offs" +
+                        "etOutOfRange  -> false; " +
+                        "lawtwin.kafka.model::typ" +
+                        "e::KafkaError::OutOfOrde" +
+                        "rSequenceNumber  -> fals" +
+                        "e; lawtwin.kafka.model::" +
+                        "type::KafkaError::Invali" +
+                        "dProducerEpoch  -> false" +
+                        "; lawtwin.kafka.model::t" +
+                        "ype::KafkaError::Produce" +
+                        "rFenced  -> false; lawtw" +
                         "in.kafka.model::type::Ka" +
-                        "fkaError::IllegalState  " +
-                        "-> false }; Either::Righ" +
-                        "t _match1__1__lawspecRes" +
-                        "ult -> false }) } = true"
+                        "fkaError::UnknownProduce" +
+                        "rId  -> false; lawtwin.k" +
+                        "afka.model::type::KafkaE" +
+                        "rror::InvalidProducerIdM" +
+                        "apping  -> false; lawtwi" +
+                        "n.kafka.model::type::Kaf" +
+                        "kaError::InvalidTxnState" +
+                        "  -> false; lawtwin.kafk" +
+                        "a.model::type::KafkaErro" +
+                        "r::InvalidGroupId  -> fa" +
+                        "lse; lawtwin.kafka.model" +
+                        "::type::KafkaError::Ille" +
+                        "galGeneration  -> false;" +
+                        " lawtwin.kafka.model::ty" +
+                        "pe::KafkaError::IllegalS" +
+                        "tate  -> false }; Either" +
+                        "::Right _match1__1__laws" +
+                        "pecResult -> false }) } " +
+                        "= true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -120579,9 +120552,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                         "lawtwin.kafka.model::typ" +
                                                                         "e::GroupView::GroupView"
                                                                     ) -> {
-                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                        _match1__0__lawspecField101x0
+                                                                        val _matchfield0__generation = _fields[0]
+                                                                        val _matchfield1__members = _fields[1]
+                                                                        _matchfield0__generation
                                                                     }
                                                                     else -> {
                                                                         throw IllegalArgumentException(
@@ -121464,68 +121437,68 @@ class KafkaLawSpecTest : StringSpec({
                                         "h (describeGroup (_input" +
                                         "1)) { lawtwin.kafka.mode" +
                                         "l::type::GroupView::Grou" +
-                                        "pView _match1__0__lawspe" +
-                                        "cField101x0 _match1__0__" +
-                                        "lawspecField101x1 -> _ma" +
-                                        "tch1__0__lawspecField101" +
-                                        "x0 } > _match0__1__gen))" +
-                                        " And match (attempt (hea" +
-                                        "rtbeat (_input1) (_input" +
-                                        "2) (_match0__1__gen))) {" +
-                                        " Either::Left _match1__0" +
-                                        "__lawspecFailure -> matc" +
-                                        "h (_match1__0__lawspecFa" +
-                                        "ilure) { lawtwin.kafka.m" +
-                                        "odel::type::KafkaError::" +
-                                        "UnknownMemberId  -> true" +
-                                        "; lawtwin.kafka.model::t" +
-                                        "ype::KafkaError::Unknown" +
-                                        "TopicOrPartition  -> fal" +
-                                        "se; lawtwin.kafka.model:" +
-                                        ":type::KafkaError::Topic" +
-                                        "AlreadyExists  -> false;" +
-                                        " lawtwin.kafka.model::ty" +
-                                        "pe::KafkaError::InvalidT" +
-                                        "opic  -> false; lawtwin." +
-                                        "kafka.model::type::Kafka" +
-                                        "Error::InvalidPartitions" +
-                                        "  -> false; lawtwin.kafk" +
-                                        "a.model::type::KafkaErro" +
-                                        "r::InvalidRecord  -> fal" +
-                                        "se; lawtwin.kafka.model:" +
-                                        ":type::KafkaError::Inval" +
-                                        "idRequest  -> false; law" +
-                                        "twin.kafka.model::type::" +
-                                        "KafkaError::OffsetOutOfR" +
-                                        "ange  -> false; lawtwin." +
-                                        "kafka.model::type::Kafka" +
-                                        "Error::OutOfOrderSequenc" +
-                                        "eNumber  -> false; lawtw" +
-                                        "in.kafka.model::type::Ka" +
-                                        "fkaError::InvalidProduce" +
-                                        "rEpoch  -> false; lawtwi" +
-                                        "n.kafka.model::type::Kaf" +
-                                        "kaError::ProducerFenced " +
-                                        " -> false; lawtwin.kafka" +
-                                        ".model::type::KafkaError" +
-                                        "::UnknownProducerId  -> " +
-                                        "false; lawtwin.kafka.mod" +
-                                        "el::type::KafkaError::In" +
-                                        "validProducerIdMapping  " +
+                                        "pView _matchfield0__gene" +
+                                        "ration _matchfield1__mem" +
+                                        "bers -> _matchfield0__ge" +
+                                        "neration } > _match0__1_" +
+                                        "_gen)) And match (attemp" +
+                                        "t (heartbeat (_input1) (" +
+                                        "_input2) (_match0__1__ge" +
+                                        "n))) { Either::Left _mat" +
+                                        "ch1__0__lawspecFailure -" +
+                                        "> match (_match1__0__law" +
+                                        "specFailure) { lawtwin.k" +
+                                        "afka.model::type::KafkaE" +
+                                        "rror::UnknownMemberId  -" +
+                                        "> true; lawtwin.kafka.mo" +
+                                        "del::type::KafkaError::U" +
+                                        "nknownTopicOrPartition  " +
                                         "-> false; lawtwin.kafka." +
                                         "model::type::KafkaError:" +
-                                        ":InvalidTxnState  -> fal" +
-                                        "se; lawtwin.kafka.model:" +
-                                        ":type::KafkaError::Inval" +
-                                        "idGroupId  -> false; law" +
-                                        "twin.kafka.model::type::" +
-                                        "KafkaError::IllegalGener" +
-                                        "ation  -> false; lawtwin" +
+                                        ":TopicAlreadyExists  -> " +
+                                        "false; lawtwin.kafka.mod" +
+                                        "el::type::KafkaError::In" +
+                                        "validTopic  -> false; la" +
+                                        "wtwin.kafka.model::type:" +
+                                        ":KafkaError::InvalidPart" +
+                                        "itions  -> false; lawtwi" +
+                                        "n.kafka.model::type::Kaf" +
+                                        "kaError::InvalidRecord  " +
+                                        "-> false; lawtwin.kafka." +
+                                        "model::type::KafkaError:" +
+                                        ":InvalidRequest  -> fals" +
+                                        "e; lawtwin.kafka.model::" +
+                                        "type::KafkaError::Offset" +
+                                        "OutOfRange  -> false; la" +
+                                        "wtwin.kafka.model::type:" +
+                                        ":KafkaError::OutOfOrderS" +
+                                        "equenceNumber  -> false;" +
+                                        " lawtwin.kafka.model::ty" +
+                                        "pe::KafkaError::InvalidP" +
+                                        "roducerEpoch  -> false; " +
+                                        "lawtwin.kafka.model::typ" +
+                                        "e::KafkaError::ProducerF" +
+                                        "enced  -> false; lawtwin" +
                                         ".kafka.model::type::Kafk" +
-                                        "aError::IllegalState  ->" +
-                                        " false }; Either::Right " +
-                                        "_match1__1__lawspecResul" +
-                                        "t -> false }) } = true"
+                                        "aError::UnknownProducerI" +
+                                        "d  -> false; lawtwin.kaf" +
+                                        "ka.model::type::KafkaErr" +
+                                        "or::InvalidProducerIdMap" +
+                                        "ping  -> false; lawtwin." +
+                                        "kafka.model::type::Kafka" +
+                                        "Error::InvalidTxnState  " +
+                                        "-> false; lawtwin.kafka." +
+                                        "model::type::KafkaError:" +
+                                        ":InvalidGroupId  -> fals" +
+                                        "e; lawtwin.kafka.model::" +
+                                        "type::KafkaError::Illega" +
+                                        "lGeneration  -> false; l" +
+                                        "awtwin.kafka.model::type" +
+                                        "::KafkaError::IllegalSta" +
+                                        "te  -> false }; Either::" +
+                                        "Right _match1__1__lawspe" +
+                                        "cResult -> false }) } = " +
+                                        "true"
                                     ),
                                     {
                                         LawSpecKotlinCodecs.match(
@@ -121891,9 +121864,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "lawtwin.kafka.model::typ" +
                                                                                         "e::GroupView::GroupView"
                                                                                     ) -> {
-                                                                                        val _match1__0__lawspecField101x0 = _fields[0]
-                                                                                        val _match1__0__lawspecField101x1 = _fields[1]
-                                                                                        _match1__0__lawspecField101x0
+                                                                                        val _matchfield0__generation = _fields[0]
+                                                                                        val _matchfield1__members = _fields[1]
+                                                                                        _matchfield0__generation
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -122383,10 +122356,10 @@ class KafkaLawSpecTest : StringSpec({
     // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup
     // (_input1) (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
     // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-    // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
-    // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And
-    // match (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-    // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
+    // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation
+    // _matchfield1__members -> _matchfield0__generation } > _match0__1__gen)) And match (attempt
+    // (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure
+    // -> match (_match1__0__lawspecFailure) {
     // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
     // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
     // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
@@ -122466,68 +122439,68 @@ class KafkaLawSpecTest : StringSpec({
                     " (describeGroup (_input1" +
                     ")) { lawtwin.kafka.model" +
                     "::type::GroupView::Group" +
-                    "View _match1__0__lawspec" +
-                    "Field101x0 _match1__0__l" +
-                    "awspecField101x1 -> _mat" +
-                    "ch1__0__lawspecField101x" +
-                    "0 } > _match0__1__gen)) " +
-                    "And match (attempt (hear" +
-                    "tbeat (_input1) (_input2" +
-                    ") (_match0__1__gen))) { " +
-                    "Either::Left _match1__0_" +
-                    "_lawspecFailure -> match" +
-                    " (_match1__0__lawspecFai" +
-                    "lure) { lawtwin.kafka.mo" +
-                    "del::type::KafkaError::U" +
-                    "nknownMemberId  -> true;" +
-                    " lawtwin.kafka.model::ty" +
-                    "pe::KafkaError::UnknownT" +
-                    "opicOrPartition  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::TopicA" +
-                    "lreadyExists  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::InvalidTo" +
-                    "pic  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::InvalidPartitions " +
-                    " -> false; lawtwin.kafka" +
-                    ".model::type::KafkaError" +
-                    "::InvalidRecord  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dRequest  -> false; lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::OffsetOutOfRa" +
-                    "nge  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::OutOfOrderSequence" +
-                    "Number  -> false; lawtwi" +
-                    "n.kafka.model::type::Kaf" +
-                    "kaError::InvalidProducer" +
-                    "Epoch  -> false; lawtwin" +
-                    ".kafka.model::type::Kafk" +
-                    "aError::ProducerFenced  " +
-                    "-> false; lawtwin.kafka." +
-                    "model::type::KafkaError:" +
-                    ":UnknownProducerId  -> f" +
-                    "alse; lawtwin.kafka.mode" +
-                    "l::type::KafkaError::Inv" +
-                    "alidProducerIdMapping  -" +
+                    "View _matchfield0__gener" +
+                    "ation _matchfield1__memb" +
+                    "ers -> _matchfield0__gen" +
+                    "eration } > _match0__1__" +
+                    "gen)) And match (attempt" +
+                    " (heartbeat (_input1) (_" +
+                    "input2) (_match0__1__gen" +
+                    "))) { Either::Left _matc" +
+                    "h1__0__lawspecFailure ->" +
+                    " match (_match1__0__laws" +
+                    "pecFailure) { lawtwin.ka" +
+                    "fka.model::type::KafkaEr" +
+                    "ror::UnknownMemberId  ->" +
+                    " true; lawtwin.kafka.mod" +
+                    "el::type::KafkaError::Un" +
+                    "knownTopicOrPartition  -" +
                     "> false; lawtwin.kafka.m" +
                     "odel::type::KafkaError::" +
-                    "InvalidTxnState  -> fals" +
-                    "e; lawtwin.kafka.model::" +
-                    "type::KafkaError::Invali" +
-                    "dGroupId  -> false; lawt" +
-                    "win.kafka.model::type::K" +
-                    "afkaError::IllegalGenera" +
-                    "tion  -> false; lawtwin." +
+                    "TopicAlreadyExists  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Inv" +
+                    "alidTopic  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidParti" +
+                    "tions  -> false; lawtwin" +
+                    ".kafka.model::type::Kafk" +
+                    "aError::InvalidRecord  -" +
+                    "> false; lawtwin.kafka.m" +
+                    "odel::type::KafkaError::" +
+                    "InvalidRequest  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::OffsetO" +
+                    "utOfRange  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::OutOfOrderSe" +
+                    "quenceNumber  -> false; " +
+                    "lawtwin.kafka.model::typ" +
+                    "e::KafkaError::InvalidPr" +
+                    "oducerEpoch  -> false; l" +
+                    "awtwin.kafka.model::type" +
+                    "::KafkaError::ProducerFe" +
+                    "nced  -> false; lawtwin." +
                     "kafka.model::type::Kafka" +
-                    "Error::IllegalState  -> " +
-                    "false }; Either::Right _" +
-                    "match1__1__lawspecResult" +
-                    " -> false }) } = true"
+                    "Error::UnknownProducerId" +
+                    "  -> false; lawtwin.kafk" +
+                    "a.model::type::KafkaErro" +
+                    "r::InvalidProducerIdMapp" +
+                    "ing  -> false; lawtwin.k" +
+                    "afka.model::type::KafkaE" +
+                    "rror::InvalidTxnState  -" +
+                    "> false; lawtwin.kafka.m" +
+                    "odel::type::KafkaError::" +
+                    "InvalidGroupId  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::Illegal" +
+                    "Generation  -> false; la" +
+                    "wtwin.kafka.model::type:" +
+                    ":KafkaError::IllegalStat" +
+                    "e  -> false }; Either::R" +
+                    "ight _match1__1__lawspec" +
+                    "Result -> false }) } = t" +
+                    "rue"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -122847,9 +122820,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                    _match1__0__lawspecField101x0
+                                                                    val _matchfield0__generation = _fields[0]
+                                                                    val _matchfield1__members = _fields[1]
+                                                                    _matchfield0__generation
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -123294,69 +123267,68 @@ class KafkaLawSpecTest : StringSpec({
                     "atch (describeGroup (_in" +
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
-                    "roupView _match1__0__law" +
-                    "specField101x0 _match1__" +
-                    "0__lawspecField101x1 -> " +
-                    "_match1__0__lawspecField" +
-                    "101x0 } > _match0__1__ge" +
-                    "n)) And match (attempt (" +
-                    "heartbeat (_input1) (_in" +
-                    "put2) (_match0__1__gen))" +
-                    ") { Either::Left _match1" +
-                    "__0__lawspecFailure -> m" +
-                    "atch (_match1__0__lawspe" +
-                    "cFailure) { lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownMemberId  -> t" +
-                    "rue; lawtwin.kafka.model" +
-                    "::type::KafkaError::Unkn" +
-                    "ownTopicOrPartition  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::To" +
-                    "picAlreadyExists  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Inval" +
-                    "idTopic  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::InvalidPartiti" +
-                    "ons  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::InvalidRecord  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validRequest  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::OffsetOut" +
-                    "OfRange  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::OutOfOrderSequ" +
-                    "enceNumber  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidProd" +
-                    "ucerEpoch  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::ProducerFenc" +
-                    "ed  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownProducerId  " +
+                    "roupView _matchfield0__g" +
+                    "eneration _matchfield1__" +
+                    "members -> _matchfield0_" +
+                    "_generation } > _match0_" +
+                    "_1__gen)) And match (att" +
+                    "empt (heartbeat (_input1" +
+                    ") (_input2) (_match0__1_" +
+                    "_gen))) { Either::Left _" +
+                    "match1__0__lawspecFailur" +
+                    "e -> match (_match1__0__" +
+                    "lawspecFailure) { lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownMemberId" +
+                    "  -> true; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::UnknownTopicOrPartitio" +
+                    "n  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::TopicAlreadyExists  " +
                     "-> false; lawtwin.kafka." +
                     "model::type::KafkaError:" +
-                    ":InvalidProducerIdMappin" +
-                    "g  -> false; lawtwin.kaf" +
+                    ":InvalidTopic  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::InvalidP" +
+                    "artitions  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidRecor" +
+                    "d  -> false; lawtwin.kaf" +
                     "ka.model::type::KafkaErr" +
-                    "or::InvalidTxnState  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validGroupId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::IllegalGe" +
-                    "neration  -> false; lawt" +
+                    "or::InvalidRequest  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Off" +
+                    "setOutOfRange  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::OutOfOrd" +
+                    "erSequenceNumber  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idProducerEpoch  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Produc" +
+                    "erFenced  -> false; lawt" +
                     "win.kafka.model::type::K" +
-                    "afkaError::IllegalState " +
-                    " -> false }; Either::Rig" +
-                    "ht _match1__1__lawspecRe" +
-                    "sult -> false }) } = tru" +
-                    "e"
+                    "afkaError::UnknownProduc" +
+                    "erId  -> false; lawtwin." +
+                    "kafka.model::type::Kafka" +
+                    "Error::InvalidProducerId" +
+                    "Mapping  -> false; lawtw" +
+                    "in.kafka.model::type::Ka" +
+                    "fkaError::InvalidTxnStat" +
+                    "e  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::InvalidGroupId  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Ill" +
+                    "egalGeneration  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::Illegal" +
+                    "State  -> false }; Eithe" +
+                    "r::Right _match1__1__law" +
+                    "specResult -> false }) }" +
+                    " = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -123676,9 +123648,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                    _match1__0__lawspecField101x0
+                                                                    val _matchfield0__generation = _fields[0]
+                                                                    val _matchfield1__members = _fields[1]
+                                                                    _matchfield0__generation
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -124123,69 +124095,68 @@ class KafkaLawSpecTest : StringSpec({
                     "atch (describeGroup (_in" +
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
-                    "roupView _match1__0__law" +
-                    "specField101x0 _match1__" +
-                    "0__lawspecField101x1 -> " +
-                    "_match1__0__lawspecField" +
-                    "101x0 } > _match0__1__ge" +
-                    "n)) And match (attempt (" +
-                    "heartbeat (_input1) (_in" +
-                    "put2) (_match0__1__gen))" +
-                    ") { Either::Left _match1" +
-                    "__0__lawspecFailure -> m" +
-                    "atch (_match1__0__lawspe" +
-                    "cFailure) { lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownMemberId  -> t" +
-                    "rue; lawtwin.kafka.model" +
-                    "::type::KafkaError::Unkn" +
-                    "ownTopicOrPartition  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::To" +
-                    "picAlreadyExists  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Inval" +
-                    "idTopic  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::InvalidPartiti" +
-                    "ons  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::InvalidRecord  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validRequest  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::OffsetOut" +
-                    "OfRange  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::OutOfOrderSequ" +
-                    "enceNumber  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidProd" +
-                    "ucerEpoch  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::ProducerFenc" +
-                    "ed  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownProducerId  " +
+                    "roupView _matchfield0__g" +
+                    "eneration _matchfield1__" +
+                    "members -> _matchfield0_" +
+                    "_generation } > _match0_" +
+                    "_1__gen)) And match (att" +
+                    "empt (heartbeat (_input1" +
+                    ") (_input2) (_match0__1_" +
+                    "_gen))) { Either::Left _" +
+                    "match1__0__lawspecFailur" +
+                    "e -> match (_match1__0__" +
+                    "lawspecFailure) { lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownMemberId" +
+                    "  -> true; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::UnknownTopicOrPartitio" +
+                    "n  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::TopicAlreadyExists  " +
                     "-> false; lawtwin.kafka." +
                     "model::type::KafkaError:" +
-                    ":InvalidProducerIdMappin" +
-                    "g  -> false; lawtwin.kaf" +
+                    ":InvalidTopic  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::InvalidP" +
+                    "artitions  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidRecor" +
+                    "d  -> false; lawtwin.kaf" +
                     "ka.model::type::KafkaErr" +
-                    "or::InvalidTxnState  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validGroupId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::IllegalGe" +
-                    "neration  -> false; lawt" +
+                    "or::InvalidRequest  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Off" +
+                    "setOutOfRange  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::OutOfOrd" +
+                    "erSequenceNumber  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idProducerEpoch  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Produc" +
+                    "erFenced  -> false; lawt" +
                     "win.kafka.model::type::K" +
-                    "afkaError::IllegalState " +
-                    " -> false }; Either::Rig" +
-                    "ht _match1__1__lawspecRe" +
-                    "sult -> false }) } = tru" +
-                    "e"
+                    "afkaError::UnknownProduc" +
+                    "erId  -> false; lawtwin." +
+                    "kafka.model::type::Kafka" +
+                    "Error::InvalidProducerId" +
+                    "Mapping  -> false; lawtw" +
+                    "in.kafka.model::type::Ka" +
+                    "fkaError::InvalidTxnStat" +
+                    "e  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::InvalidGroupId  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Ill" +
+                    "egalGeneration  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::Illegal" +
+                    "State  -> false }; Eithe" +
+                    "r::Right _match1__1__law" +
+                    "specResult -> false }) }" +
+                    " = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -124505,9 +124476,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                    _match1__0__lawspecField101x0
+                                                                    val _matchfield0__generation = _fields[0]
+                                                                    val _matchfield1__members = _fields[1]
+                                                                    _matchfield0__generation
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -124950,69 +124921,68 @@ class KafkaLawSpecTest : StringSpec({
                     "atch (describeGroup (_in" +
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
-                    "roupView _match1__0__law" +
-                    "specField101x0 _match1__" +
-                    "0__lawspecField101x1 -> " +
-                    "_match1__0__lawspecField" +
-                    "101x0 } > _match0__1__ge" +
-                    "n)) And match (attempt (" +
-                    "heartbeat (_input1) (_in" +
-                    "put2) (_match0__1__gen))" +
-                    ") { Either::Left _match1" +
-                    "__0__lawspecFailure -> m" +
-                    "atch (_match1__0__lawspe" +
-                    "cFailure) { lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownMemberId  -> t" +
-                    "rue; lawtwin.kafka.model" +
-                    "::type::KafkaError::Unkn" +
-                    "ownTopicOrPartition  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::To" +
-                    "picAlreadyExists  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Inval" +
-                    "idTopic  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::InvalidPartiti" +
-                    "ons  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::InvalidRecord  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validRequest  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::OffsetOut" +
-                    "OfRange  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::OutOfOrderSequ" +
-                    "enceNumber  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidProd" +
-                    "ucerEpoch  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::ProducerFenc" +
-                    "ed  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownProducerId  " +
+                    "roupView _matchfield0__g" +
+                    "eneration _matchfield1__" +
+                    "members -> _matchfield0_" +
+                    "_generation } > _match0_" +
+                    "_1__gen)) And match (att" +
+                    "empt (heartbeat (_input1" +
+                    ") (_input2) (_match0__1_" +
+                    "_gen))) { Either::Left _" +
+                    "match1__0__lawspecFailur" +
+                    "e -> match (_match1__0__" +
+                    "lawspecFailure) { lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownMemberId" +
+                    "  -> true; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::UnknownTopicOrPartitio" +
+                    "n  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::TopicAlreadyExists  " +
                     "-> false; lawtwin.kafka." +
                     "model::type::KafkaError:" +
-                    ":InvalidProducerIdMappin" +
-                    "g  -> false; lawtwin.kaf" +
+                    ":InvalidTopic  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::InvalidP" +
+                    "artitions  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidRecor" +
+                    "d  -> false; lawtwin.kaf" +
                     "ka.model::type::KafkaErr" +
-                    "or::InvalidTxnState  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validGroupId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::IllegalGe" +
-                    "neration  -> false; lawt" +
+                    "or::InvalidRequest  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Off" +
+                    "setOutOfRange  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::OutOfOrd" +
+                    "erSequenceNumber  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idProducerEpoch  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Produc" +
+                    "erFenced  -> false; lawt" +
                     "win.kafka.model::type::K" +
-                    "afkaError::IllegalState " +
-                    " -> false }; Either::Rig" +
-                    "ht _match1__1__lawspecRe" +
-                    "sult -> false }) } = tru" +
-                    "e"
+                    "afkaError::UnknownProduc" +
+                    "erId  -> false; lawtwin." +
+                    "kafka.model::type::Kafka" +
+                    "Error::InvalidProducerId" +
+                    "Mapping  -> false; lawtw" +
+                    "in.kafka.model::type::Ka" +
+                    "fkaError::InvalidTxnStat" +
+                    "e  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::InvalidGroupId  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Ill" +
+                    "egalGeneration  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::Illegal" +
+                    "State  -> false }; Eithe" +
+                    "r::Right _match1__1__law" +
+                    "specResult -> false }) }" +
+                    " = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -125332,9 +125302,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                    _match1__0__lawspecField101x0
+                                                                    val _matchfield0__generation = _fields[0]
+                                                                    val _matchfield1__members = _fields[1]
+                                                                    _matchfield0__generation
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -125777,69 +125747,68 @@ class KafkaLawSpecTest : StringSpec({
                     "atch (describeGroup (_in" +
                     "put1)) { lawtwin.kafka.m" +
                     "odel::type::GroupView::G" +
-                    "roupView _match1__0__law" +
-                    "specField101x0 _match1__" +
-                    "0__lawspecField101x1 -> " +
-                    "_match1__0__lawspecField" +
-                    "101x0 } > _match0__1__ge" +
-                    "n)) And match (attempt (" +
-                    "heartbeat (_input1) (_in" +
-                    "put2) (_match0__1__gen))" +
-                    ") { Either::Left _match1" +
-                    "__0__lawspecFailure -> m" +
-                    "atch (_match1__0__lawspe" +
-                    "cFailure) { lawtwin.kafk" +
-                    "a.model::type::KafkaErro" +
-                    "r::UnknownMemberId  -> t" +
-                    "rue; lawtwin.kafka.model" +
-                    "::type::KafkaError::Unkn" +
-                    "ownTopicOrPartition  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::To" +
-                    "picAlreadyExists  -> fal" +
-                    "se; lawtwin.kafka.model:" +
-                    ":type::KafkaError::Inval" +
-                    "idTopic  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::InvalidPartiti" +
-                    "ons  -> false; lawtwin.k" +
-                    "afka.model::type::KafkaE" +
-                    "rror::InvalidRecord  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validRequest  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::OffsetOut" +
-                    "OfRange  -> false; lawtw" +
-                    "in.kafka.model::type::Ka" +
-                    "fkaError::OutOfOrderSequ" +
-                    "enceNumber  -> false; la" +
-                    "wtwin.kafka.model::type:" +
-                    ":KafkaError::InvalidProd" +
-                    "ucerEpoch  -> false; law" +
-                    "twin.kafka.model::type::" +
-                    "KafkaError::ProducerFenc" +
-                    "ed  -> false; lawtwin.ka" +
-                    "fka.model::type::KafkaEr" +
-                    "ror::UnknownProducerId  " +
+                    "roupView _matchfield0__g" +
+                    "eneration _matchfield1__" +
+                    "members -> _matchfield0_" +
+                    "_generation } > _match0_" +
+                    "_1__gen)) And match (att" +
+                    "empt (heartbeat (_input1" +
+                    ") (_input2) (_match0__1_" +
+                    "_gen))) { Either::Left _" +
+                    "match1__0__lawspecFailur" +
+                    "e -> match (_match1__0__" +
+                    "lawspecFailure) { lawtwi" +
+                    "n.kafka.model::type::Kaf" +
+                    "kaError::UnknownMemberId" +
+                    "  -> true; lawtwin.kafka" +
+                    ".model::type::KafkaError" +
+                    "::UnknownTopicOrPartitio" +
+                    "n  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::TopicAlreadyExists  " +
                     "-> false; lawtwin.kafka." +
                     "model::type::KafkaError:" +
-                    ":InvalidProducerIdMappin" +
-                    "g  -> false; lawtwin.kaf" +
+                    ":InvalidTopic  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::InvalidP" +
+                    "artitions  -> false; law" +
+                    "twin.kafka.model::type::" +
+                    "KafkaError::InvalidRecor" +
+                    "d  -> false; lawtwin.kaf" +
                     "ka.model::type::KafkaErr" +
-                    "or::InvalidTxnState  -> " +
-                    "false; lawtwin.kafka.mod" +
-                    "el::type::KafkaError::In" +
-                    "validGroupId  -> false; " +
-                    "lawtwin.kafka.model::typ" +
-                    "e::KafkaError::IllegalGe" +
-                    "neration  -> false; lawt" +
+                    "or::InvalidRequest  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Off" +
+                    "setOutOfRange  -> false;" +
+                    " lawtwin.kafka.model::ty" +
+                    "pe::KafkaError::OutOfOrd" +
+                    "erSequenceNumber  -> fal" +
+                    "se; lawtwin.kafka.model:" +
+                    ":type::KafkaError::Inval" +
+                    "idProducerEpoch  -> fals" +
+                    "e; lawtwin.kafka.model::" +
+                    "type::KafkaError::Produc" +
+                    "erFenced  -> false; lawt" +
                     "win.kafka.model::type::K" +
-                    "afkaError::IllegalState " +
-                    " -> false }; Either::Rig" +
-                    "ht _match1__1__lawspecRe" +
-                    "sult -> false }) } = tru" +
-                    "e"
+                    "afkaError::UnknownProduc" +
+                    "erId  -> false; lawtwin." +
+                    "kafka.model::type::Kafka" +
+                    "Error::InvalidProducerId" +
+                    "Mapping  -> false; lawtw" +
+                    "in.kafka.model::type::Ka" +
+                    "fkaError::InvalidTxnStat" +
+                    "e  -> false; lawtwin.kaf" +
+                    "ka.model::type::KafkaErr" +
+                    "or::InvalidGroupId  -> f" +
+                    "alse; lawtwin.kafka.mode" +
+                    "l::type::KafkaError::Ill" +
+                    "egalGeneration  -> false" +
+                    "; lawtwin.kafka.model::t" +
+                    "ype::KafkaError::Illegal" +
+                    "State  -> false }; Eithe" +
+                    "r::Right _match1__1__law" +
+                    "specResult -> false }) }" +
+                    " = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -126159,9 +126128,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "lawtwin.kafka.model::typ" +
                                                                     "e::GroupView::GroupView"
                                                                 ) -> {
-                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                    _match1__0__lawspecField101x0
+                                                                    val _matchfield0__generation = _fields[0]
+                                                                    val _matchfield1__members = _fields[1]
+                                                                    _matchfield0__generation
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -126964,68 +126933,68 @@ class KafkaLawSpecTest : StringSpec({
                                     "ch (describeGroup (_inpu" +
                                     "t1)) { lawtwin.kafka.mod" +
                                     "el::type::GroupView::Gro" +
-                                    "upView _match1__0__lawsp" +
-                                    "ecField101x0 _match1__0_" +
-                                    "_lawspecField101x1 -> _m" +
-                                    "atch1__0__lawspecField10" +
-                                    "1x0 } > _match0__1__gen)" +
-                                    ") And match (attempt (he" +
-                                    "artbeat (_input1) (_inpu" +
-                                    "t2) (_match0__1__gen))) " +
-                                    "{ Either::Left _match1__" +
-                                    "0__lawspecFailure -> mat" +
-                                    "ch (_match1__0__lawspecF" +
-                                    "ailure) { lawtwin.kafka." +
-                                    "model::type::KafkaError:" +
-                                    ":UnknownMemberId  -> tru" +
-                                    "e; lawtwin.kafka.model::" +
-                                    "type::KafkaError::Unknow" +
-                                    "nTopicOrPartition  -> fa" +
-                                    "lse; lawtwin.kafka.model" +
-                                    "::type::KafkaError::Topi" +
-                                    "cAlreadyExists  -> false" +
-                                    "; lawtwin.kafka.model::t" +
-                                    "ype::KafkaError::Invalid" +
-                                    "Topic  -> false; lawtwin" +
-                                    ".kafka.model::type::Kafk" +
-                                    "aError::InvalidPartition" +
-                                    "s  -> false; lawtwin.kaf" +
-                                    "ka.model::type::KafkaErr" +
-                                    "or::InvalidRecord  -> fa" +
-                                    "lse; lawtwin.kafka.model" +
-                                    "::type::KafkaError::Inva" +
-                                    "lidRequest  -> false; la" +
-                                    "wtwin.kafka.model::type:" +
-                                    ":KafkaError::OffsetOutOf" +
-                                    "Range  -> false; lawtwin" +
-                                    ".kafka.model::type::Kafk" +
-                                    "aError::OutOfOrderSequen" +
-                                    "ceNumber  -> false; lawt" +
-                                    "win.kafka.model::type::K" +
-                                    "afkaError::InvalidProduc" +
-                                    "erEpoch  -> false; lawtw" +
-                                    "in.kafka.model::type::Ka" +
-                                    "fkaError::ProducerFenced" +
-                                    "  -> false; lawtwin.kafk" +
-                                    "a.model::type::KafkaErro" +
-                                    "r::UnknownProducerId  ->" +
-                                    " false; lawtwin.kafka.mo" +
-                                    "del::type::KafkaError::I" +
-                                    "nvalidProducerIdMapping " +
+                                    "upView _matchfield0__gen" +
+                                    "eration _matchfield1__me" +
+                                    "mbers -> _matchfield0__g" +
+                                    "eneration } > _match0__1" +
+                                    "__gen)) And match (attem" +
+                                    "pt (heartbeat (_input1) " +
+                                    "(_input2) (_match0__1__g" +
+                                    "en))) { Either::Left _ma" +
+                                    "tch1__0__lawspecFailure " +
+                                    "-> match (_match1__0__la" +
+                                    "wspecFailure) { lawtwin." +
+                                    "kafka.model::type::Kafka" +
+                                    "Error::UnknownMemberId  " +
+                                    "-> true; lawtwin.kafka.m" +
+                                    "odel::type::KafkaError::" +
+                                    "UnknownTopicOrPartition " +
                                     " -> false; lawtwin.kafka" +
                                     ".model::type::KafkaError" +
-                                    "::InvalidTxnState  -> fa" +
-                                    "lse; lawtwin.kafka.model" +
-                                    "::type::KafkaError::Inva" +
-                                    "lidGroupId  -> false; la" +
-                                    "wtwin.kafka.model::type:" +
-                                    ":KafkaError::IllegalGene" +
-                                    "ration  -> false; lawtwi" +
+                                    "::TopicAlreadyExists  ->" +
+                                    " false; lawtwin.kafka.mo" +
+                                    "del::type::KafkaError::I" +
+                                    "nvalidTopic  -> false; l" +
+                                    "awtwin.kafka.model::type" +
+                                    "::KafkaError::InvalidPar" +
+                                    "titions  -> false; lawtw" +
+                                    "in.kafka.model::type::Ka" +
+                                    "fkaError::InvalidRecord " +
+                                    " -> false; lawtwin.kafka" +
+                                    ".model::type::KafkaError" +
+                                    "::InvalidRequest  -> fal" +
+                                    "se; lawtwin.kafka.model:" +
+                                    ":type::KafkaError::Offse" +
+                                    "tOutOfRange  -> false; l" +
+                                    "awtwin.kafka.model::type" +
+                                    "::KafkaError::OutOfOrder" +
+                                    "SequenceNumber  -> false" +
+                                    "; lawtwin.kafka.model::t" +
+                                    "ype::KafkaError::Invalid" +
+                                    "ProducerEpoch  -> false;" +
+                                    " lawtwin.kafka.model::ty" +
+                                    "pe::KafkaError::Producer" +
+                                    "Fenced  -> false; lawtwi" +
                                     "n.kafka.model::type::Kaf" +
-                                    "kaError::IllegalState  -" +
-                                    "> false }; Either::Right" +
-                                    " _match1__1__lawspecResu" +
-                                    "lt -> false }) } = true"
+                                    "kaError::UnknownProducer" +
+                                    "Id  -> false; lawtwin.ka" +
+                                    "fka.model::type::KafkaEr" +
+                                    "ror::InvalidProducerIdMa" +
+                                    "pping  -> false; lawtwin" +
+                                    ".kafka.model::type::Kafk" +
+                                    "aError::InvalidTxnState " +
+                                    " -> false; lawtwin.kafka" +
+                                    ".model::type::KafkaError" +
+                                    "::InvalidGroupId  -> fal" +
+                                    "se; lawtwin.kafka.model:" +
+                                    ":type::KafkaError::Illeg" +
+                                    "alGeneration  -> false; " +
+                                    "lawtwin.kafka.model::typ" +
+                                    "e::KafkaError::IllegalSt" +
+                                    "ate  -> false }; Either:" +
+                                    ":Right _match1__1__lawsp" +
+                                    "ecResult -> false }) } =" +
+                                    " true"
                                 ),
                                 {
                                     LawSpecKotlinCodecs.match(
@@ -127381,9 +127350,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "lawtwin.kafka.model::typ" +
                                                                                     "e::GroupView::GroupView"
                                                                                 ) -> {
-                                                                                    val _match1__0__lawspecField101x0 = _fields[0]
-                                                                                    val _match1__0__lawspecField101x1 = _fields[1]
-                                                                                    _match1__0__lawspecField101x0
+                                                                                    val _matchfield0__generation = _fields[0]
+                                                                                    val _matchfield1__members = _fields[1]
+                                                                                    _matchfield0__generation
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -137841,8 +137810,8 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
     // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-    // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) == List::Nil())) }) = true
     ("lawTransactionsAbortedRe" + "cordsAreNeverRead_bounda" + "ry0") {
         val symbols = mutableMapOf<String, Any>()
         val _input0 =
@@ -138032,11 +138001,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -138369,9 +138337,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -138633,11 +138601,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -138970,9 +138937,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -139198,11 +139165,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -139535,9 +139501,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -139800,11 +139766,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -140137,9 +140102,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -140361,11 +140326,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -140698,9 +140662,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -140922,11 +140886,10 @@ class KafkaLawSpecTest : StringSpec({
                         "ch1__1__md) { lawtwin.ka" +
                         "fka::type::RecordMetadat" +
                         "a::RecordMetadata _match" +
-                        "2__0__lawspecField162x0 " +
-                        "_match2__0__lawspecField" +
-                        "162x1 -> _match2__0__law" +
-                        "specField162x1 }) == Lis" +
-                        "t::Nil())) }) = true"
+                        "field0__sentTo _matchfie" +
+                        "ld1__sentAt -> _matchfie" +
+                        "ld1__sentAt }) == List::" +
+                        "Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -141259,9 +141222,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -141659,12 +141622,11 @@ class KafkaLawSpecTest : StringSpec({
                             "let0__tp) (match (_match" +
                             "1__1__md) { lawtwin.kafk" +
                             "a::type::RecordMetadata:" +
-                            ":RecordMetadata _match2_" +
-                            "_0__lawspecField162x0 _m" +
-                            "atch2__0__lawspecField16" +
-                            "2x1 -> _match2__0__lawsp" +
-                            "ecField162x1 }) == List:" +
-                            ":Nil())) }) = true"
+                            ":RecordMetadata _matchfi" +
+                            "eld0__sentTo _matchfield" +
+                            "1__sentAt -> _matchfield" +
+                            "1__sentAt }) == List::Ni" +
+                            "l())) }) = true"
                         ),
                         {
                             (LawSpecKotlinCodecs.construct(
@@ -142007,9 +141969,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "ordMetadata::RecordMetad" +
                                                                                             "ata"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                            _match2__0__lawspecField162x1
+                                                                                            val _matchfield0__sentTo = _fields[0]
+                                                                                            val _matchfield1__sentAt = _fields[1]
+                                                                                            _matchfield1__sentAt
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -142098,12 +142060,12 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
     // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-    // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-    // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-    // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-    // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1
-    // }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) == List::Nil())) And (commitTransaction ==
+    // Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt
+    // -> _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) =
+    // true
     ("lawTransactionsCommitted" + "RecordsAreRead_boundary0") {
         val symbols = mutableMapOf<String, Any>()
         val _input0 =
@@ -142414,25 +142376,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -142829,9 +142789,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -142953,9 +142913,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -143368,25 +143328,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -143783,9 +143741,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -143907,9 +143865,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -144249,25 +144207,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -144664,9 +144620,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -144788,9 +144744,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -145204,25 +145160,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -145619,9 +145573,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -145743,9 +145697,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -146081,25 +146035,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -146496,9 +146448,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -146620,9 +146572,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -146958,25 +146910,23 @@ class KafkaLawSpecTest : StringSpec({
                         "atch (_match1__1__md) { " +
                         "lawtwin.kafka::type::Rec" +
                         "ordMetadata::RecordMetad" +
-                        "ata _match2__0__lawspecF" +
-                        "ield219x0 _match2__0__la" +
-                        "wspecField219x1 -> _matc" +
-                        "h2__0__lawspecField219x1" +
-                        " }) == List::Nil())) And" +
-                        " (commitTransaction == E" +
-                        "ither::Right(unitValue))" +
-                        ") And (committedFrom (_l" +
-                        "et0__tp) (match (_match1" +
-                        "__1__md) { lawtwin.kafka" +
-                        "::type::RecordMetadata::" +
-                        "RecordMetadata _match2__" +
-                        "0__lawspecField232x0 _ma" +
-                        "tch2__0__lawspecField232" +
-                        "x1 -> _match2__0__lawspe" +
-                        "cField232x1 }) == List::" +
-                        "Cons(_input2, List::Cons" +
-                        "(_input3, List::Nil())))" +
-                        ") }) = true"
+                        "ata _matchfield0__sentTo" +
+                        " _matchfield1__sentAt ->" +
+                        " _matchfield1__sentAt })" +
+                        " == List::Nil())) And (c" +
+                        "ommitTransaction == Eith" +
+                        "er::Right(unitValue))) A" +
+                        "nd (committedFrom (_let0" +
+                        "__tp) (match (_match1__1" +
+                        "__md) { lawtwin.kafka::t" +
+                        "ype::RecordMetadata::Rec" +
+                        "ordMetadata _matchfield2" +
+                        "__sentTo _matchfield3__s" +
+                        "entAt -> _matchfield3__s" +
+                        "entAt }) == List::Cons(_" +
+                        "input2, List::Cons(_inpu" +
+                        "t3, List::Nil())))) }) =" +
+                        " true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -147373,9 +147323,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -147497,9 +147447,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -147960,25 +147910,23 @@ class KafkaLawSpecTest : StringSpec({
                             "ch (_match1__1__md) { la" +
                             "wtwin.kafka::type::Recor" +
                             "dMetadata::RecordMetadat" +
-                            "a _match2__0__lawspecFie" +
-                            "ld219x0 _match2__0__laws" +
-                            "pecField219x1 -> _match2" +
-                            "__0__lawspecField219x1 }" +
-                            ") == List::Nil())) And (" +
-                            "commitTransaction == Eit" +
-                            "her::Right(unitValue))) " +
-                            "And (committedFrom (_let" +
-                            "0__tp) (match (_match1__" +
-                            "1__md) { lawtwin.kafka::" +
-                            "type::RecordMetadata::Re" +
-                            "cordMetadata _match2__0_" +
-                            "_lawspecField232x0 _matc" +
-                            "h2__0__lawspecField232x1" +
-                            " -> _match2__0__lawspecF" +
-                            "ield232x1 }) == List::Co" +
-                            "ns(_input2, List::Cons(_" +
-                            "input3, List::Nil())))) " +
-                            "}) = true"
+                            "a _matchfield0__sentTo _" +
+                            "matchfield1__sentAt -> _" +
+                            "matchfield1__sentAt }) =" +
+                            "= List::Nil())) And (com" +
+                            "mitTransaction == Either" +
+                            "::Right(unitValue))) And" +
+                            " (committedFrom (_let0__" +
+                            "tp) (match (_match1__1__" +
+                            "md) { lawtwin.kafka::typ" +
+                            "e::RecordMetadata::Recor" +
+                            "dMetadata _matchfield2__" +
+                            "sentTo _matchfield3__sen" +
+                            "tAt -> _matchfield3__sen" +
+                            "tAt }) == List::Cons(_in" +
+                            "put2, List::Cons(_input3" +
+                            ", List::Nil())))) }) = t" +
+                            "rue"
                         ),
                         {
                             (LawSpecKotlinCodecs.construct(
@@ -148383,9 +148331,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                             "ordMetadata::RecordMetad" +
                                                                                                             "ata"
                                                                                                         ) -> {
-                                                                                                            val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                            val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                            _match2__0__lawspecField219x1
+                                                                                                            val _matchfield0__sentTo = _fields[0]
+                                                                                                            val _matchfield1__sentAt = _fields[1]
+                                                                                                            _matchfield1__sentAt
                                                                                                         }
                                                                                                         else -> {
                                                                                                             throw IllegalArgumentException(
@@ -148507,9 +148455,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                             "ordMetadata::RecordMetad" +
                                                                                             "ata"
                                                                                         ) -> {
-                                                                                            val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                            val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                            _match2__0__lawspecField232x1
+                                                                                            val _matchfield2__sentTo = _fields[0]
+                                                                                            val _matchfield3__sentAt = _fields[1]
+                                                                                            _matchfield3__sentAt
                                                                                         }
                                                                                         else -> {
                                                                                             throw IllegalArgumentException(
@@ -155794,8 +155742,8 @@ class KafkaLawSpecTest : StringSpec({
     // (lawtwin.kafka.model::type::OffsetSpec::Latest())
     // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
     // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-    // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) } } = true
     ("lawProducerAFlushedRecor" + "dIsInTheLog_boundary0") {
         val symbols = mutableMapOf<String, Any>()
         val _lawspecShared_cluster = lawspec.abilities.lawtwin.Kafka.Cluster(symbols)
@@ -155896,11 +155844,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -156175,9 +156122,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -156385,11 +156332,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -156664,9 +156610,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -156874,11 +156820,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -157153,9 +157098,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -157330,11 +157275,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -157609,9 +157553,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -157823,11 +157767,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -158102,9 +158045,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -158275,11 +158218,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -158554,9 +158496,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -158767,11 +158709,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -159046,9 +158987,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -159219,11 +159160,10 @@ class KafkaLawSpecTest : StringSpec({
                     "est > match (_match0__1_" +
                     "_md) { lawtwin.kafka::ty" +
                     "pe::RecordMetadata::Reco" +
-                    "rdMetadata _match3__0__l" +
-                    "awspecField55x0 _match3_" +
-                    "_0__lawspecField55x1 -> " +
-                    "_match3__0__lawspecField" +
-                    "55x1 }) } } = true"
+                    "rdMetadata _matchfield0_" +
+                    "_sentTo _matchfield1__se" +
+                    "ntAt -> _matchfield1__se" +
+                    "ntAt }) } } = true"
                 ),
                 {
                     LawSpecKotlinCodecs.match(
@@ -159498,9 +159438,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                 "ordMetadata::RecordMetad" +
                                                                 "ata"
                                                             ) -> {
-                                                                val _match3__0__lawspecField55x0 = _fields[0]
-                                                                val _match3__0__lawspecField55x1 = _fields[1]
-                                                                _match3__0__lawspecField55x1
+                                                                val _matchfield0__sentTo = _fields[0]
+                                                                val _matchfield1__sentAt = _fields[1]
+                                                                _matchfield1__sentAt
                                                             }
                                                             else -> {
                                                                 throw IllegalArgumentException(
@@ -159796,11 +159736,10 @@ class KafkaLawSpecTest : StringSpec({
                         "t > match (_match0__1__m" +
                         "d) { lawtwin.kafka::type" +
                         "::RecordMetadata::Record" +
-                        "Metadata _match3__0__law" +
-                        "specField55x0 _match3__0" +
-                        "__lawspecField55x1 -> _m" +
-                        "atch3__0__lawspecField55" +
-                        "x1 }) } } = true"
+                        "Metadata _matchfield0__s" +
+                        "entTo _matchfield1__sent" +
+                        "At -> _matchfield1__sent" +
+                        "At }) } } = true"
                     ),
                     {
                         LawSpecKotlinCodecs.match(
@@ -160081,9 +160020,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                     "ordMetadata::RecordMetad" +
                                                                     "ata"
                                                                 ) -> {
-                                                                    val _match3__0__lawspecField55x0 = _fields[0]
-                                                                    val _match3__0__lawspecField55x1 = _fields[1]
-                                                                    _match3__0__lawspecField55x1
+                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                    _matchfield1__sentAt
                                                                 }
                                                                 else -> {
                                                                     throw IllegalArgumentException(
@@ -181607,8 +181546,8 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
     // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-    // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) == List::Nil())) }) = true
     ("lawTransactionsAbortedRe" + "cordsAreNeverRead2_bound" + "ary0") {
         val symbols = mutableMapOf<String, Any>()
         val _lawspecShared_cluster = lawspec.abilities.lawtwin.Kafka.Cluster(symbols)
@@ -181783,11 +181722,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -182112,9 +182050,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -182346,11 +182284,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -182675,9 +182612,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -182873,11 +182810,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -183202,9 +183138,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -183437,11 +183373,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -183766,9 +183701,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -183960,11 +183895,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -184289,9 +184223,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -184483,11 +184417,10 @@ class KafkaLawSpecTest : StringSpec({
                     "match1__1__md) { lawtwin" +
                     ".kafka::type::RecordMeta" +
                     "data::RecordMetadata _ma" +
-                    "tch2__0__lawspecField162" +
-                    "x0 _match2__0__lawspecFi" +
-                    "eld162x1 -> _match2__0__" +
-                    "lawspecField162x1 }) == " +
-                    "List::Nil())) }) = true"
+                    "tchfield0__sentTo _match" +
+                    "field1__sentAt -> _match" +
+                    "field1__sentAt }) == Lis" +
+                    "t::Nil())) }) = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -184812,9 +184745,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                    _match2__0__lawspecField162x1
+                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                    _matchfield1__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -185180,11 +185113,10 @@ class KafkaLawSpecTest : StringSpec({
                         "tch1__1__md) { lawtwin.k" +
                         "afka::type::RecordMetada" +
                         "ta::RecordMetadata _matc" +
-                        "h2__0__lawspecField162x0" +
-                        " _match2__0__lawspecFiel" +
-                        "d162x1 -> _match2__0__la" +
-                        "wspecField162x1 }) == Li" +
-                        "st::Nil())) }) = true"
+                        "hfield0__sentTo _matchfi" +
+                        "eld1__sentAt -> _matchfi" +
+                        "eld1__sentAt }) == List:" +
+                        ":Nil())) }) = true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -185517,9 +185449,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField162x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField162x1 = _fields[1]
-                                                                                        _match2__0__lawspecField162x1
+                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                        _matchfield1__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(
@@ -185590,12 +185522,12 @@ class KafkaLawSpecTest : StringSpec({
     // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
     // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
     // (committedFrom (_let0__tp) (match (_match1__1__md) {
-    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-    // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-    // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-    // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-    // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1
-    // }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+    // -> _matchfield1__sentAt }) == List::Nil())) And (commitTransaction ==
+    // Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) {
+    // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt
+    // -> _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) =
+    // true
     ("lawTransactionsCommitted" + "RecordsAreRead2_boundary" + "0") {
         val symbols = mutableMapOf<String, Any>()
         val _lawspecShared_cluster = lawspec.abilities.lawtwin.Kafka.Cluster(symbols)
@@ -185891,25 +185823,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -186300,9 +186230,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -186424,9 +186354,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -186809,25 +186739,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -187218,9 +187146,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -187342,9 +187270,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -187654,25 +187582,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -188063,9 +187989,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -188187,9 +188113,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -188573,25 +188499,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -188982,9 +188906,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -189106,9 +189030,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -189414,25 +189338,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -189823,9 +189745,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -189947,9 +189869,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -190255,25 +190177,23 @@ class KafkaLawSpecTest : StringSpec({
                     " (match (_match1__1__md)" +
                     " { lawtwin.kafka::type::" +
                     "RecordMetadata::RecordMe" +
-                    "tadata _match2__0__lawsp" +
-                    "ecField219x0 _match2__0_" +
-                    "_lawspecField219x1 -> _m" +
-                    "atch2__0__lawspecField21" +
-                    "9x1 }) == List::Nil())) " +
-                    "And (commitTransaction =" +
-                    "= Either::Right(unitValu" +
-                    "e))) And (committedFrom " +
-                    "(_let0__tp) (match (_mat" +
-                    "ch1__1__md) { lawtwin.ka" +
-                    "fka::type::RecordMetadat" +
-                    "a::RecordMetadata _match" +
-                    "2__0__lawspecField232x0 " +
-                    "_match2__0__lawspecField" +
-                    "232x1 -> _match2__0__law" +
-                    "specField232x1 }) == Lis" +
-                    "t::Cons(_input2, List::C" +
-                    "ons(_input3, List::Nil()" +
-                    ")))) }) = true"
+                    "tadata _matchfield0__sen" +
+                    "tTo _matchfield1__sentAt" +
+                    " -> _matchfield1__sentAt" +
+                    " }) == List::Nil())) And" +
+                    " (commitTransaction == E" +
+                    "ither::Right(unitValue))" +
+                    ") And (committedFrom (_l" +
+                    "et0__tp) (match (_match1" +
+                    "__1__md) { lawtwin.kafka" +
+                    "::type::RecordMetadata::" +
+                    "RecordMetadata _matchfie" +
+                    "ld2__sentTo _matchfield3" +
+                    "__sentAt -> _matchfield3" +
+                    "__sentAt }) == List::Con" +
+                    "s(_input2, List::Cons(_i" +
+                    "nput3, List::Nil())))) }" +
+                    ") = true"
                 ),
                 {
                     (LawSpecKotlinCodecs.construct(
@@ -190664,9 +190584,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                     "ordMetadata::RecordMetad" +
                                                                                                     "ata"
                                                                                                 ) -> {
-                                                                                                    val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                    val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                    _match2__0__lawspecField219x1
+                                                                                                    val _matchfield0__sentTo = _fields[0]
+                                                                                                    val _matchfield1__sentAt = _fields[1]
+                                                                                                    _matchfield1__sentAt
                                                                                                 }
                                                                                                 else -> {
                                                                                                     throw IllegalArgumentException(
@@ -190788,9 +190708,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                     "ordMetadata::RecordMetad" +
                                                                                     "ata"
                                                                                 ) -> {
-                                                                                    val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                    val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                    _match2__0__lawspecField232x1
+                                                                                    val _matchfield2__sentTo = _fields[0]
+                                                                                    val _matchfield3__sentAt = _fields[1]
+                                                                                    _matchfield3__sentAt
                                                                                 }
                                                                                 else -> {
                                                                                     throw IllegalArgumentException(
@@ -191218,25 +191138,23 @@ class KafkaLawSpecTest : StringSpec({
                         "match (_match1__1__md) {" +
                         " lawtwin.kafka::type::Re" +
                         "cordMetadata::RecordMeta" +
-                        "data _match2__0__lawspec" +
-                        "Field219x0 _match2__0__l" +
-                        "awspecField219x1 -> _mat" +
-                        "ch2__0__lawspecField219x" +
-                        "1 }) == List::Nil())) An" +
-                        "d (commitTransaction == " +
-                        "Either::Right(unitValue)" +
-                        ")) And (committedFrom (_" +
-                        "let0__tp) (match (_match" +
-                        "1__1__md) { lawtwin.kafk" +
-                        "a::type::RecordMetadata:" +
-                        ":RecordMetadata _match2_" +
-                        "_0__lawspecField232x0 _m" +
-                        "atch2__0__lawspecField23" +
-                        "2x1 -> _match2__0__lawsp" +
-                        "ecField232x1 }) == List:" +
-                        ":Cons(_input2, List::Con" +
-                        "s(_input3, List::Nil()))" +
-                        ")) }) = true"
+                        "data _matchfield0__sentT" +
+                        "o _matchfield1__sentAt -" +
+                        "> _matchfield1__sentAt }" +
+                        ") == List::Nil())) And (" +
+                        "commitTransaction == Eit" +
+                        "her::Right(unitValue))) " +
+                        "And (committedFrom (_let" +
+                        "0__tp) (match (_match1__" +
+                        "1__md) { lawtwin.kafka::" +
+                        "type::RecordMetadata::Re" +
+                        "cordMetadata _matchfield" +
+                        "2__sentTo _matchfield3__" +
+                        "sentAt -> _matchfield3__" +
+                        "sentAt }) == List::Cons(" +
+                        "_input2, List::Cons(_inp" +
+                        "ut3, List::Nil())))) }) " +
+                        "= true"
                     ),
                     {
                         (LawSpecKotlinCodecs.construct(
@@ -191633,9 +191551,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                                         "ordMetadata::RecordMetad" +
                                                                                                         "ata"
                                                                                                     ) -> {
-                                                                                                        val _match2__0__lawspecField219x0 = _fields[0]
-                                                                                                        val _match2__0__lawspecField219x1 = _fields[1]
-                                                                                                        _match2__0__lawspecField219x1
+                                                                                                        val _matchfield0__sentTo = _fields[0]
+                                                                                                        val _matchfield1__sentAt = _fields[1]
+                                                                                                        _matchfield1__sentAt
                                                                                                     }
                                                                                                     else -> {
                                                                                                         throw IllegalArgumentException(
@@ -191757,9 +191675,9 @@ class KafkaLawSpecTest : StringSpec({
                                                                                         "ordMetadata::RecordMetad" +
                                                                                         "ata"
                                                                                     ) -> {
-                                                                                        val _match2__0__lawspecField232x0 = _fields[0]
-                                                                                        val _match2__0__lawspecField232x1 = _fields[1]
-                                                                                        _match2__0__lawspecField232x1
+                                                                                        val _matchfield2__sentTo = _fields[0]
+                                                                                        val _matchfield3__sentAt = _fields[1]
+                                                                                        _matchfield3__sentAt
                                                                                     }
                                                                                     else -> {
                                                                                         throw IllegalArgumentException(

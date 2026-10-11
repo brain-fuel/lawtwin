@@ -12,25 +12,25 @@ object Collections {
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative39(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative55(lawspec.runtime.LawSpecTyped.boundedInt16_cdb4a79e(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative3(lawspec.runtime.LawSpecTyped.boundedInt32_b3381d93(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative19(lawspec.runtime.LawSpecTyped.boundedInt64_13153a18(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Byte> = lawspec.runtime.LawSpecTyped.toNative41(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Byte> = lawspec.runtime.LawSpecTyped.toNative57(lawspec.runtime.LawSpecTyped.boundedInt8_9822648b(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedIntSize(
         symbols: MutableMap<String, Any>,
@@ -61,13 +61,13 @@ object Collections {
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative42(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Int> = lawspec.runtime.LawSpecTyped.toNative58(lawspec.runtime.LawSpecTyped.boundedUInt16_fab24aa3(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative43(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Long> = lawspec.runtime.LawSpecTyped.toNative59(lawspec.runtime.LawSpecTyped.boundedUInt32_f7521c17(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedUInt64(
         symbols: MutableMap<String, Any>,
@@ -98,7 +98,7 @@ object Collections {
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
     ): lawspec.runtime.LawSpecRuntime.Maybe<
-        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative44(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+        kotlin.Short> = lawspec.runtime.LawSpecTyped.toNative60(lawspec.runtime.LawSpecTyped.boundedUInt8_8ce0c76e(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun boundedUIntPtr(
         symbols: MutableMap<String, Any>,
@@ -153,22 +153,22 @@ object Collections {
     fun saturatingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.saturatingInt16_770015a8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.saturatingInt32_9e8d3b43(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.saturatingInt64_5bce4ed8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.saturatingInt8_54855fd8(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingIntSize(
         symbols: MutableMap<String, Any>,
@@ -194,12 +194,12 @@ object Collections {
     fun saturatingUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.saturatingUInt16_c4c11e3b(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.saturatingUInt32_6d025357(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingUInt64(
         symbols: MutableMap<String, Any>,
@@ -225,7 +225,7 @@ object Collections {
     fun saturatingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.saturatingUInt8_cf40d611(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun saturatingUIntPtr(
         symbols: MutableMap<String, Any>,
@@ -272,22 +272,22 @@ object Collections {
     fun wrappingInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative13(lawspec.runtime.LawSpecTyped.wrappingInt16_989a4ce2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative2(lawspec.runtime.LawSpecTyped.wrappingInt32_e1b5a7b2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingInt64(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative4(lawspec.runtime.LawSpecTyped.wrappingInt64_698b955a(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative45(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Byte = lawspec.runtime.LawSpecTyped.toNative61(lawspec.runtime.LawSpecTyped.wrappingInt8_728a92af(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingIntSize(
         symbols: MutableMap<String, Any>,
@@ -313,12 +313,12 @@ object Collections {
     fun wrappingUInt16(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative46(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Int = lawspec.runtime.LawSpecTyped.toNative62(lawspec.runtime.LawSpecTyped.wrappingUInt16_e5742dd2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingUInt32(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative47(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Long = lawspec.runtime.LawSpecTyped.toNative63(lawspec.runtime.LawSpecTyped.wrappingUInt32_1ef3ce20(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingUInt64(
         symbols: MutableMap<String, Any>,
@@ -344,7 +344,7 @@ object Collections {
     fun wrappingUInt8(
         symbols: MutableMap<String, Any>,
         value0: java.math.BigInteger,
-    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative48(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.fromNative40(value0)))
+    ): kotlin.Short = lawspec.runtime.LawSpecTyped.toNative64(lawspec.runtime.LawSpecTyped.wrappingUInt8_6ce2e7d2(lawspec.runtime.LawSpecTyped.fromNative56(value0)))
 
     fun wrappingUIntPtr(
         symbols: MutableMap<String, Any>,

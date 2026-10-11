@@ -337,8 +337,8 @@ func lsfOrderingOf(c int) lsfOrdering {
 	return lsfOrdering_Greater
 }
 
-// lsfMatchersMatchesRegex_24 is lawspec.matchers::matchersMatchesRegex.
-func lsfMatchersMatchesRegex_24(lT0 string, lR1 *lsfRegex) bool {
+// lsfMatchersMatchesRegex_52d1c22e is lawspec.matchers::matchersMatchesRegex.
+func lsfMatchersMatchesRegex_52d1c22e(lT0 string, lR1 *lsfRegex) bool {
 	lP2 := lR1.fPattern
 	return lsfRegexMatches(lP2, lT0)
 }

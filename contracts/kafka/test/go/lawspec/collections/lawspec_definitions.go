@@ -11,28 +11,28 @@ func (lawSpecDefinitions) BoundedInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int16] {
-	return lsfTonative_8458421ef461(lsfBoundedInt16_0(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_8458421ef461(lsfBoundedInt16_cdb4a79e(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int32] {
-	return lsfTonative_e0f8ce0ed062(lsfBoundedInt32_1(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_e0f8ce0ed062(lsfBoundedInt32_b3381d93(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int64] {
-	return lsfTonative_c09136e29464(lsfBoundedInt64_2(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_c09136e29464(lsfBoundedInt64_13153a18(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[int8] {
-	return lsfTonative_322842b70901(lsfBoundedInt8_3(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_322842b70901(lsfBoundedInt8_9822648b(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedIntSize(
@@ -54,28 +54,28 @@ func (lawSpecDefinitions) BoundedUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint16] {
-	return lsfTonative_a765ca1ff0da(lsfBoundedUInt16_4(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_a765ca1ff0da(lsfBoundedUInt16_fab24aa3(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint32] {
-	return lsfTonative_770fd683e40e(lsfBoundedUInt32_5(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_770fd683e40e(lsfBoundedUInt32_f7521c17(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint64] {
-	return lsfTonative_a2258feb4d57(lsfBoundedUInt64_6(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_a2258feb4d57(lsfBoundedUInt64_ca410424(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) LawSpecMaybe[uint8] {
-	return lsfTonative_2a3b378408f8(lsfBoundedUInt8_7(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_2a3b378408f8(lsfBoundedUInt8_8ce0c76e(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) BoundedUIntPtr(
@@ -112,28 +112,28 @@ func (lawSpecDefinitions) SaturatingInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int16 {
-	return lsfTonative_07dabd732290(lsfSaturatingInt16_8(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_07dabd732290(lsfSaturatingInt16_770015a8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfSaturatingInt32_9(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_b862204e9be7(lsfSaturatingInt32_9e8d3b43(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfSaturatingInt64_10(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_44a08172da10(lsfSaturatingInt64_5bce4ed8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int8 {
-	return lsfTonative_9d2bd68f647a(lsfSaturatingInt8_11(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_9d2bd68f647a(lsfSaturatingInt8_54855fd8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingIntSize(
@@ -155,28 +155,28 @@ func (lawSpecDefinitions) SaturatingUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint16 {
-	return lsfTonative_7c7a5790413b(lsfSaturatingUInt16_12(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_7c7a5790413b(lsfSaturatingUInt16_c4c11e3b(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfSaturatingUInt32_13(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_bd9653153f3b(lsfSaturatingUInt32_6d025357(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint64 {
-	return lsfTonative_65439cc7c2ff(lsfSaturatingUInt64_14(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_65439cc7c2ff(lsfSaturatingUInt64_dce984c8(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint8 {
-	return lsfTonative_d048b68cd5b1(lsfSaturatingUInt8_15(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_d048b68cd5b1(lsfSaturatingUInt8_cf40d611(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) SaturatingUIntPtr(
@@ -213,28 +213,28 @@ func (lawSpecDefinitions) WrappingInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int16 {
-	return lsfTonative_07dabd732290(lsfWrappingInt16_16(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_07dabd732290(lsfWrappingInt16_989a4ce2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int32 {
-	return lsfTonative_b862204e9be7(lsfWrappingInt32_17(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_b862204e9be7(lsfWrappingInt32_e1b5a7b2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int64 {
-	return lsfTonative_44a08172da10(lsfWrappingInt64_18(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_44a08172da10(lsfWrappingInt64_698b955a(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) int8 {
-	return lsfTonative_9d2bd68f647a(lsfWrappingInt8_19(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_9d2bd68f647a(lsfWrappingInt8_728a92af(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingIntSize(
@@ -256,28 +256,28 @@ func (lawSpecDefinitions) WrappingUInt16(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint16 {
-	return lsfTonative_7c7a5790413b(lsfWrappingUInt16_20(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_7c7a5790413b(lsfWrappingUInt16_e5742dd2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingUInt32(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint32 {
-	return lsfTonative_bd9653153f3b(lsfWrappingUInt32_21(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_bd9653153f3b(lsfWrappingUInt32_1ef3ce20(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingUInt64(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint64 {
-	return lsfTonative_65439cc7c2ff(lsfWrappingUInt64_22(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_65439cc7c2ff(lsfWrappingUInt64_362f8288(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingUInt8(
 	symbols map[string]*LawSpecSymbol,
 	value0 *LawSpecBigInt,
 ) uint8 {
-	return lsfTonative_d048b68cd5b1(lsfWrappingUInt8_23(lsfFromnative_7b619c124b0c(value0)))
+	return lsfTonative_d048b68cd5b1(lsfWrappingUInt8_6ce2e7d2(lsfFromnative_7b619c124b0c(value0)))
 }
 
 func (lawSpecDefinitions) WrappingUIntPtr(
@@ -311,19 +311,19 @@ func (lawSpecDefinitions) WrappingUIntSize(
 }
 
 func lawSpecEvaluate0(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_8458421ef461(lsfBoundedInt16_0(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_8458421ef461(lsfBoundedInt16_cdb4a79e(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate1(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_e0f8ce0ed062(lsfBoundedInt32_1(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_e0f8ce0ed062(lsfBoundedInt32_b3381d93(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate2(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_c09136e29464(lsfBoundedInt64_2(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_c09136e29464(lsfBoundedInt64_13153a18(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate3(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_322842b70901(lsfBoundedInt8_3(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_322842b70901(lsfBoundedInt8_9822648b(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate4(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -334,19 +334,19 @@ func lawSpecEvaluate4(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) La
 }
 
 func lawSpecEvaluate5(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_a765ca1ff0da(lsfBoundedUInt16_4(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_a765ca1ff0da(lsfBoundedUInt16_fab24aa3(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate6(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_770fd683e40e(lsfBoundedUInt32_5(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_770fd683e40e(lsfBoundedUInt32_f7521c17(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate7(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_a2258feb4d57(lsfBoundedUInt64_6(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_a2258feb4d57(lsfBoundedUInt64_ca410424(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate8(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_2a3b378408f8(lsfBoundedUInt8_7(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_2a3b378408f8(lsfBoundedUInt8_8ce0c76e(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate9(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -364,19 +364,19 @@ func lawSpecEvaluate10(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 }
 
 func lawSpecEvaluate11(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_07dabd732290(lsfSaturatingInt16_8(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_07dabd732290(lsfSaturatingInt16_770015a8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate12(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfSaturatingInt32_9(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_b862204e9be7(lsfSaturatingInt32_9e8d3b43(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate13(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfSaturatingInt64_10(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_44a08172da10(lsfSaturatingInt64_5bce4ed8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate14(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9d2bd68f647a(lsfSaturatingInt8_11(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_9d2bd68f647a(lsfSaturatingInt8_54855fd8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate15(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -387,19 +387,19 @@ func lawSpecEvaluate15(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 }
 
 func lawSpecEvaluate16(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7c7a5790413b(lsfSaturatingUInt16_12(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_7c7a5790413b(lsfSaturatingUInt16_c4c11e3b(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate17(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfSaturatingUInt32_13(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_bd9653153f3b(lsfSaturatingUInt32_6d025357(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate18(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_65439cc7c2ff(lsfSaturatingUInt64_14(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_65439cc7c2ff(lsfSaturatingUInt64_dce984c8(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate19(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d048b68cd5b1(lsfSaturatingUInt8_15(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_d048b68cd5b1(lsfSaturatingUInt8_cf40d611(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate20(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -417,19 +417,19 @@ func lawSpecEvaluate21(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 }
 
 func lawSpecEvaluate22(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_07dabd732290(lsfWrappingInt16_16(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_07dabd732290(lsfWrappingInt16_989a4ce2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate23(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_b862204e9be7(lsfWrappingInt32_17(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_b862204e9be7(lsfWrappingInt32_e1b5a7b2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate24(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_44a08172da10(lsfWrappingInt64_18(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_44a08172da10(lsfWrappingInt64_698b955a(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate25(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_9d2bd68f647a(lsfWrappingInt8_19(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_9d2bd68f647a(lsfWrappingInt8_728a92af(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate26(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
@@ -444,19 +444,19 @@ func lawSpecEvaluate26(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) L
 }
 
 func lawSpecEvaluate27(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_7c7a5790413b(lsfWrappingUInt16_20(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_7c7a5790413b(lsfWrappingUInt16_e5742dd2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate28(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_bd9653153f3b(lsfWrappingUInt32_21(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_bd9653153f3b(lsfWrappingUInt32_1ef3ce20(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate29(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_65439cc7c2ff(lsfWrappingUInt64_22(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_65439cc7c2ff(lsfWrappingUInt64_362f8288(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate30(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {
-	return lsfTo_d048b68cd5b1(lsfWrappingUInt8_23(lsfFrom_7b619c124b0c(value0)))
+	return lsfTo_d048b68cd5b1(lsfWrappingUInt8_6ce2e7d2(lsfFrom_7b619c124b0c(value0)))
 }
 
 func lawSpecEvaluate31(symbols map[string]*LawSpecSymbol, value0 LawSpecValue) LawSpecValue {

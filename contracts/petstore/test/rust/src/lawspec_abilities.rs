@@ -45,8 +45,8 @@ pub mod lawtwin_petstore {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_1a3a0c80(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -56,12 +56,414 @@ pub mod lawtwin_petstore {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// updatePet, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// addPet, with the failure it raises as Err rather than a panic.
+        pub fn try_addPet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByStatus, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByTags, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getPetById, with the failure it raises as Err rather than a panic.
+        pub fn try_getPetById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updatePetWithForm, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deletePet, with the failure it raises as Err rather than a panic.
+        pub fn try_deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// uploadFile, with the failure it raises as Err rather than a panic.
+        pub fn try_uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getInventory, with the failure it raises as Err rather than a panic.
+        pub fn try_getInventory(&self) -> std::result::Result<std::collections::BTreeMap<std::string::String, i32>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getInventory(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// placeOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getOrderById, with the failure it raises as Err rather than a panic.
+        pub fn try_getOrderById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteOrder(&self, value0: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUser, with the failure it raises as Err rather than a panic.
+        pub fn try_createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
+        pub fn try_createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// loginUser, with the failure it raises as Err rather than a panic.
+        pub fn try_loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// logoutUser, with the failure it raises as Err rather than a panic.
+        pub fn try_logoutUser(&self) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::logoutUser(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getUserByName, with the failure it raises as Err rather than a panic.
+        pub fn try_getUserByName(&self, value0: std::string::String) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updateUser, with the failure it raises as Err rather than a panic.
+        pub fn try_updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteUser, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteUser(&self, value0: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_3e347085(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -73,7 +475,7 @@ pub mod lawtwin_petstore {
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_ae0ddf28(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -85,7 +487,7 @@ pub mod lawtwin_petstore {
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_c60cd17e(
                 state.clone(),
                 <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -97,7 +499,7 @@ pub mod lawtwin_petstore {
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_cf5c32e9(
                 state.clone(),
                 <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -109,7 +511,7 @@ pub mod lawtwin_petstore {
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_cd663b92(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -121,7 +523,7 @@ pub mod lawtwin_petstore {
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_dbd33536(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -135,7 +537,7 @@ pub mod lawtwin_petstore {
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_4705c2b2(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -148,7 +550,7 @@ pub mod lawtwin_petstore {
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_5fb62a62(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -164,7 +566,7 @@ pub mod lawtwin_petstore {
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_0fb69a3d(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -175,7 +577,7 @@ pub mod lawtwin_petstore {
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_29feae4c(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -187,7 +589,7 @@ pub mod lawtwin_petstore {
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_3c80a922(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -199,7 +601,7 @@ pub mod lawtwin_petstore {
 
         fn deleteOrder(&self, value0: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_bf4c8c24(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -213,7 +615,7 @@ pub mod lawtwin_petstore {
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_8fb4b3e6(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -225,7 +627,7 @@ pub mod lawtwin_petstore {
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_15c6a40c(
                 state.clone(),
                 <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -237,7 +639,7 @@ pub mod lawtwin_petstore {
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_20c0b3f3(
                 state.clone(),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -250,7 +652,7 @@ pub mod lawtwin_petstore {
 
         fn logoutUser(&self) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_56bbbb56(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -261,7 +663,7 @@ pub mod lawtwin_petstore {
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_027f640c(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -273,7 +675,7 @@ pub mod lawtwin_petstore {
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_e08f158a(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
@@ -286,7 +688,7 @@ pub mod lawtwin_petstore {
 
         fn deleteUser(&self, value0: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_e8d80a94(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -923,8 +1325,8 @@ pub mod lawtwin_petstore_laws {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_1a3a0c80(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -934,12 +1336,414 @@ pub mod lawtwin_petstore_laws {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// updatePet, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// addPet, with the failure it raises as Err rather than a panic.
+        pub fn try_addPet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByStatus, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByTags, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getPetById, with the failure it raises as Err rather than a panic.
+        pub fn try_getPetById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updatePetWithForm, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deletePet, with the failure it raises as Err rather than a panic.
+        pub fn try_deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// uploadFile, with the failure it raises as Err rather than a panic.
+        pub fn try_uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getInventory, with the failure it raises as Err rather than a panic.
+        pub fn try_getInventory(&self) -> std::result::Result<std::collections::BTreeMap<std::string::String, i32>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getInventory(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// placeOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getOrderById, with the failure it raises as Err rather than a panic.
+        pub fn try_getOrderById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteOrder(&self, value0: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUser, with the failure it raises as Err rather than a panic.
+        pub fn try_createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
+        pub fn try_createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// loginUser, with the failure it raises as Err rather than a panic.
+        pub fn try_loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// logoutUser, with the failure it raises as Err rather than a panic.
+        pub fn try_logoutUser(&self) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::logoutUser(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getUserByName, with the failure it raises as Err rather than a panic.
+        pub fn try_getUserByName(&self, value0: std::string::String) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updateUser, with the failure it raises as Err rather than a panic.
+        pub fn try_updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteUser, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteUser(&self, value0: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_3e347085(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -951,7 +1755,7 @@ pub mod lawtwin_petstore_laws {
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_ae0ddf28(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -963,7 +1767,7 @@ pub mod lawtwin_petstore_laws {
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_c60cd17e(
                 state.clone(),
                 <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -975,7 +1779,7 @@ pub mod lawtwin_petstore_laws {
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_cf5c32e9(
                 state.clone(),
                 <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -987,7 +1791,7 @@ pub mod lawtwin_petstore_laws {
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_cd663b92(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -999,7 +1803,7 @@ pub mod lawtwin_petstore_laws {
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_dbd33536(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1013,7 +1817,7 @@ pub mod lawtwin_petstore_laws {
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_4705c2b2(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1026,7 +1830,7 @@ pub mod lawtwin_petstore_laws {
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_5fb62a62(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1042,7 +1846,7 @@ pub mod lawtwin_petstore_laws {
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_0fb69a3d(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1053,7 +1857,7 @@ pub mod lawtwin_petstore_laws {
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_29feae4c(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1065,7 +1869,7 @@ pub mod lawtwin_petstore_laws {
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_3c80a922(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1077,7 +1881,7 @@ pub mod lawtwin_petstore_laws {
 
         fn deleteOrder(&self, value0: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_bf4c8c24(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1091,7 +1895,7 @@ pub mod lawtwin_petstore_laws {
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_8fb4b3e6(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1103,7 +1907,7 @@ pub mod lawtwin_petstore_laws {
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_15c6a40c(
                 state.clone(),
                 <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1115,7 +1919,7 @@ pub mod lawtwin_petstore_laws {
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_20c0b3f3(
                 state.clone(),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1128,7 +1932,7 @@ pub mod lawtwin_petstore_laws {
 
         fn logoutUser(&self) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_56bbbb56(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1139,7 +1943,7 @@ pub mod lawtwin_petstore_laws {
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_027f640c(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1151,7 +1955,7 @@ pub mod lawtwin_petstore_laws {
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_e08f158a(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
@@ -1164,7 +1968,7 @@ pub mod lawtwin_petstore_laws {
 
         fn deleteUser(&self, value0: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_e8d80a94(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1188,8 +1992,8 @@ pub mod contracttest_petstore {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_62(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_1a3a0c80(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -1199,12 +2003,414 @@ pub mod contracttest_petstore {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// updatePet, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// addPet, with the failure it raises as Err rather than a panic.
+        pub fn try_addPet(&self, value0: crate::lawspec_data::Pet) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::addPet(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByStatus, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByStatus(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// findPetsByTags, with the failure it raises as Err rather than a panic.
+        pub fn try_findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Pet>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::findPetsByTags(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getPetById, with the failure it raises as Err rather than a panic.
+        pub fn try_getPetById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::getPetById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updatePetWithForm, with the failure it raises as Err rather than a panic.
+        pub fn try_updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> std::result::Result<crate::lawspec_data::Pet, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::updatePetWithForm(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deletePet, with the failure it raises as Err rather than a panic.
+        pub fn try_deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::deletePet(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// uploadFile, with the failure it raises as Err rather than a panic.
+        pub fn try_uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> std::result::Result<crate::lawspec_data::ApiResponse, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::PetApi>::uploadFile(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getInventory, with the failure it raises as Err rather than a panic.
+        pub fn try_getInventory(&self) -> std::result::Result<std::collections::BTreeMap<std::string::String, i32>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getInventory(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// placeOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::placeOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getOrderById, with the failure it raises as Err rather than a panic.
+        pub fn try_getOrderById(&self, value0: i64) -> std::result::Result<crate::lawspec_data::Order, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::getOrderById(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteOrder, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteOrder(&self, value0: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::StoreApi>::deleteOrder(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUser, with the failure it raises as Err rather than a panic.
+        pub fn try_createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// createUsersWithListInput, with the failure it raises as Err rather than a panic.
+        pub fn try_createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::createUsersWithListInput(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// loginUser, with the failure it raises as Err rather than a panic.
+        pub fn try_loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::result::Result<std::string::String, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::loginUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// logoutUser, with the failure it raises as Err rather than a panic.
+        pub fn try_logoutUser(&self) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::logoutUser(self))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// getUserByName, with the failure it raises as Err rather than a panic.
+        pub fn try_getUserByName(&self, value0: std::string::String) -> std::result::Result<crate::lawspec_data::User, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::getUserByName(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// updateUser, with the failure it raises as Err rather than a panic.
+        pub fn try_updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::updateUser(self, value0, value1))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// deleteUser, with the failure it raises as Err rather than a panic.
+        pub fn try_deleteUser(&self, value0: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)", || Ok(<Self as super::lawtwin_petstore::UserApi>::deleteUser(self, value0))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.petstore.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_petstore::PetApi for Reference {
         fn updatePet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_63(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePet_3e347085(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1216,7 +2422,7 @@ pub mod contracttest_petstore {
 
         fn addPet(&self, value0: crate::lawspec_data::Pet) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceAddPet_47(
+            let pair = crate::lawspec_definitions::typed::referenceAddPet_ae0ddf28(
                 state.clone(),
                 <crate::lawspec_definitions::typed::Pet as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1228,7 +2434,7 @@ pub mod contracttest_petstore {
 
         fn findPetsByStatus(&self, value0: crate::lawspec_data::PetStatus) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_53(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByStatus_c60cd17e(
                 state.clone(),
                 <crate::lawspec_definitions::typed::PetStatus as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1240,7 +2446,7 @@ pub mod contracttest_petstore {
 
         fn findPetsByTags(&self, value0: std::vec::Vec<std::string::String>) -> std::vec::Vec<crate::lawspec_data::Pet> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_54(
+            let pair = crate::lawspec_definitions::typed::referenceFindPetsByTags_cf5c32e9(
                 state.clone(),
                 <ls::fast::List<ls::fast::Text> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1252,7 +2458,7 @@ pub mod contracttest_petstore {
 
         fn getPetById(&self, value0: i64) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetPetById_57(
+            let pair = crate::lawspec_definitions::typed::referenceGetPetById_cd663b92(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1264,7 +2470,7 @@ pub mod contracttest_petstore {
 
         fn updatePetWithForm(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::string::String>) -> crate::lawspec_data::Pet {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_64(
+            let pair = crate::lawspec_definitions::typed::referenceUpdatePetWithForm_dbd33536(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1278,7 +2484,7 @@ pub mod contracttest_petstore {
 
         fn deletePet(&self, value0: i64, value1: std::option::Option<std::string::String>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeletePet_51(
+            let pair = crate::lawspec_definitions::typed::referenceDeletePet_4705c2b2(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1291,7 +2497,7 @@ pub mod contracttest_petstore {
 
         fn uploadFile(&self, value0: i64, value1: std::option::Option<std::string::String>, value2: std::option::Option<std::vec::Vec<u8>>) -> crate::lawspec_data::ApiResponse {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUploadFile_66(
+            let pair = crate::lawspec_definitions::typed::referenceUploadFile_5fb62a62(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1307,7 +2513,7 @@ pub mod contracttest_petstore {
     impl super::lawtwin_petstore::StoreApi for Reference {
         fn getInventory(&self) -> std::collections::BTreeMap<std::string::String, i32> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetInventory_55(
+            let pair = crate::lawspec_definitions::typed::referenceGetInventory_0fb69a3d(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1318,7 +2524,7 @@ pub mod contracttest_petstore {
 
         fn placeOrder(&self, value0: std::option::Option<crate::lawspec_data::Order>) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_61(
+            let pair = crate::lawspec_definitions::typed::referencePlaceOrder_29feae4c(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::Order> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1330,7 +2536,7 @@ pub mod contracttest_petstore {
 
         fn getOrderById(&self, value0: i64) -> crate::lawspec_data::Order {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_56(
+            let pair = crate::lawspec_definitions::typed::referenceGetOrderById_3c80a922(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1342,7 +2548,7 @@ pub mod contracttest_petstore {
 
         fn deleteOrder(&self, value0: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_50(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteOrder_bf4c8c24(
                 state.clone(),
                 <i64 as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1356,7 +2562,7 @@ pub mod contracttest_petstore {
     impl super::lawtwin_petstore::UserApi for Reference {
         fn createUser(&self, value0: std::option::Option<crate::lawspec_data::User>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUser_48(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUser_8fb4b3e6(
                 state.clone(),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1368,7 +2574,7 @@ pub mod contracttest_petstore {
 
         fn createUsersWithListInput(&self, value0: std::option::Option<std::vec::Vec<crate::lawspec_data::User>>) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_49(
+            let pair = crate::lawspec_definitions::typed::referenceCreateUsersWithListInput_15c6a40c(
                 state.clone(),
                 <Option<ls::fast::List<crate::lawspec_definitions::typed::User>> as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1380,7 +2586,7 @@ pub mod contracttest_petstore {
 
         fn loginUser(&self, value0: std::option::Option<std::string::String>, value1: std::option::Option<std::string::String>) -> std::string::String {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLoginUser_59(
+            let pair = crate::lawspec_definitions::typed::referenceLoginUser_20c0b3f3(
                 state.clone(),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value0),
                 <Option<ls::fast::Text> as ls::fast::Public>::from_native(value1),
@@ -1393,7 +2599,7 @@ pub mod contracttest_petstore {
 
         fn logoutUser(&self) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_60(
+            let pair = crate::lawspec_definitions::typed::referenceLogoutUser_56bbbb56(
                 state.clone(),
             ).unwrap_or_else(|error| panic!("{error}"));
             let (result, next) = crate::lawspec_definitions::typed::pair_fields(pair);
@@ -1404,7 +2610,7 @@ pub mod contracttest_petstore {
 
         fn getUserByName(&self, value0: std::string::String) -> crate::lawspec_data::User {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_58(
+            let pair = crate::lawspec_definitions::typed::referenceGetUserByName_027f640c(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));
@@ -1416,7 +2622,7 @@ pub mod contracttest_petstore {
 
         fn updateUser(&self, value0: std::string::String, value1: std::option::Option<crate::lawspec_data::User>) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_65(
+            let pair = crate::lawspec_definitions::typed::referenceUpdateUser_e08f158a(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <Option<crate::lawspec_definitions::typed::User> as ls::fast::Public>::from_native(value1),
@@ -1429,7 +2635,7 @@ pub mod contracttest_petstore {
 
         fn deleteUser(&self, value0: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_52(
+            let pair = crate::lawspec_definitions::typed::referenceDeleteUser_e8d80a94(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
             ).unwrap_or_else(|error| panic!("{error}"));

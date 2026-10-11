@@ -12,7 +12,7 @@ func (lawSpecDefinitions) MatchersMatchesRegex(
 	value0 string,
 	value1 Regex,
 ) bool {
-	return lsfTonative_d267428fb2ca(lsfMatchersMatchesRegex_24(lsfFromnative_437d0abf423f(value0), lsfFromnative_d83bd168ba38(value1)))
+	return lsfTonative_d267428fb2ca(lsfMatchersMatchesRegex_52d1c22e(lsfFromnative_437d0abf423f(value0), lsfFromnative_d83bd168ba38(value1)))
 }
 
 func lawSpecEvaluate33(
@@ -20,5 +20,5 @@ func lawSpecEvaluate33(
 	value0 LawSpecValue,
 	value1 LawSpecValue,
 ) LawSpecValue {
-	return lsfTo_d267428fb2ca(lsfMatchersMatchesRegex_24(lsfFrom_437d0abf423f(value0), lsfFrom_d83bd168ba38(value1)))
+	return lsfTo_d267428fb2ca(lsfMatchersMatchesRegex_52d1c22e(lsfFrom_437d0abf423f(value0), lsfFrom_d83bd168ba38(value1)))
 }

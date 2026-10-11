@@ -10,6 +10,8 @@ import lawspec_data as data
 import lawspec_runtime as ls
 import lawspec_schema as _schema
 import lawspec_definition_bodies as _definitions
+import lawspec_typed as _typed
+import threading as _threading
 
 _lawspec_schema = data.make_schema()
 
@@ -86,15 +88,14 @@ class IssuesApi(_typing.Protocol):
 
 
 class Reference:
-    """The spec handler reference for IssuesApi."""
+    """The spec handler reference for IssuesApi, with its state typed.
+
+    Reference() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_47(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_829697ec(self._symbols)
 
     def issuesListLabelsForRepo(
         self,
@@ -104,45 +105,14 @@ class Reference:
         value3: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Label]:
         symbols = self._symbols
-        pair = _definitions.evaluate_43(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Int64")]),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Int64")]),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.github.model::type::Label")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_c09136e29464(value2, symbols)
+        argument3 = _typed.nin_c09136e29464(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesListLabelsForRepo_074d2d44(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_26c1f1aa035f(pair[0], symbols)
 
     def issuesCreateLabel(
         self,
@@ -151,38 +121,13 @@ class Reference:
         value2: data.IssuesCreateLabelBody,
     ) -> data.Label:
         symbols = self._symbols
-        pair = _definitions.evaluate_37(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "lawtwin.github.model::type::IssuesCreateLabelBody",
-                ),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Label"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_6dd579d34c7f(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesCreateLabel_66a10480(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_3ee7c77b169f(pair[0], symbols)
 
     def issuesGetLabel(
         self,
@@ -191,36 +136,13 @@ class Reference:
         value2: _builtins.str,
     ) -> data.Label:
         symbols = self._symbols
-        pair = _definitions.evaluate_41(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Label"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_437d0abf423f(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesGetLabel_caf28965(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_3ee7c77b169f(pair[0], symbols)
 
     def issuesDeleteLabel(
         self,
@@ -229,36 +151,13 @@ class Reference:
         value2: _builtins.str,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_39(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_437d0abf423f(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesDeleteLabel_91dc9b24(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def issuesUpdateLabel(
         self,
@@ -268,63 +167,14 @@ class Reference:
         value3: _schema.Maybe[data.IssuesUpdateLabelBody],
     ) -> data.Label:
         symbols = self._symbols
-        pair = _definitions.evaluate_45(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            (
-                                "lawt"
-                                "win."
-                                "gith"
-                                "ub.m"
-                                "odel"
-                                "::ty"
-                                "pe::"
-                                "Issu"
-                                "esUp"
-                                "date"
-                                "Labe"
-                                "lBod"
-                                "y"
-                            ),
-                        ),
-                    ],
-                ),
-                value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Label"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_437d0abf423f(value2, symbols)
+        argument3 = _typed.nin_a0758b309515(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesUpdateLabel_a2730891(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_3ee7c77b169f(pair[0], symbols)
 
     def issuesListMilestones(
         self,
@@ -337,129 +187,17 @@ class Reference:
         value6: _schema.Maybe[_builtins.int],
     ) -> _builtins.list[data.Milestone]:
         symbols = self._symbols
-        pair = _definitions.evaluate_44(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            (
-                                "lawt"
-                                "win."
-                                "gith"
-                                "ub.m"
-                                "odel"
-                                "::ty"
-                                "pe::"
-                                "Issu"
-                                "esLi"
-                                "stMi"
-                                "lest"
-                                "ones"
-                                "Stat"
-                                "e"
-                            ),
-                        ),
-                    ],
-                ),
-                value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            (
-                                "lawt"
-                                "win."
-                                "gith"
-                                "ub.m"
-                                "odel"
-                                "::ty"
-                                "pe::"
-                                "Issu"
-                                "esLi"
-                                "stMi"
-                                "lest"
-                                "ones"
-                                "Sort"
-                            ),
-                        ),
-                    ],
-                ),
-                value3,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            (
-                                "lawt"
-                                "win."
-                                "gith"
-                                "ub.m"
-                                "odel"
-                                "::ty"
-                                "pe::"
-                                "Issu"
-                                "esLi"
-                                "stMi"
-                                "lest"
-                                "ones"
-                                "Dire"
-                                "ctio"
-                                "n"
-                            ),
-                        ),
-                    ],
-                ),
-                value4,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Int64")]),
-                value5,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Int64")]),
-                value6,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.github.model::type::Milestone")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_79d855388cb1(value2, symbols)
+        argument3 = _typed.nin_f7593a7d6572(value3, symbols)
+        argument4 = _typed.nin_6c9175189927(value4, symbols)
+        argument5 = _typed.nin_c09136e29464(value5, symbols)
+        argument6 = _typed.nin_c09136e29464(value6, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesListMilestones_b04e2ebe(self._state, argument0, argument1, argument2, argument3, argument4, argument5, argument6)
+            self._state = pair[1]
+        return _typed.nout_6e0c216c458a(pair[0], symbols)
 
     def issuesCreateMilestone(
         self,
@@ -468,38 +206,13 @@ class Reference:
         value2: data.IssuesCreateMilestoneBody,
     ) -> data.Milestone:
         symbols = self._symbols
-        pair = _definitions.evaluate_38(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "lawtwin.github.model::type::IssuesCreateMilestoneBody",
-                ),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Milestone"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_694e86e76a75(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesCreateMilestone_819e36f6(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_298bd35e8f4d(pair[0], symbols)
 
     def issuesGetMilestone(
         self,
@@ -508,36 +221,13 @@ class Reference:
         value2: _builtins.int,
     ) -> data.Milestone:
         symbols = self._symbols
-        pair = _definitions.evaluate_42(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Milestone"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_44a08172da10(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesGetMilestone_53f7b6bc(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_298bd35e8f4d(pair[0], symbols)
 
     def issuesDeleteMilestone(
         self,
@@ -546,36 +236,13 @@ class Reference:
         value2: _builtins.int,
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_40(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_44a08172da10(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesDeleteMilestone_1798b0e2(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def issuesUpdateMilestone(
         self,
@@ -585,64 +252,244 @@ class Reference:
         value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
     ) -> data.Milestone:
         symbols = self._symbols
-        pair = _definitions.evaluate_46(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_437d0abf423f(value1, symbols)
+        argument2 = _typed.nin_44a08172da10(value2, symbols)
+        argument3 = _typed.nin_b472b5d77510(value3, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceIssuesUpdateMilestone_cc0bfe48(self._state, argument0, argument1, argument2, argument3)
+            self._state = pair[1]
+        return _typed.nout_298bd35e8f4d(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_fedfb1aaf0b7(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_fedfb1aaf0b7(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state
+
+    def try_issuesListLabelsForRepo(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _schema.Maybe[_builtins.int],
+        value3: _schema.Maybe[_builtins.int],
+    ) -> _schema.Either[data.ApiError, _builtins.list[data.Label]]:
+        """issuesListLabelsForRepo, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesListLabelsForRepo(
                 value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
                 value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
                 value2,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            (
-                                "lawt"
-                                "win."
-                                "gith"
-                                "ub.m"
-                                "odel"
-                                "::ty"
-                                "pe::"
-                                "Issu"
-                                "esUp"
-                                "date"
-                                "Mile"
-                                "ston"
-                                "eBod"
-                                "y"
-                            ),
-                        ),
-                    ],
-                ),
                 value3,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.github.model::type::Milestone"),
-            result,
-            64,
-            symbols,
-        )
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesCreateLabel(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: data.IssuesCreateLabelBody,
+    ) -> _schema.Either[data.ApiError, data.Label]:
+        """issuesCreateLabel, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesCreateLabel(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesGetLabel(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.str,
+    ) -> _schema.Either[data.ApiError, data.Label]:
+        """issuesGetLabel, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesGetLabel(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesDeleteLabel(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.str,
+    ) -> _schema.Either[data.ApiError, None]:
+        """issuesDeleteLabel, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesDeleteLabel(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesUpdateLabel(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.str,
+        value3: _schema.Maybe[data.IssuesUpdateLabelBody],
+    ) -> _schema.Either[data.ApiError, data.Label]:
+        """issuesUpdateLabel, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesUpdateLabel(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesListMilestones(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _schema.Maybe[data.IssuesListMilestonesState],
+        value3: _schema.Maybe[data.IssuesListMilestonesSort],
+        value4: _schema.Maybe[data.IssuesListMilestonesDirection],
+        value5: _schema.Maybe[_builtins.int],
+        value6: _schema.Maybe[_builtins.int],
+    ) -> _schema.Either[data.ApiError, _builtins.list[data.Milestone]]:
+        """issuesListMilestones, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesListMilestones(
+                value0,
+                value1,
+                value2,
+                value3,
+                value4,
+                value5,
+                value6,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesCreateMilestone(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: data.IssuesCreateMilestoneBody,
+    ) -> _schema.Either[data.ApiError, data.Milestone]:
+        """issuesCreateMilestone, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesCreateMilestone(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesGetMilestone(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.ApiError, data.Milestone]:
+        """issuesGetMilestone, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesGetMilestone(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesDeleteMilestone(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+    ) -> _schema.Either[data.ApiError, None]:
+        """issuesDeleteMilestone, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesDeleteMilestone(
+                value0,
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_issuesUpdateMilestone(
+        self,
+        value0: _builtins.str,
+        value1: _builtins.str,
+        value2: _builtins.int,
+        value3: _schema.Maybe[data.IssuesUpdateMilestoneBody],
+    ) -> _schema.Either[data.ApiError, data.Milestone]:
+        """issuesUpdateMilestone, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.issuesUpdateMilestone(
+                value0,
+                value1,
+                value2,
+                value3,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.github.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.github.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
 
 
 class IssuesApiRecording:

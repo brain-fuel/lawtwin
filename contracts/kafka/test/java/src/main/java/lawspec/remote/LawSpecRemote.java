@@ -303,7 +303,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::assignmentIn",
         new Entry(
-            "sha3-256:22f7ff20e67ea6f8b01be8870233d14c44462cb5826f8d7f43f26e78c2a1a8ef",
+            "sha3-256:0a728db0b410654047f843a0a3b9d681ea7df8b1cfd023acdd58a2edc8db9c5d",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate35(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::MemberAssignment))")),
@@ -311,7 +311,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::coversOnce",
         new Entry(
-            "sha3-256:605dc8829c2111b58d0feeb4b50cbeeb0335613c4f11aaebc40d2ec170a984c4",
+            "sha3-256:19a18182fbc76f67275eaa785617a88f70d78e4e3518562cc7457b265a18aeb7",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate78(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::GroupView)")),
@@ -327,7 +327,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::fencedBy",
         new Entry(
-            "sha3-256:3c7e591eedd0d8e2c074166251bbd3aee3babb148913fc07b8c174eb76c15d80",
+            "sha3-256:f2bccbd0911ec605e88dab78da1744ad82530236cc005dea642ffc43b8020b11",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate80(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)")),
@@ -335,7 +335,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::followsOne",
         new Entry(
-            "sha3-256:155c3242bf51d0b59e1d12af5f26a8790330a92d72f06981b01a117bdb3b2c1f",
+            "sha3-256:25d362253a8f325cc6e5d032e89fd5b31170ab6581ec7d4e1339e17fa2ea2d2f",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate82(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))"), LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (int Int64 -9223372036854775808 9223372036854775807))")),
@@ -695,7 +695,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::lawtwinKafkaModelExpectedSequence",
         new Entry(
-            "sha3-256:83c8a89b67c8b03a8192fd836b9b04c7607940cc53e3330cf680b11bdbc4c451",
+            "sha3-256:ea5b1df1f9b902a35c3e54828ce2e70ebd776c45acd75e186387eef34027ff56",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate265(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -703,7 +703,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::lawtwinKafkaModelFindDuplicate",
         new Entry(
-            "sha3-256:fc1a0de78f5b0ac04d762ade1b2d4767a4f3a708dc762005d7983724748fb2b1",
+            "sha3-256:f95cbf19564f478b2995759cd5f7d17b0ab7173d52a4ec0774a82039a5bed760",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate267(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -711,7 +711,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::lawtwinKafkaModelIsAborted",
         new Entry(
-            "sha3-256:2c9fb92ef0a5a3f41447d7882492d3f64485f8282896b3d10dd48c526366baf2",
+            "sha3-256:76ea0d870a58d425f3d5242acf20e53aa35c049d1558e26b9b6e0d1f3ed78e81",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate273(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2)),
                 List.of(LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::AbortedTxn))")),
@@ -751,7 +751,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::lawtwinKafkaModelOffsetPartitions",
         new Entry(
-            "sha3-256:31574eeba4544fca2f590842893eb8f5b1fa2885a9ccc5ec671d785b7bd748e6",
+            "sha3-256:08fb8abc4735be4ee9e74603c5c363bbe0f863f42f9a6cebac150e29049e0df1",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate291(new java.util.HashMap<String, Object>(), args.get(0)),
                 List.of(LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::OffsetEntry))")),
@@ -847,7 +847,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::ownedOf",
         new Entry(
-            "sha3-256:8314326f864c821cdc09d67c94e4cd599158ca7e9e3d54b993a0f7786fc7e0fb",
+            "sha3-256:176e2f58919b764b3b2486f4d292b04dc0ca84bd11ec4097f059276edd562f5a",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate323(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::MemberAssignment))")),
@@ -855,7 +855,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::partitionsOfTopic",
         new Entry(
-            "sha3-256:3aa2b099129701856b19b5e9095155aebfcac94a4a877c97a9e653ff83698a15",
+            "sha3-256:97eb2ea0f10e1fe8d3e1faf402a39134b8ac6a1fec919a5450878fdf81f95ecf",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate325(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::TopicPartition))")),
@@ -863,7 +863,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::resumesAtCommitted",
         new Entry(
-            "sha3-256:b6deac1bd6109e19f3124ff098cc47ad5428032fd86db95f4f1e3b4f70945b94",
+            "sha3-256:ce7575b9c53b97797e4f53cc2152d3bd4cdf71f3b79691fbad336861d96f6709",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate337(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -871,7 +871,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::samePartition",
         new Entry(
-            "sha3-256:ad397d50a755e3c76feb7dad8841f5418791558b51617b277e252458816ca327",
+            "sha3-256:3472abb1e105fe854491daa6d3270b48041301cb4c7c1f1c787878c3d18e4a50",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate338(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))"), LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))")),
@@ -879,7 +879,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::tagFor",
         new Entry(
-            "sha3-256:4e7efc191a30d361a147ddd1b32dd743d4f6aecb27c702598e612696551119fa",
+            "sha3-256:a699c553dbb91562ab595a933e3340b632b95270b6943339babf7bdc32779548",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate342(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(maybe (ref lawtwin.kafka.model::type::ProducerIdAndEpoch))"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -887,7 +887,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::tagOf",
         new Entry(
-            "sha3-256:4acf88840afad6fc051b825ff5f62f8e9c94457900d369543068612a169b8413",
+            "sha3-256:2dbe3d93b2aac3f12661b02baba1f1f243c2aa31d5e9c5c7b0696adde3bf4757",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate343(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -903,7 +903,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::transactionalOffsets",
         new Entry(
-            "sha3-256:411b7708c59a73d21097d2f96392a1d0ddad0a652d4290014111587025e714ec",
+            "sha3-256:a060612398c19575d6c68d574e0fe9ca78c669d60ffb6dcd512de73b51071c0d",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate346(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)")),
@@ -911,7 +911,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka::viewOf",
         new Entry(
-            "sha3-256:e7782664f4627ea853edb6aeab9e6ae8b1664604529bdefff7673400e1c97b09",
+            "sha3-256:739659f2f06003c6ac1aa2e8e087b3515880ad96767a539fdf1179eacf9bae50",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate356(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::GroupView)")),
@@ -935,7 +935,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka.model::expectedSequence",
         new Entry(
-            "sha3-256:734eacc8b6a98465ff0c126e12eb99fc57b6c00a389fb9c16dcb4a3e904b39cd",
+            "sha3-256:71f53366c43d7cfe3efc3403600d6ede86472d24710ac7492589152d9a61a623",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate382(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -943,7 +943,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka.model::findDuplicate",
         new Entry(
-            "sha3-256:19a28241b35c75a46a6b1987e93b7530212ebc6e3a038414793c002a60660992",
+            "sha3-256:210f441acc8509d7442ec8c705c8923e4d5c665615c389a0fcaa8a9fe3f5ff15",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate384(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -951,7 +951,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka.model::isAborted",
         new Entry(
-            "sha3-256:95b2be1cd7b167c45fef996317bad4ee06c54a881190b1a81bc2c46b4819bf8d",
+            "sha3-256:eaaefd153a0326495da53315e82ee09307026ace4b8e9727420d41cab658b49b",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate390(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2)),
                 List.of(LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::AbortedTxn))")),
@@ -1271,7 +1271,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "lawtwin.kafka.model::offsetPartitions",
         new Entry(
-            "sha3-256:d7de951810c66434b4bad8f82c397ba76830df2df05dea1c6b87154422743eae",
+            "sha3-256:7ddfda657d929165ab2a3c56f3d16c6e02d9a7e2d63738a9367dfb7edd41b6a8",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate516(new java.util.HashMap<String, Object>(), args.get(0)),
                 List.of(LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::OffsetEntry))")),
@@ -1655,7 +1655,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaAssignmentIn",
         new Entry(
-            "sha3-256:e0d37c6670d7f7dc35505e0b9d525f22cbb76c81c08a0e0095f667749ade9381",
+            "sha3-256:56df63cec715eb233c08ca8ef48e9a7b9b1c39fe5469a9f5176d3c5fa53184b3",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate722(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::MemberAssignment))")),
@@ -1663,7 +1663,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaCoversOnce",
         new Entry(
-            "sha3-256:7988c0dc0e5017f2b79407cb2d3ee31abc0704b305aabf2b59ab6341fc9ccacb",
+            "sha3-256:e9a174aafdf6252e58a6b1a032e81100603dfd236a62cb4b17b1c693034f6265",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate736(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::GroupView)")),
@@ -1679,7 +1679,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaFencedBy",
         new Entry(
-            "sha3-256:b96fff6cdba08437c815b252865c0c4995ddd53759f387cd5a51170b7762e78f",
+            "sha3-256:acd05c04e078d84250ac2c5df8ed32e27f651a11364d41871176daebdc7a7fc0",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate738(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)")),
@@ -1687,7 +1687,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaFollowsOne",
         new Entry(
-            "sha3-256:84c2d7285c09cc5386aa0fea7db1d5014ac6459b9479a2197956025a8ec51667",
+            "sha3-256:f86d9cf519d38b895be3895b20e488150a002ba8d438a4cb4d36eb1f8928d586",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate740(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))"), LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (int Int64 -9223372036854775808 9223372036854775807))")),
@@ -1735,7 +1735,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaModelExpectedSequence",
         new Entry(
-            "sha3-256:7141607bd32a0cd13fc660b3e21aee5edc8dd37607676b38e21c418ee1cabffb",
+            "sha3-256:b23472108641875fbbd32dde4fa0651b5ecb2a70b1d11ed0423af7c58e708de9",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate771(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -1743,7 +1743,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaModelFindDuplicate",
         new Entry(
-            "sha3-256:032a693529bbc9a90e931883e799ad8a1cd6c4e98f43a5e3071f2b6c107ed4fc",
+            "sha3-256:0222cf8bdcb7c8bbb047d5c71c5e1e48208a75d7a913d5d1bc01d9a375edefca",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate773(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(int Int16 -32768 32767)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::BatchMeta))")),
@@ -1751,7 +1751,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaModelIsAborted",
         new Entry(
-            "sha3-256:20ca77768c50c64dd2c1bcf07f168d21e96f0144c4f0f84ac1398d0e902111d6",
+            "sha3-256:dacd25d274820dca467c0d8153f29812ddfc8ea9bf7a0607b111d6b8c6dee35f",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate779(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2)),
                 List.of(LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::AbortedTxn))")),
@@ -1791,7 +1791,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaModelOffsetPartitions",
         new Entry(
-            "sha3-256:55c3f660baa38e13c252a5b95dd0488ec0f1ab8b2a617e7cb06bb3dd6152bba7",
+            "sha3-256:3943a088b9986c3250e550c0af49ef2df297e93a397c27de244eabd7d6d12cb2",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate797(new java.util.HashMap<String, Object>(), args.get(0)),
                 List.of(LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::OffsetEntry))")),
@@ -1871,7 +1871,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaOwnedOf",
         new Entry(
-            "sha3-256:69c2921fc3f5dce33ad3d07f6c8bd17997d57bf3a1b27e814483a222c8e44293",
+            "sha3-256:2ae4930a6a34299bfa8c6119b1f9f3f3d83ff898b9ffcddc538ec3876076912a",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate826(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::MemberAssignment))")),
@@ -1879,7 +1879,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaPartitionsOfTopic",
         new Entry(
-            "sha3-256:aca429d02b1e7863a44dbb0955ec9a14d6a6abd0296d9013a446010f3a295d32",
+            "sha3-256:a2775176667dcecafdd67f5f99e825b72c282f05f11d5bdd68c1e1863aa3ce68",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate828(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(list (ref lawtwin.kafka.model::type::TopicPartition))")),
@@ -1887,7 +1887,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaResumesAtCommitted",
         new Entry(
-            "sha3-256:0b77aa4ef0916175ef8e96bf35cde8dd96571d81b2fddc2f8bb6abf006c51c35",
+            "sha3-256:6dc7437de0da521547ddddb286954b53e44cc93a43fa1a4093b89b472c98fcf2",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate840(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -1895,7 +1895,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaSamePartition",
         new Entry(
-            "sha3-256:269020400a852d747fc84aa7ad0282d0d629f12b13717d05d0d22c4821445fa4",
+            "sha3-256:61dbc69761d0f034370b9858200ae516ff41c838a72a599f5c05dda0d280980e",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate841(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))"), LawSpecRuntime.descriptor("(either (ref lawtwin.kafka.model::type::KafkaError) (ref lawtwin.kafka::type::RecordMetadata))")),
@@ -1903,7 +1903,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaTagFor",
         new Entry(
-            "sha3-256:5ed5e2c69e5c364b4918b1abab26cdd1daf60702a6b004fe55b8c719ea37f7bb",
+            "sha3-256:f209874a25e32b189f4a0ed97ff0dff05e16bd16e3fced1645329848df423e50",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate845(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(maybe (ref lawtwin.kafka.model::type::ProducerIdAndEpoch))"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -1911,7 +1911,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaTagOf",
         new Entry(
-            "sha3-256:b289b4b9245dfbc407ea1a56eb9af1460f3c259fa522ee7c457b173c45070ecf",
+            "sha3-256:ef558494797bc90c5e2ca49df9116ca6e0ac3bad109045dd15577f3236a2dfeb",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate846(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::ProducerIdAndEpoch)"), LawSpecRuntime.descriptor("(int Int32 -2147483648 2147483647)")),
@@ -1927,7 +1927,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaTransactionalOffsets",
         new Entry(
-            "sha3-256:c079471c5769b390b9618aaa616ca44ef81e492806592dce5a71e0bb31fd1441",
+            "sha3-256:386bb48e714a4792beb07148a13b469a4e09a3dcca098538afd2208c2d8c577e",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate849(new java.util.HashMap<String, Object>(), args.get(0), args.get(1), args.get(2), args.get(3)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(int Int64 -9223372036854775808 9223372036854775807)")),
@@ -1935,7 +1935,7 @@ public final class LawSpecRemote {
     DEFINITIONS.put(
         "contracttest.kafka::lawtwinKafkaViewOf",
         new Entry(
-            "sha3-256:a21eefd872bf11497f921123ad8e0c0e26e7fe93b0d48e0b15cea32440fb05df",
+            "sha3-256:9b37b0e3e14a9783705949e20d010b7c6126ecd19cd8567f035b5e44d1a8a622",
             new LawSpecRuntime.Definition(
                 args -> lawspec.runtime.LawSpecDefinitionBodies.evaluate859(new java.util.HashMap<String, Object>(), args.get(0), args.get(1)),
                 List.of(LawSpecRuntime.descriptor("(text)"), LawSpecRuntime.descriptor("(ref lawtwin.kafka.model::type::GroupView)")),

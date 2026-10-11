@@ -10,137 +10,67 @@ import lawspec_data as data
 import lawspec_runtime as ls
 import lawspec_schema as _schema
 import lawspec_definition_bodies as _definitions
+import lawspec_typed as _typed
+import threading as _threading
 
 _lawspec_schema = data.make_schema()
 
 
 class Reference:
-    """The spec handler reference for PetApi, StoreApi, UserApi."""
+    """The spec handler reference for PetApi, StoreApi, UserApi, with its state typed.
+
+    Reference() makes it on its own, outside any law: the embedding entry point."""
 
     def __init__(self, symbols=None):
         self._symbols = {} if symbols is None else symbols
-        symbols = self._symbols
-        self._state = _definitions.evaluate_241(
-            symbols,
-            ls.literal({"type": "Unit"}, symbols),
-        )
+        self._lock = _threading.Lock()
+        self._state = _typed.Start_3e43d920(self._symbols)
 
     def updatePet(self, value0: data.Pet) -> data.Pet:
         symbols = self._symbols
-        pair = _definitions.evaluate_242(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.petstore.model::type::Pet"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Pet"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_82d465b8f3fe(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceUpdatePet_3e347085(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_82d465b8f3fe(pair[0], symbols)
 
     def addPet(self, value0: data.Pet) -> data.Pet:
         symbols = self._symbols
-        pair = _definitions.evaluate_226(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.petstore.model::type::Pet"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Pet"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_82d465b8f3fe(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceAddPet_ae0ddf28(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_82d465b8f3fe(pair[0], symbols)
 
     def findPetsByStatus(
         self,
         value0: data.PetStatus,
     ) -> _builtins.list[data.Pet]:
         symbols = self._symbols
-        pair = _definitions.evaluate_232(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("lawtwin.petstore.model::type::PetStatus"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.petstore.model::type::Pet")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_1ac848e17d05(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceFindPetsByStatus_c60cd17e(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_62faef33a7c0(pair[0], symbols)
 
     def findPetsByTags(
         self,
         value0: _builtins.list[_builtins.str],
     ) -> _builtins.list[data.Pet]:
         symbols = self._symbols
-        pair = _definitions.evaluate_233(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("List", [_schema.Named("Text")]),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "List",
-                [_schema.Named("lawtwin.petstore.model::type::Pet")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_8ec0351dc657(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceFindPetsByTags_cf5c32e9(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_62faef33a7c0(pair[0], symbols)
 
     def getPetById(self, value0: _builtins.int) -> data.Pet:
         symbols = self._symbols
-        pair = _definitions.evaluate_236(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Pet"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceGetPetById_cd663b92(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_82d465b8f3fe(pair[0], symbols)
 
     def updatePetWithForm(
         self,
@@ -149,36 +79,13 @@ class Reference:
         value2: _schema.Maybe[_builtins.str],
     ) -> data.Pet:
         symbols = self._symbols
-        pair = _definitions.evaluate_243(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Pet"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        argument1 = _typed.nin_01d86fc44f8c(value1, symbols)
+        argument2 = _typed.nin_01d86fc44f8c(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceUpdatePetWithForm_dbd33536(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_82d465b8f3fe(pair[0], symbols)
 
     def deletePet(
         self,
@@ -186,30 +93,12 @@ class Reference:
         value1: _schema.Maybe[_builtins.str],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_230(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        argument1 = _typed.nin_01d86fc44f8c(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceDeletePet_4705c2b2(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def uploadFile(
         self,
@@ -218,177 +107,63 @@ class Reference:
         value2: _schema.Maybe[_builtins.bytes],
     ) -> data.ApiResponse:
         symbols = self._symbols
-        pair = _definitions.evaluate_245(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value1,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Bytes")]),
-                value2,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::ApiResponse"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        argument1 = _typed.nin_01d86fc44f8c(value1, symbols)
+        argument2 = _typed.nin_b276e66efd09(value2, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceUploadFile_5fb62a62(self._state, argument0, argument1, argument2)
+            self._state = pair[1]
+        return _typed.nout_58a6ec5f8594(pair[0], symbols)
 
     def getInventory(self) -> _builtins.dict[_builtins.str, _builtins.int]:
         symbols = self._symbols
-        pair = _definitions.evaluate_234(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named(
-                "lawspec.collections::type::KeyVal",
-                [_schema.Named("Text"), _schema.Named("Int32")],
-            ),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_referenceGetInventory_0fb69a3d(self._state)
+            self._state = pair[1]
+        return _typed.nout_bb40e13b6158(pair[0], symbols)
 
     def placeOrder(self, value0: _schema.Maybe[data.Order]) -> data.Order:
         symbols = self._symbols
-        pair = _definitions.evaluate_240(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [_schema.Named("lawtwin.petstore.model::type::Order")],
-                ),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Order"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_ba2e3c57646d(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referencePlaceOrder_29feae4c(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_0205b8dc6a6f(pair[0], symbols)
 
     def getOrderById(self, value0: _builtins.int) -> data.Order:
         symbols = self._symbols
-        pair = _definitions.evaluate_235(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::Order"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceGetOrderById_3c80a922(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_0205b8dc6a6f(pair[0], symbols)
 
     def deleteOrder(self, value0: _builtins.int) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_229(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Int64"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_44a08172da10(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceDeleteOrder_bf4c8c24(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def createUser(self, value0: _schema.Maybe[data.User]) -> data.User:
         symbols = self._symbols
-        pair = _definitions.evaluate_227(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [_schema.Named("lawtwin.petstore.model::type::User")],
-                ),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::User"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_e7cb8bef1b25(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceCreateUser_8fb4b3e6(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_4e0c2eb86b38(pair[0], symbols)
 
     def createUsersWithListInput(
         self,
         value0: _schema.Maybe[_builtins.list[data.User]],
     ) -> data.User:
         symbols = self._symbols
-        pair = _definitions.evaluate_228(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [
-                        _schema.Named(
-                            "List",
-                            [
-                                _schema.Named(
-                                    "lawtwin.petstore.model::type::User",
-                                ),
-                            ],
-                        ),
-                    ],
-                ),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::User"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_e6c8b33c1e73(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceCreateUsersWithListInput_15c6a40c(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_4e0c2eb86b38(pair[0], symbols)
 
     def loginUser(
         self,
@@ -396,63 +171,27 @@ class Reference:
         value1: _schema.Maybe[_builtins.str],
     ) -> _builtins.str:
         symbols = self._symbols
-        pair = _definitions.evaluate_238(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Maybe", [_schema.Named("Text")]),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Text"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_01d86fc44f8c(value0, symbols)
+        argument1 = _typed.nin_01d86fc44f8c(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceLoginUser_20c0b3f3(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_437d0abf423f(pair[0], symbols)
 
     def logoutUser(self) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_239(symbols, self._state)
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        with self._lock:
+            pair = _typed.Def_referenceLogoutUser_56bbbb56(self._state)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def getUserByName(self, value0: _builtins.str) -> data.User:
         symbols = self._symbols
-        pair = _definitions.evaluate_237(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("lawtwin.petstore.model::type::User"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceGetUserByName_027f640c(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_4e0c2eb86b38(pair[0], symbols)
 
     def updateUser(
         self,
@@ -460,51 +199,313 @@ class Reference:
         value1: _schema.Maybe[data.User],
     ) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_244(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
-                value0,
-                64,
-                symbols,
-            ),
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named(
-                    "Maybe",
-                    [_schema.Named("lawtwin.petstore.model::type::User")],
-                ),
-                value1,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        argument1 = _typed.nin_e7cb8bef1b25(value1, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceUpdateUser_e08f158a(self._state, argument0, argument1)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
 
     def deleteUser(self, value0: _builtins.str) -> None:
         symbols = self._symbols
-        pair = _definitions.evaluate_231(
-            symbols,
-            self._state,
-            ls.handler_schema(_lawspec_schema).from_native(
-                _schema.Named("Text"),
+        argument0 = _typed.nin_437d0abf423f(value0, symbols)
+        with self._lock:
+            pair = _typed.Def_referenceDeleteUser_e8d80a94(self._state, argument0)
+            self._state = pair[1]
+        return _typed.nout_b120ceed78cb(pair[0], symbols)
+
+    def state(self):
+        """The handler's state, in its native types: a snapshot to show or keep."""
+        with self._lock:
+            return _typed.nout_ceed401fe9f6(self._state, self._symbols)
+
+    def set_state(self, state):
+        """Replaces the handler's state: to force it, reset it or restore a snapshot."""
+        typed = _typed.nin_ceed401fe9f6(state, self._symbols)
+        with self._lock:
+            self._state = typed
+
+    def typed_state(self):
+        """The typed state, shared rather than copied."""
+        return self._state
+
+    def set_typed_state(self, state):
+        """Replaces the typed state."""
+        with self._lock:
+            self._state = state
+
+    def try_updatePet(
+        self,
+        value0: data.Pet,
+    ) -> _schema.Either[data.ApiError, data.Pet]:
+        """updatePet, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.updatePet(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_addPet(
+        self,
+        value0: data.Pet,
+    ) -> _schema.Either[data.ApiError, data.Pet]:
+        """addPet, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.addPet(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_findPetsByStatus(
+        self,
+        value0: data.PetStatus,
+    ) -> _schema.Either[data.ApiError, _builtins.list[data.Pet]]:
+        """findPetsByStatus, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.findPetsByStatus(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_findPetsByTags(
+        self,
+        value0: _builtins.list[_builtins.str],
+    ) -> _schema.Either[data.ApiError, _builtins.list[data.Pet]]:
+        """findPetsByTags, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.findPetsByTags(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_getPetById(
+        self,
+        value0: _builtins.int,
+    ) -> _schema.Either[data.ApiError, data.Pet]:
+        """getPetById, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.getPetById(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_updatePetWithForm(
+        self,
+        value0: _builtins.int,
+        value1: _schema.Maybe[_builtins.str],
+        value2: _schema.Maybe[_builtins.str],
+    ) -> _schema.Either[data.ApiError, data.Pet]:
+        """updatePetWithForm, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.updatePetWithForm(
                 value0,
-                64,
-                symbols,
-            ),
-        )
-        self._state = pair.fields[1]
-        result = pair.fields[0]
-        return ls.handler_schema(_lawspec_schema).to_native(
-            _schema.Named("Unit"),
-            result,
-            64,
-            symbols,
-        )
+                value1,
+                value2,
+            ))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_deletePet(
+        self,
+        value0: _builtins.int,
+        value1: _schema.Maybe[_builtins.str],
+    ) -> _schema.Either[data.ApiError, None]:
+        """deletePet, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.deletePet(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_uploadFile(
+        self,
+        value0: _builtins.int,
+        value1: _schema.Maybe[_builtins.str],
+        value2: _schema.Maybe[_builtins.bytes],
+    ) -> _schema.Either[data.ApiError, data.ApiResponse]:
+        """uploadFile, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.uploadFile(value0, value1, value2))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_getInventory(
+        self,
+    ) -> _schema.Either[data.ApiError, _builtins.dict[
+        _builtins.str,
+        _builtins.int
+    ]]:
+        """getInventory, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.getInventory())
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_placeOrder(
+        self,
+        value0: _schema.Maybe[data.Order],
+    ) -> _schema.Either[data.ApiError, data.Order]:
+        """placeOrder, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.placeOrder(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_getOrderById(
+        self,
+        value0: _builtins.int,
+    ) -> _schema.Either[data.ApiError, data.Order]:
+        """getOrderById, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.getOrderById(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_deleteOrder(
+        self,
+        value0: _builtins.int,
+    ) -> _schema.Either[data.ApiError, None]:
+        """deleteOrder, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.deleteOrder(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_createUser(
+        self,
+        value0: _schema.Maybe[data.User],
+    ) -> _schema.Either[data.ApiError, data.User]:
+        """createUser, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createUser(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_createUsersWithListInput(
+        self,
+        value0: _schema.Maybe[_builtins.list[data.User]],
+    ) -> _schema.Either[data.ApiError, data.User]:
+        """createUsersWithListInput, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.createUsersWithListInput(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_loginUser(
+        self,
+        value0: _schema.Maybe[_builtins.str],
+        value1: _schema.Maybe[_builtins.str],
+    ) -> _schema.Either[data.ApiError, _builtins.str]:
+        """loginUser, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.loginUser(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_logoutUser(self) -> _schema.Either[data.ApiError, None]:
+        """logoutUser, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.logoutUser())
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_getUserByName(
+        self,
+        value0: _builtins.str,
+    ) -> _schema.Either[data.ApiError, data.User]:
+        """getUserByName, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.getUserByName(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_updateUser(
+        self,
+        value0: _builtins.str,
+        value1: _schema.Maybe[data.User],
+    ) -> _schema.Either[data.ApiError, None]:
+        """updateUser, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.updateUser(value0, value1))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))
+
+    def try_deleteUser(
+        self,
+        value0: _builtins.str,
+    ) -> _schema.Either[data.ApiError, None]:
+        """deleteUser, with the failure it raises as Left rather than an exception."""
+        try:
+            return _schema.Right(self.deleteUser(value0))
+        except ls.Failure as failure:
+            if failure.ability != "lawspec::ability::Fail(lawtwin.petstore.model::type::ApiError)":
+                raise
+            return _schema.Left(ls.handler_schema(_lawspec_schema).to_native(_schema.Named(
+                "lawtwin.petstore.model::type::ApiError",
+            ), failure.value, 64, self._symbols))

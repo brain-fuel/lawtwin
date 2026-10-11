@@ -2710,7 +2710,7 @@ public final class LawSpecRuntime {
   }
 
   public static boolean recorded(String key, Value value) {
-    String text = render(value);
+    String text = recordedText(value);
     java.nio.file.Path path = recordedRoot();
     for (String part : key.split("/")) path = path.resolve(part);
     try {
@@ -2900,6 +2900,95 @@ public final class LawSpecRuntime {
       return name + "(" + String.join(", ", parts) + ")";
     }
     return String.valueOf(data);
+  }
+
+  /** Typed snapshot text, with identities numbered inside one recording.
+   * ref:REQ-law-primitives ref:DEC-portable-exact-arithmetic */
+  public static String recordedText(Value value) {
+    return new RecordedText().render(value);
+  }
+
+  private static final class RecordedText {
+    private final java.util.IdentityHashMap<Object, Integer> symbols = new java.util.IdentityHashMap<>();
+    private final Map<String, java.util.IdentityHashMap<Object, Integer>> handles = new java.util.HashMap<>();
+    private static String quote(String text) {
+      return "\"" + text.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
+    }
+    private static String floating(double value, int width) {
+      String name = "float" + width;
+      if (Double.isNaN(value)) return name + "NaN";
+      String hex = width == 32 ? String.format("%08x", Float.floatToRawIntBits((float) value))
+          : String.format("%016x", Double.doubleToRawLongBits(value));
+      return name + "Bits(\"" + hex + "\")";
+    }
+    private static int identity(java.util.IdentityHashMap<Object, Integer> known, Object value) {
+      Integer found = known.get(value);
+      if (found != null) return found;
+      int number = known.size() + 1;
+      known.put(value, number);
+      return number;
+    }
+    private static String shortName(String type) {
+      int cut = type.lastIndexOf("::");
+      return cut < 0 ? type : type.substring(cut + 2);
+    }
+    private String parts(List<Value> values) {
+      var parts = new ArrayList<String>();
+      for (Value value : values) parts.add(render(value));
+      return String.join(", ", parts);
+    }
+    private String render(Value v) {
+      Object data = v.data();
+      String type = v.type();
+      if (data instanceof Boolean || data instanceof BigInteger) return data.toString();
+      if (data instanceof BigDecimal decimal) {
+        BigInteger c = decimal.unscaledValue();
+        long e = -(long) decimal.scale();
+        if (c.signum() == 0) return "0e0";
+        while (c.remainder(BigInteger.TEN).signum() == 0) { c = c.divide(BigInteger.TEN); e++; }
+        return c + "e" + e;
+      }
+      if (data instanceof Ratio r) return "rational(" + r.n() + ", " + r.d() + ")";
+      if (data instanceof Double d) return floating(d, type.equals("Float32") ? 32 : 64);
+      if (data instanceof Complex c) {
+        int width = type.equals("Complex64") ? 32 : 64;
+        return type + "(" + floating(c.real(), width) + ", " + floating(c.imaginary(), width) + ")";
+      }
+      if (data instanceof Integer c)
+        return type.equals("Char") ? quote(new String(Character.toChars(c))) : c.toString();
+      if (data instanceof SymbolValue symbol)
+        return "symbol(" + identity(symbols, symbol) + ", " + quote(symbol.description()) + ")";
+      if (data instanceof Handle h) {
+        var known = handles.computeIfAbsent(type, key -> new java.util.IdentityHashMap<>());
+        return shortName(type) + "#" + identity(known, h.target());
+      }
+      if (data instanceof Presence p) {
+        boolean nullable = type.equals("Nullable") || type.startsWith("Nullable ");
+        if (!p.present()) return nullable ? "null" : "undefined";
+        return (nullable ? "nullable(" : "optional(") + render(p.value()) + ")";
+      }
+      if (data == null) return switch (type) {
+        case "Unit" -> "()";
+        case "Null" -> "null";
+        case "Undefined" -> "undefined";
+        default -> throw new IllegalArgumentException("invalid recorded absence: " + type);
+      };
+      if (data instanceof List<?> items) {
+        if (type.equals("Text")) return quote(codePointsText(v));
+        if (List.of("Bytes", "CodePointText", "Utf16Text").contains(type)) {
+          String name = type.equals("Bytes") ? "bytes" : type.equals("Utf16Text") ? "utf16" : "codePoints";
+          return name + "([" + items.stream().map(Object::toString).collect(java.util.stream.Collectors.joining(", ")) + "])";
+        }
+        var values = new ArrayList<Value>();
+        for (Object item : items) values.add((Value) item);
+        return "[" + parts(values) + "]";
+      }
+      if (data instanceof Data d) {
+        String name = shortName(d.tag());
+        return d.fields().isEmpty() ? name : name + "(" + parts(d.fields()) + ")";
+      }
+      throw new IllegalArgumentException("invalid recorded value: " + type);
+    }
   }
 
   /** A descriptor text's data types and its last form, the one generated. */

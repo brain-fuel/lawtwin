@@ -11,19 +11,19 @@ public final class LawSpecDefinitionBodies {
       lawspec.runtime.LawSpecDataSchema.create();
 
   public static Value evaluate0(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C33.encode(lawspec.runtime.LawSpecTyped.boundedInt16_0(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C42.encode(lawspec.runtime.LawSpecTyped.boundedInt16_cdb4a79e(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate1(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.boundedInt32_1(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.boundedInt32_b3381d93(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate2(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.boundedInt64_2(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.boundedInt64_13153a18(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate3(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C37.encode(lawspec.runtime.LawSpecTyped.boundedInt8_3(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C46.encode(lawspec.runtime.LawSpecTyped.boundedInt8_9822648b(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate4(Map<String, Object> symbols, Value input0) {
@@ -63,11 +63,11 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate5(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.boundedUInt16_4(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C47.encode(lawspec.runtime.LawSpecTyped.boundedUInt16_fab24aa3(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate6(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C39.encode(lawspec.runtime.LawSpecTyped.boundedUInt32_5(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C48.encode(lawspec.runtime.LawSpecTyped.boundedUInt32_f7521c17(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate7(Map<String, Object> symbols, Value input0) {
@@ -105,7 +105,7 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate8(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C40.encode(lawspec.runtime.LawSpecTyped.boundedUInt8_6(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C49.encode(lawspec.runtime.LawSpecTyped.boundedUInt8_8ce0c76e(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate9(Map<String, Object> symbols, Value input0) {
@@ -177,19 +177,19 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate11(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C4.encode(lawspec.runtime.LawSpecTyped.saturatingInt16_7(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C4.encode(lawspec.runtime.LawSpecTyped.saturatingInt16_770015a8(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate12(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.saturatingInt32_8(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.saturatingInt32_9e8d3b43(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate13(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.saturatingInt64_9(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.saturatingInt64_5bce4ed8(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate14(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C41.encode(lawspec.runtime.LawSpecTyped.saturatingInt8_10(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C50.encode(lawspec.runtime.LawSpecTyped.saturatingInt8_54855fd8(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate15(Map<String, Object> symbols, Value input0) {
@@ -231,11 +231,11 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate16(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C42.encode(lawspec.runtime.LawSpecTyped.saturatingUInt16_11(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C51.encode(lawspec.runtime.LawSpecTyped.saturatingUInt16_c4c11e3b(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate17(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.saturatingUInt32_12(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.saturatingUInt32_6d025357(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate18(Map<String, Object> symbols, Value input0) {
@@ -276,7 +276,7 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate19(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.saturatingUInt8_13(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C53.encode(lawspec.runtime.LawSpecTyped.saturatingUInt8_cf40d611(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate20(Map<String, Object> symbols, Value input0) {
@@ -354,19 +354,19 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate22(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C4.encode(lawspec.runtime.LawSpecTyped.wrappingInt16_14(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C4.encode(lawspec.runtime.LawSpecTyped.wrappingInt16_989a4ce2(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate23(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.wrappingInt32_15(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.wrappingInt32_e1b5a7b2(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate24(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.wrappingInt64_16(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.wrappingInt64_698b955a(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate25(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C41.encode(lawspec.runtime.LawSpecTyped.wrappingInt8_17(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C50.encode(lawspec.runtime.LawSpecTyped.wrappingInt8_728a92af(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate26(Map<String, Object> symbols, Value input0) {
@@ -458,11 +458,11 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate27(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C42.encode(lawspec.runtime.LawSpecTyped.wrappingUInt16_18(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C51.encode(lawspec.runtime.LawSpecTyped.wrappingUInt16_e5742dd2(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate28(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.wrappingUInt32_19(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.wrappingUInt32_1ef3ce20(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate29(Map<String, Object> symbols, Value input0) {
@@ -545,7 +545,7 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate30(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.wrappingUInt8_20(lawspec.runtime.LawSpecTyped.C34.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C53.encode(lawspec.runtime.LawSpecTyped.wrappingUInt8_6ce2e7d2(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
   }
 
   public static Value evaluate31(Map<String, Object> symbols, Value input0) {
@@ -707,15 +707,15 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate33(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_21(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C102.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.matchersMatchesRegex_52d1c22e(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C115.decode(input1)));
   }
 
   public static Value evaluate34(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.allAtLeast_22(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.allAtLeast_3df55027(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C89.decode(input1)));
   }
 
   public static Value evaluate35(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.assignmentIn_23(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C84.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.assignmentIn_4b795225(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C93.decode(input1)));
   }
 
   public static Value evaluate36(
@@ -725,7 +725,7 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_24(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C5.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_026ba83d(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C5.decode(input4)));
   }
 
   public static Value evaluate37(
@@ -735,12 +735,12 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3), lawspec.runtime.LawSpecTyped.C7.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCommitOffsets_d3b39e4c(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3), lawspec.runtime.LawSpecTyped.C7.decode(input4)));
   }
 
   public static Value evaluate38(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCreatePartitions_0f2bdce3(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2)));
   }
 
   public static Value evaluate39(
@@ -750,7 +750,7 @@ public final class LawSpecDefinitionBodies {
 
   public static Value evaluate40(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterCreateTopic_25a8c8e9(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2)));
   }
 
   public static Value evaluate41(
@@ -759,7 +759,7 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate42(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C8.encode(lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C8.encode(lawspec.runtime.LawSpecTyped.clusterDescribeGroup_c1f8efd4(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1)));
   }
 
   public static Value evaluate43(Map<String, Object> symbols, Value input0, Value input1) {
@@ -773,12 +773,12 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_29(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C9.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_e8879acb(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C9.decode(input4)));
   }
 
   public static Value evaluate45(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C10.encode(lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C11.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C10.encode(lawspec.runtime.LawSpecTyped.clusterFetchOffset_53ffef89(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C11.decode(input2)));
   }
 
   public static Value evaluate46(
@@ -788,12 +788,12 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C12.encode(lawspec.runtime.LawSpecTyped.clusterFetchRequest_31(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3), lawspec.runtime.LawSpecTyped.C13.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C12.encode(lawspec.runtime.LawSpecTyped.clusterFetchRequest_53f6507d(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3), lawspec.runtime.LawSpecTyped.C13.decode(input4)));
   }
 
   public static Value evaluate47(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterHeartbeat_3af82cc2(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3)));
   }
 
   public static Value evaluate48(
@@ -802,12 +802,12 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate49(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_33(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C15.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_f11b7e7d(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C15.decode(input1)));
   }
 
   public static Value evaluate50(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C16.encode(lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C16.encode(lawspec.runtime.LawSpecTyped.clusterJoinGroup_2f7f09cb(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3)));
   }
 
   public static Value evaluate51(
@@ -817,7 +817,7 @@ public final class LawSpecDefinitionBodies {
 
   public static Value evaluate52(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterLeaveGroup_cd94c353(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2)));
   }
 
   public static Value evaluate53(
@@ -827,7 +827,7 @@ public final class LawSpecDefinitionBodies {
 
   public static Value evaluate54(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.clusterListOffsets_36(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C19.decode(input2), lawspec.runtime.LawSpecTyped.C13.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.clusterListOffsets_1dede442(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C19.decode(input2), lawspec.runtime.LawSpecTyped.C13.decode(input3)));
   }
 
   public static Value evaluate55(
@@ -855,21 +855,21 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate59(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C20.encode(lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C20.encode(lawspec.runtime.LawSpecTyped.clusterMetadataRequest_3507727c(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1)));
   }
 
   public static Value evaluate60(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.clusterProduceRequest_38(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C21.decode(input2), lawspec.runtime.LawSpecTyped.C22.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.clusterProduceRequest_619c7f1f(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C21.decode(input2), lawspec.runtime.LawSpecTyped.C22.decode(input3)));
   }
 
   public static Value evaluate61(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.clusterStart_39(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.clusterStart_659e952a(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate62(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C24.encode(lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C24.encode(lawspec.runtime.LawSpecTyped.clusterSyncGroup_fa44a945(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3)));
   }
 
   public static Value evaluate63(
@@ -885,2059 +885,217 @@ public final class LawSpecDefinitionBodies {
       Value input3,
       Value input4,
       Value input5) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_41(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C2.decode(input4), lawspec.runtime.LawSpecTyped.C7.decode(input5)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_08ba35de(lawspec.runtime.LawSpecTyped.C1.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C4.decode(input3), lawspec.runtime.LawSpecTyped.C2.decode(input4), lawspec.runtime.LawSpecTyped.C7.decode(input5)));
   }
 
   public static Value evaluate65(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate332(
-              symbols,
-              value0,
-              value1,
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::IsolationLevel"),
-                  "lawtwin.kafka.model::type::IsolationLeve" + "l::ReadCommitted",
-                  java.util.List.of(),
-                  64,
-                  symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::committedFrom: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.committedFrom_a524f37d(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate66(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.consumerAssign_42(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.consumerAssign_793a07ba(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate67(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ConsumerState"),
-                  value0,
-                  64,
-                  symbols,
-                  _match2421 ->
-                      switch (_match2421.tag()) {
-                        case "lawtwin.kafka::type::ConsumerState::Cons" + "umerState" -> {
-                          var value1 = _match2421.fields().get(0);
-                          var value2 = _match2421.fields().get(1);
-                          var value3 = _match2421.fields().get(2);
-                          var value4 = _match2421.fields().get(3);
-                          var value5 = _match2421.fields().get(4);
-                          var value6 = _match2421.fields().get(5);
-                          var value7 = _match2421.fields().get(6);
-                          yield value1;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named("Unit"),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          LawSpecRuntime.convert("Unit", LawSpecRuntime.absent("Unit"), 64),
-                          lawspec.runtime.LawSpecDefinitionBodies.evaluate83(
-                              symbols,
-                              LawSpecRuntime.convert("Unit", LawSpecRuntime.absent("Unit"), 64))),
-                      64,
-                      symbols),
-              value8 ->
-                  LawSpecRuntime.let(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__leaveGroupRequest(
-                                  symbols,
-                                  value8,
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState"),
-                                      value0,
-                                      64,
-                                      symbols,
-                                      _match2348 ->
-                                          switch (_match2348.tag()) {
-                                            case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                + "umerState" -> {
-                                              var value9 = _match2348.fields().get(0);
-                                              var value10 = _match2348.fields().get(1);
-                                              var value11 = _match2348.fields().get(2);
-                                              var value12 = _match2348.fields().get(3);
-                                              var value13 = _match2348.fields().get(4);
-                                              var value14 = _match2348.fields().get(5);
-                                              var value15 = _match2348.fields().get(6);
-                                              yield value10;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          })),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value16 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(value16),
-                                  64,
-                                  symbols),
-                          value17 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(value17),
-                                  64,
-                                  symbols)),
-                      value18 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  LawSpecRuntime.convert("Unit", LawSpecRuntime.absent("Unit"), 64),
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate83(
-                                      symbols,
-                                      LawSpecRuntime.convert(
-                                          "Unit", LawSpecRuntime.absent("Unit"), 64))),
-                              64,
-                              symbols)));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerClose: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.consumerClose_00c5e7f3(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0)));
   }
 
   public static Value evaluate68(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ConsumerState"),
-                  value0,
-                  64,
-                  symbols,
-                  _match2432 ->
-                      switch (_match2432.tag()) {
-                        case "lawtwin.kafka::type::ConsumerState::Cons" + "umerState" -> {
-                          var value1 = _match2432.fields().get(0);
-                          var value2 = _match2432.fields().get(1);
-                          var value3 = _match2432.fields().get(2);
-                          var value4 = _match2432.fields().get(3);
-                          var value5 = _match2432.fields().get(4);
-                          var value6 = _match2432.fields().get(5);
-                          var value7 = _match2432.fields().get(6);
-                          yield value1;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              "Either::Left",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      "lawtwin.kafka.model::type::KafkaError::I" + "nvalidGroupId",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols),
-                          value0),
-                      64,
-                      symbols),
-              value8 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.attempt(
-                                  "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                      + "el::type::KafkaError)",
-                                  () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetCommitRequest(
-                                      symbols,
-                                      value8,
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState"),
-                                          value0,
-                                          64,
-                                          symbols,
-                                          _match2359 ->
-                                              switch (_match2359.tag()) {
-                                                case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                    + "umerState" -> {
-                                                  var value9 = _match2359.fields().get(0);
-                                                  var value10 = _match2359.fields().get(1);
-                                                  var value11 = _match2359.fields().get(2);
-                                                  var value12 = _match2359.fields().get(3);
-                                                  var value13 = _match2359.fields().get(4);
-                                                  var value14 = _match2359.fields().get(5);
-                                                  var value15 = _match2359.fields().get(6);
-                                                  yield value10;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState"),
-                                          value0,
-                                          64,
-                                          symbols,
-                                          _match2361 ->
-                                              switch (_match2361.tag()) {
-                                                case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                    + "umerState" -> {
-                                                  var value16 = _match2361.fields().get(0);
-                                                  var value17 = _match2361.fields().get(1);
-                                                  var value18 = _match2361.fields().get(2);
-                                                  var value19 = _match2361.fields().get(3);
-                                                  var value20 = _match2361.fields().get(4);
-                                                  var value21 = _match2361.fields().get(5);
-                                                  var value22 = _match2361.fields().get(6);
-                                                  yield value18;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      lawspec.runtime.LawSpecDefinitionBodies.evaluate327(
-                                          symbols,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::ConsumerState"),
-                                              value0,
-                                              64,
-                                              symbols,
-                                              _match2507 ->
-                                                  switch (_match2507.tag()) {
-                                                    case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                        + "umerState" -> {
-                                                      var value23 = _match2507.fields().get(0);
-                                                      var value24 = _match2507.fields().get(1);
-                                                      var value25 = _match2507.fields().get(2);
-                                                      var value26 = _match2507.fields().get(3);
-                                                      var value27 = _match2507.fields().get(4);
-                                                      var value28 = _match2507.fields().get(5);
-                                                      var value29 = _match2507.fields().get(6);
-                                                      yield value27;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::ConsumerState"),
-                                              value0,
-                                              64,
-                                              symbols,
-                                              _match2641 ->
-                                                  switch (_match2641.tag()) {
-                                                    case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                        + "umerState" -> {
-                                                      var value30 = _match2641.fields().get(0);
-                                                      var value31 = _match2641.fields().get(1);
-                                                      var value32 = _match2641.fields().get(2);
-                                                      var value33 = _match2641.fields().get(3);
-                                                      var value34 = _match2641.fields().get(4);
-                                                      var value35 = _match2641.fields().get(5);
-                                                      var value36 = _match2641.fields().get(6);
-                                                      yield value35;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }))),
-                                  _value -> _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(_value),
-                                      64,
-                                      symbols),
-                                  _value -> _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Left",
-                                      java.util.List.of(_value),
-                                      64,
-                                      symbols)),
-                              value37 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Left",
-                                      java.util.List.of(value37),
-                                      64,
-                                      symbols),
-                              value38 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(value38),
-                                      64,
-                                      symbols)),
-                          value0),
-                      64,
-                      symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerCommit: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.consumerCommit_787f4c15(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0)));
   }
 
   public static Value evaluate69(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ConsumerState"),
-                  value1,
-                  64,
-                  symbols,
-                  _match2465 ->
-                      switch (_match2465.tag()) {
-                        case "lawtwin.kafka::type::ConsumerState::Cons" + "umerState" -> {
-                          var value2 = _match2465.fields().get(0);
-                          var value3 = _match2465.fields().get(1);
-                          var value4 = _match2465.fields().get(2);
-                          var value5 = _match2465.fields().get(3);
-                          var value6 = _match2465.fields().get(4);
-                          var value7 = _match2465.fields().get(5);
-                          var value8 = _match2465.fields().get(6);
-                          yield value2;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Maybe", new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          LawSpecRuntime.construct("Maybe Int64", "Maybe::Nothing", new Value[] {}),
-                          value1),
-                      64,
-                      symbols),
-              value9 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Maybe", new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
-                              symbols, value9, value0),
-                          value1),
-                      64,
-                      symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerCommitted: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C28.encode(lawspec.runtime.LawSpecTyped.consumerCommitted_06365ac2(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate70(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.consumerIsolation_43(lawspec.runtime.LawSpecTyped.C13.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.consumerIsolation_2aacd289(lawspec.runtime.LawSpecTyped.C13.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate71(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__joinGroupRequest(
-                          symbols, value0, value1, value2),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value4 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                          "Either::Left",
-                          java.util.List.of(value4),
-                          64,
-                          symbols),
-                  value5 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                          "Either::Right",
-                          java.util.List.of(value5),
-                          64,
-                          symbols)),
-              value6 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "List",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::TopicPartition"))),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "List",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::TopicPartition"))),
-                              "Either::Left",
-                              java.util.List.of(value6),
-                              64,
-                              symbols),
-                          value3),
-                      64,
-                      symbols),
-              value7 ->
-                  LawSpecRuntime.matchEither(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__syncGroupRequest(
-                                  symbols, value0, value1, value7),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value8 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  "Either::Left",
-                                  java.util.List.of(value8),
-                                  64,
-                                  symbols),
-                          value9 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  "Either::Right",
-                                  java.util.List.of(value9),
-                                  64,
-                                  symbols)),
-                      value10 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "List",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::TopicPartition"))),
-                                      "Either::Left",
-                                      java.util.List.of(value10),
-                                      64,
-                                      symbols),
-                                  value3),
-                              64,
-                              symbols),
-                      value11 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "List",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::TopicPartition"))),
-                                      "Either::Right",
-                                      java.util.List.of(value11),
-                                      64,
-                                      symbols),
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate357(
-                                      symbols,
-                                      LawSpecRuntime.construct(
-                                          "Maybe Text", "Maybe::Just", new Value[] {value0}),
-                                      value1,
-                                      value7,
-                                      value2,
-                                      value11,
-                                      value3)),
-                              64,
-                              symbols)));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerJoin: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C31.encode(lawspec.runtime.LawSpecTyped.consumerJoin_198e034e(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2), lawspec.runtime.LawSpecTyped.C26.decode(input3)));
   }
 
   public static Value evaluate72(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.let(
-              lawspec.runtime.LawSpecDefinitionBodies.evaluate76(symbols, value1),
-              value2 ->
-                  LawSpecRuntime.matchEither(
-                      _schema.match(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawspec.collections::type::Pair",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::ConsumerState")),
-                          value2,
-                          64,
-                          symbols,
-                          _match1748 ->
-                              switch (_match1748.tag()) {
-                                case "lawspec.collections::type::Pair::Pair" -> {
-                                  var value3 = _match1748.fields().get(0);
-                                  var value4 = _match1748.fields().get(1);
-                                  yield value3;
-                                }
-                                default ->
-                                    throw new IllegalArgumentException("invalid constructor");
-                              }),
-                      value5 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "List",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerRecord"))),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "List",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::ConsumerRecord"))),
-                                      "Either::Left",
-                                      java.util.List.of(value5),
-                                      64,
-                                      symbols),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState")),
-                                      value2,
-                                      64,
-                                      symbols,
-                                      _match1592 ->
-                                          switch (_match1592.tag()) {
-                                            case "lawspec.collections::type::Pair::Pair" -> {
-                                              var value6 = _match1592.fields().get(0);
-                                              var value7 = _match1592.fields().get(1);
-                                              yield value7;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          })),
-                              64,
-                              symbols),
-                      value8 ->
-                          lawspec.runtime.LawSpecDefinitionBodies.evaluate326(
-                              symbols,
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState"),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState")),
-                                      value2,
-                                      64,
-                                      symbols,
-                                      _match1477 ->
-                                          switch (_match1477.tag()) {
-                                            case "lawspec.collections::type::Pair::Pair" -> {
-                                              var value9 = _match1477.fields().get(0);
-                                              var value10 = _match1477.fields().get(1);
-                                              yield value10;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  64,
-                                  symbols,
-                                  _match3737 ->
-                                      switch (_match3737.tag()) {
-                                        case "lawtwin.kafka::type::ConsumerState::Cons"
-                                            + "umerState" -> {
-                                          var value11 = _match3737.fields().get(0);
-                                          var value12 = _match3737.fields().get(1);
-                                          var value13 = _match3737.fields().get(2);
-                                          var value14 = _match3737.fields().get(3);
-                                          var value15 = _match3737.fields().get(4);
-                                          var value16 = _match3737.fields().get(5);
-                                          var value17 = _match3737.fields().get(6);
-                                          yield value15;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      }),
-                              value0,
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState")),
-                                  value2,
-                                  64,
-                                  symbols,
-                                  _match1598 ->
-                                      switch (_match1598.tag()) {
-                                        case "lawspec.collections::type::Pair::Pair" -> {
-                                          var value18 = _match1598.fields().get(0);
-                                          var value19 = _match1598.fields().get(1);
-                                          yield value19;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      }),
-                              LawSpecRuntime.construct(
-                                  "List lawtwin.kafka::type::ConsumerRecord",
-                                  "List::Nil",
-                                  new Value[] {}))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerPoll: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C29.encode(lawspec.runtime.LawSpecTyped.consumerPoll_d12c6262(symbols, lawspec.runtime.LawSpecTyped.C6.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate73(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              lawspec.runtime.LawSpecDefinitionBodies.evaluate186(
-                  symbols,
-                  value0,
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ConsumerState"),
-                      value1,
-                      64,
-                      symbols,
-                      _match2661 ->
-                          switch (_match2661.tag()) {
-                            case "lawtwin.kafka::type::ConsumerState::Cons" + "umerState" -> {
-                              var value2 = _match2661.fields().get(0);
-                              var value3 = _match2661.fields().get(1);
-                              var value4 = _match2661.fields().get(2);
-                              var value5 = _match2661.fields().get(3);
-                              var value6 = _match2661.fields().get(4);
-                              var value7 = _match2661.fields().get(5);
-                              var value8 = _match2661.fields().get(6);
-                              yield value7;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          })),
-              () ->
-                  LawSpecRuntime.let(
-                      LawSpecRuntime.matchMaybe(
-                          _schema.match(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::ConsumerState"),
-                              value1,
-                              64,
-                              symbols,
-                              _match2455 ->
-                                  switch (_match2455.tag()) {
-                                    case "lawtwin.kafka::type::ConsumerState::Cons"
-                                        + "umerState" -> {
-                                      var value10 = _match2455.fields().get(0);
-                                      var value11 = _match2455.fields().get(1);
-                                      var value12 = _match2455.fields().get(2);
-                                      var value13 = _match2455.fields().get(3);
-                                      var value14 = _match2455.fields().get(4);
-                                      var value15 = _match2455.fields().get(5);
-                                      var value16 = _match2455.fields().get(6);
-                                      yield value10;
-                                    }
-                                    default ->
-                                        throw new IllegalArgumentException("invalid constructor");
-                                  }),
-                          () ->
-                              LawSpecRuntime.convert(
-                                  "Int64", LawSpecRuntime.integer("Int64", "0"), 64),
-                          value17 ->
-                              LawSpecRuntime.matchMaybe(
-                                  lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
-                                      symbols, value17, value0),
-                                  () ->
-                                      LawSpecRuntime.convert(
-                                          "Int64", LawSpecRuntime.integer("Int64", "0"), 64),
-                                  value18 -> value18)),
-                      value19 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  value19,
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate358(
-                                      symbols, value0, value19, value1)),
-                              64,
-                              symbols)),
-              value9 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(value9, value1),
-                      64,
-                      symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerPosition: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C94.encode(lawspec.runtime.LawSpecTyped.consumerPosition_4da411a3(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate74(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          (LawSpecRuntime.truth(
-                  LawSpecRuntime.bool(
-                      !LawSpecRuntime.truth(
-                          LawSpecRuntime.allElements(
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState"),
-                                  value1,
-                                  64,
-                                  symbols,
-                                  _match2548 ->
-                                      switch (_match2548.tag()) {
-                                        case "lawtwin.kafka::type::ConsumerState::Cons"
-                                            + "umerState" -> {
-                                          var value2 = _match2548.fields().get(0);
-                                          var value3 = _match2548.fields().get(1);
-                                          var value4 = _match2548.fields().get(2);
-                                          var value5 = _match2548.fields().get(3);
-                                          var value6 = _match2548.fields().get(4);
-                                          var value7 = _match2548.fields().get(5);
-                                          var value8 = _match2548.fields().get(6);
-                                          yield value6;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      }),
-                              value9 ->
-                                  LawSpecRuntime.bool(
-                                      !_schema.equal(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"),
-                                          value9,
-                                          value0,
-                                          64,
-                                          symbols))))))
-              ? LawSpecRuntime.let(
-                  lawspec.runtime.LawSpecDefinitionBodies.evaluate73(symbols, value0, value1),
-                  value10 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawspec.collections::type::Pair",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::ConsumerState")),
-                          "lawspec.collections::type::Pair::Pair",
-                          java.util.List.of(
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                  "Either::Right",
-                                  java.util.List.of(
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawspec.collections::type::Pair",
-                                              new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::ConsumerState")),
-                                          value10,
-                                          64,
-                                          symbols,
-                                          _match1349 ->
-                                              switch (_match1349.tag()) {
-                                                case "lawspec.collections::type::Pair::Pair" -> {
-                                                  var value11 = _match1349.fields().get(0);
-                                                  var value12 = _match1349.fields().get(1);
-                                                  yield value11;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              })),
-                                  64,
-                                  symbols),
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState")),
-                                  value10,
-                                  64,
-                                  symbols,
-                                  _match1407 ->
-                                      switch (_match1407.tag()) {
-                                        case "lawspec.collections::type::Pair::Pair" -> {
-                                          var value13 = _match1407.fields().get(0);
-                                          var value14 = _match1407.fields().get(1);
-                                          yield value14;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      })),
-                          64,
-                          symbols))
-              : _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawspec.collections::type::Pair",
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "Either",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka.model::type::KafkaError"),
-                          new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ConsumerState")),
-                  "lawspec.collections::type::Pair::Pair",
-                  java.util.List.of(
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                          "Either::Left",
-                          java.util.List.of(
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  "lawtwin.kafka.model::type::KafkaError::I" + "llegalState",
-                                  java.util.List.of(),
-                                  64,
-                                  symbols)),
-                          64,
-                          symbols),
-                      value1),
-                  64,
-                  symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerPositionOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C30.encode(lawspec.runtime.LawSpecTyped.consumerPositionOf_71a8a523(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C26.decode(input1)));
   }
 
   public static Value evaluate75(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C85.encode(lawspec.runtime.LawSpecTyped.consumerRecords_44(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C86.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C95.encode(lawspec.runtime.LawSpecTyped.consumerRecords_9d810f29(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C96.decode(input1)));
   }
 
   public static Value evaluate76(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ConsumerState"),
-                  value0,
-                  64,
-                  symbols,
-                  _match2443 ->
-                      switch (_match2443.tag()) {
-                        case "lawtwin.kafka::type::ConsumerState::Cons" + "umerState" -> {
-                          var value1 = _match2443.fields().get(0);
-                          var value2 = _match2443.fields().get(1);
-                          var value3 = _match2443.fields().get(2);
-                          var value4 = _match2443.fields().get(3);
-                          var value5 = _match2443.fields().get(4);
-                          var value6 = _match2443.fields().get(5);
-                          var value7 = _match2443.fields().get(6);
-                          yield value1;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              "Either::Right",
-                              java.util.List.of(
-                                  LawSpecRuntime.convert(
-                                      "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                              64,
-                              symbols),
-                          value0),
-                      64,
-                      symbols),
-              value8 ->
-                  LawSpecRuntime.matchEither(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__heartbeatRequest(
-                                  symbols,
-                                  value8,
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState"),
-                                      value0,
-                                      64,
-                                      symbols,
-                                      _match2385 ->
-                                          switch (_match2385.tag()) {
-                                            case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                + "umerState" -> {
-                                              var value9 = _match2385.fields().get(0);
-                                              var value10 = _match2385.fields().get(1);
-                                              var value11 = _match2385.fields().get(2);
-                                              var value12 = _match2385.fields().get(3);
-                                              var value13 = _match2385.fields().get(4);
-                                              var value14 = _match2385.fields().get(5);
-                                              var value15 = _match2385.fields().get(6);
-                                              yield value10;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState"),
-                                      value0,
-                                      64,
-                                      symbols,
-                                      _match2387 ->
-                                          switch (_match2387.tag()) {
-                                            case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                + "umerState" -> {
-                                              var value16 = _match2387.fields().get(0);
-                                              var value17 = _match2387.fields().get(1);
-                                              var value18 = _match2387.fields().get(2);
-                                              var value19 = _match2387.fields().get(3);
-                                              var value20 = _match2387.fields().get(4);
-                                              var value21 = _match2387.fields().get(5);
-                                              var value22 = _match2387.fields().get(6);
-                                              yield value18;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          })),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value23 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(value23),
-                                  64,
-                                  symbols),
-                          value24 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(value24),
-                                  64,
-                                  symbols)),
-                      value26 ->
-                          (LawSpecRuntime.truth(
-                                  LawSpecRuntime.bool(
-                                      LawSpecRuntime.truth(
-                                              LawSpecRuntime.bool(
-                                                  _schema.equal(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      value26,
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          "lawtwin.kafka.model::type::KafkaError::I"
-                                                              + "llegalGeneration",
-                                                          java.util.List.of(),
-                                                          64,
-                                                          symbols),
-                                                      64,
-                                                      symbols)))
-                                          || LawSpecRuntime.truth(
-                                              LawSpecRuntime.bool(
-                                                  _schema.equal(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      value26,
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          "lawtwin.kafka.model::type::KafkaError::U"
-                                                              + "nknownMemberId",
-                                                          java.util.List.of(),
-                                                          64,
-                                                          symbols),
-                                                      64,
-                                                      symbols)))))
-                              ? LawSpecRuntime.let(
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate71(
-                                      symbols,
-                                      value8,
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState"),
-                                          value0,
-                                          64,
-                                          symbols,
-                                          _match2385 ->
-                                              switch (_match2385.tag()) {
-                                                case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                    + "umerState" -> {
-                                                  var value27 = _match2385.fields().get(0);
-                                                  var value28 = _match2385.fields().get(1);
-                                                  var value29 = _match2385.fields().get(2);
-                                                  var value30 = _match2385.fields().get(3);
-                                                  var value31 = _match2385.fields().get(4);
-                                                  var value32 = _match2385.fields().get(5);
-                                                  var value33 = _match2385.fields().get(6);
-                                                  yield value28;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState"),
-                                          value0,
-                                          64,
-                                          symbols,
-                                          _match2457 ->
-                                              switch (_match2457.tag()) {
-                                                case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                    + "umerState" -> {
-                                                  var value34 = _match2457.fields().get(0);
-                                                  var value35 = _match2457.fields().get(1);
-                                                  var value36 = _match2457.fields().get(2);
-                                                  var value37 = _match2457.fields().get(3);
-                                                  var value38 = _match2457.fields().get(4);
-                                                  var value39 = _match2457.fields().get(5);
-                                                  var value40 = _match2457.fields().get(6);
-                                                  yield value37;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      value0),
-                                  value41 ->
-                                      LawSpecRuntime.matchEither(
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "List",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::TopicPartition"))),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ConsumerState")),
-                                              value41,
-                                              64,
-                                              symbols,
-                                              _match2056 ->
-                                                  switch (_match2056.tag()) {
-                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                      var value42 = _match2056.fields().get(0);
-                                                      var value43 = _match2056.fields().get(1);
-                                                      yield value42;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          value44 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawspec.collections::type::Pair",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Unit")),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::ConsumerState")),
-                                                  "lawspec.collections::type::Pair::Pair",
-                                                  java.util.List.of(
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Left",
-                                                          java.util.List.of(value44),
-                                                          64,
-                                                          symbols),
-                                                      _schema.match(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawspec.collections::type::Pair",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Either",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "List",
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka.model::type::TopicPartition"))),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::ConsumerState")),
-                                                          value41,
-                                                          64,
-                                                          symbols,
-                                                          _match1754 ->
-                                                              switch (_match1754.tag()) {
-                                                                case "lawspec.collections::type::Pair::Pair" -> {
-                                                                  var value45 = _match1754.fields().get(0);
-                                                                  var value46 = _match1754.fields().get(1);
-                                                                  yield value46;
-                                                                }
-                                                                default ->
-                                                                    throw new IllegalArgumentException("invalid constructor");
-                                                              })),
-                                                  64,
-                                                  symbols),
-                                          value47 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawspec.collections::type::Pair",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Unit")),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::ConsumerState")),
-                                                  "lawspec.collections::type::Pair::Pair",
-                                                  java.util.List.of(
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Right",
-                                                          java.util.List.of(
-                                                              LawSpecRuntime.convert(
-                                                                  "Unit",
-                                                                  LawSpecRuntime.absent("Unit"),
-                                                                  64)),
-                                                          64,
-                                                          symbols),
-                                                      _schema.match(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawspec.collections::type::Pair",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Either",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "List",
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka.model::type::TopicPartition"))),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::ConsumerState")),
-                                                          value41,
-                                                          64,
-                                                          symbols,
-                                                          _match1754 ->
-                                                              switch (_match1754.tag()) {
-                                                                case "lawspec.collections::type::Pair::Pair" -> {
-                                                                  var value48 = _match1754.fields().get(0);
-                                                                  var value49 = _match1754.fields().get(1);
-                                                                  yield value49;
-                                                                }
-                                                                default ->
-                                                                    throw new IllegalArgumentException("invalid constructor");
-                                                              })),
-                                                  64,
-                                                  symbols)))
-                              : _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerState")),
-                                  "lawspec.collections::type::Pair::Pair",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(value26),
-                                          64,
-                                          symbols),
-                                      value0),
-                                  64,
-                                  symbols)),
-                      value25 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(
-                                          LawSpecRuntime.convert(
-                                              "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                                      64,
-                                      symbols),
-                                  value0),
-                              64,
-                              symbols)));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::consumerRefresh: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.consumerRefresh_99e956fa(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0)));
   }
 
   public static Value evaluate77(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.consumerSeek_45(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C26.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.consumerSeek_975a7017(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C26.decode(input2)));
   }
 
   public static Value evaluate78(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.coversOnce_46(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C87.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.coversOnce_231e9ee6(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C97.decode(input2)));
   }
 
   public static Value evaluate79(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__createTopicsRequest(
-                          symbols, value0, value1),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value2 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          "Either::Left",
-                          java.util.List.of(value2),
-                          64,
-                          symbols),
-                  value3 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          "Either::Right",
-                          java.util.List.of(value3),
-                          64,
-                          symbols)),
-              value4 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-              value5 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::created: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.created_5201db31(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
   }
 
   public static Value evaluate80(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.fencedBy_47(lawspec.runtime.LawSpecTyped.C88.decode(input0), lawspec.runtime.LawSpecTyped.C88.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.fencedBy_c383bb89(lawspec.runtime.LawSpecTyped.C98.decode(input0), lawspec.runtime.LawSpecTyped.C98.decode(input1)));
   }
 
   public static Value evaluate81(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.followsBatch_48(lawspec.runtime.LawSpecTyped.C89.decode(input0), lawspec.runtime.LawSpecTyped.C22.decode(input1), lawspec.runtime.LawSpecTyped.C89.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.followsBatch_00cf360a(lawspec.runtime.LawSpecTyped.C99.decode(input0), lawspec.runtime.LawSpecTyped.C22.decode(input1), lawspec.runtime.LawSpecTyped.C99.decode(input2)));
   }
 
   public static Value evaluate82(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.followsOne_49(lawspec.runtime.LawSpecTyped.C90.decode(input0), lawspec.runtime.LawSpecTyped.C89.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.followsOne_4f3a93e2(lawspec.runtime.LawSpecTyped.C100.decode(input0), lawspec.runtime.LawSpecTyped.C99.decode(input1)));
   }
 
   public static Value evaluate83(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.freshConsumer_50(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.freshConsumer_c2da4184(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate84(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C29.encode(lawspec.runtime.LawSpecTyped.freshProducer_51(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C33.encode(lawspec.runtime.LawSpecTyped.freshProducer_deea7b00(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate85(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C32.encode(lawspec.runtime.LawSpecTyped.freshTransactions_52(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C39.encode(lawspec.runtime.LawSpecTyped.freshTransactions_533fb432(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate86(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C30.encode(lawspec.runtime.LawSpecTyped.identityOf_53(lawspec.runtime.LawSpecTyped.C29.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.identityOf_96976095(lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate87(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.increasing_54(lawspec.runtime.LawSpecTyped.C80.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.increasing_d02ccce0(lawspec.runtime.LawSpecTyped.C89.decode(input0)));
   }
 
   public static Value evaluate88(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchList(
-              value1,
-              () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64),
-              (value3, value4) ->
-                  LawSpecRuntime.bool(
-                      LawSpecRuntime.truth(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.attempt(
-                                          "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                              + "el::type::KafkaError)",
-                                          () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__joinGroupRequest(
-                                              symbols, value0, value3, value2),
-                                          _value -> _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Right",
-                                              java.util.List.of(_value),
-                                              64,
-                                              symbols),
-                                          _value -> _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Left",
-                                              java.util.List.of(_value),
-                                              64,
-                                              symbols)),
-                                      value5 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Left",
-                                              java.util.List.of(value5),
-                                              64,
-                                              symbols),
-                                      value6 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Right",
-                                              java.util.List.of(value6),
-                                              64,
-                                              symbols)),
-                                  value7 ->
-                                      LawSpecRuntime.convert(
-                                          "Bool", LawSpecRuntime.bool(false), 64),
-                                  value8 ->
-                                      LawSpecRuntime.convert(
-                                          "Bool", LawSpecRuntime.bool(true), 64)))
-                          && LawSpecRuntime.truth(
-                              lawspec.runtime.LawSpecDefinitionBodies.evaluate88(
-                                  symbols, value0, value4, value2))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::joinAll: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.joinAll_67d573a5(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2)));
   }
 
   public static Value evaluate89(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchList(
-              value1,
-              () -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64),
-              (value3, value4) ->
-                  LawSpecRuntime.bool(
-                      LawSpecRuntime.truth(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.attempt(
-                                          "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                              + "el::type::KafkaError)",
-                                          () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(
-                                              symbols, value0, value3, value2),
-                                          _value -> _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Right",
-                                              java.util.List.of(_value),
-                                              64,
-                                              symbols),
-                                          _value -> _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Left",
-                                              java.util.List.of(_value),
-                                              64,
-                                              symbols)),
-                                      value5 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Left",
-                                              java.util.List.of(value5),
-                                              64,
-                                              symbols),
-                                      value6 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int32")),
-                                              "Either::Right",
-                                              java.util.List.of(value6),
-                                              64,
-                                              symbols)),
-                                  value7 ->
-                                      LawSpecRuntime.convert(
-                                          "Bool", LawSpecRuntime.bool(false), 64),
-                                  value8 ->
-                                      LawSpecRuntime.convert(
-                                          "Bool", LawSpecRuntime.bool(true), 64)))
-                          && LawSpecRuntime.truth(
-                              lawspec.runtime.LawSpecDefinitionBodies.evaluate89(
-                                  symbols, value0, value4, value2))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::joinEach: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.joinEach_78c50afb(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2)));
   }
 
   public static Value evaluate90(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerAssign_55(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerAssign_6414ad54(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
   }
 
   public static Value evaluate91(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate67(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerClose: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerClose_ece19793(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0)));
   }
 
   public static Value evaluate92(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate68(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerCommitSync: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerCommitSync_d47684fe(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0)));
   }
 
   public static Value evaluate93(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate69(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerCommittedOffset: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C28.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerCommittedOffset_c045e1a8(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1)));
   }
 
   public static Value evaluate94(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate72(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerPoll: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C29.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerPoll_591504e0(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
   }
 
   public static Value evaluate95(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate74(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerPosition: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C30.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerPosition_7784665f(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1)));
   }
 
   public static Value evaluate96(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerSeek_56(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C27.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerSeek_5fe046a7(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2)));
   }
 
   public static Value evaluate97(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel_57(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C13.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C25.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel_bc2459d3(lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C13.decode(input1)));
   }
 
   public static Value evaluate98(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerStart_58(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerStart_9e580acc(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate99(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate71(
-              symbols, value1, value2, value3, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaConsumerSubscribe: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C31.encode(lawspec.runtime.LawSpecTyped.kafkaConsumerSubscribe_ce34eaf5(symbols, lawspec.runtime.LawSpecTyped.C26.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3)));
   }
 
   public static Value evaluate100(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate329(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaProducerEnableIdempo" + "tence: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C32.encode(lawspec.runtime.LawSpecTyped.kafkaProducerEnableIdempotence_a79d2db8(symbols, lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate101(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C28.encode(lawspec.runtime.LawSpecTyped.kafkaProducerFlush_59(lawspec.runtime.LawSpecTyped.C29.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C34.encode(lawspec.runtime.LawSpecTyped.kafkaProducerFlush_584e906f(lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate102(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C30.encode(lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity_60(lawspec.runtime.LawSpecTyped.C29.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity_a0ee547d(lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate103(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate330(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaProducerRetryLastSend: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.kafkaProducerRetryLastSend_9cbd6c72(symbols, lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate104(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate331(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaProducerSend: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.kafkaProducerSend_a4612365(symbols, lawspec.runtime.LawSpecTyped.C33.decode(input0), lawspec.runtime.LawSpecTyped.C37.decode(input1)));
   }
 
   public static Value evaluate105(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C29.encode(lawspec.runtime.LawSpecTyped.kafkaProducerStart_61(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C33.encode(lawspec.runtime.LawSpecTyped.kafkaProducerStart_58ddcfc8(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate106(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate347(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsAbortTra" + "nsaction: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsAbortTransaction_a2a1e35e(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate107(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate348(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsAddParti" + "tionsToTransaction: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsAddPartitionsToTransaction_3d7d0621(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
   }
 
   public static Value evaluate108(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C31.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction_62(lawspec.runtime.LawSpecTyped.C32.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction_3c1e648e(lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate109(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate350(symbols, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsCommitTr" + "ansaction: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsCommitTransaction_e0a5e067(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate110(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate352(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsInitTran" + "sactions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C40.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsInitTransactions_96f85461(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1)));
   }
 
   public static Value evaluate111(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result = lawspec.runtime.LawSpecDefinitionBodies.evaluate354(symbols, value1, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsSendInTr" + "ansaction: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C41.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsSendInTransaction_09c804c7(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0), lawspec.runtime.LawSpecTyped.C37.decode(input1)));
   }
 
   public static Value evaluate112(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate353(symbols, value1, value2, value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::kafkaTransactionsSendOffs" + "etsToTransaction: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsSendOffsetsToTransaction_d24938fc(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C7.decode(input2)));
   }
 
   public static Value evaluate113(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C32.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsStart_63(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C39.encode(lawspec.runtime.LawSpecTyped.kafkaTransactionsStart_68a77cf3(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate114(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C71.encode(lawspec.runtime.LawSpecTyped.keepPositions_64(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C71.decode(input1), lawspec.runtime.LawSpecTyped.C71.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.keepPositions_f10bd26f(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1), lawspec.runtime.LawSpecTyped.C80.decode(input2)));
   }
 
   public static Value evaluate115(Map<String, Object> symbols, Value input0) {
@@ -3073,415 +1231,415 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate148(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_65(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C45.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_5df79bd1(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
   }
 
   public static Value evaluate149(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C46.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_66(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C46.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C55.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDeleteItems_6394b670(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C55.decode(input1)));
   }
 
   public static Value evaluate150(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C47.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_67(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C47.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C56.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_daac10f4(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C56.decode(input1)));
   }
 
   public static Value evaluate151(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C48.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_68(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C48.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C57.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValDelete_9159aa73(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C57.decode(input1)));
   }
 
   public static Value evaluate152(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C49.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_69(lawspec.runtime.LawSpecTyped.C50.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C58.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_a865cc3f(lawspec.runtime.LawSpecTyped.C59.decode(input0)));
   }
 
   public static Value evaluate153(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C51.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_70(lawspec.runtime.LawSpecTyped.C52.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C60.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_d490695f(lawspec.runtime.LawSpecTyped.C61.decode(input0)));
   }
 
   public static Value evaluate154(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_71(lawspec.runtime.LawSpecTyped.C48.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValEntries_90fdb0cf(lawspec.runtime.LawSpecTyped.C57.decode(input0)));
   }
 
   public static Value evaluate155(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C46.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_72(lawspec.runtime.LawSpecTyped.C46.decode(input0), lawspec.runtime.LawSpecTyped.C46.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C55.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_b1d7a6fe(lawspec.runtime.LawSpecTyped.C55.decode(input0), lawspec.runtime.LawSpecTyped.C55.decode(input1)));
   }
 
   public static Value evaluate156(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C53.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_73(lawspec.runtime.LawSpecTyped.C53.decode(input0), lawspec.runtime.LawSpecTyped.C53.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C62.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_06f4d2c6(lawspec.runtime.LawSpecTyped.C62.decode(input0), lawspec.runtime.LawSpecTyped.C62.decode(input1)));
   }
 
   public static Value evaluate157(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_74(lawspec.runtime.LawSpecTyped.C54.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C63.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_a82586cc(lawspec.runtime.LawSpecTyped.C63.decode(input0), lawspec.runtime.LawSpecTyped.C63.decode(input1)));
   }
 
   public static Value evaluate158(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C55.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_75(lawspec.runtime.LawSpecTyped.C55.decode(input0), lawspec.runtime.LawSpecTyped.C55.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C64.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_cbeefea2(lawspec.runtime.LawSpecTyped.C64.decode(input0), lawspec.runtime.LawSpecTyped.C64.decode(input1)));
   }
 
   public static Value evaluate159(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C49.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_76(lawspec.runtime.LawSpecTyped.C49.decode(input0), lawspec.runtime.LawSpecTyped.C49.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C58.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_32478a30(lawspec.runtime.LawSpecTyped.C58.decode(input0), lawspec.runtime.LawSpecTyped.C58.decode(input1)));
   }
 
   public static Value evaluate160(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C56.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_77(lawspec.runtime.LawSpecTyped.C56.decode(input0), lawspec.runtime.LawSpecTyped.C56.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C65.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_3a24ccf2(lawspec.runtime.LawSpecTyped.C65.decode(input0), lawspec.runtime.LawSpecTyped.C65.decode(input1)));
   }
 
   public static Value evaluate161(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C57.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_78(lawspec.runtime.LawSpecTyped.C57.decode(input0), lawspec.runtime.LawSpecTyped.C57.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C66.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_1e161219(lawspec.runtime.LawSpecTyped.C66.decode(input0), lawspec.runtime.LawSpecTyped.C66.decode(input1)));
   }
 
   public static Value evaluate162(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_79(lawspec.runtime.LawSpecTyped.C45.decode(input0), lawspec.runtime.LawSpecTyped.C45.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_92b072e4(lawspec.runtime.LawSpecTyped.C54.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
   }
 
   public static Value evaluate163(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C58.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_80(lawspec.runtime.LawSpecTyped.C58.decode(input0), lawspec.runtime.LawSpecTyped.C58.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C67.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_d863ec47(lawspec.runtime.LawSpecTyped.C67.decode(input0), lawspec.runtime.LawSpecTyped.C67.decode(input1)));
   }
 
   public static Value evaluate164(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C59.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_81(lawspec.runtime.LawSpecTyped.C59.decode(input0), lawspec.runtime.LawSpecTyped.C59.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C68.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_4e4ef1c4(lawspec.runtime.LawSpecTyped.C68.decode(input0), lawspec.runtime.LawSpecTyped.C68.decode(input1)));
   }
 
   public static Value evaluate165(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C51.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_82(lawspec.runtime.LawSpecTyped.C51.decode(input0), lawspec.runtime.LawSpecTyped.C51.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C60.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_6be3ca15(lawspec.runtime.LawSpecTyped.C60.decode(input0), lawspec.runtime.LawSpecTyped.C60.decode(input1)));
   }
 
   public static Value evaluate166(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C60.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_83(lawspec.runtime.LawSpecTyped.C60.decode(input0), lawspec.runtime.LawSpecTyped.C60.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C69.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValFromItems_c033ba9e(lawspec.runtime.LawSpecTyped.C69.decode(input0), lawspec.runtime.LawSpecTyped.C69.decode(input1)));
   }
 
   public static Value evaluate167(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_84(lawspec.runtime.LawSpecTyped.C45.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeysItems_e033276a(lawspec.runtime.LawSpecTyped.C54.decode(input0)));
   }
 
   public static Value evaluate168(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_85(lawspec.runtime.LawSpecTyped.C48.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValKeys_34e9a8ae(lawspec.runtime.LawSpecTyped.C57.decode(input0)));
   }
 
   public static Value evaluate169(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_86(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C59.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C70.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_b9936fbc(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C68.decode(input1)));
   }
 
   public static Value evaluate170(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_87(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C57.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_154c41d9(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C66.decode(input1)));
   }
 
   public static Value evaluate171(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_88(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C53.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_ebcd945a(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C62.decode(input1)));
   }
 
   public static Value evaluate172(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C62.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_89(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C45.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C71.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_71a2ad87(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
   }
 
   public static Value evaluate173(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C63.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_90(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C51.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C72.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_a13d293f(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C60.decode(input1)));
   }
 
   public static Value evaluate174(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C64.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_91(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C55.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C73.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_9c1371ef(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C64.decode(input1)));
   }
 
   public static Value evaluate175(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_92(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_4e6d941b(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C63.decode(input1)));
   }
 
   public static Value evaluate176(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_93(lawspec.runtime.LawSpecTyped.C65.decode(input0), lawspec.runtime.LawSpecTyped.C56.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_634e3159(lawspec.runtime.LawSpecTyped.C74.decode(input0), lawspec.runtime.LawSpecTyped.C65.decode(input1)));
   }
 
   public static Value evaluate177(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_94(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C60.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_eaf6916f(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C69.decode(input1)));
   }
 
   public static Value evaluate178(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_95(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C46.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_ae57d2cd(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C55.decode(input1)));
   }
 
   public static Value evaluate179(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C66.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_96(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C49.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C75.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_3c718024(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C58.decode(input1)));
   }
 
   public static Value evaluate180(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C67.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_97(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C58.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C76.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookupItems_8d0d5317(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C67.decode(input1)));
   }
 
   public static Value evaluate181(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C62.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_98(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C48.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C71.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_a9059595(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C57.decode(input1)));
   }
 
   public static Value evaluate182(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_99(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C68.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C70.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_b2bbd077(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C77.decode(input1)));
   }
 
   public static Value evaluate183(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C67.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_100(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C69.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C76.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_8a481efc(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C78.decode(input1)));
   }
 
   public static Value evaluate184(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_101(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C70.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_8e671f4d(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C79.decode(input1)));
   }
 
   public static Value evaluate185(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_102(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C47.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_65e9c66c(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C56.decode(input1)));
   }
 
   public static Value evaluate186(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_103(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C71.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_a6e9da81(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
   }
 
   public static Value evaluate187(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_104(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C72.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_24612a0e(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C81.decode(input1)));
   }
 
   public static Value evaluate188(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_105(lawspec.runtime.LawSpecTyped.C65.decode(input0), lawspec.runtime.LawSpecTyped.C73.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_cd13c56f(lawspec.runtime.LawSpecTyped.C74.decode(input0), lawspec.runtime.LawSpecTyped.C82.decode(input1)));
   }
 
   public static Value evaluate189(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C64.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_106(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C74.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C73.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_6946d404(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C83.decode(input1)));
   }
 
   public static Value evaluate190(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_107(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C75.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_7f47bbb6(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C84.decode(input1)));
   }
 
   public static Value evaluate191(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C63.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_108(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C52.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C72.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_ce7e98b5(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C61.decode(input1)));
   }
 
   public static Value evaluate192(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C66.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_109(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C50.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C75.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValLookup_0bbb87c8(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C59.decode(input1)));
   }
 
   public static Value evaluate193(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_110(lawspec.runtime.LawSpecTyped.C51.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_b3b63ee9(lawspec.runtime.LawSpecTyped.C60.decode(input0)));
   }
 
   public static Value evaluate194(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C50.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_111(lawspec.runtime.LawSpecTyped.C49.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C59.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_315c22fb(lawspec.runtime.LawSpecTyped.C58.decode(input0)));
   }
 
   public static Value evaluate195(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C70.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_112(lawspec.runtime.LawSpecTyped.C60.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_8d386a7a(lawspec.runtime.LawSpecTyped.C69.decode(input0)));
   }
 
   public static Value evaluate196(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C69.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_113(lawspec.runtime.LawSpecTyped.C58.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_66dd9a82(lawspec.runtime.LawSpecTyped.C67.decode(input0)));
   }
 
   public static Value evaluate197(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C68.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_114(lawspec.runtime.LawSpecTyped.C59.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C77.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_3adee7cf(lawspec.runtime.LawSpecTyped.C68.decode(input0)));
   }
 
   public static Value evaluate198(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C71.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_115(lawspec.runtime.LawSpecTyped.C57.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_a1009097(lawspec.runtime.LawSpecTyped.C66.decode(input0)));
   }
 
   public static Value evaluate199(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C72.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_116(lawspec.runtime.LawSpecTyped.C53.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_eeff9798(lawspec.runtime.LawSpecTyped.C62.decode(input0)));
   }
 
   public static Value evaluate200(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C48.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_117(lawspec.runtime.LawSpecTyped.C45.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C57.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_afdc1c77(lawspec.runtime.LawSpecTyped.C54.decode(input0)));
   }
 
   public static Value evaluate201(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C75.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_118(lawspec.runtime.LawSpecTyped.C54.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C84.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_924ce6dd(lawspec.runtime.LawSpecTyped.C63.decode(input0)));
   }
 
   public static Value evaluate202(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C74.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_119(lawspec.runtime.LawSpecTyped.C55.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C83.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_66da004b(lawspec.runtime.LawSpecTyped.C64.decode(input0)));
   }
 
   public static Value evaluate203(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C47.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_120(lawspec.runtime.LawSpecTyped.C46.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C56.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_b2ceee25(lawspec.runtime.LawSpecTyped.C55.decode(input0)));
   }
 
   public static Value evaluate204(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C73.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_121(lawspec.runtime.LawSpecTyped.C56.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValOf_14405d63(lawspec.runtime.LawSpecTyped.C65.decode(input0)));
   }
 
   public static Value evaluate205(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C46.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_122(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C46.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C55.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_fb1bb5ca(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C55.decode(input2)));
   }
 
   public static Value evaluate206(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C55.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_123(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C76.decode(input1), lawspec.runtime.LawSpecTyped.C55.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C64.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_97a64264(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C85.decode(input1), lawspec.runtime.LawSpecTyped.C64.decode(input2)));
   }
 
   public static Value evaluate207(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C59.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_124(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C77.decode(input1), lawspec.runtime.LawSpecTyped.C59.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C68.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_054f1ef1(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C86.decode(input1), lawspec.runtime.LawSpecTyped.C68.decode(input2)));
   }
 
   public static Value evaluate208(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_125(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C54.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C63.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_8d4f5385(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C63.decode(input2)));
   }
 
   public static Value evaluate209(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C53.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_126(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C53.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C62.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_5d998955(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C62.decode(input2)));
   }
 
   public static Value evaluate210(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C51.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_127(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1), lawspec.runtime.LawSpecTyped.C51.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C60.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_80dc1939(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1), lawspec.runtime.LawSpecTyped.C60.decode(input2)));
   }
 
   public static Value evaluate211(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C56.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_128(lawspec.runtime.LawSpecTyped.C65.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C56.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C65.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_28cf0caf(lawspec.runtime.LawSpecTyped.C74.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C65.decode(input2)));
   }
 
   public static Value evaluate212(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C49.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_129(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C78.decode(input1), lawspec.runtime.LawSpecTyped.C49.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C58.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_883fe52d(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C87.decode(input1), lawspec.runtime.LawSpecTyped.C58.decode(input2)));
   }
 
   public static Value evaluate213(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C60.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_130(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C60.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C69.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_3f0139cf(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C69.decode(input2)));
   }
 
   public static Value evaluate214(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_131(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C45.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C54.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_c4168a80(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C54.decode(input2)));
   }
 
   public static Value evaluate215(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C57.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_132(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C57.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C66.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_4266176b(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C66.decode(input2)));
   }
 
   public static Value evaluate216(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C58.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_133(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C79.decode(input1), lawspec.runtime.LawSpecTyped.C58.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C67.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPutItems_523d104d(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C88.decode(input1), lawspec.runtime.LawSpecTyped.C67.decode(input2)));
   }
 
   public static Value evaluate217(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C70.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_134(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C70.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_cabf14cc(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C79.decode(input2)));
   }
 
   public static Value evaluate218(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C50.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_135(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C78.decode(input1), lawspec.runtime.LawSpecTyped.C50.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C59.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_ce8624cf(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C87.decode(input1), lawspec.runtime.LawSpecTyped.C59.decode(input2)));
   }
 
   public static Value evaluate219(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C69.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_136(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C79.decode(input1), lawspec.runtime.LawSpecTyped.C69.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_5ab157dd(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C88.decode(input1), lawspec.runtime.LawSpecTyped.C78.decode(input2)));
   }
 
   public static Value evaluate220(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C68.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_137(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C77.decode(input1), lawspec.runtime.LawSpecTyped.C68.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C77.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_c59d14e0(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C86.decode(input1), lawspec.runtime.LawSpecTyped.C77.decode(input2)));
   }
 
   public static Value evaluate221(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C71.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_138(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C71.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_01a600ed(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C80.decode(input2)));
   }
 
   public static Value evaluate222(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C72.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_139(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C72.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_3034b895(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C81.decode(input2)));
   }
 
   public static Value evaluate223(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C75.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_140(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C75.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C84.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_a8f49e3e(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C84.decode(input2)));
   }
 
   public static Value evaluate224(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C73.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_141(lawspec.runtime.LawSpecTyped.C65.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C73.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_9fc3570a(lawspec.runtime.LawSpecTyped.C74.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C82.decode(input2)));
   }
 
   public static Value evaluate225(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C74.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_142(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C76.decode(input1), lawspec.runtime.LawSpecTyped.C74.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C83.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_87e622e8(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C85.decode(input1), lawspec.runtime.LawSpecTyped.C83.decode(input2)));
   }
 
   public static Value evaluate226(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C48.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_143(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C48.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C57.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_3b439cbe(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1), lawspec.runtime.LawSpecTyped.C57.decode(input2)));
   }
 
   public static Value evaluate227(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C47.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_144(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C47.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C56.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_5cd34b74(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C56.decode(input2)));
   }
 
   public static Value evaluate228(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_145(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1), lawspec.runtime.LawSpecTyped.C52.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValPut_efc6b866(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1), lawspec.runtime.LawSpecTyped.C61.decode(input2)));
   }
 
   public static Value evaluate229(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_146(lawspec.runtime.LawSpecTyped.C46.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C89.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValuesItems_40ef8eee(lawspec.runtime.LawSpecTyped.C55.decode(input0)));
   }
 
   public static Value evaluate230(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_147(lawspec.runtime.LawSpecTyped.C47.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C89.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsKeyValValues_33bc036c(lawspec.runtime.LawSpecTyped.C56.decode(input0)));
   }
 
   public static Value evaluate231(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_148(lawspec.runtime.LawSpecTyped.C80.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C89.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_8d83ec32(lawspec.runtime.LawSpecTyped.C89.decode(input0), lawspec.runtime.LawSpecTyped.C89.decode(input1)));
   }
 
   public static Value evaluate232(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_149(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_b46ce3bb(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
   }
 
   public static Value evaluate233(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_150(lawspec.runtime.LawSpecTyped.C81.decode(input0), lawspec.runtime.LawSpecTyped.C81.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C90.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetFromItems_357dd072(lawspec.runtime.LawSpecTyped.C90.decode(input0), lawspec.runtime.LawSpecTyped.C90.decode(input1)));
   }
 
   public static Value evaluate234(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_151(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_fd8b28ec(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
   }
 
   public static Value evaluate235(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_152(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C89.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_fbbb1c47(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C89.decode(input1)));
   }
 
   public static Value evaluate236(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_153(lawspec.runtime.LawSpecTyped.C6.decode(input0), lawspec.runtime.LawSpecTyped.C81.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C90.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetInsertItems_708d991b(lawspec.runtime.LawSpecTyped.C6.decode(input0), lawspec.runtime.LawSpecTyped.C90.decode(input1)));
   }
 
   public static Value evaluate237(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMemberItems_154(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMemberItems_1ed23db8(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C89.decode(input1)));
   }
 
   public static Value evaluate238(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMember_155(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C103.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetMember_b54a7773(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C116.decode(input1)));
   }
 
   public static Value evaluate239(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_156(lawspec.runtime.LawSpecTyped.C17.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C91.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_381c9692(lawspec.runtime.LawSpecTyped.C17.decode(input0)));
   }
 
   public static Value evaluate240(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C83.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_157(lawspec.runtime.LawSpecTyped.C81.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C92.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_04775bf4(lawspec.runtime.LawSpecTyped.C90.decode(input0)));
   }
 
   public static Value evaluate241(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C103.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_158(lawspec.runtime.LawSpecTyped.C80.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C116.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetOf_9f2ef842(lawspec.runtime.LawSpecTyped.C89.decode(input0)));
   }
 
   public static Value evaluate242(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemoveItems_159(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemoveItems_64279e04(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C17.decode(input1)));
   }
 
   public static Value evaluate243(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemove_160(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C82.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C91.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetRemove_7ffea813(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C91.decode(input1)));
   }
 
   public static Value evaluate244(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_161(lawspec.runtime.LawSpecTyped.C82.decode(input0), lawspec.runtime.LawSpecTyped.C82.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C91.encode(lawspec.runtime.LawSpecTyped.lawspecCollectionsSetUnion_604ff278(lawspec.runtime.LawSpecTyped.C91.decode(input0), lawspec.runtime.LawSpecTyped.C91.decode(input1)));
   }
 
   public static Value evaluate245(
@@ -3852,5457 +2010,176 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate316(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.memberIds_233(lawspec.runtime.LawSpecTyped.C17.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.memberIds_1e3fa12d(lawspec.runtime.LawSpecTyped.C17.decode(input0)));
   }
 
   public static Value evaluate317(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.missingFrom_234(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.missingFrom_37856ee4(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
   }
 
   public static Value evaluate318(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.mul32_235(lawspec.runtime.LawSpecTyped.C43.decode(input0), lawspec.runtime.LawSpecTyped.C43.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.mul32_b8774c72(lawspec.runtime.LawSpecTyped.C52.decode(input0), lawspec.runtime.LawSpecTyped.C52.decode(input1)));
   }
 
   public static Value evaluate319(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.murmur2_236(lawspec.runtime.LawSpecTyped.C98.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.murmur2_d0ccf769(lawspec.runtime.LawSpecTyped.C108.decode(input0)));
   }
 
   public static Value evaluate320(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.murmurChunks_237(lawspec.runtime.LawSpecTyped.C99.decode(input0), lawspec.runtime.LawSpecTyped.C43.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.murmurChunks_9898bba5(lawspec.runtime.LawSpecTyped.C109.decode(input0), lawspec.runtime.LawSpecTyped.C52.decode(input1)));
   }
 
   public static Value evaluate321(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.murmurM_238(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.murmurM_48968914(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate322(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_239(lawspec.runtime.LawSpecTyped.C101.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_5048c35d(lawspec.runtime.LawSpecTyped.C114.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
   }
 
   public static Value evaluate323(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.ownedOf_240(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C84.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C90.encode(lawspec.runtime.LawSpecTyped.ownedOf_0d7fb3ae(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C93.decode(input1)));
   }
 
   public static Value evaluate324(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__metadataRequest(
-                  symbols, value0),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "Either",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka.model::type::KafkaError"),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka.model::type::TopicPartition")),
-                      "Either::Left",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              "lawtwin.kafka.model::type::KafkaError::U" + "nknownTopicOrPartition",
-                              java.util.List.of(),
-                              64,
-                              symbols)),
-                      64,
-                      symbols),
-              value3 ->
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::PartitionChoice"),
-                      value1,
-                      64,
-                      symbols,
-                      _match9422 ->
-                          switch (_match9422.tag()) {
-                            case "lawtwin.kafka::type::PartitionChoice::To" + "Partition" -> {
-                              var value4 = _match9422.fields().get(0);
-                              yield (LawSpecRuntime.truth(
-                                      LawSpecRuntime.bool(
-                                          LawSpecRuntime.truth(
-                                                  LawSpecRuntime.binary(
-                                                      ">=",
-                                                      value4,
-                                                      LawSpecRuntime.convert(
-                                                          "Integer",
-                                                          LawSpecRuntime.integer("Integer", "0"),
-                                                          64)))
-                                              && LawSpecRuntime.truth(
-                                                  LawSpecRuntime.binary("<", value4, value3))))
-                                  ? _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition")),
-                                      "Either::Right",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::TopicPartition"),
-                                              "lawtwin.kafka.model::type::TopicPartitio"
-                                                  + "n::TopicPartition",
-                                              java.util.List.of(value0, value4),
-                                              64,
-                                              symbols)),
-                                      64,
-                                      symbols)
-                                  : _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition")),
-                                      "Either::Left",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              "lawtwin.kafka.model::type::KafkaError::U"
-                                                  + "nknownTopicOrPartition",
-                                              java.util.List.of(),
-                                              64,
-                                              symbols)),
-                                      64,
-                                      symbols));
-                            }
-                            case "lawtwin.kafka::type::PartitionChoice::ByKey" -> {
-                              yield _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::TopicPartition")),
-                                  "Either::Right",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::TopicPartition"),
-                                          "lawtwin.kafka.model::type::TopicPartitio"
-                                              + "n::TopicPartition",
-                                          java.util.List.of(
-                                              value0,
-                                              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Partitioner__choosePartition(
-                                                  symbols,
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::Record"),
-                                                      value2,
-                                                      64,
-                                                      symbols,
-                                                      _match1558 ->
-                                                          switch (_match1558.tag()) {
-                                                            case "lawtwin.kafka.model::type::Record::Record" -> {
-                                                              var value5 = _match1558.fields().get(0);
-                                                              var value6 = _match1558.fields().get(1);
-                                                              var value7 = _match1558.fields().get(2);
-                                                              yield value5;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  value3)),
-                                          64,
-                                          symbols)),
-                                  64,
-                                  symbols);
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          }));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::partitionOf: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C110.encode(lawspec.runtime.LawSpecTyped.partitionOf_343af5ef(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C111.decode(input1), lawspec.runtime.LawSpecTyped.C112.decode(input2)));
   }
 
   public static Value evaluate325(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.partitionsOfTopic_241(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C90.encode(lawspec.runtime.LawSpecTyped.partitionsOfTopic_194a4a6c(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
   }
 
   public static Value evaluate326(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.matchList(
-              value0,
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "List",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ConsumerRecord"))),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ConsumerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "List",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ConsumerRecord"))),
-                              "Either::Right",
-                              java.util.List.of(value3),
-                              64,
-                              symbols),
-                          value2),
-                      64,
-                      symbols),
-              (value4, value5) ->
-                  LawSpecRuntime.let(
-                      lawspec.runtime.LawSpecDefinitionBodies.evaluate73(symbols, value4, value2),
-                      value6 ->
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__fetchRequest(
-                                          symbols,
-                                          value4,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ConsumerState")),
-                                              value6,
-                                              64,
-                                              symbols,
-                                              _match1330 ->
-                                                  switch (_match1330.tag()) {
-                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                      var value7 = _match1330.fields().get(0);
-                                                      var value8 = _match1330.fields().get(1);
-                                                      yield value7;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          value1,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::ConsumerState"),
-                                              value2,
-                                              64,
-                                              symbols,
-                                              _match2448 ->
-                                                  switch (_match2448.tag()) {
-                                                    case "lawtwin.kafka::type::ConsumerState::Cons"
-                                                        + "umerState" -> {
-                                                      var value9 = _match2448.fields().get(0);
-                                                      var value10 = _match2448.fields().get(1);
-                                                      var value11 = _match2448.fields().get(2);
-                                                      var value12 = _match2448.fields().get(3);
-                                                      var value13 = _match2448.fields().get(4);
-                                                      var value14 = _match2448.fields().get(5);
-                                                      var value15 = _match2448.fields().get(6);
-                                                      yield value15;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value16 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                          "Either::Left",
-                                          java.util.List.of(value16),
-                                          64,
-                                          symbols),
-                                  value17 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                          "Either::Right",
-                                          java.util.List.of(value17),
-                                          64,
-                                          symbols)),
-                              value18 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "List",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ConsumerRecord"))),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::ConsumerState")),
-                                      "lawspec.collections::type::Pair::Pair",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "List",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::ConsumerRecord"))),
-                                              "Either::Left",
-                                              java.util.List.of(value18),
-                                              64,
-                                              symbols),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ConsumerState")),
-                                              value6,
-                                              64,
-                                              symbols,
-                                              _match1387 ->
-                                                  switch (_match1387.tag()) {
-                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                      var value19 = _match1387.fields().get(0);
-                                                      var value20 = _match1387.fields().get(1);
-                                                      yield value20;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      64,
-                                      symbols),
-                              value21 ->
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate326(
-                                      symbols,
-                                      value5,
-                                      value1,
-                                      lawspec.runtime.LawSpecDefinitionBodies.evaluate358(
-                                          symbols,
-                                          value4,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::FetchResult"),
-                                              value21,
-                                              64,
-                                              symbols,
-                                              _match1633 ->
-                                                  switch (_match1633.tag()) {
-                                                    case "lawtwin.kafka.model::type::FetchResult::"
-                                                        + "FetchResult" -> {
-                                                      var value22 = _match1633.fields().get(0);
-                                                      var value23 = _match1633.fields().get(1);
-                                                      var value24 = _match1633.fields().get(2);
-                                                      var value25 = _match1633.fields().get(3);
-                                                      yield value23;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named("Int64"),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ConsumerState")),
-                                              value6,
-                                              64,
-                                              symbols,
-                                              _match1388 ->
-                                                  switch (_match1388.tag()) {
-                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                      var value26 = _match1388.fields().get(0);
-                                                      var value27 = _match1388.fields().get(1);
-                                                      yield value27;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      LawSpecRuntime.helper(
-                                          "append",
-                                          new Value[] {
-                                            value3,
-                                            lawspec.runtime.LawSpecDefinitionBodies.evaluate75(
-                                                symbols,
-                                                value4,
-                                                _schema.match(
-                                                    new lawspec.runtime.LawSpecSchema.Named(
-                                                        "lawtwin.kafka.model::type::FetchResult"),
-                                                    value21,
-                                                    64,
-                                                    symbols,
-                                                    _match1777 ->
-                                                        switch (_match1777.tag()) {
-                                                          case "lawtwin.kafka.model::type::FetchResult::"
-                                                              + "FetchResult" -> {
-                                                            var value28 = _match1777.fields().get(0);
-                                                            var value29 = _match1777.fields().get(1);
-                                                            var value30 = _match1777.fields().get(2);
-                                                            var value31 = _match1777.fields().get(3);
-                                                            yield value28;
-                                                          }
-                                                          default ->
-                                                              throw new IllegalArgumentException("invalid constructor");
-                                                        }))
-                                          },
-                                          64)))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::pollPartitions: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C29.encode(lawspec.runtime.LawSpecTyped.pollPartitions_9d6feda1(symbols, lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C26.decode(input2), lawspec.runtime.LawSpecTyped.C95.decode(input3)));
   }
 
   public static Value evaluate327(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C7.encode(lawspec.runtime.LawSpecTyped.positionsToCommit_242(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C71.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C7.encode(lawspec.runtime.LawSpecTyped.positionsToCommit_67969440(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C80.decode(input1)));
   }
 
   public static Value evaluate328(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C28.encode(lawspec.runtime.LawSpecTyped.producerFlush_243(lawspec.runtime.LawSpecTyped.C29.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C34.encode(lawspec.runtime.LawSpecTyped.producerFlush_f30611db(lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate329(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                          symbols,
-                          LawSpecRuntime.construct("Maybe Text", "Maybe::Nothing", new Value[] {})),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value1 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(value1),
-                          64,
-                          symbols),
-                  value2 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(value2),
-                          64,
-                          symbols)),
-              value3 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ProducerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                              "Either::Left",
-                              java.util.List.of(value3),
-                              64,
-                              symbols),
-                          value0),
-                      64,
-                      symbols),
-              value4 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ProducerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                              "Either::Right",
-                              java.util.List.of(value4),
-                              64,
-                              symbols),
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::ProducerState"),
-                              "lawtwin.kafka::type::ProducerState::Prod" + "ucerState",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Maybe",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                      "Maybe::Just",
-                                      java.util.List.of(value4),
-                                      64,
-                                      symbols),
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate195(
-                                      symbols,
-                                      LawSpecRuntime.construct(
-                                          "List lawspec.collections::type::Entry"
-                                              + " (lawtwin.kafka.model::type::TopicPartit"
-                                              + "ion) (Int32)",
-                                          "List::Nil",
-                                          new Value[] {})),
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Maybe",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::LastSend")),
-                                      "Maybe::Nothing",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols)),
-                      64,
-                      symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::producerIdempotent: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C32.encode(lawspec.runtime.LawSpecTyped.producerIdempotent_c8ab8a13(symbols, lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate330(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::ProducerState"),
-                  value0,
-                  64,
-                  symbols,
-                  _match1767 ->
-                      switch (_match1767.tag()) {
-                        case "lawtwin.kafka::type::ProducerState::Prod" + "ucerState" -> {
-                          var value1 = _match1767.fields().get(0);
-                          var value2 = _match1767.fields().get(1);
-                          var value3 = _match1767.fields().get(2);
-                          yield value3;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::RecordMetadata")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ProducerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::RecordMetadata")),
-                              "Either::Left",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      "lawtwin.kafka.model::type::KafkaError::I" + "llegalState",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols),
-                          value0),
-                      64,
-                      symbols),
-              value4 ->
-                  LawSpecRuntime.matchEither(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                  symbols,
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::LastSend"),
-                                      value4,
-                                      64,
-                                      symbols,
-                                      _match1606 ->
-                                          switch (_match1606.tag()) {
-                                            case "lawtwin.kafka::type::LastSend::LastSend" -> {
-                                              var value5 = _match1606.fields().get(0);
-                                              var value6 = _match1606.fields().get(1);
-                                              var value7 = _match1606.fields().get(2);
-                                              yield value5;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::LastSend"),
-                                      value4,
-                                      64,
-                                      symbols,
-                                      _match1674 ->
-                                          switch (_match1674.tag()) {
-                                            case "lawtwin.kafka::type::LastSend::LastSend" -> {
-                                              var value8 = _match1674.fields().get(0);
-                                              var value9 = _match1674.fields().get(1);
-                                              var value10 = _match1674.fields().get(2);
-                                              yield value9;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::LastSend"),
-                                      value4,
-                                      64,
-                                      symbols,
-                                      _match1662 ->
-                                          switch (_match1662.tag()) {
-                                            case "lawtwin.kafka::type::LastSend::LastSend" -> {
-                                              var value11 = _match1662.fields().get(0);
-                                              var value12 = _match1662.fields().get(1);
-                                              var value13 = _match1662.fields().get(2);
-                                              yield value13;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          })),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value14 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                  "Either::Left",
-                                  java.util.List.of(value14),
-                                  64,
-                                  symbols),
-                          value15 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                  "Either::Right",
-                                  java.util.List.of(value15),
-                                  64,
-                                  symbols)),
-                      value16 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::RecordMetadata")),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ProducerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::RecordMetadata")),
-                                      "Either::Left",
-                                      java.util.List.of(value16),
-                                      64,
-                                      symbols),
-                                  value0),
-                              64,
-                              symbols),
-                      value17 ->
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::RecordMetadata")),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::ProducerState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::RecordMetadata")),
-                                      "Either::Right",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::RecordMetadata"),
-                                              "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                  + "ordMetadata",
-                                              java.util.List.of(
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::LastSend"),
-                                                      value4,
-                                                      64,
-                                                      symbols,
-                                                      _match1606 ->
-                                                          switch (_match1606.tag()) {
-                                                            case "lawtwin.kafka::type::LastSend::LastSend" -> {
-                                                              var value18 = _match1606.fields().get(0);
-                                                              var value19 = _match1606.fields().get(1);
-                                                              var value20 = _match1606.fields().get(2);
-                                                              yield value18;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  value17),
-                                              64,
-                                              symbols)),
-                                      64,
-                                      symbols),
-                                  value0),
-                              64,
-                              symbols)));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::producerRetry: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.producerRetry_aaf3a88a(symbols, lawspec.runtime.LawSpecTyped.C33.decode(input0)));
   }
 
   public static Value evaluate331(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchEither(
-              lawspec.runtime.LawSpecDefinitionBodies.evaluate324(
-                  symbols,
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1421 ->
-                          switch (_match1421.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value2 = _match1421.fields().get(0);
-                              var value3 = _match1421.fields().get(1);
-                              var value4 = _match1421.fields().get(2);
-                              yield value2;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          }),
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1485 ->
-                          switch (_match1485.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value5 = _match1485.fields().get(0);
-                              var value6 = _match1485.fields().get(1);
-                              var value7 = _match1485.fields().get(2);
-                              yield value6;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          }),
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1479 ->
-                          switch (_match1479.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value8 = _match1479.fields().get(0);
-                              var value9 = _match1479.fields().get(1);
-                              var value10 = _match1479.fields().get(2);
-                              yield value10;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          })),
-              value11 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::RecordMetadata")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::ProducerState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::RecordMetadata")),
-                              "Either::Left",
-                              java.util.List.of(value11),
-                              64,
-                              symbols),
-                          value1),
-                      64,
-                      symbols),
-              value12 ->
-                  LawSpecRuntime.let(
-                      lawspec.runtime.LawSpecDefinitionBodies.evaluate339(
-                          symbols,
-                          value12,
-                          _schema.match(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::ProducerState"),
-                              value1,
-                              64,
-                              symbols,
-                              _match1924 ->
-                                  switch (_match1924.tag()) {
-                                    case "lawtwin.kafka::type::ProducerState::Prod"
-                                        + "ucerState" -> {
-                                      var value13 = _match1924.fields().get(0);
-                                      var value14 = _match1924.fields().get(1);
-                                      var value15 = _match1924.fields().get(2);
-                                      yield value14;
-                                    }
-                                    default ->
-                                        throw new IllegalArgumentException("invalid constructor");
-                                  })),
-                      value16 ->
-                          LawSpecRuntime.let(
-                              lawspec.runtime.LawSpecDefinitionBodies.evaluate342(
-                                  symbols,
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::ProducerState"),
-                                      value1,
-                                      64,
-                                      symbols,
-                                      _match1800 ->
-                                          switch (_match1800.tag()) {
-                                            case "lawtwin.kafka::type::ProducerState::Prod"
-                                                + "ucerState" -> {
-                                              var value17 = _match1800.fields().get(0);
-                                              var value18 = _match1800.fields().get(1);
-                                              var value19 = _match1800.fields().get(2);
-                                              yield value17;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  value16),
-                              value20 ->
-                                  LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                                  symbols,
-                                                  value12,
-                                                  value20,
-                                                  LawSpecRuntime.construct(
-                                                      "List lawtwin.kafka.model::type::Record",
-                                                      "List::Cons",
-                                                      new Value[] {
-                                                        _schema.match(
-                                                            new lawspec.runtime.LawSpecSchema.Named(
-                                                                "lawtwin.kafka::type::ProducerRecord"),
-                                                            value0,
-                                                            64,
-                                                            symbols,
-                                                            _match1486 ->
-                                                                switch (_match1486.tag()) {
-                                                                  case "lawtwin.kafka::type::ProducerRecord::Pro"
-                                                                      + "ducerRecord" -> {
-                                                                    var value21 = _match1486.fields().get(0);
-                                                                    var value22 = _match1486.fields().get(1);
-                                                                    var value23 = _match1486.fields().get(2);
-                                                                    yield value23;
-                                                                  }
-                                                                  default ->
-                                                                      throw new IllegalArgumentException("invalid constructor");
-                                                                }),
-                                                        LawSpecRuntime.construct(
-                                                            "List lawtwin.kafka.model::type::Record",
-                                                            "List::Nil",
-                                                            new Value[] {})
-                                                      })),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value24 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value24),
-                                                  64,
-                                                  symbols),
-                                          value25 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value25),
-                                                  64,
-                                                  symbols)),
-                                      value26 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::RecordMetadata")),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ProducerState")),
-                                              "lawspec.collections::type::Pair::Pair",
-                                              java.util.List.of(
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::RecordMetadata")),
-                                                      "Either::Left",
-                                                      java.util.List.of(value26),
-                                                      64,
-                                                      symbols),
-                                                  value1),
-                                              64,
-                                              symbols),
-                                      value27 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::RecordMetadata")),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::ProducerState")),
-                                              "lawspec.collections::type::Pair::Pair",
-                                              java.util.List.of(
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::RecordMetadata")),
-                                                      "Either::Right",
-                                                      java.util.List.of(
-                                                          _schema.construct(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::RecordMetadata"),
-                                                              "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                  + "ordMetadata",
-                                                              java.util.List.of(value12, value27),
-                                                              64,
-                                                              symbols)),
-                                                      64,
-                                                      symbols),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::ProducerState"),
-                                                      LawSpecRuntime.let(
-                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate217(
-                                                              symbols,
-                                                              value12,
-                                                              lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
-                                                                  symbols,
-                                                                  LawSpecRuntime.binary(
-                                                                      "+",
-                                                                      value16,
-                                                                      LawSpecRuntime.convert(
-                                                                          "Integer",
-                                                                          LawSpecRuntime.integer(
-                                                                              "Integer", "1"),
-                                                                          64))),
-                                                              _schema.match(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::ProducerState"),
-                                                                  value1,
-                                                                  64,
-                                                                  symbols,
-                                                                  _match1924 ->
-                                                                      switch (_match1924.tag()) {
-                                                                        case "lawtwin.kafka::type::ProducerState::Prod"
-                                                                            + "ucerState" -> {
-                                                                          var value28 = _match1924.fields().get(0);
-                                                                          var value29 = _match1924.fields().get(1);
-                                                                          var value30 = _match1924.fields().get(2);
-                                                                          yield value29;
-                                                                        }
-                                                                        default ->
-                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                      })),
-                                                          value31 ->
-                                                              _schema.match(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::ProducerState"),
-                                                                  value1,
-                                                                  64,
-                                                                  symbols,
-                                                                  _match2658 ->
-                                                                      switch (_match2658.tag()) {
-                                                                        case "lawtwin.kafka::type::ProducerState::Prod"
-                                                                            + "ucerState" -> {
-                                                                          var value32 = _match2658.fields().get(0);
-                                                                          var value33 = _match2658.fields().get(1);
-                                                                          var value34 = _match2658.fields().get(2);
-                                                                          yield _schema.construct(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka::type::ProducerState"),
-                                                                              "lawtwin.kafka::type::ProducerState::Prod"
-                                                                                  + "ucerState",
-                                                                              java.util.List.of(
-                                                                                  value32,
-                                                                                  value31,
-                                                                                  value34),
-                                                                              64,
-                                                                              symbols);
-                                                                        }
-                                                                        default ->
-                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                      })),
-                                                      64,
-                                                      symbols,
-                                                      _match13003 ->
-                                                          switch (_match13003.tag()) {
-                                                            case "lawtwin.kafka::type::ProducerState::Prod"
-                                                                + "ucerState" -> {
-                                                              var value35 = _match13003.fields().get(0);
-                                                              var value36 = _match13003.fields().get(1);
-                                                              var value37 = _match13003.fields().get(2);
-                                                              yield _schema.construct(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::ProducerState"),
-                                                                  "lawtwin.kafka::type::ProducerState::Prod"
-                                                                      + "ucerState",
-                                                                  java.util.List.of(
-                                                                      value35,
-                                                                      value36,
-                                                                      _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Maybe",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka::type::LastSend")),
-                                                                          "Maybe::Just",
-                                                                          java.util.List.of(
-                                                                              _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka::type::LastSend"),
-                                                                                  "lawtwin.kafka::type::LastSend::LastSend",
-                                                                                  java.util.List.of(
-                                                                                      value12,
-                                                                                      value20,
-                                                                                      LawSpecRuntime.construct(
-                                                                                          "List lawtwin.kafka.model::type::Record",
-                                                                                          "List::Cons",
-                                                                                          new Value[] {
-                                                                                            _schema.match(
-                                                                                                new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                    "lawtwin.kafka::type::ProducerRecord"),
-                                                                                                value0,
-                                                                                                64,
-                                                                                                symbols,
-                                                                                                _match1488 ->
-                                                                                                    switch (_match1488.tag()) {
-                                                                                                      case "lawtwin.kafka::type::ProducerRecord::Pro"
-                                                                                                          + "ducerRecord" -> {
-                                                                                                        var value38 = _match1488.fields().get(0);
-                                                                                                        var value39 = _match1488.fields().get(1);
-                                                                                                        var value40 = _match1488.fields().get(2);
-                                                                                                        yield value40;
-                                                                                                      }
-                                                                                                      default ->
-                                                                                                          throw new IllegalArgumentException("invalid constructor");
-                                                                                                    }),
-                                                                                            LawSpecRuntime.construct(
-                                                                                                "List lawtwin.kafka.model::type::Record",
-                                                                                                "List::Nil",
-                                                                                                new Value[] {
-
-                                                                                                })
-                                                                                          })),
-                                                                                  64,
-                                                                                  symbols)),
-                                                                          64,
-                                                                          symbols)),
-                                                                  64,
-                                                                  symbols);
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          })),
-                                              64,
-                                              symbols)))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::producerSend: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.producerSend_9064c6b5(symbols, lawspec.runtime.LawSpecTyped.C37.decode(input0), lawspec.runtime.LawSpecTyped.C33.decode(input1)));
   }
 
   public static Value evaluate332(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__fetchRequest(
-                          symbols,
-                          value0,
-                          value1,
-                          LawSpecRuntime.convert(
-                              "Int32", LawSpecRuntime.integer("Int32", "1000"), 64),
-                          value2),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::FetchResult")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::FetchResult")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value3 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::FetchResult")),
-                          "Either::Left",
-                          java.util.List.of(value3),
-                          64,
-                          symbols),
-                  value4 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::FetchResult")),
-                          "Either::Right",
-                          java.util.List.of(value4),
-                          64,
-                          symbols)),
-              value5 ->
-                  LawSpecRuntime.construct(
-                      "List lawtwin.kafka.model::type::Record", "List::Nil", new Value[] {}),
-              value6 ->
-                  lawspec.runtime.LawSpecDefinitionBodies.evaluate336(
-                      symbols,
-                      _schema.match(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka.model::type::FetchResult"),
-                          value6,
-                          64,
-                          symbols,
-                          _match1717 ->
-                              switch (_match1717.tag()) {
-                                case "lawtwin.kafka.model::type::FetchResult::" + "FetchResult" -> {
-                                  var value7 = _match1717.fields().get(0);
-                                  var value8 = _match1717.fields().get(1);
-                                  var value9 = _match1717.fields().get(2);
-                                  var value10 = _match1717.fields().get(3);
-                                  yield value7;
-                                }
-                                default ->
-                                    throw new IllegalArgumentException("invalid constructor");
-                              })));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::readFrom: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.readFrom_f028a48d(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C13.decode(input2)));
   }
 
   public static Value evaluate333(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.matchEither(
-              value0,
-              value4 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-              value5 ->
-                  LawSpecRuntime.matchEither(
-                      value1,
-                      value6 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                      value7 ->
-                          LawSpecRuntime.let(
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::RecordMetadata"),
-                                  value5,
-                                  64,
-                                  symbols,
-                                  _match1307 ->
-                                      switch (_match1307.tag()) {
-                                        case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                            + "ordMetadata" -> {
-                                          var value8 = _match1307.fields().get(0);
-                                          var value9 = _match1307.fields().get(1);
-                                          yield value8;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      }),
-                              value10 ->
-                                  LawSpecRuntime.bool(
-                                      LawSpecRuntime.truth(
-                                              LawSpecRuntime.bool(
-                                                  LawSpecRuntime.truth(
-                                                          LawSpecRuntime.bool(
-                                                              _schema.equal(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::TopicPartition"),
-                                                                  _schema.match(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka::type::RecordMetadata"),
-                                                                      value7,
-                                                                      64,
-                                                                      symbols,
-                                                                      _match1307 ->
-                                                                          switch (_match1307.tag()) {
-                                                                            case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                                + "ordMetadata" -> {
-                                                                              var value11 = _match1307.fields().get(0);
-                                                                              var value12 = _match1307.fields().get(1);
-                                                                              yield value11;
-                                                                            }
-                                                                            default ->
-                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                          }),
-                                                                  value10,
-                                                                  64,
-                                                                  symbols)))
-                                                      && LawSpecRuntime.truth(
-                                                          LawSpecRuntime.binary(
-                                                              "==",
-                                                              _schema.match(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::RecordMetadata"),
-                                                                  value7,
-                                                                  64,
-                                                                  symbols,
-                                                                  _match1235 ->
-                                                                      switch (_match1235.tag()) {
-                                                                        case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                            + "ordMetadata" -> {
-                                                                          var value13 = _match1235.fields().get(0);
-                                                                          var value14 = _match1235.fields().get(1);
-                                                                          yield value14;
-                                                                        }
-                                                                        default ->
-                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                      }),
-                                                              LawSpecRuntime.binary(
-                                                                  "+",
-                                                                  _schema.match(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka::type::RecordMetadata"),
-                                                                      value5,
-                                                                      64,
-                                                                      symbols,
-                                                                      _match1235 ->
-                                                                          switch (_match1235.tag()) {
-                                                                            case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                                + "ordMetadata" -> {
-                                                                              var value15 = _match1235.fields().get(0);
-                                                                              var value16 = _match1235.fields().get(1);
-                                                                              yield value16;
-                                                                            }
-                                                                            default ->
-                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                          }),
-                                                                  LawSpecRuntime.convert(
-                                                                      "Integer",
-                                                                      LawSpecRuntime.integer(
-                                                                          "Integer", "1"),
-                                                                      64))))))
-                                          && LawSpecRuntime.truth(
-                                              LawSpecRuntime.let(
-                                                  lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__assign(
-                                                      symbols,
-                                                      LawSpecRuntime.construct(
-                                                          "List lawtwin.kafka.model::type::TopicPartition",
-                                                          "List::Cons",
-                                                          new Value[] {
-                                                            value10,
-                                                            LawSpecRuntime.construct(
-                                                                "List lawtwin.kafka.model::type::TopicPartition",
-                                                                "List::Nil",
-                                                                new Value[] {})
-                                                          })),
-                                                  value17 ->
-                                                      LawSpecRuntime.bool(
-                                                          LawSpecRuntime.truth(
-                                                                  LawSpecRuntime.matchEither(
-                                                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__seek(
-                                                                          symbols,
-                                                                          value10,
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka::type::RecordMetadata"),
-                                                                              value5,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1240 ->
-                                                                                  switch (_match1240.tag()) {
-                                                                                    case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                                        + "ordMetadata" -> {
-                                                                                      var value18 = _match1240.fields().get(0);
-                                                                                      var value19 = _match1240.fields().get(1);
-                                                                                      yield value19;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  })),
-                                                                      value20 ->
-                                                                          LawSpecRuntime.convert(
-                                                                              "Bool",
-                                                                              LawSpecRuntime.bool(
-                                                                                  false),
-                                                                              64),
-                                                                      value21 ->
-                                                                          LawSpecRuntime.convert(
-                                                                              "Bool",
-                                                                              LawSpecRuntime.bool(
-                                                                                  true),
-                                                                              64)))
-                                                              && LawSpecRuntime.truth(
-                                                                  LawSpecRuntime.matchEither(
-                                                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__poll(
-                                                                          symbols,
-                                                                          LawSpecRuntime.convert(
-                                                                              "Int32",
-                                                                              LawSpecRuntime.integer(
-                                                                                  "Int32", "2"),
-                                                                              64)),
-                                                                      value22 ->
-                                                                          LawSpecRuntime.convert(
-                                                                              "Bool",
-                                                                              LawSpecRuntime.bool(
-                                                                                  false),
-                                                                              64),
-                                                                      value23 ->
-                                                                          LawSpecRuntime.bool(
-                                                                              LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.bool(
-                                                                                          _schema.equal(
-                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                  "List",
-                                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                      "lawtwin.kafka.model::type::Record")),
-                                                                                              lawspec.runtime.LawSpecDefinitionBodies.evaluate335(
-                                                                                                  symbols,
-                                                                                                  value23),
-                                                                                              LawSpecRuntime.construct(
-                                                                                                  "List lawtwin.kafka.model::type::Record",
-                                                                                                  "List::Cons",
-                                                                                                  new Value[] {
-                                                                                                    value2,
-                                                                                                    LawSpecRuntime.construct(
-                                                                                                        "List lawtwin.kafka.model::type::Record",
-                                                                                                        "List::Cons",
-                                                                                                        new Value[] {
-                                                                                                          value3,
-                                                                                                          LawSpecRuntime.construct(
-                                                                                                              "List lawtwin.kafka.model::type::Record",
-                                                                                                              "List::Nil",
-                                                                                                              new Value[] {
-
-                                                                                                              })
-                                                                                                        })
-                                                                                                  }),
-                                                                                              64,
-                                                                                              symbols)))
-                                                                                  && LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.binary(
-                                                                                          "==",
-                                                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate334(
-                                                                                              symbols,
-                                                                                              value23),
-                                                                                          LawSpecRuntime.construct(
-                                                                                              "List Int64",
-                                                                                              "List::Cons",
-                                                                                              new Value[] {
-                                                                                                _schema.match(
-                                                                                                    new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                        "lawtwin.kafka::type::RecordMetadata"),
-                                                                                                    value5,
-                                                                                                    64,
-                                                                                                    symbols,
-                                                                                                    _match1242 ->
-                                                                                                        switch (_match1242.tag()) {
-                                                                                                          case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                                                              + "ordMetadata" -> {
-                                                                                                            var value24 = _match1242.fields().get(0);
-                                                                                                            var value25 = _match1242.fields().get(1);
-                                                                                                            yield value25;
-                                                                                                          }
-                                                                                                          default ->
-                                                                                                              throw new IllegalArgumentException("invalid constructor");
-                                                                                                        }),
-                                                                                                LawSpecRuntime.construct(
-                                                                                                    "List Int64",
-                                                                                                    "List::Cons",
-                                                                                                    new Value[] {
-                                                                                                      _schema.match(
-                                                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                              "lawtwin.kafka::type::RecordMetadata"),
-                                                                                                          value7,
-                                                                                                          64,
-                                                                                                          symbols,
-                                                                                                          _match1242 ->
-                                                                                                              switch (_match1242.tag()) {
-                                                                                                                case "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                                                                    + "ordMetadata" -> {
-                                                                                                                  var value26 = _match1242.fields().get(0);
-                                                                                                                  var value27 = _match1242.fields().get(1);
-                                                                                                                  yield value27;
-                                                                                                                }
-                                                                                                                default ->
-                                                                                                                    throw new IllegalArgumentException("invalid constructor");
-                                                                                                              }),
-                                                                                                      LawSpecRuntime.construct(
-                                                                                                          "List Int64",
-                                                                                                          "List::Nil",
-                                                                                                          new Value[] {
-
-                                                                                                          })
-                                                                                                    })
-                                                                                              })))))))))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::readInOrder: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.readInOrder_ba595483(symbols, lawspec.runtime.LawSpecTyped.C100.decode(input0), lawspec.runtime.LawSpecTyped.C100.decode(input1), lawspec.runtime.LawSpecTyped.C112.decode(input2), lawspec.runtime.LawSpecTyped.C112.decode(input3)));
   }
 
   public static Value evaluate334(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C80.encode(lawspec.runtime.LawSpecTyped.receivedOffsets_244(lawspec.runtime.LawSpecTyped.C85.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C89.encode(lawspec.runtime.LawSpecTyped.receivedOffsets_6c3a7a20(lawspec.runtime.LawSpecTyped.C95.decode(input0)));
   }
 
   public static Value evaluate335(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.receivedRecords_245(lawspec.runtime.LawSpecTyped.C85.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.receivedRecords_c3c84323(lawspec.runtime.LawSpecTyped.C95.decode(input0)));
   }
 
   public static Value evaluate336(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.recordsOf_246(lawspec.runtime.LawSpecTyped.C86.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.recordsOf_a7b339ef(lawspec.runtime.LawSpecTyped.C96.decode(input0)));
   }
 
   public static Value evaluate337(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.let(
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::TopicPartition"),
-                  "lawtwin.kafka.model::type::TopicPartitio" + "n::TopicPartition",
-                  java.util.List.of(
-                      value0,
-                      LawSpecRuntime.convert("Int32", LawSpecRuntime.integer("Int32", "0"), 64)),
-                  64,
-                  symbols),
-              value4 ->
-                  LawSpecRuntime.let(
-                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__subscribe(
-                          symbols,
-                          value1,
-                          value2,
-                          LawSpecRuntime.construct(
-                              "List Text",
-                              "List::Cons",
-                              new Value[] {
-                                value0,
-                                LawSpecRuntime.construct("List Text", "List::Nil", new Value[] {})
-                              })),
-                      value5 ->
-                          LawSpecRuntime.let(
-                              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__poll(
-                                  symbols, value3),
-                              value6 ->
-                                  LawSpecRuntime.let(
-                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__commitSync(
-                                          symbols),
-                                      value7 ->
-                                          LawSpecRuntime.let(
-                                              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__close(
-                                                  symbols),
-                                              value8 ->
-                                                  LawSpecRuntime.let(
-                                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__subscribe(
-                                                          symbols,
-                                                          value1,
-                                                          value2,
-                                                          LawSpecRuntime.construct(
-                                                              "List Text",
-                                                              "List::Cons",
-                                                              new Value[] {
-                                                                value0,
-                                                                LawSpecRuntime.construct(
-                                                                    "List Text",
-                                                                    "List::Nil",
-                                                                    new Value[] {})
-                                                              })),
-                                                      value9 ->
-                                                          LawSpecRuntime.let(
-                                                              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__position(
-                                                                  symbols, value4),
-                                                              value10 ->
-                                                                  LawSpecRuntime.let(
-                                                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__committedOffset(
-                                                                          symbols, value4),
-                                                                      value11 ->
-                                                                          LawSpecRuntime.let(
-                                                                              lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__poll(
-                                                                                  symbols,
-                                                                                  LawSpecRuntime.convert(
-                                                                                      "Int32",
-                                                                                      LawSpecRuntime.integer(
-                                                                                          "Int32",
-                                                                                          "100"),
-                                                                                      64)),
-                                                                              value12 ->
-                                                                                  LawSpecRuntime.bool(
-                                                                                      LawSpecRuntime.truth(
-                                                                                              LawSpecRuntime.bool(
-                                                                                                  LawSpecRuntime.truth(
-                                                                                                          LawSpecRuntime.bool(
-                                                                                                              LawSpecRuntime.truth(
-                                                                                                                      LawSpecRuntime.bool(
-                                                                                                                          LawSpecRuntime.truth(
-                                                                                                                                  LawSpecRuntime.matchEither(
-                                                                                                                                      value5,
-                                                                                                                                      value13 ->
-                                                                                                                                          LawSpecRuntime.convert(
-                                                                                                                                              "Bool",
-                                                                                                                                              LawSpecRuntime.bool(
-                                                                                                                                                  false),
-                                                                                                                                              64),
-                                                                                                                                      value14 ->
-                                                                                                                                          LawSpecRuntime.convert(
-                                                                                                                                              "Bool",
-                                                                                                                                              LawSpecRuntime.bool(
-                                                                                                                                                  true),
-                                                                                                                                              64)))
-                                                                                                                              && LawSpecRuntime.truth(
-                                                                                                                                  LawSpecRuntime.matchEither(
-                                                                                                                                      value6,
-                                                                                                                                      value15 ->
-                                                                                                                                          LawSpecRuntime.convert(
-                                                                                                                                              "Bool",
-                                                                                                                                              LawSpecRuntime.bool(
-                                                                                                                                                  false),
-                                                                                                                                              64),
-                                                                                                                                      value16 ->
-                                                                                                                                          LawSpecRuntime.convert(
-                                                                                                                                              "Bool",
-                                                                                                                                              LawSpecRuntime.bool(
-                                                                                                                                                  true),
-                                                                                                                                              64)))))
-                                                                                                                  && LawSpecRuntime.truth(
-                                                                                                                      LawSpecRuntime.matchEither(
-                                                                                                                          value7,
-                                                                                                                          value17 ->
-                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                  "Bool",
-                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                      false),
-                                                                                                                                  64),
-                                                                                                                          value18 ->
-                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                  "Bool",
-                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                      true),
-                                                                                                                                  64)))))
-                                                                                                      && LawSpecRuntime.truth(
-                                                                                                          LawSpecRuntime.matchEither(
-                                                                                                              value9,
-                                                                                                              value19 ->
-                                                                                                                  LawSpecRuntime.convert(
-                                                                                                                      "Bool",
-                                                                                                                      LawSpecRuntime.bool(
-                                                                                                                          false),
-                                                                                                                      64),
-                                                                                                              value20 ->
-                                                                                                                  LawSpecRuntime.convert(
-                                                                                                                      "Bool",
-                                                                                                                      LawSpecRuntime.bool(
-                                                                                                                          true),
-                                                                                                                      64)))))
-                                                                                          && LawSpecRuntime.truth(
-                                                                                              LawSpecRuntime.matchMaybe(
-                                                                                                  value11,
-                                                                                                  () ->
-                                                                                                      LawSpecRuntime.convert(
-                                                                                                          "Bool",
-                                                                                                          LawSpecRuntime.bool(
-                                                                                                              false),
-                                                                                                          64),
-                                                                                                  value21 ->
-                                                                                                      LawSpecRuntime.bool(
-                                                                                                          LawSpecRuntime.truth(
-                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                      _schema.equal(
-                                                                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                              "Either",
-                                                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                                  "Int64")),
-                                                                                                                          value10,
-                                                                                                                          _schema.construct(
-                                                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                                  "Either",
-                                                                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                                                      "Int64")),
-                                                                                                                              "Either::Right",
-                                                                                                                              java.util.List.of(
-                                                                                                                                  value21),
-                                                                                                                              64,
-                                                                                                                              symbols),
-                                                                                                                          64,
-                                                                                                                          symbols)))
-                                                                                                              && LawSpecRuntime.truth(
-                                                                                                                  LawSpecRuntime.matchEither(
-                                                                                                                      value12,
-                                                                                                                      value22 ->
-                                                                                                                          LawSpecRuntime.convert(
-                                                                                                                              "Bool",
-                                                                                                                              LawSpecRuntime.bool(
-                                                                                                                                  false),
-                                                                                                                              64),
-                                                                                                                      value23 ->
-                                                                                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate34(
-                                                                                                                              symbols,
-                                                                                                                              value21,
-                                                                                                                              lawspec.runtime.LawSpecDefinitionBodies.evaluate334(
-                                                                                                                                  symbols,
-                                                                                                                                  value23)))))))))))))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::resumesAtCommitted: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.resumesAtCommitted_13d41b73(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C6.decode(input3)));
   }
 
   public static Value evaluate338(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.samePartition_247(lawspec.runtime.LawSpecTyped.C90.decode(input0), lawspec.runtime.LawSpecTyped.C90.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.samePartition_cee4f2dc(lawspec.runtime.LawSpecTyped.C100.decode(input0), lawspec.runtime.LawSpecTyped.C100.decode(input1)));
   }
 
   public static Value evaluate339(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.sequenceFor_248(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C70.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.sequenceFor_9d79724c(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C79.decode(input1)));
   }
 
   public static Value evaluate340(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.smallBatch_249(lawspec.runtime.LawSpecTyped.C22.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.smallBatch_dc4ae7bb(lawspec.runtime.LawSpecTyped.C22.decode(input0)));
   }
 
   public static Value evaluate341(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.let(
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::TopicPartition"),
-                  "lawtwin.kafka.model::type::TopicPartitio" + "n::TopicPartition",
-                  java.util.List.of(
-                      value0,
-                      LawSpecRuntime.convert("Int32", LawSpecRuntime.integer("Int32", "0"), 64)),
-                  64,
-                  symbols),
-              value3 ->
-                  LawSpecRuntime.matchEither(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                                  symbols,
-                                  LawSpecRuntime.construct(
-                                      "Maybe Text", "Maybe::Just", new Value[] {value1})),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value4 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Left",
-                                  java.util.List.of(value4),
-                                  64,
-                                  symbols),
-                          value5 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Right",
-                                  java.util.List.of(value5),
-                                  64,
-                                  symbols)),
-                      value6 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                      value7 ->
-                          LawSpecRuntime.let(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
-                                          symbols,
-                                          value1,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value7,
-                                              64,
-                                              symbols,
-                                              _match1251 ->
-                                                  switch (_match1251.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value8 = _match1251.fields().get(0);
-                                                      var value9 = _match1251.fields().get(1);
-                                                      yield value8;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value7,
-                                              64,
-                                              symbols,
-                                              _match1251 ->
-                                                  switch (_match1251.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value10 = _match1251.fields().get(0);
-                                                      var value11 = _match1251.fields().get(1);
-                                                      yield value11;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          LawSpecRuntime.construct(
-                                              "List lawtwin.kafka.model::type::TopicPartition",
-                                              "List::Cons",
-                                              new Value[] {
-                                                value3,
-                                                LawSpecRuntime.construct(
-                                                    "List lawtwin.kafka.model::type::TopicPartition",
-                                                    "List::Nil",
-                                                    new Value[] {})
-                                              })),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value12 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(value12),
-                                          64,
-                                          symbols),
-                                  value13 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(value13),
-                                          64,
-                                          symbols)),
-                              value14 ->
-                                  LawSpecRuntime.let(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                                  symbols,
-                                                  value3,
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Maybe",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Just",
-                                                      java.util.List.of(
-                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
-                                                              symbols,
-                                                              value7,
-                                                              LawSpecRuntime.convert(
-                                                                  "Int32",
-                                                                  LawSpecRuntime.integer(
-                                                                      "Int32", "0"),
-                                                                  64))),
-                                                      64,
-                                                      symbols),
-                                                  value2),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value15 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value15),
-                                                  64,
-                                                  symbols),
-                                          value16 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value16),
-                                                  64,
-                                                  symbols)),
-                                      value17 ->
-                                          LawSpecRuntime.matchEither(
-                                              LawSpecRuntime.matchEither(
-                                                  LawSpecRuntime.attempt(
-                                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                          + "el::type::KafkaError)",
-                                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__fetchRequest(
-                                                          symbols,
-                                                          value3,
-                                                          LawSpecRuntime.convert(
-                                                              "Int64",
-                                                              LawSpecRuntime.integer("Int64", "0"),
-                                                              64),
-                                                          LawSpecRuntime.convert(
-                                                              "Int32",
-                                                              LawSpecRuntime.integer(
-                                                                  "Int32", "1000"),
-                                                              64),
-                                                          _schema.construct(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::IsolationLevel"),
-                                                              "lawtwin.kafka.model::type::IsolationLeve"
-                                                                  + "l::ReadUncommitted",
-                                                              java.util.List.of(),
-                                                              64,
-                                                              symbols)),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                                          "Either::Right",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                                          "Either::Left",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols)),
-                                                  value18 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                                          "Either::Left",
-                                                          java.util.List.of(value18),
-                                                          64,
-                                                          symbols),
-                                                  value19 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::FetchResult")),
-                                                          "Either::Right",
-                                                          java.util.List.of(value19),
-                                                          64,
-                                                          symbols)),
-                                              value20 ->
-                                                  LawSpecRuntime.convert(
-                                                      "Bool", LawSpecRuntime.bool(false), 64),
-                                              value21 ->
-                                                  LawSpecRuntime.bool(
-                                                      LawSpecRuntime.truth(
-                                                              LawSpecRuntime.bool(
-                                                                  LawSpecRuntime.truth(
-                                                                          LawSpecRuntime.bool(
-                                                                              LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.matchEither(
-                                                                                          value14,
-                                                                                          value22 ->
-                                                                                              LawSpecRuntime.convert(
-                                                                                                  "Bool",
-                                                                                                  LawSpecRuntime.bool(
-                                                                                                      false),
-                                                                                                  64),
-                                                                                          value23 ->
-                                                                                              LawSpecRuntime.convert(
-                                                                                                  "Bool",
-                                                                                                  LawSpecRuntime.bool(
-                                                                                                      true),
-                                                                                                  64)))
-                                                                                  && LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.matchEither(
-                                                                                          value17,
-                                                                                          value24 ->
-                                                                                              LawSpecRuntime.convert(
-                                                                                                  "Bool",
-                                                                                                  LawSpecRuntime.bool(
-                                                                                                      false),
-                                                                                                  64),
-                                                                                          value25 ->
-                                                                                              LawSpecRuntime.convert(
-                                                                                                  "Bool",
-                                                                                                  LawSpecRuntime.bool(
-                                                                                                      true),
-                                                                                                  64)))))
-                                                                      && LawSpecRuntime.truth(
-                                                                          LawSpecRuntime.binary(
-                                                                              "<=",
-                                                                              _schema.match(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka.model::type::FetchResult"),
-                                                                                  value21,
-                                                                                  64,
-                                                                                  symbols,
-                                                                                  _match1641 ->
-                                                                                      switch (_match1641.tag()) {
-                                                                                        case "lawtwin.kafka.model::type::FetchResult::"
-                                                                                            + "FetchResult" -> {
-                                                                                          var value26 = _match1641.fields().get(0);
-                                                                                          var value27 = _match1641.fields().get(1);
-                                                                                          var value28 = _match1641.fields().get(2);
-                                                                                          var value29 = _match1641.fields().get(3);
-                                                                                          yield value29;
-                                                                                        }
-                                                                                        default ->
-                                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                                      }),
-                                                                              _schema.match(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka.model::type::FetchResult"),
-                                                                                  value21,
-                                                                                  64,
-                                                                                  symbols,
-                                                                                  _match1641 ->
-                                                                                      switch (_match1641.tag()) {
-                                                                                        case "lawtwin.kafka.model::type::FetchResult::"
-                                                                                            + "FetchResult" -> {
-                                                                                          var value30 = _match1641.fields().get(0);
-                                                                                          var value31 = _match1641.fields().get(1);
-                                                                                          var value32 = _match1641.fields().get(2);
-                                                                                          var value33 = _match1641.fields().get(3);
-                                                                                          yield value32;
-                                                                                        }
-                                                                                        default ->
-                                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                                      })))))
-                                                          && LawSpecRuntime.truth(
-                                                              LawSpecRuntime.matchEither(
-                                                                  value17,
-                                                                  value39 ->
-                                                                      LawSpecRuntime.convert(
-                                                                          "Bool",
-                                                                          LawSpecRuntime.bool(
-                                                                              false),
-                                                                          64),
-                                                                  value34 ->
-                                                                      LawSpecRuntime.binary(
-                                                                          "<=",
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::FetchResult"),
-                                                                              value21,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1641 ->
-                                                                                  switch (_match1641.tag()) {
-                                                                                    case "lawtwin.kafka.model::type::FetchResult::"
-                                                                                        + "FetchResult" -> {
-                                                                                      var value35 = _match1641.fields().get(0);
-                                                                                      var value36 = _match1641.fields().get(1);
-                                                                                      var value37 = _match1641.fields().get(2);
-                                                                                      var value38 = _match1641.fields().get(3);
-                                                                                      yield value38;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  }),
-                                                                          value34)))))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::stableBelowHigh: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.stableBelowHigh_60981bc4(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2)));
   }
 
   public static Value evaluate342(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C21.encode(lawspec.runtime.LawSpecTyped.tagFor_250(lawspec.runtime.LawSpecTyped.C100.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C21.encode(lawspec.runtime.LawSpecTyped.tagFor_a88d3846(lawspec.runtime.LawSpecTyped.C113.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
   }
 
   public static Value evaluate343(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C96.encode(lawspec.runtime.LawSpecTyped.tagOf_251(lawspec.runtime.LawSpecTyped.C88.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C106.encode(lawspec.runtime.LawSpecTyped.tagOf_39235de7(lawspec.runtime.LawSpecTyped.C98.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1)));
   }
 
   public static Value evaluate344(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.toPositive_252(lawspec.runtime.LawSpecTyped.C43.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.toPositive_fc7029c7(lawspec.runtime.LawSpecTyped.C52.decode(input0)));
   }
 
   public static Value evaluate345(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.let(
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::TopicPartition"),
-                  "lawtwin.kafka.model::type::TopicPartitio" + "n::TopicPartition",
-                  java.util.List.of(
-                      value0,
-                      LawSpecRuntime.convert("Int32", LawSpecRuntime.integer("Int32", "0"), 64)),
-                  64,
-                  symbols),
-              value4 ->
-                  LawSpecRuntime.matchEither(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                                  symbols,
-                                  LawSpecRuntime.construct(
-                                      "Maybe Text", "Maybe::Just", new Value[] {value1})),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value5 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Left",
-                                  java.util.List.of(value5),
-                                  64,
-                                  symbols),
-                          value6 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                  "Either::Right",
-                                  java.util.List.of(value6),
-                                  64,
-                                  symbols)),
-                      value7 -> LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                      value8 ->
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
-                                          symbols,
-                                          value1,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value8,
-                                              64,
-                                              symbols,
-                                              _match1275 ->
-                                                  switch (_match1275.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value9 = _match1275.fields().get(0);
-                                                      var value10 = _match1275.fields().get(1);
-                                                      yield value9;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value8,
-                                              64,
-                                              symbols,
-                                              _match1275 ->
-                                                  switch (_match1275.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value11 = _match1275.fields().get(0);
-                                                      var value12 = _match1275.fields().get(1);
-                                                      yield value12;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          LawSpecRuntime.construct(
-                                              "List lawtwin.kafka.model::type::TopicPartition",
-                                              "List::Cons",
-                                              new Value[] {
-                                                value4,
-                                                LawSpecRuntime.construct(
-                                                    "List lawtwin.kafka.model::type::TopicPartition",
-                                                    "List::Nil",
-                                                    new Value[] {})
-                                              })),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value13 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(value13),
-                                          64,
-                                          symbols),
-                                  value14 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(value14),
-                                          64,
-                                          symbols)),
-                              value15 ->
-                                  LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                              value16 ->
-                                  LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                                  symbols,
-                                                  value4,
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Maybe",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::ProducerTag")),
-                                                      "Maybe::Just",
-                                                      java.util.List.of(
-                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
-                                                              symbols,
-                                                              value8,
-                                                              LawSpecRuntime.convert(
-                                                                  "Int32",
-                                                                  LawSpecRuntime.integer(
-                                                                      "Int32", "0"),
-                                                                  64))),
-                                                      64,
-                                                      symbols),
-                                                  value2),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value17 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value17),
-                                                  64,
-                                                  symbols),
-                                          value18 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Int64")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value18),
-                                                  64,
-                                                  symbols)),
-                                      value19 ->
-                                          LawSpecRuntime.convert(
-                                              "Bool", LawSpecRuntime.bool(false), 64),
-                                      value20 ->
-                                          LawSpecRuntime.let(
-                                              LawSpecRuntime.bool(
-                                                  _schema.equal(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "List",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::Record")),
-                                                      lawspec.runtime.LawSpecDefinitionBodies.evaluate65(
-                                                          symbols, value4, value20),
-                                                      LawSpecRuntime.construct(
-                                                          "List lawtwin.kafka.model::type::Record",
-                                                          "List::Nil",
-                                                          new Value[] {}),
-                                                      64,
-                                                      symbols)),
-                                              value21 ->
-                                                  LawSpecRuntime.let(
-                                                      LawSpecRuntime.bool(
-                                                          _schema.equal(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "List",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::Record")),
-                                                              lawspec.runtime.LawSpecDefinitionBodies.evaluate355(
-                                                                  symbols, value4, value20),
-                                                              value2,
-                                                              64,
-                                                              symbols)),
-                                                      value22 ->
-                                                          LawSpecRuntime.matchEither(
-                                                              LawSpecRuntime.matchEither(
-                                                                  LawSpecRuntime.attempt(
-                                                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                                          + "el::type::KafkaError)",
-                                                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
-                                                                          symbols,
-                                                                          value1,
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                              value8,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1275 ->
-                                                                                  switch (_match1275.tag()) {
-                                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                      var value23 = _match1275.fields().get(0);
-                                                                                      var value24 = _match1275.fields().get(1);
-                                                                                      yield value23;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  }),
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                              value8,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1275 ->
-                                                                                  switch (_match1275.tag()) {
-                                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                      var value25 = _match1275.fields().get(0);
-                                                                                      var value26 = _match1275.fields().get(1);
-                                                                                      yield value26;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  }),
-                                                                          value3),
-                                                                      _value -> _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Right",
-                                                                          java.util.List.of(_value),
-                                                                          64,
-                                                                          symbols),
-                                                                      _value -> _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Left",
-                                                                          java.util.List.of(_value),
-                                                                          64,
-                                                                          symbols)),
-                                                                  value27 ->
-                                                                      _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Left",
-                                                                          java.util.List.of(
-                                                                              value27),
-                                                                          64,
-                                                                          symbols),
-                                                                  value28 ->
-                                                                      _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Right",
-                                                                          java.util.List.of(
-                                                                              value28),
-                                                                          64,
-                                                                          symbols)),
-                                                              value29 ->
-                                                                  LawSpecRuntime.convert(
-                                                                      "Bool",
-                                                                      LawSpecRuntime.bool(false),
-                                                                      64),
-                                                              value30 ->
-                                                                  LawSpecRuntime.bool(
-                                                                      LawSpecRuntime.truth(
-                                                                              LawSpecRuntime.bool(
-                                                                                  LawSpecRuntime.truth(
-                                                                                          LawSpecRuntime.bool(
-                                                                                              LawSpecRuntime.truth(
-                                                                                                      value21)
-                                                                                                  && LawSpecRuntime.truth(
-                                                                                                      value22)))
-                                                                                      && LawSpecRuntime.truth(
-                                                                                          LawSpecRuntime.bool(
-                                                                                              _schema.equal(
-                                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                      "List",
-                                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                          "lawtwin.kafka.model::type::Record")),
-                                                                                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate355(
-                                                                                                      symbols,
-                                                                                                      value4,
-                                                                                                      value20),
-                                                                                                  value2,
-                                                                                                  64,
-                                                                                                  symbols)))))
-                                                                          && LawSpecRuntime.truth(
-                                                                              (LawSpecRuntime.truth(
-                                                                                      value3)
-                                                                                  ? LawSpecRuntime.bool(
-                                                                                      _schema.equal(
-                                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                                              "List",
-                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                  "lawtwin.kafka.model::type::Record")),
-                                                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate65(
-                                                                                              symbols,
-                                                                                              value4,
-                                                                                              value20),
-                                                                                          value2,
-                                                                                          64,
-                                                                                          symbols))
-                                                                                  : LawSpecRuntime.bool(
-                                                                                      _schema.equal(
-                                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                                              "List",
-                                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                                  "lawtwin.kafka.model::type::Record")),
-                                                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate65(
-                                                                                              symbols,
-                                                                                              value4,
-                                                                                              value20),
-                                                                                          LawSpecRuntime.construct(
-                                                                                              "List lawtwin.kafka.model::type::Record",
-                                                                                              "List::Nil",
-                                                                                              new Value[] {
-
-                                                                                              }),
-                                                                                          64,
-                                                                                          symbols))))))))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionThenRead: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.transactionThenRead_81bf7b1b(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3)));
   }
 
   public static Value evaluate346(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var value3 = input3;
-      var result =
-          LawSpecRuntime.let(
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::TopicPartition"),
-                  "lawtwin.kafka.model::type::TopicPartitio" + "n::TopicPartition",
-                  java.util.List.of(
-                      value0,
-                      LawSpecRuntime.convert("Int32", LawSpecRuntime.integer("Int32", "0"), 64)),
-                  64,
-                  symbols),
-              value4 ->
-                  LawSpecRuntime.let(
-                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
-                          symbols, value2, value4),
-                      value5 ->
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                                          symbols,
-                                          LawSpecRuntime.construct(
-                                              "Maybe Text", "Maybe::Just", new Value[] {value1})),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value6 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                          "Either::Left",
-                                          java.util.List.of(value6),
-                                          64,
-                                          symbols),
-                                  value7 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                          "Either::Right",
-                                          java.util.List.of(value7),
-                                          64,
-                                          symbols)),
-                              value8 ->
-                                  LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                              value9 ->
-                                  LawSpecRuntime.let(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
-                                                  symbols,
-                                                  value1,
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value9,
-                                                      64,
-                                                      symbols,
-                                                      _match1281 ->
-                                                          switch (_match1281.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value10 = _match1281.fields().get(0);
-                                                              var value11 = _match1281.fields().get(1);
-                                                              yield value10;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value9,
-                                                      64,
-                                                      symbols,
-                                                      _match1281 ->
-                                                          switch (_match1281.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value12 = _match1281.fields().get(0);
-                                                              var value13 = _match1281.fields().get(1);
-                                                              yield value13;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  value2,
-                                                  LawSpecRuntime.construct(
-                                                      "List lawtwin.kafka.model::type::OffsetEntry",
-                                                      "List::Cons",
-                                                      new Value[] {
-                                                        _schema.construct(
-                                                            new lawspec.runtime.LawSpecSchema.Named(
-                                                                "lawtwin.kafka.model::type::OffsetEntry"),
-                                                            "lawtwin.kafka.model::type::OffsetEntry::"
-                                                                + "OffsetEntry",
-                                                            java.util.List.of(value4, value3),
-                                                            64,
-                                                            symbols),
-                                                        LawSpecRuntime.construct(
-                                                            "List lawtwin.kafka.model::type::OffsetEntry",
-                                                            "List::Nil",
-                                                            new Value[] {})
-                                                      })),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value14 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value14),
-                                                  64,
-                                                  symbols),
-                                          value15 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value15),
-                                                  64,
-                                                  symbols)),
-                                      value16 ->
-                                          LawSpecRuntime.let(
-                                              LawSpecRuntime.matchEither(
-                                                  LawSpecRuntime.attempt(
-                                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                          + "el::type::KafkaError)",
-                                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
-                                                          symbols,
-                                                          value1,
-                                                          _schema.match(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                              value9,
-                                                              64,
-                                                              symbols,
-                                                              _match1281 ->
-                                                                  switch (_match1281.tag()) {
-                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                      var value17 = _match1281.fields().get(0);
-                                                                      var value18 = _match1281.fields().get(1);
-                                                                      yield value17;
-                                                                    }
-                                                                    default ->
-                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                  }),
-                                                          _schema.match(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                              value9,
-                                                              64,
-                                                              symbols,
-                                                              _match1281 ->
-                                                                  switch (_match1281.tag()) {
-                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                      var value19 = _match1281.fields().get(0);
-                                                                      var value20 = _match1281.fields().get(1);
-                                                                      yield value20;
-                                                                    }
-                                                                    default ->
-                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                  }),
-                                                          LawSpecRuntime.convert(
-                                                              "Bool",
-                                                              LawSpecRuntime.bool(false),
-                                                              64)),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Right",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Left",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols)),
-                                                  value21 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Left",
-                                                          java.util.List.of(value21),
-                                                          64,
-                                                          symbols),
-                                                  value22 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Unit")),
-                                                          "Either::Right",
-                                                          java.util.List.of(value22),
-                                                          64,
-                                                          symbols)),
-                                              value23 ->
-                                                  LawSpecRuntime.let(
-                                                      lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
-                                                          symbols, value2, value4),
-                                                      value24 ->
-                                                          LawSpecRuntime.let(
-                                                              LawSpecRuntime.matchEither(
-                                                                  LawSpecRuntime.attempt(
-                                                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                                          + "el::type::KafkaError)",
-                                                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
-                                                                          symbols,
-                                                                          value1,
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                              value9,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1281 ->
-                                                                                  switch (_match1281.tag()) {
-                                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                      var value25 = _match1281.fields().get(0);
-                                                                                      var value26 = _match1281.fields().get(1);
-                                                                                      yield value25;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  }),
-                                                                          _schema.match(
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                              value9,
-                                                                              64,
-                                                                              symbols,
-                                                                              _match1281 ->
-                                                                                  switch (_match1281.tag()) {
-                                                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                      var value27 = _match1281.fields().get(0);
-                                                                                      var value28 = _match1281.fields().get(1);
-                                                                                      yield value28;
-                                                                                    }
-                                                                                    default ->
-                                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                                  }),
-                                                                          value2,
-                                                                          LawSpecRuntime.construct(
-                                                                              "List lawtwin.kafka.model::type::OffsetEntry",
-                                                                              "List::Cons",
-                                                                              new Value[] {
-                                                                                _schema.construct(
-                                                                                    new lawspec.runtime.LawSpecSchema.Named(
-                                                                                        "lawtwin.kafka.model::type::OffsetEntry"),
-                                                                                    "lawtwin.kafka.model::type::OffsetEntry::"
-                                                                                        + "OffsetEntry",
-                                                                                    java.util.List.of(
-                                                                                        value4,
-                                                                                        value3),
-                                                                                    64,
-                                                                                    symbols),
-                                                                                LawSpecRuntime.construct(
-                                                                                    "List lawtwin.kafka.model::type::OffsetEntry",
-                                                                                    "List::Nil",
-                                                                                    new Value[] {})
-                                                                              })),
-                                                                      _value -> _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Right",
-                                                                          java.util.List.of(_value),
-                                                                          64,
-                                                                          symbols),
-                                                                      _value -> _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Left",
-                                                                          java.util.List.of(_value),
-                                                                          64,
-                                                                          symbols)),
-                                                                  value29 ->
-                                                                      _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Left",
-                                                                          java.util.List.of(
-                                                                              value29),
-                                                                          64,
-                                                                          symbols),
-                                                                  value30 ->
-                                                                      _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          "Either::Right",
-                                                                          java.util.List.of(
-                                                                              value30),
-                                                                          64,
-                                                                          symbols)),
-                                                              value31 ->
-                                                                  LawSpecRuntime.let(
-                                                                      LawSpecRuntime.matchEither(
-                                                                          LawSpecRuntime.attempt(
-                                                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                                                  + "el::type::KafkaError)",
-                                                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
-                                                                                  symbols,
-                                                                                  value1,
-                                                                                  _schema.match(
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                                      value9,
-                                                                                      64,
-                                                                                      symbols,
-                                                                                      _match1281 ->
-                                                                                          switch (_match1281.tag()) {
-                                                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                              var value32 = _match1281.fields().get(0);
-                                                                                              var value33 = _match1281.fields().get(1);
-                                                                                              yield value32;
-                                                                                            }
-                                                                                            default ->
-                                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                                          }),
-                                                                                  _schema.match(
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                                                      value9,
-                                                                                      64,
-                                                                                      symbols,
-                                                                                      _match1281 ->
-                                                                                          switch (_match1281.tag()) {
-                                                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                              var value34 = _match1281.fields().get(0);
-                                                                                              var value35 = _match1281.fields().get(1);
-                                                                                              yield value35;
-                                                                                            }
-                                                                                            default ->
-                                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                                          }),
-                                                                                  LawSpecRuntime.convert(
-                                                                                      "Bool",
-                                                                                      LawSpecRuntime.bool(
-                                                                                          true),
-                                                                                      64)),
-                                                                              _value -> _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Either",
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "Unit")),
-                                                                                  "Either::Right",
-                                                                                  java.util.List.of(
-                                                                                      _value),
-                                                                                  64,
-                                                                                  symbols),
-                                                                              _value -> _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Either",
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "Unit")),
-                                                                                  "Either::Left",
-                                                                                  java.util.List.of(
-                                                                                      _value),
-                                                                                  64,
-                                                                                  symbols)),
-                                                                          value36 ->
-                                                                              _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Either",
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "Unit")),
-                                                                                  "Either::Left",
-                                                                                  java.util.List.of(
-                                                                                      value36),
-                                                                                  64,
-                                                                                  symbols),
-                                                                          value37 ->
-                                                                              _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Either",
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                                          "Unit")),
-                                                                                  "Either::Right",
-                                                                                  java.util.List.of(
-                                                                                      value37),
-                                                                                  64,
-                                                                                  symbols)),
-                                                                      value38 ->
-                                                                          LawSpecRuntime.bool(
-                                                                              LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.bool(
-                                                                                          LawSpecRuntime.truth(
-                                                                                                  LawSpecRuntime.bool(
-                                                                                                      LawSpecRuntime.truth(
-                                                                                                              LawSpecRuntime.bool(
-                                                                                                                  LawSpecRuntime.truth(
-                                                                                                                          LawSpecRuntime.bool(
-                                                                                                                              LawSpecRuntime.truth(
-                                                                                                                                      LawSpecRuntime.matchEither(
-                                                                                                                                          value16,
-                                                                                                                                          value39 ->
-                                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                                  "Bool",
-                                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                                      false),
-                                                                                                                                                  64),
-                                                                                                                                          value40 ->
-                                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                                  "Bool",
-                                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                                      true),
-                                                                                                                                                  64)))
-                                                                                                                                  && LawSpecRuntime.truth(
-                                                                                                                                      LawSpecRuntime.matchEither(
-                                                                                                                                          value23,
-                                                                                                                                          value41 ->
-                                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                                  "Bool",
-                                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                                      false),
-                                                                                                                                                  64),
-                                                                                                                                          value42 ->
-                                                                                                                                              LawSpecRuntime.convert(
-                                                                                                                                                  "Bool",
-                                                                                                                                                  LawSpecRuntime.bool(
-                                                                                                                                                      true),
-                                                                                                                                                  64)))))
-                                                                                                                      && LawSpecRuntime.truth(
-                                                                                                                          LawSpecRuntime.binary(
-                                                                                                                              "==",
-                                                                                                                              value24,
-                                                                                                                              value5))))
-                                                                                                          && LawSpecRuntime.truth(
-                                                                                                              LawSpecRuntime.matchEither(
-                                                                                                                  value31,
-                                                                                                                  value43 ->
-                                                                                                                      LawSpecRuntime.convert(
-                                                                                                                          "Bool",
-                                                                                                                          LawSpecRuntime.bool(
-                                                                                                                              false),
-                                                                                                                          64),
-                                                                                                                  value44 ->
-                                                                                                                      LawSpecRuntime.convert(
-                                                                                                                          "Bool",
-                                                                                                                          LawSpecRuntime.bool(
-                                                                                                                              true),
-                                                                                                                          64)))))
-                                                                                              && LawSpecRuntime.truth(
-                                                                                                  LawSpecRuntime.matchEither(
-                                                                                                      value38,
-                                                                                                      value45 ->
-                                                                                                          LawSpecRuntime.convert(
-                                                                                                              "Bool",
-                                                                                                              LawSpecRuntime.bool(
-                                                                                                                  false),
-                                                                                                              64),
-                                                                                                      value46 ->
-                                                                                                          LawSpecRuntime.convert(
-                                                                                                              "Bool",
-                                                                                                              LawSpecRuntime.bool(
-                                                                                                                  true),
-                                                                                                              64)))))
-                                                                                  && LawSpecRuntime.truth(
-                                                                                      LawSpecRuntime.binary(
-                                                                                          "==",
-                                                                                          lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
-                                                                                              symbols,
-                                                                                              value2,
-                                                                                              value4),
-                                                                                          LawSpecRuntime.construct(
-                                                                                              "Maybe Int64",
-                                                                                              "Maybe::Just",
-                                                                                              new Value[] {
-                                                                                                value3
-                                                                                              }))))))))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionalOffsets: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.transactionalOffsets_80320406(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C2.decode(input2), lawspec.runtime.LawSpecTyped.C3.decode(input3)));
   }
 
   public static Value evaluate347(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate351(
-              symbols, LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64), value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsAbort: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsAbort_256496fb(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate348(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::TransactionState"),
-                  value1,
-                  64,
-                  symbols,
-                  _match2334 ->
-                      switch (_match2334.tag()) {
-                        case "lawtwin.kafka::type::TransactionState::T" + "ransactionState" -> {
-                          var value2 = _match2334.fields().get(0);
-                          var value3 = _match2334.fields().get(1);
-                          var value4 = _match2334.fields().get(2);
-                          var value5 = _match2334.fields().get(3);
-                          var value6 = _match2334.fields().get(4);
-                          var value7 = _match2334.fields().get(5);
-                          yield value3;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              "Either::Left",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      "lawtwin.kafka.model::type::KafkaError::I" + "llegalState",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols),
-                          value1),
-                      64,
-                      symbols),
-              value8 ->
-                  (LawSpecRuntime.truth(
-                          LawSpecRuntime.bool(
-                              !LawSpecRuntime.truth(
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState"),
-                                      value1,
-                                      64,
-                                      symbols,
-                                      _match2192 ->
-                                          switch (_match2192.tag()) {
-                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                + "ransactionState" -> {
-                                              var value9 = _match2192.fields().get(0);
-                                              var value10 = _match2192.fields().get(1);
-                                              var value11 = _match2192.fields().get(2);
-                                              var value12 = _match2192.fields().get(3);
-                                              var value13 = _match2192.fields().get(4);
-                                              var value14 = _match2192.fields().get(5);
-                                              yield value12;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }))))
-                      ? _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawspec.collections::type::Pair",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::TransactionState")),
-                          "lawspec.collections::type::Pair::Pair",
-                          java.util.List.of(
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          "lawtwin.kafka.model::type::KafkaError::I"
-                                              + "llegalState",
-                                          java.util.List.of(),
-                                          64,
-                                          symbols)),
-                                  64,
-                                  symbols),
-                              value1),
-                          64,
-                          symbols)
-                      : LawSpecRuntime.let(
-                          lawspec.runtime.LawSpecDefinitionBodies.evaluate317(
-                              symbols,
-                              value0,
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::TransactionState"),
-                                  value1,
-                                  64,
-                                  symbols,
-                                  _match2338 ->
-                                      switch (_match2338.tag()) {
-                                        case "lawtwin.kafka::type::TransactionState::T"
-                                            + "ransactionState" -> {
-                                          var value15 = _match2338.fields().get(0);
-                                          var value16 = _match2338.fields().get(1);
-                                          var value17 = _match2338.fields().get(2);
-                                          var value18 = _match2338.fields().get(3);
-                                          var value19 = _match2338.fields().get(4);
-                                          var value20 = _match2338.fields().get(5);
-                                          yield value19;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      })),
-                          value21 ->
-                              (LawSpecRuntime.truth(
-                                      LawSpecRuntime.matchList(
-                                          value21,
-                                          () ->
-                                              LawSpecRuntime.convert(
-                                                  "Bool", LawSpecRuntime.bool(true), 64),
-                                          (value22, value23) ->
-                                              LawSpecRuntime.convert(
-                                                  "Bool", LawSpecRuntime.bool(false), 64)))
-                                  ? _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState")),
-                                      "lawspec.collections::type::Pair::Pair",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                              "Either::Right",
-                                              java.util.List.of(
-                                                  LawSpecRuntime.convert(
-                                                      "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                                              64,
-                                              symbols),
-                                          value1),
-                                      64,
-                                      symbols)
-                                  : LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
-                                                  symbols,
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState"),
-                                                      value1,
-                                                      64,
-                                                      symbols,
-                                                      _match2192 ->
-                                                          switch (_match2192.tag()) {
-                                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                                + "ransactionState" -> {
-                                                              var value24 = _match2192.fields().get(0);
-                                                              var value25 = _match2192.fields().get(1);
-                                                              var value26 = _match2192.fields().get(2);
-                                                              var value27 = _match2192.fields().get(3);
-                                                              var value28 = _match2192.fields().get(4);
-                                                              var value29 = _match2192.fields().get(5);
-                                                              yield value24;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value8,
-                                                      64,
-                                                      symbols,
-                                                      _match1251 ->
-                                                          switch (_match1251.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value30 = _match1251.fields().get(0);
-                                                              var value31 = _match1251.fields().get(1);
-                                                              yield value30;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value8,
-                                                      64,
-                                                      symbols,
-                                                      _match1252 ->
-                                                          switch (_match1252.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value32 = _match1252.fields().get(0);
-                                                              var value33 = _match1252.fields().get(1);
-                                                              yield value33;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  value21),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value34 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value34),
-                                                  64,
-                                                  symbols),
-                                          value35 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value35),
-                                                  64,
-                                                  symbols)),
-                                      value36 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState")),
-                                              "lawspec.collections::type::Pair::Pair",
-                                              java.util.List.of(
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Unit")),
-                                                      "Either::Left",
-                                                      java.util.List.of(value36),
-                                                      64,
-                                                      symbols),
-                                                  value1),
-                                              64,
-                                              symbols),
-                                      value37 ->
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState")),
-                                              "lawspec.collections::type::Pair::Pair",
-                                              java.util.List.of(
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Unit")),
-                                                      "Either::Right",
-                                                      java.util.List.of(
-                                                          LawSpecRuntime.convert(
-                                                              "Unit",
-                                                              LawSpecRuntime.absent("Unit"),
-                                                              64)),
-                                                      64,
-                                                      symbols),
-                                                  LawSpecRuntime.let(
-                                                      LawSpecRuntime.helper(
-                                                          "append",
-                                                          new Value[] {
-                                                            value21,
-                                                            _schema.match(
-                                                                new lawspec.runtime.LawSpecSchema.Named(
-                                                                    "lawtwin.kafka::type::TransactionState"),
-                                                                value1,
-                                                                64,
-                                                                symbols,
-                                                                _match2338 ->
-                                                                    switch (_match2338.tag()) {
-                                                                      case "lawtwin.kafka::type::TransactionState::T"
-                                                                          + "ransactionState" -> {
-                                                                        var value38 = _match2338.fields().get(0);
-                                                                        var value39 = _match2338.fields().get(1);
-                                                                        var value40 = _match2338.fields().get(2);
-                                                                        var value41 = _match2338.fields().get(3);
-                                                                        var value42 = _match2338.fields().get(4);
-                                                                        var value43 = _match2338.fields().get(5);
-                                                                        yield value42;
-                                                                      }
-                                                                      default ->
-                                                                          throw new IllegalArgumentException("invalid constructor");
-                                                                    })
-                                                          },
-                                                          64),
-                                                      value44 ->
-                                                          _schema.match(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::TransactionState"),
-                                                              value1,
-                                                              64,
-                                                              symbols,
-                                                              _match3946 ->
-                                                                  switch (_match3946.tag()) {
-                                                                    case "lawtwin.kafka::type::TransactionState::T"
-                                                                        + "ransactionState" -> {
-                                                                      var value45 = _match3946.fields().get(0);
-                                                                      var value46 = _match3946.fields().get(1);
-                                                                      var value47 = _match3946.fields().get(2);
-                                                                      var value48 = _match3946.fields().get(3);
-                                                                      var value49 = _match3946.fields().get(4);
-                                                                      var value50 = _match3946.fields().get(5);
-                                                                      yield _schema.construct(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "lawtwin.kafka::type::TransactionState"),
-                                                                          "lawtwin.kafka::type::TransactionState::T"
-                                                                              + "ransactionState",
-                                                                          java.util.List.of(
-                                                                              value45,
-                                                                              value46,
-                                                                              value47,
-                                                                              value48,
-                                                                              value44,
-                                                                              value50),
-                                                                          64,
-                                                                          symbols);
-                                                                    }
-                                                                    default ->
-                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                  }))),
-                                              64,
-                                              symbols))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsAdd: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsAdd_1f41c92e(symbols, lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C39.decode(input1)));
   }
 
   public static Value evaluate349(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C31.encode(lawspec.runtime.LawSpecTyped.transactionsBegin_253(lawspec.runtime.LawSpecTyped.C32.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsBegin_5d267b99(lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate350(Map<String, Object> symbols, Value input0) {
-    try {
-      var value0 = input0;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate351(
-              symbols, LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(true), 64), value0);
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsCommit: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsCommit_afadd0fa(symbols, lawspec.runtime.LawSpecTyped.C39.decode(input0)));
   }
 
   public static Value evaluate351(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::TransactionState"),
-                  value1,
-                  64,
-                  symbols,
-                  _match2334 ->
-                      switch (_match2334.tag()) {
-                        case "lawtwin.kafka::type::TransactionState::T" + "ransactionState" -> {
-                          var value2 = _match2334.fields().get(0);
-                          var value3 = _match2334.fields().get(1);
-                          var value4 = _match2334.fields().get(2);
-                          var value5 = _match2334.fields().get(3);
-                          var value6 = _match2334.fields().get(4);
-                          var value7 = _match2334.fields().get(5);
-                          yield value3;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              "Either::Left",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      "lawtwin.kafka.model::type::KafkaError::I" + "llegalState",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols),
-                          value1),
-                      64,
-                      symbols),
-              value8 ->
-                  (LawSpecRuntime.truth(
-                          LawSpecRuntime.bool(
-                              !LawSpecRuntime.truth(
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState"),
-                                      value1,
-                                      64,
-                                      symbols,
-                                      _match2192 ->
-                                          switch (_match2192.tag()) {
-                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                + "ransactionState" -> {
-                                              var value9 = _match2192.fields().get(0);
-                                              var value10 = _match2192.fields().get(1);
-                                              var value11 = _match2192.fields().get(2);
-                                              var value12 = _match2192.fields().get(3);
-                                              var value13 = _match2192.fields().get(4);
-                                              var value14 = _match2192.fields().get(5);
-                                              yield value12;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }))))
-                      ? _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawspec.collections::type::Pair",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::TransactionState")),
-                          "lawspec.collections::type::Pair::Pair",
-                          java.util.List.of(
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          "lawtwin.kafka.model::type::KafkaError::I"
-                                              + "llegalState",
-                                          java.util.List.of(),
-                                          64,
-                                          symbols)),
-                                  64,
-                                  symbols),
-                              value1),
-                          64,
-                          symbols)
-                      : (LawSpecRuntime.truth(
-                              LawSpecRuntime.bool(
-                                  LawSpecRuntime.truth(
-                                          LawSpecRuntime.matchList(
-                                              _schema.match(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState"),
-                                                  value1,
-                                                  64,
-                                                  symbols,
-                                                  _match2338 ->
-                                                      switch (_match2338.tag()) {
-                                                        case "lawtwin.kafka::type::TransactionState::T"
-                                                            + "ransactionState" -> {
-                                                          var value15 = _match2338.fields().get(0);
-                                                          var value16 = _match2338.fields().get(1);
-                                                          var value17 = _match2338.fields().get(2);
-                                                          var value18 = _match2338.fields().get(3);
-                                                          var value19 = _match2338.fields().get(4);
-                                                          var value20 = _match2338.fields().get(5);
-                                                          yield value19;
-                                                        }
-                                                        default ->
-                                                            throw new IllegalArgumentException("invalid constructor");
-                                                      }),
-                                              () ->
-                                                  LawSpecRuntime.convert(
-                                                      "Bool", LawSpecRuntime.bool(true), 64),
-                                              (value21, value22) ->
-                                                  LawSpecRuntime.convert(
-                                                      "Bool", LawSpecRuntime.bool(false), 64)))
-                                      && LawSpecRuntime.truth(
-                                          LawSpecRuntime.bool(
-                                              !LawSpecRuntime.truth(
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState"),
-                                                      value1,
-                                                      64,
-                                                      symbols,
-                                                      _match2192 ->
-                                                          switch (_match2192.tag()) {
-                                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                                + "ransactionState" -> {
-                                                              var value23 = _match2192.fields().get(0);
-                                                              var value24 = _match2192.fields().get(1);
-                                                              var value25 = _match2192.fields().get(2);
-                                                              var value26 = _match2192.fields().get(3);
-                                                              var value27 = _match2192.fields().get(4);
-                                                              var value28 = _match2192.fields().get(5);
-                                                              yield value28;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }))))))
-                          ? _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawspec.collections::type::Pair",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::TransactionState")),
-                              "lawspec.collections::type::Pair::Pair",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(
-                                          LawSpecRuntime.convert(
-                                              "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                                      64,
-                                      symbols),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState"),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState"),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::TransactionState"),
-                                              value1,
-                                              64,
-                                              symbols,
-                                              _match4008 ->
-                                                  switch (_match4008.tag()) {
-                                                    case "lawtwin.kafka::type::TransactionState::T"
-                                                        + "ransactionState" -> {
-                                                      var value29 = _match4008.fields().get(0);
-                                                      var value30 = _match4008.fields().get(1);
-                                                      var value31 = _match4008.fields().get(2);
-                                                      var value32 = _match4008.fields().get(3);
-                                                      var value33 = _match4008.fields().get(4);
-                                                      var value34 = _match4008.fields().get(5);
-                                                      yield _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::TransactionState"),
-                                                          "lawtwin.kafka::type::TransactionState::T"
-                                                              + "ransactionState",
-                                                          java.util.List.of(
-                                                              value29,
-                                                              value30,
-                                                              value31,
-                                                              LawSpecRuntime.convert(
-                                                                  "Bool",
-                                                                  LawSpecRuntime.bool(false),
-                                                                  64),
-                                                              value33,
-                                                              value34),
-                                                          64,
-                                                          symbols);
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          64,
-                                          symbols,
-                                          _match7669 ->
-                                              switch (_match7669.tag()) {
-                                                case "lawtwin.kafka::type::TransactionState::T"
-                                                    + "ransactionState" -> {
-                                                  var value35 = _match7669.fields().get(0);
-                                                  var value36 = _match7669.fields().get(1);
-                                                  var value37 = _match7669.fields().get(2);
-                                                  var value38 = _match7669.fields().get(3);
-                                                  var value39 = _match7669.fields().get(4);
-                                                  var value40 = _match7669.fields().get(5);
-                                                  yield _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState"),
-                                                      "lawtwin.kafka::type::TransactionState::T"
-                                                          + "ransactionState",
-                                                      java.util.List.of(
-                                                          value35,
-                                                          value36,
-                                                          value37,
-                                                          value38,
-                                                          LawSpecRuntime.construct(
-                                                              "List lawtwin.kafka.model::type::TopicPartition",
-                                                              "List::Nil",
-                                                              new Value[] {}),
-                                                          value40),
-                                                      64,
-                                                      symbols);
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      64,
-                                      symbols,
-                                      _match11431 ->
-                                          switch (_match11431.tag()) {
-                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                + "ransactionState" -> {
-                                              var value41 = _match11431.fields().get(0);
-                                              var value42 = _match11431.fields().get(1);
-                                              var value43 = _match11431.fields().get(2);
-                                              var value44 = _match11431.fields().get(3);
-                                              var value45 = _match11431.fields().get(4);
-                                              var value46 = _match11431.fields().get(5);
-                                              yield _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState"),
-                                                  "lawtwin.kafka::type::TransactionState::T"
-                                                      + "ransactionState",
-                                                  java.util.List.of(
-                                                      value41,
-                                                      value42,
-                                                      value43,
-                                                      value44,
-                                                      value45,
-                                                      LawSpecRuntime.convert(
-                                                          "Bool", LawSpecRuntime.bool(false), 64)),
-                                                  64,
-                                                  symbols);
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          })),
-                              64,
-                              symbols)
-                          : LawSpecRuntime.matchEither(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
-                                          symbols,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::TransactionState"),
-                                              value1,
-                                              64,
-                                              symbols,
-                                              _match2192 ->
-                                                  switch (_match2192.tag()) {
-                                                    case "lawtwin.kafka::type::TransactionState::T"
-                                                        + "ransactionState" -> {
-                                                      var value47 = _match2192.fields().get(0);
-                                                      var value48 = _match2192.fields().get(1);
-                                                      var value49 = _match2192.fields().get(2);
-                                                      var value50 = _match2192.fields().get(3);
-                                                      var value51 = _match2192.fields().get(4);
-                                                      var value52 = _match2192.fields().get(5);
-                                                      yield value47;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value8,
-                                              64,
-                                              symbols,
-                                              _match1251 ->
-                                                  switch (_match1251.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value53 = _match1251.fields().get(0);
-                                                      var value54 = _match1251.fields().get(1);
-                                                      yield value53;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                              value8,
-                                              64,
-                                              symbols,
-                                              _match1251 ->
-                                                  switch (_match1251.tag()) {
-                                                    case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                        + "Epoch::ProducerIdAndEpoch" -> {
-                                                      var value55 = _match1251.fields().get(0);
-                                                      var value56 = _match1251.fields().get(1);
-                                                      yield value56;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  }),
-                                          value0),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value57 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(value57),
-                                          64,
-                                          symbols),
-                                  value58 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(value58),
-                                          64,
-                                          symbols)),
-                              value59 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState")),
-                                      "lawspec.collections::type::Pair::Pair",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                              "Either::Left",
-                                              java.util.List.of(value59),
-                                              64,
-                                              symbols),
-                                          value1),
-                                      64,
-                                      symbols),
-                              value60 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState")),
-                                      "lawspec.collections::type::Pair::Pair",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                              "Either::Right",
-                                              java.util.List.of(
-                                                  LawSpecRuntime.convert(
-                                                      "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                                              64,
-                                              symbols),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::TransactionState"),
-                                              _schema.match(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState"),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState"),
-                                                      value1,
-                                                      64,
-                                                      symbols,
-                                                      _match4006 ->
-                                                          switch (_match4006.tag()) {
-                                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                                + "ransactionState" -> {
-                                                              var value61 = _match4006.fields().get(0);
-                                                              var value62 = _match4006.fields().get(1);
-                                                              var value63 = _match4006.fields().get(2);
-                                                              var value64 = _match4006.fields().get(3);
-                                                              var value65 = _match4006.fields().get(4);
-                                                              var value66 = _match4006.fields().get(5);
-                                                              yield _schema.construct(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::TransactionState"),
-                                                                  "lawtwin.kafka::type::TransactionState::T"
-                                                                      + "ransactionState",
-                                                                  java.util.List.of(
-                                                                      value61,
-                                                                      value62,
-                                                                      value63,
-                                                                      LawSpecRuntime.convert(
-                                                                          "Bool",
-                                                                          LawSpecRuntime.bool(
-                                                                              false),
-                                                                          64),
-                                                                      value65,
-                                                                      value66),
-                                                                  64,
-                                                                  symbols);
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  64,
-                                                  symbols,
-                                                  _match7665 ->
-                                                      switch (_match7665.tag()) {
-                                                        case "lawtwin.kafka::type::TransactionState::T"
-                                                            + "ransactionState" -> {
-                                                          var value67 = _match7665.fields().get(0);
-                                                          var value68 = _match7665.fields().get(1);
-                                                          var value69 = _match7665.fields().get(2);
-                                                          var value70 = _match7665.fields().get(3);
-                                                          var value71 = _match7665.fields().get(4);
-                                                          var value72 = _match7665.fields().get(5);
-                                                          yield _schema.construct(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::TransactionState"),
-                                                              "lawtwin.kafka::type::TransactionState::T"
-                                                                  + "ransactionState",
-                                                              java.util.List.of(
-                                                                  value67,
-                                                                  value68,
-                                                                  value69,
-                                                                  value70,
-                                                                  LawSpecRuntime.construct(
-                                                                      "List lawtwin.kafka.model::type::TopicPartition",
-                                                                      "List::Nil",
-                                                                      new Value[] {}),
-                                                                  value72),
-                                                              64,
-                                                              symbols);
-                                                        }
-                                                        default ->
-                                                            throw new IllegalArgumentException("invalid constructor");
-                                                      }),
-                                              64,
-                                              symbols,
-                                              _match11425 ->
-                                                  switch (_match11425.tag()) {
-                                                    case "lawtwin.kafka::type::TransactionState::T"
-                                                        + "ransactionState" -> {
-                                                      var value73 = _match11425.fields().get(0);
-                                                      var value74 = _match11425.fields().get(1);
-                                                      var value75 = _match11425.fields().get(2);
-                                                      var value76 = _match11425.fields().get(3);
-                                                      var value77 = _match11425.fields().get(4);
-                                                      var value78 = _match11425.fields().get(5);
-                                                      yield _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::TransactionState"),
-                                                          "lawtwin.kafka::type::TransactionState::T"
-                                                              + "ransactionState",
-                                                          java.util.List.of(
-                                                              value73,
-                                                              value74,
-                                                              value75,
-                                                              value76,
-                                                              value77,
-                                                              LawSpecRuntime.convert(
-                                                                  "Bool",
-                                                                  LawSpecRuntime.bool(false),
-                                                                  64)),
-                                                          64,
-                                                          symbols);
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      64,
-                                      symbols)))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsEnd: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsEnd_fe18afb7(symbols, lawspec.runtime.LawSpecTyped.C9.decode(input0), lawspec.runtime.LawSpecTyped.C39.decode(input1)));
   }
 
   public static Value evaluate352(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                          symbols,
-                          LawSpecRuntime.construct(
-                              "Maybe Text", "Maybe::Just", new Value[] {value0})),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value2 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(value2),
-                          64,
-                          symbols),
-                  value3 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(value3),
-                          64,
-                          symbols)),
-              value4 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                              "Either::Left",
-                              java.util.List.of(value4),
-                              64,
-                              symbols),
-                          value1),
-                      64,
-                      symbols),
-              value5 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                              "Either::Right",
-                              java.util.List.of(value5),
-                              64,
-                              symbols),
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::TransactionState"),
-                              "lawtwin.kafka::type::TransactionState::T" + "ransactionState",
-                              java.util.List.of(
-                                  value0,
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Maybe",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                                      "Maybe::Just",
-                                      java.util.List.of(value5),
-                                      64,
-                                      symbols),
-                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate195(
-                                      symbols,
-                                      LawSpecRuntime.construct(
-                                          "List lawspec.collections::type::Entry"
-                                              + " (lawtwin.kafka.model::type::TopicPartit"
-                                              + "ion) (Int32)",
-                                          "List::Nil",
-                                          new Value[] {})),
-                                  LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64),
-                                  LawSpecRuntime.construct(
-                                      "List lawtwin.kafka.model::type::TopicPartition",
-                                      "List::Nil",
-                                      new Value[] {}),
-                                  LawSpecRuntime.convert("Bool", LawSpecRuntime.bool(false), 64)),
-                              64,
-                              symbols)),
-                      64,
-                      symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsInit: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C40.encode(lawspec.runtime.LawSpecTyped.transactionsInit_d69a08bc(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C39.decode(input1)));
   }
 
   public static Value evaluate353(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchMaybe(
-              _schema.match(
-                  new lawspec.runtime.LawSpecSchema.Named("lawtwin.kafka::type::TransactionState"),
-                  value2,
-                  64,
-                  symbols,
-                  _match2374 ->
-                      switch (_match2374.tag()) {
-                        case "lawtwin.kafka::type::TransactionState::T" + "ransactionState" -> {
-                          var value3 = _match2374.fields().get(0);
-                          var value4 = _match2374.fields().get(1);
-                          var value5 = _match2374.fields().get(2);
-                          var value6 = _match2374.fields().get(3);
-                          var value7 = _match2374.fields().get(4);
-                          var value8 = _match2374.fields().get(5);
-                          yield value4;
-                        }
-                        default -> throw new IllegalArgumentException("invalid constructor");
-                      }),
-              () ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              "Either::Left",
-                              java.util.List.of(
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      "lawtwin.kafka.model::type::KafkaError::I" + "llegalState",
-                                      java.util.List.of(),
-                                      64,
-                                      symbols)),
-                              64,
-                              symbols),
-                          value2),
-                      64,
-                      symbols),
-              value9 ->
-                  (LawSpecRuntime.truth(
-                          LawSpecRuntime.bool(
-                              !LawSpecRuntime.truth(
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState"),
-                                      value2,
-                                      64,
-                                      symbols,
-                                      _match2232 ->
-                                          switch (_match2232.tag()) {
-                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                + "ransactionState" -> {
-                                              var value10 = _match2232.fields().get(0);
-                                              var value11 = _match2232.fields().get(1);
-                                              var value12 = _match2232.fields().get(2);
-                                              var value13 = _match2232.fields().get(3);
-                                              var value14 = _match2232.fields().get(4);
-                                              var value15 = _match2232.fields().get(5);
-                                              yield value13;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }))))
-                      ? _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawspec.collections::type::Pair",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::TransactionState")),
-                          "lawspec.collections::type::Pair::Pair",
-                          java.util.List.of(
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          "lawtwin.kafka.model::type::KafkaError::I"
-                                              + "llegalState",
-                                          java.util.List.of(),
-                                          64,
-                                          symbols)),
-                                  64,
-                                  symbols),
-                              value2),
-                          64,
-                          symbols)
-                      : LawSpecRuntime.matchEither(
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.attempt(
-                                  "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                      + "el::type::KafkaError)",
-                                  () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
-                                      symbols,
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState"),
-                                          value2,
-                                          64,
-                                          symbols,
-                                          _match2232 ->
-                                              switch (_match2232.tag()) {
-                                                case "lawtwin.kafka::type::TransactionState::T"
-                                                    + "ransactionState" -> {
-                                                  var value16 = _match2232.fields().get(0);
-                                                  var value17 = _match2232.fields().get(1);
-                                                  var value18 = _match2232.fields().get(2);
-                                                  var value19 = _match2232.fields().get(3);
-                                                  var value20 = _match2232.fields().get(4);
-                                                  var value21 = _match2232.fields().get(5);
-                                                  yield value16;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                          value9,
-                                          64,
-                                          symbols,
-                                          _match1275 ->
-                                              switch (_match1275.tag()) {
-                                                case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                    + "Epoch::ProducerIdAndEpoch" -> {
-                                                  var value22 = _match1275.fields().get(0);
-                                                  var value23 = _match1275.fields().get(1);
-                                                  yield value22;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                          value9,
-                                          64,
-                                          symbols,
-                                          _match1276 ->
-                                              switch (_match1276.tag()) {
-                                                case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                    + "Epoch::ProducerIdAndEpoch" -> {
-                                                  var value24 = _match1276.fields().get(0);
-                                                  var value25 = _match1276.fields().get(1);
-                                                  yield value25;
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              }),
-                                      value0,
-                                      value1),
-                                  _value -> _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(_value),
-                                      64,
-                                      symbols),
-                                  _value -> _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Left",
-                                      java.util.List.of(_value),
-                                      64,
-                                      symbols)),
-                              value26 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Left",
-                                      java.util.List.of(value26),
-                                      64,
-                                      symbols),
-                              value27 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      "Either::Right",
-                                      java.util.List.of(value27),
-                                      64,
-                                      symbols)),
-                          value28 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState")),
-                                  "lawspec.collections::type::Pair::Pair",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Left",
-                                          java.util.List.of(value28),
-                                          64,
-                                          symbols),
-                                      value2),
-                                  64,
-                                  symbols),
-                          value29 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState")),
-                                  "lawspec.collections::type::Pair::Pair",
-                                  java.util.List.of(
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                          "Either::Right",
-                                          java.util.List.of(
-                                              LawSpecRuntime.convert(
-                                                  "Unit", LawSpecRuntime.absent("Unit"), 64)),
-                                          64,
-                                          symbols),
-                                      _schema.match(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState"),
-                                          value2,
-                                          64,
-                                          symbols,
-                                          _match4194 ->
-                                              switch (_match4194.tag()) {
-                                                case "lawtwin.kafka::type::TransactionState::T"
-                                                    + "ransactionState" -> {
-                                                  var value30 = _match4194.fields().get(0);
-                                                  var value31 = _match4194.fields().get(1);
-                                                  var value32 = _match4194.fields().get(2);
-                                                  var value33 = _match4194.fields().get(3);
-                                                  var value34 = _match4194.fields().get(4);
-                                                  var value35 = _match4194.fields().get(5);
-                                                  yield _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState"),
-                                                      "lawtwin.kafka::type::TransactionState::T"
-                                                          + "ransactionState",
-                                                      java.util.List.of(
-                                                          value30,
-                                                          value31,
-                                                          value32,
-                                                          value33,
-                                                          value34,
-                                                          LawSpecRuntime.convert(
-                                                              "Bool",
-                                                              LawSpecRuntime.bool(true),
-                                                              64)),
-                                                      64,
-                                                      symbols);
-                                                }
-                                                default ->
-                                                    throw new IllegalArgumentException("invalid constructor");
-                                              })),
-                                  64,
-                                  symbols))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsOffsets: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C38.encode(lawspec.runtime.LawSpecTyped.transactionsOffsets_b33ea106(symbols, lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C7.decode(input1), lawspec.runtime.LawSpecTyped.C39.decode(input2)));
   }
 
   public static Value evaluate354(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          LawSpecRuntime.matchEither(
-              lawspec.runtime.LawSpecDefinitionBodies.evaluate324(
-                  symbols,
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1456 ->
-                          switch (_match1456.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value2 = _match1456.fields().get(0);
-                              var value3 = _match1456.fields().get(1);
-                              var value4 = _match1456.fields().get(2);
-                              yield value2;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          }),
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1520 ->
-                          switch (_match1520.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value5 = _match1520.fields().get(0);
-                              var value6 = _match1520.fields().get(1);
-                              var value7 = _match1520.fields().get(2);
-                              yield value6;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          }),
-                  _schema.match(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawtwin.kafka::type::ProducerRecord"),
-                      value0,
-                      64,
-                      symbols,
-                      _match1514 ->
-                          switch (_match1514.tag()) {
-                            case "lawtwin.kafka::type::ProducerRecord::Pro" + "ducerRecord" -> {
-                              var value8 = _match1514.fields().get(0);
-                              var value9 = _match1514.fields().get(1);
-                              var value10 = _match1514.fields().get(2);
-                              yield value10;
-                            }
-                            default -> throw new IllegalArgumentException("invalid constructor");
-                          })),
-              value11 ->
-                  _schema.construct(
-                      new lawspec.runtime.LawSpecSchema.Named(
-                          "lawspec.collections::type::Pair",
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka::type::RecordMetadata")),
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "lawtwin.kafka::type::TransactionState")),
-                      "lawspec.collections::type::Pair::Pair",
-                      java.util.List.of(
-                          _schema.construct(
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "Either",
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka.model::type::KafkaError"),
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawtwin.kafka::type::RecordMetadata")),
-                              "Either::Left",
-                              java.util.List.of(value11),
-                              64,
-                              symbols),
-                          value1),
-                      64,
-                      symbols),
-              value12 ->
-                  LawSpecRuntime.let(
-                      lawspec.runtime.LawSpecDefinitionBodies.evaluate348(
-                          symbols,
-                          LawSpecRuntime.construct(
-                              "List lawtwin.kafka.model::type::TopicPartition",
-                              "List::Cons",
-                              new Value[] {
-                                value12,
-                                LawSpecRuntime.construct(
-                                    "List lawtwin.kafka.model::type::TopicPartition",
-                                    "List::Nil",
-                                    new Value[] {})
-                              }),
-                          value1),
-                      value13 ->
-                          LawSpecRuntime.matchEither(
-                              _schema.match(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "lawspec.collections::type::Pair",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "Either",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka.model::type::KafkaError"),
-                                          new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka::type::TransactionState")),
-                                  value13,
-                                  64,
-                                  symbols,
-                                  _match1776 ->
-                                      switch (_match1776.tag()) {
-                                        case "lawspec.collections::type::Pair::Pair" -> {
-                                          var value14 = _match1776.fields().get(0);
-                                          var value15 = _match1776.fields().get(1);
-                                          yield value14;
-                                        }
-                                        default ->
-                                            throw new IllegalArgumentException("invalid constructor");
-                                      }),
-                              value16 ->
-                                  _schema.construct(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawspec.collections::type::Pair",
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::RecordMetadata")),
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "lawtwin.kafka::type::TransactionState")),
-                                      "lawspec.collections::type::Pair::Pair",
-                                      java.util.List.of(
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Either",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::RecordMetadata")),
-                                              "Either::Left",
-                                              java.util.List.of(value16),
-                                              64,
-                                              symbols),
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawspec.collections::type::Pair",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka::type::TransactionState")),
-                                              value13,
-                                              64,
-                                              symbols,
-                                              _match1625 ->
-                                                  switch (_match1625.tag()) {
-                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                      var value17 = _match1625.fields().get(0);
-                                                      var value18 = _match1625.fields().get(1);
-                                                      yield value18;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      64,
-                                      symbols),
-                              value19 ->
-                                  LawSpecRuntime.let(
-                                      lawspec.runtime.LawSpecDefinitionBodies.evaluate339(
-                                          symbols,
-                                          value12,
-                                          _schema.match(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka::type::TransactionState"),
-                                              _schema.match(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawspec.collections::type::Pair",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Either",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka.model::type::KafkaError"),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Unit")),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka::type::TransactionState")),
-                                                  value13,
-                                                  64,
-                                                  symbols,
-                                                  _match1509 ->
-                                                      switch (_match1509.tag()) {
-                                                        case "lawspec.collections::type::Pair::Pair" -> {
-                                                          var value20 = _match1509.fields().get(0);
-                                                          var value21 = _match1509.fields().get(1);
-                                                          yield value21;
-                                                        }
-                                                        default ->
-                                                            throw new IllegalArgumentException("invalid constructor");
-                                                      }),
-                                              64,
-                                              symbols,
-                                              _match3742 ->
-                                                  switch (_match3742.tag()) {
-                                                    case "lawtwin.kafka::type::TransactionState::T"
-                                                        + "ransactionState" -> {
-                                                      var value22 = _match3742.fields().get(0);
-                                                      var value23 = _match3742.fields().get(1);
-                                                      var value24 = _match3742.fields().get(2);
-                                                      var value25 = _match3742.fields().get(3);
-                                                      var value26 = _match3742.fields().get(4);
-                                                      var value27 = _match3742.fields().get(5);
-                                                      yield value24;
-                                                    }
-                                                    default ->
-                                                        throw new IllegalArgumentException("invalid constructor");
-                                                  })),
-                                      value28 ->
-                                          LawSpecRuntime.matchEither(
-                                              LawSpecRuntime.matchEither(
-                                                  LawSpecRuntime.attempt(
-                                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                          + "el::type::KafkaError)",
-                                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                                          symbols,
-                                                          value12,
-                                                          lawspec.runtime.LawSpecDefinitionBodies.evaluate342(
-                                                              symbols,
-                                                              _schema.match(
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::TransactionState"),
-                                                                  _schema.match(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawspec.collections::type::Pair",
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "Either",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Unit")),
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "lawtwin.kafka::type::TransactionState")),
-                                                                      value13,
-                                                                      64,
-                                                                      symbols,
-                                                                      _match1509 ->
-                                                                          switch (_match1509.tag()) {
-                                                                            case "lawspec.collections::type::Pair::Pair" -> {
-                                                                              var value29 = _match1509.fields().get(0);
-                                                                              var value30 = _match1509.fields().get(1);
-                                                                              yield value30;
-                                                                            }
-                                                                            default ->
-                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                          }),
-                                                                  64,
-                                                                  symbols,
-                                                                  _match3618 ->
-                                                                      switch (_match3618.tag()) {
-                                                                        case "lawtwin.kafka::type::TransactionState::T"
-                                                                            + "ransactionState" -> {
-                                                                          var value31 = _match3618.fields().get(0);
-                                                                          var value32 = _match3618.fields().get(1);
-                                                                          var value33 = _match3618.fields().get(2);
-                                                                          var value34 = _match3618.fields().get(3);
-                                                                          var value35 = _match3618.fields().get(4);
-                                                                          var value36 = _match3618.fields().get(5);
-                                                                          yield value32;
-                                                                        }
-                                                                        default ->
-                                                                            throw new IllegalArgumentException("invalid constructor");
-                                                                      }),
-                                                              value28),
-                                                          LawSpecRuntime.construct(
-                                                              "List lawtwin.kafka.model::type::Record",
-                                                              "List::Cons",
-                                                              new Value[] {
-                                                                _schema.match(
-                                                                    new lawspec.runtime.LawSpecSchema.Named(
-                                                                        "lawtwin.kafka::type::ProducerRecord"),
-                                                                    value0,
-                                                                    64,
-                                                                    symbols,
-                                                                    _match1514 ->
-                                                                        switch (_match1514.tag()) {
-                                                                          case "lawtwin.kafka::type::ProducerRecord::Pro"
-                                                                              + "ducerRecord" -> {
-                                                                            var value37 = _match1514.fields().get(0);
-                                                                            var value38 = _match1514.fields().get(1);
-                                                                            var value39 = _match1514.fields().get(2);
-                                                                            yield value39;
-                                                                          }
-                                                                          default ->
-                                                                              throw new IllegalArgumentException("invalid constructor");
-                                                                        }),
-                                                                LawSpecRuntime.construct(
-                                                                    "List lawtwin.kafka.model::type::Record",
-                                                                    "List::Nil",
-                                                                    new Value[] {})
-                                                              })),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Int64")),
-                                                          "Either::Right",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols),
-                                                      _value -> _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Int64")),
-                                                          "Either::Left",
-                                                          java.util.List.of(_value),
-                                                          64,
-                                                          symbols)),
-                                                  value40 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Int64")),
-                                                          "Either::Left",
-                                                          java.util.List.of(value40),
-                                                          64,
-                                                          symbols),
-                                                  value41 ->
-                                                      _schema.construct(
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Int64")),
-                                                          "Either::Right",
-                                                          java.util.List.of(value41),
-                                                          64,
-                                                          symbols)),
-                                              value42 ->
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawspec.collections::type::Pair",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::RecordMetadata")),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::TransactionState")),
-                                                      "lawspec.collections::type::Pair::Pair",
-                                                      java.util.List.of(
-                                                          _schema.construct(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Either",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::RecordMetadata")),
-                                                              "Either::Left",
-                                                              java.util.List.of(value42),
-                                                              64,
-                                                              symbols),
-                                                          _schema.match(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawspec.collections::type::Pair",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "Either",
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "Unit")),
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::TransactionState")),
-                                                              value13,
-                                                              64,
-                                                              symbols,
-                                                              _match1626 ->
-                                                                  switch (_match1626.tag()) {
-                                                                    case "lawspec.collections::type::Pair::Pair" -> {
-                                                                      var value43 = _match1626.fields().get(0);
-                                                                      var value44 = _match1626.fields().get(1);
-                                                                      yield value44;
-                                                                    }
-                                                                    default ->
-                                                                        throw new IllegalArgumentException("invalid constructor");
-                                                                  })),
-                                                      64,
-                                                      symbols),
-                                              value45 ->
-                                                  _schema.construct(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawspec.collections::type::Pair",
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "Either",
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "lawtwin.kafka::type::RecordMetadata")),
-                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                              "lawtwin.kafka::type::TransactionState")),
-                                                      "lawspec.collections::type::Pair::Pair",
-                                                      java.util.List.of(
-                                                          _schema.construct(
-                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                  "Either",
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                      "lawtwin.kafka::type::RecordMetadata")),
-                                                              "Either::Right",
-                                                              java.util.List.of(
-                                                                  _schema.construct(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka::type::RecordMetadata"),
-                                                                      "lawtwin.kafka::type::RecordMetadata::Rec"
-                                                                          + "ordMetadata",
-                                                                      java.util.List.of(
-                                                                          value12, value45),
-                                                                      64,
-                                                                      symbols)),
-                                                              64,
-                                                              symbols),
-                                                          LawSpecRuntime.let(
-                                                              lawspec.runtime.LawSpecDefinitionBodies.evaluate217(
-                                                                  symbols,
-                                                                  value12,
-                                                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate127(
-                                                                      symbols,
-                                                                      LawSpecRuntime.binary(
-                                                                          "+",
-                                                                          value28,
-                                                                          LawSpecRuntime.convert(
-                                                                              "Integer",
-                                                                              LawSpecRuntime.integer(
-                                                                                  "Integer", "1"),
-                                                                              64))),
-                                                                  _schema.match(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka::type::TransactionState"),
-                                                                      _schema.match(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "lawspec.collections::type::Pair",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Either",
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Unit")),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka::type::TransactionState")),
-                                                                          value13,
-                                                                          64,
-                                                                          symbols,
-                                                                          _match1509 ->
-                                                                              switch (_match1509.tag()) {
-                                                                                case "lawspec.collections::type::Pair::Pair" -> {
-                                                                                  var value46 = _match1509.fields().get(0);
-                                                                                  var value47 = _match1509.fields().get(1);
-                                                                                  yield value47;
-                                                                                }
-                                                                                default ->
-                                                                                    throw new IllegalArgumentException("invalid constructor");
-                                                                              }),
-                                                                      64,
-                                                                      symbols,
-                                                                      _match3743 ->
-                                                                          switch (_match3743.tag()) {
-                                                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                                                + "ransactionState" -> {
-                                                                              var value48 = _match3743.fields().get(0);
-                                                                              var value49 = _match3743.fields().get(1);
-                                                                              var value50 = _match3743.fields().get(2);
-                                                                              var value51 = _match3743.fields().get(3);
-                                                                              var value52 = _match3743.fields().get(4);
-                                                                              var value53 = _match3743.fields().get(5);
-                                                                              yield value50;
-                                                                            }
-                                                                            default ->
-                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                          })),
-                                                              value54 ->
-                                                                  _schema.match(
-                                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                                          "lawtwin.kafka::type::TransactionState"),
-                                                                      _schema.match(
-                                                                          new lawspec.runtime.LawSpecSchema.Named(
-                                                                              "lawspec.collections::type::Pair",
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "Either",
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka.model::type::KafkaError"),
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "Unit")),
-                                                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                                                  "lawtwin.kafka::type::TransactionState")),
-                                                                          value13,
-                                                                          64,
-                                                                          symbols,
-                                                                          _match1626 ->
-                                                                              switch (_match1626.tag()) {
-                                                                                case "lawspec.collections::type::Pair::Pair" -> {
-                                                                                  var value55 = _match1626.fields().get(0);
-                                                                                  var value56 = _match1626.fields().get(1);
-                                                                                  yield value56;
-                                                                                }
-                                                                                default ->
-                                                                                    throw new IllegalArgumentException("invalid constructor");
-                                                                              }),
-                                                                      64,
-                                                                      symbols,
-                                                                      _match5227 ->
-                                                                          switch (_match5227.tag()) {
-                                                                            case "lawtwin.kafka::type::TransactionState::T"
-                                                                                + "ransactionState" -> {
-                                                                              var value57 = _match5227.fields().get(0);
-                                                                              var value58 = _match5227.fields().get(1);
-                                                                              var value59 = _match5227.fields().get(2);
-                                                                              var value60 = _match5227.fields().get(3);
-                                                                              var value61 = _match5227.fields().get(4);
-                                                                              var value62 = _match5227.fields().get(5);
-                                                                              yield _schema.construct(
-                                                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                                                      "lawtwin.kafka::type::TransactionState"),
-                                                                                  "lawtwin.kafka::type::TransactionState::T"
-                                                                                      + "ransactionState",
-                                                                                  java.util.List.of(
-                                                                                      value57,
-                                                                                      value58,
-                                                                                      value54,
-                                                                                      value60,
-                                                                                      value61,
-                                                                                      value62),
-                                                                                  64,
-                                                                                  symbols);
-                                                                            }
-                                                                            default ->
-                                                                                throw new IllegalArgumentException("invalid constructor");
-                                                                          }))),
-                                                      64,
-                                                      symbols))))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::transactionsSend: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C41.encode(lawspec.runtime.LawSpecTyped.transactionsSend_558d813c(symbols, lawspec.runtime.LawSpecTyped.C37.decode(input0), lawspec.runtime.LawSpecTyped.C39.decode(input1)));
   }
 
   public static Value evaluate355(Map<String, Object> symbols, Value input0, Value input1) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var result =
-          lawspec.runtime.LawSpecDefinitionBodies.evaluate332(
-              symbols,
-              value0,
-              value1,
-              _schema.construct(
-                  new lawspec.runtime.LawSpecSchema.Named(
-                      "lawtwin.kafka.model::type::IsolationLevel"),
-                  "lawtwin.kafka.model::type::IsolationLeve" + "l::ReadUncommitted",
-                  java.util.List.of(),
-                  64,
-                  symbols));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::uncommittedFrom: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C22.encode(lawspec.runtime.LawSpecTyped.uncommittedFrom_8a57847d(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate356(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.viewOf_254(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C87.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.viewOf_6e11c6f7(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C97.decode(input1)));
   }
 
   public static Value evaluate357(
@@ -9313,365 +2190,26 @@ public final class LawSpecDefinitionBodies {
       Value input3,
       Value input4,
       Value input5) {
-    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.withAssignment_255(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3), lawspec.runtime.LawSpecTyped.C5.decode(input4), lawspec.runtime.LawSpecTyped.C26.decode(input5)));
+    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.withAssignment_7d6291b1(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3), lawspec.runtime.LawSpecTyped.C5.decode(input4), lawspec.runtime.LawSpecTyped.C26.decode(input5)));
   }
 
   public static Value evaluate358(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.withPosition_256(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C26.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C26.encode(lawspec.runtime.LawSpecTyped.withPosition_867e6b19(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C26.decode(input2)));
   }
 
   public static Value evaluate359(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    try {
-      var value0 = input0;
-      var value1 = input1;
-      var value2 = input2;
-      var result =
-          LawSpecRuntime.matchEither(
-              LawSpecRuntime.matchEither(
-                  LawSpecRuntime.attempt(
-                      "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
-                          symbols,
-                          LawSpecRuntime.construct(
-                              "Maybe Text", "Maybe::Just", new Value[] {value1})),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(_value),
-                          64,
-                          symbols),
-                      _value -> _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(_value),
-                          64,
-                          symbols)),
-                  value3 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Left",
-                          java.util.List.of(value3),
-                          64,
-                          symbols),
-                  value4 ->
-                      _schema.construct(
-                          new lawspec.runtime.LawSpecSchema.Named(
-                              "Either",
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::KafkaError"),
-                              new lawspec.runtime.LawSpecSchema.Named(
-                                  "lawtwin.kafka.model::type::ProducerIdAndEpoch")),
-                          "Either::Right",
-                          java.util.List.of(value4),
-                          64,
-                          symbols)),
-              value5 -> LawSpecRuntime.construct("Maybe Int64", "Maybe::Nothing", new Value[] {}),
-              value6 ->
-                  LawSpecRuntime.let(
-                      LawSpecRuntime.matchEither(
-                          LawSpecRuntime.attempt(
-                              "lawspec::ability::Fail(lawtwin.kafka.mod" + "el::type::KafkaError)",
-                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
-                                  symbols,
-                                  value1,
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                      value6,
-                                      64,
-                                      symbols,
-                                      _match1235 ->
-                                          switch (_match1235.tag()) {
-                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                              var value7 = _match1235.fields().get(0);
-                                              var value8 = _match1235.fields().get(1);
-                                              yield value7;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  _schema.match(
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                      value6,
-                                      64,
-                                      symbols,
-                                      _match1235 ->
-                                          switch (_match1235.tag()) {
-                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                              var value9 = _match1235.fields().get(0);
-                                              var value10 = _match1235.fields().get(1);
-                                              yield value10;
-                                            }
-                                            default ->
-                                                throw new IllegalArgumentException("invalid constructor");
-                                          }),
-                                  LawSpecRuntime.construct(
-                                      "List lawtwin.kafka.model::type::TopicPartition",
-                                      "List::Cons",
-                                      new Value[] {
-                                        value0,
-                                        LawSpecRuntime.construct(
-                                            "List lawtwin.kafka.model::type::TopicPartition",
-                                            "List::Nil",
-                                            new Value[] {})
-                                      })),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols),
-                              _value -> _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(_value),
-                                  64,
-                                  symbols)),
-                          value11 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Left",
-                                  java.util.List.of(value11),
-                                  64,
-                                  symbols),
-                          value12 ->
-                              _schema.construct(
-                                  new lawspec.runtime.LawSpecSchema.Named(
-                                      "Either",
-                                      new lawspec.runtime.LawSpecSchema.Named(
-                                          "lawtwin.kafka.model::type::KafkaError"),
-                                      new lawspec.runtime.LawSpecSchema.Named("Unit")),
-                                  "Either::Right",
-                                  java.util.List.of(value12),
-                                  64,
-                                  symbols)),
-                      value13 ->
-                          LawSpecRuntime.matchEither(
-                              LawSpecRuntime.matchEither(
-                                  LawSpecRuntime.attempt(
-                                      "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                          + "el::type::KafkaError)",
-                                      () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
-                                          symbols,
-                                          value0,
-                                          _schema.construct(
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "Maybe",
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "lawtwin.kafka.model::type::ProducerTag")),
-                                              "Maybe::Just",
-                                              java.util.List.of(
-                                                  lawspec.runtime.LawSpecDefinitionBodies.evaluate343(
-                                                      symbols,
-                                                      value6,
-                                                      LawSpecRuntime.convert(
-                                                          "Int32",
-                                                          LawSpecRuntime.integer("Int32", "0"),
-                                                          64))),
-                                              64,
-                                              symbols),
-                                          LawSpecRuntime.construct(
-                                              "List lawtwin.kafka.model::type::Record",
-                                              "List::Cons",
-                                              new Value[] {
-                                                value2,
-                                                LawSpecRuntime.construct(
-                                                    "List lawtwin.kafka.model::type::Record",
-                                                    "List::Nil",
-                                                    new Value[] {})
-                                              })),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                          "Either::Right",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols),
-                                      _value -> _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                          "Either::Left",
-                                          java.util.List.of(_value),
-                                          64,
-                                          symbols)),
-                                  value14 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                          "Either::Left",
-                                          java.util.List.of(value14),
-                                          64,
-                                          symbols),
-                                  value15 ->
-                                      _schema.construct(
-                                          new lawspec.runtime.LawSpecSchema.Named(
-                                              "Either",
-                                              new lawspec.runtime.LawSpecSchema.Named(
-                                                  "lawtwin.kafka.model::type::KafkaError"),
-                                              new lawspec.runtime.LawSpecSchema.Named("Int64")),
-                                          "Either::Right",
-                                          java.util.List.of(value15),
-                                          64,
-                                          symbols)),
-                              value16 ->
-                                  LawSpecRuntime.construct(
-                                      "Maybe Int64", "Maybe::Nothing", new Value[] {}),
-                              value17 ->
-                                  LawSpecRuntime.matchEither(
-                                      LawSpecRuntime.matchEither(
-                                          LawSpecRuntime.attempt(
-                                              "lawspec::ability::Fail(lawtwin.kafka.mod"
-                                                  + "el::type::KafkaError)",
-                                              () -> lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
-                                                  symbols,
-                                                  value1,
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value6,
-                                                      64,
-                                                      symbols,
-                                                      _match1235 ->
-                                                          switch (_match1235.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value18 = _match1235.fields().get(0);
-                                                              var value19 = _match1235.fields().get(1);
-                                                              yield value18;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  _schema.match(
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::ProducerIdAndEpoch"),
-                                                      value6,
-                                                      64,
-                                                      symbols,
-                                                      _match1235 ->
-                                                          switch (_match1235.tag()) {
-                                                            case "lawtwin.kafka.model::type::ProducerIdAnd"
-                                                                + "Epoch::ProducerIdAndEpoch" -> {
-                                                              var value20 = _match1235.fields().get(0);
-                                                              var value21 = _match1235.fields().get(1);
-                                                              yield value21;
-                                                            }
-                                                            default ->
-                                                                throw new IllegalArgumentException("invalid constructor");
-                                                          }),
-                                                  LawSpecRuntime.convert(
-                                                      "Bool", LawSpecRuntime.bool(false), 64)),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols),
-                                              _value -> _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(_value),
-                                                  64,
-                                                  symbols)),
-                                          value22 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Left",
-                                                  java.util.List.of(value22),
-                                                  64,
-                                                  symbols),
-                                          value23 ->
-                                              _schema.construct(
-                                                  new lawspec.runtime.LawSpecSchema.Named(
-                                                      "Either",
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "lawtwin.kafka.model::type::KafkaError"),
-                                                      new lawspec.runtime.LawSpecSchema.Named(
-                                                          "Unit")),
-                                                  "Either::Right",
-                                                  java.util.List.of(value23),
-                                                  64,
-                                                  symbols)),
-                                      value24 ->
-                                          LawSpecRuntime.construct(
-                                              "Maybe Int64", "Maybe::Nothing", new Value[] {}),
-                                      value25 ->
-                                          LawSpecRuntime.construct(
-                                              "Maybe Int64",
-                                              "Maybe::Just",
-                                              new Value[] {value17})))));
-      return result;
-    } catch (lawspec.runtime.LawSpecRuntime.Failure failure) {
-      throw failure;
-    } catch (RuntimeException error) {
-      var context = "lawtwin.kafka::writeAborted: ";
-      throw new IllegalArgumentException(context + error.getMessage(), error);
-    }
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.writeAborted_8e3a61e4(symbols, lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C112.decode(input2)));
   }
 
   public static Value evaluate360(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.xor32_257(lawspec.runtime.LawSpecTyped.C43.decode(input0), lawspec.runtime.LawSpecTyped.C43.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.xor32_0ea970f5(lawspec.runtime.LawSpecTyped.C52.decode(input0), lawspec.runtime.LawSpecTyped.C52.decode(input1)));
   }
 
   public static Value evaluate361(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C34.encode(lawspec.runtime.LawSpecTyped.xorBits_258(lawspec.runtime.LawSpecTyped.C34.decode(input0), lawspec.runtime.LawSpecTyped.C34.decode(input1), lawspec.runtime.LawSpecTyped.C34.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C43.encode(lawspec.runtime.LawSpecTyped.xorBits_ea1fb8e2(lawspec.runtime.LawSpecTyped.C43.decode(input0), lawspec.runtime.LawSpecTyped.C43.decode(input1), lawspec.runtime.LawSpecTyped.C43.decode(input2)));
   }
 
   public static Value evaluate362(
@@ -9681,16 +2219,16 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_162(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C5.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAddPartitionsToTxn_8d367d82(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C5.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
   }
 
   public static Value evaluate363(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_163(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAllKnown_12a378f8(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate364(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_164(lawspec.runtime.LawSpecTyped.C22.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C9.decode(input2), lawspec.runtime.LawSpecTyped.C79.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C88.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendBatch_8797ae9f(lawspec.runtime.LawSpecTyped.C22.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C9.decode(input2), lawspec.runtime.LawSpecTyped.C88.decode(input3)));
   }
 
   public static Value evaluate365(
@@ -9700,11 +2238,11 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C91.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_165(lawspec.runtime.LawSpecTyped.C22.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C92.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C101.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAppendRecords_f5613738(lawspec.runtime.LawSpecTyped.C22.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C102.decode(input4)));
   }
 
   public static Value evaluate366(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_166(lawspec.runtime.LawSpecTyped.C93.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelApplyOffsets_c0f73b56(lawspec.runtime.LawSpecTyped.C103.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate367(
@@ -9714,66 +2252,66 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_167(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C81.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3), lawspec.runtime.LawSpecTyped.C52.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignPartitions_598afda2(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C90.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2), lawspec.runtime.LawSpecTyped.C17.decode(input3), lawspec.runtime.LawSpecTyped.C61.decode(input4)));
   }
 
   public static Value evaluate368(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_168(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C52.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTo_98dab4ee(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C61.decode(input2)));
   }
 
   public static Value evaluate369(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_169(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C45.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2), lawspec.runtime.LawSpecTyped.C52.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelAssignTopics_0d94256d(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2), lawspec.runtime.LawSpecTyped.C61.decode(input3)));
   }
 
   public static Value evaluate370(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_170(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C87.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckMember_f218b850(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate371(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C76.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_171(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C85.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCheckTxnProducer_2936d9ae(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate372(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_172(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C7.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCommitAll_4ae78738(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C7.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate373(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_173(lawspec.runtime.LawSpecTyped.C48.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelComputeAssignment_07bd1943(lawspec.runtime.LawSpecTyped.C57.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate374(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_174(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreatePartitions_8c9ce76b(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate375(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_175(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelCreateTopic_0d831a39(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate376(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C8.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_176(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C8.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelDescribeGroup_bf8df8f8(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate377(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C52.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_177(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C52.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C61.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyAssignments_91b44e0d(lawspec.runtime.LawSpecTyped.C17.decode(input0), lawspec.runtime.LawSpecTyped.C61.decode(input1)));
   }
 
   public static Value evaluate378(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_178(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyBroker_d5fd8237(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate379(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_179(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C87.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyGroup_2fc4809b(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate380(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_180(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C88.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEmptyLog_a7825ed0(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate381(
@@ -9783,11 +2321,11 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_181(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelEndTxn_b2637a52(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
   }
 
   public static Value evaluate382(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_182(lawspec.runtime.LawSpecTyped.C4.decode(input0), lawspec.runtime.LawSpecTyped.C77.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelExpectedSequence_83e363c8(lawspec.runtime.LawSpecTyped.C4.decode(input0), lawspec.runtime.LawSpecTyped.C86.decode(input1)));
   }
 
   public static Value evaluate383(
@@ -9797,56 +2335,56 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C12.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_183(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C13.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C12.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFetch_29936450(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C13.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
   }
 
   public static Value evaluate384(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C36.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_184(lawspec.runtime.LawSpecTyped.C4.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C77.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C45.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFindDuplicate_3335aea4(lawspec.runtime.LawSpecTyped.C4.decode(input0), lawspec.runtime.LawSpecTyped.C6.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C86.decode(input3)));
   }
 
   public static Value evaluate385(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_185(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C94.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelFinishTxn_7545803e(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C104.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate386(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_186(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C87.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelGroupOf_abe7cb22(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate387(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_187(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHeartbeat_0f08a54d(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate388(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_188(lawspec.runtime.LawSpecTyped.C79.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelHighWatermark_da6ed677(lawspec.runtime.LawSpecTyped.C88.decode(input0)));
   }
 
   public static Value evaluate389(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_189(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelInitProducerId_cedb7e1b(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate390(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_190(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C95.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelIsAborted_b12645e5(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C105.decode(input2)));
   }
 
   public static Value evaluate391(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C16.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_191(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C16.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelJoinGroup_9a1e92f5(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C17.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate392(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_192(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelKnownPartition_71d3099f(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate393(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_193(lawspec.runtime.LawSpecTyped.C86.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastOffsetOf_544a605b(lawspec.runtime.LawSpecTyped.C96.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate394(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_194(lawspec.runtime.LawSpecTyped.C79.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLastStableOffset_e8497029(lawspec.runtime.LawSpecTyped.C88.decode(input0)));
   }
 
   public static Value evaluate395(Map<String, Object> symbols, Value input0) {
@@ -10303,49 +2841,49 @@ public final class LawSpecDefinitionBodies {
 
   public static Value evaluate503(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_195(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLeaveGroup_5e5a3f69(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate504(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_196(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C19.decode(input1), lawspec.runtime.LawSpecTyped.C13.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelListOffsets_9c6c9426(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C19.decode(input1), lawspec.runtime.LawSpecTyped.C13.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate505(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_197(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C88.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelLogOf_b86b131a(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate506(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_198(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMax64_98542b8b(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate507(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_199(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C6.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMaxPartitions_6be37992(lawspec.runtime.LawSpecTyped.C23.decode(input0)));
   }
 
   public static Value evaluate508(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C84.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_200(lawspec.runtime.LawSpecTyped.C51.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C93.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMemberViews_a87b1b1a(lawspec.runtime.LawSpecTyped.C60.decode(input0)));
   }
 
   public static Value evaluate509(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C20.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_201(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C20.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMetadata_97bb5c4c(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate510(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_202(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMin64_b47ce987(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate511(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_203(lawspec.runtime.LawSpecTyped.C80.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelMinOf_c4e891de(lawspec.runtime.LawSpecTyped.C89.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1)));
   }
 
   public static Value evaluate512(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_204(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C14.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNewProducer_89b0852d(lawspec.runtime.LawSpecTyped.C15.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate513(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_205(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C86.decode(input2), lawspec.runtime.LawSpecTyped.C86.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelNextFetchOffset_28fd5a97(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C96.decode(input2), lawspec.runtime.LawSpecTyped.C96.decode(input3)));
   }
 
   public static Value evaluate514(
@@ -10355,34 +2893,34 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_206(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C7.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetCommit_01d91ef0(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C7.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
   }
 
   public static Value evaluate515(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C10.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_207(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C10.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetFetch_f56dbfcd(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C11.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate516(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_208(lawspec.runtime.LawSpecTyped.C7.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelOffsetPartitions_ffb8aecd(lawspec.runtime.LawSpecTyped.C7.decode(input0)));
   }
 
   public static Value evaluate517(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C35.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_209(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C44.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionCountOf_ff180c35(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate518(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C81.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_210(lawspec.runtime.LawSpecTyped.C6.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C90.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPartitionsBelow_19525eca(lawspec.runtime.LawSpecTyped.C6.decode(input0)));
   }
 
   public static Value evaluate519(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C93.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_211(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C7.decode(input1), lawspec.runtime.LawSpecTyped.C93.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C103.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPendingFor_50512591(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C7.decode(input1), lawspec.runtime.LawSpecTyped.C103.decode(input2)));
   }
 
   public static Value evaluate520(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_212(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C21.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduce_834568df(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C21.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate521(
@@ -10392,22 +2930,22 @@ public final class LawSpecDefinitionBodies {
       Value input2,
       Value input3,
       Value input4) {
-    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_213(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C96.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2), lawspec.runtime.LawSpecTyped.C79.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
+    return lawspec.runtime.LawSpecTyped.C18.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelProduceTagged_86f854e7(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C106.decode(input1), lawspec.runtime.LawSpecTyped.C22.decode(input2), lawspec.runtime.LawSpecTyped.C88.decode(input3), lawspec.runtime.LawSpecTyped.C1.decode(input4)));
   }
 
   public static Value evaluate522(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_214(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C78.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutGroup_f45eaad0(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C87.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate523(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_215(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C79.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutLog_cb3cbf5e(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C88.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate524(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_216(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C76.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelPutProducer_4ef907a5(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C85.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2)));
   }
 
   public static Value evaluate525(
@@ -10418,54 +2956,54 @@ public final class LawSpecDefinitionBodies {
       Value input3,
       Value input4,
       Value input5) {
-    return lawspec.runtime.LawSpecTyped.C86.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_217(lawspec.runtime.LawSpecTyped.C92.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C95.decode(input4), lawspec.runtime.LawSpecTyped.C86.decode(input5)));
+    return lawspec.runtime.LawSpecTyped.C96.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReadable_adec3284(lawspec.runtime.LawSpecTyped.C102.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C3.decode(input2), lawspec.runtime.LawSpecTyped.C9.decode(input3), lawspec.runtime.LawSpecTyped.C105.decode(input4), lawspec.runtime.LawSpecTyped.C96.decode(input5)));
   }
 
   public static Value evaluate526(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C78.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_218(lawspec.runtime.LawSpecTyped.C78.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C87.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalance_c9984d55(lawspec.runtime.LawSpecTyped.C87.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate527(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C50.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_219(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C49.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2), lawspec.runtime.LawSpecTyped.C50.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C59.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceGroups_ad90673b(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C58.decode(input1), lawspec.runtime.LawSpecTyped.C1.decode(input2), lawspec.runtime.LawSpecTyped.C59.decode(input3)));
   }
 
   public static Value evaluate528(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_220(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRebalanceTopic_823cd68b(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C1.decode(input1)));
   }
 
   public static Value evaluate529(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_221(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C97.decode(input1), lawspec.runtime.LawSpecTyped.C79.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C88.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelRememberBatch_33fa600f(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C107.decode(input1), lawspec.runtime.LawSpecTyped.C88.decode(input2)));
   }
 
   public static Value evaluate530(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C93.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_222(lawspec.runtime.LawSpecTyped.C93.decode(input0), lawspec.runtime.LawSpecTyped.C93.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C103.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelReversePending_51ca5898(lawspec.runtime.LawSpecTyped.C103.decode(input0), lawspec.runtime.LawSpecTyped.C103.decode(input1)));
   }
 
   public static Value evaluate531(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C82.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_223(lawspec.runtime.LawSpecTyped.C45.decode(input0), lawspec.runtime.LawSpecTyped.C82.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C91.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribedTopics_c1d720b5(lawspec.runtime.LawSpecTyped.C54.decode(input0), lawspec.runtime.LawSpecTyped.C91.decode(input1)));
   }
 
   public static Value evaluate532(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_224(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C45.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C17.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribersOf_e9347318(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C54.decode(input1)));
   }
 
   public static Value evaluate533(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_225(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C78.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSubscribesTo_c3c674c3(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C87.decode(input1)));
   }
 
   public static Value evaluate534(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C24.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_226(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C24.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelSyncGroup_b3d01c80(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C2.decode(input1), lawspec.runtime.LawSpecTyped.C6.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate535(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.topicPartitions_259(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C81.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.topicPartitions_a717cef5(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C90.decode(input1)));
   }
 
   public static Value evaluate536(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_227(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C94.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnHasPartition_8fa1cfc0(lawspec.runtime.LawSpecTyped.C11.decode(input0), lawspec.runtime.LawSpecTyped.C104.decode(input1)));
   }
 
   public static Value evaluate537(
@@ -10476,25 +3014,25 @@ public final class LawSpecDefinitionBodies {
       Value input3,
       Value input4,
       Value input5) {
-    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_228(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C2.decode(input3), lawspec.runtime.LawSpecTyped.C7.decode(input4), lawspec.runtime.LawSpecTyped.C1.decode(input5)));
+    return lawspec.runtime.LawSpecTyped.C0.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelTxnOffsetCommit_84c6b2bb(lawspec.runtime.LawSpecTyped.C2.decode(input0), lawspec.runtime.LawSpecTyped.C3.decode(input1), lawspec.runtime.LawSpecTyped.C4.decode(input2), lawspec.runtime.LawSpecTyped.C2.decode(input3), lawspec.runtime.LawSpecTyped.C7.decode(input4), lawspec.runtime.LawSpecTyped.C1.decode(input5)));
   }
 
   public static Value evaluate538(Map<String, Object> symbols, Value input0, Value input1) {
-    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_229(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
+    return lawspec.runtime.LawSpecTyped.C5.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelUnionPartitions_c791d224(lawspec.runtime.LawSpecTyped.C5.decode(input0), lawspec.runtime.LawSpecTyped.C5.decode(input1)));
   }
 
   public static Value evaluate539(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_230(lawspec.runtime.LawSpecTyped.C2.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C9.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelValidTopicName_39dd4596(lawspec.runtime.LawSpecTyped.C2.decode(input0)));
   }
 
   public static Value evaluate540(
       Map<String, Object> symbols, Value input0, Value input1, Value input2) {
-    return lawspec.runtime.LawSpecTyped.C79.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_231(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C79.decode(input2)));
+    return lawspec.runtime.LawSpecTyped.C88.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarker_8dc995f8(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C88.decode(input2)));
   }
 
   public static Value evaluate541(
       Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
-    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_232(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C5.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
+    return lawspec.runtime.LawSpecTyped.C1.encode(lawspec.runtime.LawSpecTyped.lawtwinKafkaModelWriteMarkers_c507f08e(lawspec.runtime.LawSpecTyped.C3.decode(input0), lawspec.runtime.LawSpecTyped.C9.decode(input1), lawspec.runtime.LawSpecTyped.C5.decode(input2), lawspec.runtime.LawSpecTyped.C1.decode(input3)));
   }
 
   public static Value evaluate542(
@@ -10767,7 +3305,7 @@ public final class LawSpecDefinitionBodies {
   }
 
   public static Value evaluate595(Map<String, Object> symbols, Value input0) {
-    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.keepBoundedArithmetic_260(lawspec.runtime.LawSpecTyped.C3.decode(input0)));
+    return lawspec.runtime.LawSpecTyped.C3.encode(lawspec.runtime.LawSpecTyped.keepBoundedArithmetic_3e45e1f6(lawspec.runtime.LawSpecTyped.C3.decode(input0)));
   }
 
   public static Value evaluate596(Map<String, Object> symbols, Value input0) {
@@ -11981,5 +4519,154 @@ public final class LawSpecDefinitionBodies {
 
   public static Value evaluate865(Map<String, Object> symbols, Value input0, Value input1) {
     return evaluate322(symbols, input0, input1);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__addPartitionsToTxnRequest(
+        symbols, input0, input1, input2, input3);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__createTopicsRequest(
+      Map<String, Object> symbols, Value input0, Value input1) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__createTopicsRequest(
+        symbols, input0, input1);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__endTxnRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__endTxnRequest(
+        symbols, input0, input1, input2, input3);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__fetchRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__fetchRequest(
+        symbols, input0, input1, input2, input3);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__heartbeatRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__heartbeatRequest(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__initProducerIdRequest(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__joinGroupRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__joinGroupRequest(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__leaveGroupRequest(
+      Map<String, Object> symbols, Value input0, Value input1) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__leaveGroupRequest(
+        symbols, input0, input1);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__metadataRequest(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__metadataRequest(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__offsetCommitRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2, Value input3) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetCommitRequest(
+        symbols, input0, input1, input2, input3);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
+      Map<String, Object> symbols, Value input0, Value input1) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__offsetFetchRequest(
+        symbols, input0, input1);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__produceRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__produceRequest(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__syncGroupRequest(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__syncGroupRequest(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
+      Map<String, Object> symbols,
+      Value input0,
+      Value input1,
+      Value input2,
+      Value input3,
+      Value input4) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Broker__txnOffsetCommitRequest(
+        symbols, input0, input1, input2, input3, input4);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__assign(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__assign(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__close(
+      Map<String, Object> symbols) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__close(
+        symbols);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__commitSync(
+      Map<String, Object> symbols) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__commitSync(
+        symbols);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__committedOffset(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__committedOffset(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__poll(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__poll(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__position(
+      Map<String, Object> symbols, Value input0) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__position(
+        symbols, input0);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__seek(
+      Map<String, Object> symbols, Value input0, Value input1) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__seek(
+        symbols, input0, input1);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Consumer__subscribe(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Consumer__subscribe(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(
+      Map<String, Object> symbols, Value input0, Value input1, Value input2) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__GroupCoordinator__joinGroup(
+        symbols, input0, input1, input2);
+  }
+
+  public static Value typedPerform_lawtwin_kafka__ability__Partitioner__choosePartition(
+      Map<String, Object> symbols, Value input0, Value input1) {
+    return lawspec.runtime.LawSpecKotlinAdapters.perform_lawtwin_kafka__ability__Partitioner__choosePartition(
+        symbols, input0, input1);
   }
 }

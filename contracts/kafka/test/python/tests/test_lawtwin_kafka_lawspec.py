@@ -44226,12 +44226,12 @@ def test_broker_a_gap_in_sequence_numbers_is_refused_2__property(_case):
 # ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
 # (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
 # lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-# _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 ->
-# _match3__0__lawspecField191x0 }) (match (_match1__1__old) {
+# _matchfield0__producerId _matchfield1__producerEpoch ->
+# _matchfield0__producerId }) (match (_match1__1__old) {
 # lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-# _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 ->
-# _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp,
-# List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
+# _matchfield2__producerId _matchfield3__producerEpoch ->
+# _matchfield3__producerEpoch }) (List::Cons(_let0__tp, List::Nil()))))
+# { Either::Left _match3__0__lawspecFailure -> match
 # (_match3__0__lawspecFailure) {
 # lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 # lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition ->
@@ -44387,15 +44387,15 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary0():
                     + "(match (_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField191x0 "
-                    + "_match3__0__lawspecField191x1 -> "
-                    + "_match3__0__lawspecField191x0 }) "
-                    + "(match (_match1__1__old) { "
+                    + "_matchfield0__producerId "
+                    + "_matchfield1__producerEpoch -> "
+                    + "_matchfield0__producerId }) (match "
+                    + "(_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField192x0 "
-                    + "_match3__0__lawspecField192x1 -> "
-                    + "_match3__0__lawspecField192x1 }) "
+                    + "_matchfield2__producerId "
+                    + "_matchfield3__producerEpoch -> "
+                    + "_matchfield3__producerEpoch }) "
                     + "(List::Cons(_let0__tp, "
                     + "List::Nil())))) { Either::Left "
                     + "_match3__0__lawspecFailure -> match "
@@ -47229,15 +47229,15 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary1():
                     + "(match (_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField191x0 "
-                    + "_match3__0__lawspecField191x1 -> "
-                    + "_match3__0__lawspecField191x0 }) "
-                    + "(match (_match1__1__old) { "
+                    + "_matchfield0__producerId "
+                    + "_matchfield1__producerEpoch -> "
+                    + "_matchfield0__producerId }) (match "
+                    + "(_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField192x0 "
-                    + "_match3__0__lawspecField192x1 -> "
-                    + "_match3__0__lawspecField192x1 }) "
+                    + "_matchfield2__producerId "
+                    + "_matchfield3__producerEpoch -> "
+                    + "_matchfield3__producerEpoch }) "
                     + "(List::Cons(_let0__tp, "
                     + "List::Nil())))) { Either::Left "
                     + "_match3__0__lawspecFailure -> match "
@@ -50045,15 +50045,15 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary2():
                     + "(match (_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField191x0 "
-                    + "_match3__0__lawspecField191x1 -> "
-                    + "_match3__0__lawspecField191x0 }) "
-                    + "(match (_match1__1__old) { "
+                    + "_matchfield0__producerId "
+                    + "_matchfield1__producerEpoch -> "
+                    + "_matchfield0__producerId }) (match "
+                    + "(_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField192x0 "
-                    + "_match3__0__lawspecField192x1 -> "
-                    + "_match3__0__lawspecField192x1 }) "
+                    + "_matchfield2__producerId "
+                    + "_matchfield3__producerEpoch -> "
+                    + "_matchfield3__producerEpoch }) "
                     + "(List::Cons(_let0__tp, "
                     + "List::Nil())))) { Either::Left "
                     + "_match3__0__lawspecFailure -> match "
@@ -52884,15 +52884,15 @@ def test_broker_a_new_epoch_fences_the_older_producer__boundary3():
                     + "(match (_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField191x0 "
-                    + "_match3__0__lawspecField191x1 -> "
-                    + "_match3__0__lawspecField191x0 }) "
-                    + "(match (_match1__1__old) { "
+                    + "_matchfield0__producerId "
+                    + "_matchfield1__producerEpoch -> "
+                    + "_matchfield0__producerId }) (match "
+                    + "(_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField192x0 "
-                    + "_match3__0__lawspecField192x1 -> "
-                    + "_match3__0__lawspecField192x1 }) "
+                    + "_matchfield2__producerId "
+                    + "_matchfield3__producerEpoch -> "
+                    + "_matchfield3__producerEpoch }) "
                     + "(List::Cons(_let0__tp, "
                     + "List::Nil())))) { Either::Left "
                     + "_match3__0__lawspecFailure -> match "
@@ -55978,15 +55978,15 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
                     + "(match (_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField191x0 "
-                    + "_match3__0__lawspecField191x1 -> "
-                    + "_match3__0__lawspecField191x0 }) "
-                    + "(match (_match1__1__old) { "
+                    + "_matchfield0__producerId "
+                    + "_matchfield1__producerEpoch -> "
+                    + "_matchfield0__producerId }) (match "
+                    + "(_match1__1__old) { "
                     + "lawtwin.kafka.model::type::ProducerIdA"
                     + "ndEpoch::ProducerIdAndEpoch "
-                    + "_match3__0__lawspecField192x0 "
-                    + "_match3__0__lawspecField192x1 -> "
-                    + "_match3__0__lawspecField192x1 }) "
+                    + "_matchfield2__producerId "
+                    + "_matchfield3__producerEpoch -> "
+                    + "_matchfield3__producerEpoch }) "
                     + "(List::Cons(_let0__tp, "
                     + "List::Nil())))) { Either::Left "
                     + "_match3__0__lawspecFailure -> match "
@@ -58717,12 +58717,12 @@ def test_broker_a_new_epoch_fences_the_older_producer__property(_case):
 # ((fencedBy (_match1__1__old) (_match2__1__new) And match (attempt
 # (addPartitionsToTxnRequest (_input1) (match (_match1__1__old) {
 # lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-# _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 ->
-# _match3__0__lawspecField191x0 }) (match (_match1__1__old) {
+# _matchfield0__producerId _matchfield1__producerEpoch ->
+# _matchfield0__producerId }) (match (_match1__1__old) {
 # lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-# _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 ->
-# _match3__0__lawspecField192x1 }) (List::Cons(_let0__tp,
-# List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
+# _matchfield2__producerId _matchfield3__producerEpoch ->
+# _matchfield3__producerEpoch }) (List::Cons(_let0__tp, List::Nil()))))
+# { Either::Left _match3__0__lawspecFailure -> match
 # (_match3__0__lawspecFailure) {
 # lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
 # lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition ->
@@ -58844,15 +58844,15 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary0():
                 + "(match (_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField191x0 "
-                + "_match3__0__lawspecField191x1 -> "
-                + "_match3__0__lawspecField191x0 }) "
-                + "(match (_match1__1__old) { "
+                + "_matchfield0__producerId "
+                + "_matchfield1__producerEpoch -> "
+                + "_matchfield0__producerId }) (match "
+                + "(_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField192x0 "
-                + "_match3__0__lawspecField192x1 -> "
-                + "_match3__0__lawspecField192x1 }) "
+                + "_matchfield2__producerId "
+                + "_matchfield3__producerEpoch -> "
+                + "_matchfield3__producerEpoch }) "
                 + "(List::Cons(_let0__tp, "
                 + "List::Nil())))) { Either::Left "
                 + "_match3__0__lawspecFailure -> match "
@@ -61612,15 +61612,15 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary1():
                 + "(match (_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField191x0 "
-                + "_match3__0__lawspecField191x1 -> "
-                + "_match3__0__lawspecField191x0 }) "
-                + "(match (_match1__1__old) { "
+                + "_matchfield0__producerId "
+                + "_matchfield1__producerEpoch -> "
+                + "_matchfield0__producerId }) (match "
+                + "(_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField192x0 "
-                + "_match3__0__lawspecField192x1 -> "
-                + "_match3__0__lawspecField192x1 }) "
+                + "_matchfield2__producerId "
+                + "_matchfield3__producerEpoch -> "
+                + "_matchfield3__producerEpoch }) "
                 + "(List::Cons(_let0__tp, "
                 + "List::Nil())))) { Either::Left "
                 + "_match3__0__lawspecFailure -> match "
@@ -64354,15 +64354,15 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary2():
                 + "(match (_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField191x0 "
-                + "_match3__0__lawspecField191x1 -> "
-                + "_match3__0__lawspecField191x0 }) "
-                + "(match (_match1__1__old) { "
+                + "_matchfield0__producerId "
+                + "_matchfield1__producerEpoch -> "
+                + "_matchfield0__producerId }) (match "
+                + "(_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField192x0 "
-                + "_match3__0__lawspecField192x1 -> "
-                + "_match3__0__lawspecField192x1 }) "
+                + "_matchfield2__producerId "
+                + "_matchfield3__producerEpoch -> "
+                + "_matchfield3__producerEpoch }) "
                 + "(List::Cons(_let0__tp, "
                 + "List::Nil())))) { Either::Left "
                 + "_match3__0__lawspecFailure -> match "
@@ -67119,15 +67119,15 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__boundary3():
                 + "(match (_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField191x0 "
-                + "_match3__0__lawspecField191x1 -> "
-                + "_match3__0__lawspecField191x0 }) "
-                + "(match (_match1__1__old) { "
+                + "_matchfield0__producerId "
+                + "_matchfield1__producerEpoch -> "
+                + "_matchfield0__producerId }) (match "
+                + "(_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField192x0 "
-                + "_match3__0__lawspecField192x1 -> "
-                + "_match3__0__lawspecField192x1 }) "
+                + "_matchfield2__producerId "
+                + "_matchfield3__producerEpoch -> "
+                + "_matchfield3__producerEpoch }) "
                 + "(List::Cons(_let0__tp, "
                 + "List::Nil())))) { Either::Left "
                 + "_match3__0__lawspecFailure -> match "
@@ -70139,15 +70139,15 @@ def test_broker_a_new_epoch_fences_the_older_producer_2__property(_case):
                 + "(match (_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField191x0 "
-                + "_match3__0__lawspecField191x1 -> "
-                + "_match3__0__lawspecField191x0 }) "
-                + "(match (_match1__1__old) { "
+                + "_matchfield0__producerId "
+                + "_matchfield1__producerEpoch -> "
+                + "_matchfield0__producerId }) (match "
+                + "(_match1__1__old) { "
                 + "lawtwin.kafka.model::type::ProducerIdA"
                 + "ndEpoch::ProducerIdAndEpoch "
-                + "_match3__0__lawspecField192x0 "
-                + "_match3__0__lawspecField192x1 -> "
-                + "_match3__0__lawspecField192x1 }) "
+                + "_matchfield2__producerId "
+                + "_matchfield3__producerEpoch -> "
+                + "_matchfield3__producerEpoch }) "
                 + "(List::Cons(_let0__tp, "
                 + "List::Nil())))) { Either::Left "
                 + "_match3__0__lawspecFailure -> match "
@@ -122614,8 +122614,8 @@ def test_producer_records_sent_to_one_partition_are_read__property(_case):
 # Either::Left _match2__0__e -> false; Either::Right _match2__1__latest
 # -> (_match2__1__latest > match (_match0__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 ->
-# _match3__0__lawspecField55x1 }) } } = true
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) }
+# } = true
 def test_producer_a_flushed_record_is_in_the_log_native__boundary0():
     symbols = {}
     _input0 = ls.literal({"type": "Text", "units": [45]}, symbols)
@@ -122725,10 +122725,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary0():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -123564,10 +123563,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary1():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -124403,10 +124401,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary2():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -125229,10 +125226,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary3():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -126071,10 +126067,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary4():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -126897,10 +126892,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary5():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -127742,10 +127736,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary6():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -128565,10 +128558,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__boundary7():
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -129613,10 +129605,9 @@ def test_producer_a_flushed_record_is_in_the_log_native__property(_case):
                     + "(_match2__1__latest > match "
                     + "(_match0__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match3__0__lawspecField55x0 "
-                    + "_match3__0__lawspecField55x1 -> "
-                    + "_match3__0__lawspecField55x1 }) } } = "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) } } = "
                     + "true"
                 ),
                 lambda: (
@@ -161248,8 +161239,8 @@ def test_groupcoordinator_every_partition_has_exactly_one_2__property(_case):
 # ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And
 # (match (describeGroup (_input2)) {
 # lawtwin.kafka.model::type::GroupView::GroupView
-# _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 ->
-# _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true
+# _matchfield0__generation _matchfield1__members ->
+# _matchfield0__generation } == _match0__1__gen)) } } = true
 _lawspec_inputs_groupcoordinator_a_sync_gives_a_member_the = [
     "(text)",
     "(int Int32 1 16)",
@@ -161386,10 +161377,9 @@ def _lawspec_case_groupcoordinator_a_sync_gives_a_member_the(_values):
                     + "_match1__1__tps) And (match "
                     + "(describeGroup (_input2)) { "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match2__0__lawspecField55x0 "
-                    + "_match2__0__lawspecField55x1 -> "
-                    + "_match2__0__lawspecField55x0 } == "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } == "
                     + "_match0__1__gen)) } } = "
                     + "true"
                 ),
@@ -162258,10 +162248,9 @@ def test_groupcoordinator_a_sync_gives_a_member_the__property(_seed):
                             + "_match1__1__tps) And (match "
                             + "(describeGroup (_input2)) { "
                             + "lawtwin.kafka.model::type::GroupView::"
-                            + "GroupView "
-                            + "_match2__0__lawspecField55x0 "
-                            + "_match2__0__lawspecField55x1 -> "
-                            + "_match2__0__lawspecField55x0 } == "
+                            + "GroupView _matchfield0__generation "
+                            + "_matchfield1__members -> "
+                            + "_matchfield0__generation } == "
                             + "_match0__1__gen)) } } = "
                             + "true"
                         ),
@@ -163850,8 +163839,8 @@ def test_groupcoordinator_a_sync_gives_a_member_the__property(_seed):
 # ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And
 # (match (describeGroup (_input2)) {
 # lawtwin.kafka.model::type::GroupView::GroupView
-# _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 ->
-# _match2__0__lawspecField55x0 } == _match0__1__gen)) } } = true
+# _matchfield0__generation _matchfield1__members ->
+# _matchfield0__generation } == _match0__1__gen)) } } = true
 _lawspec_inputs_groupcoordinator_a_sync_gives_a_member_the_2 = [
     "(text)",
     "(int Int32 1 16)",
@@ -163953,10 +163942,9 @@ def _lawspec_case_groupcoordinator_a_sync_gives_a_member_the_2(_values):
                 + "_match1__1__tps) And (match "
                 + "(describeGroup (_input2)) { "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match2__0__lawspecField55x0 "
-                + "_match2__0__lawspecField55x1 -> "
-                + "_match2__0__lawspecField55x0 } == "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } == "
                 + "_match0__1__gen)) } } = "
                 + "true"
             ),
@@ -164740,10 +164728,9 @@ def test_groupcoordinator_a_sync_gives_a_member_the_2__property(_seed):
                         + "_match1__1__tps) And (match "
                         + "(describeGroup (_input2)) { "
                         + "lawtwin.kafka.model::type::GroupView::"
-                        + "GroupView "
-                        + "_match2__0__lawspecField55x0 "
-                        + "_match2__0__lawspecField55x1 -> "
-                        + "_match2__0__lawspecField55x0 } == "
+                        + "GroupView _matchfield0__generation "
+                        + "_matchfield1__members -> "
+                        + "_matchfield0__generation } == "
                         + "_match0__1__gen)) } } = "
                         + "true"
                     ),
@@ -186998,8 +186985,8 @@ def test_groupcoordinator_a_heartbeat_from_an_older_2__property(_seed):
 # false; Either::Right _match1__1__railwayValue1 -> true } And (match
 # (describeGroup (_input1)) {
 # lawtwin.kafka.model::type::GroupView::GroupView
-# _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 ->
-# _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt
+# _matchfield0__generation _matchfield1__members ->
+# _matchfield0__generation } > _match0__1__gen)) And match (attempt
 # (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
 # _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 # lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -187141,10 +187128,9 @@ def _lawspec_case_groupcoordinator_leaving_starts_a_new_generation(_values):
                     + "And (match (describeGroup (_input1)) "
                     + "{ "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match1__0__lawspecField101x0 "
-                    + "_match1__0__lawspecField101x1 -> "
-                    + "_match1__0__lawspecField101x0 } > "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } > "
                     + "_match0__1__gen)) And match (attempt "
                     + "(heartbeat (_input1) (_input2) "
                     + "(_match0__1__gen))) { Either::Left "
@@ -188611,10 +188597,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation__boundary0():
                     + "And (match (describeGroup (_input1)) "
                     + "{ "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match1__0__lawspecField101x0 "
-                    + "_match1__0__lawspecField101x1 -> "
-                    + "_match1__0__lawspecField101x0 } > "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } > "
                     + "_match0__1__gen)) And match (attempt "
                     + "(heartbeat (_input1) (_input2) "
                     + "(_match0__1__gen))) { Either::Left "
@@ -190086,10 +190071,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation__boundary1():
                     + "And (match (describeGroup (_input1)) "
                     + "{ "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match1__0__lawspecField101x0 "
-                    + "_match1__0__lawspecField101x1 -> "
-                    + "_match1__0__lawspecField101x0 } > "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } > "
                     + "_match0__1__gen)) And match (attempt "
                     + "(heartbeat (_input1) (_input2) "
                     + "(_match0__1__gen))) { Either::Left "
@@ -191552,10 +191536,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation__boundary2():
                     + "And (match (describeGroup (_input1)) "
                     + "{ "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match1__0__lawspecField101x0 "
-                    + "_match1__0__lawspecField101x1 -> "
-                    + "_match1__0__lawspecField101x0 } > "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } > "
                     + "_match0__1__gen)) And match (attempt "
                     + "(heartbeat (_input1) (_input2) "
                     + "(_match0__1__gen))) { Either::Left "
@@ -193018,10 +193001,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation__boundary3():
                     + "And (match (describeGroup (_input1)) "
                     + "{ "
                     + "lawtwin.kafka.model::type::GroupView::"
-                    + "GroupView "
-                    + "_match1__0__lawspecField101x0 "
-                    + "_match1__0__lawspecField101x1 -> "
-                    + "_match1__0__lawspecField101x0 } > "
+                    + "GroupView _matchfield0__generation "
+                    + "_matchfield1__members -> "
+                    + "_matchfield0__generation } > "
                     + "_match0__1__gen)) And match (attempt "
                     + "(heartbeat (_input1) (_input2) "
                     + "(_match0__1__gen))) { Either::Left "
@@ -194485,10 +194467,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation__property(_seed):
                             + "And (match (describeGroup (_input1)) "
                             + "{ "
                             + "lawtwin.kafka.model::type::GroupView::"
-                            + "GroupView "
-                            + "_match1__0__lawspecField101x0 "
-                            + "_match1__0__lawspecField101x1 -> "
-                            + "_match1__0__lawspecField101x0 } > "
+                            + "GroupView _matchfield0__generation "
+                            + "_matchfield1__members -> "
+                            + "_matchfield0__generation } > "
                             + "_match0__1__gen)) And match (attempt "
                             + "(heartbeat (_input1) (_input2) "
                             + "(_match0__1__gen))) { Either::Left "
@@ -196658,8 +196639,8 @@ def test_groupcoordinator_leaving_starts_a_new_generation__property(_seed):
 # false; Either::Right _match1__1__railwayValue1 -> true } And (match
 # (describeGroup (_input1)) {
 # lawtwin.kafka.model::type::GroupView::GroupView
-# _match1__0__lawspecField101x0 _match1__0__lawspecField101x1 ->
-# _match1__0__lawspecField101x0 } > _match0__1__gen)) And match (attempt
+# _matchfield0__generation _matchfield1__members ->
+# _matchfield0__generation } > _match0__1__gen)) And match (attempt
 # (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
 # _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
 # lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
@@ -196762,10 +196743,9 @@ def _lawspec_case_groupcoordinator_leaving_starts_a_new_generation_2(_values):
                 + "And (match (describeGroup (_input1)) "
                 + "{ "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match1__0__lawspecField101x0 "
-                + "_match1__0__lawspecField101x1 -> "
-                + "_match1__0__lawspecField101x0 } > "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } > "
                 + "_match0__1__gen)) And match (attempt "
                 + "(heartbeat (_input1) (_input2) "
                 + "(_match0__1__gen))) { Either::Left "
@@ -198118,10 +198098,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__boundary0():
                 + "And (match (describeGroup (_input1)) "
                 + "{ "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match1__0__lawspecField101x0 "
-                + "_match1__0__lawspecField101x1 -> "
-                + "_match1__0__lawspecField101x0 } > "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } > "
                 + "_match0__1__gen)) And match (attempt "
                 + "(heartbeat (_input1) (_input2) "
                 + "(_match0__1__gen))) { Either::Left "
@@ -199479,10 +199458,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__boundary1():
                 + "And (match (describeGroup (_input1)) "
                 + "{ "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match1__0__lawspecField101x0 "
-                + "_match1__0__lawspecField101x1 -> "
-                + "_match1__0__lawspecField101x0 } > "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } > "
                 + "_match0__1__gen)) And match (attempt "
                 + "(heartbeat (_input1) (_input2) "
                 + "(_match0__1__gen))) { Either::Left "
@@ -200831,10 +200809,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__boundary2():
                 + "And (match (describeGroup (_input1)) "
                 + "{ "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match1__0__lawspecField101x0 "
-                + "_match1__0__lawspecField101x1 -> "
-                + "_match1__0__lawspecField101x0 } > "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } > "
                 + "_match0__1__gen)) And match (attempt "
                 + "(heartbeat (_input1) (_input2) "
                 + "(_match0__1__gen))) { Either::Left "
@@ -202183,10 +202160,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__boundary3():
                 + "And (match (describeGroup (_input1)) "
                 + "{ "
                 + "lawtwin.kafka.model::type::GroupView::"
-                + "GroupView "
-                + "_match1__0__lawspecField101x0 "
-                + "_match1__0__lawspecField101x1 -> "
-                + "_match1__0__lawspecField101x0 } > "
+                + "GroupView _matchfield0__generation "
+                + "_matchfield1__members -> "
+                + "_matchfield0__generation } > "
                 + "_match0__1__gen)) And match (attempt "
                 + "(heartbeat (_input1) (_input2) "
                 + "(_match0__1__gen))) { Either::Left "
@@ -203536,10 +203512,9 @@ def test_groupcoordinator_leaving_starts_a_new_generation_2__property(_seed):
                         + "And (match (describeGroup (_input1)) "
                         + "{ "
                         + "lawtwin.kafka.model::type::GroupView::"
-                        + "GroupView "
-                        + "_match1__0__lawspecField101x0 "
-                        + "_match1__0__lawspecField101x1 -> "
-                        + "_match1__0__lawspecField101x0 } > "
+                        + "GroupView _matchfield0__generation "
+                        + "_matchfield1__members -> "
+                        + "_matchfield0__generation } > "
                         + "_match0__1__gen)) And match (attempt "
                         + "(heartbeat (_input1) (_input2) "
                         + "(_match0__1__gen))) { Either::Left "
@@ -221787,8 +221762,8 @@ def test_transactions_a_newer_instance_fences_a_zombie__property(_case):
 # ((abortTransaction == Either::Right(unitValue)) And (committedFrom
 # (_let0__tp) (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 ->
-# _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt })
+# == List::Nil())) }) = true
 def test_transactions_aborted_records_are_never_read__boundary0():
     symbols = {}
     _input0 = ls.literal({"type": "Text", "units": [111]}, symbols)
@@ -221936,10 +221911,9 @@ def test_transactions_aborted_records_are_never_read__boundary0():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -222761,10 +222735,9 @@ def test_transactions_aborted_records_are_never_read__boundary1():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -223567,10 +223540,9 @@ def test_transactions_aborted_records_are_never_read__boundary2():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -224389,10 +224361,9 @@ def test_transactions_aborted_records_are_never_read__boundary3():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -225192,10 +225163,9 @@ def test_transactions_aborted_records_are_never_read__boundary4():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -225995,10 +225965,9 @@ def test_transactions_aborted_records_are_never_read__boundary5():
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -227060,10 +227029,9 @@ def test_transactions_aborted_records_are_never_read__property(_case):
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField162x0 "
-                    + "_match2__0__lawspecField162x1 -> "
-                    + "_match2__0__lawspecField162x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) }) = "
                     + "true"
                 ),
@@ -227756,14 +227724,12 @@ def test_transactions_aborted_records_are_never_read__property(_case):
 # _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp)
 # (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 ->
-# _match2__0__lawspecField219x1 }) == List::Nil())) And
-# (commitTransaction == Either::Right(unitValue))) And (committedFrom
-# (_let0__tp) (match (_match1__1__md) {
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt })
+# == List::Nil())) And (commitTransaction == Either::Right(unitValue)))
+# And (committedFrom (_let0__tp) (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 ->
-# _match2__0__lawspecField232x1 }) == List::Cons(_input2,
-# List::Cons(_input3, List::Nil())))) }) = true
+# _matchfield2__sentTo _matchfield3__sentAt -> _matchfield3__sentAt })
+# == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 def test_transactions_committed_records_are_read__boundary0():
     symbols = {}
     _input0 = ls.literal({"type": "Text", "units": [111]}, symbols)
@@ -227974,19 +227940,17 @@ def test_transactions_committed_records_are_read__boundary0():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -229262,19 +229226,17 @@ def test_transactions_committed_records_are_read__boundary1():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -230515,19 +230477,17 @@ def test_transactions_committed_records_are_read__boundary2():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -231800,19 +231760,17 @@ def test_transactions_committed_records_are_read__boundary3():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -233053,19 +233011,17 @@ def test_transactions_committed_records_are_read__boundary4():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -234303,19 +234259,17 @@ def test_transactions_committed_records_are_read__boundary5():
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -235780,19 +235734,17 @@ def test_transactions_committed_records_are_read__property(_case):
                     + "And (committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField219x0 "
-                    + "_match2__0__lawspecField219x1 -> "
-                    + "_match2__0__lawspecField219x1 }) == "
+                    + "ecordMetadata _matchfield0__sentTo "
+                    + "_matchfield1__sentAt -> "
+                    + "_matchfield1__sentAt }) == "
                     + "List::Nil())) And (commitTransaction "
                     + "== Either::Right(unitValue))) And "
                     + "(committedFrom (_let0__tp) (match "
                     + "(_match1__1__md) { "
                     + "lawtwin.kafka::type::RecordMetadata::R"
-                    + "ecordMetadata "
-                    + "_match2__0__lawspecField232x0 "
-                    + "_match2__0__lawspecField232x1 -> "
-                    + "_match2__0__lawspecField232x1 }) == "
+                    + "ecordMetadata _matchfield2__sentTo "
+                    + "_matchfield3__sentAt -> "
+                    + "_matchfield3__sentAt }) == "
                     + "List::Cons(_input2, "
                     + "List::Cons(_input3, List::Nil())))) "
                     + "}) = "
@@ -246342,8 +246294,8 @@ def test_producer_records_sent_to_one_partition_are_read_2__property(_case):
 # Either::Left _match2__0__e -> false; Either::Right _match2__1__latest
 # -> (_match2__1__latest > match (_match0__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match3__0__lawspecField55x0 _match3__0__lawspecField55x1 ->
-# _match3__0__lawspecField55x1 }) } } = true
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt }) }
+# } = true
 def test_producer_a_flushed_record_is_in_the_log__boundary0():
     symbols = {}
     _lawspec_shared_cluster = _abilities.Cluster(symbols)
@@ -246425,10 +246377,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary0():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -247178,10 +247129,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary1():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -247931,10 +247881,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary2():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -248671,10 +248620,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary3():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -249427,10 +249375,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary4():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -250167,10 +250114,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary5():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -250926,10 +250872,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary6():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -251663,10 +251608,9 @@ def test_producer_a_flushed_record_is_in_the_log__boundary7():
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -252625,10 +252569,9 @@ def test_producer_a_flushed_record_is_in_the_log__property(_case):
                 + "(_match2__1__latest > match "
                 + "(_match0__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match3__0__lawspecField55x0 "
-                + "_match3__0__lawspecField55x1 -> "
-                + "_match3__0__lawspecField55x1 }) } } = "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) } } = "
                 + "true"
             ),
             lambda: (
@@ -286315,8 +286258,8 @@ def test_transactions_a_newer_instance_fences_a_zombie_2__property(_case):
 # ((abortTransaction == Either::Right(unitValue)) And (committedFrom
 # (_let0__tp) (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField162x0 _match2__0__lawspecField162x1 ->
-# _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt })
+# == List::Nil())) }) = true
 def test_transactions_aborted_records_are_never_read_2__boundary0():
     symbols = {}
     _lawspec_shared_cluster = _abilities.Cluster(symbols)
@@ -286436,10 +286379,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary0():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -287177,10 +287119,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary1():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -287899,10 +287840,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary2():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -288637,10 +288577,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary3():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -289356,10 +289295,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary4():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -290075,10 +290013,9 @@ def test_transactions_aborted_records_are_never_read_2__boundary5():
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -291056,10 +290993,9 @@ def test_transactions_aborted_records_are_never_read_2__property(_case):
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField162x0 "
-                + "_match2__0__lawspecField162x1 -> "
-                + "_match2__0__lawspecField162x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) }) = "
                 + "true"
             ),
@@ -291696,14 +291632,12 @@ def test_transactions_aborted_records_are_never_read_2__property(_case):
 # _match2__1__railwayValue3 -> true } And (committedFrom (_let0__tp)
 # (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField219x0 _match2__0__lawspecField219x1 ->
-# _match2__0__lawspecField219x1 }) == List::Nil())) And
-# (commitTransaction == Either::Right(unitValue))) And (committedFrom
-# (_let0__tp) (match (_match1__1__md) {
+# _matchfield0__sentTo _matchfield1__sentAt -> _matchfield1__sentAt })
+# == List::Nil())) And (commitTransaction == Either::Right(unitValue)))
+# And (committedFrom (_let0__tp) (match (_match1__1__md) {
 # lawtwin.kafka::type::RecordMetadata::RecordMetadata
-# _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 ->
-# _match2__0__lawspecField232x1 }) == List::Cons(_input2,
-# List::Cons(_input3, List::Nil())))) }) = true
+# _matchfield2__sentTo _matchfield3__sentAt -> _matchfield3__sentAt })
+# == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
 def test_transactions_committed_records_are_read_2__boundary0():
     symbols = {}
     _lawspec_shared_cluster = _abilities.Cluster(symbols)
@@ -291886,19 +291820,17 @@ def test_transactions_committed_records_are_read_2__boundary0():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -293082,19 +293014,17 @@ def test_transactions_committed_records_are_read_2__boundary1():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -294243,19 +294173,17 @@ def test_transactions_committed_records_are_read_2__boundary2():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -295436,19 +295364,17 @@ def test_transactions_committed_records_are_read_2__boundary3():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -296597,19 +296523,17 @@ def test_transactions_committed_records_are_read_2__boundary4():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -297755,19 +297679,17 @@ def test_transactions_committed_records_are_read_2__boundary5():
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "
@@ -299140,19 +299062,17 @@ def test_transactions_committed_records_are_read_2__property(_case):
                 + "And (committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField219x0 "
-                + "_match2__0__lawspecField219x1 -> "
-                + "_match2__0__lawspecField219x1 }) == "
+                + "ecordMetadata _matchfield0__sentTo "
+                + "_matchfield1__sentAt -> "
+                + "_matchfield1__sentAt }) == "
                 + "List::Nil())) And (commitTransaction "
                 + "== Either::Right(unitValue))) And "
                 + "(committedFrom (_let0__tp) (match "
                 + "(_match1__1__md) { "
                 + "lawtwin.kafka::type::RecordMetadata::R"
-                + "ecordMetadata "
-                + "_match2__0__lawspecField232x0 "
-                + "_match2__0__lawspecField232x1 -> "
-                + "_match2__0__lawspecField232x1 }) == "
+                + "ecordMetadata _matchfield2__sentTo "
+                + "_matchfield3__sentAt -> "
+                + "_matchfield3__sentAt }) == "
                 + "List::Cons(_input2, "
                 + "List::Cons(_input3, List::Nil())))) "
                 + "}) = "

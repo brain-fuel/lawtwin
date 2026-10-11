@@ -11,6 +11,7 @@
 package collections
 
 import (
+	"fmt"
 	"math/big"
 	"strconv"
 	"strings"
@@ -22,6 +23,17 @@ import (
 type lsfLock = sync.Mutex
 
 var _ = strings.Compare
+
+// LawSpecRaised is the failure an embedded handler's operation raised
+// (`fails with E`), returned as an error by its Try method: errors.As gives
+// the E.
+type LawSpecRaised[E any] struct {
+	Value E
+}
+
+func (raised *LawSpecRaised[E]) Error() string {
+	return fmt.Sprintf("failed with %v", raised.Value)
+}
 
 // lsfUnit is Unit's typed value.
 type lsfUnit struct{}

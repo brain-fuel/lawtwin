@@ -1006,6 +1006,7 @@ func lsEqual(a, b LawSpecValue) bool {
 	return reflect.DeepEqual(a.Data, b.Data)
 }
 func lsTruth(v LawSpecValue) bool { return lsValidate("Bool", v, 64).Data.(bool) }
+
 // LawSpecTask is an async adapter's result: a goroutine's value, awaited where
 // it is used. A panic in the goroutine is raised again by Await.
 type LawSpecTask[T any] struct{ state *lawSpecTaskState[T] }
@@ -1459,6 +1460,7 @@ func lsSample(t string, seed int, bits int) LawSpecValue {
 // LawSpecBigInt is an unbounded integer, since LawSpec's integer arithmetic is
 // exact and never wraps. ref:DEC-portable-exact-arithmetic
 type LawSpecBigInt = big.Int
+
 // LawSpecRational is the exact result of dividing exact numbers.
 // ref:DEC-portable-exact-arithmetic
 type LawSpecRational = big.Rat
@@ -3491,7 +3493,7 @@ func lsRecordedRoot() string {
 }
 
 func lsRecorded(key string, value LawSpecValue) bool {
-	text := lsRender(value)
+	text := lsRecordedText(value)
 	path := filepath.Join(append([]string{lsRecordedRoot()}, strings.Split(key, "/")...)...)
 	if os.Getenv("LAWSPEC_UPDATE_RECORDED") == "1" {
 		if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
@@ -3709,6 +3711,142 @@ func lsRender(v LawSpecValue) string {
 		return lsHandleLabel(v.Type, x.native)
 	}
 	return fmt.Sprint(v.Data)
+}
+
+// lsRecordedText preserves the basic model rendering and gives extended
+// scalars explicit forms. Identity numbers are local to this recording.
+// ref:REQ-law-primitives ref:DEC-portable-exact-arithmetic
+func lsRecordedText(value LawSpecValue) string {
+	symbols := map[*lawSpecSymbol]int{}
+	handles := map[string][]any{}
+	quote := func(s string) string {
+		return "\"" + strings.ReplaceAll(strings.ReplaceAll(s, "\\", "\\\\"), "\"", "\\\"") + "\""
+	}
+	floating := func(v float64, width int) string {
+		name := "float" + strconv.Itoa(width)
+		if math.IsNaN(v) {
+			return name + "NaN"
+		}
+		if width == 32 {
+			return fmt.Sprintf("%sBits(\"%08x\")", name, math.Float32bits(float32(v)))
+		}
+		return fmt.Sprintf("%sBits(\"%016x\")", name, math.Float64bits(v))
+	}
+	var visit func(LawSpecValue) string
+	visit = func(v LawSpecValue) string {
+		switch x := v.Data.(type) {
+		case bool:
+			return strconv.FormatBool(x)
+		case *big.Int:
+			return x.String()
+		case lawSpecDecimal:
+			if x.coefficient.Sign() == 0 {
+				return "0e0"
+			}
+			c, e := new(big.Int).Set(x.coefficient), big.NewInt(int64(x.exponent))
+			ten, one := big.NewInt(10), big.NewInt(1)
+			for new(big.Int).Rem(c, ten).Sign() == 0 {
+				c.Quo(c, ten)
+				e.Add(e, one)
+			}
+			return c.String() + "e" + e.String()
+		case *big.Rat:
+			return "rational(" + x.Num().String() + ", " + x.Denom().String() + ")"
+		case float64:
+			width := 64
+			if v.Type == "Float32" {
+				width = 32
+			}
+			return floating(x, width)
+		case complex128:
+			width := 64
+			if v.Type == "Complex64" {
+				width = 32
+			}
+			return v.Type + "(" + floating(real(x), width) + ", " + floating(imag(x), width) + ")"
+		case int:
+			if v.Type == "Char" {
+				return quote(string(rune(x)))
+			}
+			return strconv.Itoa(x)
+		case []int:
+			if v.Type == "Text" {
+				runes := make([]rune, len(x))
+				for i, n := range x {
+					runes[i] = rune(n)
+				}
+				return quote(string(runes))
+			}
+			name := map[string]string{"Bytes": "bytes", "CodePointText": "codePoints", "Utf16Text": "utf16"}[v.Type]
+			if name == "" {
+				panic("invalid recorded sequence type: " + v.Type)
+			}
+			parts := make([]string, len(x))
+			for i, n := range x {
+				parts[i] = strconv.Itoa(n)
+			}
+			return name + "([" + strings.Join(parts, ", ") + "])"
+		case *lawSpecSymbol:
+			n, ok := symbols[x]
+			if !ok {
+				n = len(symbols) + 1
+				symbols[x] = n
+			}
+			return "symbol(" + strconv.Itoa(n) + ", " + quote(x.description) + ")"
+		case nil:
+			switch v.Type {
+			case "Unit":
+				return "()"
+			case "Null":
+				return "null"
+			case "Undefined":
+				return "undefined"
+			}
+		case lawSpecPresence:
+			kind := strings.SplitN(v.Type, " ", 2)[0]
+			if x.value == nil {
+				if kind == "Nullable" {
+					return "null"
+				}
+				return "undefined"
+			}
+			return strings.ToLower(kind) + "(" + visit(*x.value) + ")"
+		case []LawSpecValue:
+			parts := make([]string, len(x))
+			for i, item := range x {
+				parts[i] = visit(item)
+			}
+			return "[" + strings.Join(parts, ", ") + "]"
+		case lawSpecData:
+			segments := strings.Split(x.tag, "::")
+			name := segments[len(segments)-1]
+			if len(x.fields) == 0 {
+				return name
+			}
+			parts := make([]string, len(x.fields))
+			for i, item := range x.fields {
+				parts[i] = visit(item)
+			}
+			return name + "(" + strings.Join(parts, ", ") + ")"
+		case lawSpecHandle:
+			known := handles[v.Type]
+			number := 0
+			for i, other := range known {
+				if lsSameNative(other, x.native) {
+					number = i + 1
+					break
+				}
+			}
+			if number == 0 {
+				number = len(known) + 1
+				handles[v.Type] = append(known, x.native)
+			}
+			segments := strings.Split(v.Type, "::")
+			return segments[len(segments)-1] + "#" + strconv.Itoa(number)
+		}
+		panic("invalid recorded value: " + v.Type)
+	}
+	return visit(value)
 }
 
 // lsValuesFrom is a descriptor text's data types and its last form, the one
@@ -4097,7 +4235,9 @@ type LawSpecActor struct {
 }
 
 // NewLawSpecActor starts an actor owning state; a crash stops it.
-func NewLawSpecActor(state any) *LawSpecActor { return &LawSpecActor{state: state, seen: map[uint64]bool{}} }
+func NewLawSpecActor(state any) *LawSpecActor {
+	return &LawSpecActor{state: state, seen: map[uint64]bool{}}
+}
 
 // NewLawSpecActorWithRestart starts an actor owning state; restart gives its
 // state after a crash from the last one, when a supervisor restarts it.
@@ -6992,7 +7132,9 @@ func LawSpecSearchReplay(law string, descriptors []string, check LawSpecSearchCa
 	if err != nil {
 		return
 	}
-	var entry struct{ Inputs []string `json:"inputs"` }
+	var entry struct {
+		Inputs []string `json:"inputs"`
+	}
 	values := []LawSpecValue{}
 	if json.Unmarshal(data, &entry) == nil && len(entry.Inputs) == len(descriptors) {
 		for i, text := range descriptors {

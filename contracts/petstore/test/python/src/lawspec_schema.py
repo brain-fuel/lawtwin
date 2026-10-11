@@ -418,6 +418,22 @@ class Schema:
                 constructor.indices, witnesses=constructor.witnesses))
         return tuple(found)
 
+    def recorded_text(self, reference, value):
+        """Read field types without rerunning predicates or native codecs.
+
+        ref:REQ-law-primitives ref:DEC-typed-core-boundary
+        """
+        def fields(t, item):
+            constructor = next((candidate for candidate in self.constructors(t) or ()
+                                if candidate.tag == item.tag), None)
+            if constructor is None or len(constructor.fields) != len(item.fields):
+                raise TypeError('invalid recorded constructor')
+            return witnessed(constructor, item.fields)
+        return ls.recorded_text(value, reference, fields)
+
+    def recorded(self, reference, key, value, bits=64, symbols=None):
+        return ls.recorded(key, value, lambda item: self.recorded_text(reference, item))
+
     def with_native_bindings(self, bindings, codecs=None):
         """Copy this schema with application classes and field names.
 

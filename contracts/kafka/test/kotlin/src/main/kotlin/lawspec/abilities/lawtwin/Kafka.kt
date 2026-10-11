@@ -212,7 +212,7 @@ object Kafka {
 
     /** The spec handler cluster for Broker, Admin, GroupCoordinator, with its state typed. */
     class Cluster(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Broker, lawspec.abilities.lawtwin.Kafka.Admin, lawspec.abilities.lawtwin.Kafka.GroupCoordinator {
-        private var state: lawspec.runtime.LawSpecTyped.BrokerState = lawspec.runtime.LawSpecTyped.start0()
+        private var state: lawspec.runtime.LawSpecTyped.BrokerState = lawspec.runtime.LawSpecTyped.start_216e2324(symbols)
 
         /** The handler on its own, outside any law: the embedding entry point. */
         constructor() : this(mutableMapOf())
@@ -221,7 +221,7 @@ object Kafka {
             value0: kotlin.String,
             value1: kotlin.Int,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_25a8c8e9(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative2(value1),
@@ -234,7 +234,7 @@ object Kafka {
             value0: kotlin.String,
             value1: kotlin.Int,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_0f2bdce3(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative2(value1),
@@ -246,7 +246,7 @@ object Kafka {
         @Synchronized override fun metadataRequest(
             value0: kotlin.String,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_3507727c(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
             )
@@ -260,7 +260,7 @@ object Kafka {
             value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
             value2: kotlin.collections.List<lawspec.data.Record>,
         ): kotlin.Long {
-            val pair = lawspec.runtime.LawSpecTyped.clusterProduceRequest_38(
+            val pair = lawspec.runtime.LawSpecTyped.clusterProduceRequest_619c7f1f(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative5(value0),
                 lawspec.runtime.LawSpecTyped.fromNative6(value1),
@@ -277,7 +277,7 @@ object Kafka {
             value2: kotlin.Int,
             value3: lawspec.data.IsolationLevel,
         ): lawspec.data.FetchResult {
-            val pair = lawspec.runtime.LawSpecTyped.clusterFetchRequest_31(
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchRequest_53f6507d(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative5(value0),
                 lawspec.runtime.LawSpecTyped.fromNative4(value1),
@@ -294,7 +294,7 @@ object Kafka {
             value1: lawspec.data.OffsetSpec,
             value2: lawspec.data.IsolationLevel,
         ): kotlin.Long {
-            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
+            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_1dede442(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative5(value0),
                 lawspec.runtime.LawSpecTyped.fromNative10(value1),
@@ -308,7 +308,7 @@ object Kafka {
         @Synchronized override fun initProducerIdRequest(
             value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
         ): lawspec.data.ProducerIdAndEpoch {
-            val pair = lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_33(
+            val pair = lawspec.runtime.LawSpecTyped.clusterInitProducerIdRequest_f11b7e7d(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative12(value0),
             )
@@ -323,7 +323,7 @@ object Kafka {
             value2: kotlin.Short,
             value3: kotlin.collections.List<lawspec.data.TopicPartition>,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_24(
+            val pair = lawspec.runtime.LawSpecTyped.clusterAddPartitionsToTxnRequest_026ba83d(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative4(value1),
@@ -341,7 +341,7 @@ object Kafka {
             value3: kotlin.String,
             value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_41(
+            val pair = lawspec.runtime.LawSpecTyped.clusterTxnOffsetCommitRequest_08ba35de(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative4(value1),
@@ -359,7 +359,7 @@ object Kafka {
             value2: kotlin.Short,
             value3: kotlin.Boolean,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_29(
+            val pair = lawspec.runtime.LawSpecTyped.clusterEndTxnRequest_e8879acb(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative4(value1),
@@ -375,7 +375,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
-            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
+            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_2f7f09cb(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -391,7 +391,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
+            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_fa44a945(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -407,7 +407,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.Int,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
+            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_3af82cc2(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -421,7 +421,7 @@ object Kafka {
             value0: kotlin.String,
             value1: kotlin.String,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
+            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_cd94c353(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -433,7 +433,7 @@ object Kafka {
         @Synchronized override fun describeGroupRequest(
             value0: kotlin.String,
         ): lawspec.data.GroupView {
-            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_c1f8efd4(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
             )
@@ -448,7 +448,7 @@ object Kafka {
             value2: kotlin.Int,
             value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_d3b39e4c(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -463,7 +463,7 @@ object Kafka {
             value0: kotlin.String,
             value1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_53ffef89(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative5(value1),
@@ -474,7 +474,7 @@ object Kafka {
         }
 
         @Synchronized override fun createTopic(value0: kotlin.String, value1: kotlin.Int): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_27(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreateTopic_25a8c8e9(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative2(value1),
@@ -487,7 +487,7 @@ object Kafka {
             value0: kotlin.String,
             value1: kotlin.Int,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_26(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCreatePartitions_0f2bdce3(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative2(value1),
@@ -499,7 +499,7 @@ object Kafka {
         @Synchronized override fun partitionsFor(
             value0: kotlin.String,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Int> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_37(
+            val pair = lawspec.runtime.LawSpecTyped.clusterMetadataRequest_3507727c(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
             )
@@ -513,7 +513,7 @@ object Kafka {
             value1: lawspec.data.OffsetSpec,
             value2: lawspec.data.IsolationLevel,
         ): kotlin.Long {
-            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_36(
+            val pair = lawspec.runtime.LawSpecTyped.clusterListOffsets_1dede442(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative5(value0),
                 lawspec.runtime.LawSpecTyped.fromNative10(value1),
@@ -529,7 +529,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.collections.List<kotlin.String>,
         ): kotlin.Int {
-            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_34(
+            val pair = lawspec.runtime.LawSpecTyped.clusterJoinGroup_2f7f09cb(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -545,7 +545,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.Int,
         ): kotlin.collections.List<lawspec.data.TopicPartition> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_40(
+            val pair = lawspec.runtime.LawSpecTyped.clusterSyncGroup_fa44a945(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -561,7 +561,7 @@ object Kafka {
             value1: kotlin.String,
             value2: kotlin.Int,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_32(
+            val pair = lawspec.runtime.LawSpecTyped.clusterHeartbeat_3af82cc2(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -572,7 +572,7 @@ object Kafka {
         }
 
         @Synchronized override fun leaveGroup(value0: kotlin.String, value1: kotlin.String): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_35(
+            val pair = lawspec.runtime.LawSpecTyped.clusterLeaveGroup_cd94c353(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -582,7 +582,7 @@ object Kafka {
         }
 
         @Synchronized override fun describeGroup(value0: kotlin.String): lawspec.data.GroupView {
-            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_28(
+            val pair = lawspec.runtime.LawSpecTyped.clusterDescribeGroup_c1f8efd4(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
             )
@@ -597,7 +597,7 @@ object Kafka {
             value2: kotlin.Int,
             value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): Unit {
-            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_25(
+            val pair = lawspec.runtime.LawSpecTyped.clusterCommitOffsets_d3b39e4c(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative1(value1),
@@ -612,7 +612,7 @@ object Kafka {
             value0: kotlin.String,
             value1: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_30(
+            val pair = lawspec.runtime.LawSpecTyped.clusterFetchOffset_53ffef89(
                 state,
                 lawspec.runtime.LawSpecTyped.fromNative1(value0),
                 lawspec.runtime.LawSpecTyped.fromNative5(value1),
@@ -620,6 +620,421 @@ object Kafka {
             state = pair.second
             val result = pair.first
             return lawspec.runtime.LawSpecTyped.toNative19(result)
+        }
+
+        /** The handler's state, in its native types: a snapshot to show or keep. */
+        @Synchronized fun state(): lawspec.data.BrokerState {
+            return lawspec.runtime.LawSpecTyped.toNative30(state)
+        }
+
+        /** Replaces the handler's state: to force it, reset it or restore a snapshot. */
+        @Synchronized fun setState(state: lawspec.data.BrokerState) {
+            this.state = lawspec.runtime.LawSpecTyped.fromNative30(state)
+        }
+
+        /** The typed state, shared rather than copied. */
+        @Synchronized fun typedState(): lawspec.runtime.LawSpecTyped.BrokerState = state
+
+        /** Replaces the typed state. */
+        @Synchronized fun setTypedState(state: lawspec.runtime.LawSpecTyped.BrokerState) {
+            this.state = state
+        }
+
+        /** createTopicsRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryCreateTopicsRequest(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(createTopicsRequest(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** createPartitionsRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryCreatePartitionsRequest(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitionsRequest(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** produceRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryProduceRequest(
+            value0: lawspec.data.TopicPartition,
+            value1: lawspec.runtime.LawSpecRuntime.Maybe<lawspec.data.ProducerTag>,
+            value2: kotlin.collections.List<lawspec.data.Record>,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(produceRequest(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** fetchRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryFetchRequest(
+            value0: lawspec.data.TopicPartition,
+            value1: kotlin.Long,
+            value2: kotlin.Int,
+            value3: lawspec.data.IsolationLevel,
+        ): lawspec.runtime.LawSpecFast.Outcome<lawspec.data.FetchResult, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(fetchRequest(value0, value1, value2, value3))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** listOffsetsRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryListOffsetsRequest(
+            value0: lawspec.data.TopicPartition,
+            value1: lawspec.data.OffsetSpec,
+            value2: lawspec.data.IsolationLevel,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsetsRequest(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** initProducerIdRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryInitProducerIdRequest(
+            value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.String>,
+        ): lawspec.runtime.LawSpecFast.Outcome<lawspec.data.ProducerIdAndEpoch, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(initProducerIdRequest(value0))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** addPartitionsToTxnRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryAddPartitionsToTxnRequest(
+            value0: kotlin.String,
+            value1: kotlin.Long,
+            value2: kotlin.Short,
+            value3: kotlin.collections.List<lawspec.data.TopicPartition>,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(addPartitionsToTxnRequest(value0, value1, value2, value3))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** txnOffsetCommitRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryTxnOffsetCommitRequest(
+            value0: kotlin.String,
+            value1: kotlin.Long,
+            value2: kotlin.Short,
+            value3: kotlin.String,
+            value4: kotlin.collections.List<lawspec.data.OffsetEntry>,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(txnOffsetCommitRequest(value0, value1, value2, value3, value4))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** endTxnRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryEndTxnRequest(
+            value0: kotlin.String,
+            value1: kotlin.Long,
+            value2: kotlin.Short,
+            value3: kotlin.Boolean,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(endTxnRequest(value0, value1, value2, value3))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** joinGroupRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryJoinGroupRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.collections.List<kotlin.String>,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Int, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroupRequest(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** syncGroupRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun trySyncGroupRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.collections.List<
+            lawspec.data.TopicPartition>, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroupRequest(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** heartbeatRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryHeartbeatRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeatRequest(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** leaveGroupRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryLeaveGroupRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroupRequest(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** offsetCommitRequest, with the failure it raises as an Outcome rather than an exception. */
+        fun tryOffsetCommitRequest(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(offsetCommitRequest(value0, value1, value2, value3))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** createTopic, with the failure it raises as an Outcome rather than an exception. */
+        fun tryCreateTopic(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(createTopic(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** createPartitions, with the failure it raises as an Outcome rather than an exception. */
+        fun tryCreatePartitions(
+            value0: kotlin.String,
+            value1: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(createPartitions(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** listOffsets, with the failure it raises as an Outcome rather than an exception. */
+        fun tryListOffsets(
+            value0: lawspec.data.TopicPartition,
+            value1: lawspec.data.OffsetSpec,
+            value2: lawspec.data.IsolationLevel,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Long, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(listOffsets(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** joinGroup, with the failure it raises as an Outcome rather than an exception. */
+        fun tryJoinGroup(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.collections.List<kotlin.String>,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.Int, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(joinGroup(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** syncGroup, with the failure it raises as an Outcome rather than an exception. */
+        fun trySyncGroup(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<kotlin.collections.List<
+            lawspec.data.TopicPartition>, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(syncGroup(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** heartbeat, with the failure it raises as an Outcome rather than an exception. */
+        fun tryHeartbeat(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(heartbeat(value0, value1, value2))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** leaveGroup, with the failure it raises as an Outcome rather than an exception. */
+        fun tryLeaveGroup(
+            value0: kotlin.String,
+            value1: kotlin.String,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(leaveGroup(value0, value1))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
+        }
+
+        /** commitOffsets, with the failure it raises as an Outcome rather than an exception. */
+        fun tryCommitOffsets(
+            value0: kotlin.String,
+            value1: kotlin.String,
+            value2: kotlin.Int,
+            value3: kotlin.collections.List<lawspec.data.OffsetEntry>,
+        ): lawspec.runtime.LawSpecFast.Outcome<Unit, lawspec.data.KafkaError> {
+            try {
+                return lawspec.runtime.LawSpecFast.Outcome.success(commitOffsets(value0, value1, value2, value3))
+            } catch (failure: LawSpecRuntime.Failure) {
+                if (failure.ability != "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)") throw failure
+                return lawspec.runtime.LawSpecFast.Outcome.failure(LawSpecDataCodecs.kafkaErrorCodec(
+                    schema,
+                    bits,
+                    symbols,
+                ).decode(failure.value))
+            }
         }
     }
 
@@ -632,7 +1047,7 @@ object Kafka {
             value0: lawspec.runtime.LawSpecRuntime.Maybe<kotlin.ByteArray>,
             value1: kotlin.Int,
         ): kotlin.Int {
-            val result = lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_239(
+            val result = lawspec.runtime.LawSpecTyped.murmurPartitionerChoosePartition_5048c35d(
                 lawspec.runtime.LawSpecTyped.fromNative20(value0),
                 lawspec.runtime.LawSpecTyped.fromNative2(value1),
             )
@@ -640,403 +1055,336 @@ object Kafka {
         }
     }
 
-    /** The spec handler kafkaProducer for Producer. */
+    /** The spec handler kafkaProducer for Producer, with its state typed. */
     class KafkaProducer(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Producer {
-        private var state: LawSpecRuntime.Value? = lawspec.runtime.LawSpecDefinitionBodies.evaluate105(
-            symbols,
-            LawSpecRuntime.absent("Unit"),
-        )
+        private var state: lawspec.runtime.LawSpecTyped.ProducerState = lawspec.runtime.LawSpecTyped.start_8238db16(symbols)
 
-        override fun send(
+        /** The handler on its own, outside any law: the embedding entry point. */
+        constructor() : this(mutableMapOf())
+
+        @Synchronized override fun send(
             value0: lawspec.data.ProducerRecord,
         ): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.RecordMetadata> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate104(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaProducerSend_a4612365(
                 symbols,
-                state!!,
-                LawSpecDataCodecs.producerRecordCodec(schema, bits, symbols).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative22(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative21(result)
         }
 
-        override fun flush(): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate101(
-                symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun flush(): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.kafkaProducerFlush_584e906f(state)
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun enableIdempotence(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun enableIdempotence(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.ProducerIdAndEpoch> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate100(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaProducerEnableIdempotence_a79d2db8(
                 symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative23(result)
         }
 
-        override fun retryLastSend(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun retryLastSend(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.RecordMetadata> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate103(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaProducerRetryLastSend_9cbd6c72(
                 symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative21(result)
         }
 
-        override fun producerIdentity(): lawspec.runtime.LawSpecRuntime.Maybe<
+        @Synchronized override fun producerIdentity(): lawspec.runtime.LawSpecRuntime.Maybe<
             lawspec.data.ProducerIdAndEpoch> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate102(
-                symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.kafkaProducerProducerIdentity_a0ee547d(state)
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative24(result)
+        }
+
+        /** The handler's state, in its native types: a snapshot to show or keep. */
+        @Synchronized fun state(): lawspec.data.ProducerState {
+            return lawspec.runtime.LawSpecTyped.toNative47(state)
+        }
+
+        /** Replaces the handler's state: to force it, reset it or restore a snapshot. */
+        @Synchronized fun setState(state: lawspec.data.ProducerState) {
+            this.state = lawspec.runtime.LawSpecTyped.fromNative47(state)
+        }
+
+        /** The typed state, shared rather than copied. */
+        @Synchronized fun typedState(): lawspec.runtime.LawSpecTyped.ProducerState = state
+
+        /** Replaces the typed state. */
+        @Synchronized fun setTypedState(state: lawspec.runtime.LawSpecTyped.ProducerState) {
+            this.state = state
         }
     }
 
-    /** The spec handler kafkaConsumer for Consumer. */
+    /** The spec handler kafkaConsumer for Consumer, with its state typed. */
     class KafkaConsumer(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Consumer {
-        private var state: LawSpecRuntime.Value? = lawspec.runtime.LawSpecDefinitionBodies.evaluate98(
-            symbols,
-            LawSpecRuntime.absent("Unit"),
-        )
+        private var state: lawspec.runtime.LawSpecTyped.ConsumerState = lawspec.runtime.LawSpecTyped.start_d096d859(symbols)
 
-        override fun assign(value0: kotlin.collections.List<lawspec.data.TopicPartition>): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate90(
-                symbols,
-                state!!,
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        /** The handler on its own, outside any law: the embedding entry point. */
+        constructor() : this(mutableMapOf())
+
+        @Synchronized override fun assign(
+            value0: kotlin.collections.List<lawspec.data.TopicPartition>,
+        ): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerAssign_6414ad54(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative14(value0),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun subscribe(
+        @Synchronized override fun subscribe(
             value0: kotlin.String,
             value1: kotlin.String,
             value2: kotlin.collections.List<kotlin.String>,
         ): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.collections.List<lawspec.data.TopicPartition>> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate99(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSubscribe_ce34eaf5(
                 symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value1),
-                schema.list(
-                    schema.scalar("Text", bits, kotlin.String::class.javaObjectType),
-                    bits,
-                    symbols,
-                ).encode(value2),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative1(value1),
+                lawspec.runtime.LawSpecTyped.fromNative17(value2),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative25(result)
         }
 
-        override fun poll(
+        @Synchronized override fun poll(
             value0: kotlin.Int,
         ): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.collections.List<lawspec.data.ConsumerRecord>> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate94(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerPoll_591504e0(
                 symbols,
-                state!!,
-                schema.scalar("Int32", bits, kotlin.Int::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                schema.list(
-                    LawSpecDataCodecs.consumerRecordCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative2(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative26(result)
         }
 
-        override fun commitSync(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun commitSync(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate92(
-                symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerCommitSync_d47684fe(symbols, state)
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun seek(
+        @Synchronized override fun seek(
             value0: lawspec.data.TopicPartition,
             value1: kotlin.Long,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate96(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSeek_5fe046a7(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+                lawspec.runtime.LawSpecTyped.fromNative4(value1),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun position(
+        @Synchronized override fun position(
             value0: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Long> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate95(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerPosition_7784665f(
                 symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative28(result)
         }
 
-        override fun committedOffset(
+        @Synchronized override fun committedOffset(
             value0: lawspec.data.TopicPartition,
         ): lawspec.runtime.LawSpecRuntime.Maybe<kotlin.Long> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate93(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerCommittedOffset_c045e1a8(
                 symbols,
-                state!!,
-                LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.maybe(
-                schema.scalar("Int64", bits, kotlin.Long::class.javaObjectType),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative5(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative19(result)
         }
 
-        override fun setIsolationLevel(value0: lawspec.data.IsolationLevel): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate97(
-                symbols,
-                state!!,
-                LawSpecDataCodecs.isolationLevelCodec(schema, bits, symbols).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun setIsolationLevel(value0: lawspec.data.IsolationLevel): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerSetIsolationLevel_bc2459d3(
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative9(value0),
+            )
+            state = pair.second
+            val result = pair.first
         }
 
-        override fun close(): Unit {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate91(
-                symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
+        @Synchronized override fun close(): Unit {
+            val pair = lawspec.runtime.LawSpecTyped.kafkaConsumerClose_ece19793(symbols, state)
+            state = pair.second
+            val result = pair.first
+        }
+
+        /** The handler's state, in its native types: a snapshot to show or keep. */
+        @Synchronized fun state(): lawspec.data.ConsumerState {
+            return lawspec.runtime.LawSpecTyped.toNative40(state)
+        }
+
+        /** Replaces the handler's state: to force it, reset it or restore a snapshot. */
+        @Synchronized fun setState(state: lawspec.data.ConsumerState) {
+            this.state = lawspec.runtime.LawSpecTyped.fromNative40(state)
+        }
+
+        /** The typed state, shared rather than copied. */
+        @Synchronized fun typedState(): lawspec.runtime.LawSpecTyped.ConsumerState = state
+
+        /** Replaces the typed state. */
+        @Synchronized fun setTypedState(state: lawspec.runtime.LawSpecTyped.ConsumerState) {
+            this.state = state
         }
     }
 
-    /** The spec handler kafkaTransactions for Transactions. */
+    /** The spec handler kafkaTransactions for Transactions, with its state typed. */
     class KafkaTransactions(private val symbols: MutableMap<String, Any>) : lawspec.abilities.lawtwin.Kafka.Transactions {
-        private var state: LawSpecRuntime.Value? = lawspec.runtime.LawSpecDefinitionBodies.evaluate113(
-            symbols,
-            LawSpecRuntime.absent("Unit"),
-        )
+        private var state: lawspec.runtime.LawSpecTyped.TransactionState = lawspec.runtime.LawSpecTyped.start_2072e540(symbols)
 
-        override fun initTransactions(
+        /** The handler on its own, outside any law: the embedding entry point. */
+        constructor() : this(mutableMapOf())
+
+        @Synchronized override fun initTransactions(
             value0: kotlin.String,
         ): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.ProducerIdAndEpoch> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate110(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsInitTransactions_96f85461(
                 symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecDataCodecs.producerIdAndEpochCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative23(result)
         }
 
-        override fun beginTransaction(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun beginTransaction(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate108(
-                symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsBeginTransaction_3c1e648e(
+                state,
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun addPartitionsToTransaction(
+        @Synchronized override fun addPartitionsToTransaction(
             value0: kotlin.collections.List<lawspec.data.TopicPartition>,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate107(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsAddPartitionsToTransaction_3d7d0621(
                 symbols,
-                state!!,
-                schema.list(
-                    LawSpecDataCodecs.topicPartitionCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative14(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun sendInTransaction(
+        @Synchronized override fun sendInTransaction(
             value0: lawspec.data.ProducerRecord,
         ): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             lawspec.data.RecordMetadata> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate111(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsSendInTransaction_09c804c7(
                 symbols,
-                state!!,
-                LawSpecDataCodecs.producerRecordCodec(schema, bits, symbols).encode(value0),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecDataCodecs.recordMetadataCodec(schema, bits, symbols),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative22(value0),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative21(result)
         }
 
-        override fun sendOffsetsToTransaction(
+        @Synchronized override fun sendOffsetsToTransaction(
             value0: kotlin.String,
             value1: kotlin.collections.List<lawspec.data.OffsetEntry>,
         ): lawspec.runtime.LawSpecRuntime.Either<lawspec.data.KafkaError, kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate112(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsSendOffsetsToTransaction_d24938fc(
                 symbols,
-                state!!,
-                schema.scalar("Text", bits, kotlin.String::class.javaObjectType).encode(value0),
-                schema.list(
-                    LawSpecDataCodecs.offsetEntryCodec(schema, bits, symbols),
-                    bits,
-                    symbols,
-                ).encode(value1),
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+                lawspec.runtime.LawSpecTyped.fromNative1(value0),
+                lawspec.runtime.LawSpecTyped.fromNative15(value1),
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun commitTransaction(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun commitTransaction(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate109(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsCommitTransaction_e0a5e067(
                 symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
         }
 
-        override fun abortTransaction(): lawspec.runtime.LawSpecRuntime.Either<
+        @Synchronized override fun abortTransaction(): lawspec.runtime.LawSpecRuntime.Either<
             lawspec.data.KafkaError,
             kotlin.Unit> {
-            val pair = LawSpecRuntime.pairFields(lawspec.runtime.LawSpecDefinitionBodies.evaluate106(
+            val pair = lawspec.runtime.LawSpecTyped.kafkaTransactionsAbortTransaction_a2a1e35e(
                 symbols,
-                state!!,
-            ))
-            state = pair[1]
-            val result = pair[0]
-            return schema.either(
-                LawSpecDataCodecs.kafkaErrorCodec(schema, bits, symbols),
-                LawSpecKotlinCodecs.unit(schema, bits),
-                bits,
-                symbols,
-            ).decode(result)
+                state,
+            )
+            state = pair.second
+            val result = pair.first
+            return lawspec.runtime.LawSpecTyped.toNative27(result)
+        }
+
+        /** The handler's state, in its native types: a snapshot to show or keep. */
+        @Synchronized fun state(): lawspec.data.TransactionState {
+            return lawspec.runtime.LawSpecTyped.toNative52(state)
+        }
+
+        /** Replaces the handler's state: to force it, reset it or restore a snapshot. */
+        @Synchronized fun setState(state: lawspec.data.TransactionState) {
+            this.state = lawspec.runtime.LawSpecTyped.fromNative52(state)
+        }
+
+        /** The typed state, shared rather than copied. */
+        @Synchronized fun typedState(): lawspec.runtime.LawSpecTyped.TransactionState = state
+
+        /** Replaces the typed state. */
+        @Synchronized fun setTypedState(state: lawspec.runtime.LawSpecTyped.TransactionState) {
+            this.state = state
         }
     }
 

@@ -13498,9 +13498,9 @@ public final class KafkaLawSpecTest {
   // { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
   // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
   // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-  // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
-  // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-  // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
+  // _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+  // (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
+  // _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
   // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
   // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -13623,15 +13623,15 @@ public final class KafkaLawSpecTest {
                 + " (match (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField191x0"
-                + " _match3__0__lawspecField191x1 ->"
-                + " _match3__0__lawspecField191x0 })"
-                + " (match (_match1__1__old) {"
+                + " _matchfield0__producerId"
+                + " _matchfield1__producerEpoch ->"
+                + " _matchfield0__producerId }) (match"
+                + " (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField192x0"
-                + " _match3__0__lawspecField192x1 ->"
-                + " _match3__0__lawspecField192x1 })"
+                + " _matchfield2__producerId"
+                + " _matchfield3__producerEpoch ->"
+                + " _matchfield3__producerEpoch })"
                 + " (List::Cons(_let0__tp, List::Nil()))))"
                 + " { Either::Left _match3__0__lawspecFailu"
                 + "re -> match (_match3__0__lawspecFailure)"
@@ -13889,13 +13889,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1601 ->
+                                                                                                    switch (_match1601.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField191x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField191x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField191x0;
+                                                                                                        var _matchfield0__producerId = _match1601.fields().get(0);
+                                                                                                        var _matchfield1__producerEpoch = _match1601.fields().get(1);
+                                                                                                        yield _matchfield0__producerId;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -13910,13 +13910,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1604 ->
+                                                                                                    switch (_match1604.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField192x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField192x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField192x1;
+                                                                                                        var _matchfield2__producerId = _match1604.fields().get(0);
+                                                                                                        var _matchfield3__producerEpoch = _match1604.fields().get(1);
+                                                                                                        yield _matchfield3__producerEpoch;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -14464,15 +14464,15 @@ public final class KafkaLawSpecTest {
                 + " (match (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField191x0"
-                + " _match3__0__lawspecField191x1 ->"
-                + " _match3__0__lawspecField191x0 })"
-                + " (match (_match1__1__old) {"
+                + " _matchfield0__producerId"
+                + " _matchfield1__producerEpoch ->"
+                + " _matchfield0__producerId }) (match"
+                + " (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField192x0"
-                + " _match3__0__lawspecField192x1 ->"
-                + " _match3__0__lawspecField192x1 })"
+                + " _matchfield2__producerId"
+                + " _matchfield3__producerEpoch ->"
+                + " _matchfield3__producerEpoch })"
                 + " (List::Cons(_let0__tp, List::Nil()))))"
                 + " { Either::Left _match3__0__lawspecFailu"
                 + "re -> match (_match3__0__lawspecFailure)"
@@ -14730,13 +14730,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1601 ->
+                                                                                                    switch (_match1601.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField191x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField191x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField191x0;
+                                                                                                        var _matchfield0__producerId = _match1601.fields().get(0);
+                                                                                                        var _matchfield1__producerEpoch = _match1601.fields().get(1);
+                                                                                                        yield _matchfield0__producerId;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -14751,13 +14751,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1604 ->
+                                                                                                    switch (_match1604.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField192x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField192x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField192x1;
+                                                                                                        var _matchfield2__producerId = _match1604.fields().get(0);
+                                                                                                        var _matchfield3__producerEpoch = _match1604.fields().get(1);
+                                                                                                        yield _matchfield3__producerEpoch;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -15288,15 +15288,15 @@ public final class KafkaLawSpecTest {
                 + " (match (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField191x0"
-                + " _match3__0__lawspecField191x1 ->"
-                + " _match3__0__lawspecField191x0 })"
-                + " (match (_match1__1__old) {"
+                + " _matchfield0__producerId"
+                + " _matchfield1__producerEpoch ->"
+                + " _matchfield0__producerId }) (match"
+                + " (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField192x0"
-                + " _match3__0__lawspecField192x1 ->"
-                + " _match3__0__lawspecField192x1 })"
+                + " _matchfield2__producerId"
+                + " _matchfield3__producerEpoch ->"
+                + " _matchfield3__producerEpoch })"
                 + " (List::Cons(_let0__tp, List::Nil()))))"
                 + " { Either::Left _match3__0__lawspecFailu"
                 + "re -> match (_match3__0__lawspecFailure)"
@@ -15554,13 +15554,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1601 ->
+                                                                                                    switch (_match1601.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField191x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField191x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField191x0;
+                                                                                                        var _matchfield0__producerId = _match1601.fields().get(0);
+                                                                                                        var _matchfield1__producerEpoch = _match1601.fields().get(1);
+                                                                                                        yield _matchfield0__producerId;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -15575,13 +15575,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1604 ->
+                                                                                                    switch (_match1604.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField192x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField192x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField192x1;
+                                                                                                        var _matchfield2__producerId = _match1604.fields().get(0);
+                                                                                                        var _matchfield3__producerEpoch = _match1604.fields().get(1);
+                                                                                                        yield _matchfield3__producerEpoch;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -16123,15 +16123,15 @@ public final class KafkaLawSpecTest {
                 + " (match (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField191x0"
-                + " _match3__0__lawspecField191x1 ->"
-                + " _match3__0__lawspecField191x0 })"
-                + " (match (_match1__1__old) {"
+                + " _matchfield0__producerId"
+                + " _matchfield1__producerEpoch ->"
+                + " _matchfield0__producerId }) (match"
+                + " (_match1__1__old) {"
                 + " lawtwin.kafka.model::type::ProducerIdAn"
                 + "dEpoch::ProducerIdAndEpoch"
-                + " _match3__0__lawspecField192x0"
-                + " _match3__0__lawspecField192x1 ->"
-                + " _match3__0__lawspecField192x1 })"
+                + " _matchfield2__producerId"
+                + " _matchfield3__producerEpoch ->"
+                + " _matchfield3__producerEpoch })"
                 + " (List::Cons(_let0__tp, List::Nil()))))"
                 + " { Either::Left _match3__0__lawspecFailu"
                 + "re -> match (_match3__0__lawspecFailure)"
@@ -16389,13 +16389,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1601 ->
+                                                                                                    switch (_match1601.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField191x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField191x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField191x0;
+                                                                                                        var _matchfield0__producerId = _match1601.fields().get(0);
+                                                                                                        var _matchfield1__producerEpoch = _match1601.fields().get(1);
+                                                                                                        yield _matchfield0__producerId;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -16410,13 +16410,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__old,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1528 ->
-                                                                                                    switch (_match1528.tag()) {
+                                                                                                _match1604 ->
+                                                                                                    switch (_match1604.tag()) {
                                                                                                       case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                           + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                        var _match3__0__lawspecField192x0 = _match1528.fields().get(0);
-                                                                                                        var _match3__0__lawspecField192x1 = _match1528.fields().get(1);
-                                                                                                        yield _match3__0__lawspecField192x1;
+                                                                                                        var _matchfield2__producerId = _match1604.fields().get(0);
+                                                                                                        var _matchfield3__producerEpoch = _match1604.fields().get(1);
+                                                                                                        yield _matchfield3__producerEpoch;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -17110,15 +17110,15 @@ public final class KafkaLawSpecTest {
                           + " (match (_match1__1__old) {"
                           + " lawtwin.kafka.model::type::ProducerIdAn"
                           + "dEpoch::ProducerIdAndEpoch"
-                          + " _match3__0__lawspecField191x0"
-                          + " _match3__0__lawspecField191x1 ->"
-                          + " _match3__0__lawspecField191x0 })"
-                          + " (match (_match1__1__old) {"
+                          + " _matchfield0__producerId"
+                          + " _matchfield1__producerEpoch ->"
+                          + " _matchfield0__producerId }) (match"
+                          + " (_match1__1__old) {"
                           + " lawtwin.kafka.model::type::ProducerIdAn"
                           + "dEpoch::ProducerIdAndEpoch"
-                          + " _match3__0__lawspecField192x0"
-                          + " _match3__0__lawspecField192x1 ->"
-                          + " _match3__0__lawspecField192x1 })"
+                          + " _matchfield2__producerId"
+                          + " _matchfield3__producerEpoch ->"
+                          + " _matchfield3__producerEpoch })"
                           + " (List::Cons(_let0__tp, List::Nil()))))"
                           + " { Either::Left _match3__0__lawspecFailu"
                           + "re -> match (_match3__0__lawspecFailure)"
@@ -17380,13 +17380,13 @@ public final class KafkaLawSpecTest {
                                                                                                           _match1__1__old,
                                                                                                           64,
                                                                                                           symbols,
-                                                                                                          _match1528 ->
-                                                                                                              switch (_match1528.tag()) {
+                                                                                                          _match1601 ->
+                                                                                                              switch (_match1601.tag()) {
                                                                                                                 case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                                     + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                                  var _match3__0__lawspecField191x0 = _match1528.fields().get(0);
-                                                                                                                  var _match3__0__lawspecField191x1 = _match1528.fields().get(1);
-                                                                                                                  yield _match3__0__lawspecField191x0;
+                                                                                                                  var _matchfield0__producerId = _match1601.fields().get(0);
+                                                                                                                  var _matchfield1__producerEpoch = _match1601.fields().get(1);
+                                                                                                                  yield _matchfield0__producerId;
                                                                                                                 }
                                                                                                                 default ->
                                                                                                                     throw new IllegalArgumentException("invalid constructor");
@@ -17401,13 +17401,13 @@ public final class KafkaLawSpecTest {
                                                                                                           _match1__1__old,
                                                                                                           64,
                                                                                                           symbols,
-                                                                                                          _match1528 ->
-                                                                                                              switch (_match1528.tag()) {
+                                                                                                          _match1604 ->
+                                                                                                              switch (_match1604.tag()) {
                                                                                                                 case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                                     + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                                  var _match3__0__lawspecField192x0 = _match1528.fields().get(0);
-                                                                                                                  var _match3__0__lawspecField192x1 = _match1528.fields().get(1);
-                                                                                                                  yield _match3__0__lawspecField192x1;
+                                                                                                                  var _matchfield2__producerId = _match1604.fields().get(0);
+                                                                                                                  var _matchfield3__producerEpoch = _match1604.fields().get(1);
+                                                                                                                  yield _matchfield3__producerEpoch;
                                                                                                                 }
                                                                                                                 default ->
                                                                                                                     throw new IllegalArgumentException("invalid constructor");
@@ -17893,9 +17893,9 @@ public final class KafkaLawSpecTest {
   // { Either::Left _match2__0__e -> false; Either::Right _match2__1__new -> ((fencedBy
   // (_match1__1__old) (_match2__1__new) And match (attempt (addPartitionsToTxnRequest (_input1)
   // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-  // _match3__0__lawspecField191x0 _match3__0__lawspecField191x1 -> _match3__0__lawspecField191x0 })
-  // (match (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
-  // _match3__0__lawspecField192x0 _match3__0__lawspecField192x1 -> _match3__0__lawspecField192x1 })
+  // _matchfield0__producerId _matchfield1__producerEpoch -> _matchfield0__producerId }) (match
+  // (_match1__1__old) { lawtwin.kafka.model::type::ProducerIdAndEpoch::ProducerIdAndEpoch
+  // _matchfield2__producerId _matchfield3__producerEpoch -> _matchfield3__producerEpoch })
   // (List::Cons(_let0__tp, List::Nil())))) { Either::Left _match3__0__lawspecFailure -> match
   // (_match3__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::ProducerFenced -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
@@ -18010,15 +18010,15 @@ public final class KafkaLawSpecTest {
               + " (match (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField191x0"
-              + " _match3__0__lawspecField191x1 ->"
-              + " _match3__0__lawspecField191x0 })"
-              + " (match (_match1__1__old) {"
+              + " _matchfield0__producerId"
+              + " _matchfield1__producerEpoch ->"
+              + " _matchfield0__producerId }) (match"
+              + " (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField192x0"
-              + " _match3__0__lawspecField192x1 ->"
-              + " _match3__0__lawspecField192x1 })"
+              + " _matchfield2__producerId"
+              + " _matchfield3__producerEpoch ->"
+              + " _matchfield3__producerEpoch })"
               + " (List::Cons(_let0__tp, List::Nil()))))"
               + " { Either::Left _match3__0__lawspecFailu"
               + "re -> match (_match3__0__lawspecFailure)"
@@ -18273,13 +18273,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1606 ->
+                                                                                                  switch (_match1606.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField191x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField191x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField191x0;
+                                                                                                      var _matchfield0__producerId = _match1606.fields().get(0);
+                                                                                                      var _matchfield1__producerEpoch = _match1606.fields().get(1);
+                                                                                                      yield _matchfield0__producerId;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -18294,13 +18294,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1609 ->
+                                                                                                  switch (_match1609.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField192x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField192x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField192x1;
+                                                                                                      var _matchfield2__producerId = _match1609.fields().get(0);
+                                                                                                      var _matchfield3__producerEpoch = _match1609.fields().get(1);
+                                                                                                      yield _matchfield3__producerEpoch;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -18830,15 +18830,15 @@ public final class KafkaLawSpecTest {
               + " (match (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField191x0"
-              + " _match3__0__lawspecField191x1 ->"
-              + " _match3__0__lawspecField191x0 })"
-              + " (match (_match1__1__old) {"
+              + " _matchfield0__producerId"
+              + " _matchfield1__producerEpoch ->"
+              + " _matchfield0__producerId }) (match"
+              + " (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField192x0"
-              + " _match3__0__lawspecField192x1 ->"
-              + " _match3__0__lawspecField192x1 })"
+              + " _matchfield2__producerId"
+              + " _matchfield3__producerEpoch ->"
+              + " _matchfield3__producerEpoch })"
               + " (List::Cons(_let0__tp, List::Nil()))))"
               + " { Either::Left _match3__0__lawspecFailu"
               + "re -> match (_match3__0__lawspecFailure)"
@@ -19093,13 +19093,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1606 ->
+                                                                                                  switch (_match1606.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField191x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField191x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField191x0;
+                                                                                                      var _matchfield0__producerId = _match1606.fields().get(0);
+                                                                                                      var _matchfield1__producerEpoch = _match1606.fields().get(1);
+                                                                                                      yield _matchfield0__producerId;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -19114,13 +19114,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1609 ->
+                                                                                                  switch (_match1609.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField192x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField192x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField192x1;
+                                                                                                      var _matchfield2__producerId = _match1609.fields().get(0);
+                                                                                                      var _matchfield3__producerEpoch = _match1609.fields().get(1);
+                                                                                                      yield _matchfield3__producerEpoch;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -19633,15 +19633,15 @@ public final class KafkaLawSpecTest {
               + " (match (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField191x0"
-              + " _match3__0__lawspecField191x1 ->"
-              + " _match3__0__lawspecField191x0 })"
-              + " (match (_match1__1__old) {"
+              + " _matchfield0__producerId"
+              + " _matchfield1__producerEpoch ->"
+              + " _matchfield0__producerId }) (match"
+              + " (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField192x0"
-              + " _match3__0__lawspecField192x1 ->"
-              + " _match3__0__lawspecField192x1 })"
+              + " _matchfield2__producerId"
+              + " _matchfield3__producerEpoch ->"
+              + " _matchfield3__producerEpoch })"
               + " (List::Cons(_let0__tp, List::Nil()))))"
               + " { Either::Left _match3__0__lawspecFailu"
               + "re -> match (_match3__0__lawspecFailure)"
@@ -19896,13 +19896,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1606 ->
+                                                                                                  switch (_match1606.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField191x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField191x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField191x0;
+                                                                                                      var _matchfield0__producerId = _match1606.fields().get(0);
+                                                                                                      var _matchfield1__producerEpoch = _match1606.fields().get(1);
+                                                                                                      yield _matchfield0__producerId;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -19917,13 +19917,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1609 ->
+                                                                                                  switch (_match1609.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField192x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField192x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField192x1;
+                                                                                                      var _matchfield2__producerId = _match1609.fields().get(0);
+                                                                                                      var _matchfield3__producerEpoch = _match1609.fields().get(1);
+                                                                                                      yield _matchfield3__producerEpoch;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -20447,15 +20447,15 @@ public final class KafkaLawSpecTest {
               + " (match (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField191x0"
-              + " _match3__0__lawspecField191x1 ->"
-              + " _match3__0__lawspecField191x0 })"
-              + " (match (_match1__1__old) {"
+              + " _matchfield0__producerId"
+              + " _matchfield1__producerEpoch ->"
+              + " _matchfield0__producerId }) (match"
+              + " (_match1__1__old) {"
               + " lawtwin.kafka.model::type::ProducerIdAn"
               + "dEpoch::ProducerIdAndEpoch"
-              + " _match3__0__lawspecField192x0"
-              + " _match3__0__lawspecField192x1 ->"
-              + " _match3__0__lawspecField192x1 })"
+              + " _matchfield2__producerId"
+              + " _matchfield3__producerEpoch ->"
+              + " _matchfield3__producerEpoch })"
               + " (List::Cons(_let0__tp, List::Nil()))))"
               + " { Either::Left _match3__0__lawspecFailu"
               + "re -> match (_match3__0__lawspecFailure)"
@@ -20710,13 +20710,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1606 ->
+                                                                                                  switch (_match1606.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField191x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField191x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField191x0;
+                                                                                                      var _matchfield0__producerId = _match1606.fields().get(0);
+                                                                                                      var _matchfield1__producerEpoch = _match1606.fields().get(1);
+                                                                                                      yield _matchfield0__producerId;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -20731,13 +20731,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__old,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1534 ->
-                                                                                                  switch (_match1534.tag()) {
+                                                                                              _match1609 ->
+                                                                                                  switch (_match1609.tag()) {
                                                                                                     case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                         + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                      var _match3__0__lawspecField192x0 = _match1534.fields().get(0);
-                                                                                                      var _match3__0__lawspecField192x1 = _match1534.fields().get(1);
-                                                                                                      yield _match3__0__lawspecField192x1;
+                                                                                                      var _matchfield2__producerId = _match1609.fields().get(0);
+                                                                                                      var _matchfield3__producerEpoch = _match1609.fields().get(1);
+                                                                                                      yield _matchfield3__producerEpoch;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -21413,15 +21413,15 @@ public final class KafkaLawSpecTest {
                         + " (match (_match1__1__old) {"
                         + " lawtwin.kafka.model::type::ProducerIdAn"
                         + "dEpoch::ProducerIdAndEpoch"
-                        + " _match3__0__lawspecField191x0"
-                        + " _match3__0__lawspecField191x1 ->"
-                        + " _match3__0__lawspecField191x0 })"
-                        + " (match (_match1__1__old) {"
+                        + " _matchfield0__producerId"
+                        + " _matchfield1__producerEpoch ->"
+                        + " _matchfield0__producerId }) (match"
+                        + " (_match1__1__old) {"
                         + " lawtwin.kafka.model::type::ProducerIdAn"
                         + "dEpoch::ProducerIdAndEpoch"
-                        + " _match3__0__lawspecField192x0"
-                        + " _match3__0__lawspecField192x1 ->"
-                        + " _match3__0__lawspecField192x1 })"
+                        + " _matchfield2__producerId"
+                        + " _matchfield3__producerEpoch ->"
+                        + " _matchfield3__producerEpoch })"
                         + " (List::Cons(_let0__tp, List::Nil()))))"
                         + " { Either::Left _match3__0__lawspecFailu"
                         + "re -> match (_match3__0__lawspecFailure)"
@@ -21682,13 +21682,13 @@ public final class KafkaLawSpecTest {
                                                                                                         _match1__1__old,
                                                                                                         64,
                                                                                                         symbols,
-                                                                                                        _match1534 ->
-                                                                                                            switch (_match1534.tag()) {
+                                                                                                        _match1606 ->
+                                                                                                            switch (_match1606.tag()) {
                                                                                                               case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                                   + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                                var _match3__0__lawspecField191x0 = _match1534.fields().get(0);
-                                                                                                                var _match3__0__lawspecField191x1 = _match1534.fields().get(1);
-                                                                                                                yield _match3__0__lawspecField191x0;
+                                                                                                                var _matchfield0__producerId = _match1606.fields().get(0);
+                                                                                                                var _matchfield1__producerEpoch = _match1606.fields().get(1);
+                                                                                                                yield _matchfield0__producerId;
                                                                                                               }
                                                                                                               default ->
                                                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -21703,13 +21703,13 @@ public final class KafkaLawSpecTest {
                                                                                                         _match1__1__old,
                                                                                                         64,
                                                                                                         symbols,
-                                                                                                        _match1534 ->
-                                                                                                            switch (_match1534.tag()) {
+                                                                                                        _match1609 ->
+                                                                                                            switch (_match1609.tag()) {
                                                                                                               case "lawtwin.kafka.model::type::ProducerIdAnd"
                                                                                                                   + "Epoch::ProducerIdAndEpoch" -> {
-                                                                                                                var _match3__0__lawspecField192x0 = _match1534.fields().get(0);
-                                                                                                                var _match3__0__lawspecField192x1 = _match1534.fields().get(1);
-                                                                                                                yield _match3__0__lawspecField192x1;
+                                                                                                                var _matchfield2__producerId = _match1609.fields().get(0);
+                                                                                                                var _matchfield3__producerEpoch = _match1609.fields().get(1);
+                                                                                                                yield _matchfield3__producerEpoch;
                                                                                                               }
                                                                                                               default ->
                                                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -41236,8 +41236,8 @@ public final class KafkaLawSpecTest {
   // (lawtwin.kafka.model::type::OffsetSpec::Latest())
   // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
   // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-  // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) } } = true
   @Test
   void lawProducerAFlushedRecordIsInTheLogNative_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -41298,9 +41298,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -41435,13 +41435,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -41544,9 +41544,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -41681,13 +41681,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -41794,9 +41794,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -41931,13 +41931,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -42025,9 +42025,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -42162,13 +42162,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -42272,9 +42272,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -42409,13 +42409,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -42508,9 +42508,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -42645,13 +42645,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -42758,9 +42758,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -42895,13 +42895,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -42988,9 +42988,9 @@ public final class KafkaLawSpecTest {
                 + " (_match2__1__latest > match"
                 + " (_match0__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match3__0__lawspecField55x"
-                + "0 _match3__0__lawspecField55x1 ->"
-                + " _match3__0__lawspecField55x1 }) } } = true",
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
                     _schema.either(
@@ -43125,13 +43125,13 @@ public final class KafkaLawSpecTest {
                                                 _match0__1__md,
                                                 64,
                                                 symbols,
-                                                _match1504 ->
-                                                    switch (_match1504.tag()) {
+                                                _match1561 ->
+                                                    switch (_match1561.tag()) {
                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                           + "ordMetadata" -> {
-                                                        var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                        var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                        yield _match3__0__lawspecField55x1;
+                                                        var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                        var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                        yield _matchfield1__sentAt;
                                                       }
                                                       default ->
                                                           throw new IllegalArgumentException("invalid constructor");
@@ -43350,9 +43350,9 @@ public final class KafkaLawSpecTest {
                           + " (_match2__1__latest > match"
                           + " (_match0__1__md) {"
                           + " lawtwin.kafka::type::RecordMetadata::Re"
-                          + "cordMetadata _match3__0__lawspecField55x"
-                          + "0 _match3__0__lawspecField55x1 ->"
-                          + " _match3__0__lawspecField55x1 }) } } = true",
+                          + "cordMetadata _matchfield0__sentTo"
+                          + " _matchfield1__sentAt ->"
+                          + " _matchfield1__sentAt }) } } = true",
                       () ->
                           LawSpecRuntime.matchEither(
                               _schema.either(
@@ -43494,13 +43494,13 @@ public final class KafkaLawSpecTest {
                                                           _match0__1__md,
                                                           64,
                                                           symbols,
-                                                          _match1504 ->
-                                                              switch (_match1504.tag()) {
+                                                          _match1561 ->
+                                                              switch (_match1561.tag()) {
                                                                 case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                     + "ordMetadata" -> {
-                                                                  var _match3__0__lawspecField55x0 = _match1504.fields().get(0);
-                                                                  var _match3__0__lawspecField55x1 = _match1504.fields().get(1);
-                                                                  yield _match3__0__lawspecField55x1;
+                                                                  var _matchfield0__sentTo = _match1561.fields().get(0);
+                                                                  var _matchfield1__sentAt = _match1561.fields().get(1);
+                                                                  yield _matchfield1__sentAt;
                                                                 }
                                                                 default ->
                                                                     throw new IllegalArgumentException("invalid constructor");
@@ -54180,7 +54180,7 @@ public final class KafkaLawSpecTest {
   // (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
   // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
   // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-  // _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
+  // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } ==
   // _match0__1__gen)) } } = true
   private static final java.util.List<String> _lawspecInputs49 = java.util.List.of("(text)",
   "(int Int32 1 16)",
@@ -54252,9 +54252,9 @@ public final class KafkaLawSpecTest {
                 + " (_input2)) == _match1__1__tps) And"
                 + " (match (describeGroup (_input2)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match2__0__lawspecField55x0"
-                + " _match2__0__lawspecField55x1 ->"
-                + " _match2__0__lawspecField55x0 } =="
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } =="
                 + " _match0__1__gen)) } } = true",
             () ->
                 LawSpecRuntime.matchEither(
@@ -54418,13 +54418,13 @@ public final class KafkaLawSpecTest {
                                                                         "Text", _input2, 64)))),
                                                     64,
                                                     symbols,
-                                                    _match2242 ->
-                                                        switch (_match2242.tag()) {
+                                                    _match2280 ->
+                                                        switch (_match2280.tag()) {
                                                           case "lawtwin.kafka.model::type::GroupView::Gr"
                                                               + "oupView" -> {
-                                                            var _match2__0__lawspecField55x0 = _match2242.fields().get(0);
-                                                            var _match2__0__lawspecField55x1 = _match2242.fields().get(1);
-                                                            yield _match2__0__lawspecField55x0;
+                                                            var _matchfield0__generation = _match2280.fields().get(0);
+                                                            var _matchfield1__members = _match2280.fields().get(1);
+                                                            yield _matchfield0__generation;
                                                           }
                                                           default ->
                                                               throw new IllegalArgumentException("invalid constructor");
@@ -54758,9 +54758,9 @@ public final class KafkaLawSpecTest {
                                   + " (_input2)) == _match1__1__tps) And"
                                   + " (match (describeGroup (_input2)) {"
                                   + " lawtwin.kafka.model::type::GroupView::G"
-                                  + "roupView _match2__0__lawspecField55x0"
-                                  + " _match2__0__lawspecField55x1 ->"
-                                  + " _match2__0__lawspecField55x0 } =="
+                                  + "roupView _matchfield0__generation"
+                                  + " _matchfield1__members ->"
+                                  + " _matchfield0__generation } =="
                                   + " _match0__1__gen)) } } = true",
                               () ->
                                   LawSpecRuntime.matchEither(
@@ -54946,13 +54946,13 @@ public final class KafkaLawSpecTest {
                                                                                           64)))),
                                                                       64,
                                                                       symbols,
-                                                                      _match2242 ->
-                                                                          switch (_match2242.tag()) {
+                                                                      _match2280 ->
+                                                                          switch (_match2280.tag()) {
                                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                                 + "oupView" -> {
-                                                                              var _match2__0__lawspecField55x0 = _match2242.fields().get(0);
-                                                                              var _match2__0__lawspecField55x1 = _match2242.fields().get(1);
-                                                                              yield _match2__0__lawspecField55x0;
+                                                                              var _matchfield0__generation = _match2280.fields().get(0);
+                                                                              var _matchfield1__members = _match2280.fields().get(1);
+                                                                              yield _matchfield0__generation;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -55002,7 +55002,7 @@ public final class KafkaLawSpecTest {
   // (_input2) (_input3) (_match0__1__gen))) { Either::Left _match1__0__e -> false; Either::Right
   // _match1__1__tps -> ((viewOf (_input3) (describeGroup (_input2)) == _match1__1__tps) And (match
   // (describeGroup (_input2)) { lawtwin.kafka.model::type::GroupView::GroupView
-  // _match2__0__lawspecField55x0 _match2__0__lawspecField55x1 -> _match2__0__lawspecField55x0 } ==
+  // _matchfield0__generation _matchfield1__members -> _matchfield0__generation } ==
   // _match0__1__gen)) } } = true
   private static final java.util.List<String> _lawspecInputs50 = java.util.List.of("(text)",
   "(int Int32 1 16)",
@@ -55069,9 +55069,9 @@ public final class KafkaLawSpecTest {
               + " (_input2)) == _match1__1__tps) And"
               + " (match (describeGroup (_input2)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match2__0__lawspecField55x0"
-              + " _match2__0__lawspecField55x1 ->"
-              + " _match2__0__lawspecField55x0 } =="
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } =="
               + " _match0__1__gen)) } } = true",
           () ->
               LawSpecRuntime.matchEither(
@@ -55232,13 +55232,13 @@ public final class KafkaLawSpecTest {
                                                                       "Text", _input2, 64)))),
                                                   64,
                                                   symbols,
-                                                  _match2247 ->
-                                                      switch (_match2247.tag()) {
+                                                  _match2284 ->
+                                                      switch (_match2284.tag()) {
                                                         case "lawtwin.kafka.model::type::GroupView::Gr"
                                                             + "oupView" -> {
-                                                          var _match2__0__lawspecField55x0 = _match2247.fields().get(0);
-                                                          var _match2__0__lawspecField55x1 = _match2247.fields().get(1);
-                                                          yield _match2__0__lawspecField55x0;
+                                                          var _matchfield0__generation = _match2284.fields().get(0);
+                                                          var _matchfield1__members = _match2284.fields().get(1);
+                                                          yield _matchfield0__generation;
                                                         }
                                                         default ->
                                                             throw new IllegalArgumentException("invalid constructor");
@@ -55559,9 +55559,9 @@ public final class KafkaLawSpecTest {
                                 + " (_input2)) == _match1__1__tps) And"
                                 + " (match (describeGroup (_input2)) {"
                                 + " lawtwin.kafka.model::type::GroupView::G"
-                                + "roupView _match2__0__lawspecField55x0"
-                                + " _match2__0__lawspecField55x1 ->"
-                                + " _match2__0__lawspecField55x0 } =="
+                                + "roupView _matchfield0__generation"
+                                + " _matchfield1__members ->"
+                                + " _matchfield0__generation } =="
                                 + " _match0__1__gen)) } } = true",
                             () ->
                                 LawSpecRuntime.matchEither(
@@ -55746,13 +55746,13 @@ public final class KafkaLawSpecTest {
                                                                                         64)))),
                                                                     64,
                                                                     symbols,
-                                                                    _match2247 ->
-                                                                        switch (_match2247.tag()) {
+                                                                    _match2284 ->
+                                                                        switch (_match2284.tag()) {
                                                                           case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                               + "oupView" -> {
-                                                                            var _match2__0__lawspecField55x0 = _match2247.fields().get(0);
-                                                                            var _match2__0__lawspecField55x1 = _match2247.fields().get(1);
-                                                                            yield _match2__0__lawspecField55x0;
+                                                                            var _matchfield0__generation = _match2284.fields().get(0);
+                                                                            var _matchfield1__members = _match2284.fields().get(1);
+                                                                            yield _matchfield0__generation;
                                                                           }
                                                                           default ->
                                                                               throw new IllegalArgumentException("invalid constructor");
@@ -62077,11 +62077,10 @@ public final class KafkaLawSpecTest {
   // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1)
   // (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
   // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-  // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
-  // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match
-  // (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-  // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
-  // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
+  // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation _matchfield1__members
+  // -> _matchfield0__generation } > _match0__1__gen)) And match (attempt (heartbeat (_input1)
+  // (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match
+  // (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
   // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
   // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -62154,9 +62153,9 @@ public final class KafkaLawSpecTest {
                 + " _match1__1__railwayValue1 -> true }"
                 + " And (match (describeGroup (_input1)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match1__0__lawspecField101x0"
-                + " _match1__0__lawspecField101x1 ->"
-                + " _match1__0__lawspecField101x0 } >"
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } >"
                 + " _match0__1__gen)) And match (attempt"
                 + " (heartbeat (_input1) (_input2)"
                 + " (_match0__1__gen))) { Either::Left"
@@ -62331,13 +62330,13 @@ public final class KafkaLawSpecTest {
                                                                             "Text", _input1, 64)))),
                                                         64,
                                                         symbols,
-                                                        _match2118 ->
-                                                            switch (_match2118.tag()) {
+                                                        _match2178 ->
+                                                            switch (_match2178.tag()) {
                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                   + "oupView" -> {
-                                                                var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                yield _match1__0__lawspecField101x0;
+                                                                var _matchfield0__generation = _match2178.fields().get(0);
+                                                                var _matchfield1__members = _match2178.fields().get(1);
+                                                                yield _matchfield0__generation;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -62548,9 +62547,9 @@ public final class KafkaLawSpecTest {
                 + " _match1__1__railwayValue1 -> true }"
                 + " And (match (describeGroup (_input1)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match1__0__lawspecField101x0"
-                + " _match1__0__lawspecField101x1 ->"
-                + " _match1__0__lawspecField101x0 } >"
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } >"
                 + " _match0__1__gen)) And match (attempt"
                 + " (heartbeat (_input1) (_input2)"
                 + " (_match0__1__gen))) { Either::Left"
@@ -62725,13 +62724,13 @@ public final class KafkaLawSpecTest {
                                                                             "Text", _input1, 64)))),
                                                         64,
                                                         symbols,
-                                                        _match2118 ->
-                                                            switch (_match2118.tag()) {
+                                                        _match2178 ->
+                                                            switch (_match2178.tag()) {
                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                   + "oupView" -> {
-                                                                var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                yield _match1__0__lawspecField101x0;
+                                                                var _matchfield0__generation = _match2178.fields().get(0);
+                                                                var _matchfield1__members = _match2178.fields().get(1);
+                                                                yield _matchfield0__generation;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -62949,9 +62948,9 @@ public final class KafkaLawSpecTest {
                 + " _match1__1__railwayValue1 -> true }"
                 + " And (match (describeGroup (_input1)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match1__0__lawspecField101x0"
-                + " _match1__0__lawspecField101x1 ->"
-                + " _match1__0__lawspecField101x0 } >"
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } >"
                 + " _match0__1__gen)) And match (attempt"
                 + " (heartbeat (_input1) (_input2)"
                 + " (_match0__1__gen))) { Either::Left"
@@ -63126,13 +63125,13 @@ public final class KafkaLawSpecTest {
                                                                             "Text", _input1, 64)))),
                                                         64,
                                                         symbols,
-                                                        _match2118 ->
-                                                            switch (_match2118.tag()) {
+                                                        _match2178 ->
+                                                            switch (_match2178.tag()) {
                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                   + "oupView" -> {
-                                                                var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                yield _match1__0__lawspecField101x0;
+                                                                var _matchfield0__generation = _match2178.fields().get(0);
+                                                                var _matchfield1__members = _match2178.fields().get(1);
+                                                                yield _matchfield0__generation;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -63349,9 +63348,9 @@ public final class KafkaLawSpecTest {
                 + " _match1__1__railwayValue1 -> true }"
                 + " And (match (describeGroup (_input1)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match1__0__lawspecField101x0"
-                + " _match1__0__lawspecField101x1 ->"
-                + " _match1__0__lawspecField101x0 } >"
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } >"
                 + " _match0__1__gen)) And match (attempt"
                 + " (heartbeat (_input1) (_input2)"
                 + " (_match0__1__gen))) { Either::Left"
@@ -63526,13 +63525,13 @@ public final class KafkaLawSpecTest {
                                                                             "Text", _input1, 64)))),
                                                         64,
                                                         symbols,
-                                                        _match2118 ->
-                                                            switch (_match2118.tag()) {
+                                                        _match2178 ->
+                                                            switch (_match2178.tag()) {
                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                   + "oupView" -> {
-                                                                var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                yield _match1__0__lawspecField101x0;
+                                                                var _matchfield0__generation = _match2178.fields().get(0);
+                                                                var _matchfield1__members = _match2178.fields().get(1);
+                                                                yield _matchfield0__generation;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -63745,9 +63744,9 @@ public final class KafkaLawSpecTest {
                 + " _match1__1__railwayValue1 -> true }"
                 + " And (match (describeGroup (_input1)) {"
                 + " lawtwin.kafka.model::type::GroupView::G"
-                + "roupView _match1__0__lawspecField101x0"
-                + " _match1__0__lawspecField101x1 ->"
-                + " _match1__0__lawspecField101x0 } >"
+                + "roupView _matchfield0__generation"
+                + " _matchfield1__members ->"
+                + " _matchfield0__generation } >"
                 + " _match0__1__gen)) And match (attempt"
                 + " (heartbeat (_input1) (_input2)"
                 + " (_match0__1__gen))) { Either::Left"
@@ -63922,13 +63921,13 @@ public final class KafkaLawSpecTest {
                                                                             "Text", _input1, 64)))),
                                                         64,
                                                         symbols,
-                                                        _match2118 ->
-                                                            switch (_match2118.tag()) {
+                                                        _match2178 ->
+                                                            switch (_match2178.tag()) {
                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                   + "oupView" -> {
-                                                                var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                yield _match1__0__lawspecField101x0;
+                                                                var _matchfield0__generation = _match2178.fields().get(0);
+                                                                var _matchfield1__members = _match2178.fields().get(1);
+                                                                yield _matchfield0__generation;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -64365,9 +64364,9 @@ public final class KafkaLawSpecTest {
                                   + " _match1__1__railwayValue1 -> true }"
                                   + " And (match (describeGroup (_input1)) {"
                                   + " lawtwin.kafka.model::type::GroupView::G"
-                                  + "roupView _match1__0__lawspecField101x0"
-                                  + " _match1__0__lawspecField101x1 ->"
-                                  + " _match1__0__lawspecField101x0 } >"
+                                  + "roupView _matchfield0__generation"
+                                  + " _matchfield1__members ->"
+                                  + " _matchfield0__generation } >"
                                   + " _match0__1__gen)) And match (attempt"
                                   + " (heartbeat (_input1) (_input2)"
                                   + " (_match0__1__gen))) { Either::Left"
@@ -64570,13 +64569,13 @@ public final class KafkaLawSpecTest {
                                                                                               64)))),
                                                                           64,
                                                                           symbols,
-                                                                          _match2118 ->
-                                                                              switch (_match2118.tag()) {
+                                                                          _match2178 ->
+                                                                              switch (_match2178.tag()) {
                                                                                 case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                                     + "oupView" -> {
-                                                                                  var _match1__0__lawspecField101x0 = _match2118.fields().get(0);
-                                                                                  var _match1__0__lawspecField101x1 = _match2118.fields().get(1);
-                                                                                  yield _match1__0__lawspecField101x0;
+                                                                                  var _matchfield0__generation = _match2178.fields().get(0);
+                                                                                  var _matchfield1__members = _match2178.fields().get(1);
+                                                                                  yield _matchfield0__generation;
                                                                                 }
                                                                                 default ->
                                                                                     throw new IllegalArgumentException("invalid constructor");
@@ -64833,11 +64832,10 @@ public final class KafkaLawSpecTest {
   // _match0__0__e -> false; Either::Right _match0__1__gen -> ((match (attempt (leaveGroup (_input1)
   // (_input2))) { Either::Left _match1__0__railwayError0 -> false; Either::Right
   // _match1__1__railwayValue1 -> true } And (match (describeGroup (_input1)) {
-  // lawtwin.kafka.model::type::GroupView::GroupView _match1__0__lawspecField101x0
-  // _match1__0__lawspecField101x1 -> _match1__0__lawspecField101x0 } > _match0__1__gen)) And match
-  // (attempt (heartbeat (_input1) (_input2) (_match0__1__gen))) { Either::Left
-  // _match1__0__lawspecFailure -> match (_match1__0__lawspecFailure) {
-  // lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
+  // lawtwin.kafka.model::type::GroupView::GroupView _matchfield0__generation _matchfield1__members
+  // -> _matchfield0__generation } > _match0__1__gen)) And match (attempt (heartbeat (_input1)
+  // (_input2) (_match0__1__gen))) { Either::Left _match1__0__lawspecFailure -> match
+  // (_match1__0__lawspecFailure) { lawtwin.kafka.model::type::KafkaError::UnknownMemberId -> true;
   // lawtwin.kafka.model::type::KafkaError::UnknownTopicOrPartition -> false;
   // lawtwin.kafka.model::type::KafkaError::TopicAlreadyExists -> false;
   // lawtwin.kafka.model::type::KafkaError::InvalidTopic -> false;
@@ -64905,9 +64903,9 @@ public final class KafkaLawSpecTest {
               + " _match1__1__railwayValue1 -> true }"
               + " And (match (describeGroup (_input1)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match1__0__lawspecField101x0"
-              + " _match1__0__lawspecField101x1 ->"
-              + " _match1__0__lawspecField101x0 } >"
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } >"
               + " _match0__1__gen)) And match (attempt"
               + " (heartbeat (_input1) (_input2)"
               + " (_match0__1__gen))) { Either::Left"
@@ -65080,13 +65078,13 @@ public final class KafkaLawSpecTest {
                                                                           "Text", _input1, 64)))),
                                                       64,
                                                       symbols,
-                                                      _match2123 ->
-                                                          switch (_match2123.tag()) {
+                                                      _match2182 ->
+                                                          switch (_match2182.tag()) {
                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                 + "oupView" -> {
-                                                              var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                              var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                              yield _match1__0__lawspecField101x0;
+                                                              var _matchfield0__generation = _match2182.fields().get(0);
+                                                              var _matchfield1__members = _match2182.fields().get(1);
+                                                              yield _matchfield0__generation;
                                                             }
                                                             default ->
                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -65283,9 +65281,9 @@ public final class KafkaLawSpecTest {
               + " _match1__1__railwayValue1 -> true }"
               + " And (match (describeGroup (_input1)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match1__0__lawspecField101x0"
-              + " _match1__0__lawspecField101x1 ->"
-              + " _match1__0__lawspecField101x0 } >"
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } >"
               + " _match0__1__gen)) And match (attempt"
               + " (heartbeat (_input1) (_input2)"
               + " (_match0__1__gen))) { Either::Left"
@@ -65458,13 +65456,13 @@ public final class KafkaLawSpecTest {
                                                                           "Text", _input1, 64)))),
                                                       64,
                                                       symbols,
-                                                      _match2123 ->
-                                                          switch (_match2123.tag()) {
+                                                      _match2182 ->
+                                                          switch (_match2182.tag()) {
                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                 + "oupView" -> {
-                                                              var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                              var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                              yield _match1__0__lawspecField101x0;
+                                                              var _matchfield0__generation = _match2182.fields().get(0);
+                                                              var _matchfield1__members = _match2182.fields().get(1);
+                                                              yield _matchfield0__generation;
                                                             }
                                                             default ->
                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -65668,9 +65666,9 @@ public final class KafkaLawSpecTest {
               + " _match1__1__railwayValue1 -> true }"
               + " And (match (describeGroup (_input1)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match1__0__lawspecField101x0"
-              + " _match1__0__lawspecField101x1 ->"
-              + " _match1__0__lawspecField101x0 } >"
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } >"
               + " _match0__1__gen)) And match (attempt"
               + " (heartbeat (_input1) (_input2)"
               + " (_match0__1__gen))) { Either::Left"
@@ -65843,13 +65841,13 @@ public final class KafkaLawSpecTest {
                                                                           "Text", _input1, 64)))),
                                                       64,
                                                       symbols,
-                                                      _match2123 ->
-                                                          switch (_match2123.tag()) {
+                                                      _match2182 ->
+                                                          switch (_match2182.tag()) {
                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                 + "oupView" -> {
-                                                              var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                              var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                              yield _match1__0__lawspecField101x0;
+                                                              var _matchfield0__generation = _match2182.fields().get(0);
+                                                              var _matchfield1__members = _match2182.fields().get(1);
+                                                              yield _matchfield0__generation;
                                                             }
                                                             default ->
                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -66052,9 +66050,9 @@ public final class KafkaLawSpecTest {
               + " _match1__1__railwayValue1 -> true }"
               + " And (match (describeGroup (_input1)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match1__0__lawspecField101x0"
-              + " _match1__0__lawspecField101x1 ->"
-              + " _match1__0__lawspecField101x0 } >"
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } >"
               + " _match0__1__gen)) And match (attempt"
               + " (heartbeat (_input1) (_input2)"
               + " (_match0__1__gen))) { Either::Left"
@@ -66227,13 +66225,13 @@ public final class KafkaLawSpecTest {
                                                                           "Text", _input1, 64)))),
                                                       64,
                                                       symbols,
-                                                      _match2123 ->
-                                                          switch (_match2123.tag()) {
+                                                      _match2182 ->
+                                                          switch (_match2182.tag()) {
                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                 + "oupView" -> {
-                                                              var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                              var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                              yield _match1__0__lawspecField101x0;
+                                                              var _matchfield0__generation = _match2182.fields().get(0);
+                                                              var _matchfield1__members = _match2182.fields().get(1);
+                                                              yield _matchfield0__generation;
                                                             }
                                                             default ->
                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -66432,9 +66430,9 @@ public final class KafkaLawSpecTest {
               + " _match1__1__railwayValue1 -> true }"
               + " And (match (describeGroup (_input1)) {"
               + " lawtwin.kafka.model::type::GroupView::G"
-              + "roupView _match1__0__lawspecField101x0"
-              + " _match1__0__lawspecField101x1 ->"
-              + " _match1__0__lawspecField101x0 } >"
+              + "roupView _matchfield0__generation"
+              + " _matchfield1__members ->"
+              + " _matchfield0__generation } >"
               + " _match0__1__gen)) And match (attempt"
               + " (heartbeat (_input1) (_input2)"
               + " (_match0__1__gen))) { Either::Left"
@@ -66607,13 +66605,13 @@ public final class KafkaLawSpecTest {
                                                                           "Text", _input1, 64)))),
                                                       64,
                                                       symbols,
-                                                      _match2123 ->
-                                                          switch (_match2123.tag()) {
+                                                      _match2182 ->
+                                                          switch (_match2182.tag()) {
                                                             case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                 + "oupView" -> {
-                                                              var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                              var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                              yield _match1__0__lawspecField101x0;
+                                                              var _matchfield0__generation = _match2182.fields().get(0);
+                                                              var _matchfield1__members = _match2182.fields().get(1);
+                                                              yield _matchfield0__generation;
                                                             }
                                                             default ->
                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -67035,9 +67033,9 @@ public final class KafkaLawSpecTest {
                                 + " _match1__1__railwayValue1 -> true }"
                                 + " And (match (describeGroup (_input1)) {"
                                 + " lawtwin.kafka.model::type::GroupView::G"
-                                + "roupView _match1__0__lawspecField101x0"
-                                + " _match1__0__lawspecField101x1 ->"
-                                + " _match1__0__lawspecField101x0 } >"
+                                + "roupView _matchfield0__generation"
+                                + " _matchfield1__members ->"
+                                + " _matchfield0__generation } >"
                                 + " _match0__1__gen)) And match (attempt"
                                 + " (heartbeat (_input1) (_input2)"
                                 + " (_match0__1__gen))) { Either::Left"
@@ -67240,13 +67238,13 @@ public final class KafkaLawSpecTest {
                                                                                             64)))),
                                                                         64,
                                                                         symbols,
-                                                                        _match2123 ->
-                                                                            switch (_match2123.tag()) {
+                                                                        _match2182 ->
+                                                                            switch (_match2182.tag()) {
                                                                               case "lawtwin.kafka.model::type::GroupView::Gr"
                                                                                   + "oupView" -> {
-                                                                                var _match1__0__lawspecField101x0 = _match2123.fields().get(0);
-                                                                                var _match1__0__lawspecField101x1 = _match2123.fields().get(1);
-                                                                                yield _match1__0__lawspecField101x0;
+                                                                                var _matchfield0__generation = _match2182.fields().get(0);
+                                                                                var _matchfield1__members = _match2182.fields().get(1);
+                                                                                yield _matchfield0__generation;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -72376,8 +72374,8 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
   // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
   // (committedFrom (_let0__tp) (match (_match1__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-  // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) == List::Nil())) }) = true
   @Test
   void lawTransactionsAbortedRecordsAreNeverRead_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -72469,9 +72467,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -72646,13 +72644,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -72773,9 +72771,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -72950,13 +72948,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -73057,9 +73055,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -73234,13 +73232,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -73355,9 +73353,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -73532,13 +73530,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -73641,9 +73639,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -73818,13 +73816,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -73922,9 +73920,9 @@ public final class KafkaLawSpecTest {
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField162"
-                + "x0 _match2__0__lawspecField162x1 ->"
-                + " _match2__0__lawspecField162x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) }) = true",
             () ->
                 LawSpecRuntime.let(
@@ -74099,13 +74097,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1595 ->
-                                                                            switch (_match1595.tag()) {
+                                                                        _match1635 ->
+                                                                            switch (_match1635.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                yield _match2__0__lawspecField162x1;
+                                                                                var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                yield _matchfield1__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -74361,9 +74359,9 @@ public final class KafkaLawSpecTest {
                           + " (committedFrom (_let0__tp) (match"
                           + " (_match1__1__md) {"
                           + " lawtwin.kafka::type::RecordMetadata::Re"
-                          + "cordMetadata _match2__0__lawspecField162"
-                          + "x0 _match2__0__lawspecField162x1 ->"
-                          + " _match2__0__lawspecField162x1 }) =="
+                          + "cordMetadata _matchfield0__sentTo"
+                          + " _matchfield1__sentAt ->"
+                          + " _matchfield1__sentAt }) =="
                           + " List::Nil())) }) = true",
                       () ->
                           LawSpecRuntime.let(
@@ -74548,13 +74546,13 @@ public final class KafkaLawSpecTest {
                                                                                   _match1__1__md,
                                                                                   64,
                                                                                   symbols,
-                                                                                  _match1595 ->
-                                                                                      switch (_match1595.tag()) {
+                                                                                  _match1635 ->
+                                                                                      switch (_match1635.tag()) {
                                                                                         case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                             + "ordMetadata" -> {
-                                                                                          var _match2__0__lawspecField162x0 = _match1595.fields().get(0);
-                                                                                          var _match2__0__lawspecField162x1 = _match1595.fields().get(1);
-                                                                                          yield _match2__0__lawspecField162x1;
+                                                                                          var _matchfield0__sentTo = _match1635.fields().get(0);
+                                                                                          var _matchfield1__sentAt = _match1635.fields().get(1);
+                                                                                          yield _matchfield1__sentAt;
                                                                                         }
                                                                                         default ->
                                                                                             throw new IllegalArgumentException("invalid constructor");
@@ -74597,12 +74595,11 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
   // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
   // (committedFrom (_let0__tp) (match (_match1__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-  // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-  // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-  // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-  // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
-  // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) == List::Nil())) And (commitTransaction ==
+  // Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) {
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt
+  // -> _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
   @Test
   void lawTransactionsCommittedRecordsAreRead_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -74743,17 +74740,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -74949,13 +74946,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -75026,13 +75023,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -75218,17 +75215,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -75424,13 +75421,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -75501,13 +75498,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -75653,17 +75650,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -75859,13 +75856,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -75936,13 +75933,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -76118,17 +76115,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -76324,13 +76321,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -76401,13 +76398,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -76561,17 +76558,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -76767,13 +76764,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -76844,13 +76841,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -76993,17 +76990,17 @@ public final class KafkaLawSpecTest {
                 + " And (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField219"
-                + "x0 _match2__0__lawspecField219x1 ->"
-                + " _match2__0__lawspecField219x1 }) =="
+                + "cordMetadata _matchfield0__sentTo"
+                + " _matchfield1__sentAt ->"
+                + " _matchfield1__sentAt }) =="
                 + " List::Nil())) And (commitTransaction"
                 + " == Either::Right(unitValue))) And"
                 + " (committedFrom (_let0__tp) (match"
                 + " (_match1__1__md) {"
                 + " lawtwin.kafka::type::RecordMetadata::Re"
-                + "cordMetadata _match2__0__lawspecField232"
-                + "x0 _match2__0__lawspecField232x1 ->"
-                + " _match2__0__lawspecField232x1 }) =="
+                + "cordMetadata _matchfield2__sentTo"
+                + " _matchfield3__sentAt ->"
+                + " _matchfield3__sentAt }) =="
                 + " List::Cons(_input2,"
                 + " List::Cons(_input3, List::Nil())))) }) = true",
             () ->
@@ -77199,13 +77196,13 @@ public final class KafkaLawSpecTest {
                                                                                                 _match1__1__md,
                                                                                                 64,
                                                                                                 symbols,
-                                                                                                _match1703 ->
-                                                                                                    switch (_match1703.tag()) {
+                                                                                                _match1725 ->
+                                                                                                    switch (_match1725.tag()) {
                                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                           + "ordMetadata" -> {
-                                                                                                        var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                        var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                        yield _match2__0__lawspecField219x1;
+                                                                                                        var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                        var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                        yield _matchfield1__sentAt;
                                                                                                       }
                                                                                                       default ->
                                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -77276,13 +77273,13 @@ public final class KafkaLawSpecTest {
                                                                         _match1__1__md,
                                                                         64,
                                                                         symbols,
-                                                                        _match1703 ->
-                                                                            switch (_match1703.tag()) {
+                                                                        _match1725 ->
+                                                                            switch (_match1725.tag()) {
                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                   + "ordMetadata" -> {
-                                                                                var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                yield _match2__0__lawspecField232x1;
+                                                                                var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                yield _matchfield3__sentAt;
                                                                               }
                                                                               default ->
                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -77568,17 +77565,17 @@ public final class KafkaLawSpecTest {
                           + " And (committedFrom (_let0__tp) (match"
                           + " (_match1__1__md) {"
                           + " lawtwin.kafka::type::RecordMetadata::Re"
-                          + "cordMetadata _match2__0__lawspecField219"
-                          + "x0 _match2__0__lawspecField219x1 ->"
-                          + " _match2__0__lawspecField219x1 }) =="
+                          + "cordMetadata _matchfield0__sentTo"
+                          + " _matchfield1__sentAt ->"
+                          + " _matchfield1__sentAt }) =="
                           + " List::Nil())) And (commitTransaction"
                           + " == Either::Right(unitValue))) And"
                           + " (committedFrom (_let0__tp) (match"
                           + " (_match1__1__md) {"
                           + " lawtwin.kafka::type::RecordMetadata::Re"
-                          + "cordMetadata _match2__0__lawspecField232"
-                          + "x0 _match2__0__lawspecField232x1 ->"
-                          + " _match2__0__lawspecField232x1 }) =="
+                          + "cordMetadata _matchfield2__sentTo"
+                          + " _matchfield3__sentAt ->"
+                          + " _matchfield3__sentAt }) =="
                           + " List::Cons(_input2,"
                           + " List::Cons(_input3, List::Nil())))) }) = true",
                       () ->
@@ -77782,13 +77779,13 @@ public final class KafkaLawSpecTest {
                                                                                                           _match1__1__md,
                                                                                                           64,
                                                                                                           symbols,
-                                                                                                          _match1703 ->
-                                                                                                              switch (_match1703.tag()) {
+                                                                                                          _match1725 ->
+                                                                                                              switch (_match1725.tag()) {
                                                                                                                 case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                                     + "ordMetadata" -> {
-                                                                                                                  var _match2__0__lawspecField219x0 = _match1703.fields().get(0);
-                                                                                                                  var _match2__0__lawspecField219x1 = _match1703.fields().get(1);
-                                                                                                                  yield _match2__0__lawspecField219x1;
+                                                                                                                  var _matchfield0__sentTo = _match1725.fields().get(0);
+                                                                                                                  var _matchfield1__sentAt = _match1725.fields().get(1);
+                                                                                                                  yield _matchfield1__sentAt;
                                                                                                                 }
                                                                                                                 default ->
                                                                                                                     throw new IllegalArgumentException("invalid constructor");
@@ -77859,13 +77856,13 @@ public final class KafkaLawSpecTest {
                                                                                   _match1__1__md,
                                                                                   64,
                                                                                   symbols,
-                                                                                  _match1703 ->
-                                                                                      switch (_match1703.tag()) {
+                                                                                  _match1725 ->
+                                                                                      switch (_match1725.tag()) {
                                                                                         case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                             + "ordMetadata" -> {
-                                                                                          var _match2__0__lawspecField232x0 = _match1703.fields().get(0);
-                                                                                          var _match2__0__lawspecField232x1 = _match1703.fields().get(1);
-                                                                                          yield _match2__0__lawspecField232x1;
+                                                                                          var _matchfield2__sentTo = _match1725.fields().get(0);
+                                                                                          var _matchfield3__sentAt = _match1725.fields().get(1);
+                                                                                          yield _matchfield3__sentAt;
                                                                                         }
                                                                                         default ->
                                                                                             throw new IllegalArgumentException("invalid constructor");
@@ -81960,8 +81957,8 @@ public final class KafkaLawSpecTest {
   // (lawtwin.kafka.model::type::OffsetSpec::Latest())
   // (lawtwin.kafka.model::type::IsolationLevel::ReadUncommitted()))) { Either::Left _match2__0__e
   // -> false; Either::Right _match2__1__latest -> (_match2__1__latest > match (_match0__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match3__0__lawspecField55x0
-  // _match3__0__lawspecField55x1 -> _match3__0__lawspecField55x1 }) } } = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) } } = true
   @Test
   void lawProducerAFlushedRecordIsInTheLog_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -82019,9 +82016,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -82156,13 +82153,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -82255,9 +82252,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -82392,13 +82389,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -82495,9 +82492,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -82632,13 +82629,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -82716,9 +82713,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -82853,13 +82850,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -82953,9 +82950,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -83090,13 +83087,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -83179,9 +83176,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -83316,13 +83313,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -83419,9 +83416,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -83556,13 +83553,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -83639,9 +83636,9 @@ public final class KafkaLawSpecTest {
               + " (_match2__1__latest > match"
               + " (_match0__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match3__0__lawspecField55x"
-              + "0 _match3__0__lawspecField55x1 ->"
-              + " _match3__0__lawspecField55x1 }) } } = true",
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) } } = true",
           () ->
               LawSpecRuntime.matchEither(
                   _schema.either(
@@ -83776,13 +83773,13 @@ public final class KafkaLawSpecTest {
                                               _match0__1__md,
                                               64,
                                               symbols,
-                                              _match1522 ->
-                                                  switch (_match1522.tag()) {
+                                              _match1576 ->
+                                                  switch (_match1576.tag()) {
                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                         + "ordMetadata" -> {
-                                                      var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                      var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                      yield _match3__0__lawspecField55x1;
+                                                      var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                      var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                      yield _matchfield1__sentAt;
                                                     }
                                                     default ->
                                                         throw new IllegalArgumentException("invalid constructor");
@@ -83990,9 +83987,9 @@ public final class KafkaLawSpecTest {
                         + " (_match2__1__latest > match"
                         + " (_match0__1__md) {"
                         + " lawtwin.kafka::type::RecordMetadata::Re"
-                        + "cordMetadata _match3__0__lawspecField55x"
-                        + "0 _match3__0__lawspecField55x1 ->"
-                        + " _match3__0__lawspecField55x1 }) } } = true",
+                        + "cordMetadata _matchfield0__sentTo"
+                        + " _matchfield1__sentAt ->"
+                        + " _matchfield1__sentAt }) } } = true",
                     () ->
                         LawSpecRuntime.matchEither(
                             _schema.either(
@@ -84133,13 +84130,13 @@ public final class KafkaLawSpecTest {
                                                         _match0__1__md,
                                                         64,
                                                         symbols,
-                                                        _match1522 ->
-                                                            switch (_match1522.tag()) {
+                                                        _match1576 ->
+                                                            switch (_match1576.tag()) {
                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                   + "ordMetadata" -> {
-                                                                var _match3__0__lawspecField55x0 = _match1522.fields().get(0);
-                                                                var _match3__0__lawspecField55x1 = _match1522.fields().get(1);
-                                                                yield _match3__0__lawspecField55x1;
+                                                                var _matchfield0__sentTo = _match1576.fields().get(0);
+                                                                var _matchfield1__sentAt = _match1576.fields().get(1);
+                                                                yield _matchfield1__sentAt;
                                                               }
                                                               default ->
                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -95747,8 +95744,8 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input2))) { Either::Left _match1__0__e
   // -> false; Either::Right _match1__1__md -> ((abortTransaction == Either::Right(unitValue)) And
   // (committedFrom (_let0__tp) (match (_match1__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField162x0
-  // _match2__0__lawspecField162x1 -> _match2__0__lawspecField162x1 }) == List::Nil())) }) = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) == List::Nil())) }) = true
   @Test
   void lawTransactionsAbortedRecordsAreNeverRead2_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -95837,9 +95834,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -96014,13 +96011,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -96131,9 +96128,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -96308,13 +96305,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -96405,9 +96402,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -96582,13 +96579,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -96693,9 +96690,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -96870,13 +96867,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -96969,9 +96966,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -97146,13 +97143,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -97240,9 +97237,9 @@ public final class KafkaLawSpecTest {
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField162"
-              + "x0 _match2__0__lawspecField162x1 ->"
-              + " _match2__0__lawspecField162x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) }) = true",
           () ->
               LawSpecRuntime.let(
@@ -97417,13 +97414,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1613 ->
-                                                                          switch (_match1613.tag()) {
+                                                                      _match1650 ->
+                                                                          switch (_match1650.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                              var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                              yield _match2__0__lawspecField162x1;
+                                                                              var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                              var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                              yield _matchfield1__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -97668,9 +97665,9 @@ public final class KafkaLawSpecTest {
                         + " (committedFrom (_let0__tp) (match"
                         + " (_match1__1__md) {"
                         + " lawtwin.kafka::type::RecordMetadata::Re"
-                        + "cordMetadata _match2__0__lawspecField162"
-                        + "x0 _match2__0__lawspecField162x1 ->"
-                        + " _match2__0__lawspecField162x1 }) =="
+                        + "cordMetadata _matchfield0__sentTo"
+                        + " _matchfield1__sentAt ->"
+                        + " _matchfield1__sentAt }) =="
                         + " List::Nil())) }) = true",
                     () ->
                         LawSpecRuntime.let(
@@ -97855,13 +97852,13 @@ public final class KafkaLawSpecTest {
                                                                                 _match1__1__md,
                                                                                 64,
                                                                                 symbols,
-                                                                                _match1613 ->
-                                                                                    switch (_match1613.tag()) {
+                                                                                _match1650 ->
+                                                                                    switch (_match1650.tag()) {
                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                           + "ordMetadata" -> {
-                                                                                        var _match2__0__lawspecField162x0 = _match1613.fields().get(0);
-                                                                                        var _match2__0__lawspecField162x1 = _match1613.fields().get(1);
-                                                                                        yield _match2__0__lawspecField162x1;
+                                                                                        var _matchfield0__sentTo = _match1650.fields().get(0);
+                                                                                        var _matchfield1__sentAt = _match1650.fields().get(1);
+                                                                                        yield _matchfield1__sentAt;
                                                                                       }
                                                                                       default ->
                                                                                           throw new IllegalArgumentException("invalid constructor");
@@ -97897,12 +97894,11 @@ public final class KafkaLawSpecTest {
   // lawtwin.kafka::type::PartitionChoice::ToPartition(0), _input3))) { Either::Left
   // _match2__0__railwayError2 -> false; Either::Right _match2__1__railwayValue3 -> true } And
   // (committedFrom (_let0__tp) (match (_match1__1__md) {
-  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _match2__0__lawspecField219x0
-  // _match2__0__lawspecField219x1 -> _match2__0__lawspecField219x1 }) == List::Nil())) And
-  // (commitTransaction == Either::Right(unitValue))) And (committedFrom (_let0__tp) (match
-  // (_match1__1__md) { lawtwin.kafka::type::RecordMetadata::RecordMetadata
-  // _match2__0__lawspecField232x0 _match2__0__lawspecField232x1 -> _match2__0__lawspecField232x1 })
-  // == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield0__sentTo _matchfield1__sentAt
+  // -> _matchfield1__sentAt }) == List::Nil())) And (commitTransaction ==
+  // Either::Right(unitValue))) And (committedFrom (_let0__tp) (match (_match1__1__md) {
+  // lawtwin.kafka::type::RecordMetadata::RecordMetadata _matchfield2__sentTo _matchfield3__sentAt
+  // -> _matchfield3__sentAt }) == List::Cons(_input2, List::Cons(_input3, List::Nil())))) }) = true
   @Test
   void lawTransactionsCommittedRecordsAreRead2_boundary0() {
     var symbols = new HashMap<String, Object>();
@@ -98040,17 +98036,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -98246,13 +98242,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -98323,13 +98319,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -98505,17 +98501,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -98711,13 +98707,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -98788,13 +98784,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -98930,17 +98926,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -99136,13 +99132,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -99213,13 +99209,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -99385,17 +99381,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -99591,13 +99587,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -99668,13 +99664,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -99818,17 +99814,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -100024,13 +100020,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -100101,13 +100097,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -100240,17 +100236,17 @@ public final class KafkaLawSpecTest {
               + " And (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField219"
-              + "x0 _match2__0__lawspecField219x1 ->"
-              + " _match2__0__lawspecField219x1 }) =="
+              + "cordMetadata _matchfield0__sentTo"
+              + " _matchfield1__sentAt ->"
+              + " _matchfield1__sentAt }) =="
               + " List::Nil())) And (commitTransaction"
               + " == Either::Right(unitValue))) And"
               + " (committedFrom (_let0__tp) (match"
               + " (_match1__1__md) {"
               + " lawtwin.kafka::type::RecordMetadata::Re"
-              + "cordMetadata _match2__0__lawspecField232"
-              + "x0 _match2__0__lawspecField232x1 ->"
-              + " _match2__0__lawspecField232x1 }) =="
+              + "cordMetadata _matchfield2__sentTo"
+              + " _matchfield3__sentAt ->"
+              + " _matchfield3__sentAt }) =="
               + " List::Cons(_input2,"
               + " List::Cons(_input3, List::Nil())))) }) = true",
           () ->
@@ -100446,13 +100442,13 @@ public final class KafkaLawSpecTest {
                                                                                               _match1__1__md,
                                                                                               64,
                                                                                               symbols,
-                                                                                              _match1721 ->
-                                                                                                  switch (_match1721.tag()) {
+                                                                                              _match1740 ->
+                                                                                                  switch (_match1740.tag()) {
                                                                                                     case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                         + "ordMetadata" -> {
-                                                                                                      var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                      var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                      yield _match2__0__lawspecField219x1;
+                                                                                                      var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                      var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                      yield _matchfield1__sentAt;
                                                                                                     }
                                                                                                     default ->
                                                                                                         throw new IllegalArgumentException("invalid constructor");
@@ -100523,13 +100519,13 @@ public final class KafkaLawSpecTest {
                                                                       _match1__1__md,
                                                                       64,
                                                                       symbols,
-                                                                      _match1721 ->
-                                                                          switch (_match1721.tag()) {
+                                                                      _match1740 ->
+                                                                          switch (_match1740.tag()) {
                                                                             case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                 + "ordMetadata" -> {
-                                                                              var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                              var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                              yield _match2__0__lawspecField232x1;
+                                                                              var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                              var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                              yield _matchfield3__sentAt;
                                                                             }
                                                                             default ->
                                                                                 throw new IllegalArgumentException("invalid constructor");
@@ -100804,17 +100800,17 @@ public final class KafkaLawSpecTest {
                         + " And (committedFrom (_let0__tp) (match"
                         + " (_match1__1__md) {"
                         + " lawtwin.kafka::type::RecordMetadata::Re"
-                        + "cordMetadata _match2__0__lawspecField219"
-                        + "x0 _match2__0__lawspecField219x1 ->"
-                        + " _match2__0__lawspecField219x1 }) =="
+                        + "cordMetadata _matchfield0__sentTo"
+                        + " _matchfield1__sentAt ->"
+                        + " _matchfield1__sentAt }) =="
                         + " List::Nil())) And (commitTransaction"
                         + " == Either::Right(unitValue))) And"
                         + " (committedFrom (_let0__tp) (match"
                         + " (_match1__1__md) {"
                         + " lawtwin.kafka::type::RecordMetadata::Re"
-                        + "cordMetadata _match2__0__lawspecField232"
-                        + "x0 _match2__0__lawspecField232x1 ->"
-                        + " _match2__0__lawspecField232x1 }) =="
+                        + "cordMetadata _matchfield2__sentTo"
+                        + " _matchfield3__sentAt ->"
+                        + " _matchfield3__sentAt }) =="
                         + " List::Cons(_input2,"
                         + " List::Cons(_input3, List::Nil())))) }) = true",
                     () ->
@@ -101018,13 +101014,13 @@ public final class KafkaLawSpecTest {
                                                                                                         _match1__1__md,
                                                                                                         64,
                                                                                                         symbols,
-                                                                                                        _match1721 ->
-                                                                                                            switch (_match1721.tag()) {
+                                                                                                        _match1740 ->
+                                                                                                            switch (_match1740.tag()) {
                                                                                                               case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                                                   + "ordMetadata" -> {
-                                                                                                                var _match2__0__lawspecField219x0 = _match1721.fields().get(0);
-                                                                                                                var _match2__0__lawspecField219x1 = _match1721.fields().get(1);
-                                                                                                                yield _match2__0__lawspecField219x1;
+                                                                                                                var _matchfield0__sentTo = _match1740.fields().get(0);
+                                                                                                                var _matchfield1__sentAt = _match1740.fields().get(1);
+                                                                                                                yield _matchfield1__sentAt;
                                                                                                               }
                                                                                                               default ->
                                                                                                                   throw new IllegalArgumentException("invalid constructor");
@@ -101095,13 +101091,13 @@ public final class KafkaLawSpecTest {
                                                                                 _match1__1__md,
                                                                                 64,
                                                                                 symbols,
-                                                                                _match1721 ->
-                                                                                    switch (_match1721.tag()) {
+                                                                                _match1740 ->
+                                                                                    switch (_match1740.tag()) {
                                                                                       case "lawtwin.kafka::type::RecordMetadata::Rec"
                                                                                           + "ordMetadata" -> {
-                                                                                        var _match2__0__lawspecField232x0 = _match1721.fields().get(0);
-                                                                                        var _match2__0__lawspecField232x1 = _match1721.fields().get(1);
-                                                                                        yield _match2__0__lawspecField232x1;
+                                                                                        var _matchfield2__sentTo = _match1740.fields().get(0);
+                                                                                        var _matchfield3__sentAt = _match1740.fields().get(1);
+                                                                                        yield _matchfield3__sentAt;
                                                                                       }
                                                                                       default ->
                                                                                           throw new IllegalArgumentException("invalid constructor");

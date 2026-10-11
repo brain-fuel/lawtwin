@@ -487,7 +487,8 @@ def helper(n, args, types, bits=64):
     if n == 'regexMatches':
         return regex_matches(args[0], args[1])
     if n == 'recorded':
-        return recorded(args[0], args[1])
+        return recorded(args[0], args[1],
+                        (lambda value: recorded_text(value, types[1])) if len(types) > 1 else None)
     if n == 'acquireResource':
         return acquire_resource(args[0])
     if n == 'releaseResource':
@@ -799,9 +800,9 @@ def recorded_root():
         folder = parent
 
 
-def recorded(key, value):
+def recorded(key, value, render_value=None):
     import os
-    text = render(value)
+    text = (render if render_value is None else render_value)(value)
     path = os.path.join(recorded_root(), *key.split('/'))
     if os.environ.get('LAWSPEC_UPDATE_RECORDED') == '1':
         os.makedirs(os.path.dirname(path), exist_ok=True)
@@ -821,6 +822,102 @@ def recorded(key, value):
             f'recorded/{key} differs: expected {stored}, actual {text}'
             ' (lawspec test --update-recorded records the new value)')
     return True
+
+
+def recorded_text(value, type_ref, field_types=None):
+    """Typed recording text, without rerunning native conversions or predicates.
+
+    ref:REQ-law-primitives ref:DEC-portable-exact-arithmetic
+    """
+    identities = {}
+
+    def quote(text):
+        return '"' + text.replace('\\', '\\\\').replace('"', '\\"') + '"'
+
+    def identity(kind, item):
+        known = identities.setdefault(kind, {})
+        key = id(item)
+        if key not in known:
+            known[key] = len(known) + 1
+        return known[key]
+
+    def reference(t):
+        if not isinstance(t, str):
+            return t
+        for name in ('List', 'Maybe', 'Nullable', 'Optional'):
+            if t.startswith(name + ' '):
+                inner = t[len(name) + 1:]
+                if inner.startswith('(') and inner.endswith(')'):
+                    inner = inner[1:-1]
+                return name, (reference(inner),)
+        if t.startswith('Either '):
+            return 'Either', tuple(reference(child) for child in either_arguments(t))
+        return t, ()
+
+    def float_text(v, width):
+        if math.isnan(v):
+            return f'float{width}NaN'
+        return f'float{width}Bits("{struct.pack(">f" if width == 32 else ">d", v).hex()}")'
+
+    def units(name, values):
+        return name + '([' + ', '.join(integer_text(v) for v in values) + '])'
+
+    def visit(v, input_type):
+        t = reference(input_type)
+        name, arguments = (t.name, t.arguments) if hasattr(t, 'name') else t
+        if name == 'List':
+            return '[' + ', '.join(visit(item, arguments[0]) for item in v) + ']'
+        if name in ('Nullable', 'Optional'):
+            if not v.present:
+                return 'null' if name == 'Nullable' else 'undefined'
+            return name.lower() + '(' + visit(v.value, arguments[0]) + ')'
+        if isinstance(v, DataValue):
+            if name == 'Maybe':
+                types = arguments if v.fields else ()
+            elif name == 'Either':
+                types = (arguments[0 if v.tag == 'Either::Left' else 1],)
+            else:
+                if field_types is None:
+                    raise TypeError('recording data requires its schema')
+                types = field_types(t, v)
+            tag = v.tag.split('::')[-1]
+            return tag if not v.fields else tag + '(' + ', '.join(
+                visit(item, child) for item, child in zip(v.fields, types)) + ')'
+        if name == 'Symbol':
+            return f'symbol({identity("symbol", v)}, {quote(v.description)})'
+        if name in ('Unit', 'Null', 'Undefined'):
+            return {'Unit': '()', 'Null': 'null', 'Undefined': 'undefined'}[name]
+        if name in ('Text', 'Char'):
+            return quote(v)
+        if name == 'Bytes':
+            return units('bytes', v)
+        if name in ('CodePointText', 'Utf16Text'):
+            return units('codePoints' if name == 'CodePointText' else 'utf16', v.units)
+        if name == 'Decimal':
+            sign, digits, exponent = v.as_tuple()
+            coefficient = parse_integer(''.join(map(str, digits))) * (-1 if sign else 1)
+            if not coefficient:
+                return '0e0'
+            while coefficient % 10 == 0:
+                coefficient //= 10
+                exponent += 1
+            return integer_text(coefficient) + 'e' + integer_text(exponent)
+        if name == 'Rational':
+            return f'rational({integer_text(v.numerator)}, {integer_text(v.denominator)})'
+        if name in ('Float32', 'Float64'):
+            return float_text(v, 32 if name == 'Float32' else 64)
+        if name in ('Complex64', 'Complex128'):
+            width = 32 if name == 'Complex64' else 64
+            return name + '(' + float_text(v.real, width) + ', ' + float_text(v.imag, width) + ')'
+        if name == 'Bool':
+            return 'true' if v else 'false'
+        if integer_type(name) or name in ('CodePoint', 'CodeUnit16'):
+            return integer_text(v)
+        if is_handle(v):
+            return name.split('::')[-1] + '#' + str(identity('handle:' + name, v))
+        raise TypeError('unsupported recorded type: ' + name)
+
+    return visit(value, type_ref)
 
 
 # Built-in resources (see LawSpec.Resources): a law acquires them before

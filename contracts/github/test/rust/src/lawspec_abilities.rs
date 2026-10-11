@@ -28,8 +28,8 @@ pub mod lawtwin_github {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_47(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_6abddcfe(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -39,12 +39,234 @@ pub mod lawtwin_github {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Label>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesListMilestones, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Milestone>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(self, value0, value1, value2, value3, value4, value5, value6))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_github::IssuesApi for Reference {
         fn issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Label> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_43(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_074d2d44(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -59,7 +281,7 @@ pub mod lawtwin_github {
 
         fn issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_37(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_66a10480(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -73,7 +295,7 @@ pub mod lawtwin_github {
 
         fn issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_41(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_caf28965(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -87,7 +309,7 @@ pub mod lawtwin_github {
 
         fn issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_39(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_91dc9b24(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -101,7 +323,7 @@ pub mod lawtwin_github {
 
         fn issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_45(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_a2730891(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -116,7 +338,7 @@ pub mod lawtwin_github {
 
         fn issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Milestone> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_44(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_b04e2ebe(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -134,7 +356,7 @@ pub mod lawtwin_github {
 
         fn issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_38(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_819e36f6(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -148,7 +370,7 @@ pub mod lawtwin_github {
 
         fn issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_42(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_53f7b6bc(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -162,7 +384,7 @@ pub mod lawtwin_github {
 
         fn issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_40(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_1798b0e2(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -176,7 +398,7 @@ pub mod lawtwin_github {
 
         fn issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_46(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_cc0bfe48(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -775,8 +997,8 @@ pub mod lawtwin_github_laws {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_47(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_6abddcfe(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -786,12 +1008,234 @@ pub mod lawtwin_github_laws {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Label>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesListMilestones, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Milestone>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(self, value0, value1, value2, value3, value4, value5, value6))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_github::IssuesApi for Reference {
         fn issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Label> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_43(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_074d2d44(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -806,7 +1250,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_37(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_66a10480(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -820,7 +1264,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_41(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_caf28965(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -834,7 +1278,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_39(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_91dc9b24(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -848,7 +1292,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_45(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_a2730891(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -863,7 +1307,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Milestone> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_44(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_b04e2ebe(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -881,7 +1325,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_38(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_819e36f6(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -895,7 +1339,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_42(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_53f7b6bc(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -909,7 +1353,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_40(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_1798b0e2(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -923,7 +1367,7 @@ pub mod lawtwin_github_laws {
 
         fn issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_46(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_cc0bfe48(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -950,8 +1394,8 @@ pub mod contracttest_github {
     impl Reference {
         /// The handler for a law; it evaluates its clauses in a copy of the law's context.
         pub fn new(ctx: &ls::Context) -> Self {
-            let ctx = ctx.clone();
-            let state = (|| -> ls::Result<_> { Ok(crate::lawspec_definitions::typed::referenceStart_47(
+            let mut ctx = ctx.clone();
+            let state = (|| -> ls::Result<_> { let ctx = &mut ctx; Ok(crate::lawspec_definitions::typed::referenceStart_6abddcfe(
                 (),
             )?) })().unwrap_or_else(|error| panic!("{error}"));
             Self { ctx: std::sync::Mutex::new(ctx), state: std::sync::Mutex::new(state) }
@@ -961,12 +1405,234 @@ pub mod contracttest_github {
         pub fn start() -> Self {
             Self::new(&ls::Context::default())
         }
+
+        /// The handler's state, in its native types: a snapshot to show or keep.
+        pub fn state(&self) -> crate::lawspec_data::State {
+            let state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+            ls::fast::Public::to_native(&*state)
+        }
+
+        /// Replaces the handler's state, as an operation would: to force it, reset it or restore a snapshot.
+        pub fn set_state(&self, state: crate::lawspec_data::State) {
+            let next = <crate::lawspec_definitions::typed::State as ls::fast::Public>::from_native(state);
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = next;
+        }
+
+        /// The typed state, shared rather than copied.
+        pub fn typed_state(&self) -> crate::lawspec_definitions::typed::State {
+            self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone()
+        }
+
+        /// Replaces the typed state.
+        pub fn set_typed_state(&self, state: crate::lawspec_definitions::typed::State) {
+            *self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner()) = state;
+        }
+
+        /// issuesListLabelsForRepo, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Label>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListLabelsForRepo(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteLabel(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateLabel, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> std::result::Result<crate::lawspec_data::Label, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateLabel(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesListMilestones, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::result::Result<std::vec::Vec<crate::lawspec_data::Milestone>, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesListMilestones(self, value0, value1, value2, value3, value4, value5, value6))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesCreateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesCreateMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesGetMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesGetMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesDeleteMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> std::result::Result<(), crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesDeleteMilestone(self, value0, value1, value2))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
+
+        /// issuesUpdateMilestone, with the failure it raises as Err rather than a panic.
+        pub fn try_issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> std::result::Result<crate::lawspec_data::Milestone, crate::lawspec_data::ApiError> {
+            match ls::fast::attempt("lawspec::ability::Fail(lawtwin.github.model::type::ApiError)", || Ok(<Self as super::lawtwin_github::IssuesApi>::issuesUpdateMilestone(self, value0, value1, value2, value3))) {
+                Ok(Ok(result)) => Ok(result),
+                Ok(Err(failure)) => {
+                    let mut ctx = self.ctx.lock().unwrap_or_else(|poisoned| poisoned.into_inner()).clone();
+                    let ctx = &mut ctx;
+                    Err({
+                        let schema = crate::lawspec_schema::schema().unwrap_or_else(|error| panic!("{error}"));
+                        let result = schema.native_value_with_context(failure, &ls::TypeRef::named(
+                            "lawtwin.github.model::type::ApiError",
+                            vec![],
+                        ), 64, ctx).unwrap_or_else(|error| panic!("{error}"));
+                        <crate::lawspec_data::ApiError as ls::FromValue>::from_value(result).unwrap_or_else(|error| panic!("{error}"))
+                    })
+                }
+                Err(error) => panic!("{error}"),
+            }
+        }
     }
 
     impl super::lawtwin_github::IssuesApi for Reference {
         fn issuesListLabelsForRepo(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<i64>, value3: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Label> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_43(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListLabelsForRepo_074d2d44(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -981,7 +1647,7 @@ pub mod contracttest_github {
 
         fn issuesCreateLabel(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateLabelBody) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_37(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateLabel_66a10480(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -995,7 +1661,7 @@ pub mod contracttest_github {
 
         fn issuesGetLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_41(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetLabel_caf28965(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1009,7 +1675,7 @@ pub mod contracttest_github {
 
         fn issuesDeleteLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_39(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteLabel_91dc9b24(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1023,7 +1689,7 @@ pub mod contracttest_github {
 
         fn issuesUpdateLabel(&self, value0: std::string::String, value1: std::string::String, value2: std::string::String, value3: std::option::Option<crate::lawspec_data::IssuesUpdateLabelBody>) -> crate::lawspec_data::Label {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_45(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateLabel_a2730891(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1038,7 +1704,7 @@ pub mod contracttest_github {
 
         fn issuesListMilestones(&self, value0: std::string::String, value1: std::string::String, value2: std::option::Option<crate::lawspec_data::IssuesListMilestonesState>, value3: std::option::Option<crate::lawspec_data::IssuesListMilestonesSort>, value4: std::option::Option<crate::lawspec_data::IssuesListMilestonesDirection>, value5: std::option::Option<i64>, value6: std::option::Option<i64>) -> std::vec::Vec<crate::lawspec_data::Milestone> {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_44(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesListMilestones_b04e2ebe(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1056,7 +1722,7 @@ pub mod contracttest_github {
 
         fn issuesCreateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: crate::lawspec_data::IssuesCreateMilestoneBody) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_38(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesCreateMilestone_819e36f6(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1070,7 +1736,7 @@ pub mod contracttest_github {
 
         fn issuesGetMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_42(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesGetMilestone_53f7b6bc(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1084,7 +1750,7 @@ pub mod contracttest_github {
 
         fn issuesDeleteMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64) -> () {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_40(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesDeleteMilestone_1798b0e2(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),
@@ -1098,7 +1764,7 @@ pub mod contracttest_github {
 
         fn issuesUpdateMilestone(&self, value0: std::string::String, value1: std::string::String, value2: i64, value3: std::option::Option<crate::lawspec_data::IssuesUpdateMilestoneBody>) -> crate::lawspec_data::Milestone {
             let mut state = self.state.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
-            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_46(
+            let pair = crate::lawspec_definitions::typed::referenceIssuesUpdateMilestone_cc0bfe48(
                 state.clone(),
                 <ls::fast::Text as ls::fast::Public>::from_native(value0),
                 <ls::fast::Text as ls::fast::Public>::from_native(value1),

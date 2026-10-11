@@ -89,7 +89,7 @@ type Cluster struct {
 // NewCluster makes cluster; symbols is the context of the law it serves.
 func NewCluster(symbols map[string]*LawSpecSymbol) *Cluster {
 	handler := &Cluster{symbols: symbols}
-	handler.state = lsfClusterStart_42(lsfUnit{})
+	handler.state = lsfClusterStart_659e952a(lsfUnit{})
 	return handler
 }
 
@@ -101,7 +101,7 @@ func StartCluster() *Cluster {
 func (handler *Cluster) CreateTopicsRequest(value0 string, value1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreateTopic_30(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	pair := lsfClusterCreateTopic_25a8c8e9(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -109,7 +109,7 @@ func (handler *Cluster) CreateTopicsRequest(value0 string, value1 int32) {
 func (handler *Cluster) CreatePartitionsRequest(value0 string, value1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreatePartitions_29(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	pair := lsfClusterCreatePartitions_0f2bdce3(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -117,7 +117,7 @@ func (handler *Cluster) CreatePartitionsRequest(value0 string, value1 int32) {
 func (handler *Cluster) MetadataRequest(value0 string) LawSpecMaybe[int32] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterMetadataRequest_40(handler.state, lsfFromnative_437d0abf423f(value0))
+	pair := lsfClusterMetadataRequest_3507727c(handler.state, lsfFromnative_437d0abf423f(value0))
 	handler.state = pair.fSecond
 	return lsfTonative_e0f8ce0ed062(pair.fFirst)
 }
@@ -125,7 +125,7 @@ func (handler *Cluster) MetadataRequest(value0 string) LawSpecMaybe[int32] {
 func (handler *Cluster) ProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterProduceRequest_41(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c818bd20f406(value1), lsfFromnative_e3583a5b5bdc(value2))
+	pair := lsfClusterProduceRequest_619c7f1f(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c818bd20f406(value1), lsfFromnative_e3583a5b5bdc(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_44a08172da10(pair.fFirst)
 }
@@ -133,7 +133,7 @@ func (handler *Cluster) ProduceRequest(value0 TopicPartition, value1 LawSpecMayb
 func (handler *Cluster) FetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) FetchResult {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchRequest_34(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_a519f593a6ed(value3))
+	pair := lsfClusterFetchRequest_53f6507d(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_a519f593a6ed(value3))
 	handler.state = pair.fSecond
 	return lsfTonative_d2a1db54643f(pair.fFirst)
 }
@@ -141,7 +141,7 @@ func (handler *Cluster) FetchRequest(value0 TopicPartition, value1 int64, value2
 func (handler *Cluster) ListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterListOffsets_39(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
+	pair := lsfClusterListOffsets_1dede442(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_44a08172da10(pair.fFirst)
 }
@@ -149,7 +149,7 @@ func (handler *Cluster) ListOffsetsRequest(value0 TopicPartition, value1 OffsetS
 func (handler *Cluster) InitProducerIdRequest(value0 LawSpecMaybe[string]) ProducerIdAndEpoch {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterInitProducerIdRequest_36(handler.state, lsfFromnative_01d86fc44f8c(value0))
+	pair := lsfClusterInitProducerIdRequest_f11b7e7d(handler.state, lsfFromnative_01d86fc44f8c(value0))
 	handler.state = pair.fSecond
 	return lsfTonative_6a5ea41697b3(pair.fFirst)
 }
@@ -157,7 +157,7 @@ func (handler *Cluster) InitProducerIdRequest(value0 LawSpecMaybe[string]) Produ
 func (handler *Cluster) AddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterAddPartitionsToTxnRequest_27(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_3250492fe9ac(value3))
+	pair := lsfClusterAddPartitionsToTxnRequest_026ba83d(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_3250492fe9ac(value3))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -165,7 +165,7 @@ func (handler *Cluster) AddPartitionsToTxnRequest(value0 string, value1 int64, v
 func (handler *Cluster) TxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterTxnOffsetCommitRequest_44(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_437d0abf423f(value3), lsfFromnative_582052f40a9c(value4))
+	pair := lsfClusterTxnOffsetCommitRequest_08ba35de(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_437d0abf423f(value3), lsfFromnative_582052f40a9c(value4))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -173,7 +173,7 @@ func (handler *Cluster) TxnOffsetCommitRequest(value0 string, value1 int64, valu
 func (handler *Cluster) EndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterEndTxnRequest_32(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_d267428fb2ca(value3))
+	pair := lsfClusterEndTxnRequest_e8879acb(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_44a08172da10(value1), lsfFromnative_07dabd732290(value2), lsfFromnative_d267428fb2ca(value3))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -181,7 +181,7 @@ func (handler *Cluster) EndTxnRequest(value0 string, value1 int64, value2 int16,
 func (handler *Cluster) JoinGroupRequest(value0 string, value1 string, value2 []string) int32 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterJoinGroup_37(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
+	pair := lsfClusterJoinGroup_2f7f09cb(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_b862204e9be7(pair.fFirst)
 }
@@ -189,7 +189,7 @@ func (handler *Cluster) JoinGroupRequest(value0 string, value1 string, value2 []
 func (handler *Cluster) SyncGroupRequest(value0 string, value1 string, value2 int32) []TopicPartition {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterSyncGroup_43(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	pair := lsfClusterSyncGroup_fa44a945(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_3250492fe9ac(pair.fFirst)
 }
@@ -197,7 +197,7 @@ func (handler *Cluster) SyncGroupRequest(value0 string, value1 string, value2 in
 func (handler *Cluster) HeartbeatRequest(value0 string, value1 string, value2 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterHeartbeat_35(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	pair := lsfClusterHeartbeat_3af82cc2(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -205,7 +205,7 @@ func (handler *Cluster) HeartbeatRequest(value0 string, value1 string, value2 in
 func (handler *Cluster) LeaveGroupRequest(value0 string, value1 string) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterLeaveGroup_38(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
+	pair := lsfClusterLeaveGroup_cd94c353(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -213,7 +213,7 @@ func (handler *Cluster) LeaveGroupRequest(value0 string, value1 string) {
 func (handler *Cluster) DescribeGroupRequest(value0 string) GroupView {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterDescribeGroup_31(handler.state, lsfFromnative_437d0abf423f(value0))
+	pair := lsfClusterDescribeGroup_c1f8efd4(handler.state, lsfFromnative_437d0abf423f(value0))
 	handler.state = pair.fSecond
 	return lsfTonative_9b6e0477a826(pair.fFirst)
 }
@@ -221,7 +221,7 @@ func (handler *Cluster) DescribeGroupRequest(value0 string) GroupView {
 func (handler *Cluster) OffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCommitOffsets_28(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
+	pair := lsfClusterCommitOffsets_d3b39e4c(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -229,7 +229,7 @@ func (handler *Cluster) OffsetCommitRequest(value0 string, value1 string, value2
 func (handler *Cluster) OffsetFetchRequest(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchOffset_33(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
+	pair := lsfClusterFetchOffset_53ffef89(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
 	handler.state = pair.fSecond
 	return lsfTonative_c09136e29464(pair.fFirst)
 }
@@ -237,7 +237,7 @@ func (handler *Cluster) OffsetFetchRequest(value0 string, value1 TopicPartition)
 func (handler *Cluster) CreateTopic(value0 string, value1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreateTopic_30(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	pair := lsfClusterCreateTopic_25a8c8e9(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -245,7 +245,7 @@ func (handler *Cluster) CreateTopic(value0 string, value1 int32) {
 func (handler *Cluster) CreatePartitions(value0 string, value1 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCreatePartitions_29(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
+	pair := lsfClusterCreatePartitions_0f2bdce3(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_b862204e9be7(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -253,7 +253,7 @@ func (handler *Cluster) CreatePartitions(value0 string, value1 int32) {
 func (handler *Cluster) PartitionsFor(value0 string) LawSpecMaybe[int32] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterMetadataRequest_40(handler.state, lsfFromnative_437d0abf423f(value0))
+	pair := lsfClusterMetadataRequest_3507727c(handler.state, lsfFromnative_437d0abf423f(value0))
 	handler.state = pair.fSecond
 	return lsfTonative_e0f8ce0ed062(pair.fFirst)
 }
@@ -261,7 +261,7 @@ func (handler *Cluster) PartitionsFor(value0 string) LawSpecMaybe[int32] {
 func (handler *Cluster) ListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) int64 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterListOffsets_39(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
+	pair := lsfClusterListOffsets_1dede442(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_c55be5a8a1f1(value1), lsfFromnative_a519f593a6ed(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_44a08172da10(pair.fFirst)
 }
@@ -269,7 +269,7 @@ func (handler *Cluster) ListOffsets(value0 TopicPartition, value1 OffsetSpec, va
 func (handler *Cluster) JoinGroup(value0 string, value1 string, value2 []string) int32 {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterJoinGroup_37(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
+	pair := lsfClusterJoinGroup_2f7f09cb(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_b862204e9be7(pair.fFirst)
 }
@@ -277,7 +277,7 @@ func (handler *Cluster) JoinGroup(value0 string, value1 string, value2 []string)
 func (handler *Cluster) SyncGroup(value0 string, value1 string, value2 int32) []TopicPartition {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterSyncGroup_43(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	pair := lsfClusterSyncGroup_fa44a945(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
 	handler.state = pair.fSecond
 	return lsfTonative_3250492fe9ac(pair.fFirst)
 }
@@ -285,7 +285,7 @@ func (handler *Cluster) SyncGroup(value0 string, value1 string, value2 int32) []
 func (handler *Cluster) Heartbeat(value0 string, value1 string, value2 int32) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterHeartbeat_35(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
+	pair := lsfClusterHeartbeat_3af82cc2(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -293,7 +293,7 @@ func (handler *Cluster) Heartbeat(value0 string, value1 string, value2 int32) {
 func (handler *Cluster) LeaveGroup(value0 string, value1 string) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterLeaveGroup_38(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
+	pair := lsfClusterLeaveGroup_cd94c353(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -301,7 +301,7 @@ func (handler *Cluster) LeaveGroup(value0 string, value1 string) {
 func (handler *Cluster) DescribeGroup(value0 string) GroupView {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterDescribeGroup_31(handler.state, lsfFromnative_437d0abf423f(value0))
+	pair := lsfClusterDescribeGroup_c1f8efd4(handler.state, lsfFromnative_437d0abf423f(value0))
 	handler.state = pair.fSecond
 	return lsfTonative_9b6e0477a826(pair.fFirst)
 }
@@ -309,7 +309,7 @@ func (handler *Cluster) DescribeGroup(value0 string) GroupView {
 func (handler *Cluster) CommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterCommitOffsets_28(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
+	pair := lsfClusterCommitOffsets_d3b39e4c(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_b862204e9be7(value2), lsfFromnative_582052f40a9c(value3))
 	handler.state = pair.fSecond
 	_ = pair.fFirst
 }
@@ -317,9 +317,446 @@ func (handler *Cluster) CommitOffsets(value0 string, value1 string, value2 int32
 func (handler *Cluster) FetchOffset(value0 string, value1 TopicPartition) LawSpecMaybe[int64] {
 	handler.lock.Lock()
 	defer handler.lock.Unlock()
-	pair := lsfClusterFetchOffset_33(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
+	pair := lsfClusterFetchOffset_53ffef89(handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_57a515e0e489(value1))
 	handler.state = pair.fSecond
 	return lsfTonative_c09136e29464(pair.fFirst)
+}
+
+// State is the handler's state, in its native types: a snapshot to show or keep.
+func (handler *Cluster) State() BrokerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return lsfTonative_49de88d0a810(handler.state)
+}
+
+// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
+func (handler *Cluster) SetState(state BrokerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = lsfFromnative_49de88d0a810(state)
+}
+
+// TypedState is the typed state, shared rather than copied.
+func (handler *Cluster) TypedState() *lsfBrokerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return handler.state
+}
+
+// SetTypedState replaces the typed state.
+func (handler *Cluster) SetTypedState(state *lsfBrokerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = state
+}
+
+// TryCreateTopicsRequest is CreateTopicsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryCreateTopicsRequest(value0 string, value1 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.CreateTopicsRequest(value0, value1)
+	return nil
+}
+
+// TryCreatePartitionsRequest is CreatePartitionsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryCreatePartitionsRequest(value0 string, value1 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.CreatePartitionsRequest(value0, value1)
+	return nil
+}
+
+// TryProduceRequest is ProduceRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryProduceRequest(value0 TopicPartition, value1 LawSpecMaybe[ProducerTag], value2 []Record) (result int64, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.ProduceRequest(value0, value1, value2), nil
+}
+
+// TryFetchRequest is FetchRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryFetchRequest(value0 TopicPartition, value1 int64, value2 int32, value3 IsolationLevel) (result FetchResult, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.FetchRequest(value0, value1, value2, value3), nil
+}
+
+// TryListOffsetsRequest is ListOffsetsRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryListOffsetsRequest(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) (result int64, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.ListOffsetsRequest(value0, value1, value2), nil
+}
+
+// TryInitProducerIdRequest is InitProducerIdRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryInitProducerIdRequest(value0 LawSpecMaybe[string]) (result ProducerIdAndEpoch, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.InitProducerIdRequest(value0), nil
+}
+
+// TryAddPartitionsToTxnRequest is AddPartitionsToTxnRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryAddPartitionsToTxnRequest(value0 string, value1 int64, value2 int16, value3 []TopicPartition) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.AddPartitionsToTxnRequest(value0, value1, value2, value3)
+	return nil
+}
+
+// TryTxnOffsetCommitRequest is TxnOffsetCommitRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryTxnOffsetCommitRequest(value0 string, value1 int64, value2 int16, value3 string, value4 []OffsetEntry) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.TxnOffsetCommitRequest(value0, value1, value2, value3, value4)
+	return nil
+}
+
+// TryEndTxnRequest is EndTxnRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryEndTxnRequest(value0 string, value1 int64, value2 int16, value3 bool) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.EndTxnRequest(value0, value1, value2, value3)
+	return nil
+}
+
+// TryJoinGroupRequest is JoinGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryJoinGroupRequest(value0 string, value1 string, value2 []string) (result int32, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.JoinGroupRequest(value0, value1, value2), nil
+}
+
+// TrySyncGroupRequest is SyncGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TrySyncGroupRequest(value0 string, value1 string, value2 int32) (result []TopicPartition, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.SyncGroupRequest(value0, value1, value2), nil
+}
+
+// TryHeartbeatRequest is HeartbeatRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryHeartbeatRequest(value0 string, value1 string, value2 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.HeartbeatRequest(value0, value1, value2)
+	return nil
+}
+
+// TryLeaveGroupRequest is LeaveGroupRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryLeaveGroupRequest(value0 string, value1 string) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.LeaveGroupRequest(value0, value1)
+	return nil
+}
+
+// TryOffsetCommitRequest is OffsetCommitRequest, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryOffsetCommitRequest(value0 string, value1 string, value2 int32, value3 []OffsetEntry) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.OffsetCommitRequest(value0, value1, value2, value3)
+	return nil
+}
+
+// TryCreateTopic is CreateTopic, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryCreateTopic(value0 string, value1 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.CreateTopic(value0, value1)
+	return nil
+}
+
+// TryCreatePartitions is CreatePartitions, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryCreatePartitions(value0 string, value1 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.CreatePartitions(value0, value1)
+	return nil
+}
+
+// TryListOffsets is ListOffsets, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryListOffsets(value0 TopicPartition, value1 OffsetSpec, value2 IsolationLevel) (result int64, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.ListOffsets(value0, value1, value2), nil
+}
+
+// TryJoinGroup is JoinGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryJoinGroup(value0 string, value1 string, value2 []string) (result int32, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.JoinGroup(value0, value1, value2), nil
+}
+
+// TrySyncGroup is SyncGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TrySyncGroup(value0 string, value1 string, value2 int32) (result []TopicPartition, err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	return handler.SyncGroup(value0, value1, value2), nil
+}
+
+// TryHeartbeat is Heartbeat, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryHeartbeat(value0 string, value1 string, value2 int32) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.Heartbeat(value0, value1, value2)
+	return nil
+}
+
+// TryLeaveGroup is LeaveGroup, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryLeaveGroup(value0 string, value1 string) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.LeaveGroup(value0, value1)
+	return nil
+}
+
+// TryCommitOffsets is CommitOffsets, with the failure it raises returned as a *LawSpecRaised[KafkaError] error rather than a panic.
+func (handler *Cluster) TryCommitOffsets(value0 string, value1 string, value2 int32, value3 []OffsetEntry) (err error) {
+	defer func() {
+		if problem := recover(); problem != nil {
+			if failure, ok := problem.(*LawSpecFailure); ok && failure.Ability == "lawspec::ability::Fail(lawtwin.kafka.model::type::KafkaError)" {
+				symbols := handler.symbols
+				schema := _lawSpecDefinitionSchema
+				bits := 64
+				_, _ = schema, bits
+				err = &LawSpecRaised[KafkaError]{Value: lawSpecKafkaErrorCodec(schema, bits, symbols).toNative(failure.Value)}
+				return
+			}
+			panic(problem)
+		}
+	}()
+	handler.CommitOffsets(value0, value1, value2, value3)
+	return nil
 }
 
 // MurmurPartitioner is the spec handler murmurPartitioner for Partitioner, with its state typed.
@@ -339,324 +776,317 @@ func StartMurmurPartitioner() *MurmurPartitioner {
 }
 
 func (handler *MurmurPartitioner) ChoosePartition(value0 LawSpecMaybe[[]byte], value1 int32) int32 {
-	result := lsfMurmurPartitionerChoosePartition_242(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1))
+	result := lsfMurmurPartitionerChoosePartition_5048c35d(lsfFromnative_b276e66efd09(value0), lsfFromnative_b862204e9be7(value1))
 	return lsfTonative_b862204e9be7(result)
 }
 
-// KafkaProducer is the spec handler kafkaProducer for Producer.
+// KafkaProducer is the spec handler kafkaProducer for Producer, with its state typed.
 type KafkaProducer struct {
 	symbols map[string]*LawSpecSymbol
-	state   LawSpecValue
+	state   *lsfProducerState
+	lock    lsfLock
 }
 
 // NewKafkaProducer makes kafkaProducer; symbols is the context of the law it serves.
 func NewKafkaProducer(symbols map[string]*LawSpecSymbol) *KafkaProducer {
 	handler := &KafkaProducer{symbols: symbols}
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	handler.state = lawSpecEvaluate105(symbols, lsAbsent("Unit"))
+	handler.state = lsfKafkaProducerStart_58ddcfc8(lsfUnit{})
 	return handler
 }
 
+// StartKafkaProducer makes kafkaProducer on its own, outside any law: the embedding entry point.
+func StartKafkaProducer() *KafkaProducer {
+	return NewKafkaProducer(map[string]*LawSpecSymbol{})
+}
+
 func (handler *KafkaProducer) Send(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate104(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerSend_a4612365(handler.symbols, handler.state, lsfFromnative_b2152710dfac(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_f9a3e61df1f3(pair.fFirst)
 }
 
 func (handler *KafkaProducer) Flush() {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate101(symbols, handler.state))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerFlush_584e906f(handler.state)
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *KafkaProducer) EnableIdempotence() LawSpecEither[KafkaError, ProducerIdAndEpoch] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate100(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerEnableIdempotence_a79d2db8(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_b201d5315681(pair.fFirst)
 }
 
 func (handler *KafkaProducer) RetryLastSend() LawSpecEither[KafkaError, RecordMetadata] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate103(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerRetryLastSend_9cbd6c72(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_f9a3e61df1f3(pair.fFirst)
 }
 
 func (handler *KafkaProducer) ProducerIdentity() LawSpecMaybe[ProducerIdAndEpoch] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsMaybeCodec(schema, bits, lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate102(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaProducerProducerIdentity_a0ee547d(handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_99552686984c(pair.fFirst)
 }
 
-// KafkaConsumer is the spec handler kafkaConsumer for Consumer.
+// State is the handler's state, in its native types: a snapshot to show or keep.
+func (handler *KafkaProducer) State() ProducerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return lsfTonative_5e5d2c3fa1a7(handler.state)
+}
+
+// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
+func (handler *KafkaProducer) SetState(state ProducerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = lsfFromnative_5e5d2c3fa1a7(state)
+}
+
+// TypedState is the typed state, shared rather than copied.
+func (handler *KafkaProducer) TypedState() *lsfProducerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return handler.state
+}
+
+// SetTypedState replaces the typed state.
+func (handler *KafkaProducer) SetTypedState(state *lsfProducerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = state
+}
+
+// KafkaConsumer is the spec handler kafkaConsumer for Consumer, with its state typed.
 type KafkaConsumer struct {
 	symbols map[string]*LawSpecSymbol
-	state   LawSpecValue
+	state   *lsfConsumerState
+	lock    lsfLock
 }
 
 // NewKafkaConsumer makes kafkaConsumer; symbols is the context of the law it serves.
 func NewKafkaConsumer(symbols map[string]*LawSpecSymbol) *KafkaConsumer {
 	handler := &KafkaConsumer{symbols: symbols}
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	handler.state = lawSpecEvaluate98(symbols, lsAbsent("Unit"))
+	handler.state = lsfKafkaConsumerStart_9e580acc(lsfUnit{})
 	return handler
 }
 
+// StartKafkaConsumer makes kafkaConsumer on its own, outside any law: the embedding entry point.
+func StartKafkaConsumer() *KafkaConsumer {
+	return NewKafkaConsumer(map[string]*LawSpecSymbol{})
+}
+
 func (handler *KafkaConsumer) Assign(value0 []TopicPartition) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate90(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerAssign_6414ad54(handler.state, lsfFromnative_3250492fe9ac(value0))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *KafkaConsumer) Subscribe(value0 string, value1 string, value2 []string) LawSpecEither[KafkaError, []TopicPartition] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsScalarCodec[string](schema, bits, "Text")
-	codec2 := lsListCodec(schema, bits, lsScalarCodec[string](schema, bits, "Text"), symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate99(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1), codec2.fromNative(value2)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerSubscribe_ce34eaf5(handler.symbols, handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_437d0abf423f(value1), lsfFromnative_8ec0351dc657(value2))
+	handler.state = pair.fSecond
+	return lsfTonative_479a8e1cd590(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) Poll(value0 int32) LawSpecEither[KafkaError, []ConsumerRecord] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[int32](schema, bits, "Int32")
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsListCodec(schema, bits, lawSpecConsumerRecordCodec(schema, bits, symbols), symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate94(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerPoll_591504e0(handler.symbols, handler.state, lsfFromnative_b862204e9be7(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_88281415992f(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) CommitSync() LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate92(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerCommitSync_d47684fe(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) Seek(value0 TopicPartition, value1 int64) LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	codec1 := lsScalarCodec[int64](schema, bits, "Int64")
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate96(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerSeek_5fe046a7(handler.state, lsfFromnative_57a515e0e489(value0), lsfFromnative_44a08172da10(value1))
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) Position(value0 TopicPartition) LawSpecEither[KafkaError, int64] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate95(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerPosition_7784665f(handler.symbols, handler.state, lsfFromnative_57a515e0e489(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_aff9cc782806(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) CommittedOffset(value0 TopicPartition) LawSpecMaybe[int64] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecTopicPartitionCodec(schema, bits, symbols)
-	resultCodec := lsMaybeCodec(schema, bits, lsScalarCodec[int64](schema, bits, "Int64"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate93(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerCommittedOffset_c045e1a8(handler.symbols, handler.state, lsfFromnative_57a515e0e489(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_c09136e29464(pair.fFirst)
 }
 
 func (handler *KafkaConsumer) SetIsolationLevel(value0 IsolationLevel) {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecIsolationLevelCodec(schema, bits, symbols)
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate97(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerSetIsolationLevel_bc2459d3(handler.state, lsfFromnative_a519f593a6ed(value0))
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
 func (handler *KafkaConsumer) Close() {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsScalarCodec[LawSpecUnit](schema, bits, "Unit")
-	result, next := lsPairFields(lawSpecEvaluate91(symbols, handler.state))
-	handler.state = next
-	_ = resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaConsumerClose_ece19793(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	_ = pair.fFirst
 }
 
-// KafkaTransactions is the spec handler kafkaTransactions for Transactions.
+// State is the handler's state, in its native types: a snapshot to show or keep.
+func (handler *KafkaConsumer) State() ConsumerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return lsfTonative_7de2ae0da384(handler.state)
+}
+
+// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
+func (handler *KafkaConsumer) SetState(state ConsumerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = lsfFromnative_7de2ae0da384(state)
+}
+
+// TypedState is the typed state, shared rather than copied.
+func (handler *KafkaConsumer) TypedState() *lsfConsumerState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return handler.state
+}
+
+// SetTypedState replaces the typed state.
+func (handler *KafkaConsumer) SetTypedState(state *lsfConsumerState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = state
+}
+
+// KafkaTransactions is the spec handler kafkaTransactions for Transactions, with its state typed.
 type KafkaTransactions struct {
 	symbols map[string]*LawSpecSymbol
-	state   LawSpecValue
+	state   *lsfTransactionState
+	lock    lsfLock
 }
 
 // NewKafkaTransactions makes kafkaTransactions; symbols is the context of the law it serves.
 func NewKafkaTransactions(symbols map[string]*LawSpecSymbol) *KafkaTransactions {
 	handler := &KafkaTransactions{symbols: symbols}
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	handler.state = lawSpecEvaluate113(symbols, lsAbsent("Unit"))
+	handler.state = lsfKafkaTransactionsStart_68a77cf3(lsfUnit{})
 	return handler
 }
 
+// StartKafkaTransactions makes kafkaTransactions on its own, outside any law: the embedding entry point.
+func StartKafkaTransactions() *KafkaTransactions {
+	return NewKafkaTransactions(map[string]*LawSpecSymbol{})
+}
+
 func (handler *KafkaTransactions) InitTransactions(value0 string) LawSpecEither[KafkaError, ProducerIdAndEpoch] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecProducerIdAndEpochCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate110(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsInitTransactions_96f85461(handler.symbols, handler.state, lsfFromnative_437d0abf423f(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_b201d5315681(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) BeginTransaction() LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate108(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsBeginTransaction_3c1e648e(handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) AddPartitionsToTransaction(value0 []TopicPartition) LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsListCodec(schema, bits, lawSpecTopicPartitionCodec(schema, bits, symbols), symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate107(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsAddPartitionsToTransaction_3d7d0621(handler.symbols, handler.state, lsfFromnative_3250492fe9ac(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) SendInTransaction(value0 ProducerRecord) LawSpecEither[KafkaError, RecordMetadata] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lawSpecProducerRecordCodec(schema, bits, symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lawSpecRecordMetadataCodec(schema, bits, symbols), symbols)
-	result, next := lsPairFields(lawSpecEvaluate111(symbols, handler.state, codec0.fromNative(value0)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsSendInTransaction_09c804c7(handler.symbols, handler.state, lsfFromnative_b2152710dfac(value0))
+	handler.state = pair.fSecond
+	return lsfTonative_f9a3e61df1f3(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) SendOffsetsToTransaction(value0 string, value1 []OffsetEntry) LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	codec0 := lsScalarCodec[string](schema, bits, "Text")
-	codec1 := lsListCodec(schema, bits, lawSpecOffsetEntryCodec(schema, bits, symbols), symbols)
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate112(symbols, handler.state, codec0.fromNative(value0), codec1.fromNative(value1)))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsSendOffsetsToTransaction_d24938fc(handler.symbols, handler.state, lsfFromnative_437d0abf423f(value0), lsfFromnative_582052f40a9c(value1))
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) CommitTransaction() LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate109(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsCommitTransaction_e0a5e067(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
 }
 
 func (handler *KafkaTransactions) AbortTransaction() LawSpecEither[KafkaError, LawSpecUnit] {
-	symbols := handler.symbols
-	_ = symbols
-	schema := _lawSpecDefinitionSchema
-	bits := 64
-	_, _ = schema, bits
-	resultCodec := lsEitherCodec(schema, bits, lawSpecKafkaErrorCodec(schema, bits, symbols), lsScalarCodec[LawSpecUnit](schema, bits, "Unit"), symbols)
-	result, next := lsPairFields(lawSpecEvaluate106(symbols, handler.state))
-	handler.state = next
-	return resultCodec.toNative(result)
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	pair := lsfKafkaTransactionsAbortTransaction_a2a1e35e(handler.symbols, handler.state)
+	handler.state = pair.fSecond
+	return lsfTonative_6c1d71d067da(pair.fFirst)
+}
+
+// State is the handler's state, in its native types: a snapshot to show or keep.
+func (handler *KafkaTransactions) State() TransactionState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return lsfTonative_74b3f2831172(handler.state)
+}
+
+// SetState replaces the handler's state: to force it, reset it or restore a snapshot.
+func (handler *KafkaTransactions) SetState(state TransactionState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = lsfFromnative_74b3f2831172(state)
+}
+
+// TypedState is the typed state, shared rather than copied.
+func (handler *KafkaTransactions) TypedState() *lsfTransactionState {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	return handler.state
+}
+
+// SetTypedState replaces the typed state.
+func (handler *KafkaTransactions) SetTypedState(state *lsfTransactionState) {
+	handler.lock.Lock()
+	defer handler.lock.Unlock()
+	handler.state = state
 }
 
 // BrokerRecording records each call to a Broker handler, then passes it on.
