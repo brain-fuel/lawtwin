@@ -1,6 +1,8 @@
-/// Running a law's property: draw cases from a seed, run each, and shrink the
-/// first failure to a small counterexample. One seed per run is printed with
-/// any failure, and LAWSPEC_SEED replays it. ref:DEC-portable-seeded-generation
+/// Running a law's property on FsCheck: LawSpec's generation plan is an
+/// FsCheck Arbitrary whose shrinker walks the plan's shrink tree, and FsCheck
+/// runs the cases, grows the size, counts discards and shrinks the first
+/// failure. One seed per run is printed with any failure, and LAWSPEC_SEED
+/// replays it through FsCheck's Replay. ref:DEC-dotnet-fscheck
 /// ref:DEC-never-pass-vacuously
 module LawSpec.Testing.Property
 
@@ -8,7 +10,7 @@ open System
 open System.Numerics
 open LawSpec.Runtime
 
-/// How many cases to run, how many discards a case may take, and how many
+/// How many cases to run, how many discards the run may take, and how many
 /// shrink steps a failure may take.
 type Settings =
     { Cases: int
@@ -24,77 +26,93 @@ let runSeed () =
     | null | "" -> BigInteger(random.NextInt64())
     | text -> BigInteger.Parse text
 
+/// FsCheck's random state for a seed: its low 64 bits, with FsCheck's own gamma.
+let private rndOf (seed: BigInteger) =
+    let low = BigInteger.Remainder(seed, BigInteger.Pow(BigInteger 2, 64))
+    FsCheck.Rnd(uint64 (if low.Sign < 0 then low + BigInteger.Pow(BigInteger 2, 64) else low))
+
 let private render (values: Value list) =
     "(" + String.Join(", ", values |> List.map Recorded.renderPlain) + ")"
 
-let private failureOf (property: Value list -> Value) (values: Value list) : exn option =
-    try
-        match property values with
-        | Bool true -> None
-        | Bool false -> Some(LawSpecException("PropertyFalse", "") :> exn)
-        | other -> Some(LawSpecException("NonBooleanProperty", sprintf "%A" other) :> exn)
-    with
-    | :? LawSpecException as e when e.Code = "StrategyOutsideRefinement" || e.Code = "StrategyDiscards" -> raise e
-    | e -> Some e
-
-/// The size a case draws at, as QuickCheck's computeSize gives it: it grows
-/// with the passed cases up to the largest size, cycling over the run, and
-/// a tenth of the case's discards is added, so a domain that small draws
-/// rarely meet is reached at larger sizes instead of discarding at one size.
+/// The largest size a case draws at. FsCheck grows the size linearly from 0
+/// to this over the run's cases, and with each discard too, so a domain that
+/// small draws rarely meet is reached at larger sizes; past it, cases draw
+/// at it.
 let private maxSize = 100
 
-let private sizeOf (cases: int) (passed: int) (discards: int) =
-    let grown =
-        if (passed / maxSize) * maxSize + maxSize <= cases || passed >= cases || cases % maxSize = 0 then passed % maxSize
-        else (passed % maxSize) * maxSize / (cases % maxSize)
-    min maxSize (grown + discards / 10)
+/// What FsCheck reports at the end of a run.
+type private Outcome() =
+    member val Result: FsCheck.TestResult option = None with get, set
+    interface FsCheck.IRunner with
+        member _.OnStartFixture _ = ()
+        member _.OnArguments(_, _, _) = ()
+        member _.OnShrink(_, _) = ()
+        member this.OnFinished(_, result) = this.Result <- Some result
+
+/// A failure of the harness itself ends the run: FsCheck neither counts it
+/// as a counterexample nor shrinks it.
+exception private Aborted of exn
 
 /// Check a property over a generator of its inputs.
 [<CompiledName("Check")>]
 let check (label: string) (settings: Settings) (gen: Gen<Value list>) (property: Value list -> Value) =
     let seed = runSeed ()
-    let mutable state = Random.seed seed
-    let mutable passed = 0
-    let mutable failure = None
-    while failure.IsNone && passed < settings.Cases do
-        let mutable drawn = None
-        let mutable discards = 0
-        while drawn.IsNone do
-            let s1, s2 = Random.split state
-            state <- s2
-            match Gen.run gen s1 (sizeOf settings.Cases passed discards) with
-            | Some tree -> drawn <- Some tree
-            | None ->
-                discards <- discards + 1
-                if discards > settings.MaxAttempts then
-                    Harness.abort "CannotSatisfy"
-                        (sprintf "%s: no input satisfied the law's domain after %d attempts (seed %O)" label settings.MaxAttempts seed)
-        let tree = drawn.Value
-        match failureOf property tree.Value with
-        | None -> passed <- passed + 1
-        | Some error -> failure <- Some(tree, error)
-    match failure with
+    let width = settings.MaxShrinks * 4
+    let arbitrary =
+        FsCheck.FSharp.Arb.fromGenShrink (
+            Gen.toFsCheck gen |> FsCheck.FSharp.Gen.scaleSize (min maxSize) |> FsCheck.FSharp.Gen.map (Option.map (Tree.limit settings.MaxShrinks width)),
+            function
+            | Some tree -> tree.Children |> Seq.map Some
+            | None -> Seq.empty
+        )
+    let mutable aborted = None
+    let law (drawn: Tree<Value list> option) =
+        match drawn, aborted with
+        | _, Some _
+        | None, _ -> FsCheck.FSharp.Prop.discard ()
+        | Some tree, None ->
+            try
+                match property tree.Value with
+                | Bool true -> true
+                | Bool false -> raise (LawSpecException("PropertyFalse", ""))
+                | other -> raise (LawSpecException("NonBooleanProperty", sprintf "%A" other))
+            with :? LawSpecException as e when e.Code = "StrategyOutsideRefinement" || e.Code = "StrategyDiscards" ->
+                aborted <- Some e
+                FsCheck.FSharp.Prop.discard ()
+    let outcome = Outcome()
+    let config =
+        FsCheck.Config.Quick
+            .WithName(label)
+            .WithMaxTest(settings.Cases)
+            .WithMaxRejected(settings.MaxAttempts)
+            .WithStartSize(0)
+            .WithEndSize(maxSize)
+            .WithQuietOnSuccess(true)
+            .WithReplay(Some { Rnd = rndOf seed; Size = None })
+            .WithRunner(outcome)
+    FsCheck.Check.One(config, FsCheck.FSharp.Prop.forAll arbitrary law)
+    match aborted with
+    | Some e -> raise e
     | None -> ()
-    | Some(tree, error) ->
-        let mutable best = tree
-        let mutable bestError = error
-        let mutable steps = 0
-        let mutable searching = true
-        while searching && steps < settings.MaxShrinks do
-            let next =
-                best.Children
-                |> Seq.truncate (settings.MaxShrinks * 4)
-                |> Seq.tryPick (fun child -> failureOf property child.Value |> Option.map (fun e -> child, e))
-            match next with
-            | Some(child, e) ->
-                best <- child
-                bestError <- e
-                steps <- steps + 1
-            | None -> searching <- false
+    match outcome.Result with
+    | None
+    | Some(FsCheck.TestResult.Passed _) -> ()
+    | Some(FsCheck.TestResult.Exhausted data) ->
+        Harness.abort "CannotSatisfy"
+            (sprintf "%s: no input satisfied the law's domain after %d attempts (%d passing case(s); seed %O)" label settings.MaxAttempts data.NumberOfTests seed)
+    | Some(FsCheck.TestResult.Failed(data, _, shrunk, result, _, _, _)) ->
+        let values =
+            match shrunk with
+            | (:? (Tree<Value list> option) as drawn) :: _ -> drawn |> Option.map (fun t -> render t.Value) |> Option.defaultValue "()"
+            | _ -> "()"
+        let error =
+            match result with
+            | FsCheck.Outcome.Failed e when not (isNull e) -> e
+            | _ -> LawSpecException("PropertyFalse", "") :> exn
         let message =
             sprintf "%s failed after %d passing case(s) and %d shrink(s): counterexample %s; seed %O (LAWSPEC_SEED=%O replays it)\n%s"
-                label passed steps (render best.Value) seed seed bestError.Message
-        raise (LawSpecException("PropertyFailed", message, [], bestError))
+                label (data.NumberOfTests - 1) data.NumberOfShrinks values seed seed error.Message
+        raise (LawSpecException("PropertyFailed", message, [], error))
 
 /// A law's generation settings.
 [<CompiledName("Settings")>]

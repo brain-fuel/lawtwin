@@ -13,9 +13,9 @@ contract on Rust and Python.
 
 You need:
 
-- LawSpec branch `integration-0.22` at f37e577 (ref:lawspec), to be
-  released as 0.23, staged with
-  `make lawspec-stage LAWSPEC_HOME=<checkout>`. Its npm release is pending;
+- LawSpec 0.23.0 (ref:lawspec), staged from npm with
+  `make lawspec-stage` (or from a checkout with
+  `make lawspec-stage LAWSPEC_HOME=<checkout>`);
   `make lawspec-version` prints what the contracts need;
 - Node 22 or later;
 - Rust 1.85 or later;

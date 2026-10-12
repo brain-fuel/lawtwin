@@ -1,14 +1,15 @@
-/// LawSpec's property engine for .NET: seeded SplitMix64 generation with
-/// integrated shrinking. A generator yields a rose tree, the value with the
-/// smaller values it may shrink to, so shrinking a bound input rebuilds the
-/// inputs that depend on it and every candidate stays inside the domain.
-/// ref:DEC-portable-seeded-generation ref:DEC-shrink-within-domain
-/// ref:DEC-fsharp-runtime-from-scratch
+/// LawSpec's generation plans as FsCheck generators. FsCheck draws every
+/// random choice and gives the size; LawSpec builds, for each value, the rose
+/// tree of the smaller values it may shrink to, so shrinking a bound input
+/// rebuilds the inputs that depend on it and every candidate stays inside the
+/// domain. Property turns the tree into an FsCheck Arbitrary whose shrinker
+/// walks it. ref:DEC-dotnet-fscheck ref:DEC-shrink-within-domain
+/// ref:DEC-planned-generation
 namespace LawSpec.Testing
 
+open System
 open System.Numerics
-open LawSpec.Runtime
-open LawSpec.Runtime.Random
+open FsCheck
 
 /// A value and, lazily, the values it shrinks to, best first.
 type Tree<'a> =
@@ -35,23 +36,35 @@ module Tree =
         { Value = value
           Children = shrink value |> Seq.map (unfold shrink) }
 
-/// A generator: a seed and a size to a tree, or None for an empty domain,
-/// which discards the whole tuple of inputs.
-type Gen<'a> = Gen of (Seed -> int -> Tree<'a> option)
+    /// At most a number of shrink steps, each trying at most a number of
+    /// candidates.
+    [<CompiledName("Limit")>]
+    let rec limit (steps: int) (width: int) (tree: Tree<'a>) =
+        { tree with
+            Children =
+                if steps <= 0 then Seq.empty
+                else tree.Children |> Seq.truncate width |> Seq.map (limit (steps - 1) width) }
+
+/// A generator: FsCheck's generator of a value's shrink tree, or None for an
+/// empty domain, which discards the whole tuple of inputs.
+type Gen<'a> = Gen of FsCheck.Gen<Tree<'a> option>
 
 module Gen =
-    [<CompiledName("Run")>]
-    let run (Gen g) seed size = g seed size
+    module Native = FsCheck.FSharp.Gen
+
+    /// FsCheck's generator of the trees.
+    [<CompiledName("ToFsCheck")>]
+    let toFsCheck (Gen g) = g
 
     [<CompiledName("Constant")>]
-    let constant value = Gen(fun _ _ -> Some(Tree.leaf value))
+    let constant value = Gen(Native.constant (Some(Tree.leaf value)))
 
     /// An empty domain: the case is discarded and redrawn.
     [<CompiledName("Empty")>]
-    let empty<'a> : Gen<'a> = Gen(fun _ _ -> None)
+    let empty<'a> : Gen<'a> = Gen(Native.constant None)
 
     [<CompiledName("Map")>]
-    let map f (Gen g) = Gen(fun seed size -> g seed size |> Option.map (Tree.map f))
+    let map f (Gen g) = Gen(Native.map (Option.map (Tree.map f)) g)
 
     let rec private bindTree (tree: Tree<'a>) (k: 'a -> Tree<'b> option) : Tree<'b> option =
         k tree.Value
@@ -62,19 +75,41 @@ module Gen =
                     (tree.Children |> Seq.choose (fun child -> bindTree child k))
                     inner.Children })
 
+    /// A fresh FsCheck random state, drawn from the current one.
+    let private fork = Native.choose64 (Int64.MinValue, Int64.MaxValue) |> Native.map (fun s -> Rnd(uint64 s))
+
+    let private at (Gen g) (rnd: Rnd) (size: int) = (Native.sampleWithSeed rnd size 1 g).[0]
+
     /// A generator that depends on another's value. Shrinking the first value
-    /// regenerates the second from the same seed.
+    /// regenerates the second from the same random state and size.
     [<CompiledName("Bind")>]
     let bind (Gen g) (k: 'a -> Gen<'b>) =
-        Gen(fun seed size ->
-            let s1, s2 = split seed
-            g s1 size |> Option.bind (fun tree -> bindTree tree (fun a -> run (k a) s2 size)))
+        Gen(
+            Native.sized (fun size ->
+                g
+                |> Native.bind (fun drawn ->
+                    fork
+                    |> Native.map (fun rnd -> drawn |> Option.bind (fun tree -> bindTree tree (fun a -> at (k a) rnd size)))))
+        )
 
     [<CompiledName("Sized")>]
-    let sized (f: int -> Gen<'a>) = Gen(fun seed size -> run (f size) seed size)
+    let sized (f: int -> Gen<'a>) = Gen(Native.sized (fun size -> let (Gen g) = f size in g))
 
     [<CompiledName("Resize")>]
-    let resize size (Gen g) = Gen(fun seed _ -> g seed size)
+    let resize size (Gen g) = Gen(Native.resize size g)
+
+    let private int64Range = BigInteger Int64.MaxValue + BigInteger.One
+
+    /// A uniform BigInteger in [0, n), from FsCheck's random state.
+    let private below (n: BigInteger) =
+        if n <= int64Range then Native.choose64 (0L, int64 (n - BigInteger.One)) |> Native.map BigInteger
+        else
+            // Enough 64-bit words that the remainder's bias is negligible.
+            let words = int (n.GetBitLength() / 64L) + 2
+            Native.listOfLength words (Native.choose64 (Int64.MinValue, Int64.MaxValue))
+            |> Native.map (fun ws ->
+                let total = ws |> List.fold (fun acc (w: int64) -> (acc <<< 64) + BigInteger(uint64 w)) BigInteger.Zero
+                BigInteger.Remainder(total, n))
 
     let private towards (origin: BigInteger) (value: BigInteger) =
         if value = origin then Seq.empty
@@ -95,22 +130,24 @@ module Gen =
     /// magnitudes appear as the size grows.
     [<CompiledName("Integer")>]
     let integer (lo: BigInteger option) (hi: BigInteger option) =
-        Gen(fun seed size ->
-            let reach = BigInteger.Pow(BigInteger 2, min 64 (2 + size / 2))
-            let lo' = match lo, hi with
-                      | Some l, _ -> l
-                      | None, Some h -> BigInteger.Min(BigInteger.Zero, h) - reach
-                      | None, None -> -reach
-            let hi' = match hi, lo with
-                      | Some h, _ -> h
-                      | None, Some l -> BigInteger.Max(BigInteger.Zero, l) + reach
-                      | None, None -> reach
-            if lo' > hi' then None
-            else
-                let n, _ = below (hi' - lo' + BigInteger.One) seed
-                let value = lo' + n
-                let origin = BigInteger.Min(BigInteger.Max(BigInteger.Zero, lo'), hi')
-                Some(Tree.unfold (towards origin) value))
+        Gen(
+            Native.sized (fun size ->
+                let reach = BigInteger.Pow(BigInteger 2, min 64 (2 + size / 2))
+                let lo' =
+                    match lo, hi with
+                    | Some l, _ -> l
+                    | None, Some h -> BigInteger.Min(BigInteger.Zero, h) - reach
+                    | None, None -> -reach
+                let hi' =
+                    match hi, lo with
+                    | Some h, _ -> h
+                    | None, Some l -> BigInteger.Max(BigInteger.Zero, l) + reach
+                    | None, None -> reach
+                if lo' > hi' then Native.constant None
+                else
+                    let origin = BigInteger.Min(BigInteger.Max(BigInteger.Zero, lo'), hi')
+                    below (hi' - lo' + BigInteger.One) |> Native.map (fun n -> Some(Tree.unfold (towards origin) (lo' + n))))
+        )
 
     [<CompiledName("Range")>]
     let range (lo: int) (hi: int) = integer (Some(BigInteger lo)) (Some(BigInteger hi)) |> map int
@@ -168,48 +205,47 @@ module Gen =
                         yield productTrees (List.updateAt i child trees)
             } }
 
-    let private draws (gens: Gen<'a> list) seed size =
-        let rec go gens seed acc =
-            match gens with
-            | [] -> Some(List.rev acc)
-            | g :: rest ->
-                let s1, s2 = split seed
-                match run g s1 size with
-                | None -> None
-                | Some t -> go rest s2 (t :: acc)
-        go gens seed []
+    /// Each generator's tree in order, or None when any domain is empty.
+    let private draws (gens: Gen<'a> list) =
+        gens
+        |> List.map toFsCheck
+        |> Native.sequenceToList
+        |> Native.map (fun drawn -> if List.forall Option.isSome drawn then Some(List.map Option.get drawn) else None)
 
     /// A fixed number of values, each shrinking in place.
     [<CompiledName("Vector")>]
-    let vector count (g: Gen<'a>) =
-        Gen(fun seed size -> draws (List.replicate count g) seed size |> Option.map productTrees)
+    let vector count (g: Gen<'a>) = Gen(draws (List.replicate count g) |> Native.map (Option.map productTrees))
 
     /// Values of several generators, in order.
     [<CompiledName("Tuple")>]
-    let tuple (gens: Gen<'a> list) = Gen(fun seed size -> draws gens seed size |> Option.map productTrees)
+    let tuple (gens: Gen<'a> list) = Gen(draws gens |> Native.map (Option.map productTrees))
 
     /// A list of a length the size limits, shrinking by removing items and by
     /// shrinking them.
     [<CompiledName("List")>]
     let list (g: Gen<'a>) =
-        Gen(fun seed size ->
-            let s1, s2 = split seed
-            let n, _ = below (BigInteger(size + 1)) s1
-            draws (List.replicate (int n) g) s2 size |> Option.map sequenceTrees)
+        Gen(
+            Native.sized (fun size ->
+                below (BigInteger(size + 1))
+                |> Native.bind (fun n -> draws (List.replicate (int n) g) |> Native.map (Option.map sequenceTrees)))
+        )
+
+    /// Redraw until a predicate accepts the value, at most a number of times;
+    /// the accepted tree's candidates are filtered too.
+    let private retry (predicate: 'a -> bool) (limit: int) (exhausted: unit -> Tree<'a> option) (Gen g) =
+        let rec attempt n =
+            g
+            |> Native.bind (fun drawn ->
+                match drawn with
+                | Some tree when predicate tree.Value -> Native.constant (Some(Tree.filter predicate tree))
+                | _ when n <= 1 -> Native.constant () |> Native.map exhausted
+                | _ -> attempt (n - 1))
+        if limit <= 0 then Gen(Native.constant () |> Native.map exhausted) else Gen(attempt limit)
 
     /// Keep values a predicate accepts, redrawing up to a limit; candidates
     /// are filtered too.
     [<CompiledName("Constrain")>]
-    let constrain (limit: int) (predicate: 'a -> bool) (Gen g) =
-        Gen(fun seed size ->
-            let rec attempt seed n =
-                if n <= 0 then None
-                else
-                    let s1, s2 = split seed
-                    match g s1 size with
-                    | Some tree when predicate tree.Value -> Some(Tree.filter predicate tree)
-                    | _ -> attempt s2 (n - 1)
-            attempt seed limit)
+    let constrain (limit: int) (predicate: 'a -> bool) (g: Gen<'a>) = retry predicate limit (fun () -> None) g
 
     /// A dependent input's domain: an impossible value discards the tuple, so
     /// an earlier input is redrawn rather than retried in vain.
@@ -219,18 +255,8 @@ module Gen =
 
     /// Draw until a predicate holds, failing the harness after a limit.
     [<CompiledName("SuchThat")>]
-    let suchThat (predicate: 'a -> bool) (limit: int) (onExhausted: unit -> unit) (Gen g) =
-        Gen(fun seed size ->
-            let rec attempt seed n =
-                if n <= 0 then
-                    onExhausted ()
-                    None
-                else
-                    let s1, s2 = split seed
-                    match g s1 size with
-                    | Some tree when predicate tree.Value -> Some(Tree.filter predicate tree)
-                    | _ -> attempt s2 (n - 1)
-            attempt seed (limit + 1))
+    let suchThat (predicate: 'a -> bool) (limit: int) (onExhausted: unit -> unit) (g: Gen<'a>) =
+        retry predicate (limit + 1) (fun () -> onExhausted (); None) g
 
     /// A weighted mix of fixed values and a generator.
     [<CompiledName("WithExamples")>]
@@ -241,3 +267,9 @@ module Gen =
 
     [<CompiledName("Apply")>]
     let apply (f: Gen<'a -> 'b>) (x: Gen<'a>) = bind f (fun f -> map f x)
+
+    /// An application's FsCheck Arbitrary, keeping its own shrinker.
+    [<CompiledName("OfArbitrary")>]
+    let ofArbitrary (arbitrary: Arbitrary<'a>) =
+        let shrink = FsCheck.FSharp.Arb.toShrink arbitrary
+        Gen(FsCheck.FSharp.Arb.toGen arbitrary |> Native.map (fun value -> Some(Tree.unfold shrink value)))

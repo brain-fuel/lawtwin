@@ -103,9 +103,9 @@ make contract-check      # compile the package and its laws
 make contract-test       # run them on every target (TARGET=rust, for example, for one)
 ```
 
-The contracts need LawSpec branch `integration-0.22` at f37e577, to be
-released as 0.23; its npm release is pending, so stage it from a checkout of that branch first with
-`make lawspec-stage LAWSPEC_HOME=<checkout>`. You also need Node 22 or
+The contracts need LawSpec 0.23.0; stage it from npm first with
+`make lawspec-stage` (or from a LawSpec checkout with
+`make lawspec-stage LAWSPEC_HOME=<checkout>`). You also need Node 22 or
 later, Rust 1.85 or later with CMake, and Python 3.13 or later; Go, a JDK
 with Maven, Gradle, and the .NET 10 SDK run the Kafka contract's other targets and the
 conformance kit's clients, and podman builds the image. `make help` lists

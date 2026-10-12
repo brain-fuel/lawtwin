@@ -20,7 +20,7 @@ canon:
   locator: https://github.com/brain-fuel/canon/tree/26de9f5
 lawspec:
   kind: package
-  title: LawSpec, the executable specification language; 0.22.0 is on npm, and the contracts and the Kafka twin need branch integration-0.22 at f37e577, to be released as 0.23
+  title: LawSpec, the executable specification language; the contracts and the Kafka twin need 0.23.0, on npm
   locator: https://github.com/brain-fuel/lawspec
 lawspec-roadmap:
   kind: discussion

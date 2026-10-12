@@ -1,13 +1,13 @@
 # LawTwin development tasks. `make` lists them. Every check runs locally;
 # there is no hosted CI.
 
-# The contracts and the Kafka twin's Rust core need LawSpec branch
-# integration-0.22 at f37e577, to be released as 0.23: 0.22.0 with the
+# The contracts and the Kafka twin's Rust core need LawSpec 0.23.0: the
 # lawspec-gaps fixes, typed native code on every target, and the F# and C#
-# targets; its npm release is pending. Stage the CLI from a checkout of it with
-# `make lawspec-stage LAWSPEC_HOME=<checkout>`, or set LAWSPEC to another way
-# of running it.
-LAWSPEC_REQUIRED := LawSpec branch integration-0.22 at f37e577, to be released as 0.23 (npm release pending)
+# targets. `make lawspec-stage` stages the CLI from npm; set LAWSPEC_HOME to
+# stage it from a LawSpec checkout instead (for builds not yet on npm), or set
+# LAWSPEC to another way of running it.
+LAWSPEC_VERSION  := 0.23.0
+LAWSPEC_REQUIRED := LawSpec $(LAWSPEC_VERSION)
 LAWSPEC_HOME ?=
 LAWSPEC   ?= node .lawspec-cli/bin/lawspec.mjs
 CONTRACTS := contracts/kafka contracts/petstore contracts/github
@@ -52,9 +52,8 @@ help: ## List the tasks
 lawspec-version: ## Say which LawSpec the contracts need
 	@echo "$(LAWSPEC_REQUIRED)"
 
-lawspec-stage: ## Stage the LawSpec CLI from LAWSPEC_HOME into .lawspec-cli
-	@test -n "$(LAWSPEC_HOME)" || { echo "set LAWSPEC_HOME to a checkout of $(LAWSPEC_REQUIRED), built with stack build"; exit 1; }
-	LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
+lawspec-stage: ## Stage the LawSpec CLI into .lawspec-cli, from npm or from LAWSPEC_HOME
+	LAWSPEC_VERSION="$(LAWSPEC_VERSION)" LAWSPEC_HOME="$(LAWSPEC_HOME)" tools/stage-lawspec.sh
 
 build: ## Build the lawtwin command and the twins' Rust cores
 	cargo build --release -p lawtwin -p lawtwin-kafka -p lawtwin-http -p lawtwin-kafka-fidelity
