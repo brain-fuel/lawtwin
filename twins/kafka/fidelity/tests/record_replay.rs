@@ -5,7 +5,7 @@
 mod support;
 
 use lawtwin_kafka_conformance::admin::Admin;
-use lawtwin_kafka_fidelity::frame::frames_text;
+use lawtwin_kafka_fidelity::frame::{frames_text, parse_frames};
 use lawtwin_kafka_fidelity::replay::{replay_frames, replay_trace};
 use rdkafka::ClientConfig;
 use rdkafka::Message;
@@ -113,7 +113,13 @@ fn a_recorded_session_replays_through_the_rust_core_and_a_mutant_is_caught() {
     let prefix = dir.join("session");
     std::fs::write(dir.join("session.frames.jsonl"), frames_text(&frames)).unwrap();
     let report = replay_trace(&prefix, "rust").unwrap();
-    assert_eq!(report.answered, report.requests, "{report:#?}");
+    // Wire-only coordinator retries are accounted for explicitly; every
+    // remaining request must receive a replay answer.
+    // ref:DEC-kafka-divergence-coordinator-timing
+    let retries: u64 = r.notes().iter().filter(|(name, _)| name.starts_with("retriable error:")).map(|(_, n)| *n).sum();
+    assert_eq!(report.answered + report.skipped, report.requests, "{report:#?}");
+    assert!(report.skipped as u64 <= retries, "skipped requests need observed broker retry notes: {report:#?}");
+    assert!(report.answered > 20, "the application session must actually replay: {report:#?}");
     assert!(report.stalled.is_empty(), "{report:#?}");
     assert!(report.divergences.is_empty(), "the Rust core answers as the broker did: {:#?}", report.divergences);
     assert!(report.violations.is_empty(), "{:#?}", report.violations);
@@ -126,4 +132,19 @@ fn a_recorded_session_replays_through_the_rust_core_and_a_mutant_is_caught() {
         "the mutant must be caught at a produce: {:#?}",
         report.divergences
     );
+}
+
+/// A captured transaction-coordinator retry has exactly one wire-only frame;
+/// the full trace still replays every other request, including lost-ack retries.
+/// ref:DEC-kafka-divergence-coordinator-timing
+#[test]
+fn a_captured_coordinator_retry_does_not_drop_application_requests() {
+    let frames = parse_frames(include_str!("fixtures/coordinator-retry.frames.jsonl")).unwrap();
+    let report = replay_frames(&frames, None).unwrap();
+    assert_eq!(report.requests, 54, "{report:#?}");
+    assert_eq!(report.answered, 53, "{report:#?}");
+    assert_eq!(report.skipped, 1, "{report:#?}");
+    assert!(report.stalled.is_empty(), "{report:#?}");
+    assert!(report.divergences.is_empty(), "{report:#?}");
+    assert!(report.violations.is_empty(), "{report:#?}");
 }
