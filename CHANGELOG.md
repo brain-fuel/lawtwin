@@ -6,7 +6,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning 2.0.0](https://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## [Unreleased]
+
+## [0.1.0] - 2026-10-21
 
 ### Added
 - The repository, checked by canon 0.2.0 from its first commit: `canon.yaml`, the reference registry, the decision ledger with the owner's decisions of 2026-10-09 (`DEC-three-planes`, `DEC-twins-wire-level-containers`, `DEC-dependency-contracts-in-lawspec`, `DEC-twins-in-rust`, `DEC-fidelity`, `DEC-typed-control-plane`, `DEC-first-release-scope`, `DEC-vetting-deferred-to-1.0`), and exemptions that defer vetting to 1.0
@@ -44,6 +46,8 @@ and this project adheres to
 - Documentation: references for recording, replay, conformance and the peers, and how to check conformance, record and replay Kafka traffic, and feed and check an application with the peers
 
 ### Changed
+- Contracts, configuration and generated consumers use LawSpec 0.26 syntax and its public Rust embedding interfaces. The importer checks fresh OpenAPI 3.0/3.1 consumers; the historical gap report distinguishes implemented support from remaining limits.
+- Kafka recording retains leader hints across retriable responses, and replay accounts for coordinator retry frames without weakening answer comparisons. Kafka and HTTP provider conformance, deterministic replay and mutation controls were rechecked for this release.
 - The Rust core answers a fenced producer INVALID_PRODUCER_EPOCH on AddPartitionsToTxn, AddOffsetsToTxn and EndTxn below version 2, and on TxnOffsetCommit, as Kafka 4.3.1 does (`DEC-fenced-producer-spelling`); the history has a new source, `observed`, for state a recorded broker held before the recording
 - The conformance kit's clients read a namespace from `LAWTWIN_NS` for their topics, groups and transactional ids, and the librdkafka scenarios are part of the kit's library, so they run against real Kafka too
 - The wire map, `lawtwin-openapi.json`, now gives each field whether it is required, each parameter and field its constraints, each success response its documented headers, each failure its documented body, each resource its key type, parents, counter and laws by kind, and the model's `State`; the importer also writes the twin file `lawtwin.json` once. The Petstore and GitHub contracts are imported again; their LawSpec units do not change
